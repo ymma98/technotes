@@ -8,9 +8,10 @@
 
 ## 操作步骤
 
-* 注册 stackedit,
+* 注册 stackedit (这里我使用的是 stackedit 的中文版；英文版原项目几乎已经不维护了, 并且编辑 markdown 时不)，这是一个在线编辑 markdown 的平台，并且可以将 markdown 文件自动同步到
+* 注册 read the docs 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODE2Mzg4NDU5XX0=
+eyJoaXN0b3J5IjpbLTEwODg1MDU1MzFdfQ==
 -->
