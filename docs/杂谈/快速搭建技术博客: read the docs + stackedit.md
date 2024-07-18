@@ -46,12 +46,12 @@ mkdocs:
 * 打开 stackedit, 点击右上角打开菜单选项，将刚刚新建的 repo 绑定为一个文档空间。这样，你在 stackedit 里就可以直接编辑 docs/ 文件夹中的文件，并且所有的更改，都可以自动同步到 github 仓库中。但是 stackedit 只能编辑和创建后缀为 *.md 的文件，编辑 mkdocs.yml 需要在 github 中搞定
 * 打开 read the docs, 点击导入项目，将 xxx 这个 repo 导入进来，给项目取个名字 XXX (XXX 不能和已有的其他人的项目名重复)，之后 read the docs 就会根据 .readthedocs.yaml 中的设置，读取 mkdocs.yml, 然后渲染网页，并告诉你生成的网站的地址，一般是 XXX.readthedocs.io
 
-经过以上配置，以后再想更新博客，
+经过以上配置，以后再想更新博客，只用在 stackedit 中更新文档，并在 github/xxx/mkdocs.yml 中更新网页中文档的排布结构即可，其余的操作，比如同步文档、渲染网页等，均为自动完成。以上所有操作均在浏览器中解决，非常方便
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzM0NTkyMDFdfQ==
+eyJoaXN0b3J5IjpbLTc3MzAwNTk0N119
 -->
