@@ -24,16 +24,32 @@ nav:
 theme:
   name: readthedocs
 ```
+顾名思义， nav 是配置文档结构的，site_name 是网站标题。
+以及 .readthedocs.yaml:
+```yml
+# Read the Docs configuration file for MkDocs projects
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
 
+# Required
+version: 2
 
-顾名思义， nav 是配置文档结构的，site_name 是网站标题
+# Set the version of Python and other tools you might need
+build:
+  os: ubuntu-22.04
+  tools:
+    python: "3.12"
+
+mkdocs:
+  configuration: mkdocs.yml
+```
+
 * 打开 stackedit, 点击右上角打开菜单选项，将刚刚新建的 repo 绑定为一个文档空间。这样，你在 stackedit 里就可以直接编辑 docs/ 文件夹中的文件，并且所有的更改，都可以自动同步到 github 仓库中。但是 stackedit 只能编辑和创建后缀为 *.md 的文件，编辑 mkdocs.yml 需要在 github 中搞定
-* 打开 read the docs, 点击导入项目，将 xxx 这个 repo 导入进来，
+* 打开 read the docs, 点击导入项目，将 xxx 这个 repo 导入进来，之后 read the docs 就会根据 .readthedocs.yaml 中的设置，读取 mkdocs.yml, 然后渲染网页，并告诉你sh
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjk0OTUwNjFdfQ==
+eyJoaXN0b3J5IjpbLTU4Mzg3MTI4M119
 -->
