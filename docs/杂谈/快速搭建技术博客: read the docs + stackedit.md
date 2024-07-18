@@ -9,11 +9,11 @@
 ## 操作步骤
 
 * 注册 stackedit (这里我使用的是 [stackedit 中文版](https://stackedit.cn/)；stackedit 的 [初始项目](https://stackedit.io/) 已经不维护了, 并且原项目编辑 markdown 时不支持直接复制粘贴图片，而需要用到图床)，这是一个在线编辑 markdown 的平台，并且可以将 markdown 文件自动同步到 github 仓库中，选择同步到别的地方，比如 google drive、gitlab 等，也是可以的
-* 注册 read the docs, 将 github 仓库导入其中后，可以自动构建和构建网页；当 github 仓库更新时，也会自动更新网页
-
+* 注册 [read the docs](https://about.readthedocs.com/), 将 github 仓库导入其中后，可以自动构建和构建网页；当 github 仓库更新时，也会自动更新网页
+* 新建一个 github public repo (免费版 read the docs 不支持自动部署 private repo)，然后再 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzEzODMwNDE1XX0=
+eyJoaXN0b3J5IjpbLTgyNTEwMTkxNl19
 -->
