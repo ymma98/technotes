@@ -2,7 +2,7 @@ site_name: garnet技术笔记
 nav:
   - Home: index.md
   - 杂谈:
-      - 快速搭建技术博客 read the docs + stackedit: 快速搭建技术博客.md
+      - 快速搭建技术博客 read the docs + stackedit: 杂谈/快速搭建技术博客.md
   - cpp:
      - 01: cpp/01.md
 
