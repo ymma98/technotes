@@ -25,12 +25,13 @@ theme:
   name: readthedocs
 ```
 
-顾名思义， nav 是配置wen'zh
+顾名思义， nav 是配置文档结构的，site_name 是网站标题
+* 打开 stackedit, 点击右上角打开菜单选项，将刚刚新建的 repoban
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjExOTM3MTg4XX0=
+eyJoaXN0b3J5IjpbLTUwMzM2NjMyXX0=
 -->
