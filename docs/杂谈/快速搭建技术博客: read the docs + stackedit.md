@@ -12,10 +12,18 @@
 * 注册 [read the docs](https://about.readthedocs.com/), 将 github 仓库导入其中后，可以自动构建和构建网页；当 github 仓库更新时，也会自动更新网页
 * 新建一个 github public repo (免费版 read the docs 不支持自动部署 private repo)，命名为 xxx, 然后新建 xxx/mkdocs.yml, xxx/docs/index.md
 	* 为什么新建这两个文件，是因为 read the docs 主要支持两种自动渲染网页的方式: mkdocs 与 sphinx. 我比较熟悉 mkdocs。mkdocs 与 sphinx 都是用来构建静态网页的。这里只用知道 [mkdocs.yml](https://www.mkdocs.org/user-guide/configuration/) 用来设置网页渲染的参数，比如文档的结构，网站的标题等，index.md 就是网站首页上显示的内容。所有的内容都是 markdown 文件，并且都放在 xxx/docs/ 里面
-	* 
+	* 最简单的例子:
+	
+```yml
+	site_name: garnet技术笔记
+nav:
+  - Home: index.md
+theme:
+  name: readthedocs
+```
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMjIyODgwM119
+eyJoaXN0b3J5IjpbMTkzMTc1Nzg2MF19
 -->
