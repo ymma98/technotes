@@ -18,12 +18,19 @@
 	site_name: garnet技术笔记
 nav:
   - Home: index.md
+  - 文件归档:
+	  - 次级归档:
+		  - 文章标题: abc.md
 theme:
   name: readthedocs
 ```
 
+顾名思义， nav 是配置wen'zh
+
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzMTc1Nzg2MF19
+eyJoaXN0b3J5IjpbNjExOTM3MTg4XX0=
 -->
