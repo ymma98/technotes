@@ -1,1 +1,7 @@
+site_name: garnet技术笔记
+nav:
+  - 序: index.md
 
+
+theme:
+  name: readthedocs
