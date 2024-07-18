@@ -26,12 +26,12 @@ theme:
 ```
 
 顾名思义， nav 是配置文档结构的，site_name 是网站标题
-* 打开 stackedit, 点击右上角打开菜单选项，将刚刚新建的 repoban
+* 打开 stackedit, 点击右上角打开菜单选项，将刚刚新建的 repo 绑定为一个文档空间。这样，你在 stackedit 里就可以直接编辑 docs/ 文件夹中的文件，并且所有的更改，都可以自动同步到 github 仓库中。但是 stackedit 只能编辑和创建后缀为 *.md 的文件，编辑 mkdocs.yml 需要在 github 中
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMzM2NjMyXX0=
+eyJoaXN0b3J5IjpbMTY3ODY0OTI4Ml19
 -->
