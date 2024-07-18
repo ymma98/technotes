@@ -1,6 +1,8 @@
 site_name: garnet技术笔记
 nav:
-  - 序: index.md
+  - Home: index.md
+  - cpp:
+     - 01: cpp/01.md
 
 
 theme:
