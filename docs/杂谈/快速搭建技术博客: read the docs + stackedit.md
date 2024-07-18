@@ -1,5 +1,7 @@
 # 快速搭建技术博客: read the docs + stackedit
 
+> 2024.07.18
+
 搭建技术博客的方式有很多，目前我认为最便捷的一种是使用 read the docs + stackedit，优点有:
 * 一切操作都在浏览器中进行，不用在本地管理文档、编译项目
 * 网页自动更新，专注于写 markdown 就可以
@@ -53,5 +55,5 @@ mkdocs:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3MzAwNTk0N119
+eyJoaXN0b3J5IjpbLTE2MjcwMDE5MDldfQ==
 -->
