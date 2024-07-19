@@ -34,7 +34,6 @@ theme:
     - navigation.instant
     - navigation.path       # 在文档顶部也显示当前文档的 
     - navigation.top
-    - navigation.tabs
     - palette.switcher      # 主题色切换
     - search.suggest        # 搜索建议
     - search.highlight      # 搜索关键词高亮
