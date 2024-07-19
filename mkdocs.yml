@@ -16,6 +16,7 @@ markdown_extensions:
   - markdown.extensions.tables
   - toc:
       permalink: true       # 在每个标题旁添加链接
+      toc_depth: 1-6
       title: On this page
 
 
@@ -34,7 +35,6 @@ theme:
     - navigation.path       # 在文档顶部也显示当前文档的 
     - navigation.top
     - navigation.tabs
-    - toc.follow
     - palette.switcher      # 主题色切换
     - search.suggest        # 搜索建议
     - search.highlight      # 搜索关键词高亮
