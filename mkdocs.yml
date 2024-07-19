@@ -16,7 +16,6 @@ markdown_extensions:
   - markdown.extensions.tables
   - toc:
       permalink: true       # 在每个标题旁添加链接
-      toc_depth: 1-6        # 只包含 h1 到 h3 的标题
 
 
 theme:
@@ -30,7 +29,12 @@ theme:
     code: 'Roboto Mono'     # 代码块字体
   features:
     - navigation.indexes    # 对于包含子页面的节，提供更好的索引页面
+    - navigation.instant
+    - navigation.sections   # 可以将 section 打包为一个 group
+    - navigation.path       # 在文档顶部也显示当前文档的 
+    - navigation.top
     - toc.integrate         # 目录整合到侧边栏
+    - toc.follow
     - palette.switcher      # 主题色切换
     - search.suggest        # 搜索建议
     - search.highlight      # 搜索关键词高亮
