@@ -23,12 +23,21 @@ markdown_extensions:
 theme:
   # name: readthedocs
   name: material
+  palette:
+    primary: 'indigo'       # 主颜色
+    accent: 'pink'          # 强调颜色
+  font:
+    text: 'Roboto'          # 主文字字体
+    code: 'Roboto Mono'     # 代码块字体
   features:
-    - navigation.tabs   
-    - navigation.top   
-    - navigation.sections
-    - navigation.instant
-    - toc.integrate      # 确保目录被整合到侧边栏
+    - navigation.tabs       # 顶部标签
+    - navigation.top        # 顶部导航栏
+    - navigation.sections   # 结构化分节
+    - navigation.instant    # 即时导航
+    - toc.integrate         # 目录整合到侧边栏
+    - palette.switcher      # 主题色切换
+    - search.suggest        # 搜索建议
+    - search.highlight      # 搜索关键词高亮
 
 
 
