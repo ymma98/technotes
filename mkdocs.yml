@@ -31,10 +31,9 @@ theme:
   features:
     - navigation.indexes    # 对于包含子页面的节，提供更好的索引页面
     - navigation.instant
-    - navigation.sections   # 可以将 section 打包为一个 group
     - navigation.path       # 在文档顶部也显示当前文档的 
     - navigation.top
-    - toc.integrate         # 目录整合到侧边栏
+    - navigation.tabs
     - toc.follow
     - palette.switcher      # 主题色切换
     - search.suggest        # 搜索建议
