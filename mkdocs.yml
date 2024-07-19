@@ -14,10 +14,21 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - markdown.extensions.tables
+  - toc:
+      permalink: true       # 在每个标题旁添加链接
+      baselevel: 1          # 从 h1 开始
+      toc_depth: 2-3        # 只包含 h2 到 h3 的标题
+
 
 theme:
   # name: readthedocs
   name: material
+  features:
+    - navigation.tabs   
+    - navigation.top   
+    - navigation.sections
+    - navigation.instant
+    - toc.integrate      # 确保目录被整合到侧边栏
 
 
 
