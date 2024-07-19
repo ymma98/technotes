@@ -16,7 +16,8 @@ markdown_extensions:
   - markdown.extensions.tables
 
 theme:
-  name: readthedocs
+  # name: readthedocs
+  name: material
 
 
 
