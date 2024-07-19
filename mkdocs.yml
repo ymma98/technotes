@@ -6,6 +6,12 @@ nav:
   - cpp:
      - 基本概念: cpp/基本概念.md
 
+markdown_extensions:
+  - markdown.extensions.codehilite
+  - markdown.extensions.extra
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
 
 theme:
   name: readthedocs
