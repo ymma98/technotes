@@ -80,7 +80,10 @@ enum class Color : int8_t { RED, GREEN, BLUE };
 ```
 
 
-## 
+## `struct`
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MzQ1Mzg3MTldfQ==
+eyJoaXN0b3J5IjpbLTEzMjg5OTY4NDYsLTE0MzQ1Mzg3MTldfQ
+==
 -->
