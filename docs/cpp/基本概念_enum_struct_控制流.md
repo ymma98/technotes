@@ -83,6 +83,21 @@ enum class Color : int8_t { RED, GREEN, BLUE };
 ## `struct`
 
 * 结构体是一个将不同变量聚合到一个单元中的数据结构。每个结构体成员可以有不同的数据类型。
+
+```cpp
+struct A {
+    int x;
+    char y;
+};
+```
+
+* 可以在定义结构体的同时声明一个或多个该类型的变量。
+
+```cpp
+struct A {
+    int x;
+} a, b;
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTM4ODk0MDc4XX0=
+eyJoaXN0b3J5IjpbLTEzODg4MzAwLDkzODg5NDA3OF19
 -->
