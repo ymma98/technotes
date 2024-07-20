@@ -261,6 +261,8 @@ do {
 } while (cond);
 ```
 
+* `switch`
+
 ###  `for` loop 进阶
 
 1. loop definition
@@ -331,7 +333,7 @@ std::vector<int> v = {4, 5, 6};
     }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2ODg4OTkyNywtMjA5MjE5MTExOSw2MT
-EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
-MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
+eyJoaXN0b3J5IjpbODkzMTIyOTg5LDE5Njg4ODk5MjcsLTIwOT
+IxOTExMTksNjExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3
+LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
 -->
