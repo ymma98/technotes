@@ -187,8 +187,38 @@ void configureDevice() {
 -   类型 types
 -   命名空间 namespaces
 
+```cpp
+// 弃用函数
+[[deprecated("Use newFunction() instead.")]]
+void oldFunction() {
+  // implementation
+}
+
+// 弃用类
+[[deprecated("Use NewClass instead.")]]
+class OldClass {
+  // class definition
+};
+
+// 弃用变量
+[[deprecated("This variable will be removed in future versions.")]]
+int oldVariable;
+
+// 弃用类型定义
+[[deprecated("Use int32_t instead of Int.")]]
+using Int = int;
+
+// 弃用枚举值
+enum class Fruit {
+  Apple,
+  Orange,
+  Banana,
+  [[deprecated("Grape will be removed in future releases.")]]
+  Grape
+};
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjExMzgwMTksLTYxOTg1MjAwMywxNTgxOT
-g4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhd
-fQ==
+eyJoaXN0b3J5IjpbLTQ5NzA4NjU1Miw2MTEzODAxOSwtNjE5OD
+UyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgwMCwtNjkwOTUwNjA4
+LDkzODg5NDA3OF19
 -->
