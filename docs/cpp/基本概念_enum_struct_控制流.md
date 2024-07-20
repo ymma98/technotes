@@ -144,9 +144,41 @@ a.y = 0; // bits: 00..000001100000000
 cout << a.x; // print 512 + 256 = 768
 ```
 
+一个很好的例子，`union` 可以用来高效控制寄存器:
+
+```cpp
+#include <stdint.h>
+
+typedef union DeviceControlRegister {
+    uint32_t value;     // 用于一次性读写整个寄存器
+    struct {
+        uint32_t reset : 1;       // 重置位
+        uint32_t enable : 1;      // 启用位
+        uint32_t mode : 2;        // 模式位
+        uint32_t reserved : 28;   // 保留位，未使用
+    } bits;
+} DeviceControlRegister;
+
+void configureDevice() {
+    DeviceControlRegister reg;
+    reg.value = 0;  // 清零所有位
+
+    // 设置特定的控制位
+    reg.bits.reset = 1;  // 发送重置信号
+    reg.bits.enable = 1; // 启用设备
+    reg.bits.mode = 3;   // 设置为模式 3
+
+    // 假设这是向设备写入寄存器的函数
+    writeDeviceRegister(reg.value);
+}
+```
+
+
+## `[[deprecated]]`
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTUxNjIwMzksLTYxOTg1MjAwMywxNT
-gxOTg4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQw
-NzhdfQ==
+eyJoaXN0b3J5IjpbMTQ3Mjg4MjA0MiwtNjE5ODUyMDAzLDE1OD
+E5ODg1NTcsMTU0ODUzOTgwMCwtNjkwOTUwNjA4LDkzODg5NDA3
+OF19
 -->
