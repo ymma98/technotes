@@ -263,6 +263,17 @@ do {
 
 * `switch`
 
+```cpp
+char x = ...
+switch (x) {
+case 'a': y = 1; break;
+default: return -1;
+}
+return y;
+```
+
+
+
 ###  `for` loop 进阶
 
 1. loop definition
@@ -333,7 +344,8 @@ std::vector<int> v = {4, 5, 6};
     }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkzMTIyOTg5LDE5Njg4ODk5MjcsLTIwOT
-IxOTExMTksNjExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3
-LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbLTIwNDg1MDYyMTcsODkzMTIyOTg5LDE5Nj
+g4ODk5MjcsLTIwOTIxOTExMTksNjExMzgwMTksLTYxOTg1MjAw
+MywxNTgxOTg4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mz
+g4OTQwNzhdfQ==
 -->
