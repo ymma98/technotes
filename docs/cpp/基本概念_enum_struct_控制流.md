@@ -187,6 +187,8 @@ void configureDevice() {
 -   类型 types
 -   命名空间 namespaces
 
+声明了 `[[deprecated]]` 之后，编译的时候会报 warning
+
 ```cpp
 // 弃用函数
 [[deprecated("Use newFunction() instead.")]]
@@ -218,7 +220,7 @@ enum class Fruit {
 };
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5NzA4NjU1Miw2MTEzODAxOSwtNjE5OD
-UyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgwMCwtNjkwOTUwNjA4
-LDkzODg5NDA3OF19
+eyJoaXN0b3J5IjpbLTIwOTIxOTExMTksNjExMzgwMTksLTYxOT
+g1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYw
+OCw5Mzg4OTQwNzhdfQ==
 -->
