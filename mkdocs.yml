@@ -4,7 +4,9 @@ nav:
   - 杂谈:
       - 快速搭建技术博客: 杂谈/快速搭建技术博客.md
   - cpp:
-     - 基本概念: cpp/基本概念.md
+     - 基本概念-基础类型_操作符: cpp/基本概念-基础类型_操作符.md
+     - 基本概念-enum_struct_控制流: 基本概念-enum_struct_控制流.md
+
 
 
 markdown_extensions:
