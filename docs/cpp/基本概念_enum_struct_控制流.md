@@ -244,7 +244,6 @@ for ([init]; [cond]; [increment]) {
 }
 ```
 
-
 * `while`, 迭代次处未知的时候使用
 
 ```cpp
@@ -252,8 +251,23 @@ while (cond) {
 ...
 }
 ```
+
+
+* `do while`，迭代次处未知，且至少有一次迭代的时候使用
+
+```cpp
+do {
+...
+} while (cond);
+```
+
+* `for` loop 进阶
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzMzMwMzQwOCwtMjA5MjE5MTExOSw2MT
-EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
-MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
+eyJoaXN0b3J5IjpbLTE3NzY1NzczNjksLTIwOTIxOTExMTksNj
+ExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4
+MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
 -->
