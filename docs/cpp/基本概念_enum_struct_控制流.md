@@ -301,10 +301,12 @@ for (auto c : "abcd") // RAW STRING
 cout << c << " "; // print: a b c d
 ```
 
-
+使用条件:
+a. Fixed-size array `int array[3]` , `"abcd"`
+b. 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5NjQ3OTkxMiwtMjA5MjE5MTExOSw2MT
-EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
-MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
+eyJoaXN0b3J5IjpbLTEzMDYzODM0MjMsLTIwOTIxOTExMTksNj
+ExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4
+MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
 -->
