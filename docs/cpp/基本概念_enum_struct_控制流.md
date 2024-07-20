@@ -117,24 +117,24 @@ int f() {
 ```cpp
 // 这个示例中，`struct S1` 通过组合三个位域定义了一个紧凑的数据结构，总共占用 28 位，这可以被存储在 4 个字节内。
 struct S1 {
-    int b1 : 10; // 定义一个占用 10 位的整数位域，范围 [0, 1023]
-    int b2 : 10; // 同上
-    int b3 : 8;  // 定义一个占用 8 位的整数位域，范围 [0, 255]
+    unsigned int b1 : 10; // 定义一个占用 10 位的整数位域，范围 [0, 1023]
+    unsigned int b2 : 10; // 同上
+    unsigned int b3 : 8;  // 定义一个占用 8 位的整数位域，范围 [0, 255]
 }; // S1 结构体的总大小为 4 字节
 
 // 在 `struct S2` 的定义中，中间的匿名位域 `int : 0;` 起到了重置对齐的作用。这告诉编译器下一个位域 `b2` 应该从新的存储单元开始，导致结构体大小增加到 8 字节。
 struct S2 {
-    int b1 : 10;   // 定义一个占用 10 位的整数位域
-    int : 0;       // 特殊的位域，用于强制下一个位域从下一个整数边界开始
-    int b2 : 10;   // 由于前面的重置，这个位域将开始于新的 32 位边界
+    unsigned int b1 : 10;   // 定义一个占用 10 位的整数位域
+    unsigned int : 0;       // 特殊的位域，用于强制下一个位域从下一个整数边界开始
+    unsigned int b2 : 10;   // 由于前面的重置，这个位域将开始于新的 32 位边界
 }; // S2 结构体的总大小为 8 字节
 ```
 
 
-* union
-* 
+* `union`
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MTk4ODU1NywxNTQ4NTM5ODAwLC02OT
-A5NTA2MDgsOTM4ODk0MDc4XX0=
+eyJoaXN0b3J5IjpbLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1ND
+g1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
 -->
