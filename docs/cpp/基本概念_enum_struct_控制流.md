@@ -289,11 +289,22 @@ return; // exit from the function
 } 
 ```
 
+4. **range-based for loop**, 可以避免指定 start, end, increment
+
+```cpp
+for (int v : { 3, 2, 1 }) // INITIALIZER LIST
+cout << v << " "; // print: 3 2 1
+int values[] = { 3, 2, 1 };
+for (int v : values) // ARRAY OF VALUES
+cout << v << " "; // print: 3 2 1
+for (auto c : "abcd") // RAW STRING
+cout << c << " "; // print: a b c d
+```
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5NzA2NTc3OCwtMjA5MjE5MTExOSw2MT
+eyJoaXN0b3J5IjpbMTI5NjQ3OTkxMiwtMjA5MjE5MTExOSw2MT
 EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
 MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
 -->
