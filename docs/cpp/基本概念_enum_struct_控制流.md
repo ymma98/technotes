@@ -98,6 +98,9 @@ struct A {
     int x;
 } a, b;
 ```
+
+* 在 C++ 中，可以在局部作用域（例如函数内部）声明结构体，但这种做法有一些限制
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzODg4MzAwLDkzODg5NDA3OF19
+eyJoaXN0b3J5IjpbNjk2NjE2ODEwLDkzODg5NDA3OF19
 -->
