@@ -272,6 +272,17 @@ default: return -1;
 return y;
 ```
 
+使用时注意 `switch` 的 scope:
+
+```cpp
+int x = 1;
+switch (1) {
+case 0: int x; // nearest scope
+case 1: cout << x; // undefined!!
+case 2: { int y; } // ok
+// case 3: cout << y; // compile error
+}
+```
 
 
 ###  `for` loop 进阶
@@ -344,8 +355,8 @@ std::vector<int> v = {4, 5, 6};
     }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDg1MDYyMTcsODkzMTIyOTg5LDE5Nj
-g4ODk5MjcsLTIwOTIxOTExMTksNjExMzgwMTksLTYxOTg1MjAw
-MywxNTgxOTg4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mz
-g4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbMTY0MjA1MzAwMSwtMjA0ODUwNjIxNyw4OT
+MxMjI5ODksMTk2ODg4OTkyNywtMjA5MjE5MTExOSw2MTEzODAx
+OSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgwMCwtNj
+kwOTUwNjA4LDkzODg5NDA3OF19
 -->
