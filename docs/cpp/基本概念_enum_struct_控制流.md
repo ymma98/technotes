@@ -277,9 +277,23 @@ for (;;) // also while(true);
 ...
 ```
 
+3. `break`,  `continue`, `return`
+
+```cpp
+for (int i = 0; i < 10; i++) {
+if (<condition>)
+break; // exit from the loop
+if (<condition>)
+continue; // continue with a new iteration and exec. i++
+return; // exit from the function
+} 
+```
+
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMDI1MjExNSwtMjA5MjE5MTExOSw2MT
+eyJoaXN0b3J5IjpbMTc5NzA2NTc3OCwtMjA5MjE5MTExOSw2MT
 EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
 MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
 -->
