@@ -307,8 +307,31 @@ cout << c << " "; // print: a b c d
 -   列表初始化器，例如 `{1, 2, 3}`
 -   任何带有 `begin()` 和 `end()` 方法的对象
 
+```cpp
+// 固定大小的数组
+int matrix[2][4];
+for (auto& row : matrix) {
+for (auto element : row)
+cout << "@";
+cout << "\n";
+}
+// print: @@@@
+// @@@@
+
+
+// 列表初始化器
+for (int x : {1, 2, 3}) {
+        std::cout << x << " ";
+}
+
+// 带有 `begin()` 和 `end()` 方法的对象, 标准库中的容器如 `std::vector`、`std::list`、`std::map` 等都满足这一条件
+std::vector<int> v = {4, 5, 6};
+    for (int value : v) {
+        std::cout << value << " ";
+    }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5NjA2MTU0NSwtMjA5MjE5MTExOSw2MT
+eyJoaXN0b3J5IjpbMTk2ODg4OTkyNywtMjA5MjE5MTExOSw2MT
 EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
 MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
 -->
