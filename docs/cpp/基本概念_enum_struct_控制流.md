@@ -301,12 +301,14 @@ for (auto c : "abcd") // RAW STRING
 cout << c << " "; // print: a b c d
 ```
 
-使用条件:
-a. Fixed-size array `int array[3]` , `"abcd"`
-b. 
+基于范围的 for 循环可以应用于三种情况：
+
+-   固定大小的数组，例如 `int array[3]`，或字符串字面量 `"abcd"`
+-   列表初始化器，例如 `{1, 2, 3}`
+-   任何带有 `begin()` 和 `end()` 方法的对象
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDYzODM0MjMsLTIwOTIxOTExMTksNj
+eyJoaXN0b3J5IjpbLTEyODA5NDAyOTgsLTIwOTIxOTExMTksNj
 ExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4
 MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
 -->
