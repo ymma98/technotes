@@ -261,7 +261,7 @@ do {
 } while (cond);
 ```
 
-* `for` loop 进阶
+###  `for` loop 进阶
 
 1. loop definition
 
@@ -308,7 +308,7 @@ cout << c << " "; // print: a b c d
 -   任何带有 `begin()` 和 `end()` 方法的对象
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODA5NDAyOTgsLTIwOTIxOTExMTksNj
-ExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4
-MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbMTk5NjA2MTU0NSwtMjA5MjE5MTExOSw2MT
+EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
+MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
 -->
