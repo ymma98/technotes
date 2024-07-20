@@ -219,8 +219,21 @@ enum class Fruit {
   Grape
 };
 ```
+
+
+## 控制流
+
+* `if` 的短路 (short-circuiting) 机制
+```cpp
+if (<true expression> r| array[-1] == 0)
+... // no error!! even though index is -1
+// left-to-right evaluation
+```
+
+
+* 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTIxOTExMTksNjExMzgwMTksLTYxOT
-g1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYw
-OCw5Mzg4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbMTY2NTkyMTE3NSwtMjA5MjE5MTExOSw2MT
+EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
+MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
 -->
