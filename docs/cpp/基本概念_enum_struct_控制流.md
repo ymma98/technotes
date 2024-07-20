@@ -231,9 +231,12 @@ if (<true expression> r| array[-1] == 0)
 ```
 
 
-* 
+* 三元运算符 (Ternary operator)
+```cpp
+? :
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2NTkyMTE3NSwtMjA5MjE5MTExOSw2MT
-EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
-MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
+eyJoaXN0b3J5IjpbLTE0MTg3NTExOTIsLTIwOTIxOTExMTksNj
+ExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4
+MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
 -->
