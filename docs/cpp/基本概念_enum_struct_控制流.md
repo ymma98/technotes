@@ -111,6 +111,17 @@ int f() {
     return a.x; // 返回结构体成员 x 的值
 }
 ```
+
+* 位域, `Bitfield`。这是一种数据结构中的变量类型，它允许你以位为单位而不是字节来定义变量的宽度。这对于节省内存和精确控制数据结构的大小非常有用
+
+```cpp
+struct S1 {
+    int b1 : 10; // 定义一个占用 10 位的整数位域，范围 [0, 1023]
+    int b2 : 10; // 同上
+    int b3 : 8;  // 定义一个占用 8 位的整数位域，范围 [0, 255]
+}; // S1 结构体的总大小为 4 字节
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbMTgwNDExNTAwMSwtNjkwOTUwNjA4LDkzOD
+g5NDA3OF19
 -->
