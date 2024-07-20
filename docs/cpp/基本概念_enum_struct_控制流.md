@@ -176,9 +176,19 @@ void configureDevice() {
 
 ## `[[deprecated]]`
 
+在 C++14 中，新增了一个特性，允许开发者通过添加 `[[deprecated]]` 属性来标记某些实体为“已弃用”，意在鼓励开发者不再使用这些实体。可以选择性地添加一条消息来说明弃用的原因。
+
+`[[deprecated]]` 这个属性可以应用于：
+
+-   函数 functions
+-   变量 variables
+-   类和结构体 class and structures
+-   枚举值（在 C++17 中支持单个值枚举）enumerators
+-   类型 types
+-   命名空间 namespaces
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3Mjg4MjA0MiwtNjE5ODUyMDAzLDE1OD
-E5ODg1NTcsMTU0ODUzOTgwMCwtNjkwOTUwNjA4LDkzODg5NDA3
-OF19
+eyJoaXN0b3J5IjpbNjExMzgwMTksLTYxOTg1MjAwMywxNTgxOT
+g4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhd
+fQ==
 -->
