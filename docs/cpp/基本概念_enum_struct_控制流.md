@@ -231,12 +231,29 @@ if (<true expression> r| array[-1] == 0)
 ```
 
 
-* 三元运算符 (Ternary operator)
+* 三元运算符 (Ternary operator) `<cond> ? <expression1> : <expression2>`
 ```cpp
-? :
+int value = (a == b) ? a : (b == c ? b : 3); // nested
+```
+
+* `for`，当迭代次处已知的时候使用
+
+```cpp
+for ([init]; [cond]; [increment]) {
+ ... 
+}
+```
+
+
+* `while`, 迭代次处未知的时候使用
+
+```cpp
+while (cond) {
+...
+}
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTg3NTExOTIsLTIwOTIxOTExMTksNj
-ExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4
-MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbMTIzMzMwMzQwOCwtMjA5MjE5MTExOSw2MT
+EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
+MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
 -->
