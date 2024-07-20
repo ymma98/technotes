@@ -133,8 +133,12 @@ struct S2 {
 
 * `union`
 
+```cpp
+
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1ND
-g1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbLTQzMjQ2NzE4OCwtNjE5ODUyMDAzLDE1OD
+E5ODg1NTcsMTU0ODUzOTgwMCwtNjkwOTUwNjA4LDkzODg5NDA3
+OF19
 -->
