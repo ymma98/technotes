@@ -130,7 +130,11 @@ struct S2 {
 }; // S2 结构体的总大小为 8 字节
 ```
 
+
+* union
+* 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0ODUzOTgwMCwtNjkwOTUwNjA4LDkzOD
-g5NDA3OF19
+eyJoaXN0b3J5IjpbMTU4MTk4ODU1NywxNTQ4NTM5ODAwLC02OT
+A5NTA2MDgsOTM4ODk0MDc4XX0=
 -->
