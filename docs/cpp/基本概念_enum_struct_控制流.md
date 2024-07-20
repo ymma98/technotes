@@ -263,11 +263,23 @@ do {
 
 * `for` loop 进阶
 
+1. loop definition
 
+```cpp
+for (int i = 0, k = 0; i < 10; i++, k += 2) 
+...
+```
+
+2. 无限循环
+
+```cpp
+for (;;) // also while(true); 
+...
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzY1NzczNjksLTIwOTIxOTExMTksNj
-ExMzgwMTksLTYxOTg1MjAwMywxNTgxOTg4NTU3LDE1NDg1Mzk4
-MDAsLTY5MDk1MDYwOCw5Mzg4OTQwNzhdfQ==
+eyJoaXN0b3J5IjpbLTIyMDI1MjExNSwtMjA5MjE5MTExOSw2MT
+EzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMTU0ODUzOTgw
+MCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
 -->
