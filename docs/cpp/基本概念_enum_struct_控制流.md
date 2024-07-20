@@ -131,14 +131,21 @@ struct S2 {
 ```
 
 
-* `union`
+* 联合, `union`, 联合是一种特殊的数据类型，它允许在同一内存位置存储不同的数据类型。联合体的大小仅仅足够大，以容纳其最大的成员。联合体是一种“重叠”存储的形式。
 
 ```cpp
-
+union A {
+int x;
+char y;
+}; // sizeof(A): 4
+A a;
+a.x = 1023; // bits: 00..000001111111111
+a.y = 0; // bits: 00..000001100000000
+cout << a.x; // print 512 + 256 = 768
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzMjQ2NzE4OCwtNjE5ODUyMDAzLDE1OD
-E5ODg1NTcsMTU0ODUzOTgwMCwtNjkwOTUwNjA4LDkzODg5NDA3
-OF19
+eyJoaXN0b3J5IjpbNTczMDcxODM1LC02MTk4NTIwMDMsMTU4MT
+k4ODU1NywxNTQ4NTM5ODAwLC02OTA5NTA2MDgsOTM4ODk0MDc4
+XX0=
 -->
