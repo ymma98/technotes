@@ -42,6 +42,7 @@ theme:
     - search.suggest        # 搜索建议
     - search.highlight      # 搜索关键词高亮
     - instant.loading       # 启用页面的即时加载
+    - navigation.footer
 
 
 
