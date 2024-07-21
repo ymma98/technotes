@@ -99,6 +99,11 @@ struct A {
 } a, b;
 ```
 
+* 访问结构体的成员
+
+dot `.` 用来
+
+
 * 在 C++ 中，可以在局部作用域（例如函数内部）声明结构体，但这种做法有一些限制
 ```cpp
 // 这个示例展示了如何在函数 `f` 的局部作用域内定义和使用结构体 `A`。在这种情况下，结构体 `A` 只在函数 `f` 内部可见，并且在函数结束后不再存在。
@@ -358,8 +363,9 @@ std::vector<int> v = {4, 5, 6};
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNjIwNjcyNDUsMTY0MjA1MzAwMSwtMj
-A0ODUwNjIxNyw4OTMxMjI5ODksMTk2ODg4OTkyNywtMjA5MjE5
-MTExOSw2MTEzODAxOSwtNjE5ODUyMDAzLDE1ODE5ODg1NTcsMT
-U0ODUzOTgwMCwtNjkwOTUwNjA4LDkzODg5NDA3OF19
+eyJoaXN0b3J5IjpbNTA5Mjc2NDU2LC0xMTYyMDY3MjQ1LDE2ND
+IwNTMwMDEsLTIwNDg1MDYyMTcsODkzMTIyOTg5LDE5Njg4ODk5
+MjcsLTIwOTIxOTExMTksNjExMzgwMTksLTYxOTg1MjAwMywxNT
+gxOTg4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQw
+NzhdfQ==
 -->
