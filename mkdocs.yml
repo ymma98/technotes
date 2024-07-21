@@ -11,6 +11,8 @@ nav:
 
 
 markdown_extensions:
+  - attr_list
+  - md_in_html  # https://squidfunk.github.io/mkdocs-material/reference/images/
   - markdown.extensions.codehilite
   - markdown.extensions.extra
   - pymdownx.superfences
