@@ -48,3 +48,8 @@ theme:
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
+
+extra:
+  analytics:
+    provider: google
+    property: G-Y1TF9T1LW8
