@@ -27,6 +27,7 @@ markdown_extensions:
 theme:
   # name: readthedocs
   name: material
+  custom_dir: overrides
   palette:
     primary: 'indigo'       # 主颜色
     accent: 'pink'          # 强调颜色
