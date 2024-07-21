@@ -101,7 +101,21 @@ struct A {
 
 * 访问结构体的成员
 
-dot `.` 用来
+dot operator `.` 用于局部对象和引用。
+arrow operator `->` 用于指向对象的指针
+
+```cpp
+struct A {
+    int x;
+};
+A a; // 局部对象
+a.x; // 使用点语法
+A& ref = a; // 引用
+ref.x; // 使用点语法
+A* ptr = &a; // 指针
+ptr->x; // 箭头语法：等同于 (*ptr).x
+```
+
 
 
 * 在 C++ 中，可以在局部作用域（例如函数内部）声明结构体，但这种做法有一些限制
@@ -363,9 +377,9 @@ std::vector<int> v = {4, 5, 6};
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA5Mjc2NDU2LC0xMTYyMDY3MjQ1LDE2ND
-IwNTMwMDEsLTIwNDg1MDYyMTcsODkzMTIyOTg5LDE5Njg4ODk5
-MjcsLTIwOTIxOTExMTksNjExMzgwMTksLTYxOTg1MjAwMywxNT
-gxOTg4NTU3LDE1NDg1Mzk4MDAsLTY5MDk1MDYwOCw5Mzg4OTQw
-NzhdfQ==
+eyJoaXN0b3J5IjpbMTg0ODEyODE2MiwtMTE2MjA2NzI0NSwxNj
+QyMDUzMDAxLC0yMDQ4NTA2MjE3LDg5MzEyMjk4OSwxOTY4ODg5
+OTI3LC0yMDkyMTkxMTE5LDYxMTM4MDE5LC02MTk4NTIwMDMsMT
+U4MTk4ODU1NywxNTQ4NTM5ODAwLC02OTA5NTA2MDgsOTM4ODk0
+MDc4XX0=
 -->
