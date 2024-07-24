@@ -115,13 +115,16 @@ B b;
 f(a); // 正确，也可以 f(b), f_ref(a), g_ref(b)
 g(b); // 正确，也可以 g_ref(b), 但不可以 g(a), g_ref(a)
 A a1 = b; // 正确，也可以 A& a2 = b
+// 当派生类对象赋值给基类对象时，只有派生类对象中的基类部分被复制到基类对象中。这个过程通常称为对象的“切片”（slicing），因为派生类特有的属性被“切掉”了，只剩下基类的部分。
 // B b1 = a; // 编译错误，因为 A 类型不能隐式转换为 B 类型
 ```
 
 
 
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4NDcxMzYzMywyMjU5ODA0NzUsLTY0MT
+eyJoaXN0b3J5IjpbMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MT
 E2ODM5LDk3NjQ0MTMxNl19
 -->
