@@ -656,7 +656,7 @@ struct C {
 
 ### `this`
 
-`this` 指针每个对象都可以通过 this 指针访问自己的地址。
+`this` 指针: 每个对象都可以通过 `this` 指针访问自己的地址。
 显式使用 this 指针并非强制性的（也不推荐）。
 使用 this 指针是必要的当：
 - 局部变量的名称与某个成员名称相同
@@ -671,16 +671,18 @@ struct A {
         return *this;
     }
 };
+```
 
 
+### `static`
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3MTE3NDUyOCwtMjAwMTg2MDIzNywtMz
-g0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0
-NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMT
-c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
-NDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMj
-I1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbMTcxNDQ1Nzk5LC0yMDAxODYwMjM3LC0zOD
+QxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2
+LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNz
+Y4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0
+MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMj
+U5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
 -->
