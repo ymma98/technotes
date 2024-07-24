@@ -820,12 +820,38 @@ a.y = 5; // 可以修改，因为 mutable
 
 
 
+### 详细解释
+
+在 C++ 中，`mutable` 关键字用于允许 const 对象的某些数据成员被修改。这是一种特殊的用法，允许在保持对象接口的不变性的同时修改对象的内部状态。
+
+#### 使用场景
+
+1. **缓存或备忘录**：当你需要缓存一些昂贵的计算结果以避免重复计算时，`mutable` 可以非常有用。例如，可以在第一次计算时保存结果，并在后续的调用中直接使用这个结果。
+
+2. **延迟加载**：有时候对象的某些数据只有在需要时才进行初始化，这种情况下可以使用 `mutable` 来在 const 方法中修改这些数据成员。
+
+3. **线程锁**：在多线程程序中，常常需要保证数据的同步。`mutable` 可以用来修改在 const 成员函数中使用的锁，即使这些函数不改变对象的逻辑状态。
+
+#### 物理状态与逻辑状态
+
+- **物理状态**：指的是对象的内部数据成员的实际值，这些值可以通过 `mutable` 成员在 const 成员函数中修改。
+- **逻辑状态**：反映了对象对外提供的功能和行为，通常通过对象的公共接口表现出来。即使某些内部数据成员因为被声明为 `mutable` 而改变，对象的逻辑状态也应保持不变。
+
+#### 示例解析
+
+在上述代码中，`a` 是一个 const 对象，这通常意味着不能修改它的任何数据成员。然而，由于成员 `y` 被声明为 `mutable`，即使 `a` 是 const，`y` 也可以被修改。这显示了 `mutable` 关键字如何允许对 const 对象的某些部分进行修改，而不影响整个对象的常量性。
+
+总之，`mutable` 关键字在 C++ 中是一个强大的工具，它在保持类型安全和封装性的同时提供了灵活的内部状态管理。正确使用 `mutable` 可以使得设计更加灵活，适应更复杂的编程需求。
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjE2NTE1NjIsOTY0MTU1MTEsLTk0Mz
-QwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYw
-MjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMj
-c5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYz
-ODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNC
-w2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0
-MjY0Nl19
+eyJoaXN0b3J5IjpbMTU0OTYzMDY5Miw5NjQxNTUxMSwtOTQzND
+A4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAy
+MzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNz
+k4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4
+OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LD
+Y1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQy
+NjQ2XX0=
 -->
