@@ -158,7 +158,7 @@ a.value; // 正确
 | public <br> protected <br> private | $\rightarrow$ | protected | $\rightarrow$ | protected <br> protected |
 | public <br> protected <br> private | $\rightarrow$ | private | $\rightarrow$ | private <br> private |
 
-* `
+* `struct` 默认是公有继承
 ```cpp
 struct A {
     int var1; // 公有
@@ -190,8 +190,10 @@ B1 b1;
 B2 b2;
 b2.var1; // 正确，var1 在 B2 中为公有
 ```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1NTkxODY3MCwzMDgzMjY4OTAsLTk5Nj
-YxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4Mzks
-OTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbLTIwNjY3MDE5MDEsMzA4MzI2ODkwLC05OT
+Y2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5
+LDk3NjQ0MTMxNl19
 -->
