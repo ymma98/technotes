@@ -533,12 +533,12 @@ A b = a; // 拷贝构造函数（赋值）"copy"
 A c(b); // 拷贝构造函数（直接）"copy"
 f(b); // 拷贝构造函数（参数）"copy"
 g1(a); // 拷贝构造函数（返回值）"copy"
-A d = g2(); // * 见 RVO 优化（高级概念 I）
+A d = g2(); 
 ```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NTIzMzQ1OSwxOTcyMDA5NTQzLDI3OT
+eyJoaXN0b3J5IjpbLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
 g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
 MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNj
 UwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2
