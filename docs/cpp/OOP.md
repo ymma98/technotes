@@ -555,16 +555,16 @@ struct B : NonDefault {}; // 删除拷贝构造函数
 
 ## 析构函数
 
-析构函数 [dtor]
-析构函数是一种特殊的成员函数，它在对象超出作用范围或对该类的指针应用 delete/delete[] 表达式时执行。
+析构函数 [destructor, dtor]
+析构函数是一种特殊的成员函数，它在对象超出作用范围或对该类的指针应用 `delete/delete[]` 表达式时执行。
 目标：资源释放
-语法：∼T() 与类名相同且无返回类型
+语法：`∼T()` 与类名相同且无返回类型
 - 任何对象都有一个析构函数，总是隐式或显式声明的
 - C++20 析构函数可以是 constexpr
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4MjY3OTM4OCwtMjAyMTc5MDEzLDE5Nz
+eyJoaXN0b3J5IjpbLTQxODU4Nzg2NywtMjAyMTc5MDEzLDE5Nz
 IwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUx
 MiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMT
 U2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3
