@@ -562,9 +562,43 @@ struct B : NonDefault {}; // 删除拷贝构造函数
 - 任何对象都有一个析构函数，总是隐式或显式声明的
 - C++20 析构函数可以是 constexpr
 
+```cpp
+struct Array {
+    int* array;
+    Array() { // 构造函数
+        array = new int[10];
+    }
+    ∼Array() { // 析构函数
+        delete[] array;
+    }
+};
+int main() {
+    Array a; // 调用构造函数
+    for (int i = 0; i < 5; i++)
+        Array b; // 循环5次调用构造函数和析构函数
+} // 调用"a"的析构函数
+```
+
+* 类的析构函数从不被继承。基类的析构函数在当前类的析构函数之后调用
+* 类的析构函数调用顺序是相反的，从最派生的类到最顶层的基类
+```cpp
+struct A {
+    ∼A() { cout << "A"; }
+};
+struct B {
+    ∼B() { cout << "B"; }
+};
+struct C : A {
+    B b; // 调用 ∼B()
+    ∼C() { cout << "C"; }
+};
+int main() {
+    C b; // 输出 "C"，然后是 "B"，最后是 "A"
+}
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxODU4Nzg2NywtMjAyMTc5MDEzLDE5Nz
+eyJoaXN0b3J5IjpbMjEyMzU4NzU5NiwtMjAyMTc5MDEzLDE5Nz
 IwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUx
 MiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMT
 U2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3
