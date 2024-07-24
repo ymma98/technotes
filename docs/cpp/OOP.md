@@ -202,8 +202,26 @@ b2.var1; // 正确，var1 在 B2 中为公有
 - 我们可以定义具有不同签名的多个构造函数
 - 任何构造函数都可以是 constexpr
 
+
+#### 默认构造函数
+
+默认构造函数
+默认构造函数 T() 是一个无参数的构造函数
+每个类总是具有隐式的 (implicit)、显式的 (explicit) 或删除的 (explicit) 默认构造函数之一
+```c++
+struct A {
+    A() {} // 显式的默认构造函数
+    A(int) {} // 用户定义的（非默认）构造函数
+};
+```
+```cpp
+struct A {
+    int x = 3; // 隐式的默认构造函数
+};
+A a{}; // 调用默认构造函数，等价于：A a;
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDk1MzY0NjgsNjUwODcyNDMwLDMwOD
-MyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1
-LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbMTg5NjU5NjQ5NCw2NTA4NzI0MzAsMzA4Mz
+I2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUs
+LTY0MTE2ODM5LDk3NjQ0MTMxNl19
 -->
