@@ -754,12 +754,30 @@ struct A {
 
 ### `const`
 
+
+常量成员函数（检查器或观察器, inspectors or observers）是那些带有 const 标记的函数，它们不允许改变对象的逻辑状态。
+编译器阻止这些观察器函数意外地改变数据成员 → 观察方法中的所有数据成员都被标记为 const，包括 this 指针。
+- 物理状态仍可以被修改，参见 mutable 成员函数
+- 没有 const 后缀的成员函数称为非常量成员函数或变更器/修改器
+
+```cpp
+struct A {
+    int x = 3;
+    int* p;
+    int get() const {
+        // x = 2; // 编译错误，类变量不能被修改
+        // p = nullptr; // 编译错误，类变量不能被修改
+        p[0] = 3; // 可行，p 是 'int* const' -> 其内容不受保护
+        return x;
+    }
+};
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMj
-M3NTE3NTgzLC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5
-MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMT
-k2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3
-NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC
-05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2
-ODM5XX0=
+eyJoaXN0b3J5IjpbLTIxMjE1MDkyNjEsLTk0MzQwODkyMiwtMT
+Y1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0zODQx
+OTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC
+00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4
+MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0Mz
+AsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5
+ODA0NzVdfQ==
 -->
