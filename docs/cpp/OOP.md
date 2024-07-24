@@ -72,10 +72,28 @@ a.f(); // 调用成员函数f()
 a.b.g(); // 访问成员对象b的成员函数g()
 ```
 
+### 类的层次 (class hierarchy)
+
+- 子类/派生类 (child/derived class or subclass)
+  - 从另一个类继承变量和函数的新类被称为派生类或子类。
+
+- 父类/基类 (parent/base class)
+  - 为派生类提供变量和功能的最近的类被称为父类或基类。
+
+- 扩展基类
+  - 指创建一个新类，保留基类的特性，并在此基础上可以添加（而不能删除）自己的成员。
+
+- 语法
+  - ```c++
+    class DerivedClass : [<继承属性>] BaseClass {
+    }
+    ```
+
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0MTE2ODM5LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbMTkyNzI4NjQ2MSwtNjQxMTY4MzksOTc2ND
+QxMzE2XX0=
 -->
