@@ -834,10 +834,21 @@ typename B::type x = 4; // B 可以使用 "type" 因为它在 A 中是公开的
 
 using 关键字也可以用来改变成员数据或函数的继承属性
 
-```cp
+```cpp
+struct A {
+    protected:
+    int x = 3;
+};
+struct B : A {
+    public:
+    using A::x;
+};
+B b;
+b.x = 3; // ok, "b.x" 现在是公开的
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg2OTk4NTIzLDk2NDE1NTExLC05NDM0MD
+eyJoaXN0b3J5IjpbMjkyODAxMjQ5LDk2NDE1NTExLC05NDM0MD
 g5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIz
 NywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
 g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
