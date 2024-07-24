@@ -470,9 +470,23 @@ struct A {
 }
 ```
 
+拷贝构造函数详解
+- 每个类总是定义一个隐式或显式的拷贝构造函数，可能被删除
+- 拷贝构造函数隐式地调用基类的默认构造函数
+- 即使是拷贝构造函数也被认为是用户定义的构造函数
+- 拷贝构造函数不具有模板参数，否则它就是一个标准成员函数
+- 拷贝构造函数不应与赋值运算符 operator= 混淆
+
+```cpp
+MyStruct x;
+MyStruct y{x}; // 拷贝构造函数
+y = x; // 调用赋值运算符=，而非拷贝构造函数
+// → 复制初始化，详见下一讲
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzMjYyMjc3NCwyNzk4ODIxNDYsLTQ2MT
+eyJoaXN0b3J5IjpbMTA2NDE2NjczNywyNzk4ODIxNDYsLTQ2MT
 QwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEy
 ODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMD
 gzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3
