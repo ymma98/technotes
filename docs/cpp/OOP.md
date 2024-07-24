@@ -191,19 +191,19 @@ B2 b2;
 b2.var1; // 正确，var1 在 B2 中为公有
 ```
 
-### 构造器 `class constructor`
+### 构造函数 `class constructor`
 
 
-构造函数 [ctor]
+构造函数 [constructor, ctor]
 构造函数是类的一种特殊成员函数，当创建类的新实例时执行。
 目标：初始化和资源获取
-语法：T(...) 与类名相同且无返回类型
+语法：`T(...)` 与类名相同且无返回类型
 - 构造函数应该初始化所有数据成员
 - 我们可以定义具有不同签名的多个构造函数
 - 任何构造函数都可以是 constexpr
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODA5Mzg2OTcsNjUwODcyNDMwLDMwOD
+eyJoaXN0b3J5IjpbLTExNDk1MzY0NjgsNjUwODcyNDMwLDMwOD
 MyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1
 LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
