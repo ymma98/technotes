@@ -192,8 +192,17 @@ b2.var1; // 正确，var1 在 B2 中为公有
 ```
 
 
+何时使用受保护（protected）/私有（private）数据成员：
+- 它们不是接口的一部分，即对象的逻辑状态（对用户无用）
+- 它们必须保持常量正确性（例如，对于指针），以确保它们指向的数据不会被意外修改
+
+何时使用公有（public）数据成员：
+- 它们可能随时改变
+- 常量正确性对于值和引用是保持的，与指针相反。
+在这种情况下，应优先考虑数据成员而非成员函数
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjY3MDE5MDEsMzA4MzI2ODkwLC05OT
+eyJoaXN0b3J5IjpbLTE2MTA4MTA4NDQsMzA4MzI2ODkwLC05OT
 Y2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5
 LDk3NjQ0MTMxNl19
 -->
