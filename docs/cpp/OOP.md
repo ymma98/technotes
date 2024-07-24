@@ -251,10 +251,26 @@ struct NoDefault { // 删除的默认构造函数
 };
 ```
 
+* 它有一个非静态成员/基类，其自身的默认构造函数被删除（或不可访问）
+```cpp
+struct A {
+    NoDefault var; // 删除的默认构造函数
+};
+struct B : NoDefault {}; // 删除的默认构造函数
+```
+
+* 它有一个非静态成员/基类，其析构函数被删除或不可访问
+```cpp
+struct A {
+private:
+    ∼A() {}
+};
+```
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjU1Nzk3NjIsMTUxMjc1NzA0NiwxNT
-YwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2
-MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4MzksOTc2ND
-QxMzE2XX0=
+eyJoaXN0b3J5IjpbMTQ1OTE2ODA3NSwxNTEyNzU3MDQ2LDE1Nj
+AzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYx
+LDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5NzY0ND
+EzMTZdfQ==
 -->
