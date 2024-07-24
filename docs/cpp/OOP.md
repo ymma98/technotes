@@ -459,13 +459,22 @@ f(B{1}); // 正常
 ```
 
 
-#### 
+#### 拷贝构造函数
+
+拷贝构造函数 (copy constructor) `T(const T&)` 创建一个新对象，作为现有对象的深拷贝。
+```cpp
+struct A {
+    A() {} // 默认构造函数
+    A(int) {} // 非默认构造函数
+    A(const A&) {} // 拷贝构造函数 → 直接初始化
+}
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MD
-cwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcw
-NDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OT
-Y2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5
-LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbMTI1OTM5MTM4MSwyNzk4ODIxNDYsLTQ2MT
+QwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEy
+ODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMD
+gzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3
+NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
 -->
