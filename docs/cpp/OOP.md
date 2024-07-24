@@ -410,12 +410,59 @@ struct A {
 };
 ```
 
+#### `explicit`
+
+
+关键字 `explicit` 指定一个构造函数或转换操作符（conversion operator, C++11）不允许从单一参数或花括号初始化器进行隐式转换或复制初始化。
+
+```cpp
+struct MyString {
+    MyString(int n); // （1）为字符串分配 n 字节
+    MyString(const char *p); // （2）从原始字符串初始化
+};
+MyString string = 'a'; // 调用（1），隐式转换！
+// explicit 不能应用于复制/移动构造函数
+
+struct A {
+    A() {}
+    A(int) {}
+    A(int, int) {}
+};
+void f(const A&) {}
+A a1 = {}; // 正常
+A a2(2); // 正常
+A a3 = 1; // 正常（隐式）
+A a4{4, 5}; // 正常。选择 A(int, int)
+A a5 = {4, 5}; // 正常。选择 A(int, int)
+f({}); // 正常
+f(1); // 正常
+f({1}); // 正常
+```
+
+```cpp
+struct B {
+    explicit B() {}
+    explicit B(int) {}
+    explicit B(int, int) {}
+};
+void f(const B&) {}
+// B b1 = {}; // 错误，隐式转换
+B b2(2); // 正常
+// B b3 = 1; // 错误，隐式转换
+B b4{4, 5}; // 正常。选择 B(int, int)
+// B b5 = {4, 5}; // 错误，隐式转换
+B b6 = (B) 1; // 正常：显式转换
+// f({}); // 错误，隐式转换
+// f(1); // 错误，隐式转换
+// f({1}); // 错误，隐式转换
+f(B{1}); // 正常
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTU5MjExMDMsLTQ2MTQwNjcyNywxOT
-YwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1
-NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAsLT
-k5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4
-MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbLTg1MjgxNzIwOCwtNDYxNDA2NzI3LDE5Nj
+A3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNTEyNzU3
+MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOT
+k2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgz
+OSw5NzY0NDEzMTZdfQ==
 -->
