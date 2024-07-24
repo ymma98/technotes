@@ -23,9 +23,9 @@ object-oriented programming
   - 通过类的本地实例使用资源
   - 当对象超出作用域时，资源会自动释放（析构函数）
 - 影响1：C++ 编程语言不需要垃圾收集器！由于RAII保证了资源的及时释放，C++程序通常不需要垃圾收集器来管理内存或其他资源的回收，这与依赖垃圾收集器的语言（如Java）不同。
-- 影响2：程序员有责任管理资源
+- 影响2：程序员有责任管理资源。虽然RAII提供了自动资源管理的机制，但程序员仍需在设计和实现类时确保正确使用RAII原则。错误的资源管理或误用RAII可能导致资源泄露、无效的资源引用等问题。
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4Nzc5MDIwMCw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbMTc2OTU0MjMyMSw5NzY0NDEzMTZdfQ==
 -->
