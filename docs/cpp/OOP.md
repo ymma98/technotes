@@ -536,12 +536,27 @@ g1(a); // 拷贝构造函数（返回值）"copy"
 A d = g2(); 
 ```
 
+一个类的隐式拷贝构造函数被标记为删除的简化情况：
+- 它具有非静态成员/基类为引用或常量类型
+```cpp
+struct NonDefault { int& x; }; // 删除的拷贝构造函数
+```
+
+* 它具有一个非静态成员/基类，其拷贝构造函数被删除（或不可访问）
+```cpp
+struct B { // 删除的拷贝构造函数
+    NonDefault a;
+};
+struct B : NonDefault {}; // 删除拷贝构造函数
+```
+-   它的非静态成员/基类具有被删除或不可访问的析构函数
+-   该类具有移动构造函数
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNDkwMDQwMSwtMjAyMTc5MDEzLDE5Nz
-IwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUx
-MiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMT
-U2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3
-NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5LDk3Nj
-Q0MTMxNl19
+eyJoaXN0b3J5IjpbLTEzNzk2MjYzNTgsLTIwMjE3OTAxMywxOT
+cyMDA5NTQzLDI3OTg4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1
+MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LD
+E1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEy
+NzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5Nz
+Y0NDEzMTZdfQ==
 -->
