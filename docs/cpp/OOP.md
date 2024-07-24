@@ -383,6 +383,7 @@ struct B1 : A { // 隐式调用 "A()"
     int y = 3; // 然后, "y = 3"
 };
 struct B2 : A { // 显式调用 "A()"
+//派生自 `A`，但在其构造函数中显式地调用了 `A` 的构造函数，然后执行自己的额外逻辑（打印 "B"）。
     B2() : A() { cout << "B"; }
 };
 B1 b1; // 打印 "A"
@@ -391,29 +392,10 @@ B2 b2; // 打印 "A", 然后打印 "B"
 
 
 
-
-1. **构造函数不被继承**：
-   - 在 C++ 中，基类的构造函数不会被派生类自动继承。派生类必须定义自己的构造函数，如果需要，也必须显式地调用基类的构造函数。
-
-2. **构造函数的调用顺序**：
-   - 当创建派生类的对象时，构造函数的调用顺序始于最顶层的基类，逐步向下直到最派生的类。这保证了每个类的构造函数都能正确地初始化其各自的部分。
-
-3. **隐式和显式调用基类构造函数**：
-   - 如果派生类的构造函数中没有显式地调用基类的构造函数，编译器将自动插入对基类无参数构造函数的调用（如果存在）。
-   - 派生类可以通过其初始化列表显式地调用基类的构造函数，以确保基类的成员被适当地初始化。
-
-### 示例解释
-
-在代码示例中：
-- **结构体 B1**：派生自 `A`，并隐式调用了 `A` 的构造函数。在执行 `A` 的构造函数后，初始化成员变量 `y`。
-- **结构体 B2**：派生自 `A`，但在其构造函数中显式地调用了 `A` 的构造函数，然后执行自己的额外逻辑（打印 "B"）。
-
-这个例子展示了如何通过继承关系构造对象，并明确了在多层继承结构中构造函数的调用顺序和方法。
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzU1MzU4MTUsMTk2MDcwNzUxMiwtMT
-k4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMz
-NDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMT
-E0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMx
-Nl19
+eyJoaXN0b3J5IjpbLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOT
+g0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0
+NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMT
+Q4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2
+XX0=
 -->
