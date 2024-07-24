@@ -656,16 +656,31 @@ struct C {
 
 ### `this`
 
+`this` 指针每个对象都可以通过 this 指针访问自己的地址。
+显式使用 this 指针并非强制性的（也不推荐）。
+使用 this 指针是必要的当：
+- 局部变量的名称与某个成员名称相同
+- 返回对调用对象的引用
+```cpp
+struct A {
+    int x;
+    void f(int x) {
+        this->x = x; // 没有 "this" 则不起作用
+    }
+    const A& g() {
+        return *this;
+    }
+};
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMD
-IxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcy
-NywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMT
-UxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4
-OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNj
-QxMTY4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbMTM3MTE3NDUyOCwtMjAwMTg2MDIzNywtMz
+g0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0
+NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMT
+c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
+NDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMj
+I1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
