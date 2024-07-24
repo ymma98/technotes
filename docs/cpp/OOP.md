@@ -150,10 +150,16 @@ a.value; // 正确
 // a.f2() // 编译错误，私有
 ```
 
+访问控制符也用于定义，在继承中从基类到特定派生类的可见性如何传播。
 
+| Member <br> declaration |  | Inheritance |  | Derived classes |
+| :---: | :---: | :---: | :---: | :---: |
+| public <br> protected <br> private | $\rightarrow$ | public | $\rightarrow$ | public <br> protected |
+| public <br> protected <br> private | $\rightarrow$ | protected | $\rightarrow$ | protected <br> protected |
+| public <br> protected <br> private | $\rightarrow$ | private | $\rightarrow$ | private <br> private |
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyNjUzNDc5MiwxMTQ4ODQyNjQ2LDIyNT
+eyJoaXN0b3J5IjpbLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNT
 k4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
 -->
