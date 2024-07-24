@@ -822,15 +822,26 @@ a.y = 5; // 可以修改，因为 mutable
 
 ### `using`
 
+using 关键字用于在特定类中声明类型别名
+```cpp
+struct A {
+    using type = int;
+};
+typename A::type x = 3; // 使用 "typename" 关键字是因为我们在引用类型
+struct B : A {};
+typename B::type x = 4; // B 可以使用 "type" 因为它在 A 中是公开的
+```
 
+using 关键字也可以用来改变成员数据或函数的继承属性
 
+```cp
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjA3NzkwMjQsOTY0MTU1MTEsLTk0Mz
-QwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYw
-MjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMj
-c5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYz
-ODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNC
-w2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0
-MjY0Nl19
+eyJoaXN0b3J5IjpbNjg2OTk4NTIzLDk2NDE1NTExLC05NDM0MD
+g5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIz
+NywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
+g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
+MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNj
+UwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2
+NDZdfQ==
 -->
