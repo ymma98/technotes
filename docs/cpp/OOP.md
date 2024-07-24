@@ -231,8 +231,30 @@ A a{}; // 调用默认构造函数，等价于：A a;
 注意，`A a2();` 语句实际上会被解释为一个函数声明，这是一个常见的错误，称为“最令人疑惑的 C++ 解析”。
 
 **直接列表初始化**： - 使用 `{}`（C++11 引入的直接列表初始化）可以调用默认构造函数。这种语法更加明确，可以避免与函数声明混淆。 - 在创建数组或使用 `new` 关键字动态分配数组时，每个元素都将通过默认构造函数进行初始化。
+
+
+
+一个类的隐式默认构造函数会被标记为删除，如果：
+- 它有任何用户定义的构造函数
+```cpp
+struct A {
+    A(int x) {}
+};
+// A a; // 编译错误
+```
+
+-   它有非静态成员/基类是引用或常量类型
+```cpp
+struct NoDefault { // 删除的默认构造函数
+    int& x;
+    const int y;
+};
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MD
-g3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2
-LDIyNTk4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbLTE2MjU1Nzk3NjIsMTUxMjc1NzA0NiwxNT
+YwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2
+MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4MzksOTc2ND
+QxMzE2XX0=
 -->
