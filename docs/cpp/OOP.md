@@ -778,6 +778,7 @@ struct A {
 
 当常量成员函数用于强制执行 const 正确性时，尤其是在访问指针时，非常有用。
 
+- 常量和非常量重载：可以为同一个类实现常量和非常量版本的成员函数，使得当对象是常量时，只能调用常量版本，这个版本不允许修改对象；而当对象不是常量时，可以调用非常量版本，允许修改对象。
 const 关键字是函数签名的一部分。因此，一个类可以实现两个类似的方法，一个用于 const 对象，一个用于非 const 对象：
 
 
@@ -801,15 +802,11 @@ cout << a2.get1(); // ok
 
 
 
+\
 
-- **对 `this` 指针的影响**：在常量成员函数中，`this` 指针变为指向常量的指针，即 `const A* const this`。这意味着你不能通过 `this` 指针修改任何成员变量。
-
-- **常量和非常量重载**：可以为同一个类实现常量和非常量版本的成员函数，使得当对象是常量时，只能调用常量版本，这个版本不允许修改对象；而当对象不是常量时，可以调用非常量版本，允许修改对象。
-
-常量成员函数的使用有助于编写更安全、更可维护的代码，尤其是在涉及大型数据结构或类库的设计时，正确使用常量成员函数可以确保对象的状态不会被意外改变，从而降低出错的风险。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAwMDQ2NDU1LDk2NDE1NTExLC05NDM0MD
+eyJoaXN0b3J5IjpbOTgyNTA3NjU1LDk2NDE1NTExLC05NDM0MD
 g5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIz
 NywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
 g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
