@@ -608,12 +608,26 @@ A() = default;
 A(const A&) = default;
 A(A&&) = default;
 ```
+ - 析构函数
+```cpp
+∼A() = default;
+```
+- 拷贝/移动赋值操作符
+```cpp
+A& operator=(const A&) = default;
+A& operator=(A&&) = default;
+```
+- 空间船操作符 (spaceship operator)
+```cpp
+auto operator<=>(const A&) const = default;
+```
+`= default` 暗示了 constexpr，但并非 noexcept 或 explicit。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MTA4NTQ2NiwtMzg0MTkwNjAsLTIwMj
-E3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0NiwtNDYxNDA2NzI3
-LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNT
-EyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5
-MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02ND
-ExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbLTE5OTE1MDE5OTIsLTM4NDE5MDYwLC0yMD
+IxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcy
+NywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMT
+UxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4
+OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNj
+QxMTY4MzksOTc2NDQxMzE2XX0=
 -->
