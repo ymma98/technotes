@@ -318,7 +318,7 @@ ArrayWrapper a(10);
 cout << a.array[4]; // 段错误
 ```
 
-#### 列表初始化 (统一初始化, uniform initialization for object)
+#### 列表初始化 (统一初始化, uniform initialization)
 
 统一初始化（C++11）
 统一初始化 `{}`，也称为列表初始化，是一种完全独立于数据类型的方式来初始化任何对象
@@ -369,8 +369,27 @@ B b( A() ); // "b" is interpreted as function declaration
 		 // solved with B b{ A{} };
 ```
 
+#### 构造函数的继承
+
+
+类构造函数永远不会被继承
+派生类必须在当前类构造函数之前隐式或显式地调用基类构造函数
+类构造函数的调用顺序是从最顶层的基类开始，一直到最派生的类（C++对象的构建像洋葱一样层层递进）
+```cpp
+struct A {
+    A() { cout << "A"; }
+};
+struct B1 : A { // 隐式调用 "A()"
+    int y = 3; // 然后, "y = 3"
+};
+struct B2 : A { // 显式调用 "A()"
+    B2() : A() { cout << "B"; }
+};
+B1 b1; // 打印 "A"
+B2 b2; // 打印 "A", 然后打印 "B"
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzMjUzMzM5NCwtMTk4NDYzODkyNSwxNz
+eyJoaXN0b3J5IjpbMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNz
 Y4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0
 MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMj
 U5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
