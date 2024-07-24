@@ -280,9 +280,20 @@ struct A {
     y{y1} {} // 直接列表初始化语法
 }; // (C++11)
 ```
+
+
+C++11 中的类内非静态数据成员初始化（In-class non-static data members initialization, NSDMI）允许在声明数据成员的地方初始化它们。用户定义的构造函数可以用来覆盖这些默认值。
+```cpp
+struct A {
+    int x = 0; // 类内成员初始化器
+    const char* str = nullptr; // 类内成员初始化器
+    A() {} // 如果调用默认构造函数，“x”和“str”都将被良好定义
+    A(const char* str1) : str{str1} {}
+};
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1Nj
-AzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYx
-LDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5NzY0ND
-EzMTZdfQ==
+eyJoaXN0b3J5IjpbLTIwMzkxNjAzODIsMTc2ODA1MTI4MCwxNT
+EyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5
+MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02ND
+ExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
