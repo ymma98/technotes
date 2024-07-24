@@ -89,13 +89,39 @@ a.b.g(); // 访问成员对象b的成员函数g()
     }
 ```
 
-
-
+```cpp
+struct A { // 基类
+    int value = 3;
+    void g() {}
+};
+struct B : A { // B 是 A 的派生类（B 继承 A）
+    int data = 4; // B 继承自 A
+    int f() { return data; }
+};
+A a;
+B b;
+a.value; // 访问 A 类的成员变量
+b.g(); // 调用继承自 A 类的方法
+```
+```cpp
+struct A {};
+struct B : A {};
+void f(A a) {} // 通过值传递
+void g(B b) {} // 通过值传递
+void f_ref(A& a) {} // 引用传递，适用于 A 类型和其子类对象
+void g_ref(B& b) {} // 引用传递，适用于 B 类型和其子类对象
+A a;
+B b;
+f(a); // 正确，也可以 f(b), f_ref(a), g_ref(b)
+g(b); // 正确，也可以 g_ref(b), 但不可以 g(a), g_ref(a)
+A a1 = b; // 正确，也可以 A& a2 = b
+// B b1 = a; // 编译错误，因为 A 类型不能隐式转换为 B 类型
+```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI1OTgwNDc1LC02NDExNjgzOSw5NzY0ND
-EzMTZdfQ==
+eyJoaXN0b3J5IjpbLTQ4NDcxMzYzMywyMjU5ODA0NzUsLTY0MT
+E2ODM5LDk3NjQ0MTMxNl19
 -->
