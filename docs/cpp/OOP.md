@@ -804,7 +804,7 @@ const 对象只能调用 const 成员函数，非 const 对象可以调用 const
 ### `mutable`
 
 
-在 const 类实例中，`mutable` **数据成员**是可以修改的。它们应该是对象的物理状态的一部分，而不是逻辑状态的一部分。
+在 const 类实例中，`mutable` **数据成员**是可以修改的。它们应该是对象的物理状态 (实际值) 的一部分，而不是逻辑状态 (不随值变化的接口对外提供的功能) 的一部分。
 - 如果大部分成员应该是常量但有少数需要修改时，这非常有用。
 - 从概念上讲，mutable 成员不应改变任何可以从类接口检索到的内容。
 
@@ -817,17 +817,6 @@ const A a;
 // a.x = 3; // 编译错误，因为 const
 a.y = 5; // 可以修改，因为 mutable
 ```
-
-
-
-
-#### 物理状态与逻辑状态
-
-- **物理状态**：指的是对象的内部数据成员的实际值，这些值可以通过 `mutable` 成员在 const 成员函数中修改。
-- **逻辑状态**：反映了对象对外提供的功能和行为，通常通过对象的公共接口表现出来。即使某些内部数据成员因为被声明为 `mutable` 而改变，对象的逻辑状态也应保持不变。
-
-#### 示例解析
-
 在上述代码中，`a` 是一个 const 对象，这通常意味着不能修改它的任何数据成员。然而，由于成员 `y` 被声明为 `mutable`，即使 `a` 是 const，`y` 也可以被修改。这显示了 `mutable` 关键字如何允许对 const 对象的某些部分进行修改，而不影响整个对象的常量性。
 
 总之，`mutable` 关键字在 C++ 中是一个强大的工具，它在保持类型安全和封装性的同时提供了灵活的内部状态管理。正确使用 `mutable` 可以使得设计更加灵活，适应更复杂的编程需求。
@@ -836,11 +825,11 @@ a.y = 5; // 可以修改，因为 mutable
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY0NDg1MjI4LDk2NDE1NTExLC05NDM0MD
-g5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIz
-NywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
-g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
-MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNj
-UwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2
-NDZdfQ==
+eyJoaXN0b3J5IjpbLTIwNDcwMDM5NjMsOTY0MTU1MTEsLTk0Mz
+QwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYw
+MjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMj
+c5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYz
+ODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNC
+w2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0
+MjY0Nl19
 -->
