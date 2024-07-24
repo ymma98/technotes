@@ -12,11 +12,9 @@ object-oriented programming
 -   在 `class` 中，默认的成员访问权限是私有（private），这意味着类的成员只能被类本身的方法或特定的友元（friend）访问。
 
 `class` 的 member 分为两类:
-* 数据成员
-类中的数据被称为数据成员或类字段
-函数成员
-类中的函数被称为函数成员或方法
+* 数据成员 (data member). 类中的数据被称为数据成员或类字段
+* 函数成员 (function member). 类中的函数被称为函数成员或方法
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2NTAxNjk0XX0=
+eyJoaXN0b3J5IjpbOTc2NDQxMzE2XX0=
 -->
