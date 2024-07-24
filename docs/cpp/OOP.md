@@ -148,12 +148,12 @@ A1 a;
 a.value; // 正确
 // a.f1() // 编译错误，受保护
 // a.f2() // 编译错误，私有
-
+```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgzMDU0NTcyLDExNDg4NDI2NDYsMjI1OT
-gwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbLTQyNjUzNDc5MiwxMTQ4ODQyNjQ2LDIyNT
+k4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
 -->
