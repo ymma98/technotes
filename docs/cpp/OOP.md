@@ -677,12 +677,24 @@ struct A {
 ### `static`
 
 
+`static` 关键字声明的成员（字段或方法）不绑定到类实例。一个 static 成员由**该类的所有对象共享**。
+```cpp
+struct A {
+    int x;
+    int f() { return x; } // 实例方法，可以访问实例成员
+    static int g() { return 3; } // 静态方法，不可以访问实例成员 'x'
+};
+A a{4};
+a.f(); // 调用类实例方法
+A::g(); // 调用静态类方法
+a.g(); // 类实例也可以访问静态类成员
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNDQ1Nzk5LC0yMDAxODYwMjM3LC0zOD
-QxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2
-LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNz
-Y4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0
-MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMj
-U5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbLTE3NjA2OTAyNzIsLTIwMDE4NjAyMzcsLT
+M4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIx
+NDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LD
+E3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3
+MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LD
+IyNTk4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
 -->
