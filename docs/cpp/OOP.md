@@ -628,17 +628,37 @@ auto operator<=>(const A&) const = default;
 *  在某些情况下，如果定义了其他构造函数，编译器不会自动生成默认构造函数。使用 `= default` 可以确保即使在定义了其他构造函数后，类仍然有一个默认构造函数。
 *  默认的特殊成员函数通常是 `constexpr`，使得它们可能在编译时就被计算，从而提高效率。注意，虽然默认函数是 `constexpr`，但并非自动 `noexcept` 或 `explicit`，这些特性需要显式指定。
 
+```cpp
+struct A {
+	A(int v1) {} // delete implicitly-defined default ctor because
+				 // a user-provided constructor is defined
+	A() = default; // now, A has the default constructor
+};
+```
 
+```cpp
+struct B {
+protected:
+	B() = default; // now it is protected
+};
+```
 
+```cpp
+struct C {
+	int x;
+	// C() {} // 'x' is undefined
+	C() = default; // 'x' is zero
+}; 
+```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODk3NzI5NzIsLTM4NDE5MDYwLC0yMD
-IxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcy
-NywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMT
-UxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4
-OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNj
-QxMTY4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbNTMzNzAxNzEyLC0zODQxOTA2MCwtMjAyMT
+c5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3Mjcs
+MTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MT
+I3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkw
+LC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MT
+E2ODM5LDk3NjQ0MTMxNl19
 -->
