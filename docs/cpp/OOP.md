@@ -553,7 +553,7 @@ struct B : NonDefault {}; // 删除拷贝构造函数
 -   该类具有移动构造函数
 
 
-## 析构函数
+### 析构函数
 
 析构函数 [destructor, dtor]
 析构函数是一种特殊的成员函数，它在对象超出作用范围或对该类的指针应用 `delete/delete[]` 表达式时执行。
@@ -598,7 +598,7 @@ int main() {
 ```
 
 
-## 默认构造函数，析构函数，operator
+### `=default`
 
 
 在 C++11 中，`= default` 关键字的引入使得开发者能够明确要求编译器为类生成标准的特殊成员函数，如构造函数、析构函数和赋值操作符
@@ -652,13 +652,20 @@ struct C {
 ```
 
 
+## class 关键字
+
+### `this`
+
+
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMzNzAxNzEyLC0zODQxOTA2MCwtMjAyMT
-c5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3Mjcs
-MTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MT
-I3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkw
-LC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MT
-E2ODM5LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMD
+IxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcy
+NywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMT
+UxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4
+OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNj
+QxMTY4MzksOTc2NDQxMzE2XX0=
 -->
