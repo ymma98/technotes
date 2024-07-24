@@ -893,8 +893,19 @@ int f(A a) {
 ### `delte`
 
 
+`delete` 关键字用于显式地标记一个成员函数为删除的，任何尝试使用它的操作都将导致编译错误。当它用于拷贝/移动构造函数或赋值操作时，可以防止编译器隐式生成这些函数。
+类的默认拷贝/移动函数可能会产生意外的结果。使用 `delete` 关键字可以防止这些错误。
+```cpp
+struct A {
+    A() = default;
+    A(const A&) = delete; // 例如，因为不安全或昂贵而删除
+};
+void f(A a) {} // 隐式调用拷贝构造函数
+A a;
+// f(a); // 编译错误，因为已标记为删除
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNzIxNTc5MTcsLTYxNTA4MzUxOCw5Nj
+eyJoaXN0b3J5IjpbLTEwMDEzMDUwODEsLTYxNTA4MzUxOCw5Nj
 QxNTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1
 ODMsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMT
 k3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3
