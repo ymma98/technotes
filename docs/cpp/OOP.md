@@ -623,7 +623,8 @@ auto operator<=>(const A&) const = default;
 ```
 `= default` 暗示了 constexpr，但并非 noexcept 或 explicit。
 
-当编译器生成的构造函数、析构函数和操作符有用时：
+`= default`提供了几个优点：
+* 可以通过在类定义中使用 `= default` 来更改特殊成员函数的可见性，例如，可以将移动构造函数设为 `protected`，以限制其使用。
 
 -   改变非用户提供的构造函数和赋值操作符的可见性（public，protected，private）
 -   显式声明这些成员 默认的默认构造函数具有与用户定义的构造函数相似的效果，该构造函数具有空的体和空的初始化列表。
@@ -639,11 +640,8 @@ auto operator<=>(const A&) const = default;
 
 在 C++11 中，`= default` 关键字的引入使得开发者能够明确要求编译器为类生成标准的特殊成员函数，如构造函数、析构函数和赋值操作符。这提供了几个优点：
 
-1. **简化代码**：
-   - 使用 `= default` 可以简化代码，避免手写那些本质上只需编译器自动完成的标准操作的函数。
 
-2. **控制成员可见性**：
-   - 可以通过在类定义中使用 `= default` 来更改特殊成员函数的可见性，例如，可以将移动构造函数设为 `protected`，以限制其使用。
+
 
 3. **保证行为的标准化**：
    - 当你想确保类的行为遵循标准的语义，如默认构造或复制时，使用 `= default` 可以避免意外改变这些行为。
@@ -657,10 +655,10 @@ auto operator<=>(const A&) const = default;
 通过使用 `= default`，开发者能够更有效地控制类的行为，并利用编译器的优化，同时清晰地表达出构造函数和析构函数的意图。这种方式也有助于维护代码的清晰度和易于管理。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzIwODUxMTcsLTM4NDE5MDYwLC0yMDIxNz
-kwMTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywx
-OTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMj
-c1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAs
-LTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMT
-Y4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbODcyNDcwNDc5LC0zODQxOTA2MCwtMjAyMT
+c5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3Mjcs
+MTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MT
+I3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkw
+LC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MT
+E2ODM5LDk3NjQ0MTMxNl19
 -->
