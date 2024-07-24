@@ -220,8 +220,13 @@ struct A {
 };
 A a{}; // 调用默认构造函数，等价于：A a;
 ```
+
+注意：一个隐式的默认构造函数是 constexpr
+注意，`A a2();` 语句实际上会被解释为一个函数声明，这是一个常见的错误，称为“最令人疑惑的 C++ 解析”。
+
+**直接列表初始化**： - 使用 `{}`（C++11 引入的直接列表初始化）可以调用默认构造函数。这种语法更加明确，可以避免与函数声明混淆。 - 在创建数组或使用 `new` 关键字动态分配数组时，每个元素都将通过默认构造函数进行初始化。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5NjU5NjQ5NCw2NTA4NzI0MzAsMzA4Mz
+eyJoaXN0b3J5IjpbMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4Mz
 I2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUs
 LTY0MTE2ODM5LDk3NjQ0MTMxNl19
 -->
