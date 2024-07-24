@@ -372,7 +372,7 @@ B b( A() ); // "b" is interpreted as function declaration
 #### 构造函数的继承
 
 
-类构造函数永远不会被继承
+类构造函数永远不会被继承。派生类必须定义自己的构造函数。
 派生类必须在当前类构造函数之前隐式或显式地调用基类构造函数
 类构造函数的调用顺序是从最顶层的基类开始，一直到最派生的类（C++对象的构建像洋葱一样层层递进）
 ```cpp
@@ -391,9 +391,6 @@ B2 b2; // 打印 "A", 然后打印 "B"
 
 
 
-### 详细解释
-
-在 C++ 中，类构造函数在继承中的行为遵循特定的规则：
 
 1. **构造函数不被继承**：
    - 在 C++ 中，基类的构造函数不会被派生类自动继承。派生类必须定义自己的构造函数，如果需要，也必须显式地调用基类的构造函数。
@@ -414,7 +411,7 @@ B2 b2; // 打印 "A", 然后打印 "B"
 这个例子展示了如何通过继承关系构造对象，并明确了在多层继承结构中构造函数的调用顺序和方法。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTg1MzkxOTQsMTk2MDcwNzUxMiwtMT
+eyJoaXN0b3J5IjpbLTE4MzU1MzU4MTUsMTk2MDcwNzUxMiwtMT
 k4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMz
 NDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMT
 E0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMx
