@@ -755,16 +755,12 @@ struct A {
 ### `const`
 
 
-常量成员函数是那些带有 const 标记的函数，它们不允许改变对象的逻辑状态。
-
-编译器阻止这些观察器函数意外地改变数据成员 → 观察方法中的所有数据成员都被标记为 const，包括 this 指针。
 
 
 
-常量成员函数是一个重要的 C++ 特性，用于增强类型安全和防止对象在不应该的上下文中被修改。通过在成员函数声明的末尾加上 `const` 关键字，你可以保证这个函数不会修改类的任何成员变量（除了被声明为 `mutable` 的成员）。
+常量成员函数 （检查器或观察器, inspectors or observers）是那些带有 const 标记的函数，它们不允许改变对象的逻辑状态。
 
-
-- 物理状态仍可以被修改，参见 mutable 成员函数
+常量成员函数，是一个重要的 C++ 特性 ，用于增强类型安全和防止对象在不应该的上下文中被修改。通过在成员函数声明的末尾加上 `const` 关键字，方法中的所有数据成员都被标记为 const，包括 this 指针，可以保证这个函数不会修改类的任何成员变量（除了被声明为 `mutable` 的成员）。
 - 没有 const 后缀的成员函数称为非常量成员函数或变更器/修改器 (mutators/modifiers)
 
 ```cpp
@@ -813,11 +809,11 @@ cout << a2.get1(); // ok
 常量成员函数的使用有助于编写更安全、更可维护的代码，尤其是在涉及大型数据结构或类库的设计时，正确使用常量成员函数可以确保对象的状态不会被意外改变，从而降低出错的风险。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NzgxNDcxMyw5NjQxNTUxMSwtOTQzND
-A4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAy
-MzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNz
-k4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4
-OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LD
-Y1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQy
-NjQ2XX0=
+eyJoaXN0b3J5IjpbODAwMDQ2NDU1LDk2NDE1NTExLC05NDM0MD
+g5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIz
+NywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
+g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
+MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNj
+UwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2
+NDZdfQ==
 -->
