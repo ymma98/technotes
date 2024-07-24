@@ -702,11 +702,41 @@ struct A {
 };
 ```
 
+
+在 C++17 之前，非 const 静态数据成员不能直接在行内初始化
+
+```cpp
+struct A {
+    // static int a = 4; // 编译错误
+    static int a; // ok, 仅声明
+    static inline int b = 4; // C++17 起 ok
+    static int f() { return 2; }
+    static int g(); // ok, 仅声明
+};
+int A::a = 4; // ok, 没有这个定义将引起未定义引用错误
+int A::g() { return 3; } // ok, 没有这个定义将引起未定义引用错误
+```
+
+```cpp
+struct A {
+    static int x; // 声明
+    static int f() { return x; }
+    static int& g() { return x; }
+};
+int A::x = 3; // 定义
+// ---------------------------------------------------------------------------------
+A::f(); // 返回 3
+A::x++;
+A::f(); // 返回 4
+A::g() = 7;
+A::f(); // 返回 7
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0NDM5NTgyLC0yMDAxODYwMjM3LC0zOD
-QxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2
-LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNz
-Y4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0
-MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMj
-U5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbMTcwOTIwNzk4NSwtMjAwMTg2MDIzNywtMz
+g0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0
+NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMT
+c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
+NDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMj
+I1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
