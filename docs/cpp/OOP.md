@@ -318,7 +318,7 @@ ArrayWrapper a(10);
 cout << a.array[4]; // 段错误
 ```
 
-### 列表初始化 (统一初始化, uniform initialization for object)
+#### 列表初始化 (统一初始化, uniform initialization for object)
 
 统一初始化（C++11）
 统一初始化 `{}`，也称为列表初始化，是一种完全独立于数据类型的方式来初始化任何对象
@@ -364,14 +364,14 @@ B(A a) {}
 void f() {}
 };
 B b( A() ); // "b" is interpreted as function declaration
-// with a single argument A (*)() (func. pointer)
+			// with a single argument A (*)() (func. pointer)
 // b.f() // compile error "Most Vexing Parse" problem
-// solved with B b{ A{} };
+		 // solved with B b{ A{} };
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mzk0MDM4MTMsLTE5ODQ2Mzg5MjUsMT
-c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
-NDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMj
-I1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbMjAzMjUzMzM5NCwtMTk4NDYzODkyNSwxNz
+Y4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0
+MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMj
+U5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
 -->
