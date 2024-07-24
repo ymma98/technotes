@@ -874,12 +874,27 @@ class C : public B {
     // int f(A a) { return a.x; } // 编译错误，友元关系不可继承
 };
 ```
+
+
+非成员函数如果被声明为某个类的友元，可以访问该类的 private 和 protected 成员。
+```cpp
+class A {
+    int x = 3; // 私有成员
+    friend int f(A a); // 声明友元关系，无实现
+};
+// 'f' 不是任何类的成员函数
+int f(A a) {
+    return a.x; // f 是 A 的友元函数
+}
+```
+
+友元方法通常用于实现流操作符 operator<< 等功能。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEzNDYyNTg1LC02MTUwODM1MTgsOTY0MT
-U1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgz
-LC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5Nz
-IwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUx
-MiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMT
-U2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3
-NjFdfQ==
+eyJoaXN0b3J5IjpbLTEwOTA4MjIzNDgsLTYxNTA4MzUxOCw5Nj
+QxNTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1
+ODMsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMT
+k3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3
+NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0Ni
+wxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYx
+Mjc2MV19
 -->
