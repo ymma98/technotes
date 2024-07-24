@@ -473,22 +473,39 @@ struct A {
 拷贝构造函数细节
 - 每个类总是定义一个隐式或显式的拷贝构造函数
 - 拷贝构造函数隐式地调用基类的默认构造函数
-- 拷贝构造函数zong被认为是用户定义的构造函数
+- 拷贝构造函数总被认为是用户定义的构造函数
 - 拷贝构造函数不具有模板参数，否则它就是一个标准成员函数
 - 拷贝构造函数不应与赋值运算符 operator= 混淆
 
 ```cpp
 MyStruct x;
 MyStruct y{x}; // 拷贝构造函数
-y = x; // 调用赋值运算符=，而非拷贝构造函数
-// → 复制初始化，详见下一讲
+y = x; // 调用赋值运算符=，而非拷贝构造函数。这叫 copy initialization
+```
 
+```cpp
+struct Array {
+    int size;
+    int* array;
+    Array(int size1) : size{size1} {
+        array = new int[size];
+    }
+    // 拷贝构造函数，初始化列表 ": size{obj.size}"
+    Array(const Array& obj) : size{obj.size} {
+        array = new int[size];
+        for (int i = 0; i < size; i++)
+            array[i] = obj.array[i];
+    }
+};
+Array x{100}; // 对 x.array 进行操作...
+Array y{x}; // 调用 "Array::Array(const Array&)"
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQwODE2Mzc3LDI3OTg4MjE0NiwtNDYxND
-A2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4
-MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwOD
-MyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1
-LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbMTMwNzk3Mjk1NiwyNzk4ODIxNDYsLTQ2MT
+QwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEy
+ODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMD
+gzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3
+NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
 -->
