@@ -325,13 +325,53 @@ cout << a.array[4]; // 段错误
 - 最小化冗余的类型名
   - 在函数参数中
   - 在函数返回中
-- 解决“最令人困惑的解析”问题
+- 解决“最令人困惑的解析”问题 (most vexing parse problem)
   - 构造函数被解释为函数原型
+ 
+```cpp
+struct Point {
+    int x, y;
+    Point(int x1, int y1) : x(x1), y(y1) {}
+};
+// C++03 版本的 add 函数
+Point add(Point a, Point b) {
+    return Point(a.x + b.x, a.y + b.y);
+}
+Point c = add(Point(1, 2), Point(3, 4));
 
+// C++11 版本的 add 函数
+Point add(Point a, Point b) {
+    return { a.x + b.x, a.y + b.y }; // 使用列表初始化返回
+}
+auto c = add({1, 2}, {3, 4}); // 使用列表初始化构造参数
+```
+
+* “最令人困惑的解析”问题 (most vexing parse problem)
+```cpp
+struct A {
+A(int) {}
+};
+struct B {
+// A a(1); // compile error It works in a function scope
+A a{2}; // ok, call the constructor
+};
+```
+
+```cpp
+struct A {};
+struct B {
+B(A a) {}
+void f() {}
+};
+B b( A() ); // "b" is interpreted as function declaration
+// with a single argument A (*)() (func. pointer)
+// b.f() // compile error "Most Vexing Parse" problem
+// solved with B b{ A{} };
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwODA0MDU4NSwtMTk4NDYzODkyNSwxNz
-Y4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0
-MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMj
-U5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbLTE0Mzk0MDM4MTMsLTE5ODQ2Mzg5MjUsMT
+c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
+NDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMj
+I1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
