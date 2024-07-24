@@ -119,9 +119,8 @@ A a1 = b; // 正确，也可以 A& a2 = b
 // B b1 = a; // 编译错误，因为 A 类型不能隐式转换为 B 类型
 ```
 
-### 访问控制符 (access specifiers)
+### 访问控制符/访问说明符 (access specifiers)
 
-访问说明符 1/2
 访问说明符定义了继承类成员的可见性。关键字 public、private 和 protected 指定了可见性区域。
 访问说明符的目的是为了防止直接访问类的内部表示，以避免错误使用和潜在的不一致性（访问控制）。
 - public：没有限制（函数成员、派生类、类外部）
@@ -155,6 +154,6 @@ a.value; // 正确
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg4MzkxMjYxLDExNDg4NDI2NDYsMjI1OT
+eyJoaXN0b3J5IjpbMjgzMDU0NTcyLDExNDg4NDI2NDYsMjI1OT
 gwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
