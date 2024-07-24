@@ -771,13 +771,36 @@ struct A {
         return x;
     }
 };
+```
 
+当常量成员函数用于强制执行 const 正确性时，尤其是在访问指针时，非常有用。
+
+const 关键字是函数签名的一部分。因此，一个类可以实现两个类似的方法，一个用于 const 对象，一个用于非 const 对象：
+
+
+```cpp
+class A {
+    int x = 3;
+public:
+    int& get1() { return x; } // 读写
+    int get1() const { return x; } // 只读
+    int& get2() { return x; } // 读写
+};
+A a1;
+cout << a1.get1(); // ok
+cout << a1.get2(); // ok
+a1.get1() = 4; // ok
+const A a2;
+cout << a2.get1(); // ok
+// cout << a2.get2(); // 编译错误 "a2" 是 const
+// a2.get1() = 5; // 编译错误 只有 "get1() const" 可用
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjE1MDkyNjEsLTk0MzQwODkyMiwtMT
-Y1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0zODQx
-OTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC
-00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4
-MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0Mz
-AsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5
-ODA0NzVdfQ==
+eyJoaXN0b3J5IjpbOTY0MTU1MTEsLTk0MzQwODkyMiwtMTY1Nj
+U5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0zODQxOTA2
+MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC00Nj
+E0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUx
+MjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMz
+A4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0
+NzVdfQ==
 -->
