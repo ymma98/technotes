@@ -390,9 +390,30 @@ B1 b1; // 打印 "A"
 B2 b2; // 打印 "A", 然后打印 "B"
 ```
 
-#### w
+#### 委托构造函数 (delegate constructor)
+
+
+问题描述：
+大多数构造函数在执行个别操作之前通常会执行相同的初始化步骤。
+C++11 中的委托构造函数通过调用同一类的另一个构造函数来减少重复代码，从而添加一个执行所有初始化步骤的函数。
+```cpp
+struct A {
+    int a;
+    float b;
+    bool c;
+    // 标准构造函数：
+    A(int a1, float b1, bool c1) : a(a1), b(b1), c(c1) {
+        // 执行大量工作
+    }
+    A(int a1, float b1) : A(a1, b1, false) {} // 委托构造函数
+    A(float b1) : A(100, b1, false) {} // 委托构造函数
+};
+```
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODI4NzE1MzIsLTQ2MTQwNjcyNywxOT
+eyJoaXN0b3J5IjpbLTE2MTU5MjExMDMsLTQ2MTQwNjcyNywxOT
 YwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1
 NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAsLT
 k5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4
