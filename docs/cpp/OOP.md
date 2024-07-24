@@ -6,8 +6,10 @@ object-oriented programming
 
 在 C++ 中，结构体（struct）和类（class）在语义上是等价的。然而，应使用这两个关键字来区分不同的语义：
 
--   struct 代表被动 (passive) 对象，即物理状态（数据集）
--   class 代表主动 (active) 对象，即逻辑状态（数据抽象）
+-   `struct` 代表被动 (passive) 对象，即物理状态（数据集）。使用 `struct` 关键字通常意味着该类型主要用于存储数据，没有太多复杂的行为。这是一种更接近于传统 C 语言的结构体的用法，适用于表示简单的数据结构。
+-   `class` 代表主动 (active) 对象，即逻辑状态（数据抽象）。使用 `class` 关键字则意味着该类型不仅包含数据，还可能包括与这些数据相关的复杂行为。类更倾向于封装和数据抽象，适用于实现更复杂的逻辑。
+-  在 `struct` 中，默认的成员访问权限是公开（public），这意味着结构体的成员在任何地方都可以直接访问。
+-   在 `class` 中，默认的成员访问权限是私有（private），这意味着类的成员只能被类本身的方法或特定的友元（friend）访问。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzA4NTQ3NjJdfQ==
+eyJoaXN0b3J5IjpbMzgyNDgwMTA3XX0=
 -->
