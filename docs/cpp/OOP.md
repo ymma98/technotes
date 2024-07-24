@@ -817,15 +817,16 @@ const A a;
 // a.x = 3; // 编译错误，因为 const
 a.y = 5; // 可以修改，因为 mutable
 ```
+
 在上述代码中，`a` 是一个 const 对象，这通常意味着不能修改它的任何数据成员。然而，由于成员 `y` 被声明为 `mutable`，即使 `a` 是 const，`y` 也可以被修改。这显示了 `mutable` 关键字如何允许对 const 对象的某些部分进行修改，而不影响整个对象的常量性。
 
-总之，`mutable` 关键字在 C++ 中是一个强大的工具，它在保持类型安全和封装性的同时提供了灵活的内部状态管理。正确使用 `mutable` 可以使得设计更加灵活，适应更复杂的编程需求。
+### `using`
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDcwMDM5NjMsOTY0MTU1MTEsLTk0Mz
+eyJoaXN0b3J5IjpbLTE1NjA3NzkwMjQsOTY0MTU1MTEsLTk0Mz
 QwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYw
 MjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMj
 c5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYz
