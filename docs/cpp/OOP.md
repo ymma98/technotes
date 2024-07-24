@@ -511,7 +511,7 @@ Array y{x}; // 调用 "Array::Array(const Array&)"
 A a1;
 A a2(a1); // 直接复制初始化
 A a3{a1}; // 直接复制初始化
-A a4 = a1; // 复制初始化
+A a4 = a1; // 复制初始化。注意，这里调用的是拷贝构造函数，而不是 operator=, 赋值运算符用于已经存在的对象之间的赋值操作，例如：`a4 = a1;`（注意这里 `a4` 已经被定义和初始化过了）。
 A a5 = {a1}; // 复制列表初始化
 // 将对象作为函数的按值传递的输入参数进行复制
 void f(A a);
@@ -538,9 +538,9 @@ A d = g2(); // * 见 RVO 优化（高级概念 I）
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MT
-QwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEy
-ODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMD
-gzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3
-NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbMTg4NTIzMzQ1OSwxOTcyMDA5NTQzLDI3OT
+g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
+MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNj
+UwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2
+NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
