@@ -738,13 +738,23 @@ A::f(); // 返回 7
 非静态成员函数可以访问静态类成员
 
 ```cpp
-
+struct A {
+    int x = 3;
+    static inline int y = 4;
+    int f1() { return x; } // ok
+    // static int f2() { return x; } // 编译错误，'x' 不可见
+    int g1() { return y; } // ok
+    static int g2() { return y; } // ok
+    struct B {
+        int h() { return y + g2(); } // ok
+    }; // 'x', 'f1()', 'g1()' 在 'B' 内不可见
+};
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjE1MzIyMTcsLTIwMDE4NjAyMzcsLT
-M4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIx
-NDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LD
-E3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3
-MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LD
-IyNTk4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbLTIzNzUxNzU4MywtMjAwMTg2MDIzNywtMz
+g0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0
+NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMT
+c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
+NDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMj
+I1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
