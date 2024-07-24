@@ -205,8 +205,8 @@ b2.var1; // 正确，var1 在 B2 中为公有
 
 #### 默认构造函数
 
-默认构造函数
-默认构造函数 T() 是一个无参数的构造函数
+default constructor
+默认构造函数 `T()` 是一个**无参数的构造函数**
 每个类总是具有隐式的 (implicit)、显式的 (explicit) 或删除的 (explicit) 默认构造函数之一
 ```c++
 struct A {
@@ -214,6 +214,12 @@ struct A {
     A(int) {} // 用户定义的（非默认）构造函数
 };
 ```
+在 C++ 中，在定义函数或构造函数的参数时，如果参数名在函数体内未被使用，你可以选择不给这个参数命名。这种做法常见于以下情况：
+
+1.  **函数声明中**：在声明函数或构造函数时，常常只需要指定参数类型而不是参数名。这主要是为了说明函数的接口，不关心参数的具体名称。
+2.  **函数定义中**：如果函数实现不需要使用某个参数，那么可以省略该参数的名称。这有助于避免编译器警告关于未使用变量的信息，同时也使得函数定义更简洁。
+
+
 ```cpp
 struct A {
     int x = 3; // 隐式的默认构造函数
@@ -226,7 +232,7 @@ A a{}; // 调用默认构造函数，等价于：A a;
 
 **直接列表初始化**： - 使用 `{}`（C++11 引入的直接列表初始化）可以调用默认构造函数。这种语法更加明确，可以避免与函数声明混淆。 - 在创建数组或使用 `new` 关键字动态分配数组时，每个元素都将通过默认构造函数进行初始化。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4Mz
-I2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUs
-LTY0MTE2ODM5LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MD
+g3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2
+LDIyNTk4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
 -->
