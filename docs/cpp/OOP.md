@@ -820,6 +820,12 @@ a.y = 5; // 可以修改，因为 mutable
 
 在上述代码中，`a` 是一个 const 对象，这通常意味着不能修改它的任何数据成员。然而，由于成员 `y` 被声明为 `mutable`，即使 `a` 是 const，`y` 也可以被修改。这显示了 `mutable` 关键字如何允许对 const 对象的某些部分进行修改，而不影响整个对象的常量性。
 
+当一个对象被声明为 `const`，比如 `const A a;`，这意味着以下内容无法改变：
+
+-   成员变量：该对象的所有非 `mutable` 成员变量不能被修改。任何尝试修改这些成员变量的操作都会导致编译错误。
+    
+-   成员函数：只能调用该对象的 `const` 成员函数。这些函数保证不会修改对象的状态（除了 `mutable` 成员变量）。
+
 ### `using`
 
 using 关键字用于在特定类中声明类型别名
@@ -848,11 +854,11 @@ b.x = 3; // ok, "b.x" 现在是公开的
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkyODAxMjQ5LDk2NDE1NTExLC05NDM0MD
-g5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIz
-NywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
-g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
-MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNj
-UwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2
-NDZdfQ==
+eyJoaXN0b3J5IjpbLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQzND
+A4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAy
+MzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNz
+k4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4
+OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LD
+Y1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQy
+NjQ2XX0=
 -->
