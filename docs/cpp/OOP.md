@@ -37,12 +37,21 @@ struct A { // 结构体定义
 ```
 
 - 类声明与定义
-  - `class A;` // 类声明
 ```c++
-    class A { // 类定义
-      int x; // 数据成员
-      void f(); // 函数成员
-    };
+class A;  // 类声明
+class A { // 类定义
+  int x; // 数据成员
+  void f(); // 函数成员
+};
+```
+
+```c++
+struct A {
+  void g(); // 函数成员声明
+  void f() { // 函数成员定义
+    cout << "f"; // 内联定义
+  }
+};
 ```
 
 
@@ -50,5 +59,5 @@ struct A { // 结构体定义
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2MDY4OTU4MCw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbOTA5NDE3ODkwLDk3NjQ0MTMxNl19
 -->
