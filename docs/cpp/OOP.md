@@ -888,9 +888,13 @@ int f(A a) {
 }
 ```
 
-友元方法通常用于实现流操作符 operator<< 等功能。
+友元方法通常用于实现流操作符 operator `<<` 等功能。
+
+### `delte`
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTA4MjIzNDgsLTYxNTA4MzUxOCw5Nj
+eyJoaXN0b3J5IjpbLTEzNzIxNTc5MTcsLTYxNTA4MzUxOCw5Nj
 QxNTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1
 ODMsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMT
 k3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3
