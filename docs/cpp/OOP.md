@@ -10,6 +10,13 @@ object-oriented programming
 -   `class` 代表主动 (active) 对象，即逻辑状态（数据抽象）。使用 `class` 关键字则意味着该类型不仅包含数据，还可能包括与这些数据相关的复杂行为。类更倾向于封装和数据抽象，适用于实现更复杂的逻辑。
 -  在 `struct` 中，默认的成员访问权限是公开（public），这意味着结构体的成员在任何地方都可以直接访问。
 -   在 `class` 中，默认的成员访问权限是私有（private），这意味着类的成员只能被类本身的方法或特定的友元（friend）访问。
+
+`class` 的 member 分为两类:
+* 数据成员
+类中的数据被称为数据成员或类字段
+函数成员
+类中的函数被称为函数成员或方法
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzgyNDgwMTA3XX0=
+eyJoaXN0b3J5IjpbMTk2NTAxNjk0XX0=
 -->
