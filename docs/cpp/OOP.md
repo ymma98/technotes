@@ -623,11 +623,20 @@ auto operator<=>(const A&) const = default;
 ```
 `= default` 暗示了 constexpr，但并非 noexcept 或 explicit。
 
+当编译器生成的构造函数、析构函数和操作符有用时：
+
+-   改变非用户提供的构造函数和赋值操作符的可见性（public，protected，private）
+-   显式声明这些成员 默认的默认构造函数具有与用户定义的构造函数相似的效果，该构造函数具有空的体和空的初始化列表。
+
+当编译器生成的构造函数有用时：
+
+-   任何用户提供的构造函数会禁用隐式生成的默认构造函数
+-   强制为类数据成员使用默认值
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTE1MDE5OTIsLTM4NDE5MDYwLC0yMD
-IxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcy
-NywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMT
-UxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4
-OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNj
-QxMTY4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbMTkwMzc0MDAzOSwtMzg0MTkwNjAsLTIwMj
+E3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0NiwtNDYxNDA2NzI3
+LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNT
+EyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5
+MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02ND
+ExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
