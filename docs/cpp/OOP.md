@@ -501,9 +501,14 @@ Array x{100}; // 对 x.array 进行操作...
 Array y{x}; // 调用 "Array::Array(const Array&)"
 ```
 
+拷贝构造函数用于：
+-   从另一个同类型的对象初始化一个对象
+    -   直接构造
+    -   赋值运算符
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNzk3Mjk1NiwyNzk4ODIxNDYsLTQ2MT
+eyJoaXN0b3J5IjpbMTEwODg3NjE2MSwyNzk4ODIxNDYsLTQ2MT
 QwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEy
 ODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMD
 gzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3
