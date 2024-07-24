@@ -709,7 +709,8 @@ struct A {
 struct A {
     // static int a = 4; // 编译错误
     static int a; // ok, 仅声明
-    static inline int b = 4; // C++17 起 ok
+    static inline int b = 4; // C++17 起 ok. 
+    // 对于 `static` 成员变量，`inline` 的使用允许在其声明中直接进行初始化，无需在类外部单独定义。这简化了多文件项目中的管理，因为不需要在一个源文件中单独定义该静态成员。
     static int f() { return 2; }
     static int g(); // ok, 仅声明
 };
@@ -751,10 +752,11 @@ struct A {
 };
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzNzUxNzU4MywtMjAwMTg2MDIzNywtMz
-g0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0
-NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMT
-c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
-NDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMj
-I1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMj
+AwMTg2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5
+NTQzLDI3OTg4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLT
+E5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAz
+MzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLD
+ExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5NzY0NDEz
+MTZdfQ==
 -->
