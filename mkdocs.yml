@@ -3,6 +3,8 @@ nav:
   - Home: index.md
   - 杂谈:
       - 快速搭建技术博客: 杂谈/快速搭建技术博客.md
+  - Linux:
+      - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
   - cpp:
      - 基本概念_基础类型_操作符: cpp/基本概念_基础类型_操作符.md
      - 基本概念_enum_struct_控制流: cpp/基本概念_enum_struct_控制流.md
@@ -41,6 +43,7 @@ theme:
     - navigation.instant
     - navigation.path       # 在文档顶部也显示当前文档的 
     - navigation.top
+    - navigation.tabs
     - palette.switcher      # 主题色切换
     - search.suggest        # 搜索建议
     - search.highlight      # 搜索关键词高亮
