@@ -855,8 +855,7 @@ b.x = 3; // ok, "b.x" 现在是公开的
 
 ### `friend`
 
-友元类
-友元类可以访问在其中被声明为友元的类的 private 和 protected 成员。
+友元类 (friend class) 可以访问在其中被声明为友元的类的 `private` 和 `protected` 成员。
 友元关系的属性：
 - 不对称：如果类 A 是类 B 的友元，类 B 不自动成为类 A 的友元。
 - 不可传递：如果类 A 是类 B 的友元，类 B 是类 C 的友元，类 A 不自动成为类 C 的友元。
@@ -874,13 +873,13 @@ class B {
 class C : public B {
     // int f(A a) { return a.x; } // 编译错误，友元关系不可继承
 };
-
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzODg0MjYwMSwtNjE1MDgzNTE4LDk2ND
-E1NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4
-MywtMjAwMTg2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOT
-cyMDA5NTQzLDI3OTg4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1
-MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LD
-E1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEy
-NzYxXX0=
+eyJoaXN0b3J5IjpbMzEzNDYyNTg1LC02MTUwODM1MTgsOTY0MT
+U1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgz
+LC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5Nz
+IwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUx
+MiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMT
+U2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3
+NjFdfQ==
 -->
