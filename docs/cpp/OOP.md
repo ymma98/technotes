@@ -305,7 +305,7 @@ struct A {
 };
 ```
 
-类成员的初始化顺序遵循声明的顺序，而不是初始化列表中的顺序
+类成员的初始化顺序遵循声明的顺序，而不是初始化列表中的顺序。在 C++ 中，类成员的初始化顺序并不由构造函数中初始化列表的顺序决定，而是由成员在类中声明的顺序决定。这意味着，即使在初始化列表中先初始化某个成员，如果它在类定义中的声明顺序在另一个成员之后，它实际上会在那个成员之后被初始化。
 ```cpp
 struct ArrayWrapper {
     int* array;
@@ -320,24 +320,8 @@ cout << a.array[4]; // 段错误
 
 
 
-### 详细解释
-
-在 C++ 中，类成员的初始化顺序并不由构造函数中初始化列表的顺序决定，而是由成员在类中声明的顺序决定。这意味着，即使在初始化列表中先初始化某个成员，如果它在类定义中的声明顺序在另一个成员之后，它实际上会在那个成员之后被初始化。
-
-### 示例解释
-
-在给定的代码示例中：
-- 成员 `array` 在成员 `size` 前声明。
-- 在构造函数中，尽管初始化列表试图先初始化 `size` 再初始化 `array`，成员 `array` 实际上会先于 `size` 被初始化，因为它在类中的声明顺序更靠前。
-- 因此，当 `array` 被初始化时，它使用的 `size` 值是未定义的，可能导致为 `array` 分配错误的内存大小。
-- 当尝试访问 `a.array[4]` 时，可能发生段错误，因为 `array` 可能没有正确地初始化或内存分配不足。
-
-### 总结
-
-这个例子强调了在设计类时需要注意成员声明的顺序和初始化列表的顺序。为了避免类似的错误，应确保依赖其他成员的成员在那些成员之后声明，或者在初始化列表中考虑实际的初始化顺序。这种理解对于避免运行时错误和保证类的数据完整性至关重要。
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Njk4MTI0OTQsMTc2ODA1MTI4MCwxNT
+eyJoaXN0b3J5IjpbLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNT
 EyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5
 MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02ND
 ExNjgzOSw5NzY0NDEzMTZdfQ==
