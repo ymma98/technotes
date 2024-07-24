@@ -579,7 +579,7 @@ int main() {
 } // 调用"a"的析构函数
 ```
 
-* 类的析构函数从不被继承。基类的析构函数在当前类的析构函数之后调用
+* 类的析构函数从不被继承，每个类都需要定义自己的析构函数，即使这个析构函数只是简单地调用基类的析构函数。基类的析构函数在当前类的析构函数之后调用
 * 类的析构函数调用顺序是相反的，从最派生的类到最顶层的基类
 ```cpp
 struct A {
@@ -597,11 +597,14 @@ int main() {
 }
 ```
 
+
+## 默认构造函数，析构函数，operator
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMzU4NzU5NiwtMjAyMTc5MDEzLDE5Nz
-IwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUx
-MiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMT
-U2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3
-NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5LDk3Nj
-Q0MTMxNl19
+eyJoaXN0b3J5IjpbLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3Mj
+AwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEy
+LC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNT
+YwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2
+MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4MzksOTc2ND
+QxMzE2XX0=
 -->
