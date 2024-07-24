@@ -267,9 +267,21 @@ private:
 };
 ```
 
+#### 初始化列表 (initializer list)
 
+初始化列表用于初始化类的数据成员，或在进入构造函数体之前显式调用基类的构造函数（不要与 std::initializer_list 混淆）
+```cpp
+struct A {
+    int x, y;
+    A(int x1) : x(x1) {} // ": x(x1)" 是初始化列表
+    // 直接初始化语法
+    A(int x1, int y1) : // ": x{x1}, y{y1}"
+    x{x1}, // 是初始化列表
+    y{y1} {} // 直接列表初始化语法
+}; // (C++11)
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1OTE2ODA3NSwxNTEyNzU3MDQ2LDE1Nj
+eyJoaXN0b3J5IjpbMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1Nj
 AzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYx
 LDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5NzY0ND
 EzMTZdfQ==
