@@ -505,10 +505,40 @@ Array y{x}; // 调用 "Array::Array(const Array&)"
 -   从另一个同类型的对象初始化一个对象
     -   直接构造
     -   赋值运算符
+- 将对象作为函数的按值传递的输入参数进行复制
+- 将对象作为从函数返回的结果进行复制
+```cpp
+A a1;
+A a2(a1); // 直接复制初始化
+A a3{a1}; // 直接复制初始化
+A a4 = a1; // 复制初始化
+A a5 = {a1}; // 复制列表初始化
+// 将对象作为函数的按值传递的输入参数进行复制
+void f(A a);
+// 将对象作为从函数返回的结果进行复制
+A f() { return A(3); } 
+
+```
+
+```cpp
+struct A {
+    A() {}
+    A(const A& obj) { cout << "copy"; }
+};
+void f(A a) {} // 按值传递
+A g1(A& a) { return a; }
+A g2() { return A(); }
+A a;
+A b = a; // 拷贝构造函数（赋值）"copy"
+A c(b); // 拷贝构造函数（直接）"copy"
+f(b); // 拷贝构造函数（参数）"copy"
+g1(a); // 拷贝构造函数（返回值）"copy"
+A d = g2(); // * 见 RVO 优化（高级概念 I）
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwODg3NjE2MSwyNzk4ODIxNDYsLTQ2MT
+eyJoaXN0b3J5IjpbMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MT
 QwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEy
 ODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMD
 gzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3
