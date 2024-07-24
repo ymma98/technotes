@@ -318,11 +318,20 @@ ArrayWrapper a(10);
 cout << a.array[4]; // 段错误
 ```
 
+### 列表初始化 (统一初始化, uniform initialization for object)
+
+统一初始化（C++11）
+统一初始化 `{}`，也称为列表初始化，是一种完全独立于数据类型的方式来初始化任何对象
+- 最小化冗余的类型名
+  - 在函数参数中
+  - 在函数返回中
+- 解决“最令人困惑的解析”问题
+  - 构造函数被解释为函数原型
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNT
-EyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5
-MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02ND
-ExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbMjAwODA0MDU4NSwtMTk4NDYzODkyNSwxNz
+Y4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0
+MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0MjY0NiwyMj
+U5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
 -->
