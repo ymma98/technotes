@@ -413,7 +413,7 @@ struct A {
 #### `explicit`
 
 
-关键字 `explicit` 指定一个构造函数或转换操作符（conversion operator, C++11）不允许从单一参数或花括号初始化器进行隐式转换或复制初始化。
+关键字 `explicit` 指定一个构造函数或转换操作符（conversion operator, C++11）不允许从单一参数或花括号初始化器进行隐式转换或复制初始化，用于防止构造函数或类型转换操作符进行不希望的隐式类型转换
 
 ```cpp
 struct MyString {
@@ -460,9 +460,9 @@ f(B{1}); // 正常
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MjgxNzIwOCwtNDYxNDA2NzI3LDE5Nj
-A3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNTEyNzU3
-MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOT
-k2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgz
-OSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbNzM3ODkyNTQ0LC00NjE0MDY3MjcsMTk2MD
+cwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcw
+NDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2ODkwLC05OT
+Y2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5
+LDk3NjQ0MTMxNl19
 -->
