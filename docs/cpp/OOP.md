@@ -28,24 +28,27 @@ object-oriented programming
 ### `struct`/`class` 的声明
 
 - 结构体声明与定义
-  - `struct A;` // 结构体声明
-  - ```c++
-    struct A { // 结构体定义
-      int x; // 数据成员
-      void f(); // 函数成员
-    };
-    ```
+```c++
+struct A; // 结构体声明  
+struct A { // 结构体定义
+  int x; // 数据成员
+  void f(); // 函数成员
+};
+```
+
 - 类声明与定义
   - `class A;` // 类声明
-  - ```c++
+```c++
     class A { // 类定义
       int x; // 数据成员
       void f(); // 函数成员
     };
-    ```
+```
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTIxNTQxNDEsOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbLTk2MDY4OTU4MCw5NzY0NDEzMTZdfQ==
 -->
