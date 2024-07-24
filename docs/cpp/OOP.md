@@ -198,11 +198,10 @@ b2.var1; // 正确，var1 在 B2 中为公有
 
 何时使用公有（public）数据成员：
 - 它们可能随时改变
-- 常量正确性对于值和引用是保持的，与指针相反。
-在这种情况下，应优先考虑数据成员而非成员函数
+- 常量正确性对于值和引用是保持的，与指针相反。在这种情况下，应优先考虑数据成员而非成员函数
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTA4MTA4NDQsMzA4MzI2ODkwLC05OT
-Y2MTI3NjEsMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5
-LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbOTI0MjA4NjMwLDMwODMyNjg5MCwtOTk2Nj
+EyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5
+NzY0NDEzMTZdfQ==
 -->
