@@ -799,18 +799,20 @@ cout << a2.get1(); // ok
 // cout << a2.get2(); // 编译错误 "a2" 是 const
 // a2.get1() = 5; // 编译错误 只有 "get1() const" 可用
 ```
+const 对象只能调用 const 成员函数，非 const 对象可以调用 const 成员函数和非 const 成员函数。
+
+### `mutable`
 
 
 
-\
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTgyNTA3NjU1LDk2NDE1NTExLC05NDM0MD
-g5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIz
-NywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OT
-g4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5
-MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNj
-UwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEyNzYxLDExNDg4NDI2
-NDZdfQ==
+eyJoaXN0b3J5IjpbMjAyMzI5NzIzMSw5NjQxNTUxMSwtOTQzND
+A4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAy
+MzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNz
+k4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4
+OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LD
+Y1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQy
+NjQ2XX0=
 -->
