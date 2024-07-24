@@ -172,8 +172,24 @@ B b;
 // b.var2; // 编译错误，var2 在 B 中为受保护
 b.var3; // 正确，var3 在 B 中为公有
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0OD
-g0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
 
+```cpp
+class A {
+public:
+    int var1; // 公有
+protected:
+    int var2; // 受保护
+};
+class B1 : A {}; // 私有继承
+class B2 : public A {}; // 公有继承
+B1 b1;
+// b1.var1; // 编译错误，var1 在 B1 中为私有
+// b1.var2; // 编译错误，var2 在 B1 中为私有
+B2 b2;
+b2.var1; // 正确，var1 在 B2 中为公有
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTUzNzA5MTY3LDMwODMyNjg5MCwtOTk2Nj
+EyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5
+NzY0NDEzMTZdfQ==
 -->
