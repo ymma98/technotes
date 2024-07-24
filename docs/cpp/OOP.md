@@ -52,6 +52,24 @@ struct A {
     cout << "f"; // 内联定义
   }
 };
+void A::g() { // 函数成员定义
+    cout << "g"; // 外部定义
+ }
+```
+
+```cpp
+struct B {
+  void g() { cout << "g"; } // 函数成员定义
+};
+struct A {
+  int x; // 数据成员
+  B b; // 数据成员，类型为结构体B
+  void f() { cout << "f"; } // 函数成员定义
+};
+A a; // 创建A类型的对象a
+a.x; // 访问数据成员x
+a.f(); // 调用成员函数f()
+a.b.g(); // 访问成员对象b的成员函数g()
 ```
 
 
@@ -59,5 +77,5 @@ struct A {
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA5NDE3ODkwLDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbLTY0MTE2ODM5LDk3NjQ0MTMxNl19
 -->
