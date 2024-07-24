@@ -158,8 +158,22 @@ a.value; // 正确
 | public <br> protected <br> private | $\rightarrow$ | protected | $\rightarrow$ | protected <br> protected |
 | public <br> protected <br> private | $\rightarrow$ | private | $\rightarrow$ | private <br> private |
 
-
+```cpp
+struct A {
+    int var1; // 公有
+protected:
+    int var2; // 受保护
+};
+struct B : protected A {
+    int var3; // 公有
+};
+B b;
+// b.var1; // 编译错误，var1 在 B 中为受保护
+// b.var2; // 编译错误，var2 在 B 中为受保护
+b.var3; // 正确，var3 在 B 中为公有
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNT
-k4MDQ3NSwtNjQxMTY4MzksOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0OD
+g0MjY0NiwyMjU5ODA0NzUsLTY0MTE2ODM5LDk3NjQ0MTMxNl19
+
 -->
