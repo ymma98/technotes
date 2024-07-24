@@ -127,7 +127,7 @@ A a1 = b; // 正确，也可以 A& a2 = b
 - protected：函数成员和派生类访问
 - private：仅限函数成员访问（内部）
 结构体默认为公有成员
-类默认为私有成员
+**类默认为私有成员，私有继承**
 
 ```c++
 struct A1 {
@@ -158,6 +158,7 @@ a.value; // 正确
 | public <br> protected <br> private | $\rightarrow$ | protected | $\rightarrow$ | protected <br> protected |
 | public <br> protected <br> private | $\rightarrow$ | private | $\rightarrow$ | private <br> private |
 
+* `
 ```cpp
 struct A {
     int var1; // 公有
@@ -173,6 +174,7 @@ B b;
 b.var3; // 正确，var3 在 B 中为公有
 ```
 
+* `class` 默认是私有继承
 ```cpp
 class A {
 public:
@@ -189,7 +191,7 @@ B2 b2;
 b2.var1; // 正确，var1 在 B2 中为公有
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNzA5MTY3LDMwODMyNjg5MCwtOTk2Nj
-EyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02NDExNjgzOSw5
-NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbMTA1NTkxODY3MCwzMDgzMjY4OTAsLTk5Nj
+YxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMTY4Mzks
+OTc2NDQxMzE2XX0=
 -->
