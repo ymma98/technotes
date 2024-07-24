@@ -804,15 +804,28 @@ const 对象只能调用 const 成员函数，非 const 对象可以调用 const
 ### `mutable`
 
 
+在 const 类实例中，`mutable` **数据成员**是可以修改的。它们应该是对象的物理状态的一部分，而不是逻辑状态的一部分。
+- 如果大部分成员应该是常量但有少数需要修改时，这非常有用。
+- 从概念上讲，mutable 成员不应改变任何可以从类接口检索到的内容。
+
+```cpp
+struct A {
+    int x = 3;
+    mutable int y = 5;
+};
+const A a;
+// a.x = 3; // 编译错误，因为 const
+a.y = 5; // 可以修改，因为 mutable
+```
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMzI5NzIzMSw5NjQxNTUxMSwtOTQzND
-A4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAy
-MzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNz
-k4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4
-OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LD
-Y1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQy
-NjQ2XX0=
+eyJoaXN0b3J5IjpbLTE3NjE2NTE1NjIsOTY0MTU1MTEsLTk0Mz
+QwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYw
+MjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMj
+c5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYz
+ODkyNSwxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNC
+w2NTA4NzI0MzAsMzA4MzI2ODkwLC05OTY2MTI3NjEsMTE0ODg0
+MjY0Nl19
 -->
