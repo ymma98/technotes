@@ -601,8 +601,8 @@ int main() {
 ## 默认构造函数，析构函数，operator
 
 
-C++11 允许编译器自动生成：
-- 默认/拷贝/移动构造函数
+在 C++11 中，`= default` 关键字的引入使得开发者能够明确要求编译器为类生成标准的特殊成员函数，如构造函数、析构函数和赋值操作符
+- 默认/拷贝/移动构造函数。
 ```cpp
 A() = default;
 A(const A&) = default;
@@ -632,11 +632,35 @@ auto operator<=>(const A&) const = default;
 
 -   任何用户提供的构造函数会禁用隐式生成的默认构造函数
 -   强制为类数据成员使用默认值
+
+
+
+### 详细解释
+
+在 C++11 中，`= default` 关键字的引入使得开发者能够明确要求编译器为类生成标准的特殊成员函数，如构造函数、析构函数和赋值操作符。这提供了几个优点：
+
+1. **简化代码**：
+   - 使用 `= default` 可以简化代码，避免手写那些本质上只需编译器自动完成的标准操作的函数。
+
+2. **控制成员可见性**：
+   - 可以通过在类定义中使用 `= default` 来更改特殊成员函数的可见性，例如，可以将移动构造函数设为 `protected`，以限制其使用。
+
+3. **保证行为的标准化**：
+   - 当你想确保类的行为遵循标准的语义，如默认构造或复制时，使用 `= default` 可以避免意外改变这些行为。
+
+4. **强制默认初始化**：
+   - 在某些情况下，如果定义了其他构造函数，编译器不会自动生成默认构造函数。使用 `= default` 可以确保即使在定义了其他构造函数后，类仍然有一个默认构造函数。
+
+5. **优化机会**：
+   - 默认的特殊成员函数通常是 `constexpr`，使得它们可能在编译时就被计算，从而提高效率。注意，虽然默认函数是 `constexpr`，但并非自动 `noexcept` 或 `explicit`，这些特性需要显式指定。
+
+通过使用 `= default`，开发者能够更有效地控制类的行为，并利用编译器的优化，同时清晰地表达出构造函数和析构函数的意图。这种方式也有助于维护代码的清晰度和易于管理。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwMzc0MDAzOSwtMzg0MTkwNjAsLTIwMj
-E3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0NiwtNDYxNDA2NzI3
-LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNT
-EyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5
-MCwtOTk2NjEyNzYxLDExNDg4NDI2NDYsMjI1OTgwNDc1LC02ND
-ExNjgzOSw5NzY0NDEzMTZdfQ==
+eyJoaXN0b3J5IjpbNzIwODUxMTcsLTM4NDE5MDYwLC0yMDIxNz
+kwMTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywx
+OTYwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMj
+c1NzA0NiwxNTYwMzM0NjI0LDY1MDg3MjQzMCwzMDgzMjY4OTAs
+LTk5NjYxMjc2MSwxMTQ4ODQyNjQ2LDIyNTk4MDQ3NSwtNjQxMT
+Y4MzksOTc2NDQxMzE2XX0=
 -->
