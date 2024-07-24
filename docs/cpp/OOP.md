@@ -84,16 +84,18 @@ a.b.g(); // 访问成员对象b的成员函数g()
   - 指创建一个新类，保留基类的特性，并在此基础上可以添加（而不能删除）自己的成员。
 
 - 语法
-  - ```c++
-    class DerivedClass : [<继承属性>] BaseClass {
+```c++
+    class DerivedClass : [<继承属性 (inheritance attribute)>] BaseClass {
     }
-    ```
+```
+
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyNzI4NjQ2MSwtNjQxMTY4MzksOTc2ND
-QxMzE2XX0=
+eyJoaXN0b3J5IjpbMjI1OTgwNDc1LC02NDExNjgzOSw5NzY0ND
+EzMTZdfQ==
 -->
