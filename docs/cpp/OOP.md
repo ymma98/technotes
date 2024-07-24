@@ -119,12 +119,42 @@ A a1 = b; // 正确，也可以 A& a2 = b
 // B b1 = a; // 编译错误，因为 A 类型不能隐式转换为 B 类型
 ```
 
+### 访问控制符 (access specifiers)
+
+访问说明符 1/2
+访问说明符定义了继承类成员的可见性。关键字 public、private 和 protected 指定了可见性区域。
+访问说明符的目的是为了防止直接访问类的内部表示，以避免错误使用和潜在的不一致性（访问控制）。
+- public：没有限制（函数成员、派生类、类外部）
+- protected：函数成员和派生类访问
+- private：仅限函数成员访问（内部）
+结构体默认为公有成员
+类默认为私有成员
+
+```c++
+struct A1 {
+    int value; // 公有（默认）
+protected:
+    void f1() {} // 受保护
+private:
+    void f2() {} // 私有
+};
+class A2 {
+    int data; // 私有（默认）
+};
+struct B : A1 {
+    void h1() { f1(); } // 正确，"f1" 在 B 中可见
+    // void h2() { f2(); } // 编译错误，"f2" 在 A1 中为私有
+};
+A1 a;
+a.value; // 正确
+// a.f1() // 编译错误，受保护
+// a.f2() // 编译错误，私有
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0ODg0MjY0NiwyMjU5ODA0NzUsLTY0MT
-E2ODM5LDk3NjQ0MTMxNl19
+eyJoaXN0b3J5IjpbNzg4MzkxMjYxLDExNDg4NDI2NDYsMjI1OT
+gwNDc1LC02NDExNjgzOSw5NzY0NDEzMTZdfQ==
 -->
