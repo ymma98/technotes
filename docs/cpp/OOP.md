@@ -853,12 +853,34 @@ B b;
 b.x = 3; // ok, "b.x" 现在是公开的
 ```
 
+### `friend`
+
+友元类
+友元类可以访问在其中被声明为友元的类的 private 和 protected 成员。
+友元关系的属性：
+- 不对称：如果类 A 是类 B 的友元，类 B 不自动成为类 A 的友元。
+- 不可传递：如果类 A 是类 B 的友元，类 B 是类 C 的友元，类 A 不自动成为类 C 的友元。
+- 不可继承：如果基类 Base 是类 X 的友元，派生类 Derived 不自动成为类 X 的友元；如果类 X 是基类 Base 的友元，类 X 也不自动成为派生类 Derived 的友元。
+
+```cpp
+class B; // 类声明
+class A {
+    friend class B;
+    int x; // 私有成员
+};
+class B {
+    int f(A a) { return a.x; } // 可行，B 是 A 的友元
+};
+class C : public B {
+    // int f(A a) { return a.x; } // 编译错误，友元关系不可继承
+};
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQzND
-A4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAy
-MzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNz
-k4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4
-OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LD
-Y1MDg3MjQzMCwzMDgzMjY4OTAsLTk5NjYxMjc2MSwxMTQ4ODQy
-NjQ2XX0=
+eyJoaXN0b3J5IjpbMTIzODg0MjYwMSwtNjE1MDgzNTE4LDk2ND
+E1NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4
+MywtMjAwMTg2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOT
+cyMDA5NTQzLDI3OTg4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1
+MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LD
+E1NjAzMzQ2MjQsNjUwODcyNDMwLDMwODMyNjg5MCwtOTk2NjEy
+NzYxXX0=
 -->
