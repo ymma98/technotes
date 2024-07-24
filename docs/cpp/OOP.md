@@ -15,6 +15,17 @@ object-oriented programming
 * 数据成员 (data member). 类中的数据被称为数据成员或类字段
 * 函数成员 (function member). 类中的函数被称为函数成员或方法
 
+### RAII: Resource Acquisition is Initialization
+
+- 资源的持有是类不变量，与对象生命周期紧密相关。这意味着一旦一个类的对象被创建，它就会持有某些资源（如文件句柄、数据库连接等），并且这些资源会一直被持有直到对象的生命周期结束。这是通过在类的构造函数中分配资源，并在析构函数中释放资源来实现的。
+- RAII（资源获取即初始化）习惯法包括三个步骤：
+  - 将资源封装进一个类（构造函数）
+  - 通过类的本地实例使用资源
+  - 当对象超出作用域时，资源会自动释放（析构函数）
+- 影响1：C++ 编程语言不需要垃圾收集器！由于RAII保证了资源的及时释放，C++程序通常不需要垃圾收集器来管理内存或其他资源的回收，这与依赖垃圾收集器的语言（如Java）不同。
+- 影响2：程序员有责任管理资源
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc2NDQxMzE2XX0=
+eyJoaXN0b3J5IjpbMTk4Nzc5MDIwMCw5NzY0NDEzMTZdfQ==
 -->
