@@ -909,8 +909,12 @@ A a;
 ## 多态 (polymorphism)
 
 在面向对象编程（OOP）中，多态性（polymorphism, 意为“具有多种形式”）是指对象能够根据具体的使用上下文改变其行为的能力。
-- 在运行时，基类的对象可以表现为派生类的对象。
-- 基类可能定义并实现多态方法，派生类可以覆盖这些方法，这意味着它们提供自己的实现，在运行时根据上下文调用。
+
+### 动态多态性: virtual function
+动态多态性通过虚函数（virtual function）实现，这使得子类可以重写（override）基类中的虚函数方法。在运行时，根据对象的实际类型（而非引用或指针的类型）来决定调用哪个方法。这种行为称为晚绑定（late binding）或运行时绑定（runtime binding）。
+
+- 使用 `virtual` 关键字声明基类的函数时，意味着派生类可以并且可能会改写这个方法。
+- 使用 `override` 关键字在派生类中声明方法时，强调这个方法是对基类虚函数的一个重写。
 
 ```cpp
 class Base {
@@ -929,15 +933,41 @@ int main() {
     delete b;
 }
 ```
+### 静态多态性: overloading
+
+重载 (`overloading`) 是静态多态（编译时多态）的一种形式 
+
+在 C++ 中，多态一词通常与动态多态（覆盖）紧密关联。
+
+```cpp
+void f(int a) {}
+void f(double b) {}
+f(3);   // 调用 f(int)
+f(3.3); // 调用 f(double)
+```
 
 
-重载 (`overloading`) 是静态多态（编译时多态）的一种形式 在 C++ 中，多态一词通常与动态多态（覆盖）紧密关联。
+
+
+
+
+
+#### 静态多态性（重载）
+
+静态多态性（也称为编译时多态性）通过函数重载实现。函数重载允许同一作用域内存在多个同名函数，只要它们的参数列表不同即可。编译器会根据调用时提供的参数类型决定调用哪个函数。
+
+- 编译器根据调用函数时提供的参数类型和数量在编译时解析应该调用哪个函数，这种绑定称为早绑定（early binding）。
+
+### 总结
+
+多态性是面向对象编程的核心特征之一，它增强了程序的灵活性和可扩展性。动态多态性让系统更容易应对功能的扩展和修改，而静态多态性（重载）则提高了代码的可用性和灵活性。理解并正确使用这些概念，可以使得你的 C++ 程序更加健壮和易于维护。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1NDQwNzA2NywxMjg5NzI2MjM4LDE5MD
-czMTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQzNDA4OTIy
-LC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAyMzcsLT
-M4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIx
-NDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LD
-E3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3
-MjQzMF19
+eyJoaXN0b3J5IjpbLTE4NzM0Nzc4NzEsMTI4OTcyNjIzOCwxOT
+A3MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODky
+MiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC
+0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgy
+MTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNS
+wxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4
+NzI0MzBdfQ==
 -->
