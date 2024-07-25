@@ -17,7 +17,21 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 
 现在设置为:
 ```bashrc
+:set number
+:set autoindent
+" :set tabstop=4
+" :set shiftwidth=4
+" :set smarttab
+" :set softtabstop=4
+" :set expandtab
+:set mouse=a
+:set clipboard+=unnamedplus
 
+autocmd FileType * setlocal tabstop=4 shiftwidth=4 expandtab softtabstop=4
+
+
+
+source $HOME/.config/nvim/vim-plug/plugins.vim
 ```
 
 
@@ -27,5 +41,5 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MjM1OTgxM119
+eyJoaXN0b3J5IjpbODM2MzA0MDIzXX0=
 -->
