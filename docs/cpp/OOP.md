@@ -959,14 +959,32 @@ f(3.3); // 调用 f(double)
   - 程序必须读取指针中保存的地址，然后跳转到那个地址（由于涉及额外的间接级别，效率较低）。
 - C++ 通过声明虚函数实现晚期绑定。
 
+虚函数和多态性
+在 C++ 中，当不使用虚函数时，函数调用在编译时就已确定其绑定关系，即使在继承结构中重写了函数。这称为早期绑定或静态绑定。
+
+```cpp
+struct A {
+    void f() { cout << "A"; }
+};
+struct B : A {
+    void f() { cout << "B"; }
+};
+void g(A& a) { a.f(); } // 接受 A 和 B
+void h(B& b) { b.f(); } // 仅接受 B
+A a;
+B b;
+g(a); // 输出 "A"
+g(b); // 输出 "A"，而不是 "B"！！！
+```
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5Nz
-I2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMSwt
-OTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMD
-E4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0
-MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOT
-g0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0
-NjI0XX0=
+eyJoaXN0b3J5IjpbLTExODk2MjE2MDMsMjQ0Njg5MDA3LDU5Mz
+IwODc1NCwxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUx
+OCw5NjQxNTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMz
+c1MTc1ODMsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkw
+MTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywxOT
+YwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1
+NzA0Nl19
 -->
