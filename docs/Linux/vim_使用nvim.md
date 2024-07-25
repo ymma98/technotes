@@ -7,9 +7,23 @@
 * `nvim`  所有有关的文件放在 `~/.config/nvim/` 中，有
 ```bash
 $ ls
-autoload  coc-settings.json  executable  init.vim  node  test  vim-plug
+autoload  coc-settings.json  init.vim  node  vim-plug
+```
+
+其中，`init.vim` 是 `nvim` 首先读取的文件:
+```bash
+
+```
+
+
+在 `coc-settings.json` 中对部分插件进行进一步的设置:
+```bash
+{
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+  "python.pythonPath": "/home/ymma/anaconda2/bin/python"
+}
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzMzA2NTM3MywtMTU5OTUwMjYxOV19
+eyJoaXN0b3J5IjpbLTM2MDEyNTcwMSwtMTU5OTUwMjYxOV19
 -->
