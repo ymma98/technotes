@@ -42,13 +42,9 @@ autocmd FileType * setlocal tabstop=4 shiftwidth=4 expandtab softtabstop=4
 source $HOME/.config/nvim/vim-plug/plugins.vim
 ```
 
-autocmd FileType * 这样的设置更有强制性。
-
-题外话：
-
-之前因为计算集群的网络难以稳定连接 github，导致在服务器上难以使用 `lvim`, 所以一直在服务器上使用的 `nvim`。我选择在 `nvim` 中使用 `vim-plug` 管理插件。下载插件时只用一个一个下载就可以减小服务器网络不稳定的影响，而不是像 `lvim` 那样一次性安装完所有的插件。
+autocmd FileType * setlocal 这样的设置更有强制性，强制应用到当前缓冲区。
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY2OTAyMTksLTkzMzYxNjMxOV19
+eyJoaXN0b3J5IjpbLTg4ODYxNzEyLC05MzM2MTYzMTldfQ==
 -->
