@@ -15,7 +15,7 @@
 source $HOME/.config/nvim/vim-plug/plugins.vim
 ```
 
-其中，`shiftwidth` 设置了自动缩进和反缩进的宽度
+其中，`shiftwidth` 设置了自动缩进和反缩进的宽度。`expandtab` 选项控制 Vim 如何处理 Tab 键。如果启用了 `expandtab`，每次你按下 Tab 键时，Vim 会插入空格而不是实际的 Tab 字符。`softtabstop` 控制在插入模式下，按下 Tab 键时实际插入的空格数，而不改变文件中的实际 Tab 字符。当 `softtabstop` 的值与 `tabstop` 和 `shiftwidth` 一致时，按下 Tab 键插入的空格数与缩进的宽度保持一致。
 
 现在设置为:
 ```bashrc
@@ -43,5 +43,5 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTMwMTEyNjZdfQ==
+eyJoaXN0b3J5IjpbMTY3MzEyMjgyNV19
 -->
