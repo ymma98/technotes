@@ -906,13 +906,35 @@ A a;
 ```
 
 
-## 多态 
+## 多态 (polymorphism)
+
+在面向对象编程（OOP）中，多态性（polymorphism, 意为“具有多种形式”）是指对象能够根据具体的使用上下文改变其行为的能力。
+- 在运行时，基类的对象可以表现为派生类的对象。
+- 基类可能定义并实现多态方法，派生类可以覆盖这些方法，这意味着它们提供自己的实现，在运行时根据上下文调用。
+
+```cpp
+class Base {
+public:
+    virtual void display() const { std::cout << "Base display"; }
+};
+
+class Derived : public Base {
+public:
+    void display() const override { std::cout << "Derived display"; }
+};
+
+int main() {
+    Base* b = new Derived();
+    b->display();  // 输出 "Derived display"
+    delete b;
+}
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02MT
-UwODM1MTgsOTY0MTU1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0
-MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMj
-AyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3
-MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNSwxNzY4MDUxMjgwLD
-E1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4NzI0MzAsMzA4MzI2
-ODkwXX0=
+eyJoaXN0b3J5IjpbLTY1NTUyMTU3NiwxMjg5NzI2MjM4LDE5MD
+czMTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQzNDA4OTIy
+LC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAyMzcsLT
+M4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIx
+NDYsLTQ2MTQwNjcyNywxOTYwNzA3NTEyLC0xOTg0NjM4OTI1LD
+E3NjgwNTEyODAsMTUxMjc1NzA0NiwxNTYwMzM0NjI0LDY1MDg3
+MjQzMF19
 -->
