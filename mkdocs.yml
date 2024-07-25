@@ -5,6 +5,8 @@ nav:
       - 快速搭建技术博客: 杂谈/快速搭建技术博客.md
   - Linux:
       - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
+      - vim_使用nvim: Linux/vim_使用nvim.md
+      - vim_强制tab对应4空格: Linux/vim_强制tab对应4空格.md
   - cpp:
      - 基本概念_基础类型_操作符: cpp/基本概念_基础类型_操作符.md
      - 基本概念_enum_struct_控制流: cpp/基本概念_enum_struct_控制流.md
