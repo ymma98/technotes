@@ -928,9 +928,12 @@ int main() {
     b->display();  // 输出 "Derived display"
     delete b;
 }
+```
 
+
+重载 (`overloading`) 是静态多态（编译时多态）的一种形式 在 C++ 中，多态一词通常与动态多态（覆盖）紧密关联。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NTUyMTU3NiwxMjg5NzI2MjM4LDE5MD
+eyJoaXN0b3J5IjpbMTk1NDQwNzA2NywxMjg5NzI2MjM4LDE5MD
 czMTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQzNDA4OTIy
 LC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAyMzcsLT
 M4NDE5MDYwLC0yMDIxNzkwMTMsMTk3MjAwOTU0MywyNzk4ODIx
