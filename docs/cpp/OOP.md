@@ -1036,12 +1036,17 @@ get_object(false)->f(); // 输出 "B"
 ```
 
 
+虚拟表（vtable）是一个用于解析函数调用并支持动态派发（晚期绑定）的函数查找表。
+虚拟表包含了可以由类的对象调用的每个虚函数的一个条目。这个表中的每个条目简单地是一个函数指针，指向该类可访问的最派生函数。
+编译器为基类添加了一个隐藏的指针，该指针指向该类的虚拟表（sizeof 计算时考虑了 vtable 指针）。
+
+![输入图片说明](./imgs/2024-07/vzsKiBfyr2SvyW5p.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyOTMxNDc0MiwtMjEwMzk0NjA4NCwyND
-Q2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNjIz
-NywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0MDg5MjIsLTE2NT
-Y1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIzNywtMzg0MTkw
-NjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0NiwtND
-YxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1
-MTI4MF19
+eyJoaXN0b3J5IjpbLTE5NTQ3NzY2MjksLTQyOTMxNDc0MiwtMj
+EwMzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYy
+MzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05ND
+M0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2
+MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLD
+I3OTg4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2
+Mzg5MjVdfQ==
 -->
