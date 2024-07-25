@@ -1062,19 +1062,23 @@ struct B : A {
 // f(3.3f) 在 A 和 B 之间的行为不同
 ```
 
-当通过基类的指针或引用调用虚函数时，确实通常会执行最派生类中的函数版本，这是因为 C++ 的多态性和虚函数的动态绑定机制。然而，还有一些特殊情况和细节需要注意：
+当通过基类的指针或引用调用虚函数时，通常**会执行最派生类中的函数版本**，这是因为 C++ 的多态性和虚函数的动态绑定机制。然而，还有一些特殊情况和细节需要注意：
 
 1.  **最派生类的实现**：如果派生类中提供了虚函数的具体实现（即覆盖了基类中的虚函数），则实际运行时，无论何时通过基类的指针或引用调用该函数，都会执行派生类中的版本。
     
 2.  **基类调用**：尽管通常情况下会调用最派生类的实现，但派生类内部可以通过特定的语法显式调用基类的虚函数。例如，派生类可以在其覆盖的虚函数中使用 `Base::functionName()` 语法来调用基类版本的虚函数。
     
 3.  **未覆盖的虚函数**：如果派生类没有覆盖基类中的某个虚函数，那么通过派生类的对象调用该虚函数时，将执行基类中的实现。
+
+### `final`
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyOTEwODg5LC0xMjc0ODMwODk3LDExOT
-g1MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEwMzk0
-NjA4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMT
-kwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0MDg5
-MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIzNy
-wtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4
-MjE0Nl19
+eyJoaXN0b3J5IjpbLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMT
+E5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAz
+OTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOC
+wxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQw
+ODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMj
+M3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5
+ODgyMTQ2XX0=
 -->
