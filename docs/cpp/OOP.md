@@ -1045,7 +1045,8 @@ get_object(false)->f(); // 输出 "B"
 
 ### `override`
 
-`override` 关键字用来确保一个函数是虚拟的，并且重写了基类中的一个虚函数。它迫使编译器检查基类以确定是否存在具有完全相同签名的虚函数。
+`override` 关键字用来确保一个函数是虚拟的，并且重写了基类中的一个虚函数。它迫使编译器检查基类以确定是否存在具有完全相同签名的虚函数。 `override` 关键字确保声明的函数确实是重写基类中已有的虚函数。如果没有在基类中找到一个完全匹配的虚函数签名来重写，则会出现编译错误。这里的关键是函数签名必须完全相同，包括函数的参数类型、数量、const 修饰符等。
+
 使用 `override` 关键字时，可以省略 `virtual` 关键字，因为 `override` 已经隐含了虚函数的性质。
 
 ```cpp
@@ -1061,11 +1062,11 @@ struct B : A {
 // f(3.3f) 在 A 和 B 之间的行为不同
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtND
-I5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3
-NTQsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOT
-Y0MTU1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3
-NTgzLC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLD
-E5NzIwMDk1NDMsMjc5ODgyMTQ2LC00NjE0MDY3MjcsMTk2MDcw
-NzUxMl19
+eyJoaXN0b3J5IjpbLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMT
+k1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4
+OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC
+02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODkyMiwtMTY1NjU5
+MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0zODQxOTA2MC
+wtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgyMTQ2LC00NjE0
+MDY3MjddfQ==
 -->
