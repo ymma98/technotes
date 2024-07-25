@@ -6,9 +6,10 @@
 
 * `nvim`  所有有关的文件放在 `~/.config/nvim/` 中，有
 ```bash
-
+$ ls
+autoload  coc-settings.json  executable  init.vim  node  test  vim-plug
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTk1MDI2MTldfQ==
+eyJoaXN0b3J5IjpbMTMzMzA2NTM3MywtMTU5OTUwMjYxOV19
 -->
