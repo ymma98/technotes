@@ -937,6 +937,10 @@ int main() {
 
 重载 (`overloading`) 是静态多态（编译时多态）的一种形式 
 
+静态多态性（也称为编译时多态性）通过函数重载实现。函数重载允许同一作用域内存在多个同名函数，只要它们的参数列表不同即可。编译器会根据调用时提供的参数类型决定调用哪个函数。
+
+- 编译器根据调用函数时提供的参数类型和数量在编译时解析应该调用哪个函数，这种绑定称为早绑定（early binding）。
+
 在 C++ 中，多态一词通常与动态多态（覆盖）紧密关联。
 
 ```cpp
@@ -950,24 +954,12 @@ f(3.3); // 调用 f(double)
 
 
 
-
-
-#### 静态多态性（重载）
-
-静态多态性（也称为编译时多态性）通过函数重载实现。函数重载允许同一作用域内存在多个同名函数，只要它们的参数列表不同即可。编译器会根据调用时提供的参数类型决定调用哪个函数。
-
-- 编译器根据调用函数时提供的参数类型和数量在编译时解析应该调用哪个函数，这种绑定称为早绑定（early binding）。
-
-### 总结
-
-多态性是面向对象编程的核心特征之一，它增强了程序的灵活性和可扩展性。动态多态性让系统更容易应对功能的扩展和修改，而静态多态性（重载）则提高了代码的可用性和灵活性。理解并正确使用这些概念，可以使得你的 C++ 程序更加健壮和易于维护。
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzM0Nzc4NzEsMTI4OTcyNjIzOCwxOT
-A3MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODky
-MiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC
-0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5ODgy
-MTQ2LC00NjE0MDY3MjcsMTk2MDcwNzUxMiwtMTk4NDYzODkyNS
-wxNzY4MDUxMjgwLDE1MTI3NTcwNDYsMTU2MDMzNDYyNCw2NTA4
-NzI0MzBdfQ==
+eyJoaXN0b3J5IjpbNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNz
+MxNjIzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0MDg5MjIs
+LTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIzNywtMz
+g0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0
+NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMT
+c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
+NDMwXX0=
 -->
