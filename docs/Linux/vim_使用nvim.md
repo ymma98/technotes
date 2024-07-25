@@ -22,7 +22,7 @@ autocmd FileType * setlocal tabstop=4 shiftwidth=4 expandtab softtabstop=4
 
 source $HOME/.config/nvim/vim-plug/plugins.vim
 ```
-在 `init.vim` 中，设置在 `vim-plug/plugins.vim` 中配置插件, 插件会被下载到 ``:
+在 `init.vim` 中，设置在 `vim-plug/plugins.vim` 中配置插件, 插件会被下载到 `autoload/plugged` 中:
 ```bash
 " auto-install vim-plug
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -92,6 +92,6 @@ set splitright
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5Mjc0MTkwOCwtMzYwMTI1NzAxLC0xNT
-k5NTAyNjE5XX0=
+eyJoaXN0b3J5IjpbLTc5MzgwNTQ5LC0zNjAxMjU3MDEsLTE1OT
+k1MDI2MTldfQ==
 -->
