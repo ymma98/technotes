@@ -12,7 +12,16 @@ autoload  coc-settings.json  init.vim  node  vim-plug
 
 其中，`init.vim` 是 `nvim` 首先读取的文件:
 ```bash
+:set number
+:set autoindent
+:set mouse=a
+:set clipboard+=unnamedplus
 
+autocmd FileType * setlocal tabstop=4 shiftwidth=4 expandtab softtabstop=4
+
+
+
+source $HOME/.config/nvim/vim-plug/plugins.vim
 ```
 
 
@@ -25,5 +34,6 @@ autoload  coc-settings.json  init.vim  node  vim-plug
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2MDEyNTcwMSwtMTU5OTUwMjYxOV19
+eyJoaXN0b3J5IjpbMzQ1NDkxOTk5LC0zNjAxMjU3MDEsLTE1OT
+k1MDI2MTldfQ==
 -->
