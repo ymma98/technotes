@@ -952,14 +952,21 @@ f(3.3); // 调用 f(double)
 
 
 
+函数绑定 (function binding) 是将函数调用连接到函数体的过程。
+- 在早期绑定或静态绑定或编译时绑定中，编译器在编译时确定对象的类型：
+  - 程序可以直接跳转到函数地址。
+- 在晚期绑定或动态绑定或运行时绑定中，运行时在执行时确定对象的类型，然后将函数调用与正确的函数定义匹配：
+  - 程序必须读取指针中保存的地址，然后跳转到那个地址（由于涉及额外的间接级别，效率较低）。
+- C++ 通过声明虚函数实现晚期绑定。
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNz
-MxNjIzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0MDg5MjIs
-LTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIzNywtMz
-g0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0
-NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMT
-c2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2MjQsNjUwODcy
-NDMwXX0=
+eyJoaXN0b3J5IjpbNjUyNDc1MTUsNTkzMjA4NzU0LDEyODk3Mj
+YyMzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05
+NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4MywtMjAwMT
+g2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcyMDA5NTQz
+LDI3OTg4MjE0NiwtNDYxNDA2NzI3LDE5NjA3MDc1MTIsLTE5OD
+Q2Mzg5MjUsMTc2ODA1MTI4MCwxNTEyNzU3MDQ2LDE1NjAzMzQ2
+MjRdfQ==
 -->
