@@ -15,6 +15,8 @@
 source $HOME/.config/nvim/vim-plug/plugins.vim
 ```
 
+其中，`shiftwidth` 设置了自动缩进和反缩进的宽度
+
 现在设置为:
 ```bashrc
 :set number
@@ -41,5 +43,5 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM2MzA0MDIzXX0=
+eyJoaXN0b3J5IjpbLTE0MTMwMTEyNjZdfQ==
 -->
