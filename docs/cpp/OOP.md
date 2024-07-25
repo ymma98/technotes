@@ -995,12 +995,38 @@ g(b); // 现在，输出 "B"！！！
 
 
 
+在 C++ 中，虚函数允许基于对象的实际类型来调用相应的方法，这是通过虚函数表（通常称为 vtable）来实现的。当通过引用或指针调用虚函数时，将使用动态绑定来决定应调用哪个方法。然而，如果通过值调用，将使用静态绑定，即调用基类的方法。
+
+### 示例分析
+```cpp
+struct A {
+    virtual void f() { cout << "A"; }
+};
+struct B : A {
+    void f() { cout << "B"; }
+};
+
+// 使用引用调用虚函数
+void f(A& a) { a.f(); } // 输出 "B"，动态绑定
+
+// 使用指针调用虚函数
+void g(A* a) { a->f(); } // 输出 "B"，动态绑定
+
+// 通过值调用虚函数
+void h(A a) { a.f(); } // 输出 "A"，静态绑定
+B b;
+f(b); // 输出 "B"
+g(&b); // 输出 "B"
+h(b); // 输出 "A"（对象被切片为 A 类型）
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5Mz
-IwODc1NCwxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUx
-OCw5NjQxNTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMz
-c1MTc1ODMsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkw
-MTMsMTk3MjAwOTU0MywyNzk4ODIxNDYsLTQ2MTQwNjcyNywxOT
-YwNzA3NTEyLC0xOTg0NjM4OTI1LDE3NjgwNTEyODAsMTUxMjc1
-NzA0Nl19
+eyJoaXN0b3J5IjpbMTExMDU1NDk4NCwtMjEwMzk0NjA4NCwyND
+Q2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNjIz
+NywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0MDg5MjIsLTE2NT
+Y1OTAyNDAsLTIzNzUxNzU4MywtMjAwMTg2MDIzNywtMzg0MTkw
+NjAsLTIwMjE3OTAxMywxOTcyMDA5NTQzLDI3OTg4MjE0NiwtND
+YxNDA2NzI3LDE5NjA3MDc1MTIsLTE5ODQ2Mzg5MjUsMTc2ODA1
+MTI4MF19
 -->
