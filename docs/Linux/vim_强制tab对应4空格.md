@@ -21,6 +21,8 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 
 `softtabstop` 控制在插入模式下，按下 Tab 键时实际插入的空格数，而不改变文件中的实际 Tab 字符。当 `softtabstop` 的值与 `tabstop` 和 `shiftwidth` 一致时，按下 Tab 键插入的空格数与缩进的宽度保持一致。
 
+但是，之前的设置，在打开个别文件时，依然有一个 tab 对应 2 空格的情况，不知道为什么。
+
 现在设置为:
 ```bashrc
 :set number
@@ -40,6 +42,7 @@ autocmd FileType * setlocal tabstop=4 shiftwidth=4 expandtab softtabstop=4
 source $HOME/.config/nvim/vim-plug/plugins.vim
 ```
 
+autocmd FileType * 这样的设置更有强制性。
 
 题外话：
 
@@ -47,5 +50,5 @@ source $HOME/.config/nvim/vim-plug/plugins.vim
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzMzYxNjMxOV19
+eyJoaXN0b3J5IjpbODY2OTAyMTksLTkzMzYxNjMxOV19
 -->
