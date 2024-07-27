@@ -1419,6 +1419,11 @@ Point c = a + b; // 通过重载的 + 运算符计算 a 和 b 的和
 | Memory | new new[] delete delete[] |
 | Comma | , |
 
+### 比较运算符
+
+```cpp
+
+```
 
 
 * C++ 转换运算符 `operator T()`
@@ -1441,13 +1446,25 @@ MyBool my_bool{3};
 bool b = my_bool; // b = false，调用 operator bool()
 ```
 
+```cpp
+struct A {
+    operator float() { return 3.0f; }
+    operator int() { return 2; }
+};
 
+auto f() {
+    return A{};
+}
+float x = f(); // 使用转换到 float 的运算符
+int y = f();   // 使用转换到 int 的运算符
+std::cout << x << " " << y; // x=3.0f, y=2
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTM1MzMxNzUsNTIxMTY2MDE2LC0yMT
-MzNTAyODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5MTYsNDI5Njc0
-ODgwLC0xODM2MzI0OTI4LC0xMjc0ODMwODk3LDExOTg1MDU1Nj
-csLTE5NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEwMzk0NjA4NCwy
-NDQ2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNj
-IzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0MDg5MjIsLTE2
-NTY1OTAyNDBdfQ==
+eyJoaXN0b3J5IjpbMTk4NDY5MjY5Niw1MjExNjYwMTYsLTIxMz
+M1MDI4NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4
+ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2Ny
+wtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0
+NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2Mj
+M3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODkyMiwtMTY1
+NjU5MDI0MF19
 -->
