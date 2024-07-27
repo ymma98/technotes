@@ -1562,8 +1562,47 @@ struct A {
 };
 ```
 
+
+
+### 赋值运算符 `operator=`
+
+赋值运算符 `operator=` 用于将一个对象的值复制到另一个已经存在的对象中。
+
+
+```cpp
+#include <algorithm> // 引入 std::fill 和 std::copy
+
+struct Array {
+    char* array;
+    int size;
+
+    // 构造函数
+    Array(int size1, char value) : size{size1} {
+        array = new char[size];
+        std::fill(array, array + size, value);
+    }
+
+    // 析构函数
+    ~Array() { delete[] array; }
+
+    // 赋值运算符重载
+    Array& operator=(const Array& x) {
+        if (this == &x) // 检查自赋值
+            return *this;
+        delete[] array; // 释放原有资源
+        size = x.size;  // 重新初始化资源
+        array = new char[x.size];
+        std::copy(x.array, x.array + size, array); // 深拷贝
+        return *this;
+    }
+};
+
+Array a{5, 'o'}; // 初始化 ["ooooo"]
+Array b{3, 'b'}; // 初始化 ["bbb"]
+a = b; // 将 b 赋值给 a，a 变为 ["bbb"]
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2NDMyNDAyNywxNzMyOTE2MTQzLDE1ND
+eyJoaXN0b3J5IjpbMTk1NDk3OTc5MCwxNzMyOTE2MTQzLDE1ND
 IxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMzM1MDI4
 NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4ODAsLT
 E4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1
