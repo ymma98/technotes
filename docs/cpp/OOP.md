@@ -1165,8 +1165,32 @@ A& ab = b;
 ab.f(); // 输出 "B::5"，因为 ab 被视为 A 类型，使用 A 中的默认参数
 ab.g(); // 输出 "B::5"，虽然 g 在 B 中被覆盖，但 A 中的默认参数仍然被使用
 ```
+
+默认参数的值是在编译时静态绑定的，即它们与函数调用的静态类型（声明的类型）相关联，而不是对象的动态类型（运行时类型）。
+
+
+### 纯虚函数 (pure virtual method)
+
+
+纯虚函数是一种必须在派生类中实现的函数（具体实现）。纯虚函数可以有也可以没有函数体。
+
+### 示例代码和解释
+```cpp
+struct A {
+    virtual void f() = 0; // 纯虚函数，没有函数体
+    virtual void g() = 0; // 纯虚函数，可以有函数体
+};
+void A::g() {} // 为 g 提供纯虚函数的实现（函数体）
+
+struct B : A {
+    void f() override {} // 必须实现
+    void g() override {} // 必须实现
+};
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxODI5NTcxNiwtMTgzNjMyNDkyOCwtMT
+eyJoaXN0b3J5IjpbMTA5NzQxNTg1NywtMTgzNjMyNDkyOCwtMT
 I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
 MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
 wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
