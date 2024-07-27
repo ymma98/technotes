@@ -1666,12 +1666,36 @@ std::cout << y; // 输出 9
 int z = x ^ 2 + 2; // 注意优先级，先执行 x ^ 2，然后加 2，结果是 11 不是 81
 std::cout << z; // 输出 11
 ```
+
+
+### 二元运算符 `==`
+
+二元运算符应实现为友元方法，以确保对所有参与类型的平等访问。
+
+```cpp
+struct A {}; struct C {};
+
+struct B : A {
+    bool operator==(const A& x) { return true; }
+};
+
+struct D : C {
+    // 声明为友元，使得可以访问私有和保护成员
+    friend bool operator==(const C& x, const C& y) { return true; }
+};
+
+A a; B b; C c; D d;
+b == a; // 正常工作
+// a == b; // 编译错误，因为 A 类型没有定义 == 运算符
+c == d; // 正常工作，使用 friend 函数
+d == c; // 正常工作，使用 friend 函数
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDExNjQwODk3LC05Mzk1OTMyMTMsMTczMj
-kxNjE0MywxNTQyMTU1MTU2LDE3NDU5NzE3MjMsNTIxMTY2MDE2
-LC0yMTMzNTAyODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5MTYsND
-I5Njc0ODgwLC0xODM2MzI0OTI4LC0xMjc0ODMwODk3LDExOTg1
-MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEwMzk0Nj
-A4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkw
-NzMxNjIzN119
+eyJoaXN0b3J5IjpbMjEyOTg0NDIzMywtOTM5NTkzMjEzLDE3Mz
+I5MTYxNDMsMTU0MjE1NTE1NiwxNzQ1OTcxNzIzLDUyMTE2NjAx
+NiwtMjEzMzUwMjg2OSwtMTU5MzY1NTE0MCwtNDQ5MjU4OTE2LD
+QyOTY3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgzMDg5NywxMTk4
+NTA1NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3NDIsLTIxMDM5ND
+YwODQsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5NzI2MjM4LDE5
+MDczMTYyMzddfQ==
 -->
