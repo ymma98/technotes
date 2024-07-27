@@ -1132,7 +1132,6 @@ struct A {
 
 在构造函数中调用虚拟方法是不安全的，因为派生类在构造函数完成前还没有完全准备好。在析构函数中调用虚拟方法也是不安全的，因为派生类在进入基类析构函数之前已经被销毁。
 
-
 ```cpp
 struct A {
     A() { f(); } // 在此调用虚拟方法，实际调用的是 A::f()，因为 B 还没准备好
@@ -1145,11 +1144,11 @@ struct B : A {
 B b; // 调用 B()，输出 "Explosion"，而不是 "Safe"!!
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3OTU2NDMzLC0xODM2MzI0OTI4LC0xMj
-c0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMx
-NDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LD
-EyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1
-NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4My
-wtMjAwMTg2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcy
-MDA5NTQzXX0=
+eyJoaXN0b3J5IjpbMTA4OTM5ODE3OSwtMTgzNjMyNDkyOCwtMT
+I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
+MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
+wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
+NTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1OD
+MsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3
+MjAwOTU0M119
 -->
