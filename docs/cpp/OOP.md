@@ -1691,51 +1691,8 @@ c == d; // 正常工作，使用 friend 函数
 d == c; // 正常工作，使用 friend 函数
 ```
 
-
-
-
-## 对象内存布局 (object layout)
-
-在 C++ 中，对象的内存布局（layout）指的是对象如何在内存中排列。C++ 定义了四种类型的布局：聚合（aggregate）、可平凡复制（trivially copyable）、标准布局（standard layout）、以及纯旧数据（plain-old data, POD）。了解这些布局对于理解 C++ 对象如何与纯 C API 交互以及优化目的（例如，通过寄存器传递、使用 `memcpy` 和序列化）非常重要。
-
-## 聚合体（Aggregate）
-
-聚合体是一种可以通过大括号语法 `{}` 进行聚合初始化的数组、结构体或类。
-- 没有用户提供的构造函数
-- 没有私有/受保护的非静态数据成员和基类
-- 没有虚函数
-- 直到 C++17，没有基类
-- 直到 C++14，非静态数据成员不能有大括号或等号初始化器
-- 对基类和非静态数据成员递归应用这些规则
-- 无限制：
-  - 直到 C++14，非静态未初始化的数据和函数成员
-  - 静态数据和函数成员
-
-### 示例代码
-
-```cpp
-struct Aggregate {
-    int x; // ok，公共成员
-    int y[3]; // ok，数组也可以
-    int z {3}; // C++14 开始支持
-    Aggregate() = default; // ok，使用默认构造函数
-    Aggregate& operator=(const Aggregate&); // ok，函数
-private:
-    void f() {} // ok，私有函数
-};
-
-struct NotAggregate1 {
-    NotAggregate1(); // !! 用户提供的构造函数
-    virtual void f(); // !! 虚函数
-};
-
-class NotAggregate2 : NotAggregate1 { // !! 基类不是聚合体
-    int x; // !! x 是私有的
-    NotAggregate1 y; // !! y 不是聚合体（递归属性）
-};
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk4ODQxOTMxLC05Mzk1OTMyMTMsMTczMj
+eyJoaXN0b3J5IjpbMTE0NDkzNDMxLC05Mzk1OTMyMTMsMTczMj
 kxNjE0MywxNTQyMTU1MTU2LDE3NDU5NzE3MjMsNTIxMTY2MDE2
 LC0yMTMzNTAyODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5MTYsND
 I5Njc0ODgwLC0xODM2MzI0OTI4LC0xMjc0ODMwODk3LDExOTg1
