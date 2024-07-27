@@ -1527,8 +1527,11 @@ float x = f(); // 使用转换到 float 的运算符
 int y = f();   // 使用转换到 int 的运算符
 std::cout << x << " " << y; // x=3.0f, y=2
 ```
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNTk4ODU4MSwxNTQyMTU1MTU2LDE3ND
+eyJoaXN0b3J5IjpbMTczMjkxNjE0MywxNTQyMTU1MTU2LDE3ND
 U5NzE3MjMsNTIxMTY2MDE2LC0yMTMzNTAyODY5LC0xNTkzNjU1
 MTQwLC00NDkyNTg5MTYsNDI5Njc0ODgwLC0xODM2MzI0OTI4LC
 0xMjc0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQy
