@@ -1092,12 +1092,37 @@ struct C final { // 标记为 "final"，不可被继承
 // struct D : C { // 编译错误：因为 C 已标记为 "final"，不能被继承
 // };
 ```
+
+
+
+在 C++ 中，如果一个类有至少一个虚函数，它应该声明一个虚析构函数 (virtual destructor)。这是为了确保通过基类指针删除派生类对象时，能够正确调用派生类的析构函数，避免资源泄露。
+
+
+```cpp
+struct A {
+    ~A() { cout << "A"; } // 问题在这里（没有声明为虚）
+    virtual void f(int a) {}
+};
+struct B : A {
+    int* array;
+    B() { array = new int[1000000]; } // 分配大量内存
+    ~B() { delete[] array; } // 释放内存
+};
+
+// ---------------------------------------------------------------------
+void destroy(A* a) {
+    delete a; // 调用 ~A()
+}
+B* b = new B;
+destroy(b); // 没有虚析构函数，~B() 不会被调用
+// destroy() 只打印 "A" -> 导致巨大内存泄露
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxOTMyMzQ0MSwtMTgzNjMyNDkyOCwtMT
-I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
-MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
-wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
-NTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1OD
-MsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3
-MjAwOTU0M119
+eyJoaXN0b3J5IjpbMTYzODU3NTIsLTE4MzYzMjQ5MjgsLTEyNz
+Q4MzA4OTcsMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0
+NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMT
+I4OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1
+MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC
+0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIw
+MDk1NDNdfQ==
 -->
