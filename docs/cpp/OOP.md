@@ -1444,6 +1444,31 @@ std::sort(array, array + 4); // 使用重载的 < 运算符对数组进行排序
 ```
 
 
+### 下标运算符 `operator[]`
+
+数组下标运算符 `operator[]` 允许以类似数组的方式访问对象。该运算符接受的参数不仅限于整数。
+
+
+
+
+```cpp
+struct A {
+    char permutation[] {'c', 'b', 'd', 'a', 'h', 'y'};
+
+    // 读写版本的下标运算符
+    char& operator[](char c) { // 返回引用，允许修改
+        return permutation[c - 'a'];
+    }
+
+    // 只读版本的下标运算符
+    char operator[](char c) const { // 返回值，只用于读取
+        return permutation[c - 'a'];
+    }
+};
+
+A a;
+a['d'] = 't'; // 修改索引 'd' 对应的元素为 't'
+```
 
 
 
@@ -1482,11 +1507,11 @@ int y = f();   // 使用转换到 int 的运算符
 std::cout << x << " " << y; // x=3.0f, y=2
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMz
-M1MDI4NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4
-ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2Ny
-wtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0
-NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2Mj
-M3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODkyMiwtMTY1
-NjU5MDI0MF19
+eyJoaXN0b3J5IjpbNjQ3NTQ3NzYwLDE3NDU5NzE3MjMsNTIxMT
+Y2MDE2LC0yMTMzNTAyODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5
+MTYsNDI5Njc0ODgwLC0xODM2MzI0OTI4LC0xMjc0ODMwODk3LD
+ExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEw
+Mzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMz
+gsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0
+MDg5MjJdfQ==
 -->
