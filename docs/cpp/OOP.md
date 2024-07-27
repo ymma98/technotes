@@ -1265,12 +1265,32 @@ static_cast<B&>(a).f(); // 输出 "A"，错误的下转型，但可能不抛出�
 cout << b.var; // 输出 3，无需转型
 cout << static_cast<B&>(a).var; // 可能导致段错误，错误的下转型
 ```
+* 示例 2：侧转型（Cross-cast）
+```cpp
+struct A {
+    virtual void f() { cout << "A"; }
+};
+struct B1 : A {
+    void f() override { cout << "B1"; }
+};
+struct B2 : A {
+    void f() override { cout << "B2"; }
+};
+B1 b1;
+B2 b2;
+dynamic_cast<B2&>(b1).f(); // 侧转型，抛出 std::bad_cast 异常
+dynamic_cast<B1&>(b2).f(); // 侧转型，抛出 std::bad_cast 异常
+// static_cast<B1&>(b2).f(); // 编译错误
+```
+
+-   侧转型需要使用 `dynamic_cast`，这允许在运行时检查转换是否合法。如果不合法，则抛出异常。
+-   侧转型试图在同一层级的不同派生类之间进行转换，通常没有合法的用途且容易导致错误。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2NDg4NjU4OCwtMTgzNjMyNDkyOCwtMT
-I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
-MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
-wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
-NTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1OD
-MsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3
-MjAwOTU0M119
+eyJoaXN0b3J5IjpbNDI5Njc0ODgwLC0xODM2MzI0OTI4LC0xMj
+c0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMx
+NDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LD
+EyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1
+NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4My
+wtMjAwMTg2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcy
+MDA5NTQzXX0=
 -->
