@@ -1206,7 +1206,7 @@ B2 b2; // 可以实例化
 -   **接口** (interface)：如果一个**类仅包含纯虚函数**，并且建议（可选）有一个虚析构函数，这样的类称为接口。接口不包含实现或数据。
 -   **抽象类**：如果一个**类至少有一个纯虚函数**，则该类为抽象类。
 
-```cp
+```cpp
 struct A { // 接口
     virtual ~A(); // 建议实现虚析构函数
     virtual void f() = 0;
@@ -1217,15 +1217,15 @@ struct B { // 抽象类
 protected:
     int x; // 附加数据
 };
-
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNjk2MzcxNSwtMTgzNjMyNDkyOCwtMT
-I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
-MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
-wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
-NTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1OD
-MsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3
-MjAwOTU0M119
+eyJoaXN0b3J5IjpbLTE2NjQzMTUzNzUsLTE4MzYzMjQ5MjgsLT
+EyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5
+MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NT
+QsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0
+MTU1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NT
+gzLC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5
+NzIwMDk1NDNdfQ==
 -->
