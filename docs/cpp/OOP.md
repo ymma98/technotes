@@ -1421,12 +1421,34 @@ Point c = a + b; // 通过重载的 + 运算符计算 a 和 b 的和
 
 ### 比较运算符
 
-```cpp
 
+关系和比较运算符 `operator<`, `<=`, `==`, `>=`, `>` 用于比较两个对象。特别是，`operator<` 用于确定一组对象的顺序（例如，用于排序）。
+
+
+
+```cpp
+#include <algorithm>
+
+struct A {
+    int x;
+
+    // 重载小于运算符，比较 x 的平方值
+    bool operator<(A a) const {
+        return x * x < a.x * a.x;
+    }
+};
+
+A array[] = {5, -1, 4, -7};
+std::sort(array, array + 4); // 使用重载的 < 运算符对数组进行排序
+// 数组排序后: {-1, 4, 5, -7}
 ```
 
 
-* C++ 转换运算符 `operator T()`
+
+
+
+
+### 转换运算符 `operator T()`
 
 转换运算符 `operator T()` 允许对象被隐式或显式（通过类型转换）转换为另一种类型。
 
@@ -1460,7 +1482,7 @@ int y = f();   // 使用转换到 int 的运算符
 std::cout << x << " " << y; // x=3.0f, y=2
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4NDY5MjY5Niw1MjExNjYwMTYsLTIxMz
+eyJoaXN0b3J5IjpbMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMz
 M1MDI4NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4
 ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2Ny
 wtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0
