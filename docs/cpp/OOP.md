@@ -1548,7 +1548,7 @@ struct A {
     }
 
     // 后缀增量运算符
-    A operator++(int) { // 后缀表示法 (var++):
+    A operator++(int a) { // 后缀表示法 (var++):
         A tmp = *this; // 返回对象的旧副本，通过值传递
         ++ptr; // 更新当前对象
         ++pos;
@@ -1558,11 +1558,11 @@ struct A {
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1NTMxNzcxOCwxNzMyOTE2MTQzLDE1ND
-IxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMzM1MDI4
-NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4ODAsLT
-E4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1
-NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OT
-AwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02
-MTUwODM1MThdfQ==
+eyJoaXN0b3J5IjpbLTE4MTk4NjUyMjcsMTczMjkxNjE0MywxNT
+QyMTU1MTU2LDE3NDU5NzE3MjMsNTIxMTY2MDE2LC0yMTMzNTAy
+ODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5MTYsNDI5Njc0ODgwLC
+0xODM2MzI0OTI4LC0xMjc0ODMwODk3LDExOTg1MDU1NjcsLTE5
+NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEwMzk0NjA4NCwyNDQ2OD
+kwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNjIzNywt
+NjE1MDgzNTE4XX0=
 -->
