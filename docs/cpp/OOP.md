@@ -1601,12 +1601,35 @@ Array a{5, 'o'}; // 初始化 ["ooooo"]
 Array b{3, 'b'}; // 初始化 ["bbb"]
 a = b; // 将 b 赋值给 a，a 变为 ["bbb"]
 ```
+
+
+ 赋值运算符的两种实现方式
+
+-   **第一种方式**（传统实现）：
+    1.  检查自赋值。
+    2.  释放对象当前持有的资源。
+    3.  根据源对象重新初始化资源。
+    4.  执行资源的深拷贝。
+-   **第二种方式**（通过值传递和交换）：
+```cpp
+Array& operator=(Array x) { // 通过值传递
+    swap(*this, x); // 使用 swap 函数交换 *this 和 x 的内容
+    return *this;  // x 在函数结束时自动销毁
+}
+
+// swap 函数定义
+friend void swap(Array& x, Array& y) {
+    using std::swap;
+    swap(x.size, y.size);
+    swap(x.array, y.array);
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1NDk3OTc5MCwxNzMyOTE2MTQzLDE1ND
-IxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMzM1MDI4
-NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4ODAsLT
-E4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1
-NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OT
-AwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02
-MTUwODM1MThdfQ==
+eyJoaXN0b3J5IjpbLTI4ODU1MDExLDE3MzI5MTYxNDMsMTU0Mj
+E1NTE1NiwxNzQ1OTcxNzIzLDUyMTE2NjAxNiwtMjEzMzUwMjg2
+OSwtMTU5MzY1NTE0MCwtNDQ5MjU4OTE2LDQyOTY3NDg4MCwtMT
+gzNjMyNDkyOCwtMTI3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0
+Nzc2NjI5LC00MjkzMTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MD
+A3LDU5MzIwODc1NCwxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYx
+NTA4MzUxOF19
 -->
