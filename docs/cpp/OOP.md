@@ -1220,12 +1220,38 @@ protected:
 ```
 
 
+### 
+
+# 类型转换
+
+类型转换允许在类的层次结构中隐式或显式地将一个类转换为另一个类。
+
+## 上转型（Upcasting）
+上转型是指从派生类的引用或指针转换为基类的引用或指针。
+- 可以是隐式的，也可以是显式的
+- 这种转换是安全的
+- 可以使用 static_cast 或 dynamic_cast 实现
+
+## 下转型（Downcasting）
+下转型是指从基类的引用或指针转换为派生类的引用或指针。
+- 只能显式进行
+- 这种转换可能是危险的
+- 可以使用 static_cast 或 dynamic_cast 实现
+
+## 侧转型（Sidecasting，又称 Cross-cast）
+侧转型是指在同一层级的不同类之间的引用或指针转换。
+- 只能显式进行
+- 这种转换可能是危险的
+- 只能使用 dynamic_cast 实现
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjQzMTUzNzUsLTE4MzYzMjQ5MjgsLT
-EyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5
-MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NT
-QsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0
-MTU1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NT
-gzLC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5
-NzIwMDk1NDNdfQ==
+eyJoaXN0b3J5IjpbOTEwMDIzMDcxLC0xODM2MzI0OTI4LC0xMj
+c0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMx
+NDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LD
+EyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1
+NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4My
+wtMjAwMTg2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcy
+MDA5NTQzXX0=
 -->
