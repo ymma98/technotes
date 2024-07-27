@@ -1301,19 +1301,39 @@ dynamic_cast<B1&>(b2).f(); // 侧转型，抛出 std::bad_cast 异常
    - 使用 `typeid` 可以获取任何表达式的类型信息。如果表达式是一个类的对象，并且该类含有虚函数，则结果将因对象的动态类型而异。
 
 3. `type_info` 类：`typeid` 操作符返回的类型信息。
-   - 这个类包含了关于类型的详细信息，如类型的名称等。通过比较两个 `type_info` 对象，可以确定两个对象是否属于同一类型。
+   - 这个类包含了关于类型的详细信息，如类的名称等。通过比较两个 `type_info` 对象，可以确定两个对象是否属于同一类型。
 
 
 
 RTTI 仅适用于**多态类，即至少包含一个虚函数的类**。
 
 
+
+
+
+```cpp
+#include <iostream>
+#include <typeinfo>
+
+struct A {
+    virtual void f() {}
+};
+
+struct B : A {};
+
+A a;
+B b;
+A& a1 = b; // 隐式上转型
+std::cout << typeid(a).name();  // 输出 "1A"
+std::cout << typeid(b).name();  // 输出 "1B"
+std::cout << typeid(a1).name(); // 输出 "1B"，因为 a1 实际指向 B 类型的对象
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MjA0Mzc5MiwtNDQ5MjU4OTE2LDQyOT
-Y3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgzMDg5NywxMTk4NTA1
-NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3NDIsLTIxMDM5NDYwOD
-QsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5NzI2MjM4LDE5MDcz
-MTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQzNDA4OTIyLC
-0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAyMzcsLTM4
-NDE5MDYwXX0=
+eyJoaXN0b3J5IjpbNjk1MTM4MjEsLTQ0OTI1ODkxNiw0Mjk2Nz
+Q4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2
+NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LD
+I0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2
+MjM3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODkyMiwtMT
+Y1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0zODQx
+OTA2MF19
 -->
