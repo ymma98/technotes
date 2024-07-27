@@ -1532,6 +1532,11 @@ std::cout << x << " " << y; // x=3.0f, y=2
 
 增量 (`operator++`) 和减量 (`operator--`) 运算符用于将变量的值增加或减少一个单位。这里我们将专注于增量运算符的两种形式：前缀和后缀。
 
+后缀版本的增量运算符通过添加一个哑元（dummy）整数参数来定义。这个整数参数本身没有实际的意义，只是用来区分前缀和后缀版本。
+
+`(int)` 参数在后缀版本的运算符重载中作为一个标识符使用。这个参数通常不会在函数体内被使用，仅仅是作为一种形式上的区分。实际上，你在调用时也不需要提供这个参数，编译器会自动处理。
+
+例如，当你写 `var++` 时，编译器会自动将其解释为调用 `operator++(0)`（这里的 `0` 是编译器自动提供的，只是符合函数签名，不影响逻辑）。
 
 ### 结构体定义
 
@@ -1558,11 +1563,11 @@ struct A {
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTk4NjUyMjcsMTczMjkxNjE0MywxNT
-QyMTU1MTU2LDE3NDU5NzE3MjMsNTIxMTY2MDE2LC0yMTMzNTAy
-ODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5MTYsNDI5Njc0ODgwLC
-0xODM2MzI0OTI4LC0xMjc0ODMwODk3LDExOTg1MDU1NjcsLTE5
-NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEwMzk0NjA4NCwyNDQ2OD
-kwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNjIzNywt
-NjE1MDgzNTE4XX0=
+eyJoaXN0b3J5IjpbLTk2NDMyNDAyNywxNzMyOTE2MTQzLDE1ND
+IxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMzM1MDI4
+NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4ODAsLT
+E4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1
+NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OT
+AwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02
+MTUwODM1MThdfQ==
 -->
