@@ -1389,8 +1389,6 @@ void g(bool value) {
 
 在下面的例子中，我们定义了一个 `Point` 结构体，该结构体重载了加法运算符 `+`，使得两个 `Point` 对象可以通过 `+` 运算符相加。
 
-### 结构体定义
-
 ```cpp
 struct Point {
     int x, y;
@@ -1422,12 +1420,34 @@ Point c = a + b; // 通过重载的 + 运算符计算 a 和 b 的和
 | Comma | , |
 
 
+
+* C++ 转换运算符 `operator T()`
+
+转换运算符 `operator T()` 允许对象被隐式或显式（通过类型转换）转换为另一种类型。
+
+
+
+```cpp
+class MyBool {
+    int x;
+public:
+    MyBool(int x1) : x{x1} {}
+    operator bool() const { // 隐式返回类型
+        return x == 0;
+    }
+};
+
+MyBool my_bool{3};
+bool b = my_bool; // b = false，调用 operator bool()
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIxMTY2MDE2LC0yMTMzNTAyODY5LC0xNT
-kzNjU1MTQwLC00NDkyNTg5MTYsNDI5Njc0ODgwLC0xODM2MzI0
-OTI4LC0xMjc0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2Mj
-ksLTQyOTMxNDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkz
-MjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNT
-E4LDk2NDE1NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIz
-NzUxNzU4M119
+eyJoaXN0b3J5IjpbLTEwOTM1MzMxNzUsNTIxMTY2MDE2LC0yMT
+MzNTAyODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5MTYsNDI5Njc0
+ODgwLC0xODM2MzI0OTI4LC0xMjc0ODMwODk3LDExOTg1MDU1Nj
+csLTE5NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEwMzk0NjA4NCwy
+NDQ2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNj
+IzNywtNjE1MDgzNTE4LDk2NDE1NTExLC05NDM0MDg5MjIsLTE2
+NTY1OTAyNDBdfQ==
 -->
