@@ -1330,8 +1330,38 @@ std::cout << typeid(a1).name(); // 输出 "1B"，因为 a1 实际指向 B 类型
 ```
 
 
+`dynamic_cast` 的使用
+
+与 `static_cast` 不同，`dynamic_cast` 使用 RTTI 在运行时确定类型转换的正确性。这个操作在运行时进行，因此相对较耗费资源。
+
+`dynamic_cast` 的属性
+
+-   将派生类对象转换为基类（上转型）是安全的。
+-   如果转换为引用并且转换失败，将抛出 `std::bad_cast` 异常。
+-   如果转换为指针并且转换失败，则返回 `nullptr`。
+
+```cpp
+#include <iostream>
+
+struct A {
+    virtual void f() { std::cout << "A"; }
+};
+
+struct B : A {
+    void f() override { std::cout << "B"; }
+};
+
+A a;
+B b;
+
+dynamic_cast<A&>(b).f(); // 上转型，输出 "B"
+// dynamic_cast<B&>(a).f(); // 抛出 std::bad_cast 异常，因为下转型失败
+dynamic_cast<B*>(&a);    // 返回 nullptr，因为下转型失败
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTgzMjM1MjcsLTQ0OTI1ODkxNiw0Mj
+eyJoaXN0b3J5IjpbLTE2MjA1NDIyMzMsLTQ0OTI1ODkxNiw0Mj
 k2NzQ4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUw
 NTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MD
 g0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3
