@@ -1119,12 +1119,37 @@ destroy(b); // 没有虚析构函数，~B() 不会被调用
 ```
 
 如果派生类分配了资源（如动态内存、文件句柄等），而基类的析构函数不是虚的，那么通过基类指针删除派生类对象时，只会调用基类的析构函数。这可能导致派生类分配的资源没有被正确释放，从而造成资源泄漏。
+
+为了解决这个问题，应将基类 `A` 的析构函数声明为虚：
+```cpp
+struct A {
+    virtual ~A() { cout << "A"; }
+};
+```
+这样，无论何时通过基类指针删除对象，都会首先调用派生类的析构函数，然后再调用基类的析构函数，从而保证所有资源都被正确管理和释放。
+
+
+
+在构造函数中调用虚拟方法是不安全的，因为派生类在构造函数完成前还没有完全准备好。在析构函数中调用虚拟方法也是不安全的，因为派生类在进入基类析构函数之前已经被销毁。
+
+
+```cpp
+struct A {
+    A() { f(); } // 在此调用虚拟方法，实际调用的是 A::f()，因为 B 还没准备好
+    virtual void f() { cout << "Explosion"; }
+};
+struct B : A {
+    B() = default; // 调用 A 的构造函数。注意：A 的构造函数可能也是隐式的
+    void f() override { cout << "Safe"; }
+};
+B b; // 调用 B()，输出 "Explosion"，而不是 "Safe"!!
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjM1ODAxNzAsLTE4MzYzMjQ5MjgsLT
-EyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5
-MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NT
-QsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0
-MTU1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NT
-gzLC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5
-NzIwMDk1NDNdfQ==
+eyJoaXN0b3J5IjpbMTU3OTU2NDMzLC0xODM2MzI0OTI4LC0xMj
+c0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMx
+NDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LD
+EyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2NDE1
+NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIzNzUxNzU4My
+wtMjAwMTg2MDIzNywtMzg0MTkwNjAsLTIwMjE3OTAxMywxOTcy
+MDA5NTQzXX0=
 -->
