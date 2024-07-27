@@ -1646,12 +1646,32 @@ struct Point {
 Point point{1, 2};
 std::cout << point; // 输出 "(1, 2)"
 ```
+
+```cpp
+struct MyInt {
+    int x;
+    
+    // 重载 ^ 运算符为幂运算
+    int operator^(int exp) {
+        int ret = 1;
+        for (int i = 0; i < exp; i++)
+            ret *= x;
+        return ret;
+    }
+};
+
+MyInt x{3};
+int y = x ^ 2;  // 等于 9
+std::cout << y; // 输出 9
+int z = x ^ 2 + 2; // 注意优先级，先执行 x ^ 2，然后加 2，结果是 11 不是 81
+std::cout << z; // 输出 11
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzOTU5MzIxMywxNzMyOTE2MTQzLDE1ND
-IxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMzM1MDI4
-NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4ODAsLT
-E4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1
-NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OT
-AwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02
-MTUwODM1MThdfQ==
+eyJoaXN0b3J5IjpbLTE4MTQ4NDI4NjAsLTkzOTU5MzIxMywxNz
+MyOTE2MTQzLDE1NDIxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYw
+MTYsLTIxMzM1MDI4NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNi
+w0Mjk2NzQ4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5
+ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOT
+Q2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwx
+OTA3MzE2MjM3XX0=
 -->
