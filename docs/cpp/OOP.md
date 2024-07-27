@@ -1387,12 +1387,51 @@ void g(bool value) {
 ## 运算符重载 operator overloading
 
 
+
+运算符重载是多态的一种特殊情况，其中某些运算符被视为多态函数，根据其参数的类型具有不同的行为。
+
+
+在下面的例子中，我们定义了一个 `Point` 结构体，该结构体重载了加法运算符 `+`，使得两个 `Point` 对象可以通过 `+` 运算符相加。
+
+### 结构体定义
+
+```cpp
+struct Point {
+    int x, y;
+
+    // 重载加法运算符
+    Point operator+(const Point& p) const {
+        return {x + p.x, y + p.y};
+    }
+};
+
+Point a{1, 2};  // 定义点 a
+Point b{5, 3};  // 定义点 b
+Point c = a + b; // 通过重载的 + 运算符计算 a 和 b 的和
+```
+
+
+| Category | Operators |
+| :---: | :---: |
+| Arithmetic | $+-* / \% \quad++--$ |
+| Comparison |  |
+| Bitwise | $\mid \& \sim \sim<>$ |
+| Logical | $!\& \& \quad \mid 1$ |
+| Compound Assignment Arithmetic | $+=-=*=\quad /=\%=$ |
+| Compound Assignment Bitwise | $>>=\quad<<=\mid=\quad \&=r=$ |
+| Subscript | [] |
+| Function call | () |
+| Address-of, Reference, Dereferencing | $\& \quad \rightarrow->* *$ |
+| Memory | new new[] delete delete[] |
+| Comma | , |
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mj
-k2NzQ4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUw
-NTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MD
-g0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3
-MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODkyMi
-wtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0z
-ODQxOTA2MF19
+eyJoaXN0b3J5IjpbMTcyODI4MjkyOSwtMTU5MzY1NTE0MCwtND
+Q5MjU4OTE2LDQyOTY3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgz
+MDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3ND
+IsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5
+NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMS
+wtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIw
+MDE4NjAyMzddfQ==
 -->
