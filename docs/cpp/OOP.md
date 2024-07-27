@@ -1625,9 +1625,29 @@ friend void swap(Array& x, Array& y) {
 }
 ```
 
+### 流运算符重载 `<<`
 
+运算符 `operator<<` 可以重载以实现对用户定义类型的输入和输出操作。
+
+
+```cpp
+#include <iostream>
+
+struct Point {
+    int x, y;
+
+    // 重载 ostream 的 << 运算符，需要声明为友元以访问私有成分
+    friend std::ostream& operator<<(std::ostream& stream, const Point& point) {
+        stream << "(" << point.x << "," << point.y << ")";
+        return stream;
+    }
+};
+
+Point point{1, 2};
+std::cout << point; // 输出 "(1, 2)"
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjE3NjAwNywxNzMyOTE2MTQzLDE1ND
+eyJoaXN0b3J5IjpbLTkzOTU5MzIxMywxNzMyOTE2MTQzLDE1ND
 IxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMzM1MDI4
 NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4ODAsLT
 E4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1
