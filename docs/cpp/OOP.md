@@ -1359,13 +1359,36 @@ dynamic_cast<A&>(b).f(); // 上转型，输出 "B"
 dynamic_cast<B*>(&a);    // 返回 nullptr，因为下转型失败
 ```
 
+```cpp
+#include <iostream>
+
+struct A {
+    virtual void f() { std::cout << "A"; }
+};
+
+struct B : A {
+    void f() override { std::cout << "B"; }
+};
+
+A* get_object(bool selectA) {
+    return (selectA) ? new A() : new B();
+}
+
+void g(bool value) {
+    A* a = get_object(value);
+    B* b = dynamic_cast<B*>(a); // 尝试下转型
+    if (b != nullptr) {
+        b->f(); // 只在安全时执行
+    }
+}
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjA1NDIyMzMsLTQ0OTI1ODkxNiw0Mj
-k2NzQ4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUw
-NTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MD
-g0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3
-MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQwODkyMi
-wtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMjM3LC0z
-ODQxOTA2MF19
+eyJoaXN0b3J5IjpbMTIxOTMwNzk5NSwtNDQ5MjU4OTE2LDQyOT
+Y3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgzMDg5NywxMTk4NTA1
+NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3NDIsLTIxMDM5NDYwOD
+QsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5NzI2MjM4LDE5MDcz
+MTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQzNDA4OTIyLC
+0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIwMDE4NjAyMzcsLTM4
+NDE5MDYwXX0=
 -->
