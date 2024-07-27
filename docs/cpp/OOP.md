@@ -1095,7 +1095,7 @@ struct C final { // 标记为 "final"，不可被继承
 
 
 
-在 C++ 中，如果一个类有至少一个虚函数，它应该声明一个虚析构函数 (virtual destructor)。这是为了确保通过基类指针删除派生类对象时，能够正确调用派生类的析构函数，避免资源泄露。
+* 在 C++ 中，如果一个类有至少一个虚函数，它应该声明一个虚析构函数 (virtual destructor)。这是为了确保通过基类指针删除派生类对象时，能够正确调用派生类的析构函数，避免资源泄露。
 
 
 ```cpp
@@ -1130,7 +1130,7 @@ struct A {
 
 
 
-在构造函数中调用虚拟方法是不安全的，因为派生类在构造函数完成前还没有完全准备好。在析构函数中调用虚拟方法也是不安全的，因为派生类在进入基类析构函数之前已经被销毁。
+* 在构造函数中调用虚拟方法是不安全的，因为派生类在构造函数完成前还没有完全准备好。在析构函数中调用虚拟方法也是不安全的，因为派生类在进入基类析构函数之前已经被销毁。
 
 ```cpp
 struct A {
@@ -1143,8 +1143,30 @@ struct B : A {
 };
 B b; // 调用 B()，输出 "Explosion"，而不是 "Safe"!!
 ```
+
+
+* 避免在虚拟方法中使用默认参数
+默认参数在虚拟方法中不是继承的。这意味着派生类中重写的方法不会继承基类中该方法的默认参数值。
+
+### 示例代码和解释
+```cpp
+struct A {
+    virtual void f(int i = 5) { cout << "A::" << i << "\n"; }
+    virtual void g(int i = 5) { cout << "A::" << i << "\n"; }
+};
+struct B : A {
+    void f(int i = 3) override { cout << "B::" << i << "\n"; }
+    void g(int i) override { cout << "B::" << i << "\n"; }
+};
+A a; B b;
+a.f(); // 输出 "A::5"
+b.f(); // 输出 "B::3"
+A& ab = b;
+ab.f(); // 输出 "B::5"，因为 ab 被视为 A 类型，使用 A 中的默认参数
+ab.g(); // 输出 "B::5"，虽然 g 在 B 中被覆盖，但 A 中的默认参数仍然被使用
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4OTM5ODE3OSwtMTgzNjMyNDkyOCwtMT
+eyJoaXN0b3J5IjpbMTcxODI5NTcxNiwtMTgzNjMyNDkyOCwtMT
 I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
 MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
 wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
