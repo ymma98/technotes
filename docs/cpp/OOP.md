@@ -1528,14 +1528,41 @@ int y = f();   // 使用转换到 int 的运算符
 std::cout << x << " " << y; // x=3.0f, y=2
 ```
 
+### 增量和减量运算符`++`, `--`
 
+增量 (`operator++`) 和减量 (`operator--`) 运算符用于将变量的值增加或减少一个单位。这里我们将专注于增量运算符的两种形式：前缀和后缀。
+
+
+### 结构体定义
+
+```cpp
+struct A {
+    int* ptr;
+    int pos;
+
+    // 前缀增量运算符
+    A& operator++() { // 前缀表示法 (++var):
+        ++ptr; // 指针和位置都增加
+        ++pos;
+        return *this; // 通过引用返回对象的新副本
+    }
+
+    // 后缀增量运算符
+    A operator++(int) { // 后缀表示法 (var++):
+        A tmp = *this; // 返回对象的旧副本，通过值传递
+        ++ptr; // 更新当前对象
+        ++pos;
+        return tmp;
+    }
+};
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczMjkxNjE0MywxNTQyMTU1MTU2LDE3ND
-U5NzE3MjMsNTIxMTY2MDE2LC0yMTMzNTAyODY5LC0xNTkzNjU1
-MTQwLC00NDkyNTg5MTYsNDI5Njc0ODgwLC0xODM2MzI0OTI4LC
-0xMjc0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQy
-OTMxNDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4Nz
-U0LDEyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2
-NDE1NTExXX0=
+eyJoaXN0b3J5IjpbMTU1NTMxNzcxOCwxNzMyOTE2MTQzLDE1ND
+IxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYwMTYsLTIxMzM1MDI4
+NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNiw0Mjk2NzQ4ODAsLT
+E4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1
+NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OT
+AwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02
+MTUwODM1MThdfQ==
 -->
