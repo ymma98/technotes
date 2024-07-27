@@ -1415,23 +1415,23 @@ Point c = a + b; // 通过重载的 + 运算符计算 a 和 b 的和
 | :---: | :---: |
 | Arithmetic | `+` `-` `*` `/` `%` `++` `--` |
 | Comparison | `==` `!=` `<` `<=` `>` `>=` `<=>` |
-| Bitwise | `` |
-| Logical | $!\& \& \quad \mid 1$ |
-| Compound Assignment Arithmetic | $+=-=*=\quad /=\%=$ |
-| Compound Assignment Bitwise | $>>=\quad<<=\mid=\quad \&=r=$ |
+| Bitwise | `|` `&` `^` `~` `<<` `>>` |
+| Logical | `!` `&&` `||` |
+| Compound Assignment Arithmetic | `+=` `-=` `*=` `/=` `%=` |
+| Compound Assignment Bitwise | `>>=` `<<=` `|=` `&=` `^=` |
 | Subscript | [] |
 | Function call | () |
-| Address-of, Reference, Dereferencing | $\& \quad \rightarrow->* *$ |
+| Address-of, Reference, Derefe |
 | Memory | new new[] delete delete[] |
 | Comma | , |
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzA5MTI4NzMsLTE1OTM2NTUxNDAsLT
-Q0OTI1ODkxNiw0Mjk2NzQ4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4
-MzA4OTcsMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0Nz
-QyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4
-OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MT
-EsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0y
-MDAxODYwMjM3XX0=
+eyJoaXN0b3J5IjpbMTEyODI1MzgzOSwtMTU5MzY1NTE0MCwtND
+Q5MjU4OTE2LDQyOTY3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgz
+MDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3ND
+IsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5
+NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMS
+wtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1ODMsLTIw
+MDE4NjAyMzddfQ==
 -->
