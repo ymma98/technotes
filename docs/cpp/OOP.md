@@ -1287,9 +1287,55 @@ dynamic_cast<B1&>(b2).f(); // 侧转型，抛出 std::bad_cast 异常
 -   侧转型试图在同一层级的不同派生类之间进行转换，通常没有合法的用途且容易导致错误。
 
 
+### 运行时类型信息, RTTI
 
+
+
+运行时类型信息（run-time type information, RTTI）是一种机制，它允许在运行时确定对象的类型。在 C++ 中，RTTI 通过三个特性实现：
+
+
+1. `dynamic_cast` 关键字：用于多态类型的转换。
+   - 这个关键字主要用于在类的层次结构中安全地进行向下转型，只适用于含有至少一个虚函数的多态类。
+   
+2. `typeid` 关键字：用于识别对象的确切类型。
+   - 使用 `typeid` 可以获取任何表达式的类型信息。如果表达式是一个类的对象，并且该类含有虚函数，则结果将因对象的动态类型而异。
+
+3. `type_info` 类：`typeid` 操作符返回的类型信息。
+   - 这个类包含了关于类型的详细信息，如类型的名称等。通过比较两个 `type_info` 对象，可以确定两个对象是否属于同一类型。
+
+
+
+RTTI 仅适用于多态类，即至少包含一个虚函数的类。
+
+
+
+```cpp
+#include <iostream>
+#include <typeinfo>
+
+class Base {
+public:
+    virtual void display() { std::cout << "Base class"; }
+};
+
+class Derived : public Base {
+public:
+    void display() override { std::cout << "Derived class"; }
+};
+
+int main() {
+    Base* b = new Derived();
+    if (typeid(*b) == typeid(Derived)) {
+        std::cout << "b is pointing to a Derived class";
+    } else {
+        std::cout << "b is pointing to a Base class";
+    }
+    delete b;
+    return 0;
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzUwMjk2NiwtNDQ5MjU4OTE2LDQyOT
+eyJoaXN0b3J5IjpbMjA4Mjg3NjQwNSwtNDQ5MjU4OTE2LDQyOT
 Y3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgzMDg5NywxMTk4NTA1
 NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3NDIsLTIxMDM5NDYwOD
 QsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5NzI2MjM4LDE5MDcz
