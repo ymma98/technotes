@@ -1243,13 +1243,34 @@ protected:
 	- 只能使用 dynamic_cast 实现
 
 
+![输入图片说明](./imgs/2024-07/dtGSE5YFDb8bKigY.png)
 
+
+
+* 示例 1：上转型和下转型
+
+```cpp
+struct A {
+    virtual void f() { cout << "A"; }
+};
+struct B : A {
+    int var = 3;
+    void f() override { cout << "B"; }
+};
+A a;
+B b;
+A& a1 = b; // 隐式上转型
+static_cast<A&>(b).f(); // 输出 "B"，上转型
+static_cast<B&>(a).f(); // 输出 "A"，错误的下转型，但可能不抛出异常
+cout << b.var; // 输出 3，无需转型
+cout << static_cast<B&>(a).var; // 可能导致段错误，错误的下转型
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjY5NTc3MzAsLTE4MzYzMjQ5MjgsLT
-EyNzQ4MzA4OTcsMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5
-MzE0NzQyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NT
-QsMTI4OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0
-MTU1MTEsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NT
-gzLC0yMDAxODYwMjM3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5
-NzIwMDk1NDNdfQ==
+eyJoaXN0b3J5IjpbLTg2NDg4NjU4OCwtMTgzNjMyNDkyOCwtMT
+I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
+MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
+wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
+NTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1OD
+MsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3
+MjAwOTU0M119
 -->
