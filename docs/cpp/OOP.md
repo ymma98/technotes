@@ -1073,12 +1073,31 @@ struct B : A {
 ### `final`
 
 
+`final` 关键字用于防止类被继承或派生类中的方法被覆盖。
+- 在方法上使用 `final` 表示该方法不能在派生类中被进一步覆盖。
+- 在类上使用 `final` 表示该类不能被继承。
+
+### 示例代码和解释
+```cpp
+struct A {
+    virtual void f(int a) final; // 使用 "final"，此方法不可被覆盖
+};
+struct B : A {
+    // void f(int a); // 编译错误：因为 A 中的 f(int) 已标记为 "final"
+    void f(float a); // 可能造成危险（仍然可行）
+};
+
+struct C final { // 标记为 "final"，不可被继承
+};
+// struct D : C { // 编译错误：因为 C 已标记为 "final"，不能被继承
+// };
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMT
-E5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAz
-OTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOC
-wxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MTEsLTk0MzQw
-ODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0yMDAxODYwMj
-M3LC0zODQxOTA2MCwtMjAyMTc5MDEzLDE5NzIwMDk1NDMsMjc5
-ODgyMTQ2XX0=
+eyJoaXN0b3J5IjpbMjA3ODUwMjA0MCwtMTgzNjMyNDkyOCwtMT
+I3NDgzMDg5NywxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00Mjkz
+MTQ3NDIsLTIxMDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NC
+wxMjg5NzI2MjM4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQx
+NTUxMSwtOTQzNDA4OTIyLC0xNjU2NTkwMjQwLC0yMzc1MTc1OD
+MsLTIwMDE4NjAyMzcsLTM4NDE5MDYwLC0yMDIxNzkwMTMsMTk3
+MjAwOTU0M119
 -->
