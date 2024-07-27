@@ -1471,6 +1471,29 @@ a['d'] = 't'; // 修改索引 'd' 对应的元素为 't'
 
 
 
+### 函数调用运算符 `operator()`
+
+函数调用运算符 `operator()` 通常被重载用于创建表现得像函数的对象，或用于那些有一个主要操作的类。
+
+
+
+```cpp
+#include <numeric> // 引入 std::accumulate
+
+struct Multiply {
+    // 重载函数调用运算符，执行乘法
+    int operator()(int a, int b) const {
+        return a * b;
+    }
+};
+
+int array[] = { 2, 3, 4 };
+int factorial = std::accumulate(array, array + 3, 1, Multiply{}); // 使用 Multiply 实例作为累加器
+std::cout << factorial; // 输出 24
+```
+
+
+
 ### 转换运算符 `operator T()`
 
 转换运算符 `operator T()` 允许对象被隐式或显式（通过类型转换）转换为另一种类型。
@@ -1505,11 +1528,11 @@ int y = f();   // 使用转换到 int 的运算符
 std::cout << x << " " << y; // x=3.0f, y=2
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0MjE1NTE1NiwxNzQ1OTcxNzIzLDUyMT
-E2NjAxNiwtMjEzMzUwMjg2OSwtMTU5MzY1NTE0MCwtNDQ5MjU4
-OTE2LDQyOTY3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgzMDg5Ny
-wxMTk4NTA1NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3NDIsLTIx
-MDM5NDYwODQsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5NzI2Mj
-M4LDE5MDczMTYyMzcsLTYxNTA4MzUxOCw5NjQxNTUxMSwtOTQz
-NDA4OTIyXX0=
+eyJoaXN0b3J5IjpbMTIxNTk4ODU4MSwxNTQyMTU1MTU2LDE3ND
+U5NzE3MjMsNTIxMTY2MDE2LC0yMTMzNTAyODY5LC0xNTkzNjU1
+MTQwLC00NDkyNTg5MTYsNDI5Njc0ODgwLC0xODM2MzI0OTI4LC
+0xMjc0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2MjksLTQy
+OTMxNDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkzMjA4Nz
+U0LDEyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNTE4LDk2
+NDE1NTExXX0=
 -->
