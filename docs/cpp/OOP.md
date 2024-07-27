@@ -1305,37 +1305,11 @@ dynamic_cast<B1&>(b2).f(); // 侧转型，抛出 std::bad_cast 异常
 
 
 
-RTTI 仅适用于多态类，即至少包含一个虚函数的类。
+RTTI 仅适用于**多态类，即至少包含一个虚函数的类**。
 
 
-
-```cpp
-#include <iostream>
-#include <typeinfo>
-
-class Base {
-public:
-    virtual void display() { std::cout << "Base class"; }
-};
-
-class Derived : public Base {
-public:
-    void display() override { std::cout << "Derived class"; }
-};
-
-int main() {
-    Base* b = new Derived();
-    if (typeid(*b) == typeid(Derived)) {
-        std::cout << "b is pointing to a Derived class";
-    } else {
-        std::cout << "b is pointing to a Base class";
-    }
-    delete b;
-    return 0;
-}
-```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4Mjg3NjQwNSwtNDQ5MjU4OTE2LDQyOT
+eyJoaXN0b3J5IjpbMTE2MjA0Mzc5MiwtNDQ5MjU4OTE2LDQyOT
 Y3NDg4MCwtMTgzNjMyNDkyOCwtMTI3NDgzMDg5NywxMTk4NTA1
 NTY3LC0xOTU0Nzc2NjI5LC00MjkzMTQ3NDIsLTIxMDM5NDYwOD
 QsMjQ0Njg5MDA3LDU5MzIwODc1NCwxMjg5NzI2MjM4LDE5MDcz
