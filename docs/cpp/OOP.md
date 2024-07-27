@@ -1646,7 +1646,7 @@ struct Point {
 Point point{1, 2};
 std::cout << point; // 输出 "(1, 2)"
 ```
-
+运算符的优先级和短路属性保留
 ```cpp
 struct MyInt {
     int x;
@@ -1665,13 +1665,13 @@ int y = x ^ 2;  // 等于 9
 std::cout << y; // 输出 9
 int z = x ^ 2 + 2; // 注意优先级，先执行 x ^ 2，然后加 2，结果是 11 不是 81
 std::cout << z; // 输出 11
-
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTQ4NDI4NjAsLTkzOTU5MzIxMywxNz
-MyOTE2MTQzLDE1NDIxNTUxNTYsMTc0NTk3MTcyMyw1MjExNjYw
-MTYsLTIxMzM1MDI4NjksLTE1OTM2NTUxNDAsLTQ0OTI1ODkxNi
-w0Mjk2NzQ4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4MzA4OTcsMTE5
-ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0NzQyLC0yMTAzOT
-Q2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4OTcyNjIzOCwx
-OTA3MzE2MjM3XX0=
+eyJoaXN0b3J5IjpbNDExNjQwODk3LC05Mzk1OTMyMTMsMTczMj
+kxNjE0MywxNTQyMTU1MTU2LDE3NDU5NzE3MjMsNTIxMTY2MDE2
+LC0yMTMzNTAyODY5LC0xNTkzNjU1MTQwLC00NDkyNTg5MTYsND
+I5Njc0ODgwLC0xODM2MzI0OTI4LC0xMjc0ODMwODk3LDExOTg1
+MDU1NjcsLTE5NTQ3NzY2MjksLTQyOTMxNDc0MiwtMjEwMzk0Nj
+A4NCwyNDQ2ODkwMDcsNTkzMjA4NzU0LDEyODk3MjYyMzgsMTkw
+NzMxNjIzN119
 -->
