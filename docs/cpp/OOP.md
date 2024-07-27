@@ -754,10 +754,6 @@ struct A {
 
 ### `const`
 
-
-
-
-
 常量成员函数 （检查器或观察器, inspectors or observers）是那些带有 const 标记的函数，它们不允许改变对象的逻辑状态。
 
 常量成员函数，是一个重要的 C++ 特性 ，用于增强类型安全和防止对象在不应该的上下文中被修改。通过在成员函数声明的末尾加上 `const` 关键字，方法中的所有数据成员都被标记为 const，包括 this 指针，可以保证这个函数不会修改类的任何成员变量（除了被声明为 `mutable` 的成员）。
@@ -1414,7 +1410,7 @@ Point c = a + b; // 通过重载的 + 运算符计算 a 和 b 的和
 | Category | Operators |
 | :---: | :---: |
 | **Arithmetic** | `+` `-` `*` `/` `%` `++` `--` |
-| **Comparison** | `==` `!=` `<` `<=` `>` `>=` `<=>` |
+| **Comparison** | `==` `!=` `<` `<=` `>` `>=` |
 | Bitwise | `|` `&` `^` `~` `<<` `>>` |
 | Logical | `!` `&&` `||` |
 | **Compound Assignment Arithmetic** | `+=` `-=` `*=` `/=` `%=` |
@@ -1427,11 +1423,11 @@ Point c = a + b; // 通过重载的 + 运算符计算 a 和 b 的和
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzM1MDI4NjksLTE1OTM2NTUxNDAsLT
-Q0OTI1ODkxNiw0Mjk2NzQ4ODAsLTE4MzYzMjQ5MjgsLTEyNzQ4
-MzA4OTcsMTE5ODUwNTU2NywtMTk1NDc3NjYyOSwtNDI5MzE0Nz
-QyLC0yMTAzOTQ2MDg0LDI0NDY4OTAwNyw1OTMyMDg3NTQsMTI4
-OTcyNjIzOCwxOTA3MzE2MjM3LC02MTUwODM1MTgsOTY0MTU1MT
-EsLTk0MzQwODkyMiwtMTY1NjU5MDI0MCwtMjM3NTE3NTgzLC0y
-MDAxODYwMjM3XX0=
+eyJoaXN0b3J5IjpbNTIxMTY2MDE2LC0yMTMzNTAyODY5LC0xNT
+kzNjU1MTQwLC00NDkyNTg5MTYsNDI5Njc0ODgwLC0xODM2MzI0
+OTI4LC0xMjc0ODMwODk3LDExOTg1MDU1NjcsLTE5NTQ3NzY2Mj
+ksLTQyOTMxNDc0MiwtMjEwMzk0NjA4NCwyNDQ2ODkwMDcsNTkz
+MjA4NzU0LDEyODk3MjYyMzgsMTkwNzMxNjIzNywtNjE1MDgzNT
+E4LDk2NDE1NTExLC05NDM0MDg5MjIsLTE2NTY1OTAyNDAsLTIz
+NzUxNzU4M119
 -->
