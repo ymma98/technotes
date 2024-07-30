@@ -9,6 +9,7 @@ nav:
       - vim_强制tab对应4空格: Linux/vim_强制tab对应4空格.md
   - python:
       - pdb: python/pdb.md
+      - python无法支持汉字: python/python无法支持汉字.md
   - cpp:
      - 基本概念_基础类型_操作符: cpp/基本概念_基础类型_操作符.md
      - 基本概念_enum_struct_控制流: cpp/基本概念_enum_struct_控制流.md
