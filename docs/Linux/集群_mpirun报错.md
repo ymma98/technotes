@@ -12,8 +12,9 @@ mm_ep.c:149  UCX  ERROR mm ep failed to connect to remote FIFO id 0xc00000070003
 ```bash
 mpirun -x UCX_POSIX_USE_PROC_LINK=n program
 ```
+`-x` 用来指定环境变量, 通过设置 `UCX_POSIX_USE_PROC_LINK=n`，等于告诉 UCX 不使用 `/proc` 下的文件，从而避免了这些权限问题
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwMzAwODg4OV19
+eyJoaXN0b3J5IjpbLTE4NjY1MzQwNTldfQ==
 -->
