@@ -7,6 +7,7 @@ nav:
       - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
       - vim_使用nvim: Linux/vim_使用nvim.md
       - vim_强制tab对应4空格: Linux/vim_强制tab对应4空格.md
+      - 集群_mpirun报错: Linux/集群_mpirun报错.md
   - python:
       - pdb: python/pdb.md
       - python无法支持汉字: python/python无法支持汉字.md
