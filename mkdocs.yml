@@ -4,8 +4,9 @@ nav:
   - 杂谈:
       - 快速搭建技术博客: 杂谈/快速搭建技术博客.md
   - Linux:
-      - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
+      - terminal_快捷键以及配置: Linux/terminal_快捷键以及配置.md
       - vim_使用nvim: Linux/vim_使用nvim.md
+      - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
       - vim_强制tab对应4空格: Linux/vim_强制tab对应4空格.md
       - 集群_mpirun报错: Linux/集群_mpirun报错.md
   - python:
