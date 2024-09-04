@@ -21,6 +21,8 @@ nav:
      - 模板元编程: cpp/模板元编程.md
      - 翻译单元: cpp/翻译单元.md
      - 编程规范: cpp/编程规范.md
+  - math:
+    - Mathematica速查: math/MathematicaCheatsheet.md
      
      
 
