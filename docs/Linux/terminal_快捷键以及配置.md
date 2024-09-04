@@ -25,6 +25,10 @@
 | `Shift + Page Up` | 向上滚动终端输出                  |
 | `Shift + Page Down` | 向下滚动终端输出                |
 
+
+## 使用 powerlevel10k 配置 prompt
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA5MDY1ODI2XX0=
+eyJoaXN0b3J5IjpbLTg0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
 -->
