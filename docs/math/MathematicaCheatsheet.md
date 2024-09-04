@@ -2,6 +2,6 @@
 
 
 
-![](./mmanotes.pdf){ type=application/pdf style="min-height:30vh;width:100%" }
+![](./mmanotes.pdf){ type=application/pdf style="min-height:180vh;width:100%" }
 
 
