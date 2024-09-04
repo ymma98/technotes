@@ -29,6 +29,15 @@
 ## 使用 powerlevel10k 配置 prompt
 
 
+[powerlevel10k repo 地址](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#how-do-i-add-username-andor-hostname-to-prompt)
+
+配置方法:
+```bash
+p10k configure
+```
+
+设置显示 user@ho
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
+eyJoaXN0b3J5IjpbLTg2NDcwMjczNCwtODQ3MzI0MzU5LDMwOT
+A2NTgyNl19
 -->
