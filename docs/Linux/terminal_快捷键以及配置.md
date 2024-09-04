@@ -36,8 +36,14 @@
 p10k configure
 ```
 
-设置显示 user@ho
+默认不显示 user@hostname. 设置显示 user@hostname: 在 ~/.p10k.zsh 中找到下面这行，并按提示把这行注释掉
+
+```bash
+# Don't show context unless running with privileges or in SSH.
+# Tip: Remove the next line to always show context.
+typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2NDcwMjczNCwtODQ3MzI0MzU5LDMwOT
-A2NTgyNl19
+eyJoaXN0b3J5IjpbLTE5Njg1MzM0MjAsLTg0NzMyNDM1OSwzMD
+kwNjU4MjZdfQ==
 -->
