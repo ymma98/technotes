@@ -39,6 +39,8 @@ markdown_extensions:
       permalink: true       # 在每个标题旁添加链接
       toc_depth: 1-6
 
+plugins:
+  - mkdocs-pdf
 
 theme:
   # name: readthedocs
