@@ -2,6 +2,7 @@
 
 ## Remark
 texmacs 的适用范围:
+
 * 文档内容较少, 比如 $\leq10$ 页。文档太长的话会很卡 (不知道怎么解决...)
 * 对文档的格式有一定要求, 但没有过高的要求 (对格式要求较多的话只能用 latex, 或耐着性子调 word)
 * 敲公式尤其舒适!
@@ -56,5 +57,5 @@ texmacs 的适用范围:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMDc4MTc4Ml19
+eyJoaXN0b3J5IjpbLTQyMjI3NDY2NCwtNzIwNzgxNzgyXX0=
 -->
