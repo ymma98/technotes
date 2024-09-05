@@ -10,7 +10,12 @@
 ```bash
 
 ```
-* Prevent DNS Spoofing
+* Prevent DNS Spoofing -> DoH(dns-over-https)
+* Special Mode -> supervisor
+* TCPFastOpen -> Keep Default
+* Multiplex -> Off
+*  Update Subscriptions -> Update Subscriptions When Service Starts
+* 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzMDc3Njg5Ml19
+eyJoaXN0b3J5IjpbLTIxMDQ3NjgxNDFdfQ==
 -->
