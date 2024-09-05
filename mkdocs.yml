@@ -23,7 +23,8 @@ nav:
      - 编程规范: cpp/编程规范.md
   - math:
     - Mathematica速查: math/MathematicaCheatsheet.md
-     
+  - FEM:
+    - 科学计算准则与协议: FEM/科学计算准则与协议.md
      
 
 
