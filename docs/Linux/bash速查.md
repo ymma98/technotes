@@ -103,14 +103,9 @@ array=(apple banana cherry)
 echo "${array[1]}"  # 输出 banana
 ```
 
-
 * 使用数组，就必须用 `{}`! `$array[1]` 会不识别。
 
-
-
-
-
-### 4. 花括号扩展（Brace Expansion）
+4. 花括号扩展（Brace Expansion）
 大括号扩展是一种生成任意字符串的机制。这可以用来生成序列或指定多个项：
 
 ```bash
@@ -118,27 +113,7 @@ echo {A,B,C}.txt  # 输出 A.txt B.txt C.txt
 echo file{1..5}.txt  # 输出 file1.txt file2.txt file3.txt file4.txt file5.txt
 ```
 
-### 5. 默认值和替代操作
-在参数扩展中，大括号还可以用来定义变量的默认值或执行替代操作：
-
-```bash
-# 如果变量未定义或为空，使用默认值
-echo "Username: ${USER:-default_user}"
-
-# 如果变量未定义，设置默认值并使用它
-echo "Path: ${PATH:=/usr/bin}"
-```
-
-### 6. 字符串操作
-大括号在字符串操作中非常有用，如提取子字符串、获取字符串长度等：
-
-```bash
-str="hello world"
-echo "${str:6:5}"  # 输出 world，从索引 6 开始提取 5 个字符
-echo "${#str}"  # 输出 11，即字符串长度
-```
-
-### 7. 赋值和计算
+5. 赋值和计算
 大括号在进行计算或复杂的赋值操作时也非常有用：
 
 ```bash
@@ -147,21 +122,6 @@ echo $((a + 5))  # 输出 10
 echo "${a}0"  # 输出 50，如果 a=5
 ```
 `(())` 会计算内部的表达式
-
-### 8. 复杂的参数替换
-大括号用于执行更复杂的参数替换操作，比如字符串的模式替换、删除等：
-
-```bash
-filename="example.tar.gz"
-echo "${filename%.gz}"  # 输出 example.tar，删除最后的 .gz
-echo "${filename//e/E}"  # 输出 ExamplE.tar.gz，替换所有的 e 为 E
-```
-
-
-
-
-
-
 
 
 ### Variables
@@ -897,5 +857,5 @@ alias du='du -h'
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MTM0OTIsLTQwNDg2MjczMF19
+eyJoaXN0b3J5IjpbLTMzMjE5MDI1LC00MDQ4NjI3MzBdfQ==
 -->
