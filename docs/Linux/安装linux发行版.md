@@ -12,11 +12,26 @@ https://www.ventoy.net/cn/index.html
 
 ## arch 装机
 
-参考教程
+
+参考:
 
 ```bash
-https://archlinuxstudio.github.io/ArchLinuxTutorial/#/
+https://archlinuxstudio.github.io/ArchLinuxTutorial
 ```
+
+安装蓝牙:
+
+```bash
+https://linuxhint.com/configure_bluetooth_arch_linux/
+```
+
+安装 xfce:
+
+```bash
+https://www.jianshu.com/p/f2197f0b064b
+```
+
+
 
 ## 安装软件
 
@@ -288,5 +303,5 @@ sudo pacman -S ttf-wps-fonts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0OTcyNjkzMywtMTc4NjM5Mjc1OV19
+eyJoaXN0b3J5IjpbLTE1ODM5ODIzNiwtMTc4NjM5Mjc1OV19
 -->
