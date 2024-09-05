@@ -12,6 +12,7 @@ texmacs 的适用范围:
 ## Enunciations
 
 `Insert -> Enunciation -> ...`
+
 * Theorem.  最重要的, 最抽象的, 高度数学化的, 最正确的结论。
 * Proposition. 命题, 不如 theorem 抽象和重要的, 但也相对重要的结论。
 * Lemma. 引理。相对简单或次要的结论, 用于证明其它的 proposition 和 theorem.
@@ -58,5 +59,5 @@ texmacs 的适用范围:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU0NDIwNjE0LC03MjA3ODE3ODJdfQ==
+eyJoaXN0b3J5IjpbLTM1MjAzNzQxNiwtNzIwNzgxNzgyXX0=
 -->
