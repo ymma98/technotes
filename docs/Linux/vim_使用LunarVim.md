@@ -6,7 +6,7 @@ LunarVim 的好处是开箱即用, 而且定义插件和快捷键都很方便, �
 
 目前在 ～/.config/lvim/config.lua 中的配置:
 
-```bash
+```lua
 -- Read the docs: https://www.lunarvim.org/docs/configuration
 -- Example configs: https://github.com/LunarVim/starter.lvim
 -- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
@@ -199,8 +199,7 @@ vim.cmd('command! Copypath call setreg("+", expand("%:p"))')
 
 -- 设置 Cmake
 -- lvim.keys.normal_mode["<F5>"] = ":CMakeClean<CR>:CMakeGenerate<CR>:CMakeBuild<CR>"
-
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3MDk1MTAzMCw2MTk4NTQ3NDFdfQ==
+eyJoaXN0b3J5IjpbMTMzNTA5NzU1MCw2MTk4NTQ3NDFdfQ==
 -->
