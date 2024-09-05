@@ -20,6 +20,24 @@
 ```bash
 checkcites my_document.aux
 ```
+
+## includeonly
+
+```latex
+\documentclass{book}
+
+% 只编译 introduction 和 chapter1
+\includeonly{introduction,chapter1}
+
+\begin{document}
+
+\include{introduction} % 这个会被编译
+\include{chapter1}     % 这个也会被编译
+\include{chapter2}     % 这个不会被编译
+
+\end{document}
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0OTkyNjkyMF19
+eyJoaXN0b3J5IjpbMTMwNzM1OTU3MV19
 -->
