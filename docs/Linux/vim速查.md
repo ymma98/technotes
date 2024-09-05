@@ -7,6 +7,7 @@
 
 ## cheat sheet
 
+主要 [参考这里](https://github.com/ibhagwan/vim-cheatshee)。
 
 ### Table of contents:
 
@@ -985,5 +986,5 @@ zE                      " delete all folds in current window
 | `"`      |  the next character \is the name of a register|
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjEzMDU2NjJdfQ==
+eyJoaXN0b3J5IjpbLTE0MzEzNDE3MjhdfQ==
 -->
