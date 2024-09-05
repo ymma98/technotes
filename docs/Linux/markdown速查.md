@@ -800,68 +800,6 @@ Alt text and title are optional.
 <a href='https://binarytree.dev/' target='_blank'> <img src='https://github.com/lifeparticle/lifeparticle/blob/master/gh_social_light.png' /> </a>
 ```
 
-## Theme
-
-### Using picture tag
-
-The HTML `<picture>` element, along with the `prefers-color-scheme` media feature, enables you to dynamically adjust images according to the user's color scheme preference, providing options for both light and dark modes.
-
-For example, the code snippet below demonstrates how to display a dark-themed BinaryTree logo when the user's device is set to a dark mode, and a light-themed BinaryTree logo for light mode settings:
-
-```md
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/lifeparticle/lifeparticle/blob/master/gh_social_dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/lifeparticle/lifeparticle/blob/master/gh_social_light.png">
-  <img alt="BinaryTree" src="https://github.com/lifeparticle/lifeparticle/blob/master/gh_social_light.png" width="200">
-</picture>
-```
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/lifeparticle/lifeparticle/blob/master/gh_social_dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://github.com/lifeparticle/lifeparticle/blob/master/gh_social_light.png">
-  <img alt="BinaryTree" src="https://github.com/lifeparticle/lifeparticle/blob/master/gh_social_light.png" width="200">
-</picture>
-
-### Using dark and light mode
-
-```md
-[![Badge][Logo-dark]](https://binarytree.dev#gh-dark-mode-only)
-[![Badge][Logo-light]](https://binarytree.dev#gh-light-mode-only)
-
-[Logo-dark]: https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=graywhite&show_icons=true#gh-light-mode-only
-[Logo-light]: https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=dark&show_icons=true#gh-dark-mode-only
-```
-
-[![Badge][Logo-dark]](https://binarytree.dev#gh-dark-mode-only)
-[![Badge][Logo-light]](https://binarytree.dev#gh-light-mode-only)
-
-[Logo-light]: https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=graywhite&show_icons=true#gh-light-mode-only
-[Logo-dark]: https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=dark&show_icons=true#gh-dark-mode-only
-
-```md
-<a href="https://github.com/anuraghazra/github-readme-stats#gh-light-mode-only">
-  <img src="https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=graywhite&show_icons=true#gh-light-mode-only" width="350"  alt="This image shows a summary of Mahbub Zaman's GitHub statistics."/>
-</a>
-<a href="https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only">
-  <img src="https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=dark&show_icons=true#gh-dark-mode-only" width="350"  alt="This image shows a summary of Mahbub Zaman's GitHub statistics."/>
-</a>
-```
-
-<a href="https://github.com/anuraghazra/github-readme-stats#gh-light-mode-only">
-  <img src="https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=graywhite&show_icons=true#gh-light-mode-only" width="350"  alt="This image shows a summary of Mahbub Zaman's GitHub statistics."/>
-</a>
-<a href="https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only">
-  <img src="https://github-readme-stats.vercel.app/api?username=lifeparticle&theme=dark&show_icons=true#gh-dark-mode-only" width="350"  alt="This image shows a summary of Mahbub Zaman's GitHub statistics."/>
-</a>
-
-# Badges
-
-```md
-![GitHub forks](https://img.shields.io/github/forks/lifeparticle/Markdown-Cheatsheet?style=for-the-badge)
-```
-
-![GitHub forks](https://img.shields.io/github/forks/lifeparticle/Markdown-Cheatsheet?style=for-the-badge)
-
 # Lists
 
 ## Ordered
@@ -1390,5 +1328,5 @@ You can write JSX in your markdown document using [MDX](https://mdxjs.com/).
 
 </div>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTkxNzM4NTUsMTcwOTEzNjc5Ml19
+eyJoaXN0b3J5IjpbNzMyMjQxMjA3LDE3MDkxMzY3OTJdfQ==
 -->
