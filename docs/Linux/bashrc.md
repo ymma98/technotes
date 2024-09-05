@@ -44,7 +44,7 @@ alias scancelid="scancel \$(cat id | grep -Eo '[0-9]*')"
 
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
 alias pc="python inpynim.py c &>/dev/null &"
-alias cl1="ls |grep -vE 'gs|new'|xargs rm"
+alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
 
 # for tabby
 export PS1="$PS1\[\e]1337;CurrentDir="'$(pwd)\a\]'
@@ -79,5 +79,5 @@ alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg1NzgzNV19
+eyJoaXN0b3J5IjpbMTgyNDMxOTY4N119
 -->
