@@ -1,6 +1,6 @@
 # 安装 linux 发行版
 
-对比了 ubuntu, manjaro, arch 这三个发行版，最好用的还是 arch。对比另外两个发行版，arch 是最稳定、可靠、
+对比了 ubuntu, manjaro, arch 这三个发行版，最好用的还是 arch。对比另外两个发行版，arch 是最稳定、可靠的。
 
 ## 启动盘
 
@@ -18,114 +18,9 @@ https://www.ventoy.net/cn/index.html
 https://archlinuxstudio.github.io/ArchLinuxTutorial/#/
 ```
 
+## 安装软件
 
-
-
-## Manjaro 装机 (不要用 Manjaro, 很难用, 小问题不断! 直接用 arch)
-
-参考:
-
-```bash
-https://github.com/orangbus/Tool
-```
-
-
-
-中文输入法
-
-```bash
-https://arch.icekylin.online/rookie/desktop-env-and-app.html#_12-2-%E8%8B%A5%E4%BD%BF%E7%94%A8-ext4-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F
-```
-
-
-
-选择清华源:
-
-```bash
-sudo pacman-mirrors -i -c China -m rank   
-```
-
-添加中文社区仓库 (**这条还是不要做了**):
-
-```bash
-[archlinuxcn]
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-```
-
-
-
-多版本软件用 spack
-
-
-
-用 yay 安装 aur 容易挂掉
-
-```bash
-cd ~/build
-git clone https://aur.archlinux.org/package_name.git
-cd package_name
-makepkg -si
-pacman -U package_name-version-architecture.pkg.tar.zst
-
-https://wiki.archlinux.org/title/Arch_User_Repository#Installing_and_upgrading_packages
-```
-
-
-
-Manjaro 自带的 pamac 图形化包管理器在设置中即可开启 AUR 支持。命令行下我选用了 [yay](https://github.com/Jguer/yay)，可以直接从官方 community 仓库中安装：
-
-```bash
-# 后面那个是编译包时需要的一些工具，不然会报错缺少 fakeroot 之类的
-sudo pacman -S yay base-devel
-
-# 设置 AUR 清华镜像源
-yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
-
-# 开启 pacman 和 yay 的彩色输出
-sudo sed -i "s/#Color/Color/g" /etc/pacman.conf
-```
-
-
-
-
-
-安装google chrome
-
-```bash
-git clone https://aur.archlinux.org/google-chrome.git
-cd google-chrome
-makepkg -si
-```
-
-
-
-安装 wps
-
-```bash
-sudo pacman -S wps-office
-sudo pacman -S ttf-wps-fonts
-```
-
-
-
-
-v2raya + switchomega 配合使用教程:
-
-https://zhuanlan.zhihu.com/p/414998586
-
-
-
-
-
-pdf:
-
-```bash
-编辑 pdf:
-libreoffice --draw pdf_file
-查看 pdf:
-okular pdf_file
-```
-
+### matlab
 
 
 matlab:
@@ -138,10 +33,6 @@ ls | grep libfreetype
 mkdir exclude
 mv libfreetype.so.x.xx.x exclude/
 ```
-
-
-
-
 
 #### matlab 字体问题:
 
@@ -285,6 +176,115 @@ sudo pacman -S noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-se
 
 </fontconfig>
 ```
+
+
+## Manjaro 装机 (不要用 Manjaro, 很难用, 小问题不断! 直接用 arch)
+
+参考:
+
+```bash
+https://github.com/orangbus/Tool
+```
+
+
+
+中文输入法
+
+```bash
+https://arch.icekylin.online/rookie/desktop-env-and-app.html#_12-2-%E8%8B%A5%E4%BD%BF%E7%94%A8-ext4-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F
+```
+
+
+
+选择清华源:
+
+```bash
+sudo pacman-mirrors -i -c China -m rank   
+```
+
+添加中文社区仓库 (**这条还是不要做了**):
+
+```bash
+[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+```
+
+
+
+多版本软件用 spack
+
+
+
+用 yay 安装 aur 容易挂掉
+
+```bash
+cd ~/build
+git clone https://aur.archlinux.org/package_name.git
+cd package_name
+makepkg -si
+pacman -U package_name-version-architecture.pkg.tar.zst
+
+https://wiki.archlinux.org/title/Arch_User_Repository#Installing_and_upgrading_packages
+```
+
+
+
+Manjaro 自带的 pamac 图形化包管理器在设置中即可开启 AUR 支持。命令行下我选用了 [yay](https://github.com/Jguer/yay)，可以直接从官方 community 仓库中安装：
+
+```bash
+# 后面那个是编译包时需要的一些工具，不然会报错缺少 fakeroot 之类的
+sudo pacman -S yay base-devel
+
+# 设置 AUR 清华镜像源
+yay --aururl "https://aur.tuna.tsinghua.edu.cn" --save
+
+# 开启 pacman 和 yay 的彩色输出
+sudo sed -i "s/#Color/Color/g" /etc/pacman.conf
+```
+
+
+
+
+
+安装google chrome
+
+```bash
+git clone https://aur.archlinux.org/google-chrome.git
+cd google-chrome
+makepkg -si
+```
+
+
+
+安装 wps
+
+```bash
+sudo pacman -S wps-office
+sudo pacman -S ttf-wps-fonts
+```
+
+
+
+
+v2raya + switchomega 配合使用教程:
+
+https://zhuanlan.zhihu.com/p/414998586
+
+
+
+
+
+pdf:
+
+```bash
+编辑 pdf:
+libreoffice --draw pdf_file
+查看 pdf:
+okular pdf_file
+```
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjAyNjAzMV19
+eyJoaXN0b3J5IjpbLTE3ODYzOTI3NTldfQ==
 -->
