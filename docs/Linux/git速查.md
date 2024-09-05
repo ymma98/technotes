@@ -1,14 +1,16 @@
 # git 速查
 
-## cheatsheet
+## cheat sheet
 
-## Configuration
+这一节主要[参考这里](https://github.com/RehanSaeed/Git-Cheat-Sheet)
+
+### Configuration
 | Command | Description |
 | - | - |
 | `git config --global user.name "foo"`              | Set user name |
 | `git config --global user.email "foo@example.com"` | Set user email |
 
-## Branches
+### Branches
 | Command | Description |
 | - | - |
 | `git branch foo`                          | Create a new branch |
@@ -21,12 +23,12 @@
 | `git checkout -b foo`                     | Use `git switch -c` instead |
 | `git merge foo`                           | Merge branch into current branch |
 
-## Pulling
+### Pulling
 | Command | Description |
 | - | - |
 | `git pull --rebase --prune`               | Get latest, rebase any changes not checked in and delete branches that no longer exist | 
 
-## Staged Changes
+### Staged Changes
 | Command | Description |
 | - | - |
 | `git add file.txt`                        | Stage file |
@@ -39,7 +41,7 @@
 | `git clean -f\|--force -d`                | Recursively remove untracked files from the working tree |
 | `git clean -f\|--force -d -x`             | Recursively remove untracked and ignored files from the working tree |
 
-## Changing Commits
+### Changing Commits
 | Command | Description |
 | - | - |
 | `git reset 5720fdf`                           | Reset current branch but not working area to commit |
@@ -55,14 +57,14 @@
 | `git rebase --abort`                          | Cancel an interactive rebase |
 | `git cherry-pick 5720fdf`                     | Copy the commit to the current branch |
 
-## Compare
+### Compare
 | Command | Description |
 | - | - |
 | `git diff`                                | See difference between working area and current branch |
 | `git diff HEAD HEAD~2`                    | See difference between te current commit and two previous commits |
 | `git diff main other`                     | See difference between two branches |
 
-## View
+### View
 | Command | Description |
 | - | - |
 | `git log`                                 | See commit list |
@@ -76,7 +78,7 @@
 | `git show 5720fdf`                        | Show named commit |
 | `git blame file.txt`                      | See who changed each line and when |
 
-## Stash
+### Stash
 | Command | Description |
 | - | - |
 | `git stash push -m "Message"`             | Stash staged files |
@@ -87,7 +89,7 @@
 | `git stash apply 0`                       | Moved named stash to working area |
 | `git stash clear`                         | Clear the stash |
 
-## Tags
+### Tags
 | Command | Description |
 | - | - |
 | `git tag`                                              | List all tags |
@@ -95,7 +97,7 @@
 | `git tag -d\|--delete 0.0.1`                           | Delete a tag |
 | `git push --tags`                                      | Push tags to remote repository |
 
-## Remote
+### Remote
 | Command | Description |
 | - | - |
 | `git remote -v`                           | List remote repositories |
@@ -108,7 +110,7 @@
 | `git push --force-with-lease`             | Push any changes but stop if there are any remote changes |
 | `git push --tags`                         | Push tags to remote repository |
 
-## Submodules
+### Submodules
 | Command | Description |
 | - | - |
 | `git submodule status`                    | Check status of all submodules |
@@ -293,26 +295,6 @@ git pull --rebase upstream master  # 从 upstream 的 master 里获取最新的�
 ```
 
 
-
-## submodule
-
-```bash
-# add submodule in current folder:
-git submodule add https://github.com/xxxxxxxxxxx
-
-# clone current project with full submodule:
-1. git clone --recurse-submodules https://github.com/chaconinc/MainProject
-or:
-1. git submodule init
-2. git submodule update
-
-# update submodule:
-cd submodule_path
-git fetch 
-git merge origin/master
-```
-
-
 ## git 显示中文乱码
 
 * 设置 Git 的 `core.quotepath` 选项为 `false`**：Git 有一个名为 `core.quotepath` 的配置选项，它默认设置为 `true`，用来对非 ASCII 文件名进行引用。当设置为 `false` 时，Git 会显示原始的文件名。你可以通过运行以下命令来更改这个设置：
@@ -322,5 +304,5 @@ git config --global core.quotepath false
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjkwNTYwNTBdfQ==
+eyJoaXN0b3J5IjpbLTEyMjUyNjQ3NzVdfQ==
 -->
