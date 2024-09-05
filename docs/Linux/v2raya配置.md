@@ -7,7 +7,7 @@
 * Transport Proxy/System Proxy -> On: Traffic Splitting Mode is the Same as the Rule Port
 * Transparent Proxy/System Proxy Implementation -> redirect
 * Traffic Splitting Mode of Rule Port -> Routing A
-	*
+	* configuration of Routing A  
 ```bash
 default: proxy
 # write your own rules below
@@ -31,5 +31,5 @@ domain(domain:chatgpt.com)->proxy
 * Automatically Update Subscriptions -> Update Subscriptions When Service Starts
 * Mode when Update Subscriptions and GFWList -> Do not Split Traffic
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2ODg4OTY0Nl19
+eyJoaXN0b3J5IjpbNzg1OTk5NTM4XX0=
 -->
