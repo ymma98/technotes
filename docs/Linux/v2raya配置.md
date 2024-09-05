@@ -7,7 +7,7 @@
 * Transport Proxy/System Proxy -> On: Traffic Splitting Mode is the Same as the Rule Port
 * Transparent Proxy/System Proxy Implementation -> redirect
 * Traffic Splitting Mode of Rule Port -> Routing A
-* 
+	*
 ```bash
 default: proxy
 # write your own rules below
@@ -23,6 +23,7 @@ ip(geoip:private, geoip:cn)->direct
 domain(domain:qq.com, domain:163.com, domain:bilibili.com)->direct
 domain(domain:chatgpt.com)->proxy
 ```
+
 * Prevent DNS Spoofing -> DoH(dns-over-https)
 * Special Mode -> supervisor
 * TCPFastOpen -> Keep Default
@@ -30,5 +31,5 @@ domain(domain:chatgpt.com)->proxy
 * Automatically Update Subscriptions -> Update Subscriptions When Service Starts
 * Mode when Update Subscriptions and GFWList -> Do not Split Traffic
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MDk2MzE5Nl19
+eyJoaXN0b3J5IjpbLTQ2ODg4OTY0Nl19
 -->
