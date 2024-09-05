@@ -1,5 +1,7 @@
 # 安装 linux 发行版
 
+对比了 ubuntu, manjaro, arch 这三个发行版，最好用的还是 arch。对比另外两个发行版，arch 是最稳定、可靠、
+
 ## 启动盘
 
 使用 `ventoy` 制作启动盘:
@@ -284,5 +286,5 @@ sudo pacman -S noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-se
 </fontconfig>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNzcyNTIxXX0=
+eyJoaXN0b3J5IjpbLTE4NjAyNjAzMV19
 -->
