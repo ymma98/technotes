@@ -26,7 +26,7 @@
 | `Shift + Page Down` | 向下滚动终端输出                |
 
 
-## 使用 powerlevel10k 配置 prompt
+## 使用 powerlevel10k 配置 prompt (zsh)
 
 
 [powerlevel10k repo 地址](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#how-do-i-add-username-andor-hostname-to-prompt)
@@ -44,6 +44,6 @@ p10k configure
 typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Njg1MzM0MjAsLTg0NzMyNDM1OSwzMD
-kwNjU4MjZdfQ==
+eyJoaXN0b3J5IjpbMTA3NTA5MzcxOCwtMTk2ODUzMzQyMCwtOD
+Q3MzI0MzU5LDMwOTA2NTgyNl19
 -->
