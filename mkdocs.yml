@@ -9,6 +9,7 @@ nav:
   - Linux:
       - terminal_快捷键以及配置: Linux/terminal_快捷键以及配置.md
       - vim_使用nvim: Linux/vim_使用nvim.md
+      - bash速查: Linux/bash速查.md
       - arch速查: Linux/arch速查.md
       - spack速查: Linux/spack速查.md
       - wsl速查: Linux/wsl速查.md
