@@ -16,6 +16,7 @@ nav:
   - FEM:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
   - latex:
+    - cheatsheet: latex/cheatsheet.md
     - 修改 bibtex 参考文献格式: latex/修改 bibtex 参考文献格式.md
   - python:
       - pdb: python/pdb.md
