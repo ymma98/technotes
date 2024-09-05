@@ -37,6 +37,7 @@ texmacs 的适用范围:
 * Answer
 
 ## 必知必会
+
 * 插入 Appendix
 	* `\section` -> 在工具栏中光标停留在 `structured variant` 之后选择 section 的类型为 `Appendix` 。同理也可以选择 `Chapter`, `Subsection`, `Paragraph` 等等。
 * 多行公式的排版主要靠插入 `plain tabular` 解决, 但这也会造成和 latex 不兼容。单行公式可以很方便地导出为 latex 格式。
@@ -59,5 +60,6 @@ texmacs 的适用范围:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1MjAzNzQxNiwtNzIwNzgxNzgyXX0=
+eyJoaXN0b3J5IjpbLTExNDAyODM2MDYsLTM1MjAzNzQxNiwtNz
+IwNzgxNzgyXX0=
 -->
