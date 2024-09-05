@@ -632,6 +632,13 @@ gF              " find and open the file under the cursor with line number
 2<ctrl-g>       " display buf # and full path of current buffer (file)
 ```
 
+-   **增加/减少水平分屏的高度**:
+    -   增加：`Ctrl-w +`
+    -   减少：`Ctrl-w -`
+-   **增加/减少垂直分屏的宽度**:
+    -   增加：`Ctrl-w >`
+    -   减少：`Ctrl-w <`
+
 **Notes:**
 - `:bufdo` and `:windo` can be used for multiple file/window operations, for example to search and replace in all open buffers you can run `:bufdo %s/old/new/g`
 
@@ -987,5 +994,6 @@ zE                      " delete all folds in current window
 | `"`      |  the next character \is the name of a register|
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxODU2NjQxNCwtMTQzMTM0MTcyOF19
+eyJoaXN0b3J5IjpbLTE5MTA1NjE5MjAsMTYxODU2NjQxNCwtMT
+QzMTM0MTcyOF19
 -->
