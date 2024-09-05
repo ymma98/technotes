@@ -11,6 +11,12 @@ nav:
       - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
       - vim_强制tab对应4空格: Linux/vim_强制tab对应4空格.md
       - 集群_mpirun报错: Linux/集群_mpirun报错.md
+  - math:
+    - Mathematica速查: math/MathematicaCheatsheet.md
+  - FEM:
+    - 科学计算准则与协议: FEM/科学计算准则与协议.md
+  - latex:
+    - 修改 bibtex 参考文献格式: latex/修改 bibtex 参考文献格式.md
   - python:
       - pdb: python/pdb.md
       - python无法支持汉字: python/python无法支持汉字.md
@@ -23,10 +29,7 @@ nav:
      - 模板元编程: cpp/模板元编程.md
      - 翻译单元: cpp/翻译单元.md
      - 编程规范: cpp/编程规范.md
-  - math:
-    - Mathematica速查: math/MathematicaCheatsheet.md
-  - FEM:
-    - 科学计算准则与协议: FEM/科学计算准则与协议.md
+
      
 
 
