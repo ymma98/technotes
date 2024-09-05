@@ -4,7 +4,11 @@
 
 LunarVim 的好处是开箱即用, 而且定义插件和快捷键都很方便, 很适合在个人电脑上使用。
 
-目前在 ~/.
+目前在 ～/.config/lvim/config.lua 中的配置:
+
+```bash
+
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzczNTE1MTAxLDYxOTg1NDc0MV19
+eyJoaXN0b3J5IjpbNzU4NzM2MTc1LDYxOTg1NDc0MV19
 -->
