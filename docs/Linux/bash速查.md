@@ -1,5 +1,210 @@
 # bash 速查
 
+## 目录
+
+| dir | function |
+|--|--|
+| / | 根目录, 一般不会在这里存储文件 |
+| /bin | 存放用户级的 GNU 工具 |
+| /boot | 存放启动文件 |
+| /dev | 设备目录, Linux 在这里创建设备节点 |
+| /etc | 存放系统配置 |
+| /home | 主目录 |
+| /lib | 系统和应用程序的库 |
+| /media | 可移动媒体的挂载点 |
+| /mnt | 另一个可移动媒体的挂载点 |
+| /opt | 存放第三方软件包和文件 |
+| /proc | 存放硬件和进程的相关信息 |
+| /root | root 用户的 home|
+| /sbin | system bin, GNU 管理员级别的工具|
+| /run | 存放系统运行时的数据|
+| /srv | 存放本地服务的相关文件|
+| /sys | 存放系统硬件信息的相关文件|
+| /tmp | 临时目录|
+| /usr | 用户二进制文件, 用户级的 GNU 工具和数据文件|
+| /var | 存放日志文件 (经常变化的文件)|
+
+## bash 脚本
+
+`(expression)` will create a subshell without leaking side-effects, but `{expression;}` not. Moreover, always use `[[ condition ]]` rather than `[ condition ]` .
+
+
+
+### Variables
+
+```bash
+#!/bin/bash
+
+foo=123                # Initialize variable foo with 123
+declare -i foo=123     # Initialize an integer foo with 123
+declare -r foo=123     # Initialize readonly variable foo with 123
+echo $foo              # Print variable foo
+echo ${foo}_'bar'      # Print variable foo followed by _bar
+echo ${foo:-'default'} # Print variable foo if it exists otherwise print default
+
+export foo             # Make foo available to child processes
+unset foo              # Make foo unavailable to child processes
+```
+
+### Environment Variables
+
+```bash
+#!/bin/bash
+
+env        # List all environment variables
+echo $PATH # Print PATH environment variable
+```
+
+### Functions
+
+```bash
+#!/bin/bash
+
+greet() {
+  local world = "World"
+  echo "$1 $world"
+  return "$1 $world"
+}
+greet "Hello"
+greeting=$(greet "Hello")
+```
+
+### Exit Codes
+
+```bash
+#!/bin/bash
+
+exit 0   # Exit the script successfully
+exit 1   # Exit the script unsuccessfully
+echo $?  # Print the last exit code
+```
+
+### Conditional Statements
+
+#### Boolean Operators
+
+- `$foo` - Is true
+- `!$foo` - Is false
+
+#### Numeric Operators
+
+- `-eq` - Equals
+- `-ne` - Not equals
+- `-gt` - Greater than
+- `-ge` - Greater than or equal to
+- `-lt` - Less than
+- `-le` - Less than or equal to
+- `-e` foo.txt - Check file exists
+- `-d` - Check file exists and it is a directory
+- `-f` - Check file exists and it is a file
+- `-z` foo - Check if variable exists
+
+#### String Operators
+
+- `=` - Equals
+- `==` - Equals
+- `-z` - Is null
+- `-n` - Is not null
+- `<` - Is less than in ASCII alphabetical order
+- `>` - Is greater than in ASCII alphabetical order
+
+##### If Statements
+
+```bash
+#!/bin/bash
+
+if [[$foo = 'bar']]; then
+  echo 'one'
+elif [[$foo = 'bar']] || [[$foo = 'baz']]; then
+  echo 'two'
+elif [[$foo = 'ban']] && [[$USER = 'bat']]; then
+  echo 'three'
+else
+  echo 'four'
+fi
+```
+
+Shell will run the command in `if` block (e.g. `grep $testUser xxx`). If the command returns 0 that means executed sucessfully, the command in the `then` block will execute, otherwise not. 
+```bash
+#!/bin/bash
+testUser=ymma_test
+if grep $testUser /etc/passwd
+then
+    echo "The user $testUser exists on this computer"
+elif ls -d /home/$testUser
+then
+    echo "The user does not exists in this computer"
+    echo "However, $testUser has a directory"
+else
+    echo "The user $testUser does not exist on this computer"
+fi
+```
+
+
+##### Inline If Statements
+
+```bash
+#!/bin/bash
+
+[[ $USER = 'rehan' ]] && echo 'yes' || echo 'no'
+```
+
+##### While Loops
+
+```bash
+#!/bin/bash
+
+declare -i counter
+counter=10
+while [$counter -gt 2]; do
+  echo The counter is $counter
+  counter=counter-1
+done
+```
+
+##### For Loops
+
+```bash
+#!/bin/bash
+
+for i in {0..10..2}
+  do
+    echo "Index: $i"
+  done
+
+for filename in file1 file2 file3
+  do
+    echo "Content: " >> $filename
+  done
+
+for filename in *;
+  do
+    echo "Content: " >> $filename
+  done
+```
+
+##### Case Statements
+
+```bash
+#!/bin/bash
+
+echo 'What's the weather like tomorrow?'
+read weather
+
+case $weather in
+  sunny | warm ) echo 'Nice weather: ' $weather
+  ;;
+  cloudy | cool ) echo 'Not bad weather: ' $weather
+  ;;
+  rainy | cold ) echo 'Terrible weather: ' $weather
+  ;;
+  * ) echo 'Don't understand'
+  ;;
+esac
+```
+
+
+
 ## cheat sheet
 
 这一节的 cheatsheet, 主要[参考这里](https://github.com/RehanSaeed/Bash-Cheat-Sheet)
@@ -538,185 +743,8 @@ alias df='df -h'
 alias du='du -h'
 ```
 
-### Bash Script
 
-`(expression)` will create a subshell without leaking side-effects, but `{expression;}` not. Moreover, always use `[[ condition ]]` rather than `[ condition ]` .
-
-
-
-#### Variables
-
-```bash
-#!/bin/bash
-
-foo=123                # Initialize variable foo with 123
-declare -i foo=123     # Initialize an integer foo with 123
-declare -r foo=123     # Initialize readonly variable foo with 123
-echo $foo              # Print variable foo
-echo ${foo}_'bar'      # Print variable foo followed by _bar
-echo ${foo:-'default'} # Print variable foo if it exists otherwise print default
-
-export foo             # Make foo available to child processes
-unset foo              # Make foo unavailable to child processes
-```
-
-#### Environment Variables
-
-```bash
-#!/bin/bash
-
-env        # List all environment variables
-echo $PATH # Print PATH environment variable
-```
-
-#### Functions
-
-```bash
-#!/bin/bash
-
-greet() {
-  local world = "World"
-  echo "$1 $world"
-  return "$1 $world"
-}
-greet "Hello"
-greeting=$(greet "Hello")
-```
-
-#### Exit Codes
-
-```bash
-#!/bin/bash
-
-exit 0   # Exit the script successfully
-exit 1   # Exit the script unsuccessfully
-echo $?  # Print the last exit code
-```
-
-#### Conditional Statements
-
-##### Boolean Operators
-
-- `$foo` - Is true
-- `!$foo` - Is false
-
-##### Numeric Operators
-
-- `-eq` - Equals
-- `-ne` - Not equals
-- `-gt` - Greater than
-- `-ge` - Greater than or equal to
-- `-lt` - Less than
-- `-le` - Less than or equal to
-- `-e` foo.txt - Check file exists
-- `-d` - Check file exists and it is a directory
-- `-f` - Check file exists and it is a file
-- `-z` foo - Check if variable exists
-
-##### String Operators
-
-- `=` - Equals
-- `==` - Equals
-- `-z` - Is null
-- `-n` - Is not null
-- `<` - Is less than in ASCII alphabetical order
-- `>` - Is greater than in ASCII alphabetical order
-
-##### If Statements
-
-```bash
-#!/bin/bash
-
-if [[$foo = 'bar']]; then
-  echo 'one'
-elif [[$foo = 'bar']] || [[$foo = 'baz']]; then
-  echo 'two'
-elif [[$foo = 'ban']] && [[$USER = 'bat']]; then
-  echo 'three'
-else
-  echo 'four'
-fi
-```
-
-Shell will run the command in `if` block (e.g. `grep $testUser xxx`). If the command returns 0 that means executed sucessfully, the command in the `then` block will execute, otherwise not. 
-```bash
-#!/bin/bash
-testUser=ymma_test
-if grep $testUser /etc/passwd
-then
-    echo "The user $testUser exists on this computer"
-elif ls -d /home/$testUser
-then
-    echo "The user does not exists in this computer"
-    echo "However, $testUser has a directory"
-else
-    echo "The user $testUser does not exist on this computer"
-fi
-```
-
-
-##### Inline If Statements
-
-```bash
-#!/bin/bash
-
-[[ $USER = 'rehan' ]] && echo 'yes' || echo 'no'
-```
-
-##### While Loops
-
-```bash
-#!/bin/bash
-
-declare -i counter
-counter=10
-while [$counter -gt 2]; do
-  echo The counter is $counter
-  counter=counter-1
-done
-```
-
-##### For Loops
-
-```bash
-#!/bin/bash
-
-for i in {0..10..2}
-  do
-    echo "Index: $i"
-  done
-
-for filename in file1 file2 file3
-  do
-    echo "Content: " >> $filename
-  done
-
-for filename in *;
-  do
-    echo "Content: " >> $filename
-  done
-```
-
-##### Case Statements
-
-```bash
-#!/bin/bash
-
-echo 'What's the weather like tomorrow?'
-read weather
-
-case $weather in
-  sunny | warm ) echo 'Nice weather: ' $weather
-  ;;
-  cloudy | cool ) echo 'Not bad weather: ' $weather
-  ;;
-  rainy | cold ) echo 'Terrible weather: ' $weather
-  ;;
-  * ) echo 'Don't understand'
-  ;;
-esac
-```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4ODkwNjMzMiwtNDA0ODYyNzMwXX0=
+eyJoaXN0b3J5IjpbMTM4NjM2NjAwMSwtNDA0ODYyNzMwXX0=
 -->
