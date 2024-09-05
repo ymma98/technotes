@@ -474,7 +474,7 @@ lspci                  # List PCI hardware
 lshw                   # List all hardware
 ```
 
-## Terminal Multiplexers
+### Terminal Multiplexers
 
 Start multiple terminal sessions. Active sessions persist reboots. `tmux` is more modern than `screen`.
 
@@ -490,7 +490,7 @@ screen -R 31166  # Reattach to a session
 exit             # Exit a session
 ```
 
-## Secure Shell Protocol (SSH)
+### Secure Shell Protocol (SSH)
 
 ```bash
 ssh hostname                 # Connect to hostname using your current user name over the default SSH port 22
@@ -511,13 +511,13 @@ Host name
 $ ssh name
 ```
 
-## Secure Copy
+### Secure Copy
 
 ```bash
 scp foo.txt ubuntu@hostname:/home/ubuntu # Copy foo.txt into the specified remote directory
 ```
 
-## Bash Profile
+### Bash Profile
 
 - bash - `.bashrc`
 - zsh - `.zshrc`
@@ -538,13 +538,13 @@ alias df='df -h'
 alias du='du -h'
 ```
 
-## Bash Script
+### Bash Script
 
 `(expression)` will create a subshell without leaking side-effects, but `{expression;}` not. Moreover, always use `[[ condition ]]` rather than `[ condition ]` .
 
 
 
-### Variables
+#### Variables
 
 ```bash
 #!/bin/bash
@@ -560,7 +560,7 @@ export foo             # Make foo available to child processes
 unset foo              # Make foo unavailable to child processes
 ```
 
-### Environment Variables
+#### Environment Variables
 
 ```bash
 #!/bin/bash
@@ -569,7 +569,7 @@ env        # List all environment variables
 echo $PATH # Print PATH environment variable
 ```
 
-### Functions
+#### Functions
 
 ```bash
 #!/bin/bash
@@ -583,7 +583,7 @@ greet "Hello"
 greeting=$(greet "Hello")
 ```
 
-### Exit Codes
+#### Exit Codes
 
 ```bash
 #!/bin/bash
@@ -593,14 +593,14 @@ exit 1   # Exit the script unsuccessfully
 echo $?  # Print the last exit code
 ```
 
-### Conditional Statements
+#### Conditional Statements
 
-#### Boolean Operators
+##### Boolean Operators
 
 - `$foo` - Is true
 - `!$foo` - Is false
 
-#### Numeric Operators
+##### Numeric Operators
 
 - `-eq` - Equals
 - `-ne` - Not equals
@@ -613,7 +613,7 @@ echo $?  # Print the last exit code
 - `-f` - Check file exists and it is a file
 - `-z` foo - Check if variable exists
 
-#### String Operators
+##### String Operators
 
 - `=` - Equals
 - `==` - Equals
@@ -622,7 +622,7 @@ echo $?  # Print the last exit code
 - `<` - Is less than in ASCII alphabetical order
 - `>` - Is greater than in ASCII alphabetical order
 
-#### If Statements
+##### If Statements
 
 ```bash
 #!/bin/bash
@@ -655,7 +655,7 @@ fi
 ```
 
 
-#### Inline If Statements
+##### Inline If Statements
 
 ```bash
 #!/bin/bash
@@ -663,7 +663,7 @@ fi
 [[ $USER = 'rehan' ]] && echo 'yes' || echo 'no'
 ```
 
-#### While Loops
+##### While Loops
 
 ```bash
 #!/bin/bash
@@ -676,7 +676,7 @@ while [$counter -gt 2]; do
 done
 ```
 
-#### For Loops
+##### For Loops
 
 ```bash
 #!/bin/bash
@@ -697,7 +697,7 @@ for filename in *;
   done
 ```
 
-#### Case Statements
+##### Case Statements
 
 ```bash
 #!/bin/bash
@@ -718,5 +718,5 @@ esac
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc2Mjc0NjM2LC00MDQ4NjI3MzBdfQ==
+eyJoaXN0b3J5IjpbLTM4ODkwNjMzMiwtNDA0ODYyNzMwXX0=
 -->
