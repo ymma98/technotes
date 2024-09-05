@@ -9,9 +9,9 @@ alias b="nvim"
 alias p="python"
 alias gitadog="git log --all --decorate --oneline --graph"
 alias gitadog2="git log --graph --abbrev-commit --decorate --date=relative --all"
-
-
-
+# clear duplicate $PATH
+# reference: https://unix.stackexchange.com/questions/14895/duplicate-entries-in-path-a-problem
+PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
 
 
 #################################### wsl
@@ -31,7 +31,6 @@ alias sync172="rsync -auvz -e 'ssh -p 32157'"
 
 alias winmode="git config oh-my-zsh.hide-dirty 1"
 alias wslmode="git config oh-my-zsh.hide-dirty 0"
-
 
 
 ##################################  190
@@ -80,5 +79,5 @@ alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyNTU5NzgwOV19
+eyJoaXN0b3J5IjpbNzg1NzgzNV19
 -->
