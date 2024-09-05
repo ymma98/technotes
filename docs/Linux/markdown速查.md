@@ -958,43 +958,6 @@ Windows: <kbd>control+shift+8</kbd>
 <kbd> <br> [Markdown-Cheatsheet](https://github.com/lifeparticle/Markdown-Cheatsheet) <br> </kbd>
 ```
 
-# Collapsible items (28 July 2023)
-
-```md
-<details>
-  <summary>Markdown</summary>
-
--  <kbd>[Markdown Editor](https://binarytree.dev/me)</kbd>
--  <kbd>[Table Of Content](https://binarytree.dev/toc)</kbd>
--  <kbd>[Markdown Table Generator](https://binarytree.dev/md_table_generator)</kbd>
-
-</details>
-```
-
-<details>
-  <summary>Markdown</summary>
-
-- <kbd>[Markdown Editor](https://binarytree.dev/me)</kbd>
-- <kbd>[Table Of Content](https://binarytree.dev/toc)</kbd>
-- <kbd>[Markdown Table Generator](https://binarytree.dev/md_table_generator)</kbd>
-
-</details>
-
-# Horizontal Rule
-
-```md
----
-***
-___
-```
-
----
-
-<!-- markdownlint-disable-next-line MD035 -->
-***
-
-<!-- markdownlint-disable-next-line MD035 -->
-___
 
 # Diagrams (19 July 2022)
 
@@ -1033,65 +996,7 @@ $$
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}
 $$
 
-# Alerts (8 January 2024)
 
-```md
-> [!NOTE]
-> Essential details that users should not overlook, even when browsing quickly.
-
-<br>
-
-> [!TIP]
-> Additional advice to aid users in achieving better outcomes.
-
-<br>
-
-> [!IMPORTANT]
-> Vital information required for users to attain success.
-
-<br>
-
-> [!WARNING]
-> Urgent content that requires immediate user focus due to possible risks.
-
-<br>
-
-> [!CAUTION]
-> Possible negative outcomes resulting from an action.
-```
-
-> [!NOTE]
-> Essential details that users should not overlook, even when browsing quickly.
-
-<br>
-
-> [!TIP]
-> Additional advice to aid users in achieving better outcomes.
-
-<br>
-
-> [!IMPORTANT]
-> Vital information required for users to attain success.
-
-<br>
-
-> [!WARNING]
-> Urgent content that requires immediate user focus due to possible risks.
-
-<br>
-
-> [!CAUTION]
-> Possible negative outcomes resulting from an action.
-
-# Mention people and teams
-
-In issues:
-
-```md
-@lifeparticle
-```
-
-[Example](https://github.com/lifeparticle/Markdown-Cheatsheet/issues/1)
 
 # Reference issues and pull requests
 
@@ -1328,5 +1233,5 @@ You can write JSX in your markdown document using [MDX](https://mdxjs.com/).
 
 </div>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMyMjQxMjA3LDE3MDkxMzY3OTJdfQ==
+eyJoaXN0b3J5IjpbLTI3MjI0Mzc3MywxNzA5MTM2NzkyXX0=
 -->
