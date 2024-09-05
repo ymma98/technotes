@@ -225,7 +225,7 @@ sed 's/fox/bear/g' foo.txt > bar.txt     # Replace fox with bear in foo.txt and 
 sed 's/fox/bear/g' foo.txt -i|--in-place # Replace fox with bear and overwrite foo.txt
 ```
 
-## Symbolic Links
+### Symbolic Links
 
 ```bash
 ln -s|--symbolic foo bar            # Create a link 'bar' to the 'foo' folder
@@ -233,9 +233,9 @@ ln -s|--symbolic -f|--force foo bar # Overwrite an existing symbolic link 'bar'
 ls -l                               # Show where symbolic links are pointing
 ```
 
-## Compressing Files
+### Compressing Files
 
-### zip
+#### zip
 
 Compresses one or more files into *.zip files.
 
@@ -246,7 +246,7 @@ zip foo.zip /{bar,baz}.txt          # Compress bar.txt and baz.txt into foo.zip
 zip -r|--recurse-paths foo.zip /bar # Compress directory bar into foo.zip
 ```
 
-### gzip
+#### gzip
 
 Compresses a single file into *.gz files.
 
@@ -255,7 +255,7 @@ gzip /bar.txt foo.gz           # Compress bar.txt into foo.gz and then delete ba
 gzip -k|--keep /bar.txt foo.gz # Compress bar.txt into foo.gz
 ```
 
-### tar -c
+#### tar -c
 
 Compresses (optionally) and combines one or more files into a single *.tar, *.tar.gz, *.tpz or *.tgz file.
 
@@ -265,29 +265,29 @@ tar -c|--create -z|--gzip -f|--file=foo.tgz /{bar,baz}.txt    # Compress bar.txt
 tar -c|--create -z|--gzip -f|--file=foo.tgz /bar              # Compress directory bar into foo.tgz
 ```
 
-## Decompressing Files
+### Decompressing Files
 
-### unzip
+#### unzip
 
 ```bash
 unzip foo.zip          # Unzip foo.zip into current directory
 ```
 
-### gunzip
+#### gunzip
 
 ```bash
 gunzip foo.gz           # Unzip foo.gz into current directory and delete foo.gz
 gunzip -k|--keep foo.gz # Unzip foo.gz into current directory
 ```
 
-### tar -x
+#### tar -x
 
 ```bash
 tar -x|--extract -z|--gzip -f|--file=foo.tar.gz # Un-compress foo.tar.gz into current directory
 tar -x|--extract -f|--file=foo.tar              # Un-combine foo.tar into current directory
 ```
 
-## Disk Usage
+### Disk Usage
 
 ```bash
 df                     # List disks, size, used and available space
@@ -300,7 +300,7 @@ du -d|--max-depth      # List current directory, subdirectories and file sizes w
 du -d 0                # List current directory size
 ```
 
-## Memory Usage
+### Memory Usage
 
 ```bash
 free                   # Show memory usage
@@ -309,7 +309,7 @@ free -h|--human --si   # Show human readable memory usage in power of 1000 inste
 free -s|--seconds 5    # Show memory usage and update continuously every five seconds
 ```
 
-## Packages
+### Packages
 
 ```bash
 apt update             # Refreshes repository index
@@ -320,7 +320,7 @@ apt remove wget        # Removes the wget package
 apt upgrade            # Upgrades all upgradable packages
 ```
 
-## Shutdown and Reboot
+### Shutdown and Reboot
 
 ```bash
 shutdown                     # Shutdown in 1 minute
@@ -337,7 +337,7 @@ reboot                       # Reboot now
 reboot -f                    # Force a reboot
 ```
 
-## Identifying Processes
+### Identifying Processes
 
 ```bash
 top                    # List all processes interactively
@@ -358,7 +358,7 @@ lsof                   # List all open files and the process using them
 lsof -itcp:4000        # Return the process listening on port 4000
 ```
 
-## Process Priority
+### Process Priority
 
 Process priorities go from -20 (highest) to 19 (lowest).
 
@@ -368,7 +368,7 @@ renice 20 PID          # Change process priority by PID
 ps -o ni PID           # Return the process priority of PID
 ```
 
-## Killing Processes
+### Killing Processes
 
 ```bash
 CTRL+C                 # Kill a process running in the foreground
@@ -379,7 +379,7 @@ pkill -9 foo           # force shut down process by name. Sends SIGKILL signal.
 killall foo            # Kill all process with the specified name gracefully.
 ```
 
-## Date & Time
+### Date & Time
 
 ```bash
 date                   # Print the date and time
@@ -389,7 +389,7 @@ date --iso-8601=ns     # Print the ISO8601 date and time
 time tree              # Time how long the tree command takes to execute
 ```
 
-## Scheduled Tasks
+### Scheduled Tasks
 
 ```pre
    *      *         *         *           *
@@ -418,7 +418,7 @@ at 12:34 PM next month     # Create a task in Vim to execute at 12:34 PM next mo
 at tomorrow                # Create a task in Vim to execute tomorrow
 ```
 
-## HTTP Requests
+### HTTP Requests
 
 ```bash
 curl https://example.com                               # Return response body
@@ -433,7 +433,7 @@ wget https://example.com/file.txt .                            # Download a file
 wget -O|--output-document foo.txt https://example.com/file.txt # Output to a file with the specified name
 ```
 
-## Network Troubleshooting
+### Network Troubleshooting
 
 ```bash
 ping example.com            # Send multiple ping requests using the ICMP protocol
@@ -456,7 +456,7 @@ nmap 192.168.4.3            # Scan for the 1000 most common open ports on a remo
 nmap -sP 192.168.1.1/24     # Discover all machines on the network by ping'ing them
 ```
 
-## DNS
+### DNS
 
 ```bash
 host example.com            # Show the IPv4 and IPv6 addresses
@@ -466,7 +466,7 @@ dig example.com             # Show complete DNS information
 cat /etc/resolv.conf        # resolv.conf lists nameservers
 ```
 
-## Hardware
+### Hardware
 
 ```bash
 lsusb                  # List USB devices
@@ -718,5 +718,5 @@ esac
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTYwNDg1NzYsLTQwNDg2MjczMF19
+eyJoaXN0b3J5IjpbOTc2Mjc0NjM2LC00MDQ4NjI3MzBdfQ==
 -->
