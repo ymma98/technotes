@@ -65,10 +65,10 @@ done
 运行脚本时传递多个参数，如 `./script.sh one two "three four"`，会分别输出 one, two 和 three four。
 
 
-## {}
+### {}
 在 Bash 脚本中，大括号 `{}` 有几种用途，包括参数扩展、命令组合、数组表达和花括号扩展等。以下详细介绍这些用法：
 
-### 1. 参数扩展（Parameter Expansion）
+1. 参数扩展（Parameter Expansion）
 大括号用于明确变量名的界限，避免解析歧义：
 
 ```bash
@@ -76,7 +76,7 @@ filename="example"
 echo "${filename}file.txt"  # 输出 examplefile.txt
 ```
 
-### 2. 命令组合（Command Grouping）
+2. 命令组合（Command Grouping）
 大括号可以用来在当前 shell 环境中分组执行命令，不启动新的子 shell：
 
 ```bash
@@ -95,8 +95,7 @@ echo "${filename}file.txt"  # 输出 examplefile.txt
 (echo "First command"; echo "Second command") > output.txt
 ```
 
-
-### 3. 数组表达（Array Expression）
+3. 数组表达（Array Expression）
 在数组操作中，大括号用于引用数组元素：
 
 ```bash
@@ -105,7 +104,7 @@ echo "${array[1]}"  # 输出 banana
 ```
 
 
-* 使用数组，就必须用 `{}`!! `$array[1]` 会不识别。
+* 使用数组，就必须用 `{}`! `$array[1]` 会不识别。
 
 
 
@@ -898,5 +897,5 @@ alias du='du -h'
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjMxNzAzMTEsLTQwNDg2MjczMF19
+eyJoaXN0b3J5IjpbMTY3MTM0OTIsLTQwNDg2MjczMF19
 -->
