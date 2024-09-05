@@ -1,8 +1,8 @@
 # vim 速查
 
 很早之前做过一些 vim 的笔记，现在主要是查找 cheatsheet:
-* https://vim.rtorr.com/ . 这个 cheatsheet 中没有函数和表达式的介绍, 比如 `:put=range(0,10)` , 或者 `:join` 之类的。
-* https://quickref.me/vim.html  有更多关于查找和替换的描述和例子。
+* https://vim.rtorr.com/ . [这个](https://vim.rtorr.com/) cheatsheet 中没有函数和表达式的介绍, 比如 `:put=range(0,10)` , 或者 `:join` 之类的。
+* https://quickref.me/vim.html  , [这个]( https://quickref.me/vim.html ) 有更多关于查找和替换的描述和例子。
 * https://github.com/ibhagwan/vim-cheatshee ，[这个](https://github.com/ibhagwan/vim-cheatsheet) 最综合, 有基本的 expression register 的描述。
 
 
@@ -159,5 +159,5 @@
 | `"`      |  the next character \is the name of a register|
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODM4MDI3ODhdfQ==
+eyJoaXN0b3J5IjpbLTE1Njc2MzkxMF19
 -->
