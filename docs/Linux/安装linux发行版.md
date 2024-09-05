@@ -20,10 +20,14 @@ https://archlinuxstudio.github.io/ArchLinuxTutorial/#/
 
 ## 安装软件
 
+### 科学上网
+
+v2raya + switchomega 配合使用教程:
+
+https://zhuanlan.zhihu.com/p/414998586
+
+
 ### matlab
-
-
-matlab:
 
 ```bash
 If you are using MATLAB(>=2022a), follow these steps...
@@ -34,7 +38,7 @@ mkdir exclude
 mv libfreetype.so.x.xx.x exclude/
 ```
 
-#### matlab 字体问题:
+* matlab 字体问题:
 
 ```bash
 解决方案在这个网站上:
@@ -177,6 +181,17 @@ sudo pacman -S noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-se
 </fontconfig>
 ```
 
+## pdf
+
+
+```bash
+编辑 pdf:
+libreoffice --draw pdf_file
+查看 pdf:
+okular pdf_file
+```
+
+
 
 ## Manjaro 装机 (不要用 Manjaro, 很难用, 小问题不断! 直接用 arch)
 
@@ -266,25 +281,12 @@ sudo pacman -S ttf-wps-fonts
 
 
 
-v2raya + switchomega 配合使用教程:
-
-https://zhuanlan.zhihu.com/p/414998586
 
 
 
-
-
-pdf:
-
-```bash
-编辑 pdf:
-libreoffice --draw pdf_file
-查看 pdf:
-okular pdf_file
-```
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODYzOTI3NTldfQ==
+eyJoaXN0b3J5IjpbLTQ0OTcyNjkzMywtMTc4NjM5Mjc1OV19
 -->
