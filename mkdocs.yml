@@ -15,12 +15,6 @@ nav:
     - Mathematica速查: math/MathematicaCheatsheet.md
   - FEM:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
-  - latex:
-    - cheatsheet: latex/cheatsheet.md
-    - 修改 bibtex 参考文献格式: latex/修改 bibtex 参考文献格式.md
-    - 本地与在线overleaf区别: latex/本地与在线overleaf区别.md
-    - 在beamer中插入动画: latex/在beamer中插入动画.md
-    - windows中使用latex: latex/windows_latex.md
   - python:
       - pdb: python/pdb.md
       - python无法支持汉字: python/python无法支持汉字.md
@@ -33,6 +27,12 @@ nav:
      - 模板元编程: cpp/模板元编程.md
      - 翻译单元: cpp/翻译单元.md
      - 编程规范: cpp/编程规范.md
+  - latex:
+    - cheatsheet: latex/cheatsheet.md
+    - 修改 bibtex 参考文献格式: latex/修改 bibtex 参考文献格式.md
+    - 本地与在线overleaf区别: latex/本地与在线overleaf区别.md
+    - 在beamer中插入动画: latex/在beamer中插入动画.md
+    - windows中使用latex: latex/windows_latex.md
 
      
 
