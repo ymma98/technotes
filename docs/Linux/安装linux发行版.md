@@ -19,7 +19,7 @@ https://archlinuxstudio.github.io/ArchLinuxTutorial/#/
 
 
 
-## Manjaro 装机
+## Manjaro 装机 (不要用 Manjaro, 很难用, 小问题不断! 直接用 arch)
 
 参考:
 
@@ -72,7 +72,7 @@ https://wiki.archlinux.org/title/Arch_User_Repository#Installing_and_upgrading_p
 
 Manjaro 自带的 pamac 图形化包管理器在设置中即可开启 AUR 支持。命令行下我选用了 [yay](https://github.com/Jguer/yay)，可以直接从官方 community 仓库中安装：
 
-```
+```bash
 # 后面那个是编译包时需要的一些工具，不然会报错缺少 fakeroot 之类的
 sudo pacman -S yay base-devel
 
@@ -106,13 +106,6 @@ sudo pacman -S ttf-wps-fonts
 
 
 
-
-
-翻墙:
-
-安装(在下面这个网页上搜索安装 v2rayA):
-
-https://arch.icekylin.online/rookie/transparent.html#%F0%9F%94%96-%E8%BF%99%E4%B8%80%E8%8A%82%E5%B0%86%E4%BC%9A%E8%AE%A8%E8%AE%BA
 
 v2raya + switchomega 配合使用教程:
 
@@ -291,5 +284,5 @@ sudo pacman -S noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-se
 </fontconfig>
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxNzQ3ODg1NV19
+eyJoaXN0b3J5IjpbMTQxNzcyNTIxXX0=
 -->
