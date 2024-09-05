@@ -14,6 +14,8 @@ nav:
       - git速查: Linux/git速查.md
       - spack速查: Linux/spack速查.md
       - wsl速查: Linux/wsl速查.md
+      - bashrc: Linux/bashrc.md
+      - 安装linux发行版: Linux/安装linux发行版.md
       - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
       - vim_强制tab对应4空格: Linux/vim_强制tab对应4空格.md
       - 集群_mpirun报错: Linux/集群_mpirun报错.md
