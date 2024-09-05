@@ -20,7 +20,7 @@ fc-match Times # 查看Times New Roman
 
 ## vscode-latex
 
-
+* settings
 ```json
     "latex-workshop.latex.autoBuild.run": "never",  // 是否自动编译latex
     "latex-workshop.showContextMenu": true,
@@ -146,5 +146,5 @@ fc-match Times # 查看Times New Roman
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjcxMDMyMzk3LDM2MTA4NTUwNF19
+eyJoaXN0b3J5IjpbMTA3ODA2Nzc5NiwzNjEwODU1MDRdfQ==
 -->
