@@ -35,11 +35,6 @@ https://www.jianshu.com/p/f2197f0b064b
 
 ## 安装软件
 
-### 科学上网
-
-v2raya + switchomega 配合使用教程:
-
-https://zhuanlan.zhihu.com/p/414998586
 
 
 ### matlab
@@ -303,5 +298,6 @@ sudo pacman -S ttf-wps-fonts
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODM5ODIzNiwtMTc4NjM5Mjc1OV19
+eyJoaXN0b3J5IjpbNDE4MjkxMDY5LC0xNTgzOTgyMzYsLTE3OD
+YzOTI3NTldfQ==
 -->
