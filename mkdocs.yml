@@ -20,6 +20,7 @@ nav:
     - 修改 bibtex 参考文献格式: latex/修改 bibtex 参考文献格式.md
     - 本地与在线overleaf区别: latex/本地与在线overleaf区别.md
     - 在beamer中插入动画: latex/在beamer中插入动画.md
+    - windows中使用latex: latex/windows_latex.md
   - python:
       - pdb: python/pdb.md
       - python无法支持汉字: python/python无法支持汉字.md
