@@ -47,8 +47,11 @@ alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   
 alias pc="python inpynim.py c &>/dev/null &"
 alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
 
+PS1='\u@\h:\w \$ '
+alias shortps1='PS1="\u@\h:\W \$ "'
+
 # for tabby
-export PS1="$PS1\[\e]1337;CurrentDir="'$(pwd)\a\]'
+# export PS1="$PS1\[\e]1337;CurrentDir="'$(pwd)\a\]'
 
 PATH=/home/ymma/.config/nvim/node/node-v16.14.0-linux-x64/bin:$PATH
 PATH=/home/ymma/bin/VSCode-linux-x64/bin:$PATH
@@ -69,5 +72,5 @@ alias pc="python inpynim.py c &>/dev/null &"
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMDcyNTk4MF19
+eyJoaXN0b3J5IjpbLTE1Nzc5NDEzMjRdfQ==
 -->
