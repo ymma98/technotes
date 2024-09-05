@@ -28,6 +28,141 @@
 
 `(expression)` will create a subshell without leaking side-effects, but `{expression;}` not. Moreover, always use `[[ condition ]]` rather than `[ condition ]` .
 
+### 引号
+
+-   **双引号**："Double Quotes"
+    -   双引号内的大多数特殊字符（如 `$`, `` ` ``, `\`）会保持其特殊意义。例如，变量会被展开，命令替换也会执行。
+    -   示例：`echo "$HOME"` 会输出用户的主目录路径。
+-   **单引号**："Single Quotes"
+    -   单引号内的所有字符都会失去其特殊意义，被当作普通字符处理。变量不会展开，命令替换不会执行。
+    -   示例：`echo '$HOME'` 会字面输出字符串 `$HOME`。
+
+## 路径
+
+在 UNIX 和类 UNIX 系统中，多个连续的斜杠（如 `//`）被视为单个斜杠（`/`），对大多数操作来说，这三者没有区别，都会被当作单个路径分隔符处理。在 Bash 脚本中，在目录变量后添加 `/` 是为了明确表明该路径是一个目录，尤其是在使用变量时，这可以避免路径拼接时出现错误。
+
+## @
+
+`@` 在 Bash 中有几个用法，通常涉及到数组和参数扩展：
+
+1.  **作为数组的索引**：当用在双引号内，`"${array[@]}"` 用于从数组中获取所有元素，每个元素作为一个独立的单词。这在循环或传递数组到命令时非常有用。
+ ```bash
+array=(one two three)
+for i in "${array[@]}"; do
+    echo $i
+done
+ ```
+    
+2.  **在参数展开中**：当用在脚本或函数中，`"$@"` 用于展开所有传递给脚本或函数的参数，每个参数作为一个独立的单词。
+    
+```bash
+#!/bin/bash
+echo "You passed in the following arguments:"
+for arg in "$@"; do
+    echo "$arg"
+done
+```
+运行脚本时传递多个参数，如 `./script.sh one two "three four"`，会分别输出 one, two 和 three four。
+
+
+## {}
+在 Bash 脚本中，大括号 `{}` 有几种用途，包括参数扩展、命令组合、数组表达和花括号扩展等。以下详细介绍这些用法：
+
+### 1. 参数扩展（Parameter Expansion）
+大括号用于明确变量名的界限，避免解析歧义：
+
+```bash
+filename="example"
+echo "${filename}file.txt"  # 输出 examplefile.txt
+```
+
+### 2. 命令组合（Command Grouping）
+大括号可以用来在当前 shell 环境中分组执行命令，不启动新的子 shell：
+
+```bash
+{ echo "First command."; echo "Second command."; } > output.txt
+```
+
+这会将所有命令的输出重定向到 `output.txt`。
+
+* `{}` 用于在当前 shell 环境中分组命令。在 `{}` 中的命令会在当前的 shell 中顺序执行，不会启动新的子 shell。
+* 使用分号分隔的命令之间不会互相影响，即使前一个命令执行失败，后一个命令仍然会执行。
+* 在 `{}` 中的命令会按照它们在脚本中出现的顺序执行。
+* `&&` 是逻辑与操作符，用于连接两个命令，只有当第一个命令成功执行（即返回状态为 0，表示成功）时，第二个命令才会执行。
+* 大括号的开头和结尾需要有空格，命令组的结尾必须有一个分号 `;` 或者放在新行。
+* `()` 用于在子 shell 中分组命令。在 `()` 中的命令会在一个新的子 shell 中执行，因此，任何在圆括号中进行的变量赋值都不会影响到当前 shell。
+```bash
+(echo "First command"; echo "Second command") > output.txt
+```
+
+
+### 3. 数组表达（Array Expression）
+在数组操作中，大括号用于引用数组元素：
+
+```bash
+array=(apple banana cherry)
+echo "${array[1]}"  # 输出 banana
+```
+
+
+* 使用数组，就必须用 `{}`!! `$array[1]` 会不识别。
+
+
+
+
+
+### 4. 花括号扩展（Brace Expansion）
+大括号扩展是一种生成任意字符串的机制。这可以用来生成序列或指定多个项：
+
+```bash
+echo {A,B,C}.txt  # 输出 A.txt B.txt C.txt
+echo file{1..5}.txt  # 输出 file1.txt file2.txt file3.txt file4.txt file5.txt
+```
+
+### 5. 默认值和替代操作
+在参数扩展中，大括号还可以用来定义变量的默认值或执行替代操作：
+
+```bash
+# 如果变量未定义或为空，使用默认值
+echo "Username: ${USER:-default_user}"
+
+# 如果变量未定义，设置默认值并使用它
+echo "Path: ${PATH:=/usr/bin}"
+```
+
+### 6. 字符串操作
+大括号在字符串操作中非常有用，如提取子字符串、获取字符串长度等：
+
+```bash
+str="hello world"
+echo "${str:6:5}"  # 输出 world，从索引 6 开始提取 5 个字符
+echo "${#str}"  # 输出 11，即字符串长度
+```
+
+### 7. 赋值和计算
+大括号在进行计算或复杂的赋值操作时也非常有用：
+
+```bash
+echo $((a = 5))  # 将 a 设置为 5 并输出 5
+echo $((a + 5))  # 输出 10
+echo "${a}0"  # 输出 50，如果 a=5
+```
+`(())` 会计算内部的表达式
+
+### 8. 复杂的参数替换
+大括号用于执行更复杂的参数替换操作，比如字符串的模式替换、删除等：
+
+```bash
+filename="example.tar.gz"
+echo "${filename%.gz}"  # 输出 example.tar，删除最后的 .gz
+echo "${filename//e/E}"  # 输出 ExamplE.tar.gz，替换所有的 e 为 E
+```
+
+
+
+
+
+
 
 
 ### Variables
@@ -45,6 +180,23 @@ echo ${foo:-'default'} # Print variable foo if it exists otherwise print default
 export foo             # Make foo available to child processes
 unset foo              # Make foo unavailable to child processes
 ```
+
+### array
+
+| Syntax                | Result                                       |
+|-----------------------|----------------------------------------------|
+| `arr=()`              | Create an empty array                        |
+| `arr=(1 2 3)`         | Initialize array                             |
+| `${arr[2]}`           | Retrieve third element                       |
+| `${arr[@]}`           | Retrieve all elements                        |
+| `${!arr[@]}`          | Retrieve array indices                       |
+| `${#arr[@]}`          | Calculate array size                         |
+| `arr[0]=3`            | Overwrite 1st element                        |
+| `arr+=(4)`            | Append value(s)                              |
+| `str=$(ls)`           | Save `ls` output as a string                 |
+| `arr=( $(ls) )`       | Save `ls` output as an array of files        |
+| `${arr[@]:s:n}`       | Retrieve n elements starting at index s      |
+
 
 ### Environment Variables
 
@@ -108,7 +260,7 @@ echo $?  # Print the last exit code
 - `<` - Is less than in ASCII alphabetical order
 - `>` - Is greater than in ASCII alphabetical order
 
-##### If Statements
+#### If Statements
 
 ```bash
 #!/bin/bash
@@ -141,7 +293,7 @@ fi
 ```
 
 
-##### Inline If Statements
+#### Inline If Statements
 
 ```bash
 #!/bin/bash
@@ -149,7 +301,7 @@ fi
 [[ $USER = 'rehan' ]] && echo 'yes' || echo 'no'
 ```
 
-##### While Loops
+#### While Loops
 
 ```bash
 #!/bin/bash
@@ -162,7 +314,7 @@ while [$counter -gt 2]; do
 done
 ```
 
-##### For Loops
+#### For Loops
 
 ```bash
 #!/bin/bash
@@ -183,7 +335,7 @@ for filename in *;
   done
 ```
 
-##### Case Statements
+#### Case Statements
 
 ```bash
 #!/bin/bash
@@ -746,5 +898,5 @@ alias du='du -h'
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4NjM2NjAwMSwtNDA0ODYyNzMwXX0=
+eyJoaXN0b3J5IjpbLTE0MDY2ODczNjcsLTQwNDg2MjczMF19
 -->
