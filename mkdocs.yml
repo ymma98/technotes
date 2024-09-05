@@ -4,6 +4,7 @@ nav:
   - 杂谈:
       - 快速搭建技术博客: 杂谈/快速搭建技术博客.md
       - 批量下载与合并课件: 杂谈/批量下载与合并课件.md
+      - inkscape去矢量图白边: 杂谈/inkscape去矢量图白边.md
   - Linux:
       - terminal_快捷键以及配置: Linux/terminal_快捷键以及配置.md
       - vim_使用nvim: Linux/vim_使用nvim.md
