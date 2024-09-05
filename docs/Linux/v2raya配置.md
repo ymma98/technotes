@@ -2,6 +2,8 @@
 
 主要参考[这篇博客](https://manateelazycat.github.io/2023/06/23/best-proxy/)。
 
+官方文档也有[说明](https://v2raya.org/docs/advanced-application/intranet-direct/)。
+
 配置:
 
 * Transport Proxy/System Proxy -> On: Traffic Splitting Mode is the Same as the Rule Port
@@ -31,5 +33,5 @@ domain(domain:chatgpt.com)->proxy
 * Automatically Update Subscriptions -> Update Subscriptions When Service Starts
 * Mode when Update Subscriptions and GFWList -> Do not Split Traffic
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg1OTk5NTM4XX0=
+eyJoaXN0b3J5IjpbMjc1MDE0ODQzLDc4NTk5OTUzOF19
 -->
