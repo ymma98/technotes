@@ -1,6 +1,5 @@
 # markdown速查
 
-- [Introduction](#introduction)
 - [Headings](#headings)
 - [Text styles](#text-styles)
   - [Normal](#normal)
@@ -112,19 +111,6 @@
 <!-- omit in toc -->
 <h6>Heading 6</h6>
 
-```md
-Heading 1
-=
-Heading 2
--
-```
-
-<!-- omit in toc -->
-Heading 1 <!-- markdownlint-disable MD003 -->
-=
-<!-- omit in toc -->
-Heading 2 <!-- markdownlint-disable MD003 -->
--
 
 # Text styles
 
@@ -1415,5 +1401,5 @@ You can write JSX in your markdown document using [MDX](https://mdxjs.com/).
 
 </div>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4MjE2MDM2Nl19
+eyJoaXN0b3J5IjpbMTcwOTEzNjc5Ml19
 -->
