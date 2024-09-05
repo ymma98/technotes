@@ -307,18 +307,7 @@ Superscript <sup>The quick brown fox jumps over the lazy dog.</sup>
 
 Superscript <sup>The quick brown fox jumps over the lazy dog.</sup>
 
-## Text Color
 
-Using [MathJax](#mathematical-expressions-19-july-2022) syntax:
-
-| Color Name      | Code                                                                                         | Example                                                        |
-|-----------------|----------------------------------------------------------------------------------------------|----------------------------------------------------------------|
-| Apricot         | `$\color{Apricot}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$`                    | $\color{Apricot}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$      |
-| Aquamarine      | `$\color{Aquamarine}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$`                 | $\color{Aquamarine}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$   |
-| Bittersweet     | `$\color{Bittersweet}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$`                | $\color{Bittersweet}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$  |
-| Black           | `$\color{Black}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$`                      | $\color{Black}{The\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog.}$        |
-
-[Full Table](./MathJax.md)
 
 ## Multiline
 
@@ -1401,5 +1390,5 @@ You can write JSX in your markdown document using [MDX](https://mdxjs.com/).
 
 </div>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwOTEzNjc5Ml19
+eyJoaXN0b3J5IjpbLTIwMTkxNzM4NTUsMTcwOTEzNjc5Ml19
 -->
