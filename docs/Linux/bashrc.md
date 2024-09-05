@@ -9,6 +9,7 @@ alias b="nvim"
 alias p="python"
 alias gitadog="git log --all --decorate --oneline --graph"
 alias gitadog2="git log --graph --abbrev-commit --decorate --date=relative --all"
+# 非集群环境，用 `git show-tree` 代替 `gitadog`
 # clear duplicate $PATH
 # reference: https://unix.stackexchange.com/questions/14895/duplicate-entries-in-path-a-problem
 PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
@@ -54,10 +55,6 @@ PATH=/home/ymma/bin/VSCode-linux-x64/bin:$PATH
 
 
 ################################## end
-# clear duplicate $PATH
-# reference: https://unix.stackexchange.com/questions/14895/duplicate-entries-in-path-a-problem
-PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
-
 
 
 ################################ 172
@@ -70,14 +67,7 @@ alias pestatid="pestat | grep \$(cat id | grep -Eo '^[0-9]*')"
 alias rsync190="rsync -auvze 'ssh -p 32158'"
 alias pc="python inpynim.py c &>/dev/null &"
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
-### nimhdf
-## 172: nimhdf -> /home/lihl/something/gc/lihl/nimdevel/2019x2/nimbld/nimdevel/ser/bin/nimhdf
-## ./nimhdf -vars "B V p ti nd" -phi -nphi 32 data/dump.64500
-### nimhdf -h
-alias cdump="ls | grep -vE 'org|new|gs'|xargs rm"
-alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
-
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgyNDMxOTY4N119
+eyJoaXN0b3J5IjpbMTMxMDcyNTk4MF19
 -->
