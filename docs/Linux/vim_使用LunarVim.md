@@ -4,7 +4,7 @@
 
 LunarVim 的好处是开箱即用, 而且定义插件和快捷键都很方便, 很适合在个人电脑上使用。
 
-目前在 ～/.config/lvim/config.lua 中的配置:
+目前在 `~/.config/lvim/config.lua` 中的配置:
 
 ```lua
 -- Read the docs: https://www.lunarvim.org/docs/configuration
@@ -201,5 +201,5 @@ vim.cmd('command! Copypath call setreg("+", expand("%:p"))')
 -- lvim.keys.normal_mode["<F5>"] = ":CMakeClean<CR>:CMakeGenerate<CR>:CMakeBuild<CR>"
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNTA5NzU1MCw2MTk4NTQ3NDFdfQ==
+eyJoaXN0b3J5IjpbNTM1NzM2MTM2LDYxOTg1NDc0MV19
 -->
