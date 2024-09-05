@@ -1,6 +1,6 @@
 # markdown速查
 
-主要[参考这里]()
+主要[参考这里](https://github.com/lifeparticle/Markdown-Cheatsheet)
 
 - [Headings](#headings)
 - [Text styles](#text-styles)
@@ -1002,5 +1002,5 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NDI1NDM4NiwxNzA5MTM2NzkyXX0=
+eyJoaXN0b3J5IjpbMTE4NTU2OTc2NywxNzA5MTM2NzkyXX0=
 -->
