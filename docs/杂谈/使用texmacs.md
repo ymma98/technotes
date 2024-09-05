@@ -6,6 +6,7 @@ texmacs 的适用范围:
 * 文档内容较少, 比如 $\leq10$ 页。文档太长的话会很卡 (不知道怎么解决...)
 * 对文档的格式有一定要求, 但没有过高的要求 (对格式要求较多的话只能用 latex, 或耐着性子调 word)
 * 敲公式尤其舒适!
+
 总之, 如果想以最快的速度, 形成一篇排版尚可的文档, 而且该文档中包含较多的公式, texmacs 就是最好的选择！非常适合记笔记, 尤其是数学笔记。
 
 ## Enunciations
@@ -57,5 +58,5 @@ texmacs 的适用范围:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyMjI3NDY2NCwtNzIwNzgxNzgyXX0=
+eyJoaXN0b3J5IjpbNjU0NDIwNjE0LC03MjA3ODE3ODJdfQ==
 -->
