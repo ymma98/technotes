@@ -92,16 +92,26 @@ complete -F _comp_cmd_python p
 
 * 把 `cd`, `cp` 改回默认的设置
 
-oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如运行 `cp` 时，会默认打印详细信息。yun
+oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如运行 `cp` 时，会默认打印详细信息。运行 `cd` 后，会给你打印 `$(pwd)`
 
 只能这样操作了:
 ```bash
 unalias cp
 ```
+禁止 `cd` 命令还有点麻烦, 找到 ~/.bashrc 中的这一行:
+```bash
+source "$OSH"/oh-my-bash.sh
+```
+在后面加上
+```bash
+unset CDPATH
+```
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTM2NzQ0MTQsLTE3NDkzNTY4MTIsNz
-kyOTU4NjY0LC0yMDg1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1
-MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
+eyJoaXN0b3J5IjpbLTEwMDMzOTQ1NiwtMTc0OTM1NjgxMiw3OT
+I5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMTk2ODUz
+MzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
 -->
