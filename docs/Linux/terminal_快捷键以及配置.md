@@ -84,8 +84,16 @@ alias p="python"
 complete -F _comp_cmd_python p
 ```
 
+* 把 `cd`, `cp` 改回默认的设置
+
+oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如，它会把 `cd` 改成如下形式:
+```bash
+$ alias cd
+alias cd='_omb_directories_cd'
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI4MzIyMDg1NCw3OTI5NTg2NjQsLTIwOD
-U2MjM2MzAsMTA4NjYyNDQxNSwtMTk2ODUzMzQyMCwtODQ3MzI0
-MzU5LDMwOTA2NTgyNl19
+eyJoaXN0b3J5IjpbLTE3OTAyNDQzMDUsNzkyOTU4NjY0LC0yMD
+g1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMy
+NDM1OSwzMDkwNjU4MjZdfQ==
 -->
