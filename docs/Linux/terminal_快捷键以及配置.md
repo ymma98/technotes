@@ -49,7 +49,7 @@ typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPAN
 
 oh-my-bash 项目[地址](https://github.com/ohmybash/oh-my-bash)
 
-安装好后，在 `~/.bashrc` 中设置主题
+* 安装好后，在 `~/.bashrc` 中设置主题
 ```bash
 OSH_THEME="powerbash10k"
 ```
@@ -65,9 +65,19 @@ function __pb10k_prompt_dir {
 ```
 目的是将 /home/username/ 显示为 ~/
 
+* 设置 python 自动补全
 
+真不知道 oh-my-bash 有什么毛病，之前
+```bash
+alias p="python"
+```
+用起来好好的，结果使用 oh-my-bash 后，按 `p` 没办法自动补全了，把 oh-my-bash 设置的所有 plugin, alias 注释掉都不管用！只能用下面的方法:
+```bash
+
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMT
-k2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
+eyJoaXN0b3J5IjpbLTE5ODczMzY1ODksLTIwODU2MjM2MzAsMT
+A4NjYyNDQxNSwtMTk2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2
+NTgyNl19
 -->
