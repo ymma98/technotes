@@ -28,7 +28,7 @@
 
 ## 使用 powerlevel10k 配置 prompt (zsh)
 
-自己电脑上还是用 [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) 好些。 [oh-my-bash](https://github.com/ohmybash/oh-my-bash) 项目里面包含一大堆自作主张的小聪明, 比如默认修改了一大堆常用的命令， cp, cd 之类的。
+自己电脑上还是用 [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) 好些。 [oh-my-bash](https://github.com/ohmybash/oh-my-bash) 项目里面包含一大堆自作主张的小聪明, 比如默认修改了一大堆常用的命令， cp, cd 之类的，第一次使用的时候还是很麻烦的。
 
 [powerlevel10k repo 地址](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#how-do-i-add-username-andor-hostname-to-prompt)
 
@@ -64,7 +64,7 @@ function __pb10k_prompt_dir {
   printf "%s|%s|%s|%s" "$color" "$info" "$_omb_prompt_bold_white" "$box"
 }
 ```
-目的是将 /home/username/ 显示为 ~/
+目的是将 `/home/username/` 显示为 `~/`
 
 
 ---
@@ -112,7 +112,7 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 ```bash
 unalias cp
 ```
-禁止 `cd` 命令还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里](https://github.com/ohmybash/oh-my-bash/issues/201)， 找到 ~/.bashrc 中的这一行:
+禁止 `cd` 命令输出 还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里](https://github.com/ohmybash/oh-my-bash/issues/201)， 找到 ~/.bashrc 中的这一行:
 ```bash
 source "$OSH"/oh-my-bash.sh
 ```
@@ -122,7 +122,7 @@ unset CDPATH
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1ODMwNjAwLC0xNzQ5MzU2ODEyLDc5Mj
-k1ODY2NCwtMjA4NTYyMzYzMCwxMDg2NjI0NDE1LC0xOTY4NTMz
-NDIwLC04NDczMjQzNTksMzA5MDY1ODI2XX0=
+eyJoaXN0b3J5IjpbLTk4NTU5NjAwMCwtMTc0OTM1NjgxMiw3OT
+I5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMTk2ODUz
+MzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
 -->
