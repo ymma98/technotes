@@ -66,6 +66,9 @@ function __pb10k_prompt_dir {
 ```
 目的是将 /home/username/ 显示为 ~/
 
+
+---
+
 * 设置 python 自动补全
 
 真不知道 oh-my-bash 有什么大病，之前
@@ -84,28 +87,21 @@ alias p="python"
 complete -F _comp_cmd_python p
 ```
 
+---
+
+
 * 把 `cd`, `cp` 改回默认的设置
 
-oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如，它会把 `cd` 改成如下形式:
-```bash
-$ alias cd
-alias cd='_omb_directories_cd'
-```
-那么， `'_omb_directories_cd'` 又是什么呢？是它自定义的函数:
-```bash
-$ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
-~/.oh-my-bash/lib/directories.sh:10:function _omb_directories_cd {
-~/.oh-my-bash/lib/directories.sh:50:_omb_util_alias cd='_omb_directories_cd'
-```
-把 oh-my-bash 所有的插件全部注释掉，还是不解决问题。
+oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如运行 `cp` 时，会默认打印详细信息。yun
+
 只能这样操作了:
 ```bash
 unalias cp
-unalias cd
 ```
 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDkzNTY4MTIsNzkyOTU4NjY0LC0yMD
-g1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMy
-NDM1OSwzMDkwNjU4MjZdfQ==
+eyJoaXN0b3J5IjpbLTE0MTM2NzQ0MTQsLTE3NDkzNTY4MTIsNz
+kyOTU4NjY0LC0yMDg1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1
+MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
 -->
