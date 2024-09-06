@@ -103,7 +103,7 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 ~/.oh-my-bash/lib/directories.sh:10:function _omb_directories_cd {
 ~/.oh-my-bash/lib/directories.sh:50:_omb_util_alias cd='_omb_directories_cd'
 ```
-把 oh-my-bash 所有的插件全部注释掉，还是不解决问题。
+`cd` 运行后总是会打印 `$(pwd)`。把 oh-my-bash 所有的插件全部注释掉，还是不解决问题。
 
 以及运行 `cp` 时，会默认打印详细信息。
 
@@ -112,7 +112,7 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 ```bash
 unalias cp
 ```
-禁止 `cd` 命令输出 还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里](https://github.com/ohmybash/oh-my-bash/issues/201)， 找到 ~/.bashrc 中的这一行:
+禁止 `cd` 命令输出 `$(pwd)` 还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里](https://github.com/ohmybash/oh-my-bash/issues/201)， 找到 ~/.bashrc 中的这一行:
 ```bash
 source "$OSH"/oh-my-bash.sh
 ```
@@ -122,7 +122,7 @@ unset CDPATH
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4NTU5NjAwMCwtMTc0OTM1NjgxMiw3OT
-I5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMTk2ODUz
-MzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
+eyJoaXN0b3J5IjpbLTE3MzU3NTI4NjQsLTE3NDkzNTY4MTIsNz
+kyOTU4NjY0LC0yMDg1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1
+MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
 -->
