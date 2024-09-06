@@ -92,13 +92,27 @@ complete -F _comp_cmd_python p
 
 * 把 `cd`, `cp` 改回默认的设置
 
-oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如运行 `cp` 时，会默认打印详细信息。运行 `cd` 后，会给你打印 `$(pwd)`
+oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如，它会把 `cd` 改成如下形式:
+```bash
+$ alias cd
+alias cd='_omb_directories_cd'
+```
+那么， `'_omb_directories_cd'` 又是什么呢？是它自定义的函数:
+```bash
+$ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
+~/.oh-my-bash/lib/directories.sh:10:function _omb_directories_cd {
+~/.oh-my-bash/lib/directories.sh:50:_omb_util_alias cd='_omb_directories_cd'
+```
+把 oh-my-bash 所有的插件全部注释掉，还是不解决问题。
+
+以及运行 `cp` 时，会默认打印详细信息。
+
 
 只能这样操作了:
 ```bash
 unalias cp
 ```
-禁止 `cd` 命令还有点麻烦, 找到 ~/.bashrc 中的这一行:
+禁止 `cd` 命令还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里]， 找到 ~/.bashrc 中的这一行:
 ```bash
 source "$OSH"/oh-my-bash.sh
 ```
@@ -107,11 +121,8 @@ source "$OSH"/oh-my-bash.sh
 unset CDPATH
 ```
 
-
-
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDMzOTQ1NiwtMTc0OTM1NjgxMiw3OT
+eyJoaXN0b3J5IjpbLTgwMTYyMjM0MSwtMTc0OTM1NjgxMiw3OT
 I5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMTk2ODUz
 MzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
 -->
