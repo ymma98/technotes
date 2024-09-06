@@ -43,7 +43,14 @@ p10k configure
 # Tip: Remove the next line to always show context.
 typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
 ```
+
+
+## 使用 oh-my-bash (bash)
+
+oh-my-bash 项目[地址](https://github.com/ohmybash/oh-my-bash)
+
+安装好后，在 ``
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA3NTA5MzcxOCwtMTk2ODUzMzQyMCwtOD
+eyJoaXN0b3J5IjpbMTQ5NTg5MzQ0MiwtMTk2ODUzMzQyMCwtOD
 Q3MzI0MzU5LDMwOTA2NTgyNl19
 -->
