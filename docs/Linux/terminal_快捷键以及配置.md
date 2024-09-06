@@ -100,11 +100,12 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 把 oh-my-bash 所有的插件全部注释掉，还是不解决问题。
 只能这样操作了:
 ```bash
-
+unalias cp
+unalias cd
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjcwNjk4ODYsNzkyOTU4NjY0LC0yMD
+eyJoaXN0b3J5IjpbLTE3NDkzNTY4MTIsNzkyOTU4NjY0LC0yMD
 g1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMy
 NDM1OSwzMDkwNjU4MjZdfQ==
 -->
