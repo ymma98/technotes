@@ -98,10 +98,13 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 ~/.oh-my-bash/lib/directories.sh:50:_omb_util_alias cd='_omb_directories_cd'
 ```
 把 oh-my-bash 所有的插件全部注释掉，还是不解决问题。
-只能这
+只能这样操作了:
+```bash
+
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTkwOTAxMTgsNzkyOTU4NjY0LC0yMD
+eyJoaXN0b3J5IjpbLTE4MjcwNjk4ODYsNzkyOTU4NjY0LC0yMD
 g1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMy
 NDM1OSwzMDkwNjU4MjZdfQ==
 -->
