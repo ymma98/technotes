@@ -112,7 +112,7 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 ```bash
 unalias cp
 ```
-禁止 `cd` 命令还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里]， 找到 ~/.bashrc 中的这一行:
+禁止 `cd` 命令还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里](https://github.com/ohmybash/oh-my-bash/issues/201)， 找到 ~/.bashrc 中的这一行:
 ```bash
 source "$OSH"/oh-my-bash.sh
 ```
@@ -122,7 +122,7 @@ unset CDPATH
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwMTYyMjM0MSwtMTc0OTM1NjgxMiw3OT
-I5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMTk2ODUz
-MzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
+eyJoaXN0b3J5IjpbLTI1ODMwNjAwLC0xNzQ5MzU2ODEyLDc5Mj
+k1ODY2NCwtMjA4NTYyMzYzMCwxMDg2NjI0NDE1LC0xOTY4NTMz
+NDIwLC04NDczMjQzNTksMzA5MDY1ODI2XX0=
 -->
