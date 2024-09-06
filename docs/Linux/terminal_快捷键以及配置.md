@@ -91,9 +91,15 @@ oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你
 $ alias cd
 alias cd='_omb_directories_cd'
 ```
+那么， `'_omb_directories_cd'` 又是什么呢？是它自定义的函数:
+```bash
+$ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
+~/.oh-my-bash/lib/directories.sh:10:function _omb_directories_cd {
+~/.oh-my-bash/lib/directories.sh:50:_omb_util_alias cd='_omb_directories_cd'
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTAyNDQzMDUsNzkyOTU4NjY0LC0yMD
+eyJoaXN0b3J5IjpbLTE3MDg1NzkzOTEsNzkyOTU4NjY0LC0yMD
 g1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMy
 NDM1OSwzMDkwNjU4MjZdfQ==
 -->
