@@ -53,7 +53,7 @@ oh-my-bash 项目[地址](https://github.com/ohmybash/oh-my-bash)
 ```bash
 OSH_THEME="powerbash10k"
 ```
-找到 `~/.oh-my-bash/themes/powerbash10k/powerbash10k.theme.sh`，修改 `function __pb10k_prompt_dir` 中 `local i`
+找到 `~/.oh-my-bash/themes/powerbash10k/powerbash10k.theme.sh`，修改 `function __pb10k_prompt_dir` 中 `local info` 这一行为如下格式:
 ```bash
 function __pb10k_prompt_dir {
   local color=$_omb_prompt_bold_navy
@@ -65,6 +65,6 @@ function __pb10k_prompt_dir {
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2ODUxNTU3NiwxMDg2NjI0NDE1LC0xOT
+eyJoaXN0b3J5IjpbMTUzMzM1MTE5OCwxMDg2NjI0NDE1LC0xOT
 Y4NTMzNDIwLC04NDczMjQzNTksMzA5MDY1ODI2XX0=
 -->
