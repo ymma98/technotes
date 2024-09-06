@@ -28,6 +28,7 @@
 
 ## 使用 powerlevel10k 配置 prompt (zsh)
 
+自己电脑上还是用 [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh) 好些。
 
 [powerlevel10k repo 地址](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file#how-do-i-add-username-andor-hostname-to-prompt)
 
@@ -84,7 +85,7 @@ complete -F _comp_cmd_python p
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTkwNDI0MjgsLTIwODU2MjM2MzAsMT
-A4NjYyNDQxNSwtMTk2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2
-NTgyNl19
+eyJoaXN0b3J5IjpbNzkyOTU4NjY0LC0yMDg1NjIzNjMwLDEwOD
+Y2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4
+MjZdfQ==
 -->
