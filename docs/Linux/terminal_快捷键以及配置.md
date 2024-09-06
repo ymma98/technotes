@@ -113,6 +113,7 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 unalias cp
 # 同理也有
 unalias mv
+unalias mkdir
 ```
 禁止 `cd` 命令输出 `$(pwd)` 还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里](https://github.com/ohmybash/oh-my-bash/issues/201)， 找到 ~/.bashrc 中的这一行:
 ```bash
@@ -124,7 +125,8 @@ unset CDPATH
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyODg0Mzg0NiwtMTc0OTM1NjgxMiw3OT
-I5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMTk2ODUz
-MzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
+eyJoaXN0b3J5IjpbNTgyNTMyMTAyLC0yMjg4NDM4NDYsLTE3ND
+kzNTY4MTIsNzkyOTU4NjY0LC0yMDg1NjIzNjMwLDEwODY2MjQ0
+MTUsLTE5Njg1MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4MjZdfQ
+==
 -->
