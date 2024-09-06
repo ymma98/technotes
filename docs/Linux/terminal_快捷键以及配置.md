@@ -73,11 +73,18 @@ alias p="python"
 ```
 用起来好好的，结果使用 oh-my-bash 后，按 `p` 没办法自动补全了，把 oh-my-bash 设置的所有 plugin, alias 注释掉都不管用！只能用下面的方法:
 ```bash
-
+# 打印 python 调用的补全函数
+$ complete -p python
+complete -F _comp_cmd_python python
+```
+然后在 `~/.bashrc` 中设置 `p` 的补全函数
+```bash
+alias p="python"
+complete -F _comp_cmd_python p
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODczMzY1ODksLTIwODU2MjM2MzAsMT
-A4NjYyNDQxNSwtMTk2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2
-NTgyNl19
+eyJoaXN0b3J5IjpbOTQ5NzIwMzc2LC0yMDg1NjIzNjMwLDEwOD
+Y2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4
+MjZdfQ==
 -->
