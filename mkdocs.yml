@@ -9,17 +9,17 @@ nav:
       - inkscape去矢量图白边: 杂谈/inkscape去矢量图白边.md
       - windows下everything搜索: 杂谈/windows_everything的使用.md
   - Linux:
-      - terminal_快捷键以及配置: Linux/terminal_快捷键以及配置.md
-      - vim_使用nvim: Linux/vim_使用nvim.md
-      - vim_使用LunarVim: Linux/vim_使用LunarVim.md
-      - vim速查: Linux/vim速查.md
       - bash速查: Linux/bash速查.md
+      - vim速查: Linux/vim速查.md
       - arch速查: Linux/arch速查.md
       - git速查: Linux/git速查.md
       - markdown速查: Linux/markdown速查.md
       - spack速查: Linux/spack速查.md
       - wsl速查: Linux/wsl速查.md
+      - terminal_快捷键以及配置: Linux/terminal_快捷键以及配置.md
       - bashrc: Linux/bashrc.md
+      - vim_使用nvim: Linux/vim_使用nvim.md
+      - vim_使用LunarVim: Linux/vim_使用LunarVim.md
       - 安装linux发行版: Linux/安装linux发行版.md
       - v2rayA配置: Linux/v2raya配置.md
       - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
