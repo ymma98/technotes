@@ -49,8 +49,13 @@ typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPAN
 
 oh-my-bash 项目[地址](https://github.com/ohmybash/oh-my-bash)
 
-安装好后，在 ``
+安装好后，在 `~/.bashrc` 中设置主题
+```bash
+OSH_THEME="powerbash10k"
+```
+找到 `~/.oh-my-bash/themes/powerbash10k`
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5NTg5MzQ0MiwtMTk2ODUzMzQyMCwtOD
+eyJoaXN0b3J5IjpbMTA4NjYyNDQxNSwtMTk2ODUzMzQyMCwtOD
 Q3MzI0MzU5LDMwOTA2NTgyNl19
 -->
