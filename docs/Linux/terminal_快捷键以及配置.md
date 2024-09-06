@@ -127,14 +127,14 @@ oh my bash 还自作主张地禁止重定向符覆写文件，会报错:
 ```bash
 -bash: id: cannot overwrite existing file
 ```
-需要把 `~/.oh-my-bash/lib/shopt.sh` 以下行注释掉，解决方案来自[这里](https://github.com/ohmybash/oh-my-bash/issues/50):
+来自github issue 中的 [解决方案](https://github.com/ohmybash/oh-my-bash/issues/50) 还不管用，需要在 `~/.bashrc` 中添加如下行:
 ```bash
-# set -o noclobber
+set +o noclobber
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2OTgyNDc2OSw1ODI1MzIxMDIsLTIyOD
-g0Mzg0NiwtMTc0OTM1NjgxMiw3OTI5NTg2NjQsLTIwODU2MjM2
-MzAsMTA4NjYyNDQxNSwtMTk2ODUzMzQyMCwtODQ3MzI0MzU5LD
-MwOTA2NTgyNl19
+eyJoaXN0b3J5IjpbOTQxODU3MzM2LC00Njk4MjQ3NjksNTgyNT
+MyMTAyLC0yMjg4NDM4NDYsLTE3NDkzNTY4MTIsNzkyOTU4NjY0
+LC0yMDg1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1MzM0MjAsLT
+g0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
 -->
