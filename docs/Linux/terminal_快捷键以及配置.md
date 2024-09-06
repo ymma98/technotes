@@ -67,7 +67,7 @@ function __pb10k_prompt_dir {
 
 * 设置 python 自动补全
 
-真不知道 oh-my-bash 有什么毛病，之前
+真不知道 oh-my-bash 有什么大病，之前
 ```bash
 alias p="python"
 ```
@@ -84,7 +84,7 @@ complete -F _comp_cmd_python p
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ5NzIwMzc2LC0yMDg1NjIzNjMwLDEwOD
-Y2MjQ0MTUsLTE5Njg1MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4
-MjZdfQ==
+eyJoaXN0b3J5IjpbLTE3MTkwNDI0MjgsLTIwODU2MjM2MzAsMT
+A4NjYyNDQxNSwtMTk2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2
+NTgyNl19
 -->
