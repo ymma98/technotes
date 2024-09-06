@@ -63,8 +63,11 @@ function __pb10k_prompt_dir {
   printf "%s|%s|%s|%s" "$color" "$info" "$_omb_prompt_bold_white" "$box"
 }
 ```
+目的是将 /home/username/ 显示为 ~/
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMzM1MTE5OCwxMDg2NjI0NDE1LC0xOT
-Y4NTMzNDIwLC04NDczMjQzNTksMzA5MDY1ODI2XX0=
+eyJoaXN0b3J5IjpbLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMT
+k2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
 -->
