@@ -10,6 +10,10 @@ alias p="python"
 alias gitadog="git log --all --decorate --oneline --graph"
 alias gitadog2="git log --graph --abbrev-commit --decorate --date=relative --all"
 # 非集群环境，用 `git show-tree` 代替 `gitadog`
+
+# 产生随机标识符
+alias grand8="openssl rand -hex 8"
+
 # clear duplicate $PATH
 # reference: https://unix.stackexchange.com/questions/14895/duplicate-entries-in-path-a-problem
 PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')
@@ -72,5 +76,5 @@ alias pc="python inpynim.py c &>/dev/null &"
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Nzc5NDEzMjRdfQ==
+eyJoaXN0b3J5IjpbNjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
 -->
