@@ -116,6 +116,11 @@ unalias cp
 # 同理也有
 unalias mv
 unalias mkdir
+ 
+# 对于以上三个命令，也可以注释掉 `general` 这一行
+aliases=(
+  # general
+)
 ```
 禁止 `cd` 命令输出 `$(pwd)` 还有点麻烦, 简单的 unalias 不解决问题。解决方案在[这里](https://github.com/ohmybash/oh-my-bash/issues/201)， 找到 ~/.bashrc 中的这一行:
 ```bash
@@ -135,8 +140,8 @@ set +o noclobber
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTc5MDA0NTEsOTQxODU3MzM2LC00Nj
-k4MjQ3NjksNTgyNTMyMTAyLC0yMjg4NDM4NDYsLTE3NDkzNTY4
-MTIsNzkyOTU4NjY0LC0yMDg1NjIzNjMwLDEwODY2MjQ0MTUsLT
-E5Njg1MzM0MjAsLTg0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
+eyJoaXN0b3J5IjpbNzE2NDUxOTg0LDk0MTg1NzMzNiwtNDY5OD
+I0NzY5LDU4MjUzMjEwMiwtMjI4ODQzODQ2LC0xNzQ5MzU2ODEy
+LDc5Mjk1ODY2NCwtMjA4NTYyMzYzMCwxMDg2NjI0NDE1LC0xOT
+Y4NTMzNDIwLC04NDczMjQzNTksMzA5MDY1ODI2XX0=
 -->
