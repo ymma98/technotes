@@ -3,6 +3,10 @@
 * [这里](https://dealii.org/current/doxygen/deal.II/) 是dealii 的 main page 以及概况
 * [这里](https://dealii.org/current/doxygen/deal.II/Tutorial.html) 是 dealii 的 tutorial programs.
 
+
+
+![输入图片说明](https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png)
+
 ## 概况
 
 1. **网格生成（Triangulation 类）**
@@ -93,7 +97,7 @@ ___
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5MDQ3MzEyMiwxMjM0MTM0MzA5LC0yOT
-AzNTI2NzgsLTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC00NjU3NDc0
-MjMsLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbNTk5NzgxNDQ4LDEyMzQxMzQzMDksLTI5MD
+M1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLTQ2NTc0NzQy
+MywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
 -->
