@@ -107,7 +107,7 @@ $ grep -rni '_omb_directories_cd' ~/.oh-my-bash/
 ```
 `cd` 运行后总是会打印 `$(pwd)`。把 oh-my-bash 所有的插件全部注释掉，还是不解决问题。
 
-以及运行 `cp` 时，会默认打印详细信息。
+以及运行 `cp`, `mkdir`, `mv`  时，会默认打印详细信息。
 
 
 只能这样操作了:
@@ -140,8 +140,8 @@ set +o noclobber
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzE2NDUxOTg0LDk0MTg1NzMzNiwtNDY5OD
-I0NzY5LDU4MjUzMjEwMiwtMjI4ODQzODQ2LC0xNzQ5MzU2ODEy
-LDc5Mjk1ODY2NCwtMjA4NTYyMzYzMCwxMDg2NjI0NDE1LC0xOT
-Y4NTMzNDIwLC04NDczMjQzNTksMzA5MDY1ODI2XX0=
+eyJoaXN0b3J5IjpbMTU5NDU4ODY4MCw5NDE4NTczMzYsLTQ2OT
+gyNDc2OSw1ODI1MzIxMDIsLTIyODg0Mzg0NiwtMTc0OTM1Njgx
+Miw3OTI5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMT
+k2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
 -->
