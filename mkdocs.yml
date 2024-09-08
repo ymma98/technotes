@@ -45,7 +45,7 @@ nav:
      - 编程规范: cpp/编程规范.md
   - latex:
     - cheatsheet: latex/cheatsheet.md
-    - 修改 bibtex 参考文献格式: latex/修改 bibtex 参考文献格式.md
+    - 修改 bibtex 参考文献格式: latex/修改参考文献格式.md
     - 本地与在线overleaf区别: latex/本地与在线overleaf区别.md
     - 在beamer中插入动画: latex/在beamer中插入动画.md
     - windows中使用latex: latex/windows_latex.md
