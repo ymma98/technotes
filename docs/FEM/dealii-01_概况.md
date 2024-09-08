@@ -5,9 +5,9 @@
 
 ## 概况
 
-**Triangulation**: Triangulations 是单元及其低维边界对象的集合。单元是在“从参考单元到真实单元的映射”部分中通过适当的映射从参考超立方体 [0,1]^dim 生成的图像。
+**Triangulation**: Triangulations 是单元及其低维边界对象的集合。
 
-Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶点的位置。Triangulation 对你可能想在此网格上使用的有限元一无所知，甚至不知道单元的形状：在二维中，它只知道单元有 4 条边（线）和 4 个顶点（在三维中，它有 6 个面（四边形）、12 条边和 8 个顶点），其他所有内容都由映射类定义。
+Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶点的位置。在二维中，它只知道单元有 4 条边（线）和 4 个顶点（在三维中，它有 6 个面（四边形）、12 条边和 8 个顶点），其他所有内容都由映射类定义。
 
 通常通过对所有单元的循环，可能会查询每个单元的所有面，来获取 Triangulation 的属性和数据。因此，网格的大部分信息都隐藏在迭代器后面，即类似指针的结构，可以从一个单元迭代到下一个单元，并且可以获取它当前指向的单元的信息。
 
@@ -57,5 +57,6 @@ DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbLTQ2NTc0NzQyMywtMTgxOTA2NjUxNiwxMT
+Y0MTA4NDEwXX0=
 -->
