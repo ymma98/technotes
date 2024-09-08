@@ -20,7 +20,7 @@ Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶
 
 **DoFHandler**: DoFHandler 对象是 Triangulations 和 Finite elements 的汇合点：有限元类描述了每个顶点、边或单元需要的自由度数量，而 DoFHandler 类为每个顶点、边或 Triangulation 的单元分配这些空间，并为它们提供全局编号。
 
-另一种视角是：网格和有限元描述了我们寻求的离散解所处的有限维空间 Vh 的抽象属性，DoFHandler 类枚举了该空间的一个具体基，以便我们可以将离散解表示为 uh(x)=∑jUjφi(x)，其中 Uj 是有序的系数集。
+另一种视角是：网格和有限元描述了我们寻求的离散解所处的有限维空间 Vh 的抽象属性，DoFHandler 类枚举了该空间的一个具体基，以便我们可以将离散解表示为 $u_h(x)=\sum_j U_j\phi_j(x)$，其中$U_j$是有序的系数集。
 
 与 Triangulation 对象类似，大多数对 DoFHandlers 的操作是通过遍历所有单元并对每个或部分单元执行某些操作。因此，这两个类的接口非常相似：它们允许获取指向第一个和最后一个单元（或面，或线等）的迭代器，并通过这些迭代器提供信息。通过这些迭代器可以获取的信息包括几何和拓扑信息（这些信息实际上可以通过 Triangulation 迭代器获取，因为它们实际上是派生类）以及诸如当前单元上自由度的全局编号等信息。迭代器还可以从存储与 Triangulation 相关的所有自由度值的数据向量中提取当前单元自由度对应的值。
 
@@ -53,7 +53,7 @@ DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQ4NDk2Mjg4LC00NzE0NDE3NDEsLTE1Mj
-A4MjM1MCwtNDY1NzQ3NDIzLC0xODE5MDY2NTE2LDExNjQxMDg0
-MTBdfQ==
+eyJoaXN0b3J5IjpbLTE3MzYwNjg0NTcsLTQ3MTQ0MTc0MSwtMT
+UyMDgyMzUwLC00NjU3NDc0MjMsLTE4MTkwNjY1MTYsMTE2NDEw
+ODQxMF19
 -->
