@@ -3,6 +3,10 @@
 * [这里](https://dealii.org/current/doxygen/deal.II/) 是dealii 的 main page 以及概况
 * [这里](https://dealii.org/current/doxygen/deal.II/Tutorial.html) 是 dealii 的 tutorial programs.
 
+其它:
+* [项目官网](https://www.dealii.org/)
+* [项目仓库](https://github.com/dealii/dealii)
+
 
 
 ![输入图片说明](https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png)
@@ -97,8 +101,8 @@ ___
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNTY4NzM2OCw1OTk3ODE0NDgsMTIzND
-EzNDMwOSwtMjkwMzUyNjc4LC00NzE0NDE3NDEsLTE1MjA4MjM1
-MCwtNDY1NzQ3NDIzLC0xODE5MDY2NTE2LDExNjQxMDg0MTBdfQ
-==
+eyJoaXN0b3J5IjpbNjUyNDAzNTM4LDE4MDU2ODczNjgsNTk5Nz
+gxNDQ4LDEyMzQxMzQzMDksLTI5MDM1MjY3OCwtNDcxNDQxNzQx
+LC0xNTIwODIzNTAsLTQ2NTc0NzQyMywtMTgxOTA2NjUxNiwxMT
+Y0MTA4NDEwXX0=
 -->
