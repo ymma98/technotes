@@ -14,12 +14,9 @@ Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶
 
 **Manifold**: Manifolds 描述了单元的形状，以及更一般地描述了解方程的域的几何形状。它们使用微分几何的语言。
 
-**Finite Element**: Finite element 类描述了定义在单位单元上的有限元空间的属性。例如，这包括位于顶点、边上或单元内部的自由度数量。除此之外，finite element 类还必须提供在单位单元上个别形函数在某些点处的值和梯度。
+**Finite Element**: Finite element 类描述了定义在单元上的有限元空间的属性。例如，这包括位于顶点、边上或单元内部的自由度数量。除此之外，finite element 类还必须提供在单位单元上个别形函数在某些点处的值和梯度。
 
 
-**Quadrature**: 与有限元一样，quadrature 对象定义在单位单元上。它们只描述了单位单元上 quadrature 点的位置及其权重。
-
-特定 quadrature 公式的类文档位于 **Quadrature formulas** 主题中。
 
 **DoFHandler**: DoFHandler 对象是 Triangulations 和 Finite elements 的汇合点：有限元类描述了每个顶点、边或单元需要的自由度数量，而 DoFHandler 类为每个顶点、边或 Triangulation 的单元分配这些空间，并为它们提供全局编号。
 
@@ -56,6 +53,7 @@ DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC00Nj
-U3NDc0MjMsLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbNTQ4NDk2Mjg4LC00NzE0NDE3NDEsLTE1Mj
+A4MjM1MCwtNDY1NzQ3NDIzLC0xODE5MDY2NTE2LDExNjQxMDg0
+MTBdfQ==
 -->
