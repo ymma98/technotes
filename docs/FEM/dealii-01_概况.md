@@ -16,7 +16,6 @@ Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶
 
 **Finite Element**: Finite element 类描述了定义在单位单元上的有限元空间的属性。例如，这包括位于顶点、边上或单元内部的自由度数量。除此之外，finite element 类还必须提供在单位单元上个别形函数在某些点处的值和梯度。
 
-finite element 类的文档位于 **Finite elements** 主题中。
 
 **Quadrature**: 与有限元一样，quadrature 对象定义在单位单元上。它们只描述了单位单元上 quadrature 点的位置及其权重。
 
@@ -57,6 +56,6 @@ DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjA4MjM1MCwtNDY1NzQ3NDIzLC0xOD
-E5MDY2NTE2LDExNjQxMDg0MTBdfQ==
+eyJoaXN0b3J5IjpbLTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC00Nj
+U3NDc0MjMsLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
 -->
