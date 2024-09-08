@@ -3,7 +3,7 @@
 * [这里](https://dealii.org/current/doxygen/deal.II/) 是dealii 的 main page 以及概况
 * [这里](https://dealii.org/current/doxygen/deal.II/Tutorial.html) 是 dealii 的 tutorial programs.
 
-这些部分内容都涵盖在教程程序中，step-3 给出了它们如何结合在一起的初步概述。以下是关于这些分类的指南，以及与它们相关的文档链接：
+## 概况
 
 **Triangulation**: Triangulations 是单元及其低维边界对象的集合。单元是在“从参考单元到真实单元的映射”部分中通过适当的映射从参考超立方体 [0,1]^dim 生成的图像。
 
@@ -58,5 +58,5 @@ DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ2ODQ2Mzk5LDExNjQxMDg0MTBdfQ==
+eyJoaXN0b3J5IjpbLTExMjMyNjMxMzEsMTE2NDEwODQxMF19
 -->
