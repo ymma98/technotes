@@ -31,6 +31,7 @@ nav:
     - 琐碎的Mathematica使用: math/琐碎的Mathematica使用.md
   - FEM:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
+    - dealii-01_概况: FEM/dealii-01_概况.md
   - python:
       - pdb: python/pdb.md
       - python无法支持汉字: python/python无法支持汉字.md
