@@ -5,52 +5,54 @@
 
 ## 概况
 
-#### 1. **网格生成（Triangulation 类）**
+1. **网格生成（Triangulation 类）**
 
--   **类：`Triangulation`** `Triangulation` 类负责创建和管理表示计算域的网格。这个网格由单元（二维的三角形，三维的四面体）组成，将域划分成多个较小的区域，在这些区域上进行局部计算。
+-   **类：`Triangulation`** `Triangulation` 类负责创建和管理表示计算域的网格。这个网格由单元（二维的三角形，三维的四面体）组成，`Triangulation` 是单元及其低维边界对象的集合。`Triangulation` 存储网格的几何和拓扑属性：单元如何连接及其顶点的位置。在二维中，它只知道单元有 4 条边（线）和 4 个顶点（在三维中，它有 6 个面（四边形）、12 条边和 8 个顶点），其他所有内容都由映射类定义。
+
+通常通过对所有单元的循环，可能会查询每个单元的所有面，来获取 Triangulation 的属性和数据。因此，网格的大部分信息都隐藏在迭代器后面，即类似指针的结构，可以从一个单元迭代到下一个单元，并且可以获取它当前指向的单元的信息。
 -   **关键作用**：定义几何形状和网格结构，用于在其上求解 PDE。
 
-#### 2. **有限元空间（FiniteElement 类）**
+2. **有限元空间（FiniteElement 类）**
 
 -   **类：`FiniteElement`** `FiniteElement` 类定义了解将在其上逼近的有限元空间。它指定在每个网格单元上使用的基函数类型，例如 Lagrange 元，以及函数在单元之间是否连续或不连续。
 -   **关键作用**：定义基函数和每个单元上的自由度（DoFs）。
 
-#### 3. **自由度处理器（DoFHandler 类）**
+3. **自由度处理器（DoFHandler 类）**
 
 -   **类：`DoFHandler`** `DoFHandler` 类负责在网格上分配自由度（DoFs）。它将每个网格单元与适当数量的自由度相关联，并连接相邻的单元。
 -   **关键作用**：管理自由度的分布，使得能够组装系统矩阵和向量。
 
-#### 4. **求积（数值积分）**
+4. **求积（数值积分）**
 
 -   **类：`Quadrature`** `Quadrature` 类定义了用于计算单元或边界上积分的数值积分点。这些积分点对于组装 PDE 的弱形式的系统是必要的，其中涉及基函数的积分。
 -   **关键作用**：在每个网格单元上提供弱形式的准确数值积分。
 
-#### 5. **边界条件**
+5. **边界条件**
 
 -   **类：`AffineConstraints`** 边界条件是通过 `AffineConstraints` 类来指定的，它负责在解上强制执行 Dirichlet（固定值）或 Neumann（固定通量）边界条件。这些条件在域的特定边界位置应用。
 -   **关键作用**：在解上强制执行边界条件，确保问题设定正确。
 
-#### 6. **系统矩阵和向量的组装**
+6. **系统矩阵和向量的组装**
 
 -   **类：`SparseMatrix`, `Vector`** 系统方程是通过计算刚度矩阵和载荷向量来组装的。这个过程使用有限元基函数、求积点和自由度来离散化 PDE 的弱形式。
 -   **关键作用**：`SparseMatrix` 保存系统矩阵，`Vector` 保存右端项（RHS）和解向量。
 
-#### 7. **求解器**
+7. **求解器**
 
 -   **类：`SolverControl` 和 `SolverCG`（共轭梯度求解器）** 在组装系统方程之后，使用求解器来求解线性或非线性系统。`SolverCG`（共轭梯度法）是用于对称正定系统的常用求解器之一。其他求解器如 GMRES 或直接求解器也可用。
 -   **关键作用**：求解系统方程，得到解向量。
 
-#### 8. **预处理**
+8. **预处理**
 
 -   **类：`PreconditionSSOR`, `PreconditionAMG`** 为了加快迭代求解器的收敛速度，通常使用预处理器。像 SSOR（对称逐次超松弛）或 AMG（代数多重网格）这样的预处理器可以改善系统的条件性，从而更容易求解。
 -   **关键作用**：提高迭代求解器的效率和收敛速度。
 
-#### 9. **后处理和可视化**
+9. **后处理和可视化**
 
 -   **类：`DataOut`** 一旦获得解，通常需要可视化或分析结果。`DataOut` 类允许将解数据导出为兼容可视化工具（如 ParaView 或 Visit）的格式。
 -   **关键作用**：输出解数据用于后处理和可视化。
 
-### 关键组件总结：
+* 关键组件总结：
 
 1.  **Triangulation**：创建和管理网格。
 2.  **FiniteElement**：定义有限元基函数。
@@ -109,7 +111,7 @@ Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzI1MDMyMDgsLTI5MDM1MjY3OCwtND
-cxNDQxNzQxLC0xNTIwODIzNTAsLTQ2NTc0NzQyMywtMTgxOTA2
-NjUxNiwxMTY0MTA4NDEwXX0=
+eyJoaXN0b3J5IjpbMjQ0MzE4MjIwLC0yOTAzNTI2NzgsLTQ3MT
+Q0MTc0MSwtMTUyMDgyMzUwLC00NjU3NDc0MjMsLTE4MTkwNjY1
+MTYsMTE2NDEwODQxMF19
 -->
