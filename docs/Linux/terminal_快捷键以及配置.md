@@ -90,7 +90,9 @@ complete -F _comp_cmd_python p
 ---
 
 
-* 把 `cd`, `cp` , `>` 改回默认的设置
+* 把 `cd`, `>`, `cp` , `mkdir`, `mv` 改回默认的设置
+
+`cp` , `mkdir`, `mv`  这三个的篡改，见于 
 
 oh-my-bash 会自作聪明地把很多最常用的命令给你改掉，然后你还轻易不好改回去。比如，它会把 `cd` 改成如下形式:
 ```bash
@@ -133,8 +135,8 @@ set +o noclobber
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQxODU3MzM2LC00Njk4MjQ3NjksNTgyNT
-MyMTAyLC0yMjg4NDM4NDYsLTE3NDkzNTY4MTIsNzkyOTU4NjY0
-LC0yMDg1NjIzNjMwLDEwODY2MjQ0MTUsLTE5Njg1MzM0MjAsLT
-g0NzMyNDM1OSwzMDkwNjU4MjZdfQ==
+eyJoaXN0b3J5IjpbMTk3OTkyOTUxNCw5NDE4NTczMzYsLTQ2OT
+gyNDc2OSw1ODI1MzIxMDIsLTIyODg0Mzg0NiwtMTc0OTM1Njgx
+Miw3OTI5NTg2NjQsLTIwODU2MjM2MzAsMTA4NjYyNDQxNSwtMT
+k2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2NTgyNl19
 -->
