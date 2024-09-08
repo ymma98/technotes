@@ -26,13 +26,12 @@ Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶
 
 值得注意的是，与 Triangulations 类似，DoFHandler 类并不知道从单位单元到其各自单元的映射。它也不了解与其管理的自由度对应的形函数：它只知道，例如，每个顶点有 2 个自由度，每个单元内部有 4 个自由度。除了它们的存在这一点外，其具体细节与 DoFHandler 类无关。
 
-DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述。此外，还有一些专门的版本可以处理多层次和 hp 离散化。它们分别在 **Multilevel support** 和 **hp-finite element support** 主题中描述。有限元方法经常意味着对自由度施加约束，例如对于悬挂节点或应用边界条件的节点；处理此类约束的内容在 **Constraints on degrees of freedom** 主题中进行了描述。
+
 
 **Mapping**: 有限元程序的下一步是需要在 Triangulation 的每个单元上计算矩阵和右手边条目或其他量，使用有限元的形函数和由 quadrature 规则定义的 quadrature 点。为此，需要将形函数、quadrature 点和 quadrature 权重从单位单元映射到 Triangulation 的每个单元上。虽然这不是直接由 Mapping 类完成的，但由其派生类提供支持：它们描述了如何将点从单位空间映射到实际空间并返回，同时提供此导数的梯度和雅可比行列式。
 
-这些类都在 **Mappings between reference and real cell** 主题中进行了描述。
 
-**FEValues**: 下一步是实际上取一个有限元并在映射到真实单元时的 quadrature 公式定义的点上评估其形函数及其梯度。这是 **FEValues** 类及其兄弟类的领域：从某种意义上说，它们提供了有限元函数空间的逐点视图。
+**FEValues**: 下一步是实际上取一个有限元并在映射到真实单元时的 quadrature 公式定义的点上评估其形函数及其梯度。这是 **FEValues** 类及其兄弟类的领域。
 
 这似乎有些限制：在数学分析中，我们总是用涉及有限元形函数的单元或单元面的积分来编写公式。因此，人们可能认为有必要将有限元空间描述为连续空间。然而，在实际中，这并不是必要的：所有的积分在实际计算中都被 quadrature 公式的近似值所取代，因此实际上唯一必要的能力是在域内的有限数量点处评估形函数。**FEValues** 类提供的正是这些信息：给定有限元、quadrature 和映射对象，它们计算了将连续函数空间（相对于离散的，而不是相对于不连续的）限制为有限数量点的结果。
 
@@ -53,7 +52,7 @@ DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI4MTIwNDEzLC00NzE0NDE3NDEsLTE1Mj
-A4MjM1MCwtNDY1NzQ3NDIzLC0xODE5MDY2NTE2LDExNjQxMDg0
-MTBdfQ==
+eyJoaXN0b3J5IjpbLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNT
+IwODIzNTAsLTQ2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4
+NDEwXX0=
 -->
