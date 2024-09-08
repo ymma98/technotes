@@ -63,11 +63,16 @@ ___
 
 关键组件总结：
 
-1.  **Triangulation**：创建和管理网格。
-2.  **FiniteElement**：定义有限元基函数。
-3.  **DoFHandler**：管理自由度。
-4.  **Quadrature**：执行数值积分。
-5.  **AffineConstraints**：强制边界条件
+-   **Triangulation**：管理网格结构。
+-   **FiniteElement**：定义用于近似解的基函数。
+-   **DoFHandler**：管理网格上的自由度分配和连接。
+-   **Mapping**：处理参考单元与物理单元之间的转换，确保计算准确。
+-   **Quadrature**：提供数值积分规则。
+-   **AffineConstraints**：强制执行边界条件。
+-   **SparseMatrix/Vector**：组装系统方程。
+-   **Solver**：求解系统方程。
+-   **Preconditioner**：加速求解器收敛。
+-   **DataOut**：输出解数据，用于可视化和分析。
 
 
 
@@ -87,32 +92,8 @@ ___
 
 
 
-
-**Mapping**: 有限元程序的下一步是需要在 Triangulation 的每个单元上计算矩阵和右手边条目或其他量，使用有限元的形函数和由 quadrature 规则定义的 quadrature 点。为此，需要将形函数、quadrature 点和 quadrature 权重从单位单元映射到 Triangulation 的每个单元上。虽然这不是直接由 Mapping 类完成的，但由其派生类提供支持：它们描述了如何将点从单位空间映射到实际空间并返回，同时提供此导数的梯度和雅可比行列式。
-
-
-**FEValues**: 下一步是实际上取一个有限元并在映射到真实单元时的 quadrature 公式定义的点上评估其形函数及其梯度。这是 **FEValues** 类及其兄弟类的领域。
-
-这似乎有些限制：在数学分析中，我们总是用涉及有限元形函数的单元或单元面的积分来编写公式。因此，人们可能认为有必要将有限元空间描述为连续空间。然而，在实际中，这并不是必要的：所有的积分在实际计算中都被 quadrature 公式的近似值所取代，因此实际上唯一必要的能力是在域内的有限数量点处评估形函数。**FEValues** 类提供的正是这些信息：给定有限元、quadrature 和映射对象，它们计算了将连续函数空间（相对于离散的，而不是相对于不连续的）限制为有限数量点的结果。
-
-有许多对象可以做到这一点：**FEValues** 用于在单元上评估，**FEFaceValues** 用于在单元的面上评估，**FESubfaceValues** 用于在单元面的一部分上评估。所有这些类都在 **Finite element access/FEValues classes** 主题中进行了描述。
-
-**Linear Systems**: 如果知道如何使用 FEValues 及其兄弟类在各个单元上评估形函数的值和梯度，并且知道如何使用 DoFHandler 迭代器获取单元上的自由度全局编号，那么下一步就是使用问题的双线性形式来组装线性系统的矩阵（和右手边）。然后我们将从这个线性系统中确定我们问题的解。
-
-为此，我们需要有用于存储和管理矩阵和向量条目的类。deal.II 提供了大量此类类以及与其他提供类似功能的软件包的接口。相关文档可以在 **Linear algebra classes** 主题中找到。
-
-**Linear Solvers**: 为了确定有限维线性方程组的解，需要线性求解器。在有限元应用中，它们通常是迭代的，但有时也可能希望使用直接或稀疏直接求解器。deal.II 提供了相当多的此类求解器。它们在 **Linear solver classes** 主题中进行了描述。
-
-**Output**: 最后，一旦在给定的 Triangulation 上获得了有限元问题的解，通常会希望使用可视化程序对其进行后处理。该库本身不进行可视化处理，但生成多种图形格式的输出文件，供广泛使用的可视化工具理解。
-
-生成这些输出文件的类的描述见 **Graphical output** 主题。
-
-此外，deal.II 还有一些类组，超出了此处列出的内容。它们涉及上述层次结构的更精细的概念，或者涉及诸如输入和输出处理等与有限元程序并不完全相关的侧面问题，但也在其中出现。这些类都列在从此页面顶部菜单栏可访问的 **Classes and Namespaces** 视图中，并且也被分组到各自的主题中（见此页面顶部的 **Topics** 标签）。
-
-我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5MDgxNzgxOCwxMjM0MTM0MzA5LC0yOT
+eyJoaXN0b3J5IjpbMjA5MDQ3MzEyMiwxMjM0MTM0MzA5LC0yOT
 AzNTI2NzgsLTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC00NjU3NDc0
 MjMsLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
 -->
