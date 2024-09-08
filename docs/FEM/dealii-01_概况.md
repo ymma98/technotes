@@ -11,7 +11,6 @@ Triangulation 存储网格的几何和拓扑属性：单元如何连接及其顶
 
 通常通过对所有单元的循环，可能会查询每个单元的所有面，来获取 Triangulation 的属性和数据。因此，网格的大部分信息都隐藏在迭代器后面，即类似指针的结构，可以从一个单元迭代到下一个单元，并且可以获取它当前指向的单元的信息。
 
-描述 Triangulation 和单元的类位于 **Grids and Triangulations** 主题中。迭代器在 **Iterators on mesh-like containers** 主题中进行了描述。
 
 **Manifold**: Manifolds 描述了单元的形状，以及更一般地描述了解方程的域的几何形状。它们使用微分几何的语言。更多信息请参见 **Manifold description for triangulations**。
 
@@ -58,5 +57,5 @@ DoFHandler 类及其关联类在 **Degrees of Freedom** 主题中进行了描述
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjMyNjMxMzEsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
 -->
