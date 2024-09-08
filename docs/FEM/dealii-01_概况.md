@@ -18,9 +18,7 @@
 
 3. **自由度处理器（DoFHandler 类）**
 
--   **类：`DoFHandler`** `DoFHandler` 类负责在网格上分配自由度（DoFs）。它将每个网格单元与适当数量的自由度相关联，并连接相邻的单元。与 `Triangulation` 对象类似，大多数对 `DoFHandler` 的操作是通过遍历所有单元并对每个或部分单元执行某些操作。因此，这两个类的接口非常相似：它们允许获取指向第一个和最后一个单元（或面，或线等）的迭代器，并通过这些迭代器提供信息。通过这些迭代器可以获取的信息包括几何和拓扑信息（这些信息实际上可以通过 Triangulation 迭代器获取，因为它们实际上是派生类）以及诸如当前单元上自由度的全局编号等信息。迭代器还可以从存储与 Triangulation 相关的所有自由度值的数据向量中提取当前单元自由度对应的值。
-
-值得注意的是，与 Triangulations 类似，DoFHandler 类并不知道从单位单元到其各自单元的映射。它也不了解与其管理的自由度对应的形函数：它只知道，例如，每个顶点有 2 个自由度，每个单元内部有 4 个自由度。除了它们的存在这一点外，其具体细节与 DoFHandler 类无关。
+-   **类：`DoFHandler`** `DoFHandler` 类负责在网格上分配自由度（DoFs）。它将每个网格单元与适当数量的自由度相关联，并连接相邻的单元。与 `Triangulation` 对象类似，大多数对 `DoFHandler` 的操作是通过遍历所有单元并对每个或部分单元执行某些操作。因此，这两个类的接口非常相似：它们允许获取指向第一个和最后一个单元（或面，或线等）的迭代器，并通过这些迭代器提供信息。通过这些迭代器可以获取的信息包括几何和拓扑信息（这些信息实际上可以通过 Triangulation 迭代器获取，因为它们实际上是派生类）以及诸如当前单元上自由度的全局编号等信息。值得注意的是，与 Triangulations 类似，DoFHandler 类并不知道从单位单元到其各自单元的映射。
 
 -   **关键作用**：管理自由度的分布，使得能够组装系统矩阵和向量。
 
@@ -105,7 +103,7 @@ ___
 我们为希望将应用程序文档直接链接到 deal.II 在线文档的用户提供了 Doxygen 标签文件。标签文件位于 deal.tag。对于每个 deal.II 版本，它位于 Doxygen 参考文档的上一级目录中。要使用标签文件，你需要将其下载到 Doxygen 能找到的位置。之后，在你的 Doxygen 选项文件中找到 `TAGFILES` 键并写入
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwNTYyODQxOCwtMjkwMzUyNjc4LC00Nz
+eyJoaXN0b3J5IjpbMTIzNDEzNDMwOSwtMjkwMzUyNjc4LC00Nz
 E0NDE3NDEsLTE1MjA4MjM1MCwtNDY1NzQ3NDIzLC0xODE5MDY2
 NTE2LDExNjQxMDg0MTBdfQ==
 -->
