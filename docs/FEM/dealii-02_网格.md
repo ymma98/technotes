@@ -8,6 +8,16 @@
 ```cpp
 Triangulation<2> triangulation;
 ```
+deal.II 提供了多种内置函数，可以用来生成常见几何形状的网格。例如，`GridGenerator` 命名空间包含了生成网格的函数，适用于立方体、圆、圆柱等几何形状。比如:
+```cpp
+Triangulation<2> triangulation;
+
+// 创建一个二维正方形网格，角点位于 (0, 0) 和 (1, 1)
+GridGenerator::hyper_cube(triangulation, 0, 1);
+
+// 全局细化网格两次（每个单元被划分成多个小单元）
+triangulation.refine_global(2);
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTc0MzEzNTUsMTA5MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbMjAzMDYyNzE5MCwxMDkwOTQ4MjldfQ==
 -->
