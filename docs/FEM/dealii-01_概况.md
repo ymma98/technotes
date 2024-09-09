@@ -99,7 +99,7 @@ main page 下面细分很多栏目:
 * [Topics](https://www.dealii.org/current/doxygen/deal.II/topics.html): 文档处于**中间层次**，它为某个特定领域的内容提供了概述。例如，当你想了解有哪些有限元类时，可以查阅 Finite element space descriptions 主题。当然，主题也与手册和教程相互链接。如果你点击一个类名，比如 Triangulation，你会在类名下方的顶部找到链接，点击后可以了解该类所属主题的更多信息。
 * [Classes](https://www.dealii.org/current/doxygen/deal.II/annotated.html): 当你知道自己想做什么，但忘记了函数的具体名称、参数或者返回值时需要查阅的地方。它提供的是**细致入微**的视角，而不会告诉你某个函数如何在整体框架中发挥作用。
 * [FAQ](https://github.com/dealii/dealii/wiki/Frequently-Asked-Questions) 盖了许多关于 deal.II 特定方面的问题，也包括更一般的问题，例如“如何调试科学计算代码？”或“我能否通过训练让自己写出更少错误的代码？”
-* [mail list](https://groups.google.com/g/dealii) 问答合集
+* [user ](https://groups.google.com/g/dealii) 问答合集
 * [publications](https://www.dealii.org/community/publications/) 用到了 dealii 的出版物
 * [code gallery](https://dealii.org/developer/doxygen/deal.II/CodeGallery.html): 代码库是教程的延伸，程序的目的是展示如何使用 deal.II 实现应用程序，但不要求这些代码像教程中那样进行详细的注释和文档说明
 
@@ -113,10 +113,10 @@ main page 下面细分很多栏目:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2MTE2ODMyMSwzNjAwNjc0NzcsLTExNT
-cxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1ODMw
-NTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MDQsNj
-UyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQz
-MDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLT
-Q2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
+eyJoaXN0b3J5IjpbMjQ4OTUyNzE3LDM2MDA2NzQ3NywtMTE1Nz
+ExNTMyNSwtNzY5MjMxMDE4LDg4ODcwMDUwMiwtMTgzOTU4MzA1
+MywxODUwMTE2MzAzLC0xODYzNTg0ODIxLDI1MDk3NjgwNCw2NT
+I0MDM1MzgsMTgwNTY4NzM2OCw1OTk3ODE0NDgsMTIzNDEzNDMw
+OSwtMjkwMzUyNjc4LC00NzE0NDE3NDEsLTE1MjA4MjM1MCwtND
+Y1NzQ3NDIzLC0xODE5MDY2NTE2LDExNjQxMDg0MTBdfQ==
 -->
