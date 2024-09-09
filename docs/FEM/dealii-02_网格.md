@@ -9,11 +9,22 @@
 Triangulation<2> triangulation;
 ```
 网格信息:
-使用 `Triangulation` 类的成员函数可以获取网格的基本信息，例如活动单元的数量、总单元的数量、顶点的数量等。以下是一些常用的函数：
 
--   **`triangulation.n_active_cells()`**: 返回活动（未细分的）单元的数量。
--   **`triangulation.n_cells()`**: 返回网格中总单元的数量。
--   **`triangulation.n_vertices()`**: 返回网格中的顶点总数。
+```cpp
+std::cout << "活动单元 (未被细分) 的数量: " << triangulation.n_active_cells() << std::endl;
+std::cout << "总单元数量: " << triangulation.n_cells() << std::endl;
+std::cout << "总顶点数量: " << triangulation.n_vertices() << std::endl;
+
+for (const auto &cell : triangulation.active_cell_iterators())
+{
+    std::cout << "单元索引: " << cell->index() << std::endl;
+    std::cout << "顶点数量: " << cell->n_vertices() << std::endl;
+    std::cout << "材料 ID: " << cell->material_id() << std::endl;
+    std::cout << "细化级别: " << cell->level() << std::endl;
+    std::cout << "单元中心: " << cell->center() << std::endl;
+}
+
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MzM1NDkxMCwxMDkwOTQ4MjldfQ==
+eyJoaXN0b3J5IjpbMTczNTM3ODk3NSwxMDkwOTQ4MjldfQ==
 -->
