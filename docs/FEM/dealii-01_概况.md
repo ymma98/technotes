@@ -101,7 +101,7 @@ main page 下面细分很多栏目:
 * [FAQ](https://github.com/dealii/dealii/wiki/Frequently-Asked-Questions) 盖了许多关于 deal.II 特定方面的问题，也包括更一般的问题，例如“如何调试科学计算代码？”或“我能否通过训练让自己写出更少错误的代码？”
 * [mail list](https://groups.google.com/g/dealii) 问答合集
 * [publications]()
-* [c]
+* [code gallery](https://dealii.org/developer/doxygen/deal.II/CodeGallery.html): 
 
 
 
@@ -113,10 +113,10 @@ main page 下面细分很多栏目:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Njc0ODgyNiwzNjAwNjc0NzcsLTExNT
-cxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1ODMw
-NTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MDQsNj
-UyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQz
-MDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLT
-Q2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
+eyJoaXN0b3J5IjpbMTA3MzE4ODcwLDM2MDA2NzQ3NywtMTE1Nz
+ExNTMyNSwtNzY5MjMxMDE4LDg4ODcwMDUwMiwtMTgzOTU4MzA1
+MywxODUwMTE2MzAzLC0xODYzNTg0ODIxLDI1MDk3NjgwNCw2NT
+I0MDM1MzgsMTgwNTY4NzM2OCw1OTk3ODE0NDgsMTIzNDEzNDMw
+OSwtMjkwMzUyNjc4LC00NzE0NDE3NDEsLTE1MjA4MjM1MCwtND
+Y1NzQ3NDIzLC0xODE5MDY2NTE2LDExNjQxMDg0MTBdfQ==
 -->
