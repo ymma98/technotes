@@ -23,8 +23,6 @@ main page 下面细分很多栏目:
 
 * [这里](https://dealii.org/current/doxygen/deal.II/) 是dealii 的 main page 以及概况
 
-![输入图片说明](https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png)
-
 <img src="https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png" width="500" height="500"/>
 
 
@@ -118,10 +116,10 @@ ___
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1MjQyNTAyMiwzNjAwNjc0NzcsLTExNT
-cxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1ODMw
-NTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MDQsNj
-UyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQz
-MDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLT
-Q2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
+eyJoaXN0b3J5IjpbNTE0MjA0MjgwLDM2MDA2NzQ3NywtMTE1Nz
+ExNTMyNSwtNzY5MjMxMDE4LDg4ODcwMDUwMiwtMTgzOTU4MzA1
+MywxODUwMTE2MzAzLC0xODYzNTg0ODIxLDI1MDk3NjgwNCw2NT
+I0MDM1MzgsMTgwNTY4NzM2OCw1OTk3ODE0NDgsMTIzNDEzNDMw
+OSwtMjkwMzUyNjc4LC00NzE0NDE3NDEsLTE1MjA4MjM1MCwtND
+Y1NzQ3NDIzLC0xODE5MDY2NTE2LDExNjQxMDg0MTBdfQ==
 -->
