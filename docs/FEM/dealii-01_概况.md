@@ -25,6 +25,10 @@ main page 下面细分很多栏目:
 
 ![输入图片说明](https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png)
 
+<img src="https://images.unsplash.com/photo-1415604934674-561df9abf539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2772&q=80" width="100" height="100" border="10"/>
+
+
+
 1. **网格生成（Triangulation 类）**
 
 	-   **类：`Triangulation`** `Triangulation` 类负责创建和管理表示计算域的网格。这个网格由单元（二维的三角形，三维的四面体）组成，`Triangulation` 是单元及其低维边界对象的集合。`Triangulation` 存储网格的几何和拓扑属性：单元如何连接及其顶点的位置。在二维中，它只知道单元有 4 条边（线）和 4 个顶点（在三维中，它有 6 个面（四边形）、12 条边和 8 个顶点），其他所有内容都由映射类定义。
@@ -114,10 +118,10 @@ ___
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODIzNzA2MzMsMzYwMDY3NDc3LC0xMTU3MT
-E1MzI1LC03NjkyMzEwMTgsODg4NzAwNTAyLC0xODM5NTgzMDUz
-LDE4NTAxMTYzMDMsLTE4NjM1ODQ4MjEsMjUwOTc2ODA0LDY1Mj
-QwMzUzOCwxODA1Njg3MzY4LDU5OTc4MTQ0OCwxMjM0MTM0MzA5
-LC0yOTAzNTI2NzgsLTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC00Nj
-U3NDc0MjMsLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbMjAyNjcyNTM0NiwzNjAwNjc0NzcsLTExNT
+cxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1ODMw
+NTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MDQsNj
+UyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQz
+MDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLT
+Q2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
 -->
