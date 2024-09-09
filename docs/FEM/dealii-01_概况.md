@@ -25,7 +25,7 @@ main page 下面细分很多栏目:
 
 ![输入图片说明](https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png)
 
-<img src="https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png" width="600" height="600"/>
+<img src="https://dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_11.png" width="500" height="500"/>
 
 
 
@@ -118,10 +118,10 @@ ___
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTA1MjgzNTAsMzYwMDY3NDc3LC0xMT
-U3MTE1MzI1LC03NjkyMzEwMTgsODg4NzAwNTAyLC0xODM5NTgz
-MDUzLDE4NTAxMTYzMDMsLTE4NjM1ODQ4MjEsMjUwOTc2ODA0LD
-Y1MjQwMzUzOCwxODA1Njg3MzY4LDU5OTc4MTQ0OCwxMjM0MTM0
-MzA5LC0yOTAzNTI2NzgsLTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC
-00NjU3NDc0MjMsLTE4MTkwNjY1MTYsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbLTI1MjQyNTAyMiwzNjAwNjc0NzcsLTExNT
+cxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1ODMw
+NTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MDQsNj
+UyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQz
+MDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLT
+Q2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
 -->
