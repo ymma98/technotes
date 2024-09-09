@@ -7,8 +7,7 @@
 
 
 
-[![GitHub](https://img.shields.io/badge/GitHub-Repo-blue?logo=github)](https://github.com/ymma98/technotes)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5NzUyMTUwOV19
+eyJoaXN0b3J5IjpbNDMxNjQ5MTg2XX0=
 -->
