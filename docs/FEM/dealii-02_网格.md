@@ -8,16 +8,12 @@
 ```cpp
 Triangulation<2> triangulation;
 ```
-deal.II 提供了多种内置函数，可以用来生成常见几何形状的网格。例如，`GridGenerator` 命名空间包含了生成网格的函数，适用于立方体、圆、圆柱等几何形状。比如:
-```cpp
-Triangulation<2> triangulation;
+网格信息:
+使用 `Triangulation` 类的成员函数可以获取网格的基本信息，例如活动单元的数量、总单元的数量、顶点的数量等。以下是一些常用的函数：
 
-// 创建一个二维正方形网格，角点位于 (0, 0) 和 (1, 1)
-GridGenerator::hyper_cube(triangulation, 0, 1);
-
-// 全局细化网格两次（每个单元被划分成多个小单元）
-triangulation.refine_global(2);
-```
+-   **`triangulation.n_active_cells()`**: 返回活动（未细分的）单元的数量。
+-   **`triangulation.n_cells()`**: 返回网格中总单元的数量。
+-   **`triangulation.n_vertices()`**: 返回网格中的顶点总数。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzMDYyNzE5MCwxMDkwOTQ4MjldfQ==
+eyJoaXN0b3J5IjpbMTQ4MzM1NDkxMCwxMDkwOTQ4MjldfQ==
 -->
