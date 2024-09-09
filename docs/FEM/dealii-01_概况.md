@@ -101,7 +101,7 @@ main page 下面细分很多栏目:
 * [FAQ](https://github.com/dealii/dealii/wiki/Frequently-Asked-Questions) 盖了许多关于 deal.II 特定方面的问题，也包括更一般的问题，例如“如何调试科学计算代码？”或“我能否通过训练让自己写出更少错误的代码？”
 * [user group](https://groups.google.com/g/dealii) 用户提问, 以及开发者发布声明的地方
 	* [废弃的 user group](https://groups.google.com/g/dealii-developers)
-	* 
+* [github issures](https://github.com/dealii/dealii/issues) 
 * [publications](https://www.dealii.org/community/publications/) 用到了 dealii 的出版物
 * [code gallery](https://dealii.org/developer/doxygen/deal.II/CodeGallery.html): 代码库是教程的延伸，程序的目的是展示如何使用 deal.II 实现应用程序，但不要求这些代码像教程中那样进行详细的注释和文档说明
 
@@ -115,7 +115,7 @@ main page 下面细分很多栏目:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNTAyODc4NiwzNjAwNjc0NzcsLTExNT
+eyJoaXN0b3J5IjpbLTc1MDQzOTUwMCwzNjAwNjc0NzcsLTExNT
 cxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1ODMw
 NTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MDQsNj
 UyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQz
