@@ -98,7 +98,7 @@ main page 下面细分很多栏目:
 * [Tutorial](https://www.dealii.org/current/doxygen/deal.II/Tutorial.html): 它通常不会讨论具体函数的参数细节，而是旨在提供事物如何协同工作的**整体概念**
 * [Topics](https://www.dealii.org/current/doxygen/deal.II/topics.html): 文档处于**中间层次**，它为某个特定领域的内容提供了概述。例如，当你想了解有哪些有限元类时，可以查阅 Finite element space descriptions 主题。当然，主题也与手册和教程相互链接。如果你点击一个类名，比如 Triangulation，你会在类名下方的顶部找到链接，点击后可以了解该类所属主题的更多信息。
 * [Classes](https://www.dealii.org/current/doxygen/deal.II/annotated.html): 当你知道自己想做什么，但忘记了函数的具体名称、参数或者返回值时需要查阅的地方。它提供的是**细致入微**的视角，而不会告诉你某个函数如何在整体框架中发挥作用。
-* [FAQ](https://github.com/dealii/dealii/wiki/Frequently-Asked-Questions)
+* [FAQ](https://github.com/dealii/dealii/wiki/Frequently-Asked-Questions) 盖了许多关于 deal.II 特定方面的问题，也包括更一般的问题，例如“如何调试科学计算代码？”或“我能否通过训练让自己写出更少错误的代码？”
 
 
 
@@ -110,10 +110,10 @@ main page 下面细分很多栏目:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mz
-k1ODMwNTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4
-MDQsNjUyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMz
-QxMzQzMDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIz
-NTAsLTQ2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX
-0=
+eyJoaXN0b3J5IjpbLTExNTcxMTUzMjUsLTc2OTIzMTAxOCw4OD
+g3MDA1MDIsLTE4Mzk1ODMwNTMsMTg1MDExNjMwMywtMTg2MzU4
+NDgyMSwyNTA5NzY4MDQsNjUyNDAzNTM4LDE4MDU2ODczNjgsNT
+k5NzgxNDQ4LDEyMzQxMzQzMDksLTI5MDM1MjY3OCwtNDcxNDQx
+NzQxLC0xNTIwODIzNTAsLTQ2NTc0NzQyMywtMTgxOTA2NjUxNi
+wxMTY0MTA4NDEwXX0=
 -->
