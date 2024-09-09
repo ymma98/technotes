@@ -22,7 +22,7 @@ domain(geosite:cn)->direct
 ip(geoip:hk,geoip:mo)->proxy
 ip(geoip:private, geoip:cn)->direct
 
-domain(domain:qq.com, domain:163.com, domain:bilibili.com)->direct
+domain(domain:qq.com, domain:163.com, domain:bilibili.com, domain:sunlogin.oray.com)->direct
 domain(domain:chatgpt.com)->proxy
 ```
 
@@ -33,5 +33,6 @@ domain(domain:chatgpt.com)->proxy
 * Automatically Update Subscriptions -> Update Subscriptions When Service Starts
 * Mode when Update Subscriptions and GFWList -> Do not Split Traffic
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc1MDE0ODQzLDc4NTk5OTUzOF19
+eyJoaXN0b3J5IjpbMTA2NjkwNTk0NCwyNzUwMTQ4NDMsNzg1OT
+k5NTM4XX0=
 -->
