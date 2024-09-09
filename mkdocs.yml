@@ -102,9 +102,6 @@ extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML
   # - javascripts/extra.js
 
-extra_css:
-  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css  # 可以提供 github 图标
-
 
 extra:
   analytics:
