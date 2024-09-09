@@ -15,6 +15,7 @@ std::cout << "活动单元 (未被细分) 的数量: " << triangulation.n_active
 std::cout << "总单元数量: " << triangulation.n_cells() << std::endl;
 std::cout << "总顶点数量: " << triangulation.n_vertices() << std::endl;
 
+// 遍历单元
 for (const auto &cell : triangulation.active_cell_iterators())
 {
     std::cout << "单元索引: " << cell->index() << std::endl;
@@ -26,5 +27,5 @@ for (const auto &cell : triangulation.active_cell_iterators())
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczNTM3ODk3NSwxMDkwOTQ4MjldfQ==
+eyJoaXN0b3J5IjpbLTQwMzk3MzgsMTA5MDk0ODI5XX0=
 -->
