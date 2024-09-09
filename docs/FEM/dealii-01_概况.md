@@ -100,7 +100,8 @@ main page 下面细分很多栏目:
 * [Classes](https://www.dealii.org/current/doxygen/deal.II/annotated.html): 当你知道自己想做什么，但忘记了函数的具体名称、参数或者返回值时需要查阅的地方。它提供的是**细致入微**的视角，而不会告诉你某个函数如何在整体框架中发挥作用。
 * [FAQ](https://github.com/dealii/dealii/wiki/Frequently-Asked-Questions) 盖了许多关于 deal.II 特定方面的问题，也包括更一般的问题，例如“如何调试科学计算代码？”或“我能否通过训练让自己写出更少错误的代码？”
 * [mail list](https://groups.google.com/g/dealii) 问答合集
-* 
+* [publications]()
+* [c]
 
 
 
@@ -112,10 +113,10 @@ main page 下面细分很多栏目:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC03Nj
-kyMzEwMTgsODg4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAxMTYz
-MDMsLTE4NjM1ODQ4MjEsMjUwOTc2ODA0LDY1MjQwMzUzOCwxOD
-A1Njg3MzY4LDU5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAzNTI2
-NzgsLTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC00NjU3NDc0MjMsLT
-E4MTkwNjY1MTYsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbLTE3Njc0ODgyNiwzNjAwNjc0NzcsLTExNT
+cxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1ODMw
+NTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MDQsNj
+UyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQz
+MDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLT
+Q2NTc0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
 -->
