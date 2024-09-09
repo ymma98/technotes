@@ -91,6 +91,11 @@ ___
 
 **Manifold**: Manifolds 描述了单元的形状，以及更一般地描述了解方程的域的几何形状。它们使用微分几何的语言。
 
+## 善用手册
+
+[这里](https://www.dealii.org/current/doxygen/deal.II/index.html) 是 dealii 手册的 main page.
+
+
 
 
 
@@ -102,8 +107,8 @@ ___
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjUwOTc2ODA0LDY1MjQwMzUzOCwxODA1Nj
-g3MzY4LDU5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAzNTI2Nzgs
-LTQ3MTQ0MTc0MSwtMTUyMDgyMzUwLC00NjU3NDc0MjMsLTE4MT
-kwNjY1MTYsMTE2NDEwODQxMF19
+eyJoaXN0b3J5IjpbMTYyODgwMTU5MywyNTA5NzY4MDQsNjUyND
+AzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQxMzQzMDks
+LTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIwODIzNTAsLTQ2NT
+c0NzQyMywtMTgxOTA2NjUxNiwxMTY0MTA4NDEwXX0=
 -->
