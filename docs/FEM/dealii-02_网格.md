@@ -32,6 +32,12 @@
 
 `Triangulation` 定义了一组迭代器，允许用户遍历整个网格，即构成网格的单元、面、边等，或者是网格的一部分。这些迭代器在某种意义上都继承自 `TriaIterator` 类。
 
+基本上，`TriaIterator` 的模板签名为：
+```cpp
+TriaIterator<Accessor>
+```
+概念上，这种类型类似于指向由 `Accessor` 类表示的对象的指针。通常你不会直接使用实际的类名，而是使用网格类提供的 `typedef`，例如 `typename Triangulation::cell_iterator`。
+
 在 deal.II 中，三角剖分使用“规则树的森林 (forest of regular trees)”的计算概念来存储数据。可以这样理解：将粗网格的单元视为树根；然后，如果这些粗网格单元之一被细化，它将拥有 $2^{dim}$ 个子单元，反过来，这些子单元也可以（但不一定会）拥有 $2^{dim}$ 个自己的子单元，依此类推。这意味着，每个粗网格的单元可以看作是一棵二叉树的根节点（在 1D 中），或四叉树（在 2D 中），或八叉树（在 3D 中）。这些由粗网格单元生成的树集合就构成了完全描述三角剖分的森林，包括所有的活跃单元和非活跃单元。特别地，活跃单元 (**active cells**, 实际参与计算) 是那些没有后代的树的终端节点，即未进一步细化的单元。相应地，非活跃单元 (**inactive cells**, 不能直接参与计算) 对应于有后代的节点，即已进一步细化的单元。
 
 一个 `Triangulation` 包含线段（每个可能有 2 个子节点）、四边形（每个可能有 4 个子节点）和六面体（每个可能有 8 个子节点）的森林。根据维度的不同，这些对象也可以被称为单元或面。总之，一个节点对应于一个线段。
@@ -59,7 +65,7 @@ while (ti != tria.end())
 }
 ```
 
-在这里，所有迭代器将始终指向相同的网格单元，尽管 `DoFHandler` 和 `Triangulation` 是非常不同的类，甚至即使 `DoFHandler` 处理不同的有限元：它们都以相同的顺序访问单元，差异仅在于 `Accessor`。如前所述，迭代器遍历对象森林的顺序实际上是明确定义的，但应用程序不应假设任何特定的顺序，而应将其视为库的实现细节。
+在这里，所有迭代器将始终指向相同的网格单元，尽管 `DoFHandler` 和 `Triangulation` 是非常不同的类，甚至即使 `DoFHandler` 处理不同的有限元：它们都以相同的顺序访问单元，差异仅在于 `Accessor` (分别为 `Triangulation<dim>::cell_iterator` 和 `DoFHandler<dim>::cell_iterator`)。如前所述，迭代器遍历对象森林的顺序实际上是明确定义的，但应用程序不应假设任何特定的顺序，而应将其视为库的实现细节。
 
 与上述示例对应，以下代码片段中，迭代器遍历活跃对象的顺序对于所有迭代器都是相同的，区别在于这里我们只考虑活跃单元：
 
@@ -98,8 +104,8 @@ while (ti != tria.end())
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mz
-k5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAz
-MjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX
-0=
+eyJoaXN0b3J5IjpbLTE2MjI3MTk0NDIsLTYxMjM1OTM1LDc4Nj
+k4MzQxNyw3MDM4Mzk5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1
+MDczNzUwMSwxOTAzMjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3Mz
+gsMTA5MDk0ODI5XX0=
 -->
