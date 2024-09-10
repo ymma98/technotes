@@ -18,9 +18,6 @@
 
 
 
-* 网格生成
-* 网格细分
-* 网格信息
 
 ## 网格生成
 
@@ -46,7 +43,7 @@
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzAzODM5OTg5LDU4NTkyMDIwOCw4NjA2Mz
-kyMCw2NTA3Mzc1MDEsMTkwMzIyNTU4NCwtOTQxNDUxNjI0LC00
-MDM5NzM4LDEwOTA5NDgyOV19
+eyJoaXN0b3J5IjpbMTI5ODc5NDE3Myw3MDM4Mzk5ODksNTg1OT
+IwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05
+NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
 -->
