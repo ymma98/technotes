@@ -22,9 +22,18 @@
 * 网格细分
 * 网格信息
 
-## wan
+## 网格生成
+
+生成网格有三种方式：
+
+1.  通过 `GridGenerator` 类生成；`GridGenerator` 类提供了一些函数，可以自动生成最简单和最常见的几何形状。例如，可以使用该类中的函数生成矩形（或立方体）几何体、圆形、球体或圆柱体。
+2.  从文件中读取；使用 `GridIn` 类从输入文件中读取网格，该类支持多种不同的格式。
+3.  手动创建。
+
+
+第三种方式是手动创建网格，即通过构建描述三角剖分（triangulation）的顶点和单元格的数据结构来创建网格。这在复杂性适中的情况下非常有用，在这些情况下，网格仍可以通过手动创建而无需依赖网格生成器，但域并不是 `GridGenerator` 类已经支持的几何形状。使用这种方法构建的数据结构可以传递给 `Triangulation` 类的 `create_triangulation()` 函数。教程程序 step-14 展示了如何实现这一点。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTUyNzU5MTgsODYwNjM5MjAsNjUwNz
+eyJoaXN0b3J5IjpbLTE0MDc2NTQ2NDMsODYwNjM5MjAsNjUwNz
 M3NTAxLDE5MDMyMjU1ODQsLTk0MTQ1MTYyNCwtNDAzOTczOCwx
 MDkwOTQ4MjldfQ==
 -->
