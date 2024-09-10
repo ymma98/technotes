@@ -90,7 +90,7 @@ while (ti != tria.end())
 
 迭代器类似于指针：它们可以被递增或递减，它们指向 `Accessor`。对于指针，它们指向一个存储某些数据的实际对象。而在 deal.II 中，迭代器解引用时得到的 `Accessor` 并不是一个指向实际对象的引用，而是返回一个能够获取表示单元格数据的对象。通常，这个对象不会自己存储单元格的顶点位置或者其邻居是什么。但它知道如何从 `Triangulation` 类中设置的数组、表格和列表中获取这些信息，从而描述网格。
 
-访问描述单元格的数据总是通过 `Accessor` 进行的，也就是说，表达式 `i->xxx()`  (`ptr->value` 相当于 `(*ptr).value`，首先解引用指针 `ptr`，获得 `obj`，然后通过 `.` 来访问 `obj` 的 `value` 成员) 能够访问该 `Accessor` 的所有属性。你可以从迭代器查询的属性示例如下：
+访问描述单元格的数据总是通过 `Accessor` 进行的，也就是说，表达式 `i->xxx()`  (`ptr->value` 相当于 `(*ptr).value`，首先解引用指针或迭代器 `ptr`，获得 `obj`，然后通过 `.` 来访问 `obj` 的 `value` 成员) 能够访问该 `Accessor` 的所有属性。你可以从迭代器查询的属性示例如下：
 
 ```cpp
 cell->vertex(1);
@@ -118,8 +118,9 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTczNDA5NTU2LDE0MjkxNDExMzgsLTE2Mj
-I3MTk0NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mzk5ODks
-NTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NT
-g0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbLTE4NDM0MDUzNTIsMTQyOTE0MTEzOCwtMT
+YyMjcxOTQ0MiwtNjEyMzU5MzUsNzg2OTgzNDE3LDcwMzgzOTk4
+OSw1ODU5MjAyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5MDMyMj
+U1ODQsLTk0MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4MjldfQ==
+
 -->
