@@ -36,6 +36,57 @@
 
 一个 `Triangulation` 包含线段（每个可能有 2 个子节点）、四边形（每个可能有 4 个子节点）和六面体（每个可能有 8 个子节点）的森林。根据维度的不同，这些对象也可以被称为单元或面。总之，一个节点对应于一个线段。
 
+
+* 遍历对象
+
+所有相同类型的迭代器，并且遍历相同类型几何对象的迭代器，都会以相同的顺序遍历网格。以下是一个代码示例：
+
+```cpp
+Triangulation<dim> tria;
+DoFHandler<dim>    dof1(tria);
+DoFHandler<dim>    dof2(tria);
+...
+typename Triangulation<dim>::cell_iterator ti  = tria.begin();
+typename DoFHandler<dim>::cell_iterator   di1 = dof1.begin();
+typename DoFHandler<dim>::cell_iterator   di2 = dof2.begin();
+...
+while (ti != tria.end())
+{
+  // 执行某些操作
+  ++ti;
+  ++di1;
+  ++di2;
+}
+```
+
+在这里，所有迭代器将始终指向相同的网格单元，尽管 `DoFHandler` 和 `Triangulation` 是非常不同的类，甚至即使 `DoFHandler` 处理不同的有限元：它们都以相同的顺序访问单元，差异仅在于 `Accessor`。如前所述，迭代器遍历对象森林的顺序实际上是明确定义的，但应用程序不应假设任何特定的顺序，而应将其视为库的实现细节。
+
+与上述示例对应，以下代码片段中，迭代器遍历活跃对象的顺序对于所有迭代器都是相同的，区别在于这里我们只考虑活跃单元：
+
+```cpp
+typename Triangulation<dim>::active_cell_iterator ti  = tria.begin_active();
+typename DoFHandler<dim>::active_cell_iterator   di1 = dof1.begin_active();
+typename DoFHandler<dim>::active_cell_iterator   di2 = dof2.begin_active();
+...
+while (ti != tria.end())
+{
+  // 执行某些操作
+  ++ti;
+  ++di1;
+  ++di2;
+}
+```
+
+在这个示例中，所有活跃迭代器按照相同的顺序遍历活跃单元，这确保了即使在处理不同的 `DoFHandler` 或不同的有限元时，迭代器也会同步指向相同的活跃单元。这对于确保并行处理或同步操作非常有用。
+
+### 总结
+
+通过理解 `Triangulation`、`DoFHandler` 以及不同类型的迭代器，用户可以有效地遍历和操作网格中的各种对象。尽管迭代器的内部遍历顺序是库的实现细节，但了解其工作方式有助于编写更高效和更可靠的有限元程序。
+
+
+
+
+
 ## 网格输出
 
 如果输出文件中包含的是基于该网格的模拟结果，则通过 `DataOut` 类实现。另一方面，如果只想将网格的几何和拓扑写入文件，则可以使用 `GridOut` 类来实现。
@@ -47,7 +98,8 @@
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg2OTgzNDE3LDcwMzgzOTk4OSw1ODU5Mj
-AyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5MDMyMjU1ODQsLTk0
-MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4MjldfQ==
+eyJoaXN0b3J5IjpbLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mz
+k5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAz
+MjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX
+0=
 -->
