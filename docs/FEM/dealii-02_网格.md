@@ -2,6 +2,8 @@
 
 文档中关于 mesh 的 [Topic](https://www.dealii.org/current/doxygen/deal.II/group__grid.html).
 
+## 简介
+
 在 deal.II 中，网格由 `Triangulation` 类表示，该类存储网格几何结构并提供操作网格的功能。
 
 网格可以被视为单元格的集合；如果网格经过细化（可能是自适应方式），则这个集合会被组织成细化层次的层级结构。除了单元格之外，构成三角剖分的几何对象还包括单元格的面（在三维中还有单元格的边）以及单元格的顶点。需要注意的是 deal.ii 只实现了由线性、四边形和六面体单元格组成的三角剖分，不支持三角形和四面体。
@@ -10,7 +12,8 @@
 
 值得注意的是，`Triangulation` 类只存储网格的几何信息（即顶点和单元格的位置）和拓扑信息（即哪些单元格是彼此的邻居等）。它与有限元或定义在网格上的自由度没有直接关系。这些功能是由 `DoFHandler` 类来执行的，`DoFHandler` 获取有限元空间的描述，并根据有限元类的定义在顶点、面或单元格上分配和管理自由度。这样的分离使得可以同时在同一网格上有多个 `DoFHandler` 类工作。
 
-从整体上看，deal.II中的三角剖分与库的其他部分紧密交互：
+
+![输入图片说明](https://www.dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_7.png)
 
 
 
@@ -18,8 +21,10 @@
 * 网格生成
 * 网格细分
 * 网格信息
+
+## wan
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY2MTg2NjI5LDg2MDYzOTIwLDY1MDczNz
-UwMSwxOTAzMjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5
-MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbLTIwNTUyNzU5MTgsODYwNjM5MjAsNjUwNz
+M3NTAxLDE5MDMyMjU1ODQsLTk0MTQ1MTYyNCwtNDAzOTczOCwx
+MDkwOTQ4MjldfQ==
 -->
