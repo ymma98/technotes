@@ -85,9 +85,26 @@ while (ti != tria.end())
 
 在这个示例中，所有活跃迭代器按照相同的顺序遍历活跃单元，这确保了即使在处理不同的 `DoFHandler` 或不同的有限元时，迭代器也会同步指向相同的活跃单元。这对于确保并行处理或同步操作非常有用。
 
+* Accessor
+
+
+迭代器类似于指针：它们可以被递增或递减，但它们本身实际上相当简单。它们的神奇之处在于它们指向某个有用的对象，在这里就是 `Accessor`。对于指针，它们指向一个存储某些数据的实际对象。而在 deal.II 中，迭代器解引用时并不返回一个指向实际对象的引用，而是返回一个能够获取表示单元格数据的对象。通常，这个对象不会自己存储单元格的顶点位置或者其邻居是什么。但它知道如何从 `Triangulation` 类中设置的数组、表格和列表中获取这些信息，从而描述网格。
+
+访问描述单元格的数据总是通过 `Accessor` 进行的，也就是说，表达式 `i->xxx()` 能够访问该 `Accessor` 的所有属性。你可以从迭代器查询的属性示例如下：
+
+```cpp
+cell->vertex(1);
+line->child(0);
+hex->face(3);
+cell->at_boundary();
+face->boundary_id();
+```
+
+由于解引用迭代器返回的是 `Accessor` 对象，因此这些调用实际上是 `Accessor::vertex()`、`Accessor::child()` 等成员函数。这些函数会从存储这些数据的各种数据结构中找出相关信息。对于 deal.II 中的应用程序作者来说，如何实现这些功能以及使用了哪些数据结构并不需要关心。特别地，通过隐藏实际的数据结构，我们可以以一种高效的方式存储数据，而不一定是以一种容易让应用程序开发者理解或访问的方式存储数据。
+
 ### 总结
 
-通过理解 `Triangulation`、`DoFHandler` 以及不同类型的迭代器，用户可以有效地遍历和操作网格中的各种对象。尽管迭代器的内部遍历顺序是库的实现细节，但了解其工作方式有助于编写更高效和更可靠的有限元程序。
+`Accessor` 类在 deal.II 中扮演了一个至关重要的角色，通过迭代器解引用时返回的 `Accessor` 对象，用户能够轻松地访问单元格、面、顶点等几何对象的属性。这样封装后的数据访问方式使得 deal.II 能够在保持高效数据存储的同时，提供给用户一个清晰且简洁的接口，简化了有限元应用的开发。
 
 
 
@@ -104,8 +121,8 @@ while (ti != tria.end())
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjI3MTk0NDIsLTYxMjM1OTM1LDc4Nj
-k4MzQxNyw3MDM4Mzk5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1
-MDczNzUwMSwxOTAzMjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3Mz
-gsMTA5MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbLTE1MDYzMjI0MDgsLTE2MjI3MTk0NDIsLT
+YxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mzk5ODksNTg1OTIwMjA4
+LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05NDE0NT
+E2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
 -->
