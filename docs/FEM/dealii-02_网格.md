@@ -102,6 +102,43 @@ face->boundary_id();
 
 由于解引用迭代器返回的是 `Accessor` 对象，因此这些调用实际上是 `Accessor::vertex()`、`Accessor::child()` 等成员函数。这些函数会从存储这些数据的各种数据结构中找出相关信息。对于 deal.II 中的应用程序作者来说，如何实现这些功能以及使用了哪些数据结构并不需要关心。特别地，通过隐藏实际的数据结构，我们可以以一种高效的方式存储数据，而不一定是以一种容易让应用程序开发者理解或访问的方式存储数据。
 
+* Accessor 类型
+
+
+
+根据要访问的数据类型不同，deal.II 中有不同种类的 `Accessor` 类：
+
+- **`TriaAccessor`** 类提供有关单元、面、线、四边形和六面体（这些几何对象构成了三角剖分）的几何属性的数据，以及它们的父子关系。
+- **`CellAccessor`** 类继承自 `TriaAccessor` 类，适用于具有完整维度的对象（即单元，而不是例如限定单元的线段）。在这种情况下，可以通过 `Accessor` 获取关于网格拓扑连接的额外信息，例如请求指向单元邻居的迭代器。
+- **`DoFAccessor`** 类允许访问与单元、面等关联的自由度（degrees of freedom）相关的信息。需要注意的是，`DoFAccessor` 类继承自 `TriaAccessor` 或 `CellAccessor`（取决于 `DoFAccessor` 是否指向完整维度的对象），因此可以提供其基类的超集信息。此外，`DoFAccessor` 类有两种形式：一种访问单元级别的自由度，另一种访问活跃单元的自由度。
+- **`DoFCellAccessor`** 类与 `DoFAccessor` 的关系类似于 `CellAccessor` 与 `TriaAccessor` 的关系。
+
+除了查看这些类的成员文档外，你通常不需要直接处理这些实际的类名。通常你可以使用网格类 `Triangulation` 和 `DoFHandler` 提供的 `typedef`，以及用于生成这些对象的函数：
+
+| 类            | `cell_iterator` 类型                         | 函数调用                        |
+| ------------- | -------------------------------------------- | ------------------------------- |
+| `Triangulation` | `typename Triangulation::cell_iterator`     | `Triangulation::begin()`         |
+| `DoFHandler`   | `typename DoFHandler::cell_iterator`         | `DoFHandler::begin()`            |
+
+`Triangulation` 类支持通过 `typename Triangulation::face_iterator` 遍历单元的面，该类型由 `Triangulation::begin_face()` 返回。
+
+### 活跃迭代器的特性：
+
+| 类            | `cell_iterator` 类型                         | 函数调用                        |
+| ------------- | -------------------------------------------- | ------------------------------- |
+| `Triangulation` | `typename Triangulation::active_cell_iterator` | `Triangulation::begin_active()` |
+| `DoFHandler`   | `typename DoFHandler::active_cell_iterator`    | `DoFHandler::begin_active()`    |
+
+`Triangulation` 类还支持通过 `typename Triangulation::active_face_iterator` 遍历活跃单元的面，该类型由 `Triangulation::begin_active_face()` 返回。
+
+除了这些作用于单元和面的类型和函数调用（这些逻辑概念取决于维度：在 2D 中，单元是四边形，而在 3D 中是六面体），还有类似 `begin_active_quad()` 或 `end_quad()` 的类型和函数调用，它们作用于维度无关的几何对象：线、四边形和六面体。这些调用也有活跃和非活跃的形式。
+
+所有这些类型定义（`typedef`）在以下内部类中定义：
+
+- 对于 `Triangulation` 迭代器，定义在 `internal::TriangulationImplementation::Iterators<1, spacedim>`、`internal::TriangulationImplementation::Iterators<2, spacedim>` 和 `internal::TriangulationImplementation::Iterators<3, spacedim>`。
+- 对于 `DoFHandler` 迭代器，定义在 `internal::DoFHandlerImplementation::Iterators<1, spacedim, lda>`、`internal::DoFHandlerImplementation::Iterators<2, spacedim, lda>` 和 `internal::DoFHandlerImplementation::Iterators<3, spacedim, lda>`。
+
+这些定义确保了你可以通过 `Triangulation` 和 `DoFHandler` 类的接口方便地操作网格中的单元、面和自由度。
 
 
 
@@ -118,9 +155,9 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDM0MDUzNTIsMTQyOTE0MTEzOCwtMT
-YyMjcxOTQ0MiwtNjEyMzU5MzUsNzg2OTgzNDE3LDcwMzgzOTk4
-OSw1ODU5MjAyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5MDMyMj
-U1ODQsLTk0MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4MjldfQ==
-
+eyJoaXN0b3J5IjpbLTg4MDMyMzM2NiwtMTg0MzQwNTM1MiwxND
+I5MTQxMTM4LC0xNjIyNzE5NDQyLC02MTIzNTkzNSw3ODY5ODM0
+MTcsNzAzODM5OTg5LDU4NTkyMDIwOCw4NjA2MzkyMCw2NTA3Mz
+c1MDEsMTkwMzIyNTU4NCwtOTQxNDUxNjI0LC00MDM5NzM4LDEw
+OTA5NDgyOV19
 -->
