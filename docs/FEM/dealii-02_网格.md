@@ -110,7 +110,7 @@ face->boundary_id();
 
 - **`TriaAccessor`** 类提供有关单元、面、线、四边形和六面体（这些几何对象构成了三角剖分）的几何属性的数据，以及它们的父子关系。
 - **`CellAccessor`** 类继承自 `TriaAccessor` 类，适用于具有完整维度的对象（即单元，而不是例如限定单元的线段）。在这种情况下，可以通过 `Accessor` 获取关于网格拓扑连接的额外信息，例如请求指向单元邻居的迭代器。
-- **`DoFAccessor`** 类允许访问与单元、面等关联的自由度（degrees of freedom）相关的信息。需要注意的是，`DoFAccessor` 类继承自 `TriaAccessor` 或 `CellAccessor`（取决于 `DoFAccessor` 是否指向完整维度的对象），因此可以提供其基类的超集信息。此外，`DoFAccessor` 类有两种形式：一种访问单元级别的自由度，另一种访问活跃单元的自由度。
+- **`DoFAccessor`** 类允许访问与单元、面等关联的自由度（degrees of freedom）相关的信息。需要注意的是，`DoFAccessor` 类继承自 `TriaAccessor` 或 `CellAccessor`（取决于 `DoFAccessor` 是否指向完整维度的对象）。此外，`DoFAccessor` 类有两种形式：一种访问单元级别的自由度，另一种访问活跃单元的自由度。
 - **`DoFCellAccessor`** 类与 `DoFAccessor` 的关系类似于 `CellAccessor` 与 `TriaAccessor` 的关系。
 
 除了查看这些类的成员文档外，你通常不需要直接处理这些实际的类名。通常你可以使用网格类 `Triangulation` 和 `DoFHandler` 提供的 `typedef`，以及用于生成这些对象的函数：
@@ -155,9 +155,9 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4MDMyMzM2NiwtMTg0MzQwNTM1MiwxND
-I5MTQxMTM4LC0xNjIyNzE5NDQyLC02MTIzNTkzNSw3ODY5ODM0
-MTcsNzAzODM5OTg5LDU4NTkyMDIwOCw4NjA2MzkyMCw2NTA3Mz
-c1MDEsMTkwMzIyNTU4NCwtOTQxNDUxNjI0LC00MDM5NzM4LDEw
-OTA5NDgyOV19
+eyJoaXN0b3J5IjpbNDQ2MDM4MjI3LC04ODAzMjMzNjYsLTE4ND
+M0MDUzNTIsMTQyOTE0MTEzOCwtMTYyMjcxOTQ0MiwtNjEyMzU5
+MzUsNzg2OTgzNDE3LDcwMzgzOTk4OSw1ODU5MjAyMDgsODYwNj
+M5MjAsNjUwNzM3NTAxLDE5MDMyMjU1ODQsLTk0MTQ1MTYyNCwt
+NDAzOTczOCwxMDkwOTQ4MjldfQ==
 -->
