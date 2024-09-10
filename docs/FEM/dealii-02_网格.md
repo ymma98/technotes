@@ -32,7 +32,7 @@
 
 `Triangulation` 定义了一组迭代器，允许用户遍历整个网格，即构成网格的单元、面、边等，或者是网格的一部分。这些迭代器在某种意义上都继承自 `TriaIterator` 类。
 
-在 deal.II 中，三角剖分使用“规则树的森林 (forest of regular trees)”的计算概念来存储数据。可以这样理解：将粗网格的单元视为树根；然后，如果这些粗网格单元之一被细化，它将拥有 $2^{dim}$ 个子单元，反过来，这些子单元也可以（但不一定会）拥有 $2^{dim}$ 个自己的子单元，依此类推。这意味着，每个粗网格的单元可以看作是一棵二叉树的根节点（在 1D 中），或四叉树（在 2D 中），或八叉树（在 3D 中）。这些由粗网格单元生成的树集合就构成了完全描述三角剖分的森林，包括所有的活跃单元和非活跃单元。特别地，活跃单元 (**active cells**, 实际参与计算) 是那些没有后代的树的终端节点，即未进一步细化的单元。相应地，非活跃单元 (**inactive cells**) 对应于有后代的节点，即已进一步细化的单元。
+在 deal.II 中，三角剖分使用“规则树的森林 (forest of regular trees)”的计算概念来存储数据。可以这样理解：将粗网格的单元视为树根；然后，如果这些粗网格单元之一被细化，它将拥有 $2^{dim}$ 个子单元，反过来，这些子单元也可以（但不一定会）拥有 $2^{dim}$ 个自己的子单元，依此类推。这意味着，每个粗网格的单元可以看作是一棵二叉树的根节点（在 1D 中），或四叉树（在 2D 中），或八叉树（在 3D 中）。这些由粗网格单元生成的树集合就构成了完全描述三角剖分的森林，包括所有的活跃单元和非活跃单元。特别地，活跃单元 (**active cells**, 实际参与计算) 是那些没有后代的树的终端节点，即未进一步细化的单元。相应地，非活跃单元 (**inactive cells**, 不能直接参与计算) 对应于有后代的节点，即已进一步细化的单元。
 
 ## 网格输出
 
@@ -45,7 +45,7 @@
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjMwNjUxMTczLDcwMzgzOTk4OSw1ODU5Mj
-AyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5MDMyMjU1ODQsLTk0
-MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4MjldfQ==
+eyJoaXN0b3J5IjpbMTk3MDA0MTkxNiw3MDM4Mzk5ODksNTg1OT
+IwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05
+NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
 -->
