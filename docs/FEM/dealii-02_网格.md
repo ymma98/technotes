@@ -122,7 +122,7 @@ face->boundary_id();
 
 `Triangulation` 类支持通过 `typename Triangulation::face_iterator` 遍历单元的面，该类型由 `Triangulation::begin_face()` 返回。
 
-### 活跃迭代器的特性：
+活跃迭代器
 
 | 类            | `cell_iterator` 类型                         | 函数调用                        |
 | ------------- | -------------------------------------------- | ------------------------------- |
@@ -155,9 +155,9 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ2MDM4MjI3LC04ODAzMjMzNjYsLTE4ND
-M0MDUzNTIsMTQyOTE0MTEzOCwtMTYyMjcxOTQ0MiwtNjEyMzU5
-MzUsNzg2OTgzNDE3LDcwMzgzOTk4OSw1ODU5MjAyMDgsODYwNj
-M5MjAsNjUwNzM3NTAxLDE5MDMyMjU1ODQsLTk0MTQ1MTYyNCwt
-NDAzOTczOCwxMDkwOTQ4MjldfQ==
+eyJoaXN0b3J5IjpbLTQ0NTU3MjA4LDQ0NjAzODIyNywtODgwMz
+IzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDExMzgsLTE2MjI3MTk0
+NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mzk5ODksNTg1OT
+IwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05
+NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
 -->
