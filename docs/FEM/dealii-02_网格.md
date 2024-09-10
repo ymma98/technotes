@@ -131,7 +131,7 @@ face->boundary_id();
 
 `Triangulation` 类还支持通过 `typename Triangulation::active_face_iterator` 遍历活跃单元的面，该类型由 `Triangulation::begin_active_face()` 返回。
 
-除了这些作用于单元和面的类型和函数调用（这些逻辑概念取决于维度：在 2D 中，单元是四边形，而在 3D 中是六面体），还有类似 `begin_active_quad()` 或 `end_quad()` 的类型和函数调用，它们作用于维度无关的几何对象：线、四边形和六面体。这些调用也有活跃和非活跃的形式。
+除了这些作用于单元和面的类型和函数调用（这些逻辑概念取决于维度：在 2D 中，单元是四边形，而在 3D 中是六面体），还有类似 `begin_active_quad()` 或 `end_quad()` 的类型和函数调用，它们作用于维度无关的几何对象：线、四边形和六面体 (`Quad` 是一种**维度泛化**的概念，它允许在不同维度下表示不同的对象。在 `deal.II` 中，虽然 `Quad` 一词在 2D 中是指四边形，但在 1D 中会指线段 `Line` ，在 3D 中会指六面体的面)。这些调用也有活跃和非活跃的形式。
 
 
 
@@ -148,9 +148,9 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODkzODUzMzAsNDQ2MDM4MjI3LC04OD
-AzMjMzNjYsLTE4NDM0MDUzNTIsMTQyOTE0MTEzOCwtMTYyMjcx
-OTQ0MiwtNjEyMzU5MzUsNzg2OTgzNDE3LDcwMzgzOTk4OSw1OD
-U5MjAyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5MDMyMjU1ODQs
-LTk0MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4MjldfQ==
+eyJoaXN0b3J5IjpbNzU5NTU0NTE0LDQ0NjAzODIyNywtODgwMz
+IzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDExMzgsLTE2MjI3MTk0
+NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mzk5ODksNTg1OT
+IwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05
+NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
 -->
