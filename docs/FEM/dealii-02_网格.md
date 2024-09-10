@@ -102,9 +102,6 @@ face->boundary_id();
 
 由于解引用迭代器返回的是 `Accessor` 对象，因此这些调用实际上是 `Accessor::vertex()`、`Accessor::child()` 等成员函数。这些函数会从存储这些数据的各种数据结构中找出相关信息。对于 deal.II 中的应用程序作者来说，如何实现这些功能以及使用了哪些数据结构并不需要关心。特别地，通过隐藏实际的数据结构，我们可以以一种高效的方式存储数据，而不一定是以一种容易让应用程序开发者理解或访问的方式存储数据。
 
-### 总结
-
-`Accessor` 类在 deal.II 中扮演了一个至关重要的角色，通过迭代器解引用时返回的 `Accessor` 对象，用户能够轻松地访问单元格、面、顶点等几何对象的属性。这样封装后的数据访问方式使得 deal.II 能够在保持高效数据存储的同时，提供给用户一个清晰且简洁的接口，简化了有限元应用的开发。
 
 
 
@@ -121,8 +118,8 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDYzMjI0MDgsLTE2MjI3MTk0NDIsLT
-YxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mzk5ODksNTg1OTIwMjA4
-LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05NDE0NT
-E2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbMTQyOTE0MTEzOCwtMTYyMjcxOTQ0MiwtNj
+EyMzU5MzUsNzg2OTgzNDE3LDcwMzgzOTk4OSw1ODU5MjAyMDgs
+ODYwNjM5MjAsNjUwNzM3NTAxLDE5MDMyMjU1ODQsLTk0MTQ1MT
+YyNCwtNDAzOTczOCwxMDkwOTQ4MjldfQ==
 -->
