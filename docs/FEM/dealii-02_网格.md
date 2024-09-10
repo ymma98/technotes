@@ -36,9 +36,13 @@
 如果输出文件中包含的是基于该网格的模拟结果，则通过 `DataOut` 类实现。另一方面，如果只想将网格的几何和拓扑写入文件，则可以使用 `GridOut` 类来实现。
 
 
+## 工具类  
 
+`GridTools` 类提供了一组作用于网格的函数。例如，包括移动节点、拉伸或旋转整个三角剖分、计算域的直径，或将其划分为大小大致相等的块以便于并行计算。
+
+`GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTk4NDU2OSw4NjA2MzkyMCw2NTA3Mz
-c1MDEsMTkwMzIyNTU4NCwtOTQxNDUxNjI0LC00MDM5NzM4LDEw
-OTA5NDgyOV19
+eyJoaXN0b3J5IjpbNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNz
+UwMSwxOTAzMjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5
+MDk0ODI5XX0=
 -->
