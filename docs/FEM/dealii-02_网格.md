@@ -32,6 +32,8 @@
 
 `Triangulation` 定义了一组迭代器，允许用户遍历整个网格，即构成网格的单元、面、边等，或者是网格的一部分。这些迭代器在某种意义上都继承自 `TriaIterator` 类。
 
+
+
 ## 网格输出
 
 如果输出文件中包含的是基于该网格的模拟结果，则通过 `DataOut` 类实现。另一方面，如果只想将网格的几何和拓扑写入文件，则可以使用 `GridOut` 类来实现。
@@ -43,7 +45,7 @@
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5ODc5NDE3Myw3MDM4Mzk5ODksNTg1OT
+eyJoaXN0b3J5IjpbMjEwNzU5MDQyNSw3MDM4Mzk5ODksNTg1OT
 IwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05
 NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
 -->
