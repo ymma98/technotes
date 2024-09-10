@@ -31,6 +31,10 @@
 3.  手动创建。通过构建描述三角剖分（triangulation）的顶点和单元格的数据结构来创建网格。使用这种方法构建的数据结构可以传递给 `Triangulation` 类的 `create_triangulation()` 函数 (step-14)。
 
 
+## 网格信息
+
+`Triangulation` 定义了一组迭代器，允许用户遍历整个网格，即构成网格的单元、面、边等，或者是网格的一部分。这些迭代器在某种意义上都继承自 `TriaIterator` 类。
+
 ## 网格输出
 
 如果输出文件中包含的是基于该网格的模拟结果，则通过 `DataOut` 类实现。另一方面，如果只想将网格的几何和拓扑写入文件，则可以使用 `GridOut` 类来实现。
@@ -42,7 +46,7 @@
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNz
-UwMSwxOTAzMjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5
-MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbNzAzODM5OTg5LDU4NTkyMDIwOCw4NjA2Mz
+kyMCw2NTA3Mzc1MDEsMTkwMzIyNTU4NCwtOTQxNDUxNjI0LC00
+MDM5NzM4LDEwOTA5NDgyOV19
 -->
