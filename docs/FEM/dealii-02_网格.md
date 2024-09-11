@@ -24,10 +24,10 @@
 
 另一方面，如果处理的是曲面几何，或需要在某个方向上更密集细化的几何体，这种做法就不合适了。因此，派生自 `Manifold` 基类的类用于描述域的几何。可以通过 `Triangulation::set_manifold()` 函数将从该基类派生的类的对象与 `Triangulation` 对象关联，使用流形ID（详见 `types::manifold_id`）将其附加到单元、面或边上，并使用 `TriaAccessor::set_manifold_id()` 函数为这些几何体指定相应的流形ID。然后，在网格细化过程中，`Triangulation` 将询问流形对象新顶点应放置的位置。已经存在的类可以支持最常见的几何体，例如 `CylindricalManifold` 和 `PolarManifold`，它们分别表示在柱坐标系或极坐标系中描述空间的几何。默认情况下，所有通过 `GridGenerator` 命名空间生成的曲面几何都会自动将正确的流形对象附加到域的曲面部分。
 
-## 积分
-使用高阶有限元方法时，通常需要使用边界的曲线近似，而不是直线近似来计算单元项（如单元对矩阵和右端项的贡献）。此类曲线元素的实际实现发生在 `Mapping` 类中（参见从参考单元到真实单元的映射主题），然而，它从此处描述的类获取域边界的信息。当然，当积分边界项（例如非齐次 Neumann 边界条件）时也是如此。
+* 积分
+使用高阶有限元方法时，通常需要使用边界的曲线近似，而不是直线近似来计算单元项。此类曲线元素的实际实现发生在 `Mapping` 类中，然而，它从此处描述的类获取域边界的信息。当然，当积分边界项（例如非齐次 Neumann 边界条件）时也是如此。
 
-## 非零余维的域
+* 非零余维的域
 在某些情况下，`Triangulation` 被嵌入到高维空间中，即当 `Triangulation` 类的第二个模板参数显式指定并大于第一个参数时（参见示例 step-34），流形描述对象用来描述不仅是域的边界，还包括域本身的几何，尤其是当域是实际为曲线的流形时。在这些情况下，可以使用 `Triangulation::set_manifold()` 函数来指示在细化曲线或使用高阶映射计算积分时应使用哪个流形描述。
 
 关于这些实现的更多示例，以及 deal.II 中实现的理论基础，详见几何论文。
@@ -170,10 +170,10 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1ODEzNDIyNSw3NTk1NTQ1MTQsNDQ2MD
-M4MjI3LC04ODAzMjMzNjYsLTE4NDM0MDUzNTIsMTQyOTE0MTEz
-OCwtMTYyMjcxOTQ0MiwtNjEyMzU5MzUsNzg2OTgzNDE3LDcwMz
-gzOTk4OSw1ODU5MjAyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5
-MDMyMjU1ODQsLTk0MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4Mj
-ldfQ==
+eyJoaXN0b3J5IjpbLTE2NjU2MTE4ODIsNzU5NTU0NTE0LDQ0Nj
+AzODIyNywtODgwMzIzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDEx
+MzgsLTE2MjI3MTk0NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MD
+M4Mzk5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwx
+OTAzMjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0OD
+I5XX0=
 -->
