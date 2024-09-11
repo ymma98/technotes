@@ -15,6 +15,28 @@
 
 ![输入图片说明](https://www.dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_7.png)
 
+## manifold
+
+流形的描述在几个上下文中是必要的：
+
+* 网格细化
+每当细化一个单元时，需要在 `Triangulation` 中引入新的顶点。最简单的情况是假设构成 `Triangulation` 的对象是直线段、双线性曲面或三线性体积。此时，新的顶点被简单地放置在旧顶点的中间。这就是 `Triangulation` 类的默认行为，并由 `FlatManifold` 类描述。
+
+另一方面，如果处理的是曲面几何，或需要在某个方向上更密集细化的几何体，这种做法就不合适了。因此，派生自 `Manifold` 基类的类用于描述域的几何。可以通过 `Triangulation::set_manifold()` 函数将从该基类派生的类的对象与 `Triangulation` 对象关联，使用流形ID（详见 `types::manifold_id`）将其附加到单元、面或边上，并使用 `TriaAccessor::set_manifold_id()` 函数为这些几何体指定相应的流形ID。然后，在网格细化过程中，`Triangulation` 将询问流形对象新顶点应放置的位置。已经存在的类可以支持最常见的几何体，例如 `CylindricalManifold` 和 `PolarManifold`，它们分别表示在柱坐标系或极坐标系中描述空间的几何。默认情况下，所有通过 `GridGenerator` 命名空间生成的曲面几何都会自动将正确的流形对象附加到域的曲面部分。
+
+## 积分
+使用高阶有限元方法时，通常需要使用边界的曲线近似，而不是直线近似来计算单元项（如单元对矩阵和右端项的贡献）。此类曲线元素的实际实现发生在 `Mapping` 类中（参见从参考单元到真实单元的映射主题），然而，它从此处描述的类获取域边界的信息。当然，当积分边界项（例如非齐次 Neumann 边界条件）时也是如此。
+
+## 非零余维的域
+在某些情况下，`Triangulation` 被嵌入到高维空间中，即当 `Triangulation` 类的第二个模板参数显式指定并大于第一个参数时（参见示例 step-34），流形描述对象用来描述不仅是域的边界，还包括域本身的几何，尤其是当域是实际为曲线的流形时。在这些情况下，可以使用 `Triangulation::set_manifold()` 函数来指示在细化曲线或使用高阶映射计算积分时应使用哪个流形描述。
+
+关于这些实现的更多示例，以及 deal.II 中实现的理论基础，详见几何论文。
+
+在 deal.II 中，流形被视为一组点，并带有点之间的距离概念。新点通常通过提供流形上的局部坐标系，识别局部坐标系中的现有点（使用局部映射将它们拉回到局部坐标系以获得它们的局部坐标），然后通过现有点的加权和在局部坐标系中找到新点，并将该点转换回真实空间（使用局部映射将其推到前方）。实现这一机制的主要类是 `ChartManifold` 类，这也是用户在处理复杂几何时最有可能重载的类。
+
+尽管这个过程在大多数感兴趣的情况下并不简单，但对于大多数简单几何，如圆柱、球体或壳体，deal.II 提供了合理的实现。更复杂的例子可以参见 step-53 和 step-54 中展示的技术。
+
+从整体上看，这组类与库的其他部分存在广泛的交互：
 
 
 
@@ -148,9 +170,10 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU5NTU0NTE0LDQ0NjAzODIyNywtODgwMz
-IzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDExMzgsLTE2MjI3MTk0
-NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mzk5ODksNTg1OT
-IwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NTg0LC05
-NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbLTI1ODEzNDIyNSw3NTk1NTQ1MTQsNDQ2MD
+M4MjI3LC04ODAzMjMzNjYsLTE4NDM0MDUzNTIsMTQyOTE0MTEz
+OCwtMTYyMjcxOTQ0MiwtNjEyMzU5MzUsNzg2OTgzNDE3LDcwMz
+gzOTk4OSw1ODU5MjAyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5
+MDMyMjU1ODQsLTk0MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4Mj
+ldfQ==
 -->
