@@ -30,7 +30,6 @@
 * 非零余维的域
 在某些情况下，`Triangulation` 被嵌入到高维空间中，即当 `Triangulation` 类的第二个模板参数显式指定并大于第一个参数时（参见示例 step-34），流形描述对象用来描述不仅是域的边界，还包括域本身的几何，尤其是当域是实际为曲线的流形时。在这些情况下，可以使用 `Triangulation::set_manifold()` 函数来指示在细化曲线或使用高阶映射计算积分时应使用哪个流形描述。
 
-关于这些实现的更多示例，以及 deal.II 中实现的理论基础，详见几何论文。
 
 在 deal.II 中，流形被视为一组点，并带有点之间的距离概念。新点通常通过提供流形上的局部坐标系，识别局部坐标系中的现有点（使用局部映射将它们拉回到局部坐标系以获得它们的局部坐标），然后通过现有点的加权和在局部坐标系中找到新点，并将该点转换回真实空间（使用局部映射将其推到前方）。实现这一机制的主要类是 `ChartManifold` 类，这也是用户在处理复杂几何时最有可能重载的类。
 
@@ -170,10 +169,10 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjU2MTE4ODIsNzU5NTU0NTE0LDQ0Nj
-AzODIyNywtODgwMzIzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDEx
-MzgsLTE2MjI3MTk0NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MD
-M4Mzk5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwx
-OTAzMjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0OD
-I5XX0=
+eyJoaXN0b3J5IjpbODcxMzAzNjUsNzU5NTU0NTE0LDQ0NjAzOD
+IyNywtODgwMzIzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDExMzgs
+LTE2MjI3MTk0NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mz
+k5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAz
+MjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX
+0=
 -->
