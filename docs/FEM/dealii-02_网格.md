@@ -17,6 +17,8 @@
 
 ## manifold
 
+在 deal.II 中，"流形" 是一个几何概念，用来描述域（即你正在模拟的物理问题所在的空间）的几何形状。简单来说，流形帮助描述空间的形状，特别是当这个空间不是简单的直线、平面或者普通三维立方体时。
+
 流形的描述在几个上下文中是必要的：
 
 * 网格细化
@@ -35,9 +37,8 @@
 
 尽管这个过程在大多数感兴趣的情况下并不简单，但对于大多数简单几何，如圆柱、球体或壳体，deal.II 提供了合理的实现。更复杂的例子可以参见 step-53 和 step-54 中展示的技术。
 
-从整体上看，这组类与库的其他部分存在广泛的交互：
 
-
+![输入图片说明](https://www.dealii.org/current/doxygen/deal.II/dot_inline_dotgraph_8.png)
 
 
 ## 网格生成
@@ -169,10 +170,10 @@ face->boundary_id();
 
 `GridRefinement` 类实现了一些基于其成员函数给出的细化指标的网格细化算法。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcxMzAzNjUsNzU5NTU0NTE0LDQ0NjAzOD
-IyNywtODgwMzIzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDExMzgs
-LTE2MjI3MTk0NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mz
-k5ODksNTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAz
-MjI1NTg0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX
-0=
+eyJoaXN0b3J5IjpbNTEyOTg3MTY1LDg3MTMwMzY1LDc1OTU1ND
+UxNCw0NDYwMzgyMjcsLTg4MDMyMzM2NiwtMTg0MzQwNTM1Miwx
+NDI5MTQxMTM4LC0xNjIyNzE5NDQyLC02MTIzNTkzNSw3ODY5OD
+M0MTcsNzAzODM5OTg5LDU4NTkyMDIwOCw4NjA2MzkyMCw2NTA3
+Mzc1MDEsMTkwMzIyNTU4NCwtOTQxNDUxNjI0LC00MDM5NzM4LD
+EwOTA5NDgyOV19
 -->
