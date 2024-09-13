@@ -73,7 +73,7 @@ bz2d = griddata(np.column_stack((rr.ravel(), zz.ravel())), bz.ravel(), (r2d, z2d
 在尝试了 streamline 的 n 种难用之处后，我最后还是放弃直接画 stream line, 而是通过求流函数然后画流函数 contour 的方式等价地画矢量场的 streamline. 
 
 在柱坐标系下，考虑环对称，则已知 $(B_r, B_z)$, 那么 $\psi$ 就是 $(B_r, B_z)$ 的流函数。$B_z = \frac{1}{r} \frac{\partial \psi}{\partial r}$, $B_r = -\frac{1}{r} \frac{\partial \psi}{\partial z}$,  有 $\psi=\int_0^r B_z r dr$。
-所以, 把数据映射到均匀网格后，可以直接计算 $\psi$
+所以, 把数据映射到均匀网格后，可以直接简单地计算 $\psi$
 ```python
 def get_uniform_data(rr, zz, br, bz):
     r2d, z2d = np.meshgrid(np.linspace(np.amin(rr), np.amax(rr), int(rr.shape[0] * 1.2)), \
@@ -93,5 +93,5 @@ psi2d = np.cumsum(bz2d*r2d, axis=0) * (r2d[1,0] - r2d[0,0])
 * 迫不得已要调用 matplotlib 的 streamplot 的话，要注意删除网格中重复的行和列，以及把数据重新映射到均匀网格上
 * python3 的 streamplot 有 broken_streamlines 这个参数，对于解决 stream plot 中 streamline 总是 break 这个问题有一定改善，但代价是，python3 的 streamplot 无法接受行或列中数据递减的网格
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4NDg4ODk0MCwtMTU4MTM0OTYxOV19
+eyJoaXN0b3J5IjpbLTQ3NjIxNDQ5OSwtMTU4MTM0OTYxOV19
 -->
