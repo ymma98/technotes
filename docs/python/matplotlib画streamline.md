@@ -20,9 +20,9 @@ ax.streamplot(x2d, y2d, vecx2d, vecy2d, arrowstyle='-'. density=(1.2, 0.3),\
 #### 对于 python3 的 streamplot, 具有以下缺点:
 * python3 的 streamplot 新增了参数 `broken_streamlines`。当 `broken_streamlines=False` 的时候画出来的 stream line 不会 break. 看起来很美好，解决了python2 的 streamplot 的“痛点”，对吧？
 	* 但是！！！到了特定的情况这个功能还是中看不中用！比如我有柱坐标系下的 $\theta=0$ 和 $\theta=\pi$ 的矢量场数据，`(r2d, z2d, vecr2d_0, vecz2d_0)` 和 `(r2d, z2d, vecr2d_pi, vecz2d_pi)`。很自然的，我想画一个圆柱 (r,z) 面的 cross section。但是即使把 `broken_streamlines=False` 安排上，画出来在 $r=0$ 这条边还是 break 掉的
-* python 2 的 stream plot 画 $r<0$ 的下半边的图像时不需要逆序 `r2d`。但是对于 python3 的 matplotlib, **不允许输入行或列方向递减的网格数据 !!!** 比如第一行是 -1, 第二行是 -2 是不行的。所以以下的程序才写为 `-(r2d_pi[::-1])`
+* python 2 的 stream plot 画 $r<0$ 的下半边的图像时不需要逆序 `r2d`。但是对于 python3 的 matplotlib, **不允许输入行或列方向递减的网格数据 。** 比如第一行是 -1, 第二行是 -2 是不行的。所以以下的程序才写为 `-(r2d_pi[::-1])`
 
-<img src="https://cdn.statically.io/gh/ymma98/stackEdit_blogpics@main/picX/streamplot_python3.2ne1pejouqs0.webp" width=50% height=50% />
+
 
 ```python
  ax1.streamplot(z2d, r2d, bz2d, br2d, arrowstyle='-', density=(1.2, 0.3), color='k', broken_streamlines=False, linewidth=0.5)
@@ -93,5 +93,5 @@ psi2d = np.cumsum(bz2d*r2d, axis=0) * (r2d[1,0] - r2d[0,0])
 * 迫不得已要调用 matplotlib 的 streamplot 的话，要注意删除网格中重复的行和列，以及把数据重新映射到均匀网格上
 * python3 的 streamplot 有 broken_streamlines 这个参数，对于解决 stream plot 中 streamline 总是 break 这个问题有一定改善，但代价是，python3 的 streamplot 无法接受行或列中数据递减的网格
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODEzNDk2MTldfQ==
+eyJoaXN0b3J5IjpbMjA4NDg4ODk0MCwtMTU4MTM0OTYxOV19
 -->
