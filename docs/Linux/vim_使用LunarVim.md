@@ -170,6 +170,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 
+
+
 -- 设置详细显示 warning 和 error 信息
 vim.cmd [[
 command! Pe lua vim.diagnostic.open_float(); vim.diagnostic.open_float()
@@ -183,7 +185,7 @@ lvim.builtin.lualine.sections = {
             function()
                 return vim.fn.expand('%:p') -- 获取并返回当前文件的完整路径
             end,
-            padding = 1                     -- 组件前后的空白字符数
+            padding = 1 -- 组件前后的空白字符数
         }
     }
 }
@@ -199,7 +201,32 @@ vim.cmd('command! Copypath call setreg("+", expand("%:p"))')
 
 -- 设置 Cmake
 -- lvim.keys.normal_mode["<F5>"] = ":CMakeClean<CR>:CMakeGenerate<CR>:CMakeBuild<CR>"
+--
+--
+
+
+-- 定义一个函数，复制当前行的诊断信息到剪贴板
+function CopyDiagnosticsAtCursor()
+    local diagnostics = vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1] - 1 })
+    if vim.tbl_isempty(diagnostics) then
+        print("当前行没有诊断信息")
+        return
+    end
+
+    local messages = {}
+    for _, diagnostic in ipairs(diagnostics) do
+        table.insert(messages, diagnostic.message)
+    end
+
+    local full_message = table.concat(messages, "\n")
+    vim.fn.setreg('+', full_message) -- 复制到系统剪贴板
+    print("诊断信息已复制到剪贴板")
+end
+
+-- 设置快捷键，调用复制诊断信息的函数
+lvim.keys.normal_mode["<leader>cd"] = ":lua CopyDiagnosticsAtCursor()<CR>"
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTM1NzM2MTM2LDYxOTg1NDc0MV19
+eyJoaXN0b3J5IjpbNzUxNTI0MTM1LDUzNTczNjEzNiw2MTk4NT
+Q3NDFdfQ==
 -->
