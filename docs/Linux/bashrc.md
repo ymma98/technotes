@@ -14,6 +14,8 @@ alias gitadog2="git log --graph --abbrev-commit --decorate --date=relative --all
 # 产生随机标识符
 alias grand8="openssl rand -hex 8"
 alias grand4="openssl rand -hex 4"
+# 统计当前文件夹内文件夹和文件的大小, 并从大到小排列
+alias sortsize="du -ah --max-depth=1 | sort -hr"
 
 # clear duplicate $PATH
 # reference: https://unix.stackexchange.com/questions/14895/duplicate-entries-in-path-a-problem
@@ -77,6 +79,6 @@ alias pc="python inpynim.py c &>/dev/null &"
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODE4NjUzOTMsNjUyMzY5Nzk1LC0xNT
-c3OTQxMzI0XX0=
+eyJoaXN0b3J5IjpbLTY4MDUxMzk4MSwtMTA4MTg2NTM5Myw2NT
+IzNjk3OTUsLTE1Nzc5NDEzMjRdfQ==
 -->
