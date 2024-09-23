@@ -153,7 +153,7 @@ void write_dof_locations(const DoFHandler<2> &dof_handler,
 
 ![输入图片说明](https://www.dealii.org/current/doxygen/deal.II/images/steps/developer/step-2.dof-locations-1.png)
 
-
+![输入图片说明](https://www.dealii.org/current/doxygen/deal.II/images/steps/developer/step-2.dof-locations-2.png)
 
 
 * 这可能有些晦涩，但这段代码的具体作用并不特别重要，你不必花太多时间去理解它。重要的是查看我们得到的输出：
@@ -331,6 +331,6 @@ int main()
 
 至此，你的程序说明与代码已经翻译完毕。如果有任何需要修改或进一步解释的地方，请告诉我。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzOTkxODc4MiwtOTQzMjM4ODAyLDExNz
+eyJoaXN0b3J5IjpbMTUxMjQ5NTY2NywtOTQzMjM4ODAyLDExNz
 k1OTg5NzYsMTc5MTA2MzcyM119
 -->
