@@ -174,12 +174,82 @@ face->boundary_id();
 
 ## 例程
 
-
+```cpp
+#include <deal.II/grid/tria.h>
+#include <deal.II/grid/grid_generator.h>
+#include <deal.II/grid/grid_out.h>
+ 
+#include <iostream>
+#include <fstream>
+#include <cmath>
+ 
+using namespace dealii;
+ 
+ 
+void first_grid()
+{
+  Triangulation<2> triangulation;
+ 
+  GridGenerator::hyper_cube(triangulation);
+  triangulation.refine_global(4);
+ 
+  std::ofstream out("grid-1.svg");
+  GridOut       grid_out;
+  grid_out.write_svg(triangulation, out);
+  std::cout << "Grid written to grid-1.svg" << std::endl;
+}
+ 
+void second_grid()
+{
+  Triangulation<2> triangulation;
+ 
+  const Point<2> center(1, 0);
+  const double   inner_radius = 0.5, outer_radius = 1.0;
+  GridGenerator::hyper_shell(
+    triangulation, center, inner_radius, outer_radius, 10);
+  for (unsigned int step = 0; step < 5; ++step)
+    {
+      for (const auto &cell : triangulation.active_cell_iterators())
+        {
+          for (const auto v : cell->vertex_indices())
+            {
+              const double distance_from_center =
+                center.distance(cell->vertex(v));
+ 
+              if (std::fabs(distance_from_center - inner_radius) <=
+                  1e-6 * inner_radius)
+                {
+                  cell->set_refine_flag();
+                  break;
+                }
+            }
+        }
+ 
+      triangulation.execute_coarsening_and_refinement();
+    }
+ 
+ 
+  std::ofstream out("grid-2.svg");
+  GridOut       grid_out;
+  grid_out.write_svg(triangulation, out);
+ 
+  std::cout << "Grid written to grid-2.svg" << std::endl;
+}
+ 
+ 
+ 
+ 
+int main()
+{
+  first_grid();
+  second_grid();
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMTkzMDExMCwxOTI5MjYzMjE4LDg3MT
-MwMzY1LDc1OTU1NDUxNCw0NDYwMzgyMjcsLTg4MDMyMzM2Niwt
-MTg0MzQwNTM1MiwxNDI5MTQxMTM4LC0xNjIyNzE5NDQyLC02MT
-IzNTkzNSw3ODY5ODM0MTcsNzAzODM5OTg5LDU4NTkyMDIwOCw4
-NjA2MzkyMCw2NTA3Mzc1MDEsMTkwMzIyNTU4NCwtOTQxNDUxNj
-I0LC00MDM5NzM4LDEwOTA5NDgyOV19
+eyJoaXN0b3J5IjpbOTI3MjU2OTQyLC02MTE5MzAxMTAsMTkyOT
+I2MzIxOCw4NzEzMDM2NSw3NTk1NTQ1MTQsNDQ2MDM4MjI3LC04
+ODAzMjMzNjYsLTE4NDM0MDUzNTIsMTQyOTE0MTEzOCwtMTYyMj
+cxOTQ0MiwtNjEyMzU5MzUsNzg2OTgzNDE3LDcwMzgzOTk4OSw1
+ODU5MjAyMDgsODYwNjM5MjAsNjUwNzM3NTAxLDE5MDMyMjU1OD
+QsLTk0MTQ1MTYyNCwtNDAzOTczOCwxMDkwOTQ4MjldfQ==
 -->
