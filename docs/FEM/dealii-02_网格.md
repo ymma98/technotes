@@ -174,7 +174,7 @@ face->boundary_id();
 
 ## 例程
 
-产生网格, 需要 `Triangulation` 类定义网格和存储信息, 然后通过 `GridGenerator` 产生所需形状的网格。
+总之，产生网格, 需要 `Triangulation` 类定义网格和存储信息, 然后通过 `GridGenerator` 产生所需形状的网格。
 ```cpp
 #include <deal.II/grid/tria.h>
 #include <deal.II/grid/grid_generator.h>
@@ -247,10 +247,10 @@ int main()
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0Nzg3NTc1MSwtNjExOTMwMTEwLDE5Mj
-kyNjMyMTgsODcxMzAzNjUsNzU5NTU0NTE0LDQ0NjAzODIyNywt
-ODgwMzIzMzY2LC0xODQzNDA1MzUyLDE0MjkxNDExMzgsLTE2Mj
-I3MTk0NDIsLTYxMjM1OTM1LDc4Njk4MzQxNyw3MDM4Mzk5ODks
-NTg1OTIwMjA4LDg2MDYzOTIwLDY1MDczNzUwMSwxOTAzMjI1NT
-g0LC05NDE0NTE2MjQsLTQwMzk3MzgsMTA5MDk0ODI5XX0=
+eyJoaXN0b3J5IjpbLTQ0ODgwNTk2NSwxOTQ3ODc1NzUxLC02MT
+E5MzAxMTAsMTkyOTI2MzIxOCw4NzEzMDM2NSw3NTk1NTQ1MTQs
+NDQ2MDM4MjI3LC04ODAzMjMzNjYsLTE4NDM0MDUzNTIsMTQyOT
+E0MTEzOCwtMTYyMjcxOTQ0MiwtNjEyMzU5MzUsNzg2OTgzNDE3
+LDcwMzgzOTk4OSw1ODU5MjAyMDgsODYwNjM5MjAsNjUwNzM3NT
+AxLDE5MDMyMjU1ODQsLTk0MTQ1MTYyNCwtNDAzOTczOF19
 -->
