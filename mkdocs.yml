@@ -35,6 +35,7 @@ nav:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
     - dealii-01_概况: FEM/dealii-01_概况.md
     - dealii-02_网格: FEM/dealii-02_网格.md
+    - dealii-03_自由度: FEM/dealii-03_自由度.md
   - python:
       - pdb: python/pdb.md
       - matplotlib画streamline: python/matplotlib画streamline.md
