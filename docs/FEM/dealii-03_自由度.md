@@ -151,10 +151,186 @@ void write_dof_locations(const DoFHandler<2> &dof_handler,
 }
 ```
 
+![输入图片说明](https://www.dealii.org/current/doxygen/deal.II/images/steps/developer/step-2.dof-locations-1.png)
+
+
+
+
+* 这可能有些晦涩，但这段代码的具体作用并不特别重要，你不必花太多时间去理解它。重要的是查看我们得到的输出：
+
+这些图显示了两个重要信息：（i）每个顶点上附加的数值标签——自由度（DoF）索引，以及（ii）左边的初始编号与右边的重新编号结果不同。哪一个更“好”当然是另一个问题（答案取决于我们想对这些自由度做什么）；重要的是，对于相同的网格，我们可以得到许多不同的自由度枚举方式。
+
+至于稀疏模式，我们可以通过在浏览器中打开 .svg 文件来可视化这些模式。下面的图片表示矩阵，每个红色方块表示可能非零的条目。（这个条目实际是否为零取决于所考虑的方程，但矩阵中指示的位置告诉我们在离散化局部方程（即微分方程）时哪些形函数可以耦合，哪些不可以。）
+
+左图中的不同区域，由线条中的折痕和左上角的单点表示，代表了三角剖分的不同细化级别上的自由度。如右图所示，重新编号后，稀疏模式在矩阵的主对角线周围更好地聚集。尽管这可能并不明显，但两幅图中的非零条目数当然是相同的。
+
 ---
 
-翻译到这里为止，接下来会继续翻译剩下的内容。如果有任何问题或修改建议，请告诉我。
+### 扩展的可能性
+
+就像 `step-1` 一样，你可能想要稍微玩一下这个程序，以便熟悉 `deal.II`。例如，在 `distribute_dofs` 函数中，我们使用的是线性有限元（这是传递给 `FE_Q` 对象的参数“1”）。可以探索使用高阶元素时稀疏模式的变化，例如三次元或五次元（分别使用 3 和 5 作为参数）。你可能还想看看自由度现在的位置——但为了做到这一点，你可能需要使用更少单元的网格，因为现在自由度也位于边和单元内部。
+
+你还可以通过细化网格来探索稀疏模式的变化。你将看到，不仅矩阵的大小发生变化，其带宽（即矩阵中离对角线最远的非零元素的距离）也会变化，不过带宽与矩阵大小的比率通常会缩小，即矩阵更紧密地聚集在对角线附近。
+
+另一个实验的想法是尝试 `DoFRenumbering` 命名空间中其他的重新编号策略，看看它们如何影响稀疏模式。
+
+你还可以通过更改 `distribute_dofs()` 和 `renumber_dofs()` 中的 `print_svg()` 为 `print_gnuplot()`（并将文件后缀改为 .gnuplot 而不是 .svg）来使用 `GNUPLOT`（我们已经在上面使用过了）可视化输出：
+
+```bash
+examples/step-2> gnuplot
+
+        G N U P L O T
+        Version 3.7 patchlevel 3
+        last modified Thu Dec 12 13:00:00 GMT 2002
+        System: Linux 2.6.11.4-21.10-default
+
+        Copyright(C) 1986 - 1993, 1998 - 2002
+        Thomas Williams, Colin Kelley and many others
+
+        Type `help` to access the on-line reference manual
+        The gnuplot FAQ is available from
+        http://www.gnuplot.info/gnuplot-faq.html
+
+        Send comments and requests for help to <info-gnuplot@dartmouth.edu>
+        Send bugs, suggestions and mods to <bug-gnuplot@dartmouth.edu>
+
+Terminal type set to 'x11'
+gnuplot> set style data points
+gnuplot> plot "sparsity-pattern-1.gnuplot"
+```
+
+---
+
+### 简单的程序
+
+```cpp
+/* ------------------------------------------------------------------------
+ *
+ * SPDX-License-Identifier: LGPL-2.1-or-later
+ * Copyright (C) 1999 - 2024 by the deal.II authors
+ *
+ * This file is part of the deal.II library.
+ *
+ * Part of the source code is dual licensed under Apache-2.0 WITH
+ * LLVM-exception OR LGPL-2.1-or-later. Detailed license information
+ * governing the source code and code contributions can be found in
+ * LICENSE.md and CONTRIBUTING.md at the top level directory of deal.II.
+ *
+ * ------------------------------------------------------------------------
+ */
+
+#include <deal.II/grid/tria.h>
+#include <deal.II/grid/grid_generator.h>
+#include <deal.II/grid/grid_out.h>
+
+#include <deal.II/dofs/dof_handler.h>
+
+#include <deal.II/fe/fe_q.h>
+#include <deal.II/dofs/dof_tools.h>
+#include <deal.II/fe/mapping_q1.h>
+
+#include <deal.II/lac/sparse_matrix.h>
+#include <deal.II/lac/dynamic_sparsity_pattern.h>
+
+#include <deal.II/dofs/dof_renumbering.h>
+
+#include <fstream>
+
+using namespace dealii;
+
+void make_grid(Triangulation<2> &triangulation)
+{
+  const Point<2> center(1, 0);
+  const double   inner_radius = 0.5, outer_radius = 1.0;
+  GridGenerator::hyper_shell(
+    triangulation, center, inner_radius, outer_radius, 5);
+
+  for (unsigned int step = 0; step < 3; ++step)
+    {
+      for (const auto &cell : triangulation.active_cell_iterators())
+        for (const auto v : cell->vertex_indices())
+          {
+            const double distance_from_center =
+              center.distance(cell->vertex(v));
+
+            if (std::fabs(distance_from_center - inner_radius) <=
+                1e-6 * inner_radius)
+              {
+                cell->set_refine_flag();
+                break;
+              }
+          }
+
+      triangulation.execute_coarsening_and_refinement();
+    }
+
+  std::ofstream mesh_file("mesh.gnuplot");
+  GridOut().write_gnuplot(triangulation, mesh_file);
+}
+
+void write_dof_locations(const DoFHandler<2> &dof_handler,
+                         const std::string   &filename)
+{
+  const std::map<types::global_dof_index, Point<2>> dof_location_map =
+    DoFTools::map_dofs_to_support_points(MappingQ1<2>(), dof_handler);
+
+  std::ofstream dof_location_file(filename);
+  DoFTools::write_gnuplot_dof_support_point_info(dof_location_file,
+                                                 dof_location_map);
+}
+
+void distribute_dofs(DoFHandler<2> &dof_handler)
+{
+  const FE_Q<2> finite_element(1);
+  dof_handler.distribute_dofs(finite_element);
+
+  write_dof_locations(dof_handler, "dof-locations-1.gnuplot");
+
+  DynamicSparsityPattern dynamic_sparsity_pattern(dof_handler.n_dofs(),
+                                                  dof_handler.n_dofs());
+
+  DoFTools::make_sparsity_pattern(dof_handler, dynamic_sparsity_pattern);
+
+  SparsityPattern sparsity_pattern;
+  sparsity_pattern.copy_from(dynamic_sparsity_pattern);
+
+  std::ofstream out("sparsity-pattern-1.svg");
+  sparsity_pattern.print_svg(out);
+}
+
+void renumber_dofs(DoFHandler<2> &dof_handler)
+{
+  DoFRenumbering::Cuthill_McKee(dof_handler);
+
+  write_dof_locations(dof_handler, "dof-locations-2.gnuplot");
+
+  DynamicSparsityPattern dynamic_sparsity_pattern(dof_handler.n_dofs(),
+                                                  dof_handler.n_dofs());
+  DoFTools::make_sparsity_pattern(dof_handler, dynamic_sparsity_pattern);
+
+  SparsityPattern sparsity_pattern;
+  sparsity_pattern.copy_from(dynamic_sparsity_pattern);
+
+  std::ofstream out("sparsity-pattern-2.svg");
+  sparsity_pattern.print_svg(out);
+}
+
+int main()
+{
+  Triangulation<2> triangulation;
+  make_grid(triangulation);
+
+  DoFHandler<2> dof_handler(triangulation);
+
+  distribute_dofs(dof_handler);
+  renumber_dofs(dof_handler);
+}
+```
+
+---
+
+至此，你的程序说明与代码已经翻译完毕。如果有任何需要修改或进一步解释的地方，请告诉我。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDI4MjE1MjksLTk0MzIzODgwMiwxMT
-c5NTk4OTc2LDE3OTEwNjM3MjNdfQ==
+eyJoaXN0b3J5IjpbLTMzOTkxODc4MiwtOTQzMjM4ODAyLDExNz
+k1OTg5NzYsMTc5MTA2MzcyM119
 -->
