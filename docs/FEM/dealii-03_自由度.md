@@ -3,6 +3,8 @@
 
 ## step-2
 
+### 介绍
+
 在当前的教程程序中，我们展示了如何通过定义在该网格上的自由度（degrees of freedom，简称 DoF）的概念来表示分段多项式函数。在本例中，我们将使用最低阶的有限元 $Q_1$，即我们寻找的逼近函数 $u_h$ 在网格的每个四边形单元 $K$ 上是[“双线性”](https://defelement.com/elements/examples/quadrilateral-lagrange-equispaced-1.html)的。（如果我们使用三角形单元，则 $u_h$ 是线性的。）
 
 
@@ -35,7 +37,7 @@ $$
 
 稀疏性是有限元方法与使用泰勒展开式逼近偏微分方程的解并匹配系数，或者使用傅里叶基逼近的一个显著区别。
 
-* 程序
+### 程序
 
 前几行的 `include` 语句和之前的程序一样，所以不需要额外的注释：
 
@@ -90,7 +92,7 @@ using namespace dealii;
 
 ---
 
-### 网格生成
+* 网格生成
 
 这是在之前 `step-1` 示例程序中生成圆形网格的函数，只是细化步骤更少。唯一的区别是它通过其参数返回生成的网格。
 
@@ -128,9 +130,7 @@ void make_grid(Triangulation<2> &triangulation)
 }
 ```
 
----
-
-### 输出自由度的位置
+* 输出自由度的位置
 
 接下来的函数输出自由度的位置，以便后续可视化。每个自由度的位置由 `DoFHandler` 对象知道，因此它是此函数的参数之一。由于我们希望执行两次（一次是初始枚举的自由度集，另一次是重新编号后的自由度集），因此函数还需要一个第二个参数，指定输出文件的名称。
 
@@ -155,6 +155,6 @@ void write_dof_locations(const DoFHandler<2> &dof_handler,
 
 翻译到这里为止，接下来会继续翻译剩下的内容。如果有任何问题或修改建议，请告诉我。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0MzIzODgwMiwxMTc5NTk4OTc2LDE3OT
-EwNjM3MjNdfQ==
+eyJoaXN0b3J5IjpbLTEwNDI4MjE1MjksLTk0MzIzODgwMiwxMT
+c5NTk4OTc2LDE3OTEwNjM3MjNdfQ==
 -->
