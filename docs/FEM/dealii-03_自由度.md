@@ -166,7 +166,7 @@ void write_dof_locations(const DoFHandler<2> &dof_handler,
 
 ---
 
-### 扩展的可能性
+* 扩展的可能性
 
 就像 `step-1` 一样，你可能想要稍微玩一下这个程序，以便熟悉 `deal.II`。例如，在 `distribute_dofs` 函数中，我们使用的是线性有限元（这是传递给 `FE_Q` 对象的参数“1”）。可以探索使用高阶元素时稀疏模式的变化，例如三次元或五次元（分别使用 3 和 5 作为参数）。你可能还想看看自由度现在的位置——但为了做到这一点，你可能需要使用更少单元的网格，因为现在自由度也位于边和单元内部。
 
@@ -199,9 +199,7 @@ gnuplot> set style data points
 gnuplot> plot "sparsity-pattern-1.gnuplot"
 ```
 
----
 
-### 简单的程序
 
 ```cpp
 /* ------------------------------------------------------------------------
@@ -327,10 +325,7 @@ int main()
 }
 ```
 
----
-
-至此，你的程序说明与代码已经翻译完毕。如果有任何需要修改或进一步解释的地方，请告诉我。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxMjQ5NTY2NywtOTQzMjM4ODAyLDExNz
+eyJoaXN0b3J5IjpbLTUzODYzMDg3OSwtOTQzMjM4ODAyLDExNz
 k1OTg5NzYsMTc5MTA2MzcyM119
 -->
