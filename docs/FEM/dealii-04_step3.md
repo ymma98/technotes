@@ -140,8 +140,10 @@ $$
 
 所有这些将在本程序的 `Step3::solve()` 函数中实现。正如你所看到的，使用 deal.II 设置线性求解器相当简单：整个函数只有三行代码。
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzI3ODY0NTI0LC0zNTYyNzk3ODYsLTIwMj
-kyNTMyMzYsLTE5MTk0NjQ0MzQsMjA5NTQ2NjQ0LC03OTMxMTYy
-NDAsLTg4ODA1NjAwNl19
+eyJoaXN0b3J5IjpbLTc2NDEyNzMyMCwtMzU2Mjc5Nzg2LC0yMD
+I5MjUzMjM2LC0xOTE5NDY0NDM0LDIwOTU0NjY0NCwtNzkzMTE2
+MjQwLC04ODgwNTYwMDZdfQ==
 -->
