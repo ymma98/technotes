@@ -14,7 +14,7 @@ $$
 
 我们将在正方形 $\Omega = [-1, 1]^2$ 上解决此方程。在这个程序中，我们还将仅考虑特定情况 $f(x) = 1$，并将在下一个教程程序中回到如何实现更一般的情况。
 
-如果您已经学习了有限元方法的基础，您会记得我们需要采取的步骤，以通过有限维逼近来近似解 $u$。具体来说，我们首先需要推导上述方程的弱形式，方法是将方程从左侧乘以测试函数 $\phi$ 并在区域 $\Omega$ 上积分：
+如果您已经学习了有限元方法的基础，您会记得我们需要采取的步骤，以通过**有限维逼近来近似解 $u$**。具体来说，我们首先需要推导上述方程的弱形式，方法是将方程从左侧乘以测试函数 $\phi$ 并在区域 $\Omega$ 上积分：
 
 $$
 -\int_\Omega \phi \Delta u = \int_\Omega \phi f.
@@ -83,6 +83,6 @@ $$
 
 如果您需要任何进一步的修改或补充，请告诉我！
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNzk0NTg3NiwtNzkzMTE2MjQwLC04OD
-gwNTYwMDZdfQ==
+eyJoaXN0b3J5IjpbMjA5NTQ2NjQ0LC03OTMxMTYyNDAsLTg4OD
+A1NjAwNl19
 -->
