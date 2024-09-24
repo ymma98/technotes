@@ -132,7 +132,7 @@ FEValues 确实是组装过程中的核心类。我们**用在参考单元上定
 
 因此，有限元代码几乎总是使用诸如 CG 的迭代求解器来求解线性系统，我们在此代码中也将这样做。（我们指出，CG 方法仅适用于对称正定矩阵；对于其他方程，矩阵可能不具备这些特性，我们将不得不使用其他迭代求解器变种，如 [BiCGStab](https://en.wikipedia.org/wiki/Biconjugate_gradient_stabilized_method) 或 [GMRES](https://en.wikipedia.org/wiki/Generalized_minimal_residual_method)，它们适用于更一般的矩阵。）
 
-这些迭代求解器的一个重要组成部分是我们指定解决线性系统时希望达到的 *容忍度*——本质上是我们愿意接受的近似解的误差声明。近似解 $\tilde x$ 与线性系统 $Ax=b$ 的精确解 $x$ 之间的误差定义为 $\|x-\tilde x\|$，但这是一个我们无法计算的量，因为我们不知道精确解 $x$。相反，我们通常考虑 *残差*，其定义为 $\|b-A\tilde x\|=\|A(x-\tilde x)\|$，作为可计算的度量。然后，我们让迭代求解器计算越来越准确的解 $\tilde x$，直到 $\|b-A\tilde x\|\le \tau$。一个实际的问题是 $\tau$ 应该取什么值。在大多数应用中，设置
+这些迭代求解器的一个重要组成部分是我们指定解决线性系统时希望达到的容忍度——本质上是我们愿意接受的近似解的误差声明。近似解 $\tilde x$ 与线性系统 $Ax=b$ 的精确解 $x$ 之间的误差定义为 $\|x-\tilde x\|$，但这是一个我们无法计算的量，因为我们不知道精确解 $x$。相反，我们通常考虑 *残差*，其定义为 $\|b-A\tilde x\|=\|A(x-\tilde x)\|$，作为可计算的度量。然后，我们让迭代求解器计算越来越准确的解 $\tilde x$，直到 $\|b-A\tilde x\|\le \tau$。一个实际的问题是 $\tau$ 应该取什么值。在大多数应用中，设置
 $$
 \tau = 10^{-6} \|b\|
 $$
@@ -141,7 +141,7 @@ $$
 所有这些将在本程序的 `Step3::solve()` 函数中实现。正如你所看到的，使用 deal.II 设置线性求解器相当简单：整个函数只有三行代码。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxMzAxMzQzMSwtMzU2Mjc5Nzg2LC0yMD
-I5MjUzMjM2LC0xOTE5NDY0NDM0LDIwOTU0NjY0NCwtNzkzMTE2
-MjQwLC04ODgwNTYwMDZdfQ==
+eyJoaXN0b3J5IjpbLTExMTk5Mzc4OTEsLTM1NjI3OTc4NiwtMj
+AyOTI1MzIzNiwtMTkxOTQ2NDQzNCwyMDk1NDY2NDQsLTc5MzEx
+NjI0MCwtODg4MDU2MDA2XX0=
 -->
