@@ -80,6 +80,7 @@ markdown_extensions:
 plugins:
   - mkdocs-pdf
   - search
+  - markdown-katex
 
 theme:
   # name: readthedocs
