@@ -108,7 +108,7 @@ $$
     \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
   \end{align*}
   $$
-  其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的三角剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
+  其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
 - 首先，我们需要一种描述求积点位置 $\mathbf x_q^K$ 和它们权重 $w^K_q$ 的方法。它们通常通过与形状函数相同的方式从参考单元映射而来，即隐式地使用 MappingQ1 类，或者如果你明确说明，则通过从 Mapping 派生的其他类。参考单元上的位置和权重由从 Quadrature 基类派生的对象描述。通常，我们选择一种求积公式（即一组点和权重），以使得求积与矩阵中的积分完全相等；这可以通过高斯求积公式实现，该公式在 QGauss 类中实现。
 - 然后，我们需要一些东西来帮助我们在单元 $K$ 上评估 $\varphi_i(\mathbf x^K_q)$。这就是 FEValues 类的作用：它接收一个有限元对象来描述参考单元上的 $\varphi$，一个求积对象来描述求积点和权重，以及一个映射对象（或隐式使用 MappingQ1 类），并提供在单元 $K$ 上的求积点位置的形状函数值和导数，以及进行积分所需的各种其他信息。
 
@@ -209,7 +209,7 @@ deal.II 在命名空间 dealii::types 中通过别名定义了许多整型 %type
 > 注：types::global_dof_index 不是该命名空间中定义的唯一类型。实际上，还有一个家族，包括 types::subdomain_id、types::boundary_id 和 types::material_id。所有这些都是整型数据类型的别名，但正如上面所述，它们在库中被广泛使用，因此 (i) 变量的意图更容易辨识，(ii) 如果需要，可以将实际类型更改为更大的类型，而无需遍历整个库并确定 `unsigned int` 的特定用途是否对应于某个材料指示符。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTc3ODUxNzMsLTM1NjI3OTc4NiwtMj
-AyOTI1MzIzNiwtMTkxOTQ2NDQzNCwyMDk1NDY2NDQsLTc5MzEx
-NjI0MCwtODg4MDU2MDA2XX0=
+eyJoaXN0b3J5IjpbLTY0OTk4Nzg1MiwtMzU2Mjc5Nzg2LC0yMD
+I5MjUzMjM2LC0xOTE5NDY0NDM0LDIwOTU0NjY0NCwtNzkzMTE2
+MjQwLC04ODgwNTYwMDZdfQ==
 -->
