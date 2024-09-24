@@ -141,9 +141,75 @@ $$
 所有这些将在本程序的 `Step3::solve()` 函数中实现。正如你所看到的，使用 deal.II 设置线性求解器相当简单：整个函数只有三行代码。
 
 
+以下是您提供的英文内容翻译为中文的版本，已转换为Markdown格式：
+
+
+* 关于实现
+
+尽管这是您可以使用有限元方法求解的最简单的方程，但该程序展示了大多数有限元程序的基本结构，同时也作为后续几乎所有程序的模板。具体来说，该程序的主类如下所示：
+```cpp
+class Step3
+{
+  public:
+    Step3 ();
+    void run ();
+
+  private:
+    void make_grid ();
+    void setup_system ();
+    void assemble_system ();
+    void solve ();
+    void output_results () const;
+
+    Triangulation<2>     triangulation;
+    FE_Q<2>              fe;
+    DoFHandler<2>        dof_handler;
+
+    SparsityPattern      sparsity_pattern;
+    SparseMatrix<double> system_matrix;
+    Vector<double>       solution;
+    Vector<double>       system_rhs;
+};
+```
+这遵循了面向对象编程的原则 <a href="http://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming)">数据封装</a>，即我们尽力将该类的几乎所有内部细节隐藏在外部无法访问的私有成员中。
+
+让我们先看一下成员变量：这些变量遵循我们在上述要点中概述的构建块，即我们需要一个 Triangulation 和一个 DoFHandler 对象，以及一个描述我们想要使用的形状函数的有限元对象。第二组对象与线性代数相关：系统矩阵和右侧，以及解决方案向量，还有一个描述矩阵稀疏模式的对象。这些就是该类所需的全部（以及任何静态 PDE 求解器所需的基本要素），并且需要在整个程序中存活。与此相比，我们在组装中所需的 FEValues 对象仅在组装期间需要，因此我们在执行该操作的函数中创建它，并在其结束时销毁它。
+
+其次，让我们看一下成员函数。这些函数也已经形成了几乎所有后续教程程序将使用的共同结构：
+- `make_grid()`: 这可以被称为一个 *预处理函数*。顾名思义，它设置存储三角剖分的对象。在后面的示例中，它还可以处理边界条件、几何等。
+- `setup_system()`: 这是设置解决问题所需的所有其他数据结构的函数。特别是，它将初始化 DoFHandler 对象并正确调整与线性代数相关的各种对象的大小。这个函数通常与上面的预处理函数分开，因为在时间依赖程序中，它可能在每几个时间步中被调用，特别是在网格自适应细化时（我们将在第六步中看到如何做到这一点）。另一方面，设置网格本身在程序开始时只需执行一次，因此分为自己的函数。
+- `assemble_system()`: 这是计算矩阵和右侧内容的地方，正如上面介绍中详细讨论的那样。由于对这个线性系统进行操作在概念上与计算其条目非常不同，因此我们将其与下一个函数分开。
+- `solve()`: 这是计算线性系统 $AU=F$ 的解 $U$ 的函数。在当前程序中，这是一项简单的任务，因为矩阵非常简单，但当问题不再如此简单时，它将成为程序规模的重要组成部分（例如，在您对库有更多了解后，请参阅第20步、第22步或第31步）。
+- `output_results()`: 最后，当您计算出一个解时，您可能想对其进行一些处理。例如，您可能想将其输出为可以可视化的格式，或者您可能想计算您感兴趣的量：例如，热交换器中的热流、机翼的空气摩擦系数、最大桥梁载荷，或者仅仅是在某个点上的数值解值。因此，这个函数就是后处理您的解的地方。
+
+所有这些都由单个公共函数（除了构造函数）连接在一起，即 `run()` 函数。它是从创建该类型对象的地方调用的，并且是按适当顺序调用所有其他函数的函数。将此操作封装到 `run()` 函数中，而不是从 `main()` 中调用所有其他函数，可以确保您可以更改此类中关注点分离的实现方式。例如，如果某个函数变得太大，您可以将其拆分为两个，而您唯一需要担心更改的地方就是在这个类中，而不是其他地方。
+
+如上所述，您将在许多后续教程程序中看到这种一般结构——有时函数名称的拼写会有所变化，但基本上功能分离的顺序是这样的。
+
+### 关于类型的说明
+
+deal.II 在命名空间 dealii::types 中通过别名定义了许多整型 %types。（在上句中，“整型”一词用作对应名词“整数”的 <i>形容词</i>。不应与表示曲线或表面下的面积或体积的 <i>名词</i>“积分”混淆。“整型”在 C++ 世界中广泛用于诸如“整型”、“整型常量”等上下文中。）
+
+特别是在这个程序中，您将在几个地方看到 types::global_dof_index：这是一种整数类型，用于表示自由度的 <i>全局</i> 索引，即在 Triangulation 上定义的 DoFHandler 对象中某个特定自由度的索引（与特定单元内某个特定自由度的索引相对）。对于当前程序（以及几乎所有教程程序），您将拥有几千到几百万个全局未知数（对于 $Q_1$ 元素，在 2D 中每个单元有 4 个，3D 中有 8 个）。因此，允许存储足够大数字以表示全局 DoF 索引的数据类型是 `unsigned int`，因为它允许存储介于 0 到略多于 40 亿之间的数字（在大多数系统中，整数为 32 位）。实际上，这就是 types::global_dof_index 的定义。
+
+那么，为什么不直接使用 `unsigned int` 呢？deal.II 直到 7.3 版本之前是这样做的。然而，deal.II 支持非常大的计算（通过在第 40 步中讨论的框架），可能在几千个处理器中分布超过 40 亿个未知数。因此，在某些情况下，`unsigned int` 不够大，我们需要 64 位的无符号整型。为了实现这一点，我们引入了 types::global_dof_index，默认情况下，它被定义为简单的 `unsigned int`，而如果需要，可以通过在配置时传递特定标志将其定义为 `unsigned long long int`（请参见 ReadMe 文件）。
+
+这涵盖了技术方面。但也有一个文档目的：在库及其构建的代码中，如果您看到使用数据类型 types::global_dof_index 的地方，您会立即知道所引用的量实际上是一个全局自由度索引。如果我们只是使用 `unsigned int`，则不会明显有这样的含义（它可能也是一个局部索引、边界指示符、材料 ID 等）。立即知道变量所指的内容也有助于避免错误：如果您看到类型为 types::global_dof_index 的对象被分配给类型为 types::subdomain_id 的变量，那么显然存在一个错误，尽管它们都是由无符号整数表示，编译器因此不会抱怨。
+
+在更实际的层面上，这种类型的存在意味着在组装期间，我们创建一个 $4\times 4$ 矩阵（在 2D 中，使用 $Q_1$ 元素）用于我们当前所在单元的贡献，然后我们需要将该矩阵的元素添加到全局（系统）矩阵的适当元素中。为此，我们需要获取当前单元中局部自由度的全局索引，我们将始终使用以下代码片段：
+```cpp
+  cell->get_dof_indices (local_dof_indices);
+```
+其中 `local_dof_indices` 被声明为
+```cpp
+  std::vector<types::global_dof_index> local_dof_indices (fe.n_dofs_per_cell());
+```
+这个变量的名称可能有点误导——它代表“在当前单元上局部定义的那些自由度的全局索引”——但在库中持有此信息的变量普遍以这种方式命名。
+
+> 注：types::global_dof_index 不是该命名空间中定义的唯一类型。实际上，还有一个家族，包括 types::subdomain_id、types::boundary_id 和 types::material_id。所有这些都是整型数据类型的别名，但正如上面所述，它们在库中被广泛使用，因此 (i) 变量的意图更容易辨识，(ii) 如果需要，可以将实际类型更改为更大的类型，而无需遍历整个库并确定 `unsigned int` 的特定用途是否对应于某个材料指示符。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2NDEyNzMyMCwtMzU2Mjc5Nzg2LC0yMD
-I5MjUzMjM2LC0xOTE5NDY0NDM0LDIwOTU0NjY0NCwtNzkzMTE2
-MjQwLC04ODgwNTYwMDZdfQ==
+eyJoaXN0b3J5IjpbLTE2NTc3ODUxNzMsLTM1NjI3OTc4NiwtMj
+AyOTI1MzIzNiwtMTkxOTQ2NDQzNCwyMDk1NDY2NDQsLTc5MzEx
+NjI0MCwtODg4MDU2MDA2XX0=
 -->
