@@ -14,41 +14,41 @@ $$
 
 我们将在正方形 $\Omega = [-1, 1]^2$ 上解决此方程。在这个程序中，我们还将仅考虑特定情况 $f(x) = 1$，并将在下一个教程程序中回到如何实现更一般的情况。
 
-如果您已经学习了有限元方法的基础，您会记得我们需要采取的步骤，以通过**有限维逼近来近似解 $u$**。具体来说，我们首先需要推导上述方程的弱形式，方法是将方程从左侧乘以测试函数 $\phi$ 并在区域 $\Omega$ 上积分：
+如果您已经学习了有限元方法的基础，您会记得我们需要采取的步骤，以通过**有限维逼近来近似解 $u$**。具体来说，我们首先需要推导上述方程的弱形式，方法是将方程从左侧乘以测试函数 $\varphi$ 并在区域 $\Omega$ 上积分：
 
 $$
--\int_\Omega \phi \Delta u = \int_\Omega \phi f.
+-\int_\Omega \varphi \Delta u = \int_\Omega \varphi f.
 $$
 
 这可以通过分部积分得到：
 
 $$
-\int_\Omega \nabla \phi \cdot \nabla u - \int_{\partial\Omega} \phi n \cdot \nabla u = \int_\Omega \phi f.
+\int_\Omega \nabla \varphi \cdot \nabla u - \int_{\partial\Omega} \varphi n \cdot \nabla u = \int_\Omega \varphi f.
 $$
 
-测试函数 $\phi$ 必须满足相同类型的边界条件（在数学术语中：它需要来自我们寻求解的集合的切空间），因此在边界上 $\phi = 0$，因此我们要寻找的弱形式为
+测试函数 $\varphi$ 必须满足相同类型的边界条件（在数学术语中：它需要来自我们寻求解的集合的切空间），因此在边界上 $\varphi = 0$，因此我们要寻找的弱形式为
 
-$$(\nabla \phi, \nabla u) = (\phi, f),$$
+$$(\nabla \varphi, \nabla u) = (\varphi, f),$$
 
-这里我们使用了常用的符号 $(a, b) = \int_\Omega ab$。该问题要求寻找一个函数 $u$，使得对于来自适当空间（这里是 $H^1$ 空间）的所有测试函数 $\phi$，该语句都成立。
+这里我们使用了常用的符号 $(a, b) = \int_\Omega ab$。该问题要求寻找一个函数 $u$，使得对于来自适当空间（这里是 $H^1$ 空间）的所有测试函数 $\varphi$，该语句都成立。
 
-当然，在一般情况下我们无法在计算机上找到这样的函数，而是我们寻求一个逼近 $u_h(x) = \sum_j U_j \phi_j(x)$，其中 $U_j$ 是我们需要确定的未知扩展系数（该问题的“自由度”），而 $\phi_i(x)$ 是我们将使用的有限元形状函数。为了定义这些形状函数，我们需要以下内容：
+当然，在一般情况下我们无法在计算机上找到这样的函数，而是我们寻求一个逼近 $u_h(x) = \sum_j U_j \varphi_j(x)$，其中 $U_j$ 是我们需要确定的未知扩展系数（该问题的“自由度”），而 $\varphi_i(x)$ 是我们将使用的有限元形状函数。为了定义这些形状函数，我们需要以下内容：
 
 1. 一个定义形状函数的网格。您已经看到如何生成和操作描述网格的对象，在步骤 1 和步骤 2 中。
 2. 一个描述我们希望在参考单元（在 deal.II 中始终是单位区间 $[0,1]$、单位正方形 $[0,1]^2$ 或单位立方体 $[0,1]^3$，具体取决于您所工作空间的维度）上使用的形状函数的有限元。在步骤 2 中，我们已经使用了类型为 `FE_Q<2>` 的对象，它表示通过对支持点的插值定义形状函数的常规拉格朗日元素。最简单的是 `FE_Q<2>(1)`，它使用多项式度为 1。在 2D 中，这些通常被称为双线性，因为它们在参考单元的两个坐标上是线性的。（在 1D 中，它们是线性的，在 3D 中是三线性的；然而，在 deal.II 文档中，我们通常不会做这种区分，而是简单地将这些函数称为“线性”的。）
 3. 一个 `DoFHandler` 对象，用于枚举网格上的所有自由度，以有限元对象提供的参考单元描述为基础。您在步骤 2 中也已经看到如何做到这一点。
 4. 一个映射，告诉我们如何从参考单元上有限元类定义的形状函数获取实际单元上的形状函数。默认情况下，除非您明确说明，否则 deal.II 将使用（双、三）线性映射，因此在大多数情况下您不必担心这一步。
 
-通过这些步骤，我们现在拥有一组函数 $\phi_i$，我们可以定义离散问题的弱形式：寻找一个函数 $u_h$，即寻找上述提到的扩展系数 $U_j$，使得
+通过这些步骤，我们现在拥有一组函数 $\varphi_i$，我们可以定义离散问题的弱形式：寻找一个函数 $u_h$，即寻找上述提到的扩展系数 $U_j$，使得
 
 $$
-(\nabla \phi_i, \nabla u_h) = (\phi_i, f), \quad i = 0 \ldots N-1.
+(\nabla \varphi_i, \nabla u_h) = (\varphi_i, f), \quad i = 0 \ldots N-1.
 $$
 
-请注意，我们在这里遵循的约定是所有计数从零开始，这在 C 和 C++ 中很常见。通过插入表示 $u_h(x) = \sum_j U_j \phi_j(x)$，然后观察到
+请注意，我们在这里遵循的约定是所有计数从零开始，这在 C 和 C++ 中很常见。通过插入表示 $u_h(x) = \sum_j U_j \varphi_j(x)$，然后观察到
 
 $$
-(\nabla \phi_i, \nabla u_h) = (\nabla \phi_i, \nabla[\sum_j U_j \phi_j]) = \sum_j (\nabla \phi_i, \nabla[U_j \phi_j]) = \sum_j (\nabla \phi_i, \nabla \phi_j) U_j.
+(\nabla \varphi_i, \nabla u_h) = (\nabla \varphi_i, \nabla[\sum_j U_j \varphi_j]) = \sum_j (\nabla \varphi_i, \nabla[U_j \varphi_j]) = \sum_j (\nabla \varphi_i, \nabla \varphi_j) U_j.
 $$
 
 因此，该问题变为：寻找一个向量 $U$ 使得
@@ -60,7 +60,7 @@ $$
 其中矩阵 $A$ 和右侧 $F$ 定义为
 
 $$
-A_{ij} = (\nabla \phi_i, \nabla \phi_j), \quad F_i = (\phi_i, f).
+A_{ij} = (\nabla \varphi_i, \nabla \varphi_j), \quad F_i = (\varphi_i, f).
 $$
 
 ### 我们应该从左侧还是右侧乘以测试函数？
@@ -83,6 +83,6 @@ $$
 
 如果您需要任何进一步的修改或补充，请告诉我！
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5NTQ2NjQ0LC03OTMxMTYyNDAsLTg4OD
-A1NjAwNl19
+eyJoaXN0b3J5IjpbLTg0NTc3NjI0NywyMDk1NDY2NDQsLTc5Mz
+ExNjI0MCwtODg4MDU2MDA2XX0=
 -->
