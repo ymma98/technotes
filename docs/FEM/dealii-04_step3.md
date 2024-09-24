@@ -85,7 +85,7 @@ $$
 现在我们知道我们需要什么（即：用于存储矩阵和向量的对象，以及计算 $A_{ij},F_i$ 的方法），我们可以看看实现这一目标需要什么：
 
 - 对于 $A$ 的对象是 SparseMatrix 类型，而 $U$ 和 $F$ 的对象是 Vector 类型。我们将在下面的程序中看到用于求解线性系统的类。
-- 我们需要一种形成积分的方法。在有限元方法中，这通常是通过求积来完成的，即用一组每个单元上的 *求积点* 的加权和来替代积分。也就是说，我们首先将 $\Omega$ 上的积分拆分为对所有单元的积分，
+- 我们需要一种形成积分的方法。在有限元方法中，这通常是通过求积来完成的，即用一组每个单元上的求积点的加权和来替代积分。也就是说，我们首先将 $\Omega$ 上的积分拆分为对所有单元的积分，
   $$ 
   \begin{align*}
     A_{ij} &= (\nabla\varphi_i, \nabla \varphi_j) 
@@ -123,6 +123,6 @@ FEValues 确实是组装过程中的核心类。你可以这样来看待它：�
 > **注意**：以上关于任何有限元实现的重要步骤概述在 deal.II 中也有其对应部分：该库自然可以分为若干个覆盖上述基本概念的“模块”。你可以通过本页顶部的标签访问这些模块。最基本概念组的概述也可以在 [deal.II 手册的首页](index.html) 上找到。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjE3NDc0MjQsLTE5MTk0NjQ0MzQsMj
+eyJoaXN0b3J5IjpbLTIwMjkyNTMyMzYsLTE5MTk0NjQ0MzQsMj
 A5NTQ2NjQ0LC03OTMxMTYyNDAsLTg4ODA1NjAwNl19
 -->
