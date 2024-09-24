@@ -70,6 +70,7 @@ markdown_extensions:
   - markdown_katex:  # support \begin{aligned} in equation env.
       options:
         strict: true
+        throw_on_error: false
   - pymdownx.arithmatex:
       generic: true
   - markdown.extensions.tables
