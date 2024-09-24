@@ -136,12 +136,12 @@ FEValues 确实是组装过程中的核心类。我们**用在参考单元上定
 $$
 \tau = 10^{-6} \|b\|
 $$
-是一个合理的选择。我们将 $\tau$ 设置为与 $b$ 的大小（范数）成比例，确保我们对解的准确性的期望相对于解的大小是相对的。这是合理的：如果我们将右侧 $b$ 放大十倍，那么 $Ax=b$ 的解 $x$ 也会放大十倍，$\tilde x$ 也是；我们希望在 $\tilde x$ 中获得与之前相同数量的有效数字，这意味着我们也应该在残差 $\|b-A\tilde x\|$ 是原始大小的十倍时终止——这正是如果我们将 $\tau$ 设置为与 $\|b\|$ 成比例时所得到的。
+是一个合理的选择。我们将 $\tau$ 设置为与 $b$ 的大小（范数）成比例，确保我们对解的准确性的期望相对于解的大小是相对的。
 
 所有这些将在本程序的 `Step3::solve()` 函数中实现。正如你所看到的，使用 deal.II 设置线性求解器相当简单：整个函数只有三行代码。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTk5Mzc4OTEsLTM1NjI3OTc4NiwtMj
-AyOTI1MzIzNiwtMTkxOTQ2NDQzNCwyMDk1NDY2NDQsLTc5MzEx
-NjI0MCwtODg4MDU2MDA2XX0=
+eyJoaXN0b3J5IjpbNzI3ODY0NTI0LC0zNTYyNzk3ODYsLTIwMj
+kyNTMyMzYsLTE5MTk0NjQ0MzQsMjA5NTQ2NjQ0LC03OTMxMTYy
+NDAsLTg4ODA1NjAwNl19
 -->
