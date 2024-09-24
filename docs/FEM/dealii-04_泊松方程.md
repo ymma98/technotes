@@ -94,11 +94,11 @@ $$
     F_i &= (\varphi_i, f) 
     = \sum_{K \in {\mathbb T}} \int_K \varphi_i f,
   \end{align*}
-$$
+$$ 
   
   然后用求积来近似每个单元的贡献：
   
-$$
+$$ 
   \begin{align*}
     A^K_{ij} &=
     \int_K \nabla\varphi_i \cdot \nabla \varphi_j 
@@ -110,7 +110,7 @@ $$
     \approx 
     \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
   \end{align*}
-$$
+$$ 
   
   其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
   
@@ -413,6 +413,6 @@ int main()
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwNTQ0NjkwLC0xNzIzMTI5Mjk0LDE5NT
-A5ODkzODgsLTQ2MDk3MDU3XX0=
+eyJoaXN0b3J5IjpbMTAyNDkwMDA2MiwtMTcyMzEyOTI5NCwxOT
+UwOTg5Mzg4LC00NjA5NzA1N119
 -->
