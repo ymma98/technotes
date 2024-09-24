@@ -208,8 +208,322 @@ deal.II 在命名空间 dealii::types 中通过别名定义了许多整型。
 
 > 注：types::global_dof_index 不是该命名空间中定义的唯一类型。实际上，还有一个家族，包括 types::subdomain_id、types::boundary_id 和 types::material_id。所有这些都是整型数据类型的别名，但正如上面所述，它们在库中被广泛使用，因此 (i) 变量的意图更容易辨识，(ii) 如果需要，可以将实际类型更改为更大的类型，而无需遍历整个库并确定 `unsigned int` 的特定用途是否对应于某个材料指示符。
 
+```cpp
+/* ------------------------------------------------------------------------
+
+*
+
+* SPDX-License-Identifier: LGPL-2.1-or-later
+
+* Copyright (C) 1999 - 2024 by the deal.II authors
+
+*
+
+* This file is part of the deal.II library.
+
+*
+
+* Part of the source code is dual licensed under Apache-2.0 WITH
+
+* LLVM-exception OR LGPL-2.1-or-later. Detailed license information
+
+* governing the source code and code contributions can be found in
+
+* LICENSE.md and CONTRIBUTING.md at the top level directory of deal.II.
+
+*
+
+* ------------------------------------------------------------------------
+
+*/
+
+#include <[deal.II/grid/tria.h](https://www.dealii.org/current/doxygen/deal.II/grid_2tria_8h.html)>
+
+#include <[deal.II/dofs/dof_handler.h](https://www.dealii.org/current/doxygen/deal.II/dof__handler_8h.html)>
+
+#include <[deal.II/grid/grid_generator.h](https://www.dealii.org/current/doxygen/deal.II/grid__generator_8h.html)>
+
+#include <[deal.II/fe/fe_q.h](https://www.dealii.org/current/doxygen/deal.II/fe__q_8h.html)>
+
+#include <[deal.II/dofs/dof_tools.h](https://www.dealii.org/current/doxygen/deal.II/dof__tools_8h.html)>
+
+#include <[deal.II/fe/fe_values.h](https://www.dealii.org/current/doxygen/deal.II/fe_2fe__values_8h.html)>
+
+#include <[deal.II/base/quadrature_lib.h](https://www.dealii.org/current/doxygen/deal.II/quadrature__lib_8h.html)>
+
+#include <[deal.II/base/function.h](https://www.dealii.org/current/doxygen/deal.II/function_8h.html)>
+
+#include <[deal.II/numerics/vector_tools.h](https://www.dealii.org/current/doxygen/deal.II/vector__tools_8h.html)>
+
+#include <[deal.II/numerics/matrix_tools.h](https://www.dealii.org/current/doxygen/deal.II/matrix__tools_8h.html)>
+
+#include <[deal.II/lac/vector.h](https://www.dealii.org/current/doxygen/deal.II/vector_8h.html)>
+
+#include <[deal.II/lac/full_matrix.h](https://www.dealii.org/current/doxygen/deal.II/full__matrix_8h.html)>
+
+#include <[deal.II/lac/sparse_matrix.h](https://www.dealii.org/current/doxygen/deal.II/sparse__matrix_8h.html)>
+
+#include <[deal.II/lac/dynamic_sparsity_pattern.h](https://www.dealii.org/current/doxygen/deal.II/dynamic__sparsity__pattern_8h.html)>
+
+#include <[deal.II/lac/solver_cg.h](https://www.dealii.org/current/doxygen/deal.II/solver__cg_8h.html)>
+
+#include <[deal.II/lac/precondition.h](https://www.dealii.org/current/doxygen/deal.II/precondition_8h.html)>
+
+#include <[deal.II/numerics/data_out.h](https://www.dealii.org/current/doxygen/deal.II/numerics_2data__out_8h.html)>
+
+#include <fstream>
+
+#include <iostream>
+
+using namespace [dealii](https://www.dealii.org/current/doxygen/deal.II/namespacedealii.html);
+
+class Step3
+
+{
+
+public:
+
+Step3();
+
+void run();
+
+private:
+
+void make_grid();
+
+void setup_system();
+
+void assemble_system();
+
+void solve();
+
+void output_results() const;
+
+[Triangulation<2>](https://www.dealii.org/current/doxygen/deal.II/classTriangulation.html) [triangulation](https://www.dealii.org/current/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4);
+
+const [FE_Q<2>](https://www.dealii.org/current/doxygen/deal.II/classFE__Q.html) fe;
+
+[DoFHandler<2>](https://www.dealii.org/current/doxygen/deal.II/classDoFHandler.html) dof_handler;
+
+[SparsityPattern](https://www.dealii.org/current/doxygen/deal.II/classSparsityPattern.html) sparsity_pattern;
+
+[SparseMatrix<double>](https://www.dealii.org/current/doxygen/deal.II/classSparseMatrix.html) system_matrix;
+
+[Vector<double>](https://www.dealii.org/current/doxygen/deal.II/classVector.html) solution;
+
+[Vector<double>](https://www.dealii.org/current/doxygen/deal.II/classVector.html) system_rhs;
+
+};
+
+Step3::Step3()
+
+: fe(/* polynomial degree = */ 1)
+
+, dof_handler([triangulation](https://www.dealii.org/current/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4))
+
+{}
+
+void Step3::make_grid()
+
+{
+
+[GridGenerator::hyper_cube](https://www.dealii.org/current/doxygen/deal.II/namespaceGridGenerator.html#acea0cbcd68e52ce8113d1134b87de403)([triangulation](https://www.dealii.org/current/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4), -1, 1);
+
+[triangulation](https://www.dealii.org/current/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4).[refine_global](https://www.dealii.org/current/doxygen/deal.II/classTriangulation.html#a6ad0b3fb24aae17f4668427a433dea19)(5);
+
+std::cout << "Number of active cells: " << [triangulation](https://www.dealii.org/current/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4).[n_active_cells](https://www.dealii.org/current/doxygen/deal.II/classTriangulation.html#a5ea5c9957dbb566a562bbe2c0f3971e9)()
+
+<< std::endl;
+
+}
+
+void Step3::setup_system()
+
+{
+
+dof_handler.distribute_dofs(fe);
+
+std::cout << "Number of degrees of freedom: " << dof_handler.n_dofs()
+
+<< std::endl;
+
+[DynamicSparsityPattern](https://www.dealii.org/current/doxygen/deal.II/classDynamicSparsityPattern.html) dsp(dof_handler.n_dofs());
+
+[DoFTools::make_sparsity_pattern](https://www.dealii.org/current/doxygen/deal.II/group__constraints.html#ga432d35b9ef18d1802d48b576300b04fd)(dof_handler, dsp);
+
+sparsity_pattern.copy_from(dsp);
+
+system_matrix.reinit(sparsity_pattern);
+
+solution.reinit(dof_handler.n_dofs());
+
+system_rhs.reinit(dof_handler.n_dofs());
+
+}
+
+void Step3::assemble_system()
+
+{
+
+const [QGauss<2>](https://www.dealii.org/current/doxygen/deal.II/classQGauss.html) quadrature_formula(fe.degree + 1);
+
+[FEValues<2>](https://www.dealii.org/current/doxygen/deal.II/classFEValues.html) fe_values(fe,
+
+quadrature_formula,
+
+[update_values](https://www.dealii.org/current/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea) | [update_gradients](https://www.dealii.org/current/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20) | [update_JxW_values](https://www.dealii.org/current/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85));
+
+const unsigned int dofs_per_cell = fe.n_dofs_per_cell();
+
+[FullMatrix<double>](https://www.dealii.org/current/doxygen/deal.II/classFullMatrix.html) [cell_matrix](https://www.dealii.org/current/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a5db3386202b2c75a4dbfe1280bfdc524)(dofs_per_cell, dofs_per_cell);
+
+[Vector<double>](https://www.dealii.org/current/doxygen/deal.II/classVector.html) cell_rhs(dofs_per_cell);
+
+std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
+
+for (const auto &cell : dof_handler.active_cell_iterators())
+
+{
+
+fe_values.reinit(cell);
+
+[cell_matrix](https://www.dealii.org/current/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a5db3386202b2c75a4dbfe1280bfdc524) = 0;
+
+cell_rhs = 0;
+
+for (const unsigned int q_index : fe_values.quadrature_point_indices())
+
+{
+
+for (const unsigned int i : fe_values.dof_indices())
+
+for (const unsigned [int](https://www.dealii.org/current/doxygen/deal.II/classint.html) j : fe_values.dof_indices())
+
+[cell_matrix](https://www.dealii.org/current/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a5db3386202b2c75a4dbfe1280bfdc524)(i, j) +=
+
+(fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
+
+fe_values.shape_grad(j, q_index) * // grad phi_j(x_q)
+
+fe_values.JxW(q_index)); // dx
+
+for (const unsigned int i : fe_values.dof_indices())
+
+cell_rhs(i) += (fe_values.shape_value(i, q_index) * // phi_i(x_q)
+
+1. * // f(x_q)
+
+fe_values.JxW(q_index)); // dx
+
+}
+
+cell->get_dof_indices(local_dof_indices);
+
+for (const unsigned int i : fe_values.dof_indices())
+
+for (const unsigned [int](https://www.dealii.org/current/doxygen/deal.II/classint.html) j : fe_values.dof_indices())
+
+system_matrix.add(local_dof_indices[i],
+
+local_dof_indices[j],
+
+[cell_matrix](https://www.dealii.org/current/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a5db3386202b2c75a4dbfe1280bfdc524)(i, j));
+
+for (const unsigned int i : fe_values.dof_indices())
+
+system_rhs(local_dof_indices[i]) += cell_rhs(i);
+
+}
+
+std::map<types::global_dof_index, double> boundary_values;
+
+[VectorTools::interpolate_boundary_values](https://www.dealii.org/current/doxygen/deal.II/namespaceVectorTools.html#a41e94ecf8f78d1fbefe6678f2350530a)(dof_handler,
+
+[types::boundary_id](https://www.dealii.org/current/doxygen/deal.II/classunsigned_01int.html)(0),
+
+[Functions::ZeroFunction<2>](https://www.dealii.org/current/doxygen/deal.II/classFunctions_1_1ZeroFunction.html)(),
+
+boundary_values);
+
+[MatrixTools::apply_boundary_values](https://www.dealii.org/current/doxygen/deal.II/namespaceMatrixTools.html#a9ad0eb7a8662628534586716748d62fb)(boundary_values,
+
+system_matrix,
+
+solution,
+
+system_rhs);
+
+}
+
+void Step3::solve()
+
+{
+
+[SolverControl](https://www.dealii.org/current/doxygen/deal.II/classSolverControl.html) solver_control(1000, 1e-6 * system_rhs.l2_norm());
+
+[SolverCG<Vector<double>](https://www.dealii.org/current/doxygen/deal.II/classSolverCG.html)> solver(solver_control);
+
+solver.solve(system_matrix, solution, system_rhs, [PreconditionIdentity](https://www.dealii.org/current/doxygen/deal.II/classPreconditionIdentity.html)());
+
+std::cout << solver_control.last_step()
+
+<< " CG iterations needed to obtain convergence." << std::endl;
+
+}
+
+void Step3::output_results() const
+
+{
+
+[DataOut<2>](https://www.dealii.org/current/doxygen/deal.II/classDataOut.html) data_out;
+
+data_out.[attach_dof_handler](https://www.dealii.org/current/doxygen/deal.II/classDataOut__DoFData.html#a6ed7c846331069f406b8c9933c37fda4)(dof_handler);
+
+data_out.[add_data_vector](https://www.dealii.org/current/doxygen/deal.II/classDataOut__DoFData.html#ac43d3b1f6e67424f36e474627fe8e401)(solution, "solution");
+
+data_out.[build_patches](https://www.dealii.org/current/doxygen/deal.II/classDataOut.html#a087f63e22f0614bca326dbdca288c646)();
+
+const std::string filename = "solution.vtk";
+
+std::ofstream output(filename);
+
+data_out.[write_vtk](https://www.dealii.org/current/doxygen/deal.II/classDataOutInterface.html#acad99726038e4fca7f605fdffb3317e4)(output);
+
+std::cout << "Output written to " << filename << std::endl;
+
+}
+
+void Step3::run()
+
+{
+
+make_grid();
+
+setup_system();
+
+assemble_system();
+
+solve();
+
+output_results();
+
+}
+
+int main()
+
+{
+
+Step3 laplace_problem;
+
+laplace_problem.run();
+
+return 0;
+
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2OTY3NDkxNiwtNjQ5OTg3ODUyLC0zNT
-YyNzk3ODYsLTIwMjkyNTMyMzYsLTE5MTk0NjQ0MzQsMjA5NTQ2
-NjQ0LC03OTMxMTYyNDAsLTg4ODA1NjAwNl19
+eyJoaXN0b3J5IjpbLTE2MzExNDI0MzksLTM2OTY3NDkxNiwtNj
+Q5OTg3ODUyLC0zNTYyNzk3ODYsLTIwMjkyNTMyMzYsLTE5MTk0
+NjQ0MzQsMjA5NTQ2NjQ0LC03OTMxMTYyNDAsLTg4ODA1NjAwNl
+19
 -->
