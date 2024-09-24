@@ -63,7 +63,7 @@ $$
 A_{ij} = (\nabla \varphi_i, \nabla \varphi_j), \quad F_i = (\varphi_i, f).
 $$
 
-### 我们应该从左侧还是右侧乘以测试函数？
+* 我们应该从左侧还是右侧乘以测试函数？
 
 在继续描述如何计算这些量之前，请注意，如果我们将原始方程从右侧乘以测试函数而不是从左侧乘以，那么我们将得到形如
 
@@ -83,6 +83,6 @@ $$
 
 如果您需要任何进一步的修改或补充，请告诉我！
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTk0NjQ0MzQsMjA5NTQ2NjQ0LC03OT
-MxMTYyNDAsLTg4ODA1NjAwNl19
+eyJoaXN0b3J5IjpbNjg4NTA5OTU5LC0xOTE5NDY0NDM0LDIwOT
+U0NjY0NCwtNzkzMTE2MjQwLC04ODgwNTYwMDZdfQ==
 -->
