@@ -86,6 +86,7 @@ $$
 
 - 对于 $A$ 的对象是 SparseMatrix 类型，而 $U$ 和 $F$ 的对象是 Vector 类型。我们将在下面的程序中看到用于求解线性系统的类。
 - 我们需要一种形成积分的方法。在有限元方法中，这通常是通过求积来完成的，即用一组每个单元上的求积点的加权和来替代积分。也就是说，我们首先将 $\Omega$ 上的积分拆分为对所有单元的积分，
+
   $$ 
   \begin{align*}
     A_{ij} &= (\nabla\varphi_i, \nabla \varphi_j) 
@@ -94,7 +95,9 @@ $$
     = \sum_{K \in {\mathbb T}} \int_K \varphi_i f,
   \end{align*}
   $$
+  
   然后用求积来近似每个单元的贡献：
+  
   $$
   \begin{align*}
     A^K_{ij} &=
@@ -108,7 +111,9 @@ $$
     \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
   \end{align*}
   $$
+  
   其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
+  
 - 首先，我们需要一种描述求积点位置 $\mathbf x_q^K$ 和它们权重 $w^K_q$ 的方法。它们通常通过与形状函数相同的方式从参考单元映射而来，即隐式地使用 MappingQ1 类，或者如果你明确说明，则通过从 Mapping 派生的其他类。参考单元上的位置和权重由从 Quadrature 基类派生的对象描述。通常，我们选择一种求积公式（即一组点和权重），以使得求积与矩阵中的积分完全相等；这可以通过高斯求积公式实现，该公式在 QGauss 类中实现。
 - 然后，我们需要一些东西来帮助我们在单元 $K$ 上评估 $\varphi_i(\mathbf x^K_q)$。这就是 FEValues 类的作用：它接收一个有限元对象来描述参考单元上的 $\varphi$，一个求积对象来描述求积点和权重，以及一个映射对象（或隐式使用 MappingQ1 类），并提供在单元 $K$ 上的求积点位置的形状函数值和导数，以及进行积分所需的各种其他信息。
 
@@ -133,9 +138,11 @@ FEValues 确实是组装过程中的核心类。我们**用在参考单元上定
 因此，有限元代码几乎总是使用诸如 CG 的迭代求解器来求解线性系统，我们在此代码中也将这样做。（我们指出，CG 方法仅适用于对称正定矩阵；对于其他方程，矩阵可能不具备这些特性，我们将不得不使用其他迭代求解器变种，如 [BiCGStab](https://en.wikipedia.org/wiki/Biconjugate_gradient_stabilized_method) 或 [GMRES](https://en.wikipedia.org/wiki/Generalized_minimal_residual_method)，它们适用于更一般的矩阵。）
 
 这些迭代求解器的一个重要组成部分是我们指定解决线性系统时希望达到的容忍度——本质上是我们愿意接受的近似解的误差声明。近似解 $\tilde x$ 与线性系统 $Ax=b$ 的精确解 $x$ 之间的误差定义为 $\|x-\tilde x\|$，但这是一个我们无法计算的量，因为我们不知道精确解 $x$。相反，我们通常考虑 *残差*，其定义为 $\|b-A\tilde x\|=\|A(x-\tilde x)\|$，作为可计算的度量。然后，我们让迭代求解器计算越来越准确的解 $\tilde x$，直到 $\|b-A\tilde x\|\le \tau$。一个实际的问题是 $\tau$ 应该取什么值。在大多数应用中，设置
+
 $$
 \tau = 10^{-6} \|b\|
 $$
+
 是一个合理的选择。我们将 $\tau$ 设置为与 $b$ 的大小（范数）成比例，确保我们对解的准确性的期望相对于解的大小是相对的。
 
 所有这些将在本程序的 `Step3::solve()` 函数中实现。正如你所看到的，使用 deal.II 设置线性求解器相当简单：整个函数只有三行代码。
@@ -406,5 +413,6 @@ int main()
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1MDk4OTM4OCwtNDYwOTcwNTddfQ==
+eyJoaXN0b3J5IjpbLTE3MjMxMjkyOTQsMTk1MDk4OTM4OCwtND
+YwOTcwNTddfQ==
 -->
