@@ -79,7 +79,10 @@ $$
 
 这在这里与上面相同，因为 $A = A^T$。但在一般情况下并非如此，**为了避免任何混淆，经验表明，养成从左侧乘以方程而不是从右侧乘以（如数学文献中常做的）可以避免一种常见的错误，因为矩阵在比较理论和实现时自动正确，而不需要转置**。请参见步骤 9 中本教程的第一个示例，其中我们有一个非对称双线性形式，此时从右侧乘以或从左侧乘以是有区别的。
 
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDI1MjM3NjgsLTE5MTk0NjQ0MzQsMj
-A5NTQ2NjQ0LC03OTMxMTYyNDAsLTg4ODA1NjAwNl19
+eyJoaXN0b3J5IjpbLTI1NzY1NDEyNiwtMTkxOTQ2NDQzNCwyMD
+k1NDY2NDQsLTc5MzExNjI0MCwtODg4MDU2MDA2XX0=
 -->
