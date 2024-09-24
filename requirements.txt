@@ -2,3 +2,4 @@ mkdocs>=1.6
 mkdocs-material
 pymdown-extensions
 mkdocs-pdf
+markdown-katex
