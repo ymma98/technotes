@@ -87,18 +87,18 @@ $$
 - 对于 $A$ 的对象是 SparseMatrix 类型，而 $U$ 和 $F$ 的对象是 Vector 类型。我们将在下面的程序中看到用于求解线性系统的类。
 - 我们需要一种形成积分的方法。在有限元方法中，这通常是通过求积来完成的，即用一组每个单元上的求积点的加权和来替代积分。也就是说，我们首先将 $\Omega$ 上的积分拆分为对所有单元的积分，
 
-  $$ 
+$$ 
   \begin{align*}
     A_{ij} &= (\nabla\varphi_i, \nabla \varphi_j) 
     = \sum_{K \in {\mathbb T}} \int_K \nabla\varphi_i \cdot \nabla \varphi_j, \\
     F_i &= (\varphi_i, f) 
     = \sum_{K \in {\mathbb T}} \int_K \varphi_i f,
   \end{align*}
-  $$
+$$
   
   然后用求积来近似每个单元的贡献：
   
-  $$
+$$
   \begin{align*}
     A^K_{ij} &=
     \int_K \nabla\varphi_i \cdot \nabla \varphi_j 
@@ -110,7 +110,7 @@ $$
     \approx 
     \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
   \end{align*}
-  $$
+$$
   
   其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
   
@@ -413,6 +413,6 @@ int main()
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjMxMjkyOTQsMTk1MDk4OTM4OCwtND
-YwOTcwNTddfQ==
+eyJoaXN0b3J5IjpbMjEwNTQ0NjkwLC0xNzIzMTI5Mjk0LDE5NT
+A5ODkzODgsLTQ2MDk3MDU3XX0=
 -->
