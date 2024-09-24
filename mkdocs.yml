@@ -36,6 +36,7 @@ nav:
     - dealii-01_概况: FEM/dealii-01_概况.md
     - dealii-02_网格: FEM/dealii-02_网格.md
     - dealii-03_自由度: FEM/dealii-03_自由度.md
+    - dealii-04_泊松方程: FEM/dealii-04_泊松方程.md
   - python:
       - pdb: python/pdb.md
       - matplotlib画streamline: python/matplotlib画streamline.md
