@@ -192,9 +192,9 @@ deal.II 在命名空间 dealii::types 中通过别名定义了许多整型。
 
 特别是在这个程序中，您将在几个地方看到 types::global_dof_index：这是一种整数类型，用于表示自由度的 <i>全局</i> 索引，即在 Triangulation 上定义的 DoFHandler 对象中某个特定自由度的索引（与特定单元内某个特定自由度的索引相对）。对于当前程序（以及几乎所有教程程序），您将拥有几千到几百万个全局未知数（对于 $Q_1$ 元素，在 2D 中每个单元有 4 个，3D 中有 8 个）。因此，允许存储足够大数字以表示全局 DoF 索引的数据类型是 `unsigned int`，因为它允许存储介于 0 到略多于 40 亿之间的数字（在大多数系统中，整数为 32 位）。实际上，这就是 types::global_dof_index 的定义。
 
-那么，为什么不直接使用 `unsigned int` 呢？deal.II 直到 7.3 版本之前是这样做的。然而，deal.II 支持非常大的计算（通过在第 40 步中讨论的框架），可能在几千个处理器中分布超过 40 亿个未知数。因此，在某些情况下，`unsigned int` 不够大，我们需要 64 位的无符号整型。为了实现这一点，我们引入了 types::global_dof_index，默认情况下，它被定义为简单的 `unsigned int`，而如果需要，可以通过在配置时传递特定标志将其定义为 `unsigned long long int`（请参见 ReadMe 文件）。
+那么，为什么不直接使用 `unsigned int` 呢？deal.II 直到 7.3 版本之前是这样做的。然而，deal.II 支持非常大的计算（通过在第 40 步中讨论的框架），可能在几千个处理器中分布超过 40 亿个未知数。因此，在某些情况下，`unsigned int` 不够大，我们需要 64 位的无符号整型。为了实现这一点，我们引入了 types::global_dof_index，默认情况下，它被定义为简单的 `unsigned int`，而如果需要，可以通过在配置时传递特定标志将其定义为 `unsigned long long int`。
 
-这涵盖了技术方面。但也有一个文档目的：在库及其构建的代码中，如果您看到使用数据类型 types::global_dof_index 的地方，您会立即知道所引用的量实际上是一个全局自由度索引。如果我们只是使用 `unsigned int`，则不会明显有这样的含义（它可能也是一个局部索引、边界指示符、材料 ID 等）。立即知道变量所指的内容也有助于避免错误：如果您看到类型为 types::global_dof_index 的对象被分配给类型为 types::subdomain_id 的变量，那么显然存在一个错误，尽管它们都是由无符号整数表示，编译器因此不会抱怨。
+这涵盖了技术方面。但也有一个文档目的：在库及其构建的代码中，如果您看到使用数据类型 types::global_dof_index 的地方，您会立即知道所引用的量实际上是一个全局自由度索引。如果我们只是使用 `unsigned int`，则不会明显有这样的含义（它可能也是一个局部索引、边界指示符、材料 ID 等）。立即知道变量所指的内容也有助于避免错误。
 
 在更实际的层面上，这种类型的存在意味着在组装期间，我们创建一个 $4\times 4$ 矩阵（在 2D 中，使用 $Q_1$ 元素）用于我们当前所在单元的贡献，然后我们需要将该矩阵的元素添加到全局（系统）矩阵的适当元素中。为此，我们需要获取当前单元中局部自由度的全局索引，我们将始终使用以下代码片段：
 ```cpp
@@ -209,7 +209,7 @@ deal.II 在命名空间 dealii::types 中通过别名定义了许多整型。
 > 注：types::global_dof_index 不是该命名空间中定义的唯一类型。实际上，还有一个家族，包括 types::subdomain_id、types::boundary_id 和 types::material_id。所有这些都是整型数据类型的别名，但正如上面所述，它们在库中被广泛使用，因此 (i) 变量的意图更容易辨识，(ii) 如果需要，可以将实际类型更改为更大的类型，而无需遍历整个库并确定 `unsigned int` 的特定用途是否对应于某个材料指示符。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NjAzNzYxMCwtNjQ5OTg3ODUyLC0zNT
+eyJoaXN0b3J5IjpbLTM2OTY3NDkxNiwtNjQ5OTg3ODUyLC0zNT
 YyNzk3ODYsLTIwMjkyNTMyMzYsLTE5MTk0NjQ0MzQsMjA5NTQ2
 NjQ0LC03OTMxMTYyNDAsLTg4ODA1NjAwNl19
 -->
