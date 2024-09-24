@@ -23,7 +23,7 @@ $$
 这可以通过分部积分得到：
 
 $$
-\int_\Omega \nabla \varphi \cdot \nabla u - \int_{\partial\Omega} \varphi n \cdot \nabla u = \int_\Omega \varphi f.
+\int_\Omega \nabla \varphi \cdot \nabla u - \int_{\partial\Omega} \varphi \vec{n} \cdot \nabla u = \int_\Omega \varphi f.
 $$
 
 测试函数 $\varphi$ 必须满足相同类型的边界条件（在数学术语中：它需要来自我们寻求解的集合的切空间），因此在边界上 $\varphi = 0$，因此我们要寻找的弱形式为
@@ -83,6 +83,6 @@ $$
 
 如果您需要任何进一步的修改或补充，请告诉我！
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NTc3NjI0NywyMDk1NDY2NDQsLTc5Mz
-ExNjI0MCwtODg4MDU2MDA2XX0=
+eyJoaXN0b3J5IjpbNTk1OTU3NzM1LDIwOTU0NjY0NCwtNzkzMT
+E2MjQwLC04ODgwNTYwMDZdfQ==
 -->
