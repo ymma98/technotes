@@ -6,6 +6,8 @@
 
 
 ## Adobe Acrobat DC enhance scans 功能转换图片格式pdf为可选文字的pdf
+
+如题。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjQ1NTc5MDNdfQ==
+eyJoaXN0b3J5IjpbMTQyOTc0OTE3OV19
 -->
