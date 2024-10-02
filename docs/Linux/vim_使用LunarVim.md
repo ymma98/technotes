@@ -203,12 +203,8 @@ vim.cmd('command! Copypath call setreg("+", expand("%:p"))')
 -- lvim.keys.normal_mode["<F5>"] = ":CMakeClean<CR>:CMakeGenerate<CR>:CMakeBuild<CR>"
 --
 --
-
-
--- 设置快捷键，调用复制诊断信息的函数
-lvim.keys.normal_mode["<leader>cd"] = ":lua CopyDiagnosticsAtCursor()<CR>"
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MTI3NDI1OCw3NTE1MjQxMzUsNTM1Nz
-M2MTM2LDYxOTg1NDc0MV19
+eyJoaXN0b3J5IjpbMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3Mz
+YxMzYsNjE5ODU0NzQxXX0=
 -->
