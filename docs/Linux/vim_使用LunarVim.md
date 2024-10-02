@@ -139,7 +139,11 @@ lvim.plugins = {
     },
     {
         -- 关闭侧边栏却不改变比例, :Bdelete
-        'moll/vim-bbye'
+        'moll/vim-bbye',
+    },
+    {
+        "kevinhwang91/nvim-ufo",
+        dependencies = "kevinhwang91/promise-async",
     },
 }
 
@@ -203,8 +207,45 @@ vim.cmd('command! Copypath call setreg("+", expand("%:p"))')
 -- lvim.keys.normal_mode["<F5>"] = ":CMakeClean<CR>:CMakeGenerate<CR>:CMakeBuild<CR>"
 --
 --
+
+-- 代码折叠, 对应 nvim-ufo 插件, 地址: https://github.com/kevinhwang91/nvim-ufo
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+require('ufo').setup({
+    provider_selector = function(bufnr, filetype, buftype)
+        return { 'treesitter', 'indent' }
+    end
+})
+
+require 'nvim-treesitter.configs'.setup {
+    ensure_installed = "cpp",
+    highlight = {
+        enable = true,
+    },
+    fold = {
+        enable = true,
+    },
+}
+
+
+-- 自动保存折叠信息
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+    pattern = { "*.*" },
+    desc = "save view (folds), when closing file",
+    command = "mkview",
+})
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    pattern = { "*.*" },
+    desc = "load view (folds), when opening file",
+    command = "silent! loadview"
+})
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3Mz
-YxMzYsNjE5ODU0NzQxXX0=
+eyJoaXN0b3J5IjpbMTk4MTI2ODI5MywyNTQ2NzM5MjgsNzUxNT
+I0MTM1LDUzNTczNjEzNiw2MTk4NTQ3NDFdfQ==
 -->
