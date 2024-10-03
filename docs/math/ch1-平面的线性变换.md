@@ -16,12 +16,12 @@ $$
 \begin{equation*} \text { Det } F=a d-b c \end{equation*}  
 $$
 * 矩阵的逆: 
+$$
+F^{-1}=\left(\begin{array}{ll}\frac{d}{\operatorname{Det} F} & \frac{-b}{\operatorname{Det} F}  \tag{1.8}\\\frac{-c}{\operatorname{Det} F} & \frac{a}{\operatorname{Det} F}\end{array}\right)
+$$
 
   
-
-We wish to prove the basic formula
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0ODA3MzM2NywtMTIzMzQ5MTY0NywxNT
+eyJoaXN0b3J5IjpbLTU2MTk5MDgwNCwtMTIzMzQ5MTY0NywxNT
 Y2MTc4MDQxLDEwNTI2MzA1OSwtMTk1NjgyMTYwNl19
 -->
