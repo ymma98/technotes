@@ -10,9 +10,10 @@ $$
 \left[\begin{array}{l}x \\y\end{array}\right] \rightarrow\left[\begin{array}{l}x+a \\y+b\end{array}\right]
 $$
 * 所有的仿射变换可以写作: $f(w)=l(w)+v$
-* 行列式的绝对值表示线性变换对空间区域体积（在二维情况下为面积）的缩放因子。
+* 行列式的绝对值表示线性变换对空间区域体积（在二维情况下为面积）的缩放因子。当行列式小于零（即缩放因子为负值）时，这意味着线性变换不仅对空间进行了拉伸或压缩，还反转了空间的方向性
+* 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3OTcxMTUyNywtMTIzMzQ5MTY0NywxNT
+eyJoaXN0b3J5IjpbMTM4ODUxMjc3NSwtMTIzMzQ5MTY0NywxNT
 Y2MTc4MDQxLDEwNTI2MzA1OSwtMTk1NjgyMTYwNl19
 -->
