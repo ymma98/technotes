@@ -10,8 +10,9 @@ $$
 \left[\begin{array}{l}x \\y\end{array}\right] \rightarrow\left[\begin{array}{l}x+a \\y+b\end{array}\right]
 $$
 * 所有的仿射变换可以写作: $f(w)=l(w)+v$
+* 行列式的绝对值表示线性变换对空间区域体积（在二维情况下为面积）的缩放因子。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzM0OTE2NDcsMTU2NjE3ODA0MSwxMD
-UyNjMwNTksLTE5NTY4MjE2MDZdfQ==
+eyJoaXN0b3J5IjpbLTk3OTcxMTUyNywtMTIzMzQ5MTY0NywxNT
+Y2MTc4MDQxLDEwNTI2MzA1OSwtMTk1NjgyMTYwNl19
 -->
