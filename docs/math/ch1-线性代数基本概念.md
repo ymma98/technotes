@@ -8,15 +8,6 @@
 * In Euclidean geometry (平直空间几何), an [affine transformation](https://en.wikipedia.org/wiki/Affine_transformation) or affinity (from the Latin, affinis, "connected with") is a **geometric transformation that preserves lines and parallelism, but not necessarily Euclidean distances and angles**.
 An affine map is the composition of two functions: a translation and a linear map. $\mathbf{y}=f(\mathbf{x})=A \mathbf{x}+\mathbf{b}$
 
-| Transformation name           | Affine matrix                               | Example                                                                                                                                         |
-|-------------------------------|---------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
-| '''[[Identity operation       | Identity]]''' (transform to original image) | align="center"                                                                                                                                  | <math><br>\begin{bmatrix}<br>1 & 0 & 0 \\<br>0 & 1 & 0 \\<br>0 & 0 & 1<br>\end{bmatrix}<br></math>            | align="center"                                      | [[File:Checkerboard identity.svg]] < | -- align="center", because the images depict the coordinate origin (concerning the matrices) in the center. -->            |
-| '''[[Translation (geometry)   | Translation]]'''                            | align="center"                                                                                                                                  | <math><br>\begin{bmatrix}<br>1 & 0 & v_x > 0\\<br>0 & 1 & v_y = 0\\<br>0 & 0 & 1<br>\end{bmatrix}<br></math>  | align="right"                                       | [[File:Checkerboard identity.svg]] < | -- There is no image for translation. align="right" works, because the image for scaling makes the column wide enough. --> |
-| '''[[Reflection (mathematics) | Reflection]]'''                             | align="center"                                                                                                                                  | <math><br>\begin{bmatrix}<br>-1 & 0 & 0 \\<br>0 & 1 & 0 \\ <br>0 & 0 & 1<br>\end{bmatrix}<br></math>          | align="center"                                      | [[File:Checkerboard reflection.svg]] |
-| '''[[Scaling (geometry)       | Scale]]'''                                  | align="center"                                                                                                                                  | <math><br>\begin{bmatrix}<br>c_x=2 & 0 & 0 \\<br>0 & c_y=1 & 0 \\ <br>0 & 0 & 1<br>\end{bmatrix}<br></math>   | [[File:Checkerboard scale.svg]]                     |
-| '''[[Rotate]]'''              | align="center"                              | <math><br>\begin{bmatrix}<br>\cos(	heta) & -\sin(\theta) & 0 \\<br>\sin(\theta) & \cos(\theta) & 0 \\ <br>0 & 0 & 1<br>\end{bmatrix}<br></math> | align="center"                                                                                                | [[File:Checkerboard rotate.svg]] <br/> where {{math | ''θ'' {{=}} {{sfrac                  | π                                                                                                                          | 6}} {{=}}30°}} |
-| '''[[Shear matrix             | Shear]]'''                                  | align="center"                                                                                                                                  | <math><br>\begin{bmatrix}<br>1 & c_x=0.5 & 0 \\<br>c_y=0 & 1 & 0 \\ <br>0 & 0 & 1<br>\end{bmatrix}<br></math> | align="center"                                      | [[File:Checkerboard shear.svg]]      |
-
 
 
 
@@ -40,6 +31,6 @@ $$
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1Mjg4MDY3NiwtOTA1ODY5MzQxLC05MD
+eyJoaXN0b3J5IjpbMTcxMDUzODUxMywtOTA1ODY5MzQxLC05MD
 U4NjkzNDFdfQ==
 -->
