@@ -124,8 +124,6 @@ lvim.builtin.treesitter.auto_install = true
 --
 
 
-
-
 lvim.plugins = {
     {
         "rafi/awesome-vim-colorschemes",
@@ -158,6 +156,17 @@ lvim.keys.normal_mode["<C-p>"] = ":bprev<CR>"
 lvim.keys.normal_mode["<C-t>"] = ":NvimTreeToggle<CR>"
 lvim.keys.normal_mode["<F8>"] = ":TagbarToggle<CR>"
 lvim.colorscheme = "jellybeans"
+-- :Pe show the warning and error message
+-- :Bd close current tab
+-- zR open all folds (normal mode)
+-- zM close all folds (normal mode)
+-- https://github.com/numToStr/Comment.nvim
+-- gcc Toggles the current line using linewise comment (normal)
+-- gbc Toggles the current line using blockwise comment (normal)
+-- `[count]gcc` - Toggles the number of line given as a prefix-count using linewise (normal)
+-- `[count]gbc` - Toggles the number of line given as a prefix-count using blockwise (normal)
+-- `gc` - Toggles the region using linewise comment (visual)
+-- `gb` - Toggles the region using blockwise comment (visual)
 
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.f", "*.F" },
@@ -209,6 +218,7 @@ vim.cmd('command! Copypath call setreg("+", expand("%:p"))')
 --
 
 -- 代码折叠, 对应 nvim-ufo 插件, 地址: https://github.com/kevinhwang91/nvim-ufo
+vim.o.fillchars = [[foldopen:,foldclose:]]
 vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
@@ -221,7 +231,6 @@ require('ufo').setup({
         return { 'treesitter', 'indent' }
     end
 })
-
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = "cpp",
     highlight = {
@@ -246,6 +255,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4MTI2ODI5MywyNTQ2NzM5MjgsNzUxNT
-I0MTM1LDUzNTczNjEzNiw2MTk4NTQ3NDFdfQ==
+eyJoaXN0b3J5IjpbNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0Nj
+czOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
+
 -->
