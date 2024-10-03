@@ -5,7 +5,7 @@
 
 ## 仿射变换
 
-In Euclidean geometry (平直空间几何), an affine transformation or affinity (from the Latin, affinis, "connected with") is a geometric transformation that preserves lines and parallelism, but not necessarily Euclidean distances and angles.
+* In Euclidean geometry (平直空间几何), an affine transformation or affinity (from the Latin, affinis, "connected with") is a geometric transformation that preserves lines and parallelism, but not necessarily Euclidean distances and angles.
 
 
 * 实仿射平面 (real affine plane) 写作 $A {\mathbb{R}^{2}}$ (A for affine)。仿射平面是点集, 仿射平面中没有定义两点之间的距离，并且没有固定的原点 (origin)。矢量表述了仿射平面中点的相对关系。
@@ -28,5 +28,5 @@ $$
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxNTQxODMwMl19
+eyJoaXN0b3J5IjpbMTc2MDU1ODUyMF19
 -->
