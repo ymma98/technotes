@@ -9,9 +9,9 @@
 $$
 \left[\begin{array}{l}x \\y\end{array}\right] \rightarrow\left[\begin{array}{l}x+a \\y+b\end{array}\right]
 $$
-
+* 所有的仿射变换可以写作: $f(w)=l(w)+v$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyNzc3OTU5NiwxNTY2MTc4MDQxLDEwNT
-I2MzA1OSwtMTk1NjgyMTYwNl19
+eyJoaXN0b3J5IjpbLTEyMzM0OTE2NDcsMTU2NjE3ODA0MSwxMD
+UyNjMwNTksLTE5NTY4MjE2MDZdfQ==
 -->
