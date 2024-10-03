@@ -1,4 +1,4 @@
-# ch1-平面的线性变换
+# 线性代数基本概念
 
 > 来源: Roussas G G. A course in mathematical statistics[M]. Elsevier, 1997. 的选译
 
@@ -22,6 +22,7 @@ $$
 
   
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MTk5MDgwNCwtMTIzMzQ5MTY0NywxNT
-Y2MTc4MDQxLDEwNTI2MzA1OSwtMTk1NjgyMTYwNl19
+eyJoaXN0b3J5IjpbLTcwMTk2MDM2MiwtNTYxOTkwODA0LC0xMj
+MzNDkxNjQ3LDE1NjYxNzgwNDEsMTA1MjYzMDU5LC0xOTU2ODIx
+NjA2XX0=
 -->
