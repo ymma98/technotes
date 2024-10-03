@@ -124,6 +124,8 @@ lvim.builtin.treesitter.auto_install = true
 --
 
 
+
+
 lvim.plugins = {
     {
         "rafi/awesome-vim-colorschemes",
@@ -217,6 +219,7 @@ vim.cmd('command! Copypath call setreg("+", expand("%:p"))')
 --
 --
 
+
 -- 代码折叠, 对应 nvim-ufo 插件, 地址: https://github.com/kevinhwang91/nvim-ufo
 vim.o.fillchars = [[foldopen:,foldclose:]]
 vim.o.foldcolumn = '1' -- '0' is not bad
@@ -252,10 +255,11 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     pattern = { "*.*" },
     desc = "load view (folds), when opening file",
     command = "silent! loadview"
-})
+})设置快捷键，调用复制诊断信息的函数
+lvim.keys.normal_mode["<leader>cd"] = ":lua CopyDiagnosticsAtCursor()<CR>"
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0Nj
-czOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
-
+eyJoaXN0b3J5IjpbODQyMzI0MjE5LDUzMzA5OTM4NywxOTgxMj
+Y4MjkzLDI1NDY3MzkyOCw3NTE1MjQxMzUsNTM1NzM2MTM2LDYx
+OTg1NDc0MV19
 -->
