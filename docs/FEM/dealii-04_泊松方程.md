@@ -418,8 +418,40 @@ int main()
 
 ## 程序的进一步解释
 
+* 程序框架
+	* 创建网格
+	* 
+```cpp
+class Step3
+{
+public:
+  Step3();
+
+  void run();
+
+private:
+  void make_grid();
+  void setup_system();
+  void assemble_system();
+  void solve();
+  void output_results() const;
+
+  Triangulation<2> triangulation;
+  const FE_Q<2>    fe;
+  DoFHandler<2>    dof_handler;
+
+  SparsityPattern      sparsity_pattern;
+  SparseMatrix<double> system_matrix;
+
+  Vector<double> solution;
+  Vector<double> system_rhs;
+};
+```
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyNjY2MzI3OSwxMDI0OTAwMDYyLC0xNz
-IzMTI5Mjk0LDE5NTA5ODkzODgsLTQ2MDk3MDU3XX0=
+eyJoaXN0b3J5IjpbLTE4OTg0ODQxNzMsMTkyNjY2MzI3OSwxMD
+I0OTAwMDYyLC0xNzIzMTI5Mjk0LDE5NTA5ODkzODgsLTQ2MDk3
+MDU3XX0=
 -->
