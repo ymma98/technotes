@@ -420,7 +420,8 @@ int main()
 
 * 程序框架
 	* 创建网格
-	* 
+	* `setup_system()` 设置求解问题所需的所有数据结构
+		* 特别是，它会初始化 `DoFHandler` 对象，并正确调整与线性代数相关的各种对象的大小。通常将此函数与上面的预处理函数分开，因为在一个时间相关的程序中，当网格自适应细化时（在 step-6 中会看到如何实现这一点），可能需要每隔几个时间步调用一次该函数。而另一方面，在预处理函数中设置网格只需在程序开始时进行一次，因此将它独立为一个函数。
 ```cpp
 class Step3
 {
@@ -451,7 +452,7 @@ private:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTg0ODQxNzMsMTkyNjY2MzI3OSwxMD
-I0OTAwMDYyLC0xNzIzMTI5Mjk0LDE5NTA5ODkzODgsLTQ2MDk3
-MDU3XX0=
+eyJoaXN0b3J5IjpbLTE1ODYyNzE3ODYsLTE4OTg0ODQxNzMsMT
+kyNjY2MzI3OSwxMDI0OTAwMDYyLC0xNzIzMTI5Mjk0LDE5NTA5
+ODkzODgsLTQ2MDk3MDU3XX0=
 -->
