@@ -215,6 +215,8 @@ deal.II 在命名空间 dealii::types 中通过别名定义了许多整型。
 
 > 注：types::global_dof_index 不是该命名空间中定义的唯一类型。实际上，还有一个家族，包括 types::subdomain_id、types::boundary_id 和 types::material_id。所有这些都是整型数据类型的别名，但正如上面所述，它们在库中被广泛使用，因此 (i) 变量的意图更容易辨识，(ii) 如果需要，可以将实际类型更改为更大的类型，而无需遍历整个库并确定 `unsigned int` 的特定用途是否对应于某个材料指示符。
 
+## plain program
+
 ```cpp
 /* ------------------------------------------------------------------------
  *
@@ -412,7 +414,10 @@ int main()
   return 0;
 }
 ```
+
+
+## 程序的进一步解释
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNDkwMDA2MiwtMTcyMzEyOTI5NCwxOT
-UwOTg5Mzg4LC00NjA5NzA1N119
+eyJoaXN0b3J5IjpbLTM5OTI0NDAxMywxMDI0OTAwMDYyLC0xNz
+IzMTI5Mjk0LDE5NTA5ODkzODgsLTQ2MDk3MDU3XX0=
 -->
