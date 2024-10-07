@@ -22,6 +22,7 @@ nav:
       - bashrc: Linux/bashrc.md
       - vim_使用nvim: Linux/vim_使用nvim.md
       - vim_使用LunarVim: Linux/vim_使用LunarVim.md
+      - bash命令备忘:/Linux/bash命令备忘.md
       - 安装linux发行版: Linux/安装linux发行版.md
       - v2rayA配置: Linux/v2raya配置.md
       - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
