@@ -4,6 +4,13 @@
 
 LunarVim 的好处是开箱即用, 而且定义插件和快捷键都很方便, 很适合在个人电脑上使用。
 
+如果是在无法翻墙的环境安装，需要把安装命令中的 `githubusercontent` 替换为 `gitmirror`，比如
+```bash
+LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh)
+# 改为
+LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.gitmirror.com/LunarVim/LunarVim/release-1.4/neovim-0.9/utils/installer/install.sh)
+```
+
 目前在 `~/.config/lvim/config.lua` 中的配置:
 
 ```lua
@@ -255,7 +262,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODkzODUyMzY3LDg0MjMyNDIxOSw1MzMwOT
-kzODcsMTk4MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LDUz
-NTczNjEzNiw2MTk4NTQ3NDFdfQ==
+eyJoaXN0b3J5IjpbNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIzMj
+QyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOTI4LDc1
+MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
 -->
