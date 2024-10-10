@@ -78,7 +78,15 @@ alias rsync190="rsync -auvze 'ssh -p 32158'"
 alias pc="python inpynim.py c &>/dev/null &"
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
 ```
+
+## inputrc
+
+`~/.inputrc`
+
+```bash
+set completion-ignore-case on
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4MDUxMzk4MSwtMTA4MTg2NTM5Myw2NT
-IzNjk3OTUsLTE1Nzc5NDEzMjRdfQ==
+eyJoaXN0b3J5IjpbMTg4NjgxNTgxLC02ODA1MTM5ODEsLTEwOD
+E4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
 -->
