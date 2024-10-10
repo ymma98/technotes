@@ -6,8 +6,12 @@
 tar -czvf save.tar.gz --exclude='dump.[^0]*' --exclude='dump.[0][^0]*' --exclude='dump.[0][0][^0]*' --exclude='dump.[0][0][0][^0]*' --exclude='dump.[0][0][0][0][^0]*' 01/ 02/ ...
 ```
 
+* 通过跳板机 B, 将文件从机器 A 传递给 C
 
+```bash
+
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NzMwMjI4NDBdfQ==
+eyJoaXN0b3J5IjpbMTQ1MDIwMjk4NSwtMTk3MzAyMjg0MF19
 -->
