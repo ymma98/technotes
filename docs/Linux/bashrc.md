@@ -86,7 +86,28 @@ alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   
 ```bash
 set completion-ignore-case on
 ```
+
+## tmux config
+
+`~/.tmux.conf`
+
+```bash
+# set -g mouse on
+# bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard"
+# bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard"
+# bind -T copy-mode-vi C-j send-keys -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard"
+
+#for copying to sys clipboard
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard"
+bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard"
+bind -T copy-mode-vi C-j send-keys -X copy-pipe-and-cancel "xclip -i -f -selection primary | xclip -i -selection clipboard"
+
+#general other stuff
+### set -g default-terminal "xterm-256color"
+set -g mouse on
+set-window-option -g mode-keys vi
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NjgxNTgxLC02ODA1MTM5ODEsLTEwOD
+eyJoaXN0b3J5IjpbOTk0NjQ2NDU2LC02ODA1MTM5ODEsLTEwOD
 E4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
 -->
