@@ -41,6 +41,7 @@ nav:
     - dealii-04_泊松方程: FEM/dealii-04_泊松方程.md
   - python:
       - pdb: python/pdb.md
+      - pyright: python/pyright.md
       - matplotlib画streamline: python/matplotlib画streamline.md
       - python无法支持汉字: python/python无法支持汉字.md
   - cpp:
