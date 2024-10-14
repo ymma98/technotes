@@ -318,7 +318,7 @@ void Step3::setup_system()
             << std::endl;
   // DOF 定了, 矩阵的大小就定了, 这里定义了 SparsityPattern
   DynamicSparsityPattern dsp(dof_handler.n_dofs());
-  // 这一步, 是根据 dof_handler 决定 SparsityPattern
+  // 这一步, 是根据 dof_handler 决定 SparsityPattern 中可能的非零元素
   DoFTools::make_sparsity_pattern(dof_handler, dsp);
   sparsity_pattern.copy_from(dsp);
 
@@ -431,8 +431,8 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcwODg2MDMzLC0xNjE3MDY0Mzg2LC0xNj
-IwNzU0ODU3LDExODIyNjQwNTksLTE1ODYyNzE3ODYsLTE4OTg0
-ODQxNzMsMTkyNjY2MzI3OSwxMDI0OTAwMDYyLC0xNzIzMTI5Mj
-k0LDE5NTA5ODkzODgsLTQ2MDk3MDU3XX0=
+eyJoaXN0b3J5IjpbLTI5MTExNzE2NywtMTYxNzA2NDM4NiwtMT
+YyMDc1NDg1NywxMTgyMjY0MDU5LC0xNTg2MjcxNzg2LC0xODk4
+NDg0MTczLDE5MjY2NjMyNzksMTAyNDkwMDA2MiwtMTcyMzEyOT
+I5NCwxOTUwOTg5Mzg4LC00NjA5NzA1N119
 -->
