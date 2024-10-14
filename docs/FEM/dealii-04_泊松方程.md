@@ -339,7 +339,8 @@ void Step3::assemble_system()
                         update_values | update_gradients | update_JxW_values);
 
   const unsigned int dofs_per_cell = fe.n_dofs_per_cell();
-
+  
+  // 先计算小矩阵, 最后组装大矩阵
   FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
   Vector<double>     cell_rhs(dofs_per_cell);
 
@@ -434,8 +435,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI4MzA0MDE1LDU5Njg5NzE2MCwtMTYxNz
-A2NDM4NiwtMTYyMDc1NDg1NywxMTgyMjY0MDU5LC0xNTg2Mjcx
-Nzg2LC0xODk4NDg0MTczLDE5MjY2NjMyNzksMTAyNDkwMDA2Mi
-wtMTcyMzEyOTI5NCwxOTUwOTg5Mzg4LC00NjA5NzA1N119
+eyJoaXN0b3J5IjpbLTMxNTU0NDc0OCw1OTY4OTcxNjAsLTE2MT
+cwNjQzODYsLTE2MjA3NTQ4NTcsMTE4MjI2NDA1OSwtMTU4NjI3
+MTc4NiwtMTg5ODQ4NDE3MywxOTI2NjYzMjc5LDEwMjQ5MDAwNj
+IsLTE3MjMxMjkyOTQsMTk1MDk4OTM4OCwtNDYwOTcwNTddfQ==
+
 -->
