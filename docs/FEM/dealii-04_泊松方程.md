@@ -320,8 +320,9 @@ void Step3::setup_system()
   DynamicSparsityPattern dsp(dof_handler.n_dofs());
   // 这一步, 是根据 dof_handler 决定 SparsityPattern 中可能的非零元素
   DoFTools::make_sparsity_pattern(dof_handler, dsp);
+  // 相比于 DynamicSparsityPattern. SparsityPattern 是在数值存储上更优化的方案
   sparsity_pattern.copy_from(dsp);
-
+  // matrix 和 SparsityPattern
   system_matrix.reinit(sparsity_pattern);
 
   solution.reinit(dof_handler.n_dofs());
@@ -431,8 +432,8 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5MTExNzE2NywtMTYxNzA2NDM4NiwtMT
-YyMDc1NDg1NywxMTgyMjY0MDU5LC0xNTg2MjcxNzg2LC0xODk4
-NDg0MTczLDE5MjY2NjMyNzksMTAyNDkwMDA2MiwtMTcyMzEyOT
-I5NCwxOTUwOTg5Mzg4LC00NjA5NzA1N119
+eyJoaXN0b3J5IjpbLTE4NDE4MDkxMDIsLTE2MTcwNjQzODYsLT
+E2MjA3NTQ4NTcsMTE4MjI2NDA1OSwtMTU4NjI3MTc4NiwtMTg5
+ODQ4NDE3MywxOTI2NjYzMjc5LDEwMjQ5MDAwNjIsLTE3MjMxMj
+kyOTQsMTk1MDk4OTM4OCwtNDYwOTcwNTddfQ==
 -->
