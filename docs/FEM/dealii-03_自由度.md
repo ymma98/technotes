@@ -27,7 +27,7 @@ $$
 
 因此，当前程序的第一个任务是获取一个网格和一个有限元，并枚举自由度。在当前的上下文中，这意味着简单地为网格的每个顶点分配一个自由度索引。完成此操作后，我们将在图中输出哪个顶点对应哪个自由度索引。
 
-值得指出的是，几何上每个自由度的位置并不是我们在有限元代码中通常会问的问题。大多数时候，我们只关心所有自由度的枚举顺序，而不关心哪个自由度位于哪里。（
+值得指出的是，几何上每个自由度的位置并不是我们在有限元代码中通常会问的问题。大多数时候，我们只关心所有自由度的枚举顺序，而不关心哪个自由度位于哪里。
 
 * 稀疏性
 
@@ -326,6 +326,6 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzODYzMDg3OSwtOTQzMjM4ODAyLDExNz
-k1OTg5NzYsMTc5MTA2MzcyM119
+eyJoaXN0b3J5IjpbMTI3ODU5MjM5NSwtNTM4NjMwODc5LC05ND
+MyMzg4MDIsMTE3OTU5ODk3NiwxNzkxMDYzNzIzXX0=
 -->
