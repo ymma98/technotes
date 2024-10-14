@@ -333,7 +333,7 @@ void Step3::assemble_system()
 {
   // 定义积分公式
   const QGauss<2> quadrature_formula(fe.degree + 1);
-  // update_values 得到 shape function 在 reference cell 的值
+  // update_values 得到 shape function 在 real cell 的值
   FEValues<2> fe_values(fe,
                         quadrature_formula,
                         update_values | update_gradients | update_JxW_values);
@@ -434,7 +434,7 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAwMTEwODM0LDU5Njg5NzE2MCwtMTYxNz
+eyJoaXN0b3J5IjpbNDI4MzA0MDE1LDU5Njg5NzE2MCwtMTYxNz
 A2NDM4NiwtMTYyMDc1NDg1NywxMTgyMjY0MDU5LC0xNTg2Mjcx
 Nzg2LC0xODk4NDg0MTczLDE5MjY2NjMyNzksMTAyNDkwMDA2Mi
 wtMTcyMzEyOTI5NCwxOTUwOTg5Mzg4LC00NjA5NzA1N119
