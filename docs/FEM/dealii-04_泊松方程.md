@@ -316,7 +316,7 @@ void Step3::setup_system()
   dof_handler.distribute_dofs(fe);
   std::cout << "Number of degrees of freedom: " << dof_handler.n_dofs()
             << std::endl;
-
+  // DOF 定了, 矩阵的大小就定了
   DynamicSparsityPattern dsp(dof_handler.n_dofs());
   DoFTools::make_sparsity_pattern(dof_handler, dsp);
   sparsity_pattern.copy_from(dsp);
@@ -430,8 +430,8 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTcwNjQzODYsLTE2MjA3NTQ4NTcsMT
-E4MjI2NDA1OSwtMTU4NjI3MTc4NiwtMTg5ODQ4NDE3MywxOTI2
-NjYzMjc5LDEwMjQ5MDAwNjIsLTE3MjMxMjkyOTQsMTk1MDk4OT
-M4OCwtNDYwOTcwNTddfQ==
+eyJoaXN0b3J5IjpbMTE5OTExMjM5MCwtMTYxNzA2NDM4NiwtMT
+YyMDc1NDg1NywxMTgyMjY0MDU5LC0xNTg2MjcxNzg2LC0xODk4
+NDg0MTczLDE5MjY2NjMyNzksMTAyNDkwMDA2MiwtMTcyMzEyOT
+I5NCwxOTUwOTg5Mzg4LC00NjA5NzA1N119
 -->
