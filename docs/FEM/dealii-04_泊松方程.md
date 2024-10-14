@@ -510,7 +510,7 @@ void Step3::make_grid()
 
 void Step3::setup_system()
 {
-  // 给所有有限元节点
+  // 给所有有限元节点编号
   dof_handler.distribute_dofs(fe);
   std::cout << "Number of degrees of freedom: " << dof_handler.n_dofs()
             << std::endl;
@@ -628,7 +628,7 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxNTI1MjY5MSwtMTYyMDc1NDg1NywxMT
+eyJoaXN0b3J5IjpbMTQzMjAzNTA1MiwtMTYyMDc1NDg1NywxMT
 gyMjY0MDU5LC0xNTg2MjcxNzg2LC0xODk4NDg0MTczLDE5MjY2
 NjMyNzksMTAyNDkwMDA2MiwtMTcyMzEyOTI5NCwxOTUwOTg5Mz
 g4LC00NjA5NzA1N119
