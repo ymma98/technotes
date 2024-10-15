@@ -36,6 +36,7 @@ nav:
     - 琐碎的Mathematica使用: math/琐碎的Mathematica使用.md
   - FEM:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
+    - 有限元空间: FEM/有限元空间.md
     - 基函数与数值积分: FEM/基函数与数值积分.md
     - 数据结构_HeXiaoming: FEM/数据结构_HeXiaoming.md
     - dealii-01_概况: FEM/dealii-01_概况.md
