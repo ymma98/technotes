@@ -156,7 +156,7 @@ Pb matrix is
 
 
 
-![2dtriFE_nlb6](https://github.com/ymma98/picx-images-hosting/raw/master/20241015/image.3nrly4s4a7.webp)
+![2dtriFE_nlb6](https://github.com/ymma98/picx-images-hosting/raw/master/20241015/image.2a52u3ibu1.webp)
 
 
 
@@ -217,7 +217,7 @@ Pb matrix is
 
 
 
-![2dtriFE_nlb10](figs/2dtriFE_nlb10.svg)
+![2dtriFE_nlb10](https://github.com/ymma98/picx-images-hosting/raw/master/20241015/image.3nrly4tudw.webp)
 
 
 
@@ -262,6 +262,6 @@ Pb matrix is
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MjIyOTg5NSw2MzgxODEzNzYsLTE1OT
-A5MzI5Nl19
+eyJoaXN0b3J5IjpbMzYyNjcyNzExLDYzODE4MTM3NiwtMTU5MD
+kzMjk2XX0=
 -->
