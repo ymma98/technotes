@@ -98,9 +98,9 @@ $N$ elements has $N+1$ mesh points and $(N+1)+(p-2)\times N$ FE points, where $p
 
 ### mesh grid/$N_{lb}=3$
 
+![输入图片说明](./imgs/2024-数据结构_HeXiaoming/Ip7HSQtpvmJO6Kkw.png)
 
 
-![2dtriMesh](figs/2dtriMesh.svg)
 
 
 
@@ -262,5 +262,5 @@ Pb matrix is
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTA5MzI5Nl19
+eyJoaXN0b3J5IjpbNjM4MTgxMzc2LC0xNTkwOTMyOTZdfQ==
 -->
