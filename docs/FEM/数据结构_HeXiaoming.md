@@ -98,7 +98,7 @@ $N$ elements has $N+1$ mesh points and $(N+1)+(p-2)\times N$ FE points, where $p
 
 ### mesh grid/$N_{lb}=3$
 
-![输入图片说明](./imgs/2024-数据结构_HeXiaoming/Ip7HSQtpvmJO6Kkw.png)
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241015/image.51e525zg35.webp)
 
 
 
@@ -106,7 +106,7 @@ $N$ elements has $N+1$ mesh points and $(N+1)+(p-2)\times N$ FE points, where $p
 
 element plot
 
-![2dtriMesh_element](figs/2dtriMesh_element.svg)
+![2dtriMesh_element](https://github.com/ymma98/picx-images-hosting/raw/master/20241015/image.3nrly4s4a7.webp)
 
 
 
@@ -156,7 +156,7 @@ Pb matrix is
 
 
 
-![2dtriFE_nlb6](figs/2dtriFE_nlb6.svg)
+![2dtriFE_nlb6](https://github.com/ymma98/picx-images-hosting/raw/master/20241015/image.3nrly4s4a7.webp)
 
 
 
@@ -262,5 +262,6 @@ Pb matrix is
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM4MTgxMzc2LC0xNTkwOTMyOTZdfQ==
+eyJoaXN0b3J5IjpbMTU3MjIyOTg5NSw2MzgxODEzNzYsLTE1OT
+A5MzI5Nl19
 -->
