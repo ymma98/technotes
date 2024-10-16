@@ -25,6 +25,7 @@ LV_BRANCH='release-1.4/neovim-0.9' bash <(curl -s https://raw.gitmirror.com/Luna
  `lvim` is the global options object
 ]]
 
+
 -- vim options
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
@@ -175,6 +176,10 @@ lvim.colorscheme = "jellybeans"
 -- `gc` - Toggles the region using linewise comment (visual)
 -- `gb` - Toggles the region using blockwise comment (visual)
 
+-- autocompletion in command window: <C-n> and <C-p>
+
+
+
 vim.api.nvim_create_autocmd("BufEnter", {
     pattern = { "*.f", "*.F" },
     callback = function()
@@ -262,7 +267,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIzMj
-QyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOTI4LDc1
-MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
+eyJoaXN0b3J5IjpbLTgxODY1LDY2NjQyNDczNyw4OTM4NTIzNj
+csODQyMzI0MjE5LDUzMzA5OTM4NywxOTgxMjY4MjkzLDI1NDY3
+MzkyOCw3NTE1MjQxMzUsNTM1NzM2MTM2LDYxOTg1NDc0MV19
 -->
