@@ -53,9 +53,19 @@ $$
 \end{aligned}
 $$
 
+* example 2.
+
+$$
+\begin{aligned}
+w&=\frac{1}{4 \pi}\left(\frac{\epsilon E^2}{2}+\frac{B^2}{2 \mu}\right) \quad \text{(Gaussian)
+&=
+\end{aligned}
+$$
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTM4MjEwMTQsNjc3NDAzODYsMjAzMz
-g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
-OF19
+eyJoaXN0b3J5IjpbLTEwMzg5MjI1MTAsLTEwNTM4MjEwMTQsNj
+c3NDAzODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4
+OTEsMjExMzkyMDg2OF19
 -->
