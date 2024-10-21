@@ -69,14 +69,15 @@ $$
 $$
 \begin{aligned}
 \delta&=\left(c^2 / 2 \pi \omega \mu \sigma\right)^{1 / 2} \quad \text{(Gaussian)} \\
-&= \left(\frac{1}{\epsilon_}\right)^{1/2}
+&= \left(\frac{2}{\epsilon_0 \mu_0 4\pi \omega \mu \sigma}\right)^{1/2} \\
+&= \left(\frac{2}{\mu_0 \omega \mu \sigma}\right)^{1/2} \quad \text{(SI)}
 \end{aligned}
 $$
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODM0MTU5NDYzLC0xMDUzODIxMDE0LDY3Nz
-QwMzg2LDIwMzM4ODcyODYsMTY1NzgwNjExNywxNjgyNzc1ODkx
-LDIxMTM5MjA4NjhdfQ==
+eyJoaXN0b3J5IjpbLTE4MDc0MDM0NzcsLTEwNTM4MjEwMTQsNj
+c3NDAzODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4
+OTEsMjExMzkyMDg2OF19
 -->
