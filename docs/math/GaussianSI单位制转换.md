@@ -25,7 +25,8 @@ $$
 & 4 \pi \mathbf{D} \leftrightarrow \mathbf{D}, \\
 & 4 \pi \mathbf{H} / c \leftrightarrow \mathbf{H}, \\
 & \mathbf{M} / c \leftrightarrow \mathbf{M}, \\
-& c \mathbf{A} \leftrightarrow  \mathbf{A}
+& c \mathbf{A} \leftrightarrow  \mathbf{A} \\
+& \mathbf{E} \leftrightarrow \mathbf{E}
 \end{aligned}
 $$
 
@@ -34,10 +35,15 @@ $$
 c^2=\left(\epsilon_0 \mu_0\right)^{-1}
 $$
 
-以及所有出现 $\epsilon$ 的地方都要凑成 $\epsilon_0 \epsilon$；所有出现 $\mu$ 的地方都要凑成 $\mu_0 \mu$
+以及所有出现 $\epsilon$ 的地方都要凑成 $\epsilon_0 \epsilon$；所有出现 $\mu$ 的地方都要凑成 $\mu_0 \mu$。
+
+
+* example 1.
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTc4NTUxNDMsNjc3NDAzODYsMjAzMz
-g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
-OF19
+eyJoaXN0b3J5IjpbLTY1MzQ1NTQ5Niw2Nzc0MDM4NiwyMDMzOD
+g3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5MSwyMTEzOTIwODY4
+XX0=
 -->
