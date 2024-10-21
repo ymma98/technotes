@@ -1,18 +1,10 @@
 # Gaussian SI 单位制转换
 
-看论文的时候经常会看到 Gaussian 单位制的表达式/公式，需要转换为 SI 格式。如果按照 NRL formulary 里面给的方法还是有些繁琐了。如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
+看论文的时候经常会看到 Gaussian 单位制的表达式/公式，需要转换为 SI 格式。关注yi'xi
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241021/image.6m3w9oju91.webp)
+## 便捷方法 (equation)
 
-比如,
- 
-$$
-\frac{B^2}{8\pi} (Gaussian) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (SI)= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (SI)
-$$
-
-如果是等式的话， $\beta/\alpha^3$ 就会消掉。
-
-除了以上方法，还有一种新方法，参考这篇文章:
+参考这篇文章:
 * An easy method for converting equations between SI and Gaussian units, Yuntung Lau, American Journal of Physics 56, 135 (1988); doi: 10.1119/1.15691
 
 记住以下映射表:
@@ -75,9 +67,26 @@ $$
 $$
 
 
+## 最通用方法 (equation，expression 都可以)
+
+
+
+如果按照 NRL formulary 里面给的方法还是有些繁琐了。如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241021/image.6m3w9oju91.webp)
+
+比如,
+ 
+$$
+\frac{B^2}{8\pi} (Gaussian) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (SI)= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (SI)
+$$
+
+如果是等式的话， $\beta/\alpha^3$ 就会消掉。
+
+除了以上方法，还有一种新方法，
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDc0MDM0NzcsLTEwNTM4MjEwMTQsNj
-c3NDAzODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4
-OTEsMjExMzkyMDg2OF19
+eyJoaXN0b3J5IjpbMjAwOTQxNTY3NSwtMTA1MzgyMTAxNCw2Nz
+c0MDM4NiwyMDMzODg3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5
+MSwyMTEzOTIwODY4XX0=
 -->
