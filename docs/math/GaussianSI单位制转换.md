@@ -11,10 +11,23 @@ $$
 $$
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
-除了以上方法，还有一种新方法，
+除了以上方法，还有一种新方法，参考这篇文章:
+* An easy method for converting equations between SI and Gaussian units, Yuntung Lau, American Journal of Physics 56, 135 (1988); doi: 10.1119/1.15691
+
+记住以下映射表:
+
+$$
+\begin{aligned}
+& 4 \pi \epsilon_0 \leftrightarrow 1, \\
+& c \mathbf{B} \leftrightarrow \mathbf{B}, \\
+& 4 \pi \mathbf{D} \leftrightarrow \mathbf{D}, \\
+& 4 \pi \mathbf{H} / c \leftrightarrow \mathbf{H}, \\
+& \mathbf{M} / c \leftrightarrow \mathbf{M},
+\end{aligned}
+$$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzI2Mzc0NjEsNjc3NDAzODYsMjAzMz
+eyJoaXN0b3J5IjpbLTIwMDM5MzgzMjQsNjc3NDAzODYsMjAzMz
 g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
 OF19
 -->
