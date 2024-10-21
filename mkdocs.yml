@@ -33,6 +33,7 @@ nav:
   - math:
     - Mathematica速查: math/MathematicaCheatsheet.md
     - 任意正交曲线坐标系矢量计算: math/任意正交曲线坐标系矢量计算.md
+    - GaussianSI单位制转换: math/GaussianSI单位制转换.md
     - 琐碎的Mathematica使用: math/琐碎的Mathematica使用.md
   - FEM:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
