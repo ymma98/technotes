@@ -1,6 +1,6 @@
 # Gaussian SI 单位制转换
 
-看论文的时候经常会看到 Gaussian 单位制的表达式/公式，需要转换为 SI 格式。关注yi'xi
+看论文的时候经常会看到 Gaussian 单位制的表达式/公式，需要转换为 SI 格式。有两类方法，下面列出的第一种方法是最方便的，但只应用于等式。
 
 ## 便捷方法 (equation)
 
@@ -71,22 +71,20 @@ $$
 
 
 
-如果按照 NRL formulary 里面给的方法还是有些繁琐了。如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
+NRL formulary 给出的公式如下 (注意 Gaussian $\rightarrow$ SI: $\textcolor{blue}{c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha}$)：
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241021/image.6m3w9oju91.webp)
 
 比如,
  
 $$
-\frac{B^2}{8\pi} (Gaussian) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (SI)= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (SI)
+\frac{B^2}{8\pi} (\text{Gaussian}) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (SI)= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (\text{SI})
 $$
 
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
-除了以上方法，还有一种新方法，
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwOTQxNTY3NSwtMTA1MzgyMTAxNCw2Nz
-c0MDM4NiwyMDMzODg3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5
-MSwyMTEzOTIwODY4XX0=
+eyJoaXN0b3J5IjpbLTE2ODM3OTcwMjAsLTEwNTM4MjEwMTQsNj
+c3NDAzODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4
+OTEsMjExMzkyMDg2OF19
 -->
