@@ -7,9 +7,11 @@
 比如,
  
 $$
-\frac{B^2}{8\pi} = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi}
+\frac{B^2}{8\pi} = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi}\cdot \frac{\beta}{\alpha^3} = 
 $$
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1NzgwNjExNywxNjgyNzc1ODkxLDIxMT
-M5MjA4NjhdfQ==
+eyJoaXN0b3J5IjpbLTMzMjk0MzU2OSwxNjU3ODA2MTE3LDE2OD
+I3NzU4OTEsMjExMzkyMDg2OF19
 -->
