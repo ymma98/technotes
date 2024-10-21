@@ -43,12 +43,18 @@ $$
 * example 1.
 
 $$
-\boldsymbol{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \text{(SI}
+\boldsymbol{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \quad \text{(SI)}
+$$
+
+$$
+\begin{aligned}
+\boldsymbol{\nabla} \times \mathbf{H} \frac{4\pi}{c} = \frac{4\pi}{c} \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \frac{4\pi}{c}
+\end{aligned}
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTk1NDg3MTIsNjc3NDAzODYsMjAzMz
+eyJoaXN0b3J5IjpbLTE3MjQ4MTc1MTcsNjc3NDAzODYsMjAzMz
 g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
 OF19
 -->
