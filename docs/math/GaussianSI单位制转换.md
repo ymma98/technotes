@@ -66,12 +66,17 @@ $$
 
 * example 3. (skin depth)
 
-
+$$
+\begin{aligned}
+\delta&=\left(c^2 / 2 \pi \omega \mu \sigma\right)^{1 / 2} \quad \text{(Gaussian)} \\
+&= \left(\frac{1}{\epsilon_}\right)^{1/2}
+\end{aligned}
+$$
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MzEwMDMwOCwtMTA1MzgyMTAxNCw2Nz
-c0MDM4NiwyMDMzODg3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5
-MSwyMTEzOTIwODY4XX0=
+eyJoaXN0b3J5IjpbODM0MTU5NDYzLC0xMDUzODIxMDE0LDY3Nz
+QwMzg2LDIwMzM4ODcyODYsMTY1NzgwNjExNywxNjgyNzc1ODkx
+LDIxMTM5MjA4NjhdfQ==
 -->
