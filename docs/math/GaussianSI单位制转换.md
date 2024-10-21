@@ -7,8 +7,8 @@
 比如,
  
 $$
-\frac{B}{}
+\frac{B^2}{8\pi} = \frac{B^2 4\pi\mu_0\beta}{\alpha^3 }
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4MTk0MzcyNywyMTEzOTIwODY4XX0=
+eyJoaXN0b3J5IjpbLTEwMTIzODkyNiwyMTEzOTIwODY4XX0=
 -->
