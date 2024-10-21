@@ -9,9 +9,12 @@
 $$
 \frac{B^2}{8\pi} (Gaussian) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (SI)= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (SI)
 $$
+如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
+除了以上方法，还有一种新方法，
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjc3NDAzODYsMjAzMzg4NzI4NiwxNjU3OD
-A2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2OF19
+eyJoaXN0b3J5IjpbLTE2MzI2Mzc0NjEsNjc3NDAzODYsMjAzMz
+g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
+OF19
 -->
