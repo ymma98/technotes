@@ -5,6 +5,7 @@
 ## 便捷方法 (equation)
 
 参考这篇文章:
+
 * An easy method for converting equations between SI and Gaussian units, Yuntung Lau, American Journal of Physics 56, 135 (1988); doi: 10.1119/1.15691
 
 记住以下映射表:
@@ -71,7 +72,7 @@ $$
 
 
 
-NRL formulary 给出的公式如下 (注意 Gaussian $\rightarrow$ SI: $\textcolor{blue}{c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha}$)：
+NRL formulary 给出的公式如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241021/image.6m3w9oju91.webp)
 
@@ -84,7 +85,7 @@ $$
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMzgwMDI5OCwtMjA5OTA4MTAxNywtMT
-A1MzgyMTAxNCw2Nzc0MDM4NiwyMDMzODg3Mjg2LDE2NTc4MDYx
-MTcsMTY4Mjc3NTg5MSwyMTEzOTIwODY4XX0=
+eyJoaXN0b3J5IjpbNTUwMzg0NzI2LC01MDM4MDAyOTgsLTIwOT
+kwODEwMTcsLTEwNTM4MjEwMTQsNjc3NDAzODYsMjAzMzg4NzI4
+NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2OF19
 -->
