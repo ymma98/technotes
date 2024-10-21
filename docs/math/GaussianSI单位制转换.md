@@ -35,13 +35,13 @@ $$
 * example 1.
 
 $$
-\boldsymbol{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \quad \text{(Gaussian)}
+\mathbf{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \quad \text{(Gaussian)}
 $$
 
 $$
 \begin{aligned}
-\boldsymbol{\nabla} \times \mathbf{H} \frac{4\pi}{c} &= \frac{4\pi}{c} \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \frac{4\pi}{c} \\
-\boldsymbol{\nabla} \times \mathbf{H} &= \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t}  \quad \text{(SI)}
+\mathbf{\nabla} \times \mathbf{H} \frac{4\pi}{c} &= \frac{4\pi}{c} \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \frac{4\pi}{c} \\
+\mathbf{\nabla} \times \mathbf{H} &= \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t}  \quad \text{(SI)}
 \end{aligned}
 $$
 
@@ -84,7 +84,7 @@ $$
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTkwODEwMTcsLTEwNTM4MjEwMTQsNj
-c3NDAzODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4
-OTEsMjExMzkyMDg2OF19
+eyJoaXN0b3J5IjpbLTUwMzgwMDI5OCwtMjA5OTA4MTAxNywtMT
+A1MzgyMTAxNCw2Nzc0MDM4NiwyMDMzODg3Mjg2LDE2NTc4MDYx
+MTcsMTY4Mjc3NTg5MSwyMTEzOTIwODY4XX0=
 -->
