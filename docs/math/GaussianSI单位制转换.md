@@ -58,14 +58,20 @@ $$
 $$
 \begin{aligned}
 w &=\frac{1}{4 \pi}\left(\frac{\epsilon E^2}{2}+\frac{B^2}{2 \mu}\right) \quad \text{(Gaussian)} \\
-&= \frac{1}{4\pi} \frac{\epsilon \epsilon_0 E^2}{2\epsilon_0} + \frac{1}{4\pi} \frac{c^2 B^2 \mu_0}{2\mu_0 \mu}
+&= \frac{1}{4\pi} \frac{\epsilon \epsilon_0 E^2}{2\epsilon_0} + \frac{1}{4\pi} \frac{c^2 B^2 \mu_0}{2\mu_0 \mu} \\
+&= \frac{\epsilon \epsilon_0 E^2}{2} + \frac{B^2}{2\mu_0 \mu} \quad \text{(SI)}
 \end{aligned}
 $$
 
 
+* example 3. (skin depth)
+
+
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTI2NDM4OTEwLC0xMDUzODIxMDE0LDY3Nz
-QwMzg2LDIwMzM4ODcyODYsMTY1NzgwNjExNywxNjgyNzc1ODkx
-LDIxMTM5MjA4NjhdfQ==
+eyJoaXN0b3J5IjpbMjA0MzEwMDMwOCwtMTA1MzgyMTAxNCw2Nz
+c0MDM4NiwyMDMzODg3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5
+MSwyMTEzOTIwODY4XX0=
 -->
