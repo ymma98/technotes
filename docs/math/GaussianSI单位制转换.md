@@ -57,15 +57,15 @@ $$
 
 $$
 \begin{aligned}
-w&=\frac{1}{4 \pi}\left(\frac{\epsilon E^2}{2}+\frac{B^2}{2 \mu}\right) \quad \text{(Gaussian)
-&=
+w &=\frac{1}{4 \pi}\left(\frac{\epsilon E^2}{2}+\frac{B^2}{2 \mu}\right) \quad \text{(Gaussian)} \\
+&= \frac{1}{4\pi} \frac{\epsilon \epsilon_0 E^2}{2\epsilon_0} + \frac{1}{4\pi} \frac{c^2 B^2 \mu_0}{2\mu_0 \mu}
 \end{aligned}
 $$
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzg5MjI1MTAsLTEwNTM4MjEwMTQsNj
-c3NDAzODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4
-OTEsMjExMzkyMDg2OF19
+eyJoaXN0b3J5IjpbOTI2NDM4OTEwLC0xMDUzODIxMDE0LDY3Nz
+QwMzg2LDIwMzM4ODcyODYsMTY1NzgwNjExNywxNjgyNzc1ODkx
+LDIxMTM5MjA4NjhdfQ==
 -->
