@@ -1,6 +1,6 @@
 # Gaussian SI 单位制转换
 
-看论文的时候经常会看到 Gaussian 单位制的表达式/公式，如果按照 NRL formulary 里面给的方法还是有些慢了。如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
+看论文的时候经常会看到 Gaussian 单位制的表达式/公式，如果按照 NRL formulary 里面给的方法还是有些繁琐了。如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241021/image.6m3w9oju91.webp)
 
@@ -29,10 +29,14 @@ $$
 $$
 
 以及
+$$
+c^2=\left(\epsilon_0 \mu_0\right)^{-1}
+$$
 
+以及所有出现 $\epsilon$ 的地方都要凑成
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5MjY3NDIzMSw2Nzc0MDM4NiwyMDMzOD
+eyJoaXN0b3J5IjpbLTY3NDM5ODc1OCw2Nzc0MDM4NiwyMDMzOD
 g3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5MSwyMTEzOTIwODY4
 XX0=
 -->
