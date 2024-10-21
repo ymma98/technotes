@@ -78,13 +78,13 @@ NRL formulary 给出的公式如下 (注意 Gaussian $\rightarrow$ SI: $\textcol
 比如,
  
 $$
-\frac{B^2}{8\pi} (\text{Gaussian}) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (SI)= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (\text{SI})
+\frac{B^2}{8\pi} (\text{Gaussian}) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (\text{SI})= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (\text{SI})
 $$
 
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODM3OTcwMjAsLTEwNTM4MjEwMTQsNj
+eyJoaXN0b3J5IjpbLTIwOTkwODEwMTcsLTEwNTM4MjEwMTQsNj
 c3NDAzODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4
 OTEsMjExMzkyMDg2OF19
 -->
