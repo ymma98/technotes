@@ -18,7 +18,9 @@ $$
 
 $$
 \begin{aligned}
+& \text{SI} \leftrightarrow \text{Gaussian} \\
 & 4 \pi \epsilon_0 \leftrightarrow 1, \\
+& 1 \leftrightarrow 4 \pi \epsilon_0, \\
 & c \mathbf{B} \leftrightarrow \mathbf{B}, \\
 & 4 \pi \mathbf{D} \leftrightarrow \mathbf{D}, \\
 & 4 \pi \mathbf{H} / c \leftrightarrow \mathbf{H}, \\
@@ -26,8 +28,11 @@ $$
 \end{aligned}
 $$
 
+以及
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDM5MzgzMjQsNjc3NDAzODYsMjAzMz
-g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
-OF19
+eyJoaXN0b3J5IjpbMTY5MjY3NDIzMSw2Nzc0MDM4NiwyMDMzOD
+g3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5MSwyMTEzOTIwODY4
+XX0=
 -->
