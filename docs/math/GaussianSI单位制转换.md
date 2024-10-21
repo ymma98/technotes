@@ -1,6 +1,6 @@
 # Gaussian SI 单位制转换
 
-看论文的时候经常会看到 Gaussian 单位制的表达式/公式，如果按照 NRL formulary 里面给的方法还是有些繁琐了。如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
+看论文的时候经常会看到 Gaussian 单位制的表达式/公式，需要转换为 SI 格式。如果按照 NRL formulary 里面给的方法还是有些繁琐了。如下 (注意 Gaussian $\rightarrow$ SI: $c \rightarrow (\epsilon_0\mu_0)^{-1/2}\alpha$)：
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241021/image.6m3w9oju91.webp)
 
@@ -24,7 +24,8 @@ $$
 & c \mathbf{B} \leftrightarrow \mathbf{B}, \\
 & 4 \pi \mathbf{D} \leftrightarrow \mathbf{D}, \\
 & 4 \pi \mathbf{H} / c \leftrightarrow \mathbf{H}, \\
-& \mathbf{M} / c \leftrightarrow \mathbf{M},
+& \mathbf{M} / c \leftrightarrow \mathbf{M}, \\
+& c \mathbf{A} \leftrightarrow  \mathbf{A}
 \end{aligned}
 $$
 
@@ -33,10 +34,10 @@ $$
 c^2=\left(\epsilon_0 \mu_0\right)^{-1}
 $$
 
-以及所有出现 $\epsilon$ 的地方都要凑成
+以及所有出现 $\epsilon$ 的地方都要凑成 $\epsilon_0 \epsilon$；所有出现 $\mu$ 的地方都要凑成 $\mu_0 \mu$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3NDM5ODc1OCw2Nzc0MDM4NiwyMDMzOD
-g3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5MSwyMTEzOTIwODY4
-XX0=
+eyJoaXN0b3J5IjpbLTE2OTc4NTUxNDMsNjc3NDAzODYsMjAzMz
+g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
+OF19
 -->
