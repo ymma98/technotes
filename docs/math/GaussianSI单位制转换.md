@@ -9,6 +9,7 @@
 $$
 \frac{B^2}{8\pi} (Gaussian) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (SI)= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (SI)
 $$
+
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
 除了以上方法，还有一种新方法，参考这篇文章:
@@ -31,19 +32,23 @@ $$
 $$
 
 以及
+
 $$
 c^2=\left(\epsilon_0 \mu_0\right)^{-1}
 $$
 
-以及所有出现 $\epsilon$ 的地方都要凑成 $\epsilon_0 \epsilon$；所有出现 $\mu$ 的地方都要凑成 $\mu_0 \mu$。
+并且所有出现 $\epsilon$ 的地方都要凑成 $\epsilon_0 \epsilon$；所有出现 $\mu$ 的地方都要凑成 $\mu_0 \mu$。
 
 
 * example 1.
 
+$$
+\boldsymbol{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \text{(SI}
+$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MzQ1NTQ5Niw2Nzc0MDM4NiwyMDMzOD
-g3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5MSwyMTEzOTIwODY4
-XX0=
+eyJoaXN0b3J5IjpbLTEwNTk1NDg3MTIsNjc3NDAzODYsMjAzMz
+g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
+OF19
 -->
