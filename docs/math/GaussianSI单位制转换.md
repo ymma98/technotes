@@ -43,18 +43,19 @@ $$
 * example 1.
 
 $$
-\boldsymbol{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \quad \text{(SI)}
+\boldsymbol{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \quad \text{(Gaussian)}
 $$
 
 $$
 \begin{aligned}
-\boldsymbol{\nabla} \times \mathbf{H} \frac{4\pi}{c} = \frac{4\pi}{c} \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \frac{4\pi}{c}
+\boldsymbol{\nabla} \times \mathbf{H} \frac{4\pi}{c} &= \frac{4\pi}{c} \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t} \frac{4\pi}{c} \\
+\boldsymbol{\nabla} \times \mathbf{H} &= \mathbf{J} + \frac{\partial \mathbf{D}}{\partial t}  \quad \text{(SI)}
 \end{aligned}
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjQ4MTc1MTcsNjc3NDAzODYsMjAzMz
+eyJoaXN0b3J5IjpbLTEwNTM4MjEwMTQsNjc3NDAzODYsMjAzMz
 g4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2
 OF19
 -->
