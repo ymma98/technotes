@@ -107,7 +107,11 @@ bind -T copy-mode-vi C-j send-keys -X copy-pipe-and-cancel "xclip -i -f -selecti
 set -g mouse on
 set-window-option -g mode-keys vi
 ```
+
+
+## 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk0NjQ2NDU2LC02ODA1MTM5ODEsLTEwOD
-E4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
+eyJoaXN0b3J5IjpbLTM2MTc1NTM3NCw5OTQ2NDY0NTYsLTY4MD
+UxMzk4MSwtMTA4MTg2NTM5Myw2NTIzNjk3OTUsLTE1Nzc5NDEz
+MjRdfQ==
 -->
