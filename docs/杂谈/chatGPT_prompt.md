@@ -12,7 +12,16 @@
 
 
 * 学习 dealii
-* 
+
+```bash
+Imagine you are an expert familiar with the deal.II library and highly proficient in numerical analysis, specifically in Finite Element Method (FEM). I will provide you with C++ code, and I need you to explain it in detail, focusing on both its structure and functionality. Please also note that I only understand the syntax of C, so if the code contains any advanced C++ concepts or syntax that is different from C, kindly explain these concepts to me using simple heuristic examples.
+
+Your explanation should cover:
+
+1.  The purpose of each code segment.
+2.  How it fits into the broader context of FEM and _deal.II_.
+3.  Any key differences between C and C++ syntax, with clear, practical examples that relate to the code.
+```
 
 
 * 英-英 润色
@@ -39,6 +48,6 @@ Improve the sentences imaging you are proficient in fusion plasma physics. give 
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTg2OTc1MzUsLTEzOTk5NDIzMjldfQ
+eyJoaXN0b3J5IjpbLTE3ODAwNDc1NDgsLTEzOTk5NDIzMjldfQ
 ==
 -->
