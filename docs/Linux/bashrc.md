@@ -109,9 +109,9 @@ set-window-option -g mode-keys vi
 ```
 
 
-## 
+## ~/.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2MTc1NTM3NCw5OTQ2NDY0NTYsLTY4MD
-UxMzk4MSwtMTA4MTg2NTM5Myw2NTIzNjk3OTUsLTE1Nzc5NDEz
-MjRdfQ==
+eyJoaXN0b3J5IjpbLTE3OTI4MDgyNTEsOTk0NjQ2NDU2LC02OD
+A1MTM5ODEsLTEwODE4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQx
+MzI0XX0=
 -->
