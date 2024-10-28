@@ -121,7 +121,7 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 config.color_scheme = 'jellybeans'
 config.font = wezterm.font 'DejaVu Sans Mono'
-config.font_size = 14
+config.font_size = 16
 
 -- This is where you actually apply your config choices
 config.keys = {
@@ -262,7 +262,7 @@ config.keys = {
 return config
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwNjA4OTIxNSw5OTQ2NDY0NTYsLTY4MD
-UxMzk4MSwtMTA4MTg2NTM5Myw2NTIzNjk3OTUsLTE1Nzc5NDEz
-MjRdfQ==
+eyJoaXN0b3J5IjpbLTEyOTQwNDk2NjEsOTk0NjQ2NDU2LC02OD
+A1MTM5ODEsLTEwODE4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQx
+MzI0XX0=
 -->
