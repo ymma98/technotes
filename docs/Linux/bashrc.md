@@ -111,6 +111,8 @@ set-window-option -g mode-keys vi
 
 ## ~/.wezterm.lua
 
+[wezterm 官网](https://wezfurlong.org/wezterm/index.html)
+
 ```bash
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
@@ -262,7 +264,7 @@ config.keys = {
 return config
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTQwNDk2NjEsOTk0NjQ2NDU2LC02OD
-A1MTM5ODEsLTEwODE4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQx
-MzI0XX0=
+eyJoaXN0b3J5IjpbMjA0NzU1OTEwLDk5NDY0NjQ1NiwtNjgwNT
+EzOTgxLC0xMDgxODY1MzkzLDY1MjM2OTc5NSwtMTU3Nzk0MTMy
+NF19
 -->
