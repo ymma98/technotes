@@ -113,7 +113,7 @@ set-window-option -g mode-keys vi
 
 [wezterm 官网](https://wezfurlong.org/wezterm/index.html)
 
-```bash
+```lua
 -- Pull in the wezterm API
 local wezterm = require 'wezterm'
 
@@ -249,22 +249,24 @@ config.keys = {
     {
         key = '{',
         mods = 'CTRL|SHIFT',
-        action = wezterm.action.MoveTabRelative(-1),
+        action = wezterm.action.ActivateTabRelative(-1),
     },
 
     -- Next tab (Ctrl + shift + })
     {
         key = '}',
         mods = 'CTRL|SHIFT',
-        action = wezterm.action.MoveTabRelative(1),
+        action = wezterm.action.ActivateTabRelative(1),
     },
 }
+
+
 
 -- and finally, return the configuration to wezterm
 return config
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0NzU1OTEwLDk5NDY0NjQ1NiwtNjgwNT
-EzOTgxLC0xMDgxODY1MzkzLDY1MjM2OTc5NSwtMTU3Nzk0MTMy
-NF19
+eyJoaXN0b3J5IjpbOTIxOTIwMTAsMjA0NzU1OTEwLDk5NDY0Nj
+Q1NiwtNjgwNTEzOTgxLC0xMDgxODY1MzkzLDY1MjM2OTc5NSwt
+MTU3Nzk0MTMyNF19
 -->
