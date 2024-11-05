@@ -76,8 +76,13 @@ $$
 $$
 \|F\|_*:=\sup _{0 \neq v \in V} \frac{|F(v)|}{\|v\|}=\sup _{0 \neq v \in V} \frac{|\langle F, v\rangle|}{\|v\|} .
 $$
+
+## Galerkin method
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2ODk1NjgyMiwxNjk4Mjg3MTY5LC0zOD
-k4NDU3OTksMjA3OTYzMTAyNCwyMDc1OTM4NjU0LC03NjM3OTky
-MzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
+eyJoaXN0b3J5IjpbLTE2NzEwNzMzNDYsMTQ2ODk1NjgyMiwxNj
+k4Mjg3MTY5LC0zODk4NDU3OTksMjA3OTYzMTAyNCwyMDc1OTM4
+NjU0LC03NjM3OTkyMzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ
+==
 -->
