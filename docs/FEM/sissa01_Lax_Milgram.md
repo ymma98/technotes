@@ -42,7 +42,7 @@ $$
 $$
 
 所以典型的 FEM 流程是:
-1. replace the space $V$ (infinite dimensional, Hilbert) with $V_h$ (finite dimensional)。$V_h = \text{span}\{v_i\}_{i=1}^{n}$，所以 $\forall u_h$, 存在一个矢量, $\exist\{u^i\}_{i=1}^n \in \mathbb{R}^n$, s.t. $u_h(x)=u^iv_i (x)$
+1. replace the space $V$ (infinite dimensional, Hilbert) with $V_h$ (finite dimensional)。$V_h = \text{span}\{v_i\}_{i=1}^{n}$，所以 $\forall u_h$, 存在一个矢量, $\exists \{u^i\}_{i=1}^n \in \mathbb{R}^n$, s.t. $u_h(x)=u^iv_i (x)$
 2. $A u = F \quad \text{in} \quad V^\prime$ 替换为 $A u_h = F \quad \text{in} \quad V^\prime_h$ ，得到 $\langle Au_h, v_h\rangle = \int_\Omega Au_h v_h, \quad \forall v_h\in V_h$
 3. 矩阵化。$\langle A v_j u^j, v_i\rangle=\langle F, v_i\rangle$, $i=1,2,...,n$。所以有 $\mathbb{A}_{ij} u^j = \mathbb{F}_i$, 其中 $\mathbb{A}_{ij}\coloneqq \langle Av_j,v_i \rangle$, $\mathbb{F}_{i}\coloneqq \langle F,v_i \rangle$
 
@@ -59,7 +59,7 @@ $$
 
 with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$  (连续性条件)
 
-并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exist \alpha\in \mathbb{R}, \alpha > 0$. (强制性条件)
+并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exists \alpha\in \mathbb{R}, \alpha > 0$. (强制性条件)
 
 在以上两个条件下，Lax-Milgram 引理保证了：
 
@@ -81,8 +81,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTI5NjA2OTAsLTE2NzEwNzMzNDYsMT
-Q2ODk1NjgyMiwxNjk4Mjg3MTY5LC0zODk4NDU3OTksMjA3OTYz
-MTAyNCwyMDc1OTM4NjU0LC03NjM3OTkyMzUsMTkwNDcxNzM0My
-wxMDEwODIyNDNdfQ==
+eyJoaXN0b3J5IjpbMTc5MjY1NjY4MiwtMjA1Mjk2MDY5MCwtMT
+Y3MTA3MzM0NiwxNDY4OTU2ODIyLDE2OTgyODcxNjksLTM4OTg0
+NTc5OSwyMDc5NjMxMDI0LDIwNzU5Mzg2NTQsLTc2Mzc5OTIzNS
+wxOTA0NzE3MzQzLDEwMTA4MjI0M119
 -->
