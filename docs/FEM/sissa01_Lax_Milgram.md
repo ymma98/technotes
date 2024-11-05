@@ -19,10 +19,8 @@ $$
 
 上式可以表示为 weak form. 
 
-$-\Delta$ 可以视为 a weak derivative operator on a Hilbert space
-
-$-\Delta = -\Sum \frac{\partial u}{}$
+$-\Delta$ 可以视为 a weak derivative operator on a Hilbert space。这里相当于把 Laplace operator 的经典定义 $-\Delta = -\sum_{i=1}^d \frac{\partial^2 u}{\partial x_i^2}$ 更改为了弱形式的定义。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNjI4NDE2NF19
+eyJoaXN0b3J5IjpbMTE5NTU0NjQxMV19
 -->
