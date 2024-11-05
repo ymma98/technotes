@@ -38,8 +38,8 @@ $$
 duality opertor $\langle \cdot, \cdot \rangle$ 定义为 
 
 $$
-\langle Au, v\rangle
+\langle Au, v\rangle \coloneqq \int_\Omega Au v
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5NDM1MjM5OCwxMDEwODIyNDNdfQ==
+eyJoaXN0b3J5IjpbMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
 -->
