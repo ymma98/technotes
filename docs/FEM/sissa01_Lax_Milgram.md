@@ -55,9 +55,9 @@ a: V\times V \rightarrow \mathbb{R} \\
 a(u,v) \coloneqq \langle Au, v\rangle
 $$
 
-with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$
+with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$ 并且有 $a(u,v)$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4OTg0NTc5OSwyMDc5NjMxMDI0LDIwNz
-U5Mzg2NTQsLTc2Mzc5OTIzNSwxOTA0NzE3MzQzLDEwMTA4MjI0
-M119
+eyJoaXN0b3J5IjpbLTEyMjU5MDQwOSwtMzg5ODQ1Nzk5LDIwNz
+k2MzEwMjQsMjA3NTkzODY1NCwtNzYzNzk5MjM1LDE5MDQ3MTcz
+NDMsMTAxMDgyMjQzXX0=
 -->
