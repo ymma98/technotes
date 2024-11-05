@@ -29,7 +29,7 @@ $$
 A u = F \quad \text{in} \quad V^\prime
 $$
 
-这里 $Au$ 是 $V^\prime$ 中的一个 linear operator. 上式也等价于
+这里 $Au$ 是 $V^\prime$ 中的一个 linear operator (linear functional: $V \rightarrow \mathbb{R}$). 上式也等价于
 
 $$
 \langle Au, v\rangle = \langle F,v\rangle \quad \forall \quad v \in V
@@ -41,5 +41,6 @@ $$
 \langle Au, v\rangle \coloneqq \int_\Omega Au v
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
+eyJoaXN0b3J5IjpbLTc2Mzc5OTIzNSwxOTA0NzE3MzQzLDEwMT
+A4MjI0M119
 -->
