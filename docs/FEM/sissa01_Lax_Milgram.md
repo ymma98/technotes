@@ -8,8 +8,8 @@ ___
 
 ## prototypical problem of PDE
 
-假设 $\Omega$ 是 Lipschitz, bounded
+假设 $\Omega$ 是 Lipschitz, bounded，并且是 subset of $\mathbf{R}^d$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDA4MDA2NzhdfQ==
+eyJoaXN0b3J5IjpbLTE3MjM5NTY2NDhdfQ==
 -->
