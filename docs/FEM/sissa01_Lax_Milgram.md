@@ -59,7 +59,7 @@ $$
 
 with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$  (连续性条件)
 
-并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exist \alpha\in \mathbb{R}, \alpha > 0$.
+并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exist \alpha\in \mathbb{R}, \alpha > 0$. (强制性条件)
 
 在以上两个条件下，Lax-Milgram 引理保证了：
 
@@ -68,7 +68,7 @@ with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall 
 解的唯一性。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg3ODk3Mzc2LDE2OTgyODcxNjksLTM4OT
-g0NTc5OSwyMDc5NjMxMDI0LDIwNzU5Mzg2NTQsLTc2Mzc5OTIz
-NSwxOTA0NzE3MzQzLDEwMTA4MjI0M119
+eyJoaXN0b3J5IjpbLTg2MTk3NzM1OSwxNjk4Mjg3MTY5LC0zOD
+k4NDU3OTksMjA3OTYzMTAyNCwyMDc1OTM4NjU0LC03NjM3OTky
+MzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
 -->
