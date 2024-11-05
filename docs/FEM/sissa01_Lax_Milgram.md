@@ -55,9 +55,9 @@ a: V\times V \rightarrow \mathbb{R} \\
 a(u,v) \coloneqq \langle Au, v\rangle
 $$
 
-with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$ 并且有 $a(u,v)$
+with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$ 并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exist \alpha\in \mathbb{R}, \alpha > 0$.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjU5MDQwOSwtMzg5ODQ1Nzk5LDIwNz
+eyJoaXN0b3J5IjpbMTY5ODI4NzE2OSwtMzg5ODQ1Nzk5LDIwNz
 k2MzEwMjQsMjA3NTkzODY1NCwtNzYzNzk5MjM1LDE5MDQ3MTcz
 NDMsMTAxMDgyMjQzXX0=
 -->
