@@ -48,9 +48,13 @@ $$
 
 ## Lax-Milgram lemma
 
-Assume $V$ is Hilbert with norm $||\cdot ||_V$, 
+Assume $V$ is Hilbert with norm $\lVert \cdot \rVert_V$, and assume $a$ is a bilinear operator on $V$
+
+$$
+a: V\times V \r
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwMTU0NDg3NiwyMDc5NjMxMDI0LDIwNz
+eyJoaXN0b3J5IjpbMTk0ODkxMTgzOSwyMDc5NjMxMDI0LDIwNz
 U5Mzg2NTQsLTc2Mzc5OTIzNSwxOTA0NzE3MzQzLDEwMTA4MjI0
 M119
 -->
