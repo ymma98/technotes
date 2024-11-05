@@ -63,12 +63,12 @@ with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall 
 
 在以上两个条件下，Lax-Milgram 引理保证了：
 
-解的存在性：变分问题有解，即存在 $u\in V$ 满足 $a(u,v)=f(v)$。
+解的存在性：变分问题有解，即存在 $u\in V$ 满足 $a(u,v)=F(v)=\langle Au, v\rangle = \langle F,v\rangle$。
 
 解的唯一性。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MTk3NzM1OSwxNjk4Mjg3MTY5LC0zOD
-k4NDU3OTksMjA3OTYzMTAyNCwyMDc1OTM4NjU0LC03NjM3OTky
-MzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
+eyJoaXN0b3J5IjpbMzcxODU1MzM3LDE2OTgyODcxNjksLTM4OT
+g0NTc5OSwyMDc5NjMxMDI0LDIwNzU5Mzg2NTQsLTc2Mzc5OTIz
+NSwxOTA0NzE3MzQzLDEwMTA4MjI0M119
 -->
