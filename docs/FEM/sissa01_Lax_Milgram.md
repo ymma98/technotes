@@ -17,6 +17,12 @@ $$
 u = 0 \quad \text{on} \quad \partial \Omega 
 $$
 
+上式可以表示为 weak form. 
+
+$-\Delta$ 可以视为 a weak derivative operator on a Hilbert space
+
+$-\Delta = -\Sum \frac{\partial u}{}$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDA4Nzg5NzZdfQ==
+eyJoaXN0b3J5IjpbMTQxNjI4NDE2NF19
 -->
