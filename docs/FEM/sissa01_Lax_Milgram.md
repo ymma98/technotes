@@ -67,8 +67,13 @@ with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall 
 
 解的唯一性。
 
+并且
+
+$$
+\|F\|_*:=\sup _{0 \neq v \in V} \frac{|F(v)|}{\|v\|}=\sup _{0 \neq v \in V} \frac{|F F, v\rangle \mid}{\|v\|} .
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzcxODU1MzM3LDE2OTgyODcxNjksLTM4OT
-g0NTc5OSwyMDc5NjMxMDI0LDIwNzU5Mzg2NTQsLTc2Mzc5OTIz
-NSwxOTA0NzE3MzQzLDEwMTA4MjI0M119
+eyJoaXN0b3J5IjpbLTE4MTE1OTUyNTgsMTY5ODI4NzE2OSwtMz
+g5ODQ1Nzk5LDIwNzk2MzEwMjQsMjA3NTkzODY1NCwtNzYzNzk5
+MjM1LDE5MDQ3MTczNDMsMTAxMDgyMjQzXX0=
 -->
