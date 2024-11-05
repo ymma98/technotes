@@ -41,6 +41,7 @@ nav:
     - 有限元空间: FEM/有限元空间.md
     - 基函数与数值积分: FEM/基函数与数值积分.md
     - 数据结构_HeXiaoming: FEM/数据结构_HeXiaoming.md
+    - sissa01_Lax-Milgram: FEM/sissa01_Lax_Milgram.md
     - dealii-01_概况: FEM/dealii-01_概况.md
     - dealii-02_网格: FEM/dealii-02_网格.md
     - dealii-03_自由度: FEM/dealii-03_自由度.md
