@@ -32,8 +32,8 @@ $$
 上式也等价于
 
 $$
-\langle Au, v\rangle = \langle F 
+\langle Au, v\rangle = \langle F,v\rangle \quad \forall \quad v \in V
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODMwNDMxODFdfQ==
+eyJoaXN0b3J5IjpbMTAxMDgyMjQzXX0=
 -->
