@@ -29,11 +29,17 @@ $$
 A u = F \quad \text{in} \quad V^\prime
 $$
 
-这里 $Au$ 是 $V^\prime$ 中的yi'ge上式也等价于
+这里 $Au$ 是 $V^\prime$ 中的一个 linear operator. 上式也等价于
 
 $$
 \langle Au, v\rangle = \langle F,v\rangle \quad \forall \quad v \in V
 $$
+
+duality opertor $\langle \cdot, \cdot \rangle$ 定义为 
+
+$$
+\langle Au, v\rangle
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg4NzI2MDgsMTAxMDgyMjQzXX0=
+eyJoaXN0b3J5IjpbLTY5NDM1MjM5OCwxMDEwODIyNDNdfQ==
 -->
