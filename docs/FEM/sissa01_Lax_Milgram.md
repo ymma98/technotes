@@ -40,7 +40,10 @@ duality opertor $\langle \cdot, \cdot \rangle$ 定义为
 $$
 \langle Au, v\rangle \coloneqq \int_\Omega Au v
 $$
+
+所以典型的 FEM 流程是:
+1. replace the space $V$ (infinite dimensional, Hilbert) with $V_h$ (finite dimensional)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2Mzc5OTIzNSwxOTA0NzE3MzQzLDEwMT
-A4MjI0M119
+eyJoaXN0b3J5IjpbLTgzNDQ4ODQ3NCwtNzYzNzk5MjM1LDE5MD
+Q3MTczNDMsMTAxMDgyMjQzXX0=
 -->
