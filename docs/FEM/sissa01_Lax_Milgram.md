@@ -8,7 +8,7 @@ ___
 
 ## prototypical problem of PDE
 
-假设 $\Omega$ 是 Lipschitz (典例: 具有有界的一阶导数。在 FEM 中，说 domain is Lipschitz, 意味着 $\partial\Omega$满足 Lipschitz 连续性条件，边界不过于尖锐或过于陡峭), bounded，并且是 subset of $\mathbb{R}^d$。
+假设 $\Omega$ 是 Lipschitz (典例: 具有有界的一阶导数。在 FEM 中，说 domain is Lipschitz, 意味着 $\partial\Omega$ 满足 Lipschitz 连续性条件，边界不过于尖锐或过于陡峭), bounded，并且是 subset of $\mathbb{R}^d$。
 
 典型问题是 elliptic problem. 
 
@@ -21,7 +21,7 @@ $$
 
 $-\Delta$ 可以视为 a weak derivative operator on a Hilbert space。这里相当于把 Laplace operator 的经典定义 $-\Delta = -\sum_{i=1}^d \frac{\partial^2 u}{\partial x_i^2}$ 更改为了弱形式的定义。
 
-弱形式的视角中，$-\Delta$ 可以被视作一种映射 $A: V \rightarrow V^\prime$, 将 $V$ ($V$ is Hilbert. FEM 中 Hilbert 的意思是该空间有以下性质, 1. 向量空间，空间中定义了加法和数乘。2. 内积空间，空间定义了内积，并且内积运算是线性的，可交换顺序的，正定的 $(u,u)\geq0$。3. 完备性。意味着任何在 $V$ 中的 Cauchy 序列，即一组元素之间的距离随着序列的增加而趋近于零，都会收敛到 $V$ 中的某个元素) 映射为其对偶空间。
+弱形式的视角中，$-\Delta$ 可以被视作一种映射 $A: V \rightarrow V^\prime$, 将 $V$ ($V$ is Hilbert. FEM 中 Hilbert 的意思是该空间有以下性质, 1. 向量空间，空间中定义了加法和数乘。2. 内积空间，空间定义了内积，并且内积运算是线性的，可交换顺序的，正定的 $(u,u)\geq0$。3. 完备性。意味着任何在 $V$ 中的 Cauchy 序列，即一组元素之间的距离随着序列的增加而趋近于零，都会收敛到 $V$ 中的某个元素) 映射为其对偶空间 (在对偶空间中，每个元素 $f\in V^\prime$ 都是一个线性泛函，作用于 $V$  中的函数 $u$，并返回一个数值)。
 
 于是 
 
@@ -35,5 +35,5 @@ $$
 \langle Au, v\rangle = \langle F,v\rangle \quad \forall \quad v \in V
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxMDgyMjQzXX0=
+eyJoaXN0b3J5IjpbLTIwOTMwODE5OTMsMTAxMDgyMjQzXX0=
 -->
