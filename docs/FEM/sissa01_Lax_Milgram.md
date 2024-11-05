@@ -14,9 +14,9 @@ ___
 
 $$
 -\Delta u = f \quad \text{in} \quad \Omega \\
-u = 0 \quad \text{on} \q \partial \Omega 
+u = 0 \quad \text{on} \quad \partial \Omega 
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3NjE4NDgzNF19
+eyJoaXN0b3J5IjpbNDMzNjgwMTY2XX0=
 -->
