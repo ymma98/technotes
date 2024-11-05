@@ -42,8 +42,9 @@ $$
 $$
 
 所以典型的 FEM 流程是:
-1. replace the space $V$ (infinite dimensional, Hilbert) with $V_h$ (finite dimensional)
+1. replace the space $V$ (infinite dimensional, Hilbert) with $V_h$ (finite dimensional)。$V_h = \text{span}\{v_i\}$
+2. $A u = F \quad \text{in} \quad V^\prime$ 替换为 $A u_h = F \quad \text{in} \quad V^\prime_h$ 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNDQ4ODQ3NCwtNzYzNzk5MjM1LDE5MD
-Q3MTczNDMsMTAxMDgyMjQzXX0=
+eyJoaXN0b3J5IjpbLTE3MjgwNDc0NjAsLTc2Mzc5OTIzNSwxOT
+A0NzE3MzQzLDEwMTA4MjI0M119
 -->
