@@ -55,9 +55,18 @@ a: V\times V \rightarrow \mathbb{R} \\
 a(u,v) \coloneqq \langle Au, v\rangle
 $$
 
-with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$ 并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exist \alpha\in \mathbb{R}, \alpha > 0$.
+with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$ 
+
+并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exist \alpha\in \mathbb{R}, \alpha > 0$.
+
+在以上两个条件下，Lax-Milgram 引理保证了：
+
+解的存在性：变分问题有解，即存在 $u\in V$ 满足 $a(u,v)$  u∈Vu \in Vu∈V 满足 a(u,v)=f(v)a(u, v) = f(v)a(u,v)=f(v)。
+
+解的存在性。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5ODI4NzE2OSwtMzg5ODQ1Nzk5LDIwNz
-k2MzEwMjQsMjA3NTkzODY1NCwtNzYzNzk5MjM1LDE5MDQ3MTcz
-NDMsMTAxMDgyMjQzXX0=
+eyJoaXN0b3J5IjpbLTQ0MDE0NDcxNSwxNjk4Mjg3MTY5LC0zOD
+k4NDU3OTksMjA3OTYzMTAyNCwyMDc1OTM4NjU0LC03NjM3OTky
+MzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
 -->
