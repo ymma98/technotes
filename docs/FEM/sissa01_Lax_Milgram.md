@@ -51,10 +51,13 @@ $$
 Assume $V$ is Hilbert with norm $\lVert \cdot \rVert_V$, and assume $a$ is a bilinear operator on $V$
 
 $$
-a: V\times V \r
+a: V\times V \rightarrow \mathbb{R} \\
+a(u,v) \coloneqq \langle Au, v\rangle
 $$
+
+with $a(u,v)$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0ODkxMTgzOSwyMDc5NjMxMDI0LDIwNz
+eyJoaXN0b3J5IjpbLTg1ODEzMTM4NiwyMDc5NjMxMDI0LDIwNz
 U5Mzg2NTQsLTc2Mzc5OTIzNSwxOTA0NzE3MzQzLDEwMTA4MjI0
 M119
 -->
