@@ -21,6 +21,8 @@ $$
 
 $-\Delta$ 可以视为 a weak derivative operator on a Hilbert space。这里相当于把 Laplace operator 的经典定义 $-\Delta = -\sum_{i=1}^d \frac{\partial^2 u}{\partial x_i^2}$ 更改为了弱形式的定义。
 
+$-\Delta$ 被视作一种映射 $A: V \rightarrow V^\prime$, 将 $V$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5NTU0NjQxMV19
+eyJoaXN0b3J5IjpbMTYyMDQ2NTQzOV19
 -->
