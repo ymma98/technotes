@@ -45,7 +45,12 @@ $$
 1. replace the space $V$ (infinite dimensional, Hilbert) with $V_h$ (finite dimensional)。$V_h = \text{span}\{v_i\}_{i=1}^{n}$，所以 $\forall u_h$, 存在一个矢量, $\exist\{u^i\}_{i=1}^n \in \mathbb{R}^n$, s.t. $u_h(x)=u^iv_i (x)$
 2. $A u = F \quad \text{in} \quad V^\prime$ 替换为 $A u_h = F \quad \text{in} \quad V^\prime_h$ ，得到 $\langle Au_h, v_h\rangle = \int_\Omega Au_h v_h, \quad \forall v_h\in V_h$
 3. 矩阵化。$\langle A v_j u^j, v_i\rangle=\langle F, v_i\rangle$, $i=1,2,...,n$。所以有 $\mathbb{A}_{ij} u^j = \mathbb{F}_i$, 其中 $\mathbb{A}_{ij}\coloneqq \langle Av_j,v_i \rangle$, $\mathbb{F}_{i}\coloneqq \langle F,v_i \rangle$
+
+## Lax-Milgram lemma
+
+Assume $V$ is Hilbert with norm $||\cdot ||_V$, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3OTYzMTAyNCwyMDc1OTM4NjU0LC03Nj
-M3OTkyMzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
+eyJoaXN0b3J5IjpbLTQwMTU0NDg3NiwyMDc5NjMxMDI0LDIwNz
+U5Mzg2NTQsLTc2Mzc5OTIzNSwxOTA0NzE3MzQzLDEwMTA4MjI0
+M119
 -->
