@@ -8,7 +8,7 @@ ___
 
 ## prototypical problem of PDE
 
-假设 $\Omega$ 是 Lipschitz (典例: 具有有界的一阶导数。在 FEM 中，说 domain is Lip), bounded，并且是 subset of $\mathbb{R}^d$。
+假设 $\Omega$ 是 Lipschitz (典例: 具有有界的一阶导数。在 FEM 中，说 domain is Lipschitz, 意味着 $\partial\Omega$满足 Lipschitz 连续性条件，边界不过于尖锐或过于陡峭), bounded，并且是 subset of $\mathbb{R}^d$。
 
 典型问题是 elliptic problem. 
 
@@ -18,5 +18,5 @@ u = 0 \quad \text{on} \quad \partial \Omega
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzkyMDAxOTI0XX0=
+eyJoaXN0b3J5IjpbLTEzNDA4Nzg5NzZdfQ==
 -->
