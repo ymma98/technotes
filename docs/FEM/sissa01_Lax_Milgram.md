@@ -29,11 +29,11 @@ $$
 A u = F \quad \text{in} \quad V^\prime
 $$
 
-上式也等价于
+这里 $Au$ 是 $V^\prime$ 中的yi'ge上式也等价于
 
 $$
 \langle Au, v\rangle = \langle F,v\rangle \quad \forall \quad v \in V
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTMwODE5OTMsMTAxMDgyMjQzXX0=
+eyJoaXN0b3J5IjpbMjg4NzI2MDgsMTAxMDgyMjQzXX0=
 -->
