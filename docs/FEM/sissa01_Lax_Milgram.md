@@ -6,10 +6,10 @@
 
 ___
 
-## prototyp
+## prototypical problem of PDE
 
-假设 $\Omega$ 是
+假设 $\Omega$ 是 Lipschitz, bounded
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MTgwMDIxMV19
+eyJoaXN0b3J5IjpbLTE5NDA4MDA2NzhdfQ==
 -->
