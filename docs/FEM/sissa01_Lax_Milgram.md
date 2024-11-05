@@ -70,10 +70,14 @@ with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall 
 并且
 
 $$
-\|F\|_*:=\sup _{0 \neq v \in V} \frac{|F(v)|}{\|v\|}=\sup _{0 \neq v \in V} \frac{|F F, v\rangle \mid}{\|v\|} .
+\|u\| \leqslant \frac{1}{\alpha}\|F\|_*
+$$
+
+$$
+\|F\|_*:=\sup _{0 \neq v \in V} \frac{|F(v)|}{\|v\|}=\sup _{0 \neq v \in V} \frac{|\langle F, v\rangle|}{\|v\|} .
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTE1OTUyNTgsMTY5ODI4NzE2OSwtMz
-g5ODQ1Nzk5LDIwNzk2MzEwMjQsMjA3NTkzODY1NCwtNzYzNzk5
-MjM1LDE5MDQ3MTczNDMsMTAxMDgyMjQzXX0=
+eyJoaXN0b3J5IjpbMTQ2ODk1NjgyMiwxNjk4Mjg3MTY5LC0zOD
+k4NDU3OTksMjA3OTYzMTAyNCwyMDc1OTM4NjU0LC03NjM3OTky
+MzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
 -->
