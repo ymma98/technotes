@@ -8,8 +8,15 @@ ___
 
 ## prototypical problem of PDE
 
-假设 $\Omega$ 是 Lipschitz (典例: 具有有界的一阶导数), bounded，并且是 subset of $\mathbb{R}^d$
+假设 $\Omega$ 是 Lipschitz (典例: 具有有界的一阶导数), bounded，并且是 subset of $\mathbb{R}^d$。
+
+典型问题是 elliptic problem. 
+
+$$
+-\Delta u = f \quad \text{in} \quad \Omega \\
+u = 0 \quad \text{on} \q \partial \Omega 
+$$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5MjkyMzMwOV19
+eyJoaXN0b3J5IjpbMTc3NjE4NDgzNF19
 -->
