@@ -44,7 +44,8 @@ $$
 所以典型的 FEM 流程是:
 1. replace the space $V$ (infinite dimensional, Hilbert) with $V_h$ (finite dimensional)。$V_h = \text{span}\{v_i\}_{i=1}^{n}$，所以 $\forall u_h$, 存在一个矢量, $\exist\{u^i\}_{i=1}^n \in \mathbb{R}^n$, s.t. $u_h(x)=u^iv_i (x)$
 2. $A u = F \quad \text{in} \quad V^\prime$ 替换为 $A u_h = F \quad \text{in} \quad V^\prime_h$ ，得到 $\langle Au_h, v_h\rangle = \int_\Omega Au_h v_h, \quad \forall v_h\in V_h$
+3. 矩阵化。$\langle A v_j u^$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzUwNTU5MjUsMjA3NTkzODY1NCwtNz
-YzNzk5MjM1LDE5MDQ3MTczNDMsMTAxMDgyMjQzXX0=
+eyJoaXN0b3J5IjpbLTg4NDcyMTU1NCwyMDc1OTM4NjU0LC03Nj
+M3OTkyMzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
 -->
