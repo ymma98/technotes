@@ -48,6 +48,8 @@ $$
 
 ## Lax-Milgram lemma
 
+Lax-Milgram 引理主要说明了线性变分问题在满足一定条件下存在唯一的解。具体而言，它确保了当双线性形式满足连续性和强制性（coercivity）条件时，弱形式（变分形式）的线性偏微分方程在所选的 Hilbert 空间中具有唯一解。
+
 Assume $V$ is Hilbert with norm $\lVert \cdot \rVert_V$, and assume $a$ is a bilinear operator on $V$
 
 $$
@@ -55,18 +57,18 @@ a: V\times V \rightarrow \mathbb{R} \\
 a(u,v) \coloneqq \langle Au, v\rangle
 $$
 
-with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$ 
+with $a(u,v)\leq \lVert A \rVert \lVert u \rVert \lVert v \rVert, \quad \forall u,v\in V$  (连续性条件)
 
 并且有 $a(u,u)\geq \alpha \lVert u\rVert^2$, assuming $\exist \alpha\in \mathbb{R}, \alpha > 0$.
 
 在以上两个条件下，Lax-Milgram 引理保证了：
 
-解的存在性：变分问题有解，即存在 $u\in V$ 满足 $a(u,v)$  u∈Vu \in Vu∈V 满足 a(u,v)=f(v)a(u, v) = f(v)a(u,v)=f(v)。
+解的存在性：变分问题有解，即存在 $u\in V$ 满足 $a(u,v)=f(v)$。
 
-解的存在性。
+解的唯一性。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0MDE0NDcxNSwxNjk4Mjg3MTY5LC0zOD
-k4NDU3OTksMjA3OTYzMTAyNCwyMDc1OTM4NjU0LC03NjM3OTky
-MzUsMTkwNDcxNzM0MywxMDEwODIyNDNdfQ==
+eyJoaXN0b3J5IjpbMjg3ODk3Mzc2LDE2OTgyODcxNjksLTM4OT
+g0NTc5OSwyMDc5NjMxMDI0LDIwNzU5Mzg2NTQsLTc2Mzc5OTIz
+NSwxOTA0NzE3MzQzLDEwMTA4MjI0M119
 -->
