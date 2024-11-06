@@ -6,30 +6,22 @@
 * 有限元方法的基本设置
 
 我们将解决一个简单版本的泊松方程，其边界值为零，但右侧为非零：
-
 $$
 -\Delta u = f = 0 \text{ in } \Omega,\\
 u=0 \text{ on } \partial\Omega.
 $$
-
 我们将在正方形 $\Omega = [-1, 1]^2$ 上解决此方程。在这个程序中，我们还将仅考虑特定情况 $f(x) = 1$，并将在下一个教程程序中回到如何实现更一般的情况。
 
 如果您已经学习了有限元方法的基础，您会记得我们需要采取的步骤，以通过**有限维逼近来近似解 $u$**。具体来说，我们首先需要推导上述方程的弱形式，方法是将方程从左侧乘以测试函数 $\varphi$ 并在区域 $\Omega$ 上积分：
-
 $$
 -\int_\Omega \varphi \Delta u = \int_\Omega \varphi f.
 $$
-
 这可以通过分部积分得到：
-
 $$
 \int_\Omega \nabla \varphi \cdot \nabla u - \int_{\partial\Omega} \varphi \vec{n} \cdot \nabla u = \int_\Omega \varphi f.
 $$
-
 测试函数 $\varphi$ 必须满足相同类型的边界条件（在数学术语中：它需要来自我们寻求解的集合的切空间），因此在边界上 $\varphi = 0$，因此我们要寻找的弱形式为
-
 $$(\nabla \varphi, \nabla u) = (\varphi, f),$$
-
 这里我们使用了**常用的符号 $(a, b) = \int_\Omega ab$**。该问题要求寻找一个函数 $u$，使得对于来自适当空间（这里是 $H^1$ 空间）的所有测试函数 $\varphi$，该语句都成立。
 
 当然，在一般情况下我们无法在计算机上找到这样的函数，而是我们寻求一个逼近 $u_h(x) = \sum_j U_j \varphi_j(x)$，其中 $U_j$ 是我们需要确定的未知扩展系数（该问题的“自由度”），而 $\varphi_i(x)$ 是我们将使用的有限元形状函数。为了定义这些形状函数，我们需要以下内容：
@@ -40,43 +32,31 @@ $$(\nabla \varphi, \nabla u) = (\varphi, f),$$
 4. 一个映射，告诉我们如何从参考单元上有限元类定义的形状函数获取实际单元上的形状函数。默认情况下，除非您明确说明，否则 deal.II 将使用（双、三）线性映射，因此在大多数情况下您不必担心这一步。
 
 通过这些步骤，我们现在拥有一组函数 $\varphi_i$，我们可以定义离散问题的弱形式：寻找一个函数 $u_h$，即寻找上述提到的扩展系数 $U_j$，使得
-
 $$
 (\nabla \varphi_i, \nabla u_h) = (\varphi_i, f), \quad i = 0 \ldots N-1.
 $$
-
 请注意，我们在这里遵循的约定是所有计数从零开始，这在 C 和 C++ 中很常见。通过插入表示 $u_h(x) = \sum_j U_j \varphi_j(x)$，然后观察到
-
 $$
 (\nabla \varphi_i, \nabla u_h) = (\nabla \varphi_i, \nabla[\sum_j U_j \varphi_j]) = \sum_j (\nabla \varphi_i, \nabla[U_j \varphi_j]) = \sum_j (\nabla \varphi_i, \nabla \varphi_j) U_j.
 $$
-
 因此，该问题变为：寻找一个向量 $U$ 使得
-
 $$
 AU = F,
 $$
-
 其中矩阵 $A$ 和右侧 $F$ 定义为
-
 $$
 A_{ij} = (\nabla \varphi_i, \nabla \varphi_j), \quad F_i = (\varphi_i, f).
 $$
-
 * 我们应该从左侧还是右侧乘以测试函数？
 
 在继续描述如何计算这些量之前，请注意，如果我们将原始方程从右侧乘以测试函数而不是从左侧乘以，那么我们将得到形如
-
 $$
 U^T A = F^T
 $$
-
 的线性系统。通过转置该系统，这当然等同于解决
-
 $$
 A^T U = F
 $$
-
 这在这里与上面相同，因为 $A = A^T$。但在一般情况下并非如此，**为了避免任何混淆，经验表明，养成从左侧乘以方程而不是从右侧乘以（如数学文献中常做的）可以避免一种常见的错误，因为矩阵在比较理论和实现时自动正确，而不需要转置**。请参见步骤 9 中本教程的第一个示例，其中我们有一个非对称双线性形式，此时从右侧乘以或从左侧乘以是有区别的。
 
 
@@ -86,7 +66,6 @@ $$
 
 - 对于 $A$ 的对象是 SparseMatrix 类型，而 $U$ 和 $F$ 的对象是 Vector 类型。我们将在下面的程序中看到用于求解线性系统的类。
 - 我们需要一种形成积分的方法。在有限元方法中，这通常是通过求积来完成的，即用一组每个单元上的求积点的加权和来替代积分。也就是说，我们首先将 $\Omega$ 上的积分拆分为对所有单元的积分，
-
 $$ 
   \begin{align*}
     A_{ij} &= (\nabla\varphi_i, \nabla \varphi_j) 
@@ -95,9 +74,7 @@ $$
     = \sum_{K \in {\mathbb T}} \int_K \varphi_i f,
   \end{align*}
 $$ 
-  
   然后用求积来近似每个单元的贡献：
-  
 $$ 
   \begin{align*}
     A^K_{ij} &=
@@ -111,7 +88,6 @@ $$
     \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
   \end{align*}
 $$ 
-  
   其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
   
 - 首先，我们需要一种描述求积点位置 $\mathbf x_q^K$ 和它们权重 $w^K_q$ 的方法。它们通常通过与形状函数相同的方式从参考单元映射而来，即隐式地使用 MappingQ1 类，或者如果你明确说明，则通过从 Mapping 派生的其他类。参考单元上的位置和权重由从 Quadrature 基类派生的对象描述。通常，我们选择一种求积公式（即一组点和权重），以使得求积与矩阵中的积分完全相等；这可以通过高斯求积公式实现，该公式在 QGauss 类中实现。
@@ -138,11 +114,9 @@ FEValues 确实是组装过程中的核心类。我们**用在参考单元上定
 因此，有限元代码几乎总是使用诸如 CG 的迭代求解器来求解线性系统，我们在此代码中也将这样做。（我们指出，CG 方法仅适用于对称正定矩阵；对于其他方程，矩阵可能不具备这些特性，我们将不得不使用其他迭代求解器变种，如 [BiCGStab](https://en.wikipedia.org/wiki/Biconjugate_gradient_stabilized_method) 或 [GMRES](https://en.wikipedia.org/wiki/Generalized_minimal_residual_method)，它们适用于更一般的矩阵。）
 
 这些迭代求解器的一个重要组成部分是我们指定解决线性系统时希望达到的容忍度——本质上是我们愿意接受的近似解的误差声明。近似解 $\tilde x$ 与线性系统 $Ax=b$ 的精确解 $x$ 之间的误差定义为 $\|x-\tilde x\|$，但这是一个我们无法计算的量，因为我们不知道精确解 $x$。相反，我们通常考虑 *残差*，其定义为 $\|b-A\tilde x\|=\|A(x-\tilde x)\|$，作为可计算的度量。然后，我们让迭代求解器计算越来越准确的解 $\tilde x$，直到 $\|b-A\tilde x\|\le \tau$。一个实际的问题是 $\tau$ 应该取什么值。在大多数应用中，设置
-
 $$
 \tau = 10^{-6} \|b\|
 $$
-
 是一个合理的选择。我们将 $\tau$ 设置为与 $b$ 的大小（范数）成比例，确保我们对解的准确性的期望相对于解的大小是相对的。
 
 所有这些将在本程序的 `Step3::solve()` 函数中实现。正如你所看到的，使用 deal.II 设置线性求解器相当简单：整个函数只有三行代码。
@@ -435,9 +409,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxNTU0NDc0OCw1OTY4OTcxNjAsLTE2MT
-cwNjQzODYsLTE2MjA3NTQ4NTcsMTE4MjI2NDA1OSwtMTU4NjI3
-MTc4NiwtMTg5ODQ4NDE3MywxOTI2NjYzMjc5LDEwMjQ5MDAwNj
-IsLTE3MjMxMjkyOTQsMTk1MDk4OTM4OCwtNDYwOTcwNTddfQ==
-
+eyJoaXN0b3J5IjpbLTIwOTk4Njg0MzIsLTMxNTU0NDc0OCw1OT
+Y4OTcxNjAsLTE2MTcwNjQzODYsLTE2MjA3NTQ4NTcsMTE4MjI2
+NDA1OSwtMTU4NjI3MTc4NiwtMTg5ODQ4NDE3MywxOTI2NjYzMj
+c5LDEwMjQ5MDAwNjIsLTE3MjMxMjkyOTQsMTk1MDk4OTM4OCwt
+NDYwOTcwNTddfQ==
 -->
