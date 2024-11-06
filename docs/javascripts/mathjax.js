@@ -10,15 +10,6 @@ window.MathJax = {
     processEscapes: true,
     processEnvironments: true,
     packages: {'[+]': ['mathtools']},
-  },
-  options: {
-    ignoreHtmlClass: ".*|",
-    processHtmlClass: "arithmatex"
-  }
-};
-
-MathJax = {
-  tex: {
     mathtools: {
       multlinegap: '1em',
       multlined-pos: 'c',
@@ -38,9 +29,15 @@ MathJax = {
       allow-mathtoolsset: true,
       pairedDelimiters: {},
       tagforms: {}
-    }
+    },
+  },
+  options: {
+    ignoreHtmlClass: ".*|",
+    processHtmlClass: "arithmatex"
   }
 };
+
+
 
 document$.subscribe(() => { 
   MathJax.startup.output.clearCache()
