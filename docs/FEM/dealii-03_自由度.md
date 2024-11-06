@@ -11,11 +11,9 @@
 在实践中，我们将函数表示为形函数 $\phi_j(x)$ 的线性组合，其中的系数 $U_j$ 称为“自由度”（degrees of freedom）。对于我们在这里考虑的双线性函数，每个形函数和自由度都与网格的一个顶点相关联。后续的例子将展示高阶单元，在这些单元中，自由度不一定与顶点相关联，还可能与网格的边、面或单元内部相关联。
 
 “自由度”一词在有限元领域通常用于表示两个略有不同但相关的概念。第一个是，我们希望将有限元解表示为形函数的线性组合，形式为
-
 $$
 u_h(x) = \sum_{j=0}^{N-1} U_j \phi_j(x)
 $$
-
 这里，$U_j$ 是展开系数向量。由于我们尚不知道它们的值（我们将通过求解线性或非线性系统来得到它们），因此它们被称为“未知数”或“自由度”。该词的第二个含义如下：有限元问题的数学描述通常是寻找一个有限维函数 $u_h \in V_h$，使其满足某些方程组（例如，$a(u_h, \phi_h) = (f, \phi_h)$，对于所有测试函数 $\phi_h \in V_h$）。换句话说，这里我们只说明了解必须属于某个空间 $V_h$。然而，为了在计算机上实际求解该问题，我们需要选择该空间的一个基；这就是我们在上面使用形函数 $\phi_j(x)$ 和系数 $U_j$ 来展开 $u_h(x)$ 的原因。
 
 
@@ -326,6 +324,7 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3ODU5MjM5NSwtNTM4NjMwODc5LC05ND
-MyMzg4MDIsMTE3OTU5ODk3NiwxNzkxMDYzNzIzXX0=
+eyJoaXN0b3J5IjpbMjQzMjY3NTMxLDEyNzg1OTIzOTUsLTUzOD
+YzMDg3OSwtOTQzMjM4ODAyLDExNzk1OTg5NzYsMTc5MTA2Mzcy
+M119
 -->
