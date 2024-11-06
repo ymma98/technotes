@@ -9,6 +9,16 @@ window.MathJax = {
     displayMath: [["\\[", "\\]"]],
     processEscapes: true,
     processEnvironments: true,
+    packages: {'[+]': ['mathtools']},
+  },
+  options: {
+    ignoreHtmlClass: ".*|",
+    processHtmlClass: "arithmatex"
+  }
+};
+
+MathJax = {
+  tex: {
     mathtools: {
       multlinegap: '1em',
       multlined-pos: 'c',
@@ -28,12 +38,7 @@ window.MathJax = {
       allow-mathtoolsset: true,
       pairedDelimiters: {},
       tagforms: {}
-    },
-    packages: {'[+]': ['mathtools']},
-  },
-  options: {
-    ignoreHtmlClass: ".*|",
-    processHtmlClass: "arithmatex"
+    }
   }
 };
 
