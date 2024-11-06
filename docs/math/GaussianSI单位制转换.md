@@ -9,6 +9,7 @@
 * An easy method for converting equations between SI and Gaussian units, Yuntung Lau, American Journal of Physics 56, 135 (1988); doi: 10.1119/1.15691
 
 记住以下映射表:
+
 $$
 \begin{aligned}
 & \text{SI} \leftrightarrow \text{Gaussian} \\
@@ -22,6 +23,7 @@ $$
 & \mathbf{E} \leftrightarrow \mathbf{E}
 \end{aligned}
 $$
+
 以及
 $$
 c^2=\left(\epsilon_0 \mu_0\right)^{-1}
@@ -42,6 +44,7 @@ $$
 $$
 
 * example 2.
+
 $$
 \begin{aligned}
 w &=\frac{1}{4 \pi}\left(\frac{\epsilon E^2}{2}+\frac{B^2}{2 \mu}\right) \quad \text{(Gaussian)} \\
@@ -52,6 +55,7 @@ $$
 
 
 * example 3. (skin depth)
+
 $$
 \begin{aligned}
 \delta&=\left(c^2 / 2 \pi \omega \mu \sigma\right)^{1 / 2} \quad \text{(Gaussian)} \\
@@ -76,8 +80,8 @@ $$
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5MDAyMzAyMCw1NTAzODQ3MjYsLTUwMz
-gwMDI5OCwtMjA5OTA4MTAxNywtMTA1MzgyMTAxNCw2Nzc0MDM4
-NiwyMDMzODg3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5MSwyMT
-EzOTIwODY4XX0=
+eyJoaXN0b3J5IjpbMTAwOTE2NzQ0NCwtNTkwMDIzMDIwLDU1MD
+M4NDcyNiwtNTAzODAwMjk4LC0yMDk5MDgxMDE3LC0xMDUzODIx
+MDE0LDY3NzQwMzg2LDIwMzM4ODcyODYsMTY1NzgwNjExNywxNj
+gyNzc1ODkxLDIxMTM5MjA4NjhdfQ==
 -->
