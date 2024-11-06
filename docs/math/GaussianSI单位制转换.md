@@ -9,7 +9,6 @@
 * An easy method for converting equations between SI and Gaussian units, Yuntung Lau, American Journal of Physics 56, 135 (1988); doi: 10.1119/1.15691
 
 记住以下映射表:
-
 $$
 \begin{aligned}
 & \text{SI} \leftrightarrow \text{Gaussian} \\
@@ -23,18 +22,14 @@ $$
 & \mathbf{E} \leftrightarrow \mathbf{E}
 \end{aligned}
 $$
-
 以及
-
 $$
 c^2=\left(\epsilon_0 \mu_0\right)^{-1}
 $$
-
 并且所有出现 $\epsilon$ 的地方都要凑成 $\epsilon_0 \epsilon$；所有出现 $\mu$ 的地方都要凑成 $\mu_0 \mu$。
 
 
 * example 1.
-
 $$
 \mathbf{\nabla} \times \mathbf{H}=\frac{4 \pi \mathbf{J}}{c}+\frac{\partial \mathbf{D}}{c \partial t} \quad \text{(Gaussian)}
 $$
@@ -47,7 +42,6 @@ $$
 $$
 
 * example 2.
-
 $$
 \begin{aligned}
 w &=\frac{1}{4 \pi}\left(\frac{\epsilon E^2}{2}+\frac{B^2}{2 \mu}\right) \quad \text{(Gaussian)} \\
@@ -58,7 +52,6 @@ $$
 
 
 * example 3. (skin depth)
-
 $$
 \begin{aligned}
 \delta&=\left(c^2 / 2 \pi \omega \mu \sigma\right)^{1 / 2} \quad \text{(Gaussian)} \\
@@ -85,7 +78,8 @@ $$
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUwMzg0NzI2LC01MDM4MDAyOTgsLTIwOT
-kwODEwMTcsLTEwNTM4MjEwMTQsNjc3NDAzODYsMjAzMzg4NzI4
-NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMjExMzkyMDg2OF19
+eyJoaXN0b3J5IjpbLTE3MzUzMzY4MjgsNTUwMzg0NzI2LC01MD
+M4MDAyOTgsLTIwOTkwODEwMTcsLTEwNTM4MjEwMTQsNjc3NDAz
+ODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMj
+ExMzkyMDg2OF19
 -->
