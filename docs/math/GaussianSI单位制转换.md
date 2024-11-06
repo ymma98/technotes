@@ -70,16 +70,14 @@ NRL formulary 给出的公式如下 (注意 Gaussian $\rightarrow$ SI: $c \right
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241021/image.6m3w9oju91.webp)
 
 比如,
- 
 $$
 \frac{B^2}{8\pi} (\text{Gaussian}) = \frac{B^2 4\pi\beta}{\alpha^3 \mu_0 8 \pi} (\text{SI})= \frac{B^2}{2\mu_0}\cdot \frac{\beta}{\alpha^3} (\text{SI})
 $$
-
 如果是等式的话， $\beta/\alpha^3$ 就会消掉。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzUzMzY4MjgsNTUwMzg0NzI2LC01MD
-M4MDAyOTgsLTIwOTkwODEwMTcsLTEwNTM4MjEwMTQsNjc3NDAz
-ODYsMjAzMzg4NzI4NiwxNjU3ODA2MTE3LDE2ODI3NzU4OTEsMj
-ExMzkyMDg2OF19
+eyJoaXN0b3J5IjpbLTU5MDAyMzAyMCw1NTAzODQ3MjYsLTUwMz
+gwMDI5OCwtMjA5OTA4MTAxNywtMTA1MzgyMTAxNCw2Nzc0MDM4
+NiwyMDMzODg3Mjg2LDE2NTc4MDYxMTcsMTY4Mjc3NTg5MSwyMT
+EzOTIwODY4XX0=
 -->
