@@ -78,6 +78,13 @@ lvim.builtin.treesitter.auto_install = true
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
 
+-- add `pyright` to `skipped_servers` list
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+-- remove `jedi_language_server` from `skipped_servers` list
+lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+    return server ~= "jedi_language_server"
+end, lvim.lsp.automatic_configuration.skipped_servers)
+
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. IMPORTANT: Requires `:LvimCacheReset` to take effect
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
 -- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
@@ -267,7 +274,8 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxODY1LDY2NjQyNDczNyw4OTM4NTIzNj
-csODQyMzI0MjE5LDUzMzA5OTM4NywxOTgxMjY4MjkzLDI1NDY3
-MzkyOCw3NTE1MjQxMzUsNTM1NzM2MTM2LDYxOTg1NDc0MV19
+eyJoaXN0b3J5IjpbLTU2NTgwMjUwMSwtODE4NjUsNjY2NDI0Nz
+M3LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEy
+NjgyOTMsMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNj
+E5ODU0NzQxXX0=
 -->
