@@ -68,10 +68,11 @@ def save_1d_flatten_data(dump_name):
     df.to_csv(dump_name + '.csv', index=False)
 ```
 
-* paraview 读取 csv 数据ge'shi
+* paraview 读取 csv 数据格式并画 streamline
+	* 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4Mzk0OTE2MiwtMTczMjE1OTAyLC0xND
+eyJoaXN0b3J5IjpbMTU2MjU2ODE4NywtMTczMjE1OTAyLC0xND
 I1NzA2MDExLC02MzkwMDUzODldfQ==
 -->
