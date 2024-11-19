@@ -69,10 +69,13 @@ def save_1d_flatten_data(dump_name):
 ```
 
 * paraview 读取 csv 数据格式并画 streamline
-	* 
+	* 参考[这里](https://discourse.paraview.org/t/how-to-generate-streamline-with-csv-file/9392)
+	* paraview 导入 csv 数据
+	* 对数据施加 filter `table to point`
+	* 对 point 施加 ``
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MjU2ODE4NywtMTczMjE1OTAyLC0xND
-I1NzA2MDExLC02MzkwMDUzODldfQ==
+eyJoaXN0b3J5IjpbLTIxMDYxMjI2NDgsMTU2MjU2ODE4NywtMT
+czMjE1OTAyLC0xNDI1NzA2MDExLC02MzkwMDUzODldfQ==
 -->
