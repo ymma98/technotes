@@ -1,6 +1,7 @@
 # paraview读入csv画streamline
 
 * 首先将数据从 $(r,z,\zeta)$ 坐标系转换到 $(r,\theta, z)$ 坐标系
+
 $$
 \begin{aligned}
 x &= r \cos\theta \\
@@ -11,6 +12,7 @@ B_y &= B_r \sin\theta + B_\theta \cos \theta \\
 B_z &= B_z
 \end{aligned}
 $$
+
 ```python
 def save_1d_flatten_data(dump_name):
     phi1d = np.linspace(0., np.pi *2., num=phi_num, endpoint=False)
@@ -66,6 +68,6 @@ def save_1d_flatten_data(dump_name):
     df.to_csv(dump_name + '.csv', index=False)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwMzMxNzk4NiwtMTQyNTcwNjAxMSwtNj
+eyJoaXN0b3J5IjpbLTE3MzIxNTkwMiwtMTQyNTcwNjAxMSwtNj
 M5MDA1Mzg5XX0=
 -->
