@@ -3,8 +3,12 @@
 * 首先将数据从 $(r,z,\zeta)$ 坐标系转换到 $(r,\theta, z)$ 坐标系
 $$
 \begin{aligned}
-x = r \cos\theta \\
-y = r 
+x &= r \cos\theta \\
+y &= r \sin\theta \\
+z &= z \\
+B_x &= B_r \cos\theta - B_\theta \sin \theta \\
+B_y &= B_r \sin\theta + B_\theta \cos \theta \\
+B_z &= B_z
 \end{aligned}
 $$
 ```python
@@ -62,6 +66,6 @@ def save_1d_flatten_data(dump_name):
     df.to_csv(dump_name + '.csv', index=False)
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjkzNzA5NjM3LC0xNDI1NzA2MDExLC02Mz
-kwMDUzODldfQ==
+eyJoaXN0b3J5IjpbMTMwMzMxNzk4NiwtMTQyNTcwNjAxMSwtNj
+M5MDA1Mzg5XX0=
 -->
