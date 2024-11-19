@@ -71,11 +71,12 @@ def save_1d_flatten_data(dump_name):
 * paraview 读取 csv 数据格式并画 streamline
 	* 参考[这里](https://discourse.paraview.org/t/how-to-generate-streamline-with-csv-file/9392)
 	* paraview 导入 csv 数据
-	* 对数据施加 filter `table to point`
-	* 对 point 施加 ``
+	* 对数据施加 filter `table to point`，这里注意正确地选择 `X column` 对应 `x`, `Y column` 对应 `y`, `Z column` 对应 z`
+	* 对 point 施加 `Point Volume Interpolator`, 这样就可以在区域里面积分了
+	* 施加 `Calculator`, 设置表达式 `Bfield` 为 `bx*iHat + by*jHat + bz*kHat`
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDYxMjI2NDgsMTU2MjU2ODE4NywtMT
-czMjE1OTAyLC0xNDI1NzA2MDExLC02MzkwMDUzODldfQ==
+eyJoaXN0b3J5IjpbLTYxMzQ4NjI0MiwxNTYyNTY4MTg3LC0xNz
+MyMTU5MDIsLTE0MjU3MDYwMTEsLTYzOTAwNTM4OV19
 -->
