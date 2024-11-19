@@ -51,6 +51,7 @@ nav:
       - pyright: python/pyright.md
       - matplotlib画streamline: python/matplotlib画streamline.md
       - python无法支持汉字: python/python无法支持汉字.md
+      - paraview读入csv画streamline: python/paraview读入csv画streamline.md
   - cpp:
      - GDB速查: cpp/GDB速查.md
      - 基本概念_基础类型_操作符: cpp/基本概念_基础类型_操作符.md
