@@ -1,6 +1,6 @@
 # paraview读入csv画streamline
 
-* 首先将数据从 $(r,z,\zeta)$ 坐标系转换到 $(r,\theta, z)$ 坐标系
+* 首先将数据从 $(r,z,\zeta)$ 坐标系转换到 $(r,\theta, z)$ 坐标系, 并存储为 csv 格式
 
 $$
 \begin{aligned}
@@ -67,7 +67,11 @@ def save_1d_flatten_data(dump_name):
 
     df.to_csv(dump_name + '.csv', index=False)
 ```
+
+* paraview 读取 csv 数据ge'shi
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzIxNTkwMiwtMTQyNTcwNjAxMSwtNj
-M5MDA1Mzg5XX0=
+eyJoaXN0b3J5IjpbMTQ4Mzk0OTE2MiwtMTczMjE1OTAyLC0xND
+I1NzA2MDExLC02MzkwMDUzODldfQ==
 -->
