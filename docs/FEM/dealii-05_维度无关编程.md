@@ -71,8 +71,11 @@ $$
   #include <deal.II/grid/tria.h>
   #include <deal.II/dofs/dof_handler.h>
   #include <deal.II/grid/grid_generator.h>
+  // 用于设置基函数
   #include <deal.II/fe/fe_q.h>
+  // 用于产生稀疏矩阵的 sparsity pattern
   #include <deal.II/dofs/dof_tools.h>
+  // 用于每个单元上的数值积分
   #include <deal.II/fe/fe_values.h>
   #include <deal.II/base/quadrature_lib.h>
   #include <deal.II/base/function.h>
@@ -125,6 +128,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE1NzA5NDExLDE3ODM5Nzg5NzQsMjM5Nj
-k3NDQwXX0=
+eyJoaXN0b3J5IjpbLTQ1NjUyNTk3NiwxNzgzOTc4OTc0LDIzOT
+Y5NzQ0MF19
 -->
