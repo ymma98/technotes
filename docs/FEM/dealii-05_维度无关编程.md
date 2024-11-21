@@ -15,6 +15,8 @@ $$
 $$
 \int_\Omega \nabla \varphi \cdot \nabla u - \int_{\partial\Omega} \varphi \vec{n} \cdot \nabla u = \int_\Omega \varphi f.
 $$
+测试函数 $\varphi$ 必须满足相同类型的边界条件（在数学术语中：它需要来自我们寻求解的集合的切空间），因此在边界上 $\varphi = 0$，因此我们要寻找的弱形式为
+$$(\nabla \varphi, \nabla u) = (\varphi, f),$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5MDg0MzgwNV19
+eyJoaXN0b3J5IjpbMjM5Njk3NDQwXX0=
 -->
