@@ -62,7 +62,36 @@ $$
     \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
   \end{align*}
 $$ 
-  其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
+  其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。
+
+* include 头文件。这部分头文件太多了，很难搞清楚哪个对应哪个，估计真正使用的时候，也是一股脑全部 include 进来，根本不作区分
+
+```cpp
+  #include <deal.II/grid/tria.h>
+  #include <deal.II/dofs/dof_handler.h>
+  #include <deal.II/grid/grid_generator.h>
+  #include <deal.II/fe/fe_q.h>
+  #include <deal.II/dofs/dof_tools.h>
+  #include <deal.II/fe/fe_values.h>
+  #include <deal.II/base/quadrature_lib.h>
+  #include <deal.II/base/function.h>
+  #include <deal.II/numerics/vector_tools.h>
+  #include <deal.II/numerics/matrix_tools.h>
+  #include <deal.II/lac/vector.h>
+  #include <deal.II/lac/full_matrix.h>
+  #include <deal.II/lac/sparse_matrix.h>
+  #include <deal.II/lac/dynamic_sparsity_pattern.h>
+  #include <deal.II/lac/solver_cg.h>
+  #include <deal.II/lac/precondition.h>
+
+  #include <deal.II/numerics/data_out.h>
+  #include <fstream>
+  #include <iostream>
+	using namespace [dealii]
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbMTQwNzg0NzE5OSwxNzgzOTc4OTc0LDIzOT
+Y5NzQ0MF19
 -->
