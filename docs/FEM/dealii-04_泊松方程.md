@@ -7,7 +7,7 @@
 
 我们将解决一个简单版本的泊松方程，其边界值为零，但右侧为非零：
 $$
--\Delta u = f = 0 \text{ in } \Omega,\\
+-\Delta u = f  \text{ in } \Omega,\\
 u=0 \text{ on } \partial\Omega.
 $$
 我们将在正方形 $\Omega = [-1, 1]^2$ 上解决此方程。在这个程序中，我们还将仅考虑特定情况 $f(x) = 1$，并将在下一个教程程序中回到如何实现更一般的情况。
@@ -409,9 +409,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTk4Njg0MzIsLTMxNTU0NDc0OCw1OT
-Y4OTcxNjAsLTE2MTcwNjQzODYsLTE2MjA3NTQ4NTcsMTE4MjI2
-NDA1OSwtMTU4NjI3MTc4NiwtMTg5ODQ4NDE3MywxOTI2NjYzMj
-c5LDEwMjQ5MDAwNjIsLTE3MjMxMjkyOTQsMTk1MDk4OTM4OCwt
-NDYwOTcwNTddfQ==
+eyJoaXN0b3J5IjpbLTE2NTA1MDEzNzcsLTIwOTk4Njg0MzIsLT
+MxNTU0NDc0OCw1OTY4OTcxNjAsLTE2MTcwNjQzODYsLTE2MjA3
+NTQ4NTcsMTE4MjI2NDA1OSwtMTU4NjI3MTc4NiwtMTg5ODQ4ND
+E3MywxOTI2NjYzMjc5LDEwMjQ5MDAwNjIsLTE3MjMxMjkyOTQs
+MTk1MDk4OTM4OCwtNDYwOTcwNTddfQ==
 -->
