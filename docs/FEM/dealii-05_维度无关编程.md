@@ -124,15 +124,15 @@ $$
     DoFHandler<dim>    dof_handler;
 
     SparsityPattern      sparsity_pattern;
-    SparseMatrix<double> system_matrix;
+    SparseMatrix<double> system_matrix; // A
 
-    Vector<double> solution;
-    Vector<double> system_rhs;
+    Vector<double> solution; // x
+    Vector<double> system_rhs;  // b
   };
 ```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2NDczOTMwMywxMjU3OTc3MjE5LC0xOT
-U3NTMxOTAzLDE3ODM5Nzg5NzQsMjM5Njk3NDQwXX0=
+eyJoaXN0b3J5IjpbLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMT
+k1NzUzMTkwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
 -->
