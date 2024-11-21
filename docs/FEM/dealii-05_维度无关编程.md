@@ -118,7 +118,7 @@ $$
     void solve();
     // 输出数据
     void output_results() const;
-
+	// 定义 member variable, 用于管理网格、shape function 和 DOF
     Triangulation<dim> triangulation;
     const FE_Q<dim>    fe;
     DoFHandler<dim>    dof_handler;
@@ -133,6 +133,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1Nzk3NzIxOSwtMTk1NzUzMTkwMywxNz
-gzOTc4OTc0LDIzOTY5NzQ0MF19
+eyJoaXN0b3J5IjpbMTY2NDczOTMwMywxMjU3OTc3MjE5LC0xOT
+U3NTMxOTAzLDE3ODM5Nzg5NzQsMjM5Njk3NDQwXX0=
 -->
