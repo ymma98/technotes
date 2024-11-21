@@ -110,7 +110,7 @@ $$
   private:
     // 生成网格
     void make_grid();
-    // 
+    // 用于设置所有所需的数据结构。之所以放在这里, 是因为在含时问题中, 可能每隔几个时间步就要重新设置一遍数据结构, 比如
     void setup_system();
     void assemble_system();
     void solve();
@@ -130,6 +130,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0ODQxNzU0MiwxNzgzOTc4OTc0LDIzOT
-Y5NzQ0MF19
+eyJoaXN0b3J5IjpbLTE5NTc1MzE5MDMsMTc4Mzk3ODk3NCwyMz
+k2OTc0NDBdfQ==
 -->
