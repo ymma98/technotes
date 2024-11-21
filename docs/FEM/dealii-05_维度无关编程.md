@@ -11,6 +11,7 @@ $$
 $$
 -\int_\Omega \varphi \Delta u = \int_\Omega \varphi f.
 $$
+考虑到 $\nabla \cdot (\varp)$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjMzMDY3MzI5XX0=
+eyJoaXN0b3J5IjpbMTQzMDc1MTgyNV19
 -->
