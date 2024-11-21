@@ -67,6 +67,7 @@ $$
 #### include 头文件。这部分头文件太多了，很难搞清楚哪个对应哪个，估计真正使用的时候，也是一股脑全部 include 进来，根本不作区分
 
 ```cpp
+  // 用于网格生成和枚举自由度
   #include <deal.II/grid/tria.h>
   #include <deal.II/dofs/dof_handler.h>
   #include <deal.II/grid/grid_generator.h>
@@ -102,8 +103,9 @@ $$
     void run();
 
   private:
-    // 生产w
+    // 生成网格
     void make_grid();
+    // 
     void setup_system();
     void assemble_system();
     void solve();
@@ -123,6 +125,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNjM1NDI0MSwxNzgzOTc4OTc0LDIzOT
-Y5NzQ0MF19
+eyJoaXN0b3J5IjpbNjE1NzA5NDExLDE3ODM5Nzg5NzQsMjM5Nj
+k3NDQwXX0=
 -->
