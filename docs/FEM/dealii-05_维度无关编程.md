@@ -37,6 +37,32 @@ $$
 $$
 A_{ij} = (\nabla \varphi_i, \nabla \varphi_j), \quad F_i = (\varphi_i, f).
 $$
+**为了避免任何混淆，经验表明，养成从左侧乘以方程而不是从右侧乘以（如数学文献中常做的）可以避免一种常见的错误，因为矩阵在比较理论和实现时自动正确，而不需要转置**。
+
+我们首先将 $\Omega$ 上的积分拆分为对所有单元的积分，
+$$ 
+  \begin{align*}
+    A_{ij} &= (\nabla\varphi_i, \nabla \varphi_j) 
+    = \sum_{K \in {\mathbb T}} \int_K \nabla\varphi_i \cdot \nabla \varphi_j, \\
+    F_i &= (\varphi_i, f) 
+    = \sum_{K \in {\mathbb T}} \int_K \varphi_i f,
+  \end{align*}
+$$ 
+  然后用求积来近似每个单元的贡献：
+$$ 
+  \begin{align*}
+    A^K_{ij} &=
+    \int_K \nabla\varphi_i \cdot \nabla \varphi_j 
+    \approx 
+    \sum_q \nabla\varphi_i(\mathbf x^K_q) \cdot \nabla 
+    \varphi_j(\mathbf x^K_q) w_q^K, \\
+    F^K_i &=
+    \int_K \varphi_i f 
+    \approx 
+    \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
+  \end{align*}
+$$ 
+  其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDc1MzMyNDksMjM5Njk3NDQwXX0=
+eyJoaXN0b3J5IjpbMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
 -->
