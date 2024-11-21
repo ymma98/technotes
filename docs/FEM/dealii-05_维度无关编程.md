@@ -64,7 +64,7 @@ $$
 $$ 
   其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。
 
-* include 头文件。这部分头文件太多了，很难搞清楚哪个对应哪个，估计真正使用的时候，也是一股脑全部 include 进来，根本不作区分
+#### include 头文件。这部分头文件太多了，很难搞清楚哪个对应哪个，估计真正使用的时候，也是一股脑全部 include 进来，根本不作区分
 
 ```cpp
   #include <deal.II/grid/tria.h>
@@ -87,11 +87,42 @@ $$
   #include <deal.II/numerics/data_out.h>
   #include <fstream>
   #include <iostream>
-	using namespace [dealii]
+  
+  using namespace dealii;
+```
+
+#### 设置 solver 框架
+
+```cpp
+  template <int dim>
+  class Step4
+  {
+  public:
+    Step4();
+    void run();
+
+  private:
+    // 生产w
+    void make_grid();
+    void setup_system();
+    void assemble_system();
+    void solve();
+    void output_results() const;
+
+    Triangulation<dim> triangulation;
+    const FE_Q<dim>    fe;
+    DoFHandler<dim>    dof_handler;
+
+    SparsityPattern      sparsity_pattern;
+    SparseMatrix<double> system_matrix;
+
+    Vector<double> solution;
+    Vector<double> system_rhs;
+  };
 ```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwNzg0NzE5OSwxNzgzOTc4OTc0LDIzOT
+eyJoaXN0b3J5IjpbLTgxNjM1NDI0MSwxNzgzOTc4OTc0LDIzOT
 Y5NzQ0MF19
 -->
