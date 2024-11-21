@@ -89,7 +89,7 @@ $$
   #include <deal.II/lac/dynamic_sparsity_pattern.h>
   #include <deal.II/lac/solver_cg.h>
   #include <deal.II/lac/precondition.h>
-
+  // 用于数据后处理
   #include <deal.II/numerics/data_out.h>
   #include <fstream>
   #include <iostream>
@@ -130,6 +130,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0MzcwODI3NCwxNzgzOTc4OTc0LDIzOT
+eyJoaXN0b3J5IjpbLTM0ODQxNzU0MiwxNzgzOTc4OTc0LDIzOT
 Y5NzQ0MF19
 -->
