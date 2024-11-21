@@ -110,10 +110,13 @@ $$
   private:
     // 生成网格
     void make_grid();
-    // 用于设置所有所需的数据结构。之所以放在这里, 是因为在含时问题中, 可能每隔几个时间步就要重新设置一遍数据结构, 比如
+    // 用于设置所有所需的数据结构。之所以放在这里, 是因为在含时问题中, 如果考虑到自适应网格, 就需要每隔几个时间步就要重新设置一遍数据结构
     void setup_system();
+    // 矩阵组装
     void assemble_system();
+    // 矩阵求解
     void solve();
+    // 输出数据
     void output_results() const;
 
     Triangulation<dim> triangulation;
@@ -130,6 +133,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTc1MzE5MDMsMTc4Mzk3ODk3NCwyMz
-k2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbMTI1Nzk3NzIxOSwtMTk1NzUzMTkwMywxNz
+gzOTc4OTc0LDIzOTY5NzQ0MF19
 -->
