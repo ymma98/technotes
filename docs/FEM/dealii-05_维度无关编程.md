@@ -78,9 +78,11 @@ $$
   // 用于每个单元上的数值积分
   #include <deal.II/fe/fe_values.h>
   #include <deal.II/base/quadrature_lib.h>
+  // 用于设置边界条件
   #include <deal.II/base/function.h>
   #include <deal.II/numerics/vector_tools.h>
   #include <deal.II/numerics/matrix_tools.h>
+  // 用于矩阵求解, 组装
   #include <deal.II/lac/vector.h>
   #include <deal.II/lac/full_matrix.h>
   #include <deal.II/lac/sparse_matrix.h>
@@ -128,6 +130,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1NjUyNTk3NiwxNzgzOTc4OTc0LDIzOT
+eyJoaXN0b3J5IjpbLTg0MzcwODI3NCwxNzgzOTc4OTc0LDIzOT
 Y5NzQ0MF19
 -->
