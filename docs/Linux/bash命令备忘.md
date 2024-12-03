@@ -15,6 +15,13 @@ tar -czvf save.tar.gz --exclude='dump.[^0]*' --exclude='dump.[0][^0]*' --exclude
 ssh -f -L 127.0.0.1:1233:222.20.94.38:22 ymma98@10.13.20.2 sleep 10; rsync -auvzP -e 'ssh -p 1233' /file/ ymma@127.0.0.1:/remote/dir/
 ```
 
+* 使用 `htop`
+
+```bash
+# : 折叠 cpu 使用情况
+> : 选择按什么进行排序
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAyNDAzMTYwLC0xOTczMDIyODQwXX0=
+eyJoaXN0b3J5IjpbNzU4MDUyMDEzLDQwMjQwMzE2MCwtMTk3Mz
+AyMjg0MF19
 -->
