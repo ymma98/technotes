@@ -56,6 +56,8 @@ alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
 
 PS1='\u@\h:\w \$ '
 alias shortps1='PS1="\u@\h:\W \$ "'
+alias cpwd=" pwd | xsel --clipboard --input"
+
 
 # for tabby
 # export PS1="$PS1\[\e]1337;CurrentDir="'$(pwd)\a\]'
@@ -78,6 +80,7 @@ alias rsync190="rsync -auvze 'ssh -p 32158'"
 alias pc="python inpynim.py c &>/dev/null &"
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
 ```
+
 
 ## inputrc
 
@@ -266,7 +269,7 @@ config.keys = {
 return config
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIxOTIwMTAsMjA0NzU1OTEwLDk5NDY0Nj
-Q1NiwtNjgwNTEzOTgxLC0xMDgxODY1MzkzLDY1MjM2OTc5NSwt
-MTU3Nzk0MTMyNF19
+eyJoaXN0b3J5IjpbLTc4ODA3MjQxOCw5MjE5MjAxMCwyMDQ3NT
+U5MTAsOTk0NjQ2NDU2LC02ODA1MTM5ODEsLTEwODE4NjUzOTMs
+NjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
 -->
