@@ -1,7 +1,8 @@
 # chatgpt prompt
 
 * 对比不同模型
-	* 
+	* With a ChatGPT Plus or Team account, you have access to 50 messages a week with OpenAI o1 and 50 messages a day with OpenAI o1-mini to start. ([来源](https://help.openai.com/en/articles/9824962-openai-o1-and-o1-mini-usage-limits-on-chatgpt-and-the-api))
+	* 因为 o1 使用受限, 平时使用主要使用 o1-mini。o1-mini 似乎比 4o [表现更好](https://aimlapi.com/comparisons/chatgpt-4o-vs-o1-mini)。
 
 * 将图片转换为 latex
 
@@ -51,6 +52,6 @@ Improve the sentences imaging you are proficient in fusion plasma physics. give 
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5OTY0Mjc4MiwtMTc4MDA0NzU0OCwtMT
-M5OTk0MjMyOV19
+eyJoaXN0b3J5IjpbLTEzODMwNDI4MTYsLTE3ODAwNDc1NDgsLT
+EzOTk5NDIzMjldfQ==
 -->
