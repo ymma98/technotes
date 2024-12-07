@@ -1,5 +1,8 @@
 # chatgpt prompt
 
+* 对比不同模型
+	* 
+
 * 将图片转换为 latex
 
 ```bash
@@ -48,6 +51,6 @@ Improve the sentences imaging you are proficient in fusion plasma physics. give 
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODAwNDc1NDgsLTEzOTk5NDIzMjldfQ
-==
+eyJoaXN0b3J5IjpbLTM5OTY0Mjc4MiwtMTc4MDA0NzU0OCwtMT
+M5OTk0MjMyOV19
 -->
