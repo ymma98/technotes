@@ -238,8 +238,9 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
     DynamicSparsityPattern dsp(dof_handler.n_dofs());
     // 这一步, 是根据 dof_handler 决定 SparsityPattern 中可能的非零元素
     DoFTools::make_sparsity_pattern(dof_handler, dsp);
+    // 相比于 DynamicSparsityPattern. SparsityPattern 是在数值存储上更优化的方案
     sparsity_pattern.copy_from(dsp);
-
+	// matrix 和 SparsityPattern 的区别在于, 几个 matrix 可以共用一个 SparsityPattern
     system_matrix.reinit(sparsity_pattern);
 
     solution.reinit(dof_handler.n_dofs());
@@ -252,12 +253,15 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 
 
 
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0NjU1Nzg2MiwyMDYxNzE3NDQxLDY3Mj
-A0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0NDI4LDI5MjA4MjA4
-MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0xMjQ2NzQxNjAxLC
-0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkzMjA1ODk5LC0xNTM1
-Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMzgyOCwxMjU3OTc3Mj
-E5LC0xOTU3NTMxOTAzLDE3ODM5Nzg5NzQsMjM5Njk3NDQwXX0=
+eyJoaXN0b3J5IjpbMzkzMTExNjc3LDIwNjE3MTc0NDEsNjcyMD
+Q2MzE2LDEzODE3MDkwODQsLTE4MDE0NTQ0MjgsMjkyMDgyMDgx
+LC0xNzExMzMxMDI2LDEzOTk4Mjk5OTMsLTEyNDY3NDE2MDEsLT
+EyMDI0NDY2ODcsNDIxNzQ3MDAzLDExOTMyMDU4OTksLTE1MzU2
+NzYwMTQsNTUzMDMwNTQ0LC0xNDA1ODIzODI4LDEyNTc5NzcyMT
+ksLTE5NTc1MzE5MDMsMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
 
 -->
