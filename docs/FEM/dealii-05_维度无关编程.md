@@ -162,10 +162,10 @@ $$
   };
 ```
 
-这里用到了虚函数的概念。`Function` 在 dealii 中是一个 abstract class (本身不能被实例化)
+这里用到了虚函数的概念。`Function` 在 dealii 中是一个 abstract class (本身不能被实例化，要求至少包含一个纯虚函数)。`RightHandSide` 是 `Function` 的继承，其中 overriding 了 `Function::value` 函数
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLDExOT
-MyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1ODIz
-ODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMsMTc4Mzk3ODk3NC
-wyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbMTE1NjIzMzc0NywtMTIwMjQ0NjY4Nyw0Mj
+E3NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NTMwMzA1
+NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUzMTkwMy
+wxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
 -->
