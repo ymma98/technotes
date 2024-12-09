@@ -206,27 +206,29 @@ $$
 #### 网格定义实现
 
 ```cpp
-  template <int dim>
-  void Step4<dim>::make_grid()
-  {
-    GridGenerator::hyper_cube(triangulation, -1, 1);
-    triangulation.refine_global(4);
+  template <int dim>
+  void Step4<dim>::make_grid()
+  {
+    GridGenerator::hyper_cube(triangulation, -1, 1);
+    triangulation.refine_global(4);
 
-    std::cout << "   Number of active cells: " << triangulation.n_active_cells()
-              << std::endl
-              << "   Total number of cells: " << triangulation.n_cells()
-              << std::endl;
-  }
+    std::cout << "   Number of active cells: " << triangulation.n_active_cells()
+              << std::endl
+              << "   Total number of cells: " << triangulation.n_cells()
+              << std::endl;
+  }
 ```
+
+refine_global(n) 意味着所有的 cell 都均匀dei
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOT
-IwODIwODEsLTE3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0
-MTYwMSwtMTIwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OS
-wtMTUzNTY3NjAxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1
-Nzk3NzIxOSwtMTk1NzUzMTkwMywxNzgzOTc4OTc0LDIzOTY5Nz
-Q0MF19
+eyJoaXN0b3J5IjpbODA0MjgyMDI3LDEzODE3MDkwODQsLTE4MD
+E0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5
+OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLD
+ExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1
+ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMsMTc4Mzk3OD
+k3NCwyMzk2OTc0NDBdfQ==
 -->
