@@ -219,16 +219,16 @@ $$
   }
 ```
 
-refine_global(n) 意味着所有的 cell 都均匀地划分为 2\*\*dim 个子网格。以 2D 的情况为例，最开始 triangulation 只有一个 cell, 然后被 refine 4次，意味着 refine 之后有 
+refine_global(n) 意味着所有的 cell 都均匀地划分为 2\*\*dim 个子网格。以 2D 的情况为例，最开始 triangulation 只有一个 cell, 然后被 refine 4次，意味着 refine 之后有 (2\*\*2)**4 个网格，即256个网格。 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg2NTY4MzgzLDEzODE3MDkwODQsLTE4MD
-E0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5
-OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLD
-ExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1
-ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMsMTc4Mzk3OD
-k3NCwyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbLTEyMzE3OTgwNTgsMTM4MTcwOTA4NCwtMT
+gwMTQ1NDQyOCwyOTIwODIwODEsLTE3MTEzMzEwMjYsMTM5OTgy
+OTk5MywtMTI0Njc0MTYwMSwtMTIwMjQ0NjY4Nyw0MjE3NDcwMD
+MsMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NTMwMzA1NDQsLTE0
+MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUzMTkwMywxNzgzOT
+c4OTc0LDIzOTY5NzQ0MF19
 -->
