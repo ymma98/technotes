@@ -66,6 +66,7 @@ $$
 
 - 对于 $A$ 的对象是 SparseMatrix 类型，而 $U$ 和 $F$ 的对象是 Vector 类型。我们将在下面的程序中看到用于求解线性系统的类。
 - 我们需要一种形成积分的方法。在有限元方法中，这通常是通过求积来完成的，即用一组每个单元上的求积点的加权和来替代积分。也就是说，我们首先将 $\Omega$ 上的积分拆分为对所有单元的积分，
+
 $$ 
   \begin{align*}
     A_{ij} &= (\nabla\varphi_i, \nabla \varphi_j) 
@@ -74,7 +75,9 @@ $$
     = \sum_{K \in {\mathbb T}} \int_K \varphi_i f,
   \end{align*}
 $$ 
+
   然后用求积来近似每个单元的贡献：
+  
 $$ 
   \begin{align*}
     A^K_{ij} &=
@@ -88,6 +91,7 @@ $$
     \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q,
   \end{align*}
 $$ 
+
   其中 $\mathbb{T} \approx \Omega$ 是一个近似于域的剖分，$\mathbf x^K_q$ 是单元 $K$ 上的第 $q$ 个求积点，$w^K_q$ 是第 $q$ 个求积权重。完成这一过程需要不同的部分，我们将依次讨论它们。
   
 - 首先，我们需要一种描述求积点位置 $\mathbf x_q^K$ 和它们权重 $w^K_q$ 的方法。它们通常通过与形状函数相同的方式从参考单元映射而来，即隐式地使用 MappingQ1 类，或者如果你明确说明，则通过从 Mapping 派生的其他类。参考单元上的位置和权重由从 Quadrature 基类派生的对象描述。通常，我们选择一种求积公式（即一组点和权重），以使得求积与矩阵中的积分完全相等；这可以通过高斯求积公式实现，该公式在 QGauss 类中实现。
@@ -409,9 +413,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTA1MDEzNzcsLTIwOTk4Njg0MzIsLT
-MxNTU0NDc0OCw1OTY4OTcxNjAsLTE2MTcwNjQzODYsLTE2MjA3
-NTQ4NTcsMTE4MjI2NDA1OSwtMTU4NjI3MTc4NiwtMTg5ODQ4ND
-E3MywxOTI2NjYzMjc5LDEwMjQ5MDAwNjIsLTE3MjMxMjkyOTQs
-MTk1MDk4OTM4OCwtNDYwOTcwNTddfQ==
+eyJoaXN0b3J5IjpbLTI5NjI3NDUyNSwtMTY1MDUwMTM3NywtMj
+A5OTg2ODQzMiwtMzE1NTQ0NzQ4LDU5Njg5NzE2MCwtMTYxNzA2
+NDM4NiwtMTYyMDc1NDg1NywxMTgyMjY0MDU5LC0xNTg2MjcxNz
+g2LC0xODk4NDg0MTczLDE5MjY2NjMyNzksMTAyNDkwMDA2Miwt
+MTcyMzEyOTI5NCwxOTUwOTg5Mzg4LC00NjA5NzA1N119
 -->
