@@ -41,9 +41,9 @@ $ for dir in $(ls -d */);do  mv $dir "${dir/tol1e-8/tol1e-7}";done
 ```bash
 $ sed -i 's/tol=1.0e-8/tol=1.0e-7/g' */input.in
 
--i 的意思是直接更改文件, 
+-i 的意思是直接更改文件, g 是 global
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzkwMzA0NjIsNzU4MDUyMDEzLDQwMj
-QwMzE2MCwtMTk3MzAyMjg0MF19
+eyJoaXN0b3J5IjpbMTYzOTY2NjYzOSw3NTgwNTIwMTMsNDAyND
+AzMTYwLC0xOTczMDIyODQwXX0=
 -->
