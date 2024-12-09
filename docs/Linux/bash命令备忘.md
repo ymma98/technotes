@@ -26,9 +26,16 @@ ssh -f -L 127.0.0.1:1233:222.20.94.38:22 ymma98@10.13.20.2 sleep 10; rsync -auvz
 
 ```bash
 举例:
+$ ls
+08_pert2e-3_tol1e-8_parv3e3_my96_eta-full_nl1.4e4_pres12600/  08_pert2e-3_tol1e-8_parv3e3_my96_eta-full_nl2e4_pres18000/  08_pert2e-3_tol1e-8_parv3e3_my96_eta-full_nl8e3_pres7200/
+08_pert2e-3_tol1e-8_parv3e3_my96_eta-full_nl1e4_pres9000/     08_pert2e-3_tol1e-8_parv3e3_my96_eta-full_nl4e3_pres3600/   checkminmax.py
+08_pert2e-3_tol1e-8_parv3e3_my96_eta-full_nl2e3_pres1800/     08_pert2e-3_tol1e-8_parv3e3_my96_eta-full_nl6e3_pres5400/   prun.sh
 
+运行
+$ for dir in $(ls -d */);do  mv $dir "${dir/tol1e-8/tol1e-7}";done
+就会把 tol1e-8 替换为 tol1e-7
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4Njk4NDY1NCw3NTgwNTIwMTMsNDAyND
-AzMTYwLC0xOTczMDIyODQwXX0=
+eyJoaXN0b3J5IjpbLTEyMzU2NzM5ODIsNzU4MDUyMDEzLDQwMj
+QwMzE2MCwtMTk3MzAyMjg0MF19
 -->
