@@ -162,9 +162,10 @@ $$
   };
 ```
 
-这里用到了虚函数的概念。
+这里用到了虚函数的概念。`Function` 在 dealii 中是一个
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NT
-MwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUz
-MTkwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
+eyJoaXN0b3J5IjpbNDIxNzQ3MDAzLDExOTMyMDU4OTksLTE1Mz
+U2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1ODIzODI4LDEyNTc5Nzcy
+MTksLTE5NTc1MzE5MDMsMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ
+==
 -->
