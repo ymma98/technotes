@@ -35,7 +35,15 @@ $ ls
 $ for dir in $(ls -d */);do  mv $dir "${dir/tol1e-8/tol1e-7}";done
 就会把 tol1e-8 替换为 tol1e-7
 ```
+
+* 统一替换文件夹内某个文件的内容
+
+```bash
+$ sed -i 's/tol=1.0e-8/tol=1.0e-7/g' */input.in
+
+-i 的意思是直接更改文件, 
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzU2NzM5ODIsNzU4MDUyMDEzLDQwMj
+eyJoaXN0b3J5IjpbLTIwNzkwMzA0NjIsNzU4MDUyMDEzLDQwMj
 QwMzE2MCwtMTk3MzAyMjg0MF19
 -->
