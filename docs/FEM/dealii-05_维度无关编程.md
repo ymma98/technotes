@@ -186,11 +186,11 @@ $$
   }
 ```
 
-在定义中，这里用到了 unnamed parameters, 可以避免编译器报 warning, 
+在定义中，这里用到了 unnamed parameters, 可以避免编译器报 warning, 同时对于虚函数，在 declaration 的时候需要用到 virtual 和 override 关键字，但是在 definition 的时候就用不到了。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1MjQ2NzgxNCwxMzk5ODI5OTkzLC0xMj
-Q2NzQxNjAxLC0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkzMjA1
-ODk5LC0xNTM1Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMzgyOC
-wxMjU3OTc3MjE5LC0xOTU3NTMxOTAzLDE3ODM5Nzg5NzQsMjM5
-Njk3NDQwXX0=
+eyJoaXN0b3J5IjpbLTEyMTAzMzIxMDIsMTM5OTgyOTk5MywtMT
+I0Njc0MTYwMSwtMTIwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIw
+NTg5OSwtMTUzNTY3NjAxNCw1NTMwMzA1NDQsLTE0MDU4MjM4Mj
+gsMTI1Nzk3NzIxOSwtMTk1NzUzMTkwMywxNzgzOTc4OTc0LDIz
+OTY5NzQ0MF19
 -->
