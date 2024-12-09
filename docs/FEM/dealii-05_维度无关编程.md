@@ -229,12 +229,14 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
   template <int dim>
   void Step4<dim>::setup_system()
   {
+    // 给所有有限元节点编号
     dof_handler.distribute_dofs(fe);
 
     std::cout << "   Number of degrees of freedom: " << dof_handler.n_dofs()
               << std::endl;
-
+	// DOF 定了, 矩阵的大小就定了, 这里定义了 SparsityPattern
     DynamicSparsityPattern dsp(dof_handler.n_dofs());
+    // 这一步, 是根据 dof_handler 决定 SparsityPattern 中可能的非零元素
     DoFTools::make_sparsity_pattern(dof_handler, dsp);
     sparsity_pattern.copy_from(dsp);
 
@@ -251,11 +253,11 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTU0MDQzODcsMjA2MTcxNzQ0MSw2Nz
-IwNDYzMTYsMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIw
-ODEsLTE3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMS
-wtMTIwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUz
-NTY3NjAxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3Nz
-IxOSwtMTk1NzUzMTkwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
+eyJoaXN0b3J5IjpbMTA0NjU1Nzg2MiwyMDYxNzE3NDQxLDY3Mj
+A0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0NDI4LDI5MjA4MjA4
+MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0xMjQ2NzQxNjAxLC
+0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkzMjA1ODk5LC0xNTM1
+Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMzgyOCwxMjU3OTc3Mj
+E5LC0xOTU3NTMxOTAzLDE3ODM5Nzg5NzQsMjM5Njk3NDQwXX0=
 
 -->
