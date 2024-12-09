@@ -21,7 +21,14 @@ ssh -f -L 127.0.0.1:1233:222.20.94.38:22 ymma98@10.13.20.2 sleep 10; rsync -auvz
 # : 折叠 cpu 使用情况
 > : 选择按什么进行排序
 ```
+
+* 统一替换文件夹名字
+
+```bash
+举例:
+
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU4MDUyMDEzLDQwMjQwMzE2MCwtMTk3Mz
-AyMjg0MF19
+eyJoaXN0b3J5IjpbLTQ4Njk4NDY1NCw3NTgwNTIwMTMsNDAyND
+AzMTYwLC0xOTczMDIyODQwXX0=
 -->
