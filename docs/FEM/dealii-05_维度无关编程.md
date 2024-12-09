@@ -219,13 +219,13 @@ $$
   }
 ```
 
-refine_global(n) 意味着所有的 cell 都均匀dei
+refine_global(n) 意味着所有的 cell 都均匀地划分为 2\*\*dim 个子网格。以 2D 的情况为例，最开始 triangulation 只有一个 cell, 然后被 refine 4次，意味着 refine 之后有 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA0MjgyMDI3LDEzODE3MDkwODQsLTE4MD
+eyJoaXN0b3J5IjpbNTg2NTY4MzgzLDEzODE3MDkwODQsLTE4MD
 E0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5
 OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLD
 ExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1
