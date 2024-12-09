@@ -178,16 +178,19 @@ $$
     return return_value;
   }
 
-  template <int dim>
-  double BoundaryValues<dim>::value(const Point<dim> &p,
-                                    const unsigned int /*component*/) const
-  {
-    return p.square();
-  }
+  template <int dim>
+  double BoundaryValues<dim>::value(const Point<dim> &p,
+                                    const unsigned int /*component*/) const
+  {
+    return p.square();
+  }
 ```
+
+在定义中，这里用到了 unnamed parameters, 可以避免编译器报 warning, 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwtMT
-IwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3
-NjAxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOS
-wtMTk1NzUzMTkwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
+eyJoaXN0b3J5IjpbLTk1MjQ2NzgxNCwxMzk5ODI5OTkzLC0xMj
+Q2NzQxNjAxLC0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkzMjA1
+ODk5LC0xNTM1Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMzgyOC
+wxMjU3OTc3MjE5LC0xOTU3NTMxOTAzLDE3ODM5Nzg5NzQsMjM5
+Njk3NDQwXX0=
 -->
