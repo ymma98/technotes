@@ -141,11 +141,30 @@ $$
 -\nabla\cdot \nabla u = f \\
 f= 4(x^2 + y^2) \quad \text{2D} \\
 f= 4(x^2 + y^2 + z^2) \quad \text{3D} \\
-u = x^2 + y^2 \quad  \text{on }
+u = x^2 + y^2 \quad  \text{on}\quad \partial \Omega
 $$
 
+```cpp
+  template <int dim>
+  class RightHandSide : public Function<dim>
+  {
+  public:
+    virtual double value(const Point<dim>  &p,
+                         const unsigned int component = 0) const override;
+  };
+
+  template <int dim>
+  class BoundaryValues : public Function<dim>
+  {
+  public:
+    virtual double value(const Point<dim>  &p,
+                         const unsigned int component = 0) const override;
+  };
+```
+
+这里用到了虚函数的概念。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjAwNTI4MzYsLTE1MzU2NzYwMTQsNT
-UzMDMwNTQ0LC0xNDA1ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1
-MzE5MDMsMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NT
+MwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUz
+MTkwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
 -->
