@@ -139,11 +139,13 @@ $$
 
 $$
 -\nabla\cdot \nabla u = f \\
-f= 4(x^2 + y^2)
+f= 4(x^2 + y^2) \quad \text{2D} \\
+f= 4(x^2 + y^2 + z^2) \quad \text{3D} \\
+
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Njc1NzI3OTMsLTE1MzU2NzYwMTQsNT
-UzMDMwNTQ0LC0xNDA1ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1
-MzE5MDMsMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbLTc5ODkyMDQ4OSwtMTUzNTY3NjAxNCw1NT
+MwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUz
+MTkwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
 -->
