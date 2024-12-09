@@ -190,7 +190,7 @@ $$
 
 #### 定义构造函数
 
-初始化 poly degree, 然后
+初始化 poly degree, 以及 dof_handler
 
 ```cpp
   template <int dim>
@@ -200,13 +200,16 @@ $$
   {}
 ```
 
-这里是构造函数的具体实现，`:` 之后的是 member initializer list
+这里是构造函数的具体实现，`:` 之后的是 member initializer list。
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDE0NTQ0MjgsMjkyMDgyMDgxLC0xNz
-ExMzMxMDI2LDEzOTk4Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0
-NDY2ODcsNDIxNzQ3MDAzLDExOTMyMDU4OTksLTE1MzU2NzYwMT
-QsNTUzMDMwNTQ0LC0xNDA1ODIzODI4LDEyNTc5NzcyMTksLTE5
-NTc1MzE5MDMsMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbMTc1Njg4OTY4NSwtMTgwMTQ1NDQyOCwyOT
+IwODIwODEsLTE3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0
+MTYwMSwtMTIwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OS
+wtMTUzNTY3NjAxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1
+Nzk3NzIxOSwtMTk1NzUzMTkwMywxNzgzOTc4OTc0LDIzOTY5Nz
+Q0MF19
 -->
