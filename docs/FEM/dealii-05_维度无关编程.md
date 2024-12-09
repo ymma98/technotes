@@ -189,10 +189,20 @@ $$
 在定义中，这里用到了 unnamed parameters, 可以避免编译器报 warning, 同时对于虚函数，在 declaration 的时候需要用到 virtual 和 override 关键字，但是在 definition 的时候就用不到了，但是如果想在 definition 的时候加入 virtual 和 override 也是可以的。
 
 #### 定义构造函数
+
+初始化 poly degree, 然后
+
+```cpp
+  template <int dim>
+  Step4<dim>::Step4()
+    : fe(/* polynomial degree = */ 1)
+    , dof_handler(triangulation)
+  {}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Nzg2MjgwMjAsLTE3MTEzMzEwMjYsMT
-M5OTgyOTk5MywtMTI0Njc0MTYwMSwtMTIwMjQ0NjY4Nyw0MjE3
-NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NTMwMzA1ND
-QsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUzMTkwMywx
-NzgzOTc4OTc0LDIzOTY5NzQ0MF19
+eyJoaXN0b3J5IjpbMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOT
+k4Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3
+MDAzLDExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC
+0xNDA1ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMsMTc4
+Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
 -->
