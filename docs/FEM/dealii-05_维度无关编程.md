@@ -221,16 +221,16 @@ $$
 
 refine_global(n) 意味着所有的 cell 都均匀地划分为 2\*\*dim 个子网格。以 2D 的情况为例，最开始 triangulation 只有一个 cell, 然后被 refine 4次，意味着 refine 之后有 (2\*\*2)**4 个网格，即256个网格。总网格数是 $(2^{dim})^n$ 。
 
-active cell 就是参与计算的 cell. 
+active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节点，total cell number = active cell num + inactive cell num. total cell number 没有物理意义, 只是he
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjcyMDQ2MzE2LDEzODE3MDkwODQsLTE4MD
-E0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5
-OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLD
-ExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1
-ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMsMTc4Mzk3OD
-k3NCwyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbLTM1MzEzNTgwNSw2NzIwNDYzMTYsMTM4MT
+cwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIwODEsLTE3MTEzMzEw
+MjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwtMTIwMjQ0NjY4Ny
+w0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NTMw
+MzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUzMT
+kwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
 -->
