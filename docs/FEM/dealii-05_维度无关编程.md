@@ -203,10 +203,27 @@ $$
 这里是构造函数的具体实现，`:` 之后的是 member initializer list。
 
 
+#### 网格定义实现
+
+```cpp
+  template <int dim>
+  void Step4<dim>::make_grid()
+  {
+    GridGenerator::hyper_cube(triangulation, -1, 1);
+    triangulation.refine_global(4);
+
+    std::cout << "   Number of active cells: " << triangulation.n_active_cells()
+              << std::endl
+              << "   Total number of cells: " << triangulation.n_cells()
+              << std::endl;
+  }
+```
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1Njg4OTY4NSwtMTgwMTQ1NDQyOCwyOT
+eyJoaXN0b3J5IjpbMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOT
 IwODIwODEsLTE3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0
 MTYwMSwtMTIwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OS
 wtMTUzNTY3NjAxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1
