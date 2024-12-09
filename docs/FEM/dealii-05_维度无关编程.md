@@ -226,33 +226,36 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 #### 设置数据结构实现
 
 ```cpp
-  template <int dim>
-  void Step4<dim>::setup_system()
-  {
-    dof_handler.distribute_dofs(fe);
+  template <int dim>
+  void Step4<dim>::setup_system()
+  {
+    dof_handler.distribute_dofs(fe);
 
-    std::cout << "   Number of degrees of freedom: " << dof_handler.n_dofs()
-              << std::endl;
+    std::cout << "   Number of degrees of freedom: " << dof_handler.n_dofs()
+              << std::endl;
 
-    DynamicSparsityPattern dsp(dof_handler.n_dofs());
-    DoFTools::make_sparsity_pattern(dof_handler, dsp);
-    sparsity_pattern.copy_from(dsp);
+    DynamicSparsityPattern dsp(dof_handler.n_dofs());
+    DoFTools::make_sparsity_pattern(dof_handler, dsp);
+    sparsity_pattern.copy_from(dsp);
 
-    system_matrix.reinit(sparsity_pattern);
+    system_matrix.reinit(sparsity_pattern);
 
-    solution.reinit(dof_handler.n_dofs());
-    system_rhs.reinit(dof_handler.n_dofs());
-  }
+    solution.reinit(dof_handler.n_dofs());
+    system_rhs.reinit(dof_handler.n_dofs());
+  }
 ```
 
 
 
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2MTcxNzQ0MSw2NzIwNDYzMTYsMTM4MT
-cwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIwODEsLTE3MTEzMzEw
-MjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwtMTIwMjQ0NjY4Ny
-w0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NTMw
-MzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwtMTk1NzUzMT
-kwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
+eyJoaXN0b3J5IjpbLTEzOTU0MDQzODcsMjA2MTcxNzQ0MSw2Nz
+IwNDYzMTYsMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIw
+ODEsLTE3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMS
+wtMTIwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUz
+NTY3NjAxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3Nz
+IxOSwtMTk1NzUzMTkwMywxNzgzOTc4OTc0LDIzOTY5NzQ0MF19
+
 -->
