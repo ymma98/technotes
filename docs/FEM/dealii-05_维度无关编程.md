@@ -221,13 +221,35 @@ $$
 
 refine_global(n) 意味着所有的 cell 都均匀地划分为 2\*\*dim 个子网格。以 2D 的情况为例，最开始 triangulation 只有一个 cell, 然后被 refine 4次，意味着 refine 之后有 (2\*\*2)**4 个网格，即256个网格。总网格数是 $(2^{dim})^n$ 。
 
-active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节点，total cell number = active cell num + inactive cell num. total cell number 没有物理意义, 只是he
+active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节点，total cell number = active cell num + inactive cell num. total cell number 没有物理意义, 只是和 triangulation 管理 mesh 的数据结构有关。
+
+#### 设置数据结构实现
+
+```cpp
+  template <int dim>
+  void Step4<dim>::setup_system()
+  {
+    dof_handler.distribute_dofs(fe);
+
+    std::cout << "   Number of degrees of freedom: " << dof_handler.n_dofs()
+              << std::endl;
+
+    DynamicSparsityPattern dsp(dof_handler.n_dofs());
+    DoFTools::make_sparsity_pattern(dof_handler, dsp);
+    sparsity_pattern.copy_from(dsp);
+
+    system_matrix.reinit(sparsity_pattern);
+
+    solution.reinit(dof_handler.n_dofs());
+    system_rhs.reinit(dof_handler.n_dofs());
+  }
+```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1MzEzNTgwNSw2NzIwNDYzMTYsMTM4MT
+eyJoaXN0b3J5IjpbMjA2MTcxNzQ0MSw2NzIwNDYzMTYsMTM4MT
 cwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIwODEsLTE3MTEzMzEw
 MjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwtMTIwMjQ0NjY4Ny
 w0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3NjAxNCw1NTMw
