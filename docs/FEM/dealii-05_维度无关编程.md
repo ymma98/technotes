@@ -135,10 +135,15 @@ $$
   };
 ```
 
-#### 
+#### 定义求解问题
+
+$$
+-\nabla\cdot \nabla u = f \\
+f= 4(x^2 + y^2)
+$$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xND
-A1ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMsMTc4Mzk3
-ODk3NCwyMzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbLTE3Njc1NzI3OTMsLTE1MzU2NzYwMTQsNT
+UzMDMwNTQ0LC0xNDA1ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1
+MzE5MDMsMTc4Mzk3ODk3NCwyMzk2OTc0NDBdfQ==
 -->
