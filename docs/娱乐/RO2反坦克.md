@@ -52,8 +52,11 @@
 
 * 三号坦克太脆了，反坦克枪几乎随便打就会爆，不需要太多技巧
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.1e8nw62bhv.webp){ width="400" }
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0MTU1MzkyMSwxODYwODk2NDkyLDIwND
-E1NzMzODcsLTg1NzQwNjY1XX0=
+eyJoaXN0b3J5IjpbLTExMTExODM2MDgsMTg2MDg5NjQ5MiwyMD
+QxNTczMzg3LC04NTc0MDY2NV19
 -->
