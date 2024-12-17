@@ -25,9 +25,12 @@
 * **炮塔接缝两端**
 	* 不依赖具体的射击角度
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.8l059hh4tb.webp)
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.8l059hh4tb.webp){ width="400" }
 
 
+* 尾部地盘最底部
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.7lk1wbi1df.webp)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY2NTE3NDg2LC04NTc0MDY2NV19
+eyJoaXN0b3J5IjpbMTU2NjIwNTM4MywtODU3NDA2NjVdfQ==
 -->
