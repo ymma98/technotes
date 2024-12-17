@@ -20,6 +20,10 @@
 	* 不依赖具体的射击角度
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.86tpim55ab.webp){ width="300" }
+
+
+* 炮塔接缝
+	* 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzOTM0NDA3NSwtODU3NDA2NjVdfQ==
+eyJoaXN0b3J5IjpbMTY3NzMzNzgzNSwtODU3NDA2NjVdfQ==
 -->
