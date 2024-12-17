@@ -27,6 +27,11 @@
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.8l059hh4tb.webp){ width="400" }
 
+* **正面机枪与观察口下方接缝**
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.1lbvrleb5n.webp){ width="400" }
+
+
 * **炮塔下方坦克正侧面中间**
 	* 如果不是垂直90°打过去，则几乎没有用
 
@@ -38,5 +43,6 @@
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.7lk1wbi1df.webp){ width="300" }
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MTU3MzM4NywtODU3NDA2NjVdfQ==
+eyJoaXN0b3J5IjpbMTg2ODc2MTY5NSwyMDQxNTczMzg3LC04NT
+c0MDY2NV19
 -->
