@@ -47,6 +47,12 @@
 
 ## T-70
 
+* **炮塔接缝**
+	* 不依赖特定角度
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.70aea1h225.webp){ width="400" }
+
+
 * **履带侧前**
 	* 如果不是垂直90°打过去，则几乎没有用
 
@@ -76,5 +82,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MzcwNTQ1MV19
+eyJoaXN0b3J5IjpbMTcwMTkyOTI0NF19
 -->
