@@ -19,7 +19,7 @@
 * **坦克底盘最底部**
 	* 不依赖具体的射击角度
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.86tpim55ab.webp){ width="300" }
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.86tpim55ab.webp){ width="400" }
 
 
 * **炮塔接缝两端**
@@ -36,7 +36,7 @@
 * **炮塔下方坦克正侧面中间**
 	* 如果不是垂直90°打过去，则几乎没有用
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.4uazo8xyk0.webp)
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.4uazo8xyk0.webp){ width="400" }
 
 
 * 尾部地盘最底部
@@ -50,10 +50,13 @@
 * **履带侧前**
 	* 如果不是垂直90°打过去，则几乎没有用
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.8vmz2np3uf.webp)
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.8vmz2np3uf.webp){ width="400" }
 
 
-* bei
+* 背部栅格
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.10285b51il.webp){ width="300" }
+
 
 ## 三号坦克
 
@@ -73,5 +76,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDE5MzQ3NTldfQ==
+eyJoaXN0b3J5IjpbMTM4MzcwNTQ1MV19
 -->
