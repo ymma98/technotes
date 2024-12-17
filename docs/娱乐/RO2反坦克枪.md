@@ -47,8 +47,13 @@
 
 ## T-70
 
+* **履带侧前**
+	* 如果不是垂直90°打过去，则几乎没有用
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.8vmz2np3uf.webp)
 
 
+* bei
 
 ## 三号坦克
 
@@ -68,5 +73,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU0NTk0OTYzXX0=
+eyJoaXN0b3J5IjpbLTE4MDE5MzQ3NTldfQ==
 -->
