@@ -43,7 +43,17 @@
 	* 不依赖具体的射击角度
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.7lk1wbi1df.webp){ width="300" }
+
+
+## T-70
+
+
+## 三号坦克
+
+* 三号坦克太脆了，反坦克枪几乎随便打就会爆，不需要太多技巧
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2MDg5NjQ5MiwyMDQxNTczMzg3LC04NT
-c0MDY2NV19
+eyJoaXN0b3J5IjpbLTI0MTU1MzkyMSwxODYwODk2NDkyLDIwND
+E1NzMzODcsLTg1NzQwNjY1XX0=
 -->
