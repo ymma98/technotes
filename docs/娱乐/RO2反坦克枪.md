@@ -1,5 +1,9 @@
 # Red Orchestra2 反坦克枪
 
+
+* 参考
+	* https://www.youtube.com/watch?v=N4_Qw5dyjyE
+
 ## T-34
 
 * **侧面**，打**从前向后数第二个与第三个承重轮 (大轮子) 的中上部**
@@ -82,5 +86,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4OTI3MDkwXX0=
+eyJoaXN0b3J5IjpbMTc1MzE4NDI0OCwtNjg5MjcwOTBdfQ==
 -->
