@@ -47,7 +47,7 @@
 
 ## T-70
 
-* **炮塔接缝**
+* **炮塔接缝**，最好还是打接缝两侧
 	* 不依赖特定角度
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.70aea1h225.webp){ width="400" }
@@ -82,5 +82,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwMTkyOTI0NF19
+eyJoaXN0b3J5IjpbLTY4OTI3MDkwXX0=
 -->
