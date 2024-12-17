@@ -2,7 +2,9 @@
 
 
 * 参考
-	* https://www.youtube.com/watch?v=N4_Qw5dyjyE
+	* [T-34, 四号](https://www.youtube.com/watch?v=PDpiXSVo2cI)
+	* [T-70, 三号](https://www.youtube.com/watch?v=N4_Qw5dyjyE)
+
 
 ## T-34
 
@@ -86,5 +88,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MzE4NDI0OCwtNjg5MjcwOTBdfQ==
+eyJoaXN0b3J5IjpbLTIwNDI1MjI0NzEsLTY4OTI3MDkwXX0=
 -->
