@@ -27,10 +27,16 @@
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.8l059hh4tb.webp){ width="400" }
 
+* **坦克正侧面**
+	* 
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.4uazo8xyk0.webp)
+
 
 * 尾部地盘最底部
+	* 不依赖具体的射击角度
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.7lk1wbi1df.webp)
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.7lk1wbi1df.webp){ width="300" }
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NjIwNTM4MywtODU3NDA2NjVdfQ==
+eyJoaXN0b3J5IjpbMjI2NjIzMDEsLTg1NzQwNjY1XX0=
 -->
