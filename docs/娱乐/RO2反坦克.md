@@ -2,9 +2,10 @@
 
 ## T-34
 
+* 正侧面，打
 
-
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.32i0tbognl.webp){ width="400" }
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2NzEwODUyNV19
+eyJoaXN0b3J5IjpbNjIzOTk1MjMwXX0=
 -->
