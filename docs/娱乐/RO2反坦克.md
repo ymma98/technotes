@@ -11,12 +11,15 @@
 * **炮塔接缝**, 正面找到炮塔接缝处，打接缝的两端
 	* 打炮塔接缝两端不依赖具体的角度
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.41y46hze0v.webp)
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.41y46hze0v.webp){ width="400" }
 
 
 ## 四号坦克
 
-* 
+* 坦克底盘最底部
+	* 不依赖具体的射击角度
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.86tpim55ab.webp){ width="300" }
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU0NzA3OTczNiwtODU3NDA2NjVdfQ==
+eyJoaXN0b3J5IjpbLTgzOTM0NDA3NSwtODU3NDA2NjVdfQ==
 -->
