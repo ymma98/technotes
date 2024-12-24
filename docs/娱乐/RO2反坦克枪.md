@@ -72,21 +72,24 @@
 
 ## 三号坦克
 
-* 三号坦克太脆了，反坦克枪几乎随便打就会爆，不需要太多技巧
+* 三号坦克太脆了，只要能打侧面和顶部，反坦克枪几乎随便打就会爆，不需要太多技巧。但正面不好打
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.pfec5kk1j.webp){ width="400" }
-
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.2a55bmdrae.webp){ width="300" }
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241224/image.70aekgo15p.webp){ width="300" }
 
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.45qpulk5y.webp){ width="300" }
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241217/image.1e8nw62bhv.webp){ width="300" }
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241224/image.45r0a63ei.webp){ width="300" }
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20241224/image.2oblcx6x4q.webp){ width="300" }
+
+
+![输入图片说明](./imgs/2024-RO2反坦克枪/AOjO9BhbbhJJwFT3.png){ width="300" }
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDI1MjI0NzEsLTY4OTI3MDkwXX0=
+eyJoaXN0b3J5IjpbLTk1OTIzODE4NywtMjA0MjUyMjQ3MSwtNj
+g5MjcwOTBdfQ==
 -->
