@@ -4,6 +4,7 @@
 * 参考
 	* [T-34, 四号](https://www.youtube.com/watch?v=PDpiXSVo2cI)
 	* [T-70, 三号](https://www.youtube.com/watch?v=N4_Qw5dyjyE)
+	* [steam 文章](https://steamcommunity.com/sharedfiles/filedetails/?id=416647696)
 
 
 ## T-34
@@ -90,6 +91,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1OTIzODE4NywtMjA0MjUyMjQ3MSwtNj
-g5MjcwOTBdfQ==
+eyJoaXN0b3J5IjpbMTkwNDAwNzk2MSwtOTU5MjM4MTg3LC0yMD
+QyNTIyNDcxLC02ODkyNzA5MF19
 -->
