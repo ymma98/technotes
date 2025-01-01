@@ -45,7 +45,7 @@ p10k configure
 typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=
 ```
 
-显示 full path: 设置 ``
+[显示 full path](https://www.reddit.com/r/zsh/comments/wpmpzc/p10k_untruncated_current_directory_path_name_as/): 设置 `~/.p10k.zsh`
 
 ```bash
 POWERLEVEL9K_SHORTEN_STRATEGY=
@@ -147,9 +147,9 @@ set +o noclobber
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4NTkwNDY0MSwxNTk0NTg4NjgwLDk0MT
-g1NzMzNiwtNDY5ODI0NzY5LDU4MjUzMjEwMiwtMjI4ODQzODQ2
-LC0xNzQ5MzU2ODEyLDc5Mjk1ODY2NCwtMjA4NTYyMzYzMCwxMD
-g2NjI0NDE1LC0xOTY4NTMzNDIwLC04NDczMjQzNTksMzA5MDY1
-ODI2XX0=
+eyJoaXN0b3J5IjpbLTE0ODIwMDUxMDYsMTU5NDU4ODY4MCw5ND
+E4NTczMzYsLTQ2OTgyNDc2OSw1ODI1MzIxMDIsLTIyODg0Mzg0
+NiwtMTc0OTM1NjgxMiw3OTI5NTg2NjQsLTIwODU2MjM2MzAsMT
+A4NjYyNDQxNSwtMTk2ODUzMzQyMCwtODQ3MzI0MzU5LDMwOTA2
+NTgyNl19
 -->
