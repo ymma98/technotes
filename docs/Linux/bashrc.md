@@ -57,6 +57,7 @@ alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
 PS1='\u@\h:\w \$ '
 alias shortps1='PS1="\u@\h:\W \$ "'
 alias cpwd=" pwd | xsel --clipboard --input"
+alias xselcp="xsel --clipboard --input"
 
 
 # for tabby
@@ -269,7 +270,7 @@ config.keys = {
 return config
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4ODA3MjQxOCw5MjE5MjAxMCwyMDQ3NT
-U5MTAsOTk0NjQ2NDU2LC02ODA1MTM5ODEsLTEwODE4NjUzOTMs
-NjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
+eyJoaXN0b3J5IjpbMzA2OTI0NTAyLC03ODgwNzI0MTgsOTIxOT
+IwMTAsMjA0NzU1OTEwLDk5NDY0NjQ1NiwtNjgwNTEzOTgxLC0x
+MDgxODY1MzkzLDY1MjM2OTc5NSwtMTU3Nzk0MTMyNF19
 -->
