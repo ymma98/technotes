@@ -32,7 +32,6 @@ nav:
       - vim_强制tab对应4空格: Linux/vim_强制tab对应4空格.md
       - 集群_mpirun报错: Linux/集群_mpirun报错.md
       - terminal_显示中文: Linux/linux_terminal显示中文.md
-      - 命令行拷贝路径到系统剪贴板: Linux/命令行拷贝路径到系统剪贴板.md
   - math:
     - Mathematica速查: math/MathematicaCheatsheet.md
     - 任意正交曲线坐标系矢量计算: math/任意正交曲线坐标系矢量计算.md
