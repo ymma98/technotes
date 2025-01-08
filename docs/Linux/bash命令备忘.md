@@ -43,7 +43,16 @@ $ sed -i 's/tol=1.0e-8/tol=1.0e-7/g' */input.in
 
 -i 的意思是直接更改文件, g 是 global
 ```
+
+
+* 命令行拷贝路径到系统剪贴板
+
+```bash
+alias cpwd=" pwd | xsel --clipboard --input"
+```
+
+如果这行命令失效 (windows + wsl + Xlaunch), 就 **重启XLaunch**。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzOTY2NjYzOSw3NTgwNTIwMTMsNDAyND
-AzMTYwLC0xOTczMDIyODQwXX0=
+eyJoaXN0b3J5IjpbMTcxNzY0OTA0MiwxNjM5NjY2NjM5LDc1OD
+A1MjAxMyw0MDI0MDMxNjAsLTE5NzMwMjI4NDBdfQ==
 -->
