@@ -139,8 +139,8 @@ $$
 
 $$
 -\nabla\cdot \nabla u = f \\
-f= 4(x^4 + y^2) \quad \text{2D} \\
-f= 4(x^2 + y^2 + z^2) \quad \text{3D} \\
+f= 4(x^4 + y^4) \quad \text{2D} \\
+f= 4(x^4 + y^4 + z^4) \quad \text{3D} \\
 u = x^2 + y^2 \quad  \text{on}\quad \partial \Omega
 $$
 
@@ -261,11 +261,11 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczMDg0NDE2NSwxNjM2MjY2ODIzLDIwNj
-E3MTc0NDEsNjcyMDQ2MzE2LDEzODE3MDkwODQsLTE4MDE0NTQ0
-MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5OTMsLT
-EyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLDExOTMy
-MDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1ODIzOD
-I4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMsMTc4Mzk3ODk3NCwy
-Mzk2OTc0NDBdfQ==
+eyJoaXN0b3J5IjpbLTE4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMD
+YxNzE3NDQxLDY3MjA0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0
+NDI4LDI5MjA4MjA4MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC
+0xMjQ2NzQxNjAxLC0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkz
+MjA1ODk5LC0xNTM1Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMz
+gyOCwxMjU3OTc3MjE5LC0xOTU3NTMxOTAzLDE3ODM5Nzg5NzQs
+MjM5Njk3NDQwXX0=
 -->
