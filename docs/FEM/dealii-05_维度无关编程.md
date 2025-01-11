@@ -200,7 +200,7 @@ $$
   {}
 ```
 
-这里是构造函数的具体实现，`:` 之后的是 member initializer list。
+这里是构造函数的具体实现，`:` 之后的是 member initializer list。triangulation 本身调用了自己的默认构造函数, 不需要显式地构造。
 
 
 #### 网格定义实现
@@ -261,11 +261,11 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMD
-YxNzE3NDQxLDY3MjA0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0
-NDI4LDI5MjA4MjA4MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC
-0xMjQ2NzQxNjAxLC0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkz
-MjA1ODk5LC0xNTM1Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMz
-gyOCwxMjU3OTc3MjE5LC0xOTU3NTMxOTAzLDE3ODM5Nzg5NzQs
-MjM5Njk3NDQwXX0=
+eyJoaXN0b3J5IjpbLTQ2NzA2OTYxNSwtMTg5MzExNDYyNywxNj
+M2MjY2ODIzLDIwNjE3MTc0NDEsNjcyMDQ2MzE2LDEzODE3MDkw
+ODQsLTE4MDE0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LD
+EzOTk4Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIx
+NzQ3MDAzLDExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNT
+Q0LC0xNDA1ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMs
+MTc4Mzk3ODk3NF19
 -->
