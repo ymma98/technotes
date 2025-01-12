@@ -41,6 +41,7 @@ nav:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
     - 有限元空间: FEM/有限元空间.md
     - 基函数与数值积分: FEM/基函数与数值积分.md
+    - 边界条件: FEM/边界条件.md
     - 数据结构_HeXiaoming: FEM/数据结构_HeXiaoming.md
     - sissa01_Lax-Milgram: FEM/sissa01_Lax_Milgram.md
     - 赵隐剑老师_并行编程入门实践课程01: FEM/赵隐剑老师_并行编程入门实践课程01.md
