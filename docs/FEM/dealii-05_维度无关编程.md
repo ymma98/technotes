@@ -281,7 +281,8 @@ void Step4<dim>::assemble_system()
 
       cell_matrix = 0;
       cell_rhs    = 0;
-
+      
+      // 这一步是在 local cell 中遍历, fe_values.dof_indices() 就是 0~local cell dof num-1 的container
       for (const unsigned int q_index : fe_values.quadrature_point_indices())
         for (const unsigned int i : fe_values.dof_indices())
           {
@@ -327,11 +328,11 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIyMjkwNTU5LC04NTI2MDE4MTgsLTQ2Nz
-A2OTYxNSwtMTg5MzExNDYyNywxNjM2MjY2ODIzLDIwNjE3MTc0
-NDEsNjcyMDQ2MzE2LDEzODE3MDkwODQsLTE4MDE0NTQ0MjgsMj
-kyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5OTMsLTEyNDY3
-NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLDExOTMyMDU4OT
-ksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1ODIzODI4LDEy
-NTc5NzcyMTldfQ==
+eyJoaXN0b3J5IjpbLTIwMDQ0NTIxMzAsNjIyMjkwNTU5LC04NT
+I2MDE4MTgsLTQ2NzA2OTYxNSwtMTg5MzExNDYyNywxNjM2MjY2
+ODIzLDIwNjE3MTc0NDEsNjcyMDQ2MzE2LDEzODE3MDkwODQsLT
+E4MDE0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4
+Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MD
+AzLDExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0x
+NDA1ODIzODI4XX0=
 -->
