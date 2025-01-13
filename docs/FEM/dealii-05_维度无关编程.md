@@ -258,6 +258,7 @@ void Step4<dim>::assemble_system()
   // n 个点, 可以精确计算次数<= 2n-1的多项式
   // 对于 Poission eq, 最多有 grad(phi) . grad(phi), 即 2*(fe.degree-1) 次多项式
   // 这需要 2n-1 >= 2*(fe.degree-1), n >= fe.degree - 1/2
+  // 不过, 一般要求, 对于p阶多项式, 要求数值积分精确到 2p 阶
   const QGauss<dim> quadrature_formula(fe.degree + 1);
 
   RightHandSide<dim> right_hand_side;
@@ -326,11 +327,11 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NjE0NDIxOSwtODUyNjAxODE4LC00Nj
-cwNjk2MTUsLTE4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3
-NDQxLDY3MjA0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0NDI4LD
-I5MjA4MjA4MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0xMjQ2
-NzQxNjAxLC0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkzMjA1OD
-k5LC0xNTM1Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMzgyOCwx
-MjU3OTc3MjE5XX0=
+eyJoaXN0b3J5IjpbNjIyMjkwNTU5LC04NTI2MDE4MTgsLTQ2Nz
+A2OTYxNSwtMTg5MzExNDYyNywxNjM2MjY2ODIzLDIwNjE3MTc0
+NDEsNjcyMDQ2MzE2LDEzODE3MDkwODQsLTE4MDE0NTQ0MjgsMj
+kyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5OTMsLTEyNDY3
+NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MDAzLDExOTMyMDU4OT
+ksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0xNDA1ODIzODI4LDEy
+NTc5NzcyMTldfQ==
 -->
