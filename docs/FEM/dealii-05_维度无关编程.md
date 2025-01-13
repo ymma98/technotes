@@ -252,7 +252,69 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 #### 矩阵组装实现
 
 ```cpp
+template <int dim>
+void Step4<dim>::assemble_system()
+{
+  const QGauss<dim> quadrature_formula(fe.degree + 1);
 
+  RightHandSide<dim> right_hand_side;
+
+  FEValues<dim> fe_values(fe,
+                          quadrature_formula,
+                          update_values | update_gradients |
+                            update_quadrature_points | update_JxW_values);
+
+  const unsigned int dofs_per_cell = fe.n_dofs_per_cell();
+
+  FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
+  Vector<double>     cell_rhs(dofs_per_cell);
+
+  std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
+
+  for (const auto &cell : dof_handler.active_cell_iterators())
+    {
+      fe_values.reinit(cell);
+
+      cell_matrix = 0;
+      cell_rhs    = 0;
+
+      for (const unsigned int q_index : fe_values.quadrature_point_indices())
+        for (const unsigned int i : fe_values.dof_indices())
+          {
+            for (const unsigned int j : fe_values.dof_indices())
+              cell_matrix(i, j) +=
+                (fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
+                 fe_values.shape_grad(j, q_index) * // grad phi_j(x_q)
+                 fe_values.JxW(q_index));           // dx
+
+            const auto &x_q = fe_values.quadrature_point(q_index);
+            cell_rhs(i) += (fe_values.shape_value(i, q_index) * // phi_i(x_q)
+                            right_hand_side.value(x_q) *        // f(x_q)
+                            fe_values.JxW(q_index));            // dx
+          }
+
+      cell->get_dof_indices(local_dof_indices);
+      for (const unsigned int i : fe_values.dof_indices())
+        {
+          for (const unsigned int j : fe_values.dof_indices())
+            system_matrix.add(local_dof_indices[i],
+                              local_dof_indices[j],
+                              cell_matrix(i, j));
+
+          system_rhs(local_dof_indices[i]) += cell_rhs(i);
+        }
+    }
+
+  std::map<types::global_dof_index, double> boundary_values;
+  VectorTools::interpolate_boundary_values(dof_handler,
+                                           types::boundary_id(0),
+                                           BoundaryValues<dim>(),
+                                           boundary_values);
+  MatrixTools::apply_boundary_values(boundary_values,
+                                     system_matrix,
+                                     solution,
+                                     system_rhs);
+}
 ```
 
 
@@ -261,11 +323,11 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2NzA2OTYxNSwtMTg5MzExNDYyNywxNj
-M2MjY2ODIzLDIwNjE3MTc0NDEsNjcyMDQ2MzE2LDEzODE3MDkw
-ODQsLTE4MDE0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LD
-EzOTk4Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIx
-NzQ3MDAzLDExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNT
-Q0LC0xNDA1ODIzODI4LDEyNTc5NzcyMTksLTE5NTc1MzE5MDMs
-MTc4Mzk3ODk3NF19
+eyJoaXN0b3J5IjpbLTg1MjYwMTgxOCwtNDY3MDY5NjE1LC0xOD
+kzMTE0NjI3LDE2MzYyNjY4MjMsMjA2MTcxNzQ0MSw2NzIwNDYz
+MTYsMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIwODEsLT
+E3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwtMTIw
+MjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3Nj
+AxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwt
+MTk1NzUzMTkwM119
 -->
