@@ -255,6 +255,7 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 template <int dim>
 void Step4<dim>::assemble_system()
 {
+  // fe.degree+1 个点, 可以精确计算次数<= 2*(fe.degree+1)-1=2*fe.degree+1的多项式
   const QGauss<dim> quadrature_formula(fe.degree + 1);
 
   RightHandSide<dim> right_hand_side;
@@ -323,11 +324,11 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MjYwMTgxOCwtNDY3MDY5NjE1LC0xOD
-kzMTE0NjI3LDE2MzYyNjY4MjMsMjA2MTcxNzQ0MSw2NzIwNDYz
-MTYsMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIwODEsLT
-E3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwtMTIw
-MjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OSwtMTUzNTY3Nj
-AxNCw1NTMwMzA1NDQsLTE0MDU4MjM4MjgsMTI1Nzk3NzIxOSwt
-MTk1NzUzMTkwM119
+eyJoaXN0b3J5IjpbMTI0NzM1NDE2MiwtODUyNjAxODE4LC00Nj
+cwNjk2MTUsLTE4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3
+NDQxLDY3MjA0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0NDI4LD
+I5MjA4MjA4MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0xMjQ2
+NzQxNjAxLC0xMjAyNDQ2Njg3LDQyMTc0NzAwMywxMTkzMjA1OD
+k5LC0xNTM1Njc2MDE0LDU1MzAzMDU0NCwtMTQwNTgyMzgyOCwx
+MjU3OTc3MjE5XX0=
 -->
