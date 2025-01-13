@@ -255,7 +255,8 @@ active cell 就是参与计算的 cell. inactive cell 是 active cell 的父节�
 template <int dim>
 void Step4<dim>::assemble_system()
 {
-  // fe.degree+1 个点, 可以精确计算次数<= 2*(fe.degree+1)-1=2*fe.degree+1的多项式
+  // n 个点, 可以精确计算次数<= 2n-1的多项式
+  // 对于 Poission eq, 最多有 grad(phi) . grad(phi), 即 2*(fe.degree-1) jie
   const QGauss<dim> quadrature_formula(fe.degree + 1);
 
   RightHandSide<dim> right_hand_side;
@@ -324,7 +325,7 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0NzM1NDE2MiwtODUyNjAxODE4LC00Nj
+eyJoaXN0b3J5IjpbMTg5MTYzNjc3NiwtODUyNjAxODE4LC00Nj
 cwNjk2MTUsLTE4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3
 NDQxLDY3MjA0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0NDI4LD
 I5MjA4MjA4MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0xMjQ2
