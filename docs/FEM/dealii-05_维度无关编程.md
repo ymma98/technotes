@@ -310,7 +310,7 @@ void Step4<dim>::assemble_system()
           system_rhs(local_dof_indices[i]) += cell_rhs(i);
         }
     }
-
+  // 1. 声明一个映射，用于存储每个边界自由度对应的边界值
   std::map<types::global_dof_index, double> boundary_values;
   VectorTools::interpolate_boundary_values(dof_handler,
                                            types::boundary_id(0),
@@ -329,11 +329,11 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTc1OTQ5ODEsLTIwMDQ0NTIxMzAsNj
-IyMjkwNTU5LC04NTI2MDE4MTgsLTQ2NzA2OTYxNSwtMTg5MzEx
-NDYyNywxNjM2MjY2ODIzLDIwNjE3MTc0NDEsNjcyMDQ2MzE2LD
-EzODE3MDkwODQsLTE4MDE0NTQ0MjgsMjkyMDgyMDgxLC0xNzEx
-MzMxMDI2LDEzOTk4Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0ND
-Y2ODcsNDIxNzQ3MDAzLDExOTMyMDU4OTksLTE1MzU2NzYwMTQs
-NTUzMDMwNTQ0XX0=
+eyJoaXN0b3J5IjpbLTEzODEyMTEyMywtMTg5NzU5NDk4MSwtMj
+AwNDQ1MjEzMCw2MjIyOTA1NTksLTg1MjYwMTgxOCwtNDY3MDY5
+NjE1LC0xODkzMTE0NjI3LDE2MzYyNjY4MjMsMjA2MTcxNzQ0MS
+w2NzIwNDYzMTYsMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOTIw
+ODIwODEsLTE3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0MT
+YwMSwtMTIwMjQ0NjY4Nyw0MjE3NDcwMDMsMTE5MzIwNTg5OSwt
+MTUzNTY3NjAxNF19
 -->
