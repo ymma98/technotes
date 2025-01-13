@@ -100,6 +100,14 @@
 | **set substitute-path** `[from]` `[to]` | N/A                           | Replaces the directory path when searching for source files, useful for debugging on different machines or directory structures.                                 |
 
 
+* 开启 tui 模式:
+	* tui enable
+	* tui disable
+
+* 在 tui 模式下切换界面:
+	* `ctrl + x o`
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5Mjk3MDA1Ml19
+eyJoaXN0b3J5IjpbLTgyODY3NTY3LC0yOTI5NzAwNTJdfQ==
 -->
