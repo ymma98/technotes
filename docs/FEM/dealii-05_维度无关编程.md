@@ -283,6 +283,7 @@ void Step4<dim>::assemble_system()
       cell_rhs    = 0;
       
       // 这一步是在 local cell 中遍历, fe_values.dof_indices() 就是 0~local cell dof num-1 的container
+      // fe_values.shape_grad(i, q_index) 是经过映射后的、真实单元上的形函数梯度
       for (const unsigned int q_index : fe_values.quadrature_point_indices())
         for (const unsigned int i : fe_values.dof_indices())
           {
@@ -328,11 +329,11 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDQ0NTIxMzAsNjIyMjkwNTU5LC04NT
-I2MDE4MTgsLTQ2NzA2OTYxNSwtMTg5MzExNDYyNywxNjM2MjY2
-ODIzLDIwNjE3MTc0NDEsNjcyMDQ2MzE2LDEzODE3MDkwODQsLT
-E4MDE0NTQ0MjgsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4
-Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0NDY2ODcsNDIxNzQ3MD
-AzLDExOTMyMDU4OTksLTE1MzU2NzYwMTQsNTUzMDMwNTQ0LC0x
-NDA1ODIzODI4XX0=
+eyJoaXN0b3J5IjpbLTE4OTc1OTQ5ODEsLTIwMDQ0NTIxMzAsNj
+IyMjkwNTU5LC04NTI2MDE4MTgsLTQ2NzA2OTYxNSwtMTg5MzEx
+NDYyNywxNjM2MjY2ODIzLDIwNjE3MTc0NDEsNjcyMDQ2MzE2LD
+EzODE3MDkwODQsLTE4MDE0NTQ0MjgsMjkyMDgyMDgxLC0xNzEx
+MzMxMDI2LDEzOTk4Mjk5OTMsLTEyNDY3NDE2MDEsLTEyMDI0ND
+Y2ODcsNDIxNzQ3MDAzLDExOTMyMDU4OTksLTE1MzU2NzYwMTQs
+NTUzMDMwNTQ0XX0=
 -->
