@@ -325,7 +325,7 @@ void Step4<dim>::assemble_system()
 
 #### 求解矩阵
 
-Stop if the norm of the residual is below \( \tau = 10^{-6} \| \mathbf{b} \| \), where \( \mathbf{b} \) is the right-hand side vector.
+Stop if the norm of the residual () is below $\tau = 10^{-6} \| \mathbf{b} \|$, where $\mathbf{b}$ is the right-hand side vector.
 
 
 ```cpp
@@ -349,11 +349,11 @@ Stop if the norm of the residual is below \( \tau = 10^{-6} \| \mathbf{b} \| \),
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNjk0OTMwNDIsMTc0OTEzMTc4MCwyOT
-MyOTE1OTYsLTEzODEyMTEyMywtMTg5NzU5NDk4MSwtMjAwNDQ1
-MjEzMCw2MjIyOTA1NTksLTg1MjYwMTgxOCwtNDY3MDY5NjE1LC
-0xODkzMTE0NjI3LDE2MzYyNjY4MjMsMjA2MTcxNzQ0MSw2NzIw
-NDYzMTYsMTM4MTcwOTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIwOD
-EsLTE3MTEzMzEwMjYsMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwt
-MTIwMjQ0NjY4N119
+eyJoaXN0b3J5IjpbLTM0NTQ5MzU4MSwxNzQ5MTMxNzgwLDI5Mz
+I5MTU5NiwtMTM4MTIxMTIzLC0xODk3NTk0OTgxLC0yMDA0NDUy
+MTMwLDYyMjI5MDU1OSwtODUyNjAxODE4LC00NjcwNjk2MTUsLT
+E4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3NDQxLDY3MjA0
+NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0NDI4LDI5MjA4MjA4MS
+wtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0xMjQ2NzQxNjAxLC0x
+MjAyNDQ2Njg3XX0=
 -->
