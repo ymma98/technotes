@@ -306,8 +306,10 @@ git config --global core.quotepath false
 
 * [网站](https://ghps.cc/): https://ghps.cc/
 
-## dea
+## dealii GDB
+
+* [configuration](https://dealii.org/developer/users/gdb.html): https://dealii.org/developer/users/gdb.html
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2MDczNDA4MCwtMTY5MzI0NzQyNCwtMT
+eyJoaXN0b3J5IjpbLTI5MTEyMzc3MiwtMTY5MzI0NzQyNCwtMT
 IyNTI2NDc3NV19
 -->
