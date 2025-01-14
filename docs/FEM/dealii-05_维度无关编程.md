@@ -327,16 +327,17 @@ void Step4<dim>::assemble_system()
 
 
 ```cpp
-  template <int dim>
-  void Step4<dim>::solve()
-  {
-    SolverControl            solver_control(1000, 1e-6 * system_rhs.l2_norm());
-    SolverCG<Vector<double>> solver(solver_control);
-    solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity());
+  template <int dim>
+  void Step4<dim>::solve()
+  {
+    // 1000 是最大的迭代次数
+    SolverControl            solver_control(1000, 1e-6 * system_rhs.l2_norm());
+    SolverCG<Vector<double>> solver(solver_control);
+    solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity());
 
-    std::cout << "   " << solver_control.last_step()
-              << " CG iterations needed to obtain convergence." << std::endl;
-  }
+    std::cout << "   " << solver_control.last_step()
+              << " CG iterations needed to obtain convergence." << std::endl;
+  }
 ```
 
 
@@ -344,11 +345,11 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0OTEzMTc4MCwyOTMyOTE1OTYsLTEzOD
-EyMTEyMywtMTg5NzU5NDk4MSwtMjAwNDQ1MjEzMCw2MjIyOTA1
-NTksLTg1MjYwMTgxOCwtNDY3MDY5NjE1LC0xODkzMTE0NjI3LD
-E2MzYyNjY4MjMsMjA2MTcxNzQ0MSw2NzIwNDYzMTYsMTM4MTcw
-OTA4NCwtMTgwMTQ1NDQyOCwyOTIwODIwODEsLTE3MTEzMzEwMj
-YsMTM5OTgyOTk5MywtMTI0Njc0MTYwMSwtMTIwMjQ0NjY4Nyw0
-MjE3NDcwMDNdfQ==
+eyJoaXN0b3J5IjpbMTQwMzczMzI3OCwxNzQ5MTMxNzgwLDI5Mz
+I5MTU5NiwtMTM4MTIxMTIzLC0xODk3NTk0OTgxLC0yMDA0NDUy
+MTMwLDYyMjI5MDU1OSwtODUyNjAxODE4LC00NjcwNjk2MTUsLT
+E4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3NDQxLDY3MjA0
+NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0NDI4LDI5MjA4MjA4MS
+wtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0xMjQ2NzQxNjAxLC0x
+MjAyNDQ2Njg3XX0=
 -->
