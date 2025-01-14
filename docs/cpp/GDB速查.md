@@ -104,10 +104,13 @@
 	* tui enable
 	* tui disable
 
+* 显示当前行: `frame`
+
 * 在 tui 模式下切换界面:
 	* `ctrl + x o`
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyODY3NTY3LC0yOTI5NzAwNTJdfQ==
+eyJoaXN0b3J5IjpbMTM1MTMzNDcyMCwtODI4Njc1NjcsLTI5Mj
+k3MDA1Ml19
 -->
