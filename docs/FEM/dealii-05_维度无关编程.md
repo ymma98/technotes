@@ -349,25 +349,25 @@ void Step4<dim>::assemble_system()
 
 
 ```cpp
-  template <int dim>
-  void Step4<dim>::output_results() const
-  {
-    DataOut<dim> data_out;
+  template <int dim>
+  void Step4<dim>::output_results() const
+  {
+    DataOut<dim> data_out;
 
-    data_out.attach_dof_handler(dof_handler);
-    data_out.add_data_vector(solution, "solution");
+    data_out.attach_dof_handler(dof_handler);
+    data_out.add_data_vector(solution, "solution");
+	// 
+    data_out.build_patches();
 
-    data_out.build_patches();
-
-    std::ofstream output(dim == 2 ? "solution-2d.vtk" : "solution-3d.vtk");
-    data_out.write_vtk(output);
-  }
+    std::ofstream output(dim == 2 ? "solution-2d.vtk" : "solution-3d.vtk");
+    data_out.write_vtk(output);
+  }
 ```
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MTEzMjA3MSwtNzI0MjcwMzk0LDE3ND
+eyJoaXN0b3J5IjpbLTY1NDI0NTU2MSwtNzI0MjcwMzk0LDE3ND
 kxMzE3ODAsMjkzMjkxNTk2LC0xMzgxMjExMjMsLTE4OTc1OTQ5
 ODEsLTIwMDQ0NTIxMzAsNjIyMjkwNTU5LC04NTI2MDE4MTgsLT
 Q2NzA2OTYxNSwtMTg5MzExNDYyNywxNjM2MjY2ODIzLDIwNjE3
