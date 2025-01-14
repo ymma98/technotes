@@ -332,6 +332,7 @@ void Step4<dim>::assemble_system()
   {
     // 1000 是最大的迭代次数
     SolverControl            solver_control(1000, 1e-6 * system_rhs.l2_norm());
+    // Conjugate Gradient (CG) solver
     SolverCG<Vector<double>> solver(solver_control);
     solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity());
 
@@ -345,7 +346,7 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwMzczMzI3OCwxNzQ5MTMxNzgwLDI5Mz
+eyJoaXN0b3J5IjpbLTQ4MDYwNDg5MCwxNzQ5MTMxNzgwLDI5Mz
 I5MTU5NiwtMTM4MTIxMTIzLC0xODk3NTk0OTgxLC0yMDA0NDUy
 MTMwLDYyMjI5MDU1OSwtODUyNjAxODE4LC00NjcwNjk2MTUsLT
 E4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3NDQxLDY3MjA0
