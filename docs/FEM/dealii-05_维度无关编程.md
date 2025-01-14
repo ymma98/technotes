@@ -334,6 +334,7 @@ void Step4<dim>::assemble_system()
     SolverControl            solver_control(1000, 1e-6 * system_rhs.l2_norm());
     // Conjugate Gradient (CG) solver
     SolverCG<Vector<double>> solver(solver_control);
+    // `PreconditionIdentity` means that no actual preconditioning is applied
     solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity());
 
     std::cout << "   " << solver_control.last_step()
@@ -346,7 +347,7 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4MDYwNDg5MCwxNzQ5MTMxNzgwLDI5Mz
+eyJoaXN0b3J5IjpbMTUyODI1NzI2NywxNzQ5MTMxNzgwLDI5Mz
 I5MTU5NiwtMTM4MTIxMTIzLC0xODk3NTk0OTgxLC0yMDA0NDUy
 MTMwLDYyMjI5MDU1OSwtODUyNjAxODE4LC00NjcwNjk2MTUsLT
 E4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3NDQxLDY3MjA0
