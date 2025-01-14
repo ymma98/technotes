@@ -327,7 +327,16 @@ void Step4<dim>::assemble_system()
 
 
 ```cpp
+  template <int dim>
+  void Step4<dim>::solve()
+  {
+    SolverControl            solver_control(1000, 1e-6 * system_rhs.l2_norm());
+    SolverCG<Vector<double>> solver(solver_control);
+    solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity());
 
+    std::cout << "   " << solver_control.last_step()
+              << " CG iterations needed to obtain convergence." << std::endl;
+  }
 ```
 
 
@@ -335,7 +344,7 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMyNDc2Nzc4MCwyOTMyOTE1OTYsLTEzOD
+eyJoaXN0b3J5IjpbMTc0OTEzMTc4MCwyOTMyOTE1OTYsLTEzOD
 EyMTEyMywtMTg5NzU5NDk4MSwtMjAwNDQ1MjEzMCw2MjIyOTA1
 NTksLTg1MjYwMTgxOCwtNDY3MDY5NjE1LC0xODkzMTE0NjI3LD
 E2MzYyNjY4MjMsMjA2MTcxNzQ0MSw2NzIwNDYzMTYsMTM4MTcw
