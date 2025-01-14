@@ -325,7 +325,8 @@ void Step4<dim>::assemble_system()
 
 #### 求解矩阵
 
-Stop if the norm of the residual () is below $\tau = 10^{-6} \| \mathbf{b} \|$, where $\mathbf{b}$ is the right-hand side vector.
+* Stop if the norm of the residual (b-Ax) is below $\tau = 10^{-6} \| \mathbf{b} \|$, where $\mathbf{b}$ is the right-hand side vector.
+* l2-norm: 平方和开根号
 
 
 ```cpp
@@ -349,7 +350,7 @@ Stop if the norm of the residual () is below $\tau = 10^{-6} \| \mathbf{b} \|$, 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0NTQ5MzU4MSwxNzQ5MTMxNzgwLDI5Mz
+eyJoaXN0b3J5IjpbLTcyNDI3MDM5NCwxNzQ5MTMxNzgwLDI5Mz
 I5MTU5NiwtMTM4MTIxMTIzLC0xODk3NTk0OTgxLC0yMDA0NDUy
 MTMwLDYyMjI5MDU1OSwtODUyNjAxODE4LC00NjcwNjk2MTUsLT
 E4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYxNzE3NDQxLDY3MjA0
