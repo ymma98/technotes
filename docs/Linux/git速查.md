@@ -302,7 +302,12 @@ git pull --rebase upstream master  # 从 upstream 的 master 里获取最新的�
 git config --global core.quotepath false
 ```
 
+## 在无法翻墙的机器上git clone
+
+* [网站](https://ghps.cc/): https://ghps.cc/
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjUyNjQ3NzVdfQ==
+eyJoaXN0b3J5IjpbLTE2OTMyNDc0MjQsLTEyMjUyNjQ3NzVdfQ
+==
 -->
