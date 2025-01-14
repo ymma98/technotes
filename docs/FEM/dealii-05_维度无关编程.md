@@ -364,10 +364,26 @@ void Step4<dim>::assemble_system()
   }
 ```
 
+#### run
+
+```cpp
+  template <int dim>
+  void Step4<dim>::run()
+  {
+    std::cout << "Solving problem in " << dim << " space dimensions."
+              << std::endl;
+
+    make_grid();
+    setup_system();
+    assemble_system();
+    solve();
+    output_results();
+  }
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYzNDU3ODkzMywtNzI0MjcwMzk0LDE3ND
+eyJoaXN0b3J5IjpbLTMzMjg1NjkzNSwtNzI0MjcwMzk0LDE3ND
 kxMzE3ODAsMjkzMjkxNTk2LC0xMzgxMjExMjMsLTE4OTc1OTQ5
 ODEsLTIwMDQ0NTIxMzAsNjIyMjkwNTU5LC04NTI2MDE4MTgsLT
 Q2NzA2OTYxNSwtMTg5MzExNDYyNywxNjM2MjY2ODIzLDIwNjE3
