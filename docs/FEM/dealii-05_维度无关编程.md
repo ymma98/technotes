@@ -356,7 +356,7 @@ void Step4<dim>::assemble_system()
 
     data_out.attach_dof_handler(dof_handler);
     data_out.add_data_vector(solution, "solution");
-	// 
+	// inform the output generator of the geometry and mesh structure of the problem
     data_out.build_patches();
 
     std::ofstream output(dim == 2 ? "solution-2d.vtk" : "solution-3d.vtk");
@@ -367,11 +367,11 @@ void Step4<dim>::assemble_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NDI0NTU2MSwtNzI0MjcwMzk0LDE3ND
-kxMzE3ODAsMjkzMjkxNTk2LC0xMzgxMjExMjMsLTE4OTc1OTQ5
-ODEsLTIwMDQ0NTIxMzAsNjIyMjkwNTU5LC04NTI2MDE4MTgsLT
-Q2NzA2OTYxNSwtMTg5MzExNDYyNywxNjM2MjY2ODIzLDIwNjE3
-MTc0NDEsNjcyMDQ2MzE2LDEzODE3MDkwODQsLTE4MDE0NTQ0Mj
-gsMjkyMDgyMDgxLC0xNzExMzMxMDI2LDEzOTk4Mjk5OTMsLTEy
-NDY3NDE2MDFdfQ==
+eyJoaXN0b3J5IjpbLTIwNTMyMTM5NTEsLTcyNDI3MDM5NCwxNz
+Q5MTMxNzgwLDI5MzI5MTU5NiwtMTM4MTIxMTIzLC0xODk3NTk0
+OTgxLC0yMDA0NDUyMTMwLDYyMjI5MDU1OSwtODUyNjAxODE4LC
+00NjcwNjk2MTUsLTE4OTMxMTQ2MjcsMTYzNjI2NjgyMywyMDYx
+NzE3NDQxLDY3MjA0NjMxNiwxMzgxNzA5MDg0LC0xODAxNDU0ND
+I4LDI5MjA4MjA4MSwtMTcxMTMzMTAyNiwxMzk5ODI5OTkzLC0x
+MjQ2NzQxNjAxXX0=
 -->
