@@ -136,6 +136,10 @@ spack install hdf5 +mpi ^openmpi
 然后安装 dealii:
 
 ```bash
+cmake -DDEAL_II_WITH_HDF5=ON -DHDF5_DIR=/lvdata/lvymma/libs/spack/opt/spack/linux-gentoo2-skylake_avx512/gcc-14.2.1/hdf5-1.14.5-2om2qfs3555lj6ltdjqsllbp2777ns4g/ -DDEAL_II_WITH_MPI=ON -DCMAKE_INSTALL_PREFIX=/home/ymma/lvdata/libs/dealii/install/ ../
+```
+
+```bash
 cmake -B build \ 
 -DCMAKE_C_COMPILER=/lvdata/lvymma/libs/spack/opt/spack/linux-gentoo2-skylake_avx512/gcc-14.2.1/openmpi-5.0.6-nqvoe2royloyhsnjelv2tx4d3i2tu2mv/bin/mpicc \
 -DCMAKE_CXX_COMPILER=/lvdata/lvymma/libs/spack/opt/spack/linux-gentoo2-skylake_avx512/gcc-14.2.1/openmpi-5.0.6-nqvoe2royloyhsnjelv2tx4d3i2tu2mv/bin/mpicxx
@@ -150,11 +154,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Nzg3MTE1MTYsLTE3NTAwMDA5ODEsMT
-c1NzIxNjUwNSwtMTc5MDU3OTI1MSwtNTkzODQ0MTYyLDUxNDIw
-NDI4MCwzNjAwNjc0NzcsLTExNTcxMTUzMjUsLTc2OTIzMTAxOC
-w4ODg3MDA1MDIsLTE4Mzk1ODMwNTMsMTg1MDExNjMwMywtMTg2
-MzU4NDgyMSwyNTA5NzY4MDQsNjUyNDAzNTM4LDE4MDU2ODczNj
-gsNTk5NzgxNDQ4LDEyMzQxMzQzMDksLTI5MDM1MjY3OCwtNDcx
-NDQxNzQxXX0=
+eyJoaXN0b3J5IjpbMTE1MjYxNzM3LC0xNzUwMDAwOTgxLDE3NT
+cyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0NDE2Miw1MTQyMDQy
+ODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC03NjkyMzEwMTgsOD
+g4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAxMTYzMDMsLTE4NjM1
+ODQ4MjEsMjUwOTc2ODA0LDY1MjQwMzUzOCwxODA1Njg3MzY4LD
+U5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAzNTI2NzgsLTQ3MTQ0
+MTc0MV19
 -->
