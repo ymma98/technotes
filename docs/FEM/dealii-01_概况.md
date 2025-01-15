@@ -107,6 +107,9 @@ ___
 
 ## 安装
 
+### 官网教程
+
+
 把仓库克隆到本地后:
 
 ```bash
@@ -117,6 +120,11 @@ $ make install    (alternatively $ make -j<N> install)
 $ make test
 ```
 
+### 安装包含 hdf5 的 dealii
+
+官网教程直接安装的版本是不支持 hdf5 的。
+
+要想安装支持 hdf5 的 dealii，需要一些额外操作。因为我是在服务器上安装shi
 
 
 
@@ -128,11 +136,11 @@ $ make test
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTAwMDA5ODEsMTc1NzIxNjUwNSwtMT
-c5MDU3OTI1MSwtNTkzODQ0MTYyLDUxNDIwNDI4MCwzNjAwNjc0
-NzcsLTExNTcxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLT
-E4Mzk1ODMwNTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5
-NzY4MDQsNjUyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LD
-EyMzQxMzQzMDksLTI5MDM1MjY3OCwtNDcxNDQxNzQxLC0xNTIw
-ODIzNTBdfQ==
+eyJoaXN0b3J5IjpbLTcxMTEwMDAwNywtMTc1MDAwMDk4MSwxNz
+U3MjE2NTA1LC0xNzkwNTc5MjUxLC01OTM4NDQxNjIsNTE0MjA0
+MjgwLDM2MDA2NzQ3NywtMTE1NzExNTMyNSwtNzY5MjMxMDE4LD
+g4ODcwMDUwMiwtMTgzOTU4MzA1MywxODUwMTE2MzAzLC0xODYz
+NTg0ODIxLDI1MDk3NjgwNCw2NTI0MDM1MzgsMTgwNTY4NzM2OC
+w1OTk3ODE0NDgsMTIzNDEzNDMwOSwtMjkwMzUyNjc4LC00NzE0
+NDE3NDFdfQ==
 -->
