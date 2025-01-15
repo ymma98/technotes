@@ -59,8 +59,12 @@ spack module lmod refresh          # 更新 Lmod 模块文件
 spack find --loaded 
 ```
 
-* 
+* 显示软件包路径和详细信息
+
+```bash
+spack find -p hdf5@1.14.5
+spack find -p hdf5
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNjMwNDAxNTYsLTE1MDA3ODI0MzddfQ
-==
+eyJoaXN0b3J5IjpbLTI5Mjc4MzM2NCwtMTUwMDc4MjQzN119
 -->
