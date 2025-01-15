@@ -51,6 +51,12 @@ spack update                       # 更新 Spack 到最新版本
 spack module tcl refresh           # 更新 Tcl 模块文件
 spack module lmod refresh          # 更新 Lmod 模块文件
 ```
+
+
+* 显示已经 load 的软件包
+```bash
+spack find --loaded 
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDA3ODI0MzddfQ==
+eyJoaXN0b3J5IjpbMTc4OTI3NTQ3MiwtMTUwMDc4MjQzN119
 -->
