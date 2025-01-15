@@ -150,7 +150,7 @@ make install
 make test
 ```
 
-一般来说，这样就已经解决问题了。如果在编译 dealii 的时候还是不行的话，要注意 LD_LIBRARY_PATH
+一般来说，这样就已经解决问题了。如果在编译 dealii 的时候还是不行的话，要注意 `LD_LIBRARY_PATH` 里面是不是混入了别的 openmpi (与编译并行 hdf5 版本不对应的 mpi)，是否需要 module unload ... 避免别的 mpi 给编译 dealii 算例带来问题。dealii 可以像下面这样强行指定`CMAKE_C_COMPILER`，和 
 
 ```bash
 cmake -B build \ 
@@ -167,11 +167,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM3NTk2MDA0LC0xNzUwMDAwOTgxLDE3NT
-cyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0NDE2Miw1MTQyMDQy
-ODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC03NjkyMzEwMTgsOD
-g4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAxMTYzMDMsLTE4NjM1
-ODQ4MjEsMjUwOTc2ODA0LDY1MjQwMzUzOCwxODA1Njg3MzY4LD
-U5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAzNTI2NzgsLTQ3MTQ0
-MTc0MV19
+eyJoaXN0b3J5IjpbLTE3MjM2MzIxNiwtMTc1MDAwMDk4MSwxNz
+U3MjE2NTA1LC0xNzkwNTc5MjUxLC01OTM4NDQxNjIsNTE0MjA0
+MjgwLDM2MDA2NzQ3NywtMTE1NzExNTMyNSwtNzY5MjMxMDE4LD
+g4ODcwMDUwMiwtMTgzOTU4MzA1MywxODUwMTE2MzAzLC0xODYz
+NTg0ODIxLDI1MDk3NjgwNCw2NTI0MDM1MzgsMTgwNTY4NzM2OC
+w1OTk3ODE0NDgsMTIzNDEzNDMwOSwtMjkwMzUyNjc4LC00NzE0
+NDE3NDFdfQ==
 -->
