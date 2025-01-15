@@ -124,7 +124,14 @@ $ make test
 
 官网教程直接安装的版本是不支持 hdf5 的。
 
-要想安装支持 hdf5 的 dealii，需要一些额外操作。因为我是在服务器上安装shi
+要想安装支持 hdf5 的 dealii，需要一些额外操作。因为我是在服务器上安装使用 dealii，没有管理员权限，所以包管理一律使用 spack.
+
+注意, 一定要用支持并行的 hdf5!
+
+```bash
+spack install openmpi
+spack install hdf5 +mpi ^openmpi
+```
 
 
 
@@ -136,11 +143,11 @@ $ make test
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxMTEwMDAwNywtMTc1MDAwMDk4MSwxNz
-U3MjE2NTA1LC0xNzkwNTc5MjUxLC01OTM4NDQxNjIsNTE0MjA0
-MjgwLDM2MDA2NzQ3NywtMTE1NzExNTMyNSwtNzY5MjMxMDE4LD
-g4ODcwMDUwMiwtMTgzOTU4MzA1MywxODUwMTE2MzAzLC0xODYz
-NTg0ODIxLDI1MDk3NjgwNCw2NTI0MDM1MzgsMTgwNTY4NzM2OC
-w1OTk3ODE0NDgsMTIzNDEzNDMwOSwtMjkwMzUyNjc4LC00NzE0
-NDE3NDFdfQ==
+eyJoaXN0b3J5IjpbMTczNzI2Nzc1LC0xNzUwMDAwOTgxLDE3NT
+cyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0NDE2Miw1MTQyMDQy
+ODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC03NjkyMzEwMTgsOD
+g4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAxMTYzMDMsLTE4NjM1
+ODQ4MjEsMjUwOTc2ODA0LDY1MjQwMzUzOCwxODA1Njg3MzY4LD
+U5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAzNTI2NzgsLTQ3MTQ0
+MTc0MV19
 -->
