@@ -54,9 +54,13 @@ spack module lmod refresh          # 更新 Lmod 模块文件
 
 
 * 显示已经 load 的软件包
+
 ```bash
 spack find --loaded 
 ```
+
+* 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4OTI3NTQ3MiwtMTUwMDc4MjQzN119
+eyJoaXN0b3J5IjpbLTExNjMwNDAxNTYsLTE1MDA3ODI0MzddfQ
+==
 -->
