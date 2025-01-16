@@ -282,12 +282,16 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 首先，看下 `:LspInfo`，不工作的情况是这样的:
 
 ```bash
+Detected filetype:   cpp
 
+0 client(s) attached to this buffer: 
+
+Configured servers list: 
 ```
 
-
+然后, 尝试运行: `:LvimCacheReset`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5MTgyNjQ4NCwtNTY1ODAyNTAxLC04MT
+eyJoaXN0b3J5IjpbMTkzMTQ4ODcwMiwtNTY1ODAyNTAxLC04MT
 g2NSw2NjY0MjQ3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMw
 OTkzODcsMTk4MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LD
 UzNTczNjEzNiw2MTk4NTQ3NDFdfQ==
