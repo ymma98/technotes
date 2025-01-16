@@ -273,9 +273,22 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     command = "silent! loadview"
 })
 ```
+
+
+## 问题整合
+
+### LSP 不工作, `gd` 没反应
+
+首先，看下 `:LspInfo`，不工作的情况是这样的:
+
+```bash
+
+```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2NTgwMjUwMSwtODE4NjUsNjY2NDI0Nz
-M3LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEy
-NjgyOTMsMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNj
-E5ODU0NzQxXX0=
+eyJoaXN0b3J5IjpbMTM5MTgyNjQ4NCwtNTY1ODAyNTAxLC04MT
+g2NSw2NjY0MjQ3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMw
+OTkzODcsMTk4MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LD
+UzNTczNjEzNiw2MTk4NTQ3NDFdfQ==
 -->
