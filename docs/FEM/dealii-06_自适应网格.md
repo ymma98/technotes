@@ -13,7 +13,7 @@
 理论上我们知道如果细化全局网格，误差将会按照下面的公式收敛为零：
 
 $$
-\| \nabla (u - u_h) \|_\Omega \leq C h^{p_{\text{max}}} \| \nabla^{p+1} u \|_\Omega,
+\| \nabla (u - u_h) \|_\Omega \leq C h^{p}_{\text{max}} \| \nabla^{p+1} u \|_\Omega,
 $$
 
 其中 $C$ 是与 $h$ 和 $u$ 无关的常数，$p$ 是使用的有限元的多项式阶数，$h_{\text{max}}$ 是最大单元的尺寸。那么，如果最大单元很重要，为什么我们要在某些区域内细化网格呢？
@@ -49,6 +49,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDEwNjAzNDgsLTE0NjkyOTEzMTldfQ
-==
+eyJoaXN0b3J5IjpbMTkyODM5MzM2LC0yMDAxMDYwMzQ4LC0xND
+Y5MjkxMzE5XX0=
 -->
