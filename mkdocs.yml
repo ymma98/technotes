@@ -63,6 +63,7 @@ nav:
   - cpp:
      - GDB速查: cpp/GDB速查.md
      - cheatsheet: cpp/cheatsheet.md
+     - 一些技巧: cpp/一些技巧.md
      - 基本概念_基础类型_操作符: cpp/基本概念_基础类型_操作符.md
      - 基本概念_enum_struct_控制流: cpp/基本概念_enum_struct_控制流.md
      - 基本概念_指针: cpp/基本概念_指针.md
