@@ -51,6 +51,8 @@ $$
 
 ## 代码拆解
 
+* 注释的部分是新增的
+
 ```bash
 #include <deal.II/base/quadrature_lib.h>
 #include <deal.II/dofs/dof_handler.h>
@@ -73,7 +75,9 @@ $$
 #include <deal.II/numerics/vector_tools.h>
 
 #include <fstream>
+
 using namespace dealii;
+
 template <int dim>
 class Step6 {
    public:
@@ -84,17 +88,21 @@ class Step6 {
     void                      setup_system();
     void                      assemble_system();
     void                      solve();
+    // 新增的函数
     void                      refine_grid();
     void                      output_results(const unsigned int cycle) const;
     Triangulation<dim>        triangulation;
     FE_Q<dim>                 fe;
     DoFHandler<dim>           dof_handler;
+    // 新增变量, holds a list of constraints
+    // to hold the hanging nodes and the boundary conditions
     AffineConstraints<double> constraints;
     SparseMatrix<double>      system_matrix;
     SparsityPattern           sparsity_pattern;
     Vector<double>            solution;
     Vector<double>            system_rhs;
 };
+
 template <int dim>
 double coefficient(const Point<dim> &p) {
     if (p.square() < 0.5 * 0.5)
@@ -102,18 +110,30 @@ double coefficient(const Point<dim> &p) {
     else
         return 1;
 }
+
 template <int dim>
-Step6<dim>::Step6() : fe(2), dof_handler(triangulation) {}
+Step6<dim>::Step6()
+  : fe(/* polynomial degree = */ 2)
+  , dof_handler(triangulation)
+{}
+
+
 template <int dim>
 void Step6<dim>::setup_system() {
     dof_handler.distribute_dofs(fe);
+
     solution.reinit(dof_handler.n_dofs());
     system_rhs.reinit(dof_handler.n_dofs());
+
+    // 这里 clear 的作用是, 清除上个 system 的 constraint
     constraints.clear();
     DoFTools::make_hanging_node_constraints(dof_handler, constraints);
+    // 之前: 先组装矩阵, 后定义边界条件
+    // 现在: 在 constraints 上增加边界条件的信息
     VectorTools::interpolate_boundary_values(
         dof_handler, 0, Functions::ZeroFunction<dim>(), constraints);
     constraints.close();
+
     DynamicSparsityPattern dsp(dof_handler.n_dofs());
     DoFTools::make_sparsity_pattern(dof_handler, dsp, constraints, false);
     sparsity_pattern.copy_from(dsp);
@@ -147,6 +167,7 @@ void Step6<dim>::assemble_system() {
                                 fe_values.JxW(q_index));
             }
         }
+        // 将 cell 数据写入 global matrix, 这里适用的是 distribute_local_to_global
         cell->get_dof_indices(local_dof_indices);
         constraints.distribute_local_to_global(cell_matrix, cell_rhs,
                                                local_dof_indices, system_matrix,
@@ -157,17 +178,27 @@ template <int dim>
 void Step6<dim>::solve() {
     SolverControl                          solver_control(1000, 1e-12);
     SolverCG<Vector<double>>               solver(solver_control);
+    // SSOR: symmetric successive overrelaxation
+    // 1.2: relaxation factor
     PreconditionSSOR<SparseMatrix<double>> preconditioner;
     preconditioner.initialize(system_matrix, 1.2);
     solver.solve(system_matrix, solution, system_rhs, preconditioner);
+    // computes the values of constrained nodes from the values of the unconstrained one
     constraints.distribute(solution);
 }
+
 template <int dim>
 void Step6<dim>::refine_grid() {
     Vector<float> estimated_error_per_cell(triangulation.n_active_cells());
     KellyErrorEstimator<dim>::estimate(dof_handler,
-                                       QGauss<dim - 1>(fe.degree + 1), {},
+                                       // need  face quadrature formula
+                                       QGauss<dim - 1>(fe.degree + 1),
+                                       // the function wants a list of boundary
+                                       // indicators for those boundaries where
+                                       // we have imposed Neumann values
+                                       {},
                                        solution, estimated_error_per_cell);
+    // 30% 误差高的网格进行细化, 3% 的进行粗化
     GridRefinement::refine_and_coarsen_fixed_number(
         triangulation, estimated_error_per_cell, 0.3, 0.03);
     triangulation.execute_coarsening_and_refinement();
@@ -238,14 +269,13 @@ int main() {
     }
     return 0;
 }
-
 ```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0MzAyNjI0OSwtNzQzMjkyNTg5LC0xNz
-cyNTk3Njc3LDE5MjgzOTMzNiwtMjAwMTA2MDM0OCwtMTQ2OTI5
-MTMxOV19
+eyJoaXN0b3J5IjpbNjg5NDU1ODgsMTM0MzAyNjI0OSwtNzQzMj
+kyNTg5LC0xNzcyNTk3Njc3LDE5MjgzOTMzNiwtMjAwMTA2MDM0
+OCwtMTQ2OTI5MTMxOV19
 -->
