@@ -40,9 +40,9 @@ $$ A_{ij}^K = (\nabla \varphi_i, \nabla \varphi_j)_K + (\varphi_i, \varphi_j)_K,
 $$ F^K_i = (\varphi_i, f)_K + (\varphi_i, g_2) \partial K \cap \Gamma_2. $$
 
 
-# 制造解法
+# 构造解法
 
-因为我们想验证我们的数值解 $u_h$ 的收敛性，我们希望设置一个已知精确解 $u$ 的情形。这时，制造解法就派上用场了：我们选择一个函数
+为了验证我们的数值解 $u_h$ 的收敛性，我们希望设置一个精确解 $u$, 选择一个函数
 
 $$ \bar{u}(x) = \sum_{i=1}^{3} \exp\left( -\frac{|x - x_i|^2}{\sigma^2} \right), $$
 
@@ -62,6 +62,6 @@ $$ g_2 = n \cdot \nabla \bar{u}, $$
 我们选择的解 $\bar{u}$ 满足所有这些要求：（i）它相对容易微分；（ii）它不是一个多项式；（iii）它是平滑的；（iv）它的长度尺度为 $\sigma = \frac{1}{8}$，在 $[-1, 1]^d$ 范围内相对容易用每个坐标方向上至少16个单元的网格来解析。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE0OTY0OTc1LC00MzQ5Nzk4MDQsMTc1ND
-YxNjY5M119
+eyJoaXN0b3J5IjpbLTIxNDM4NzE4NTgsLTQzNDk3OTgwNCwxNz
+U0NjE2NjkzXX0=
 -->
