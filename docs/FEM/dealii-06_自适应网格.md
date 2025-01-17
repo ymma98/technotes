@@ -46,9 +46,8 @@ a(\mathbf{x}) =
 \end{cases}
 $$
 
-## 问题
 
-如果dealii自适应网格用的库 `#include <deal.II/numerics/error_estimator.h>` 需要计算gradient, 那么显然无法用到 Cartesian 坐标系之外的情况? (dealii 只支持 Cartesian coordinate)
+
 
 ## 代码拆解
 
@@ -246,7 +245,7 @@ int main() {
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MDczNTM4NzksLTc0MzI5MjU4OSwtMT
-c3MjU5NzY3NywxOTI4MzkzMzYsLTIwMDEwNjAzNDgsLTE0Njky
-OTEzMTldfQ==
+eyJoaXN0b3J5IjpbMTM0MzAyNjI0OSwtNzQzMjkyNTg5LC0xNz
+cyNTk3Njc3LDE5MjgzOTMzNiwtMjAwMTA2MDM0OCwtMTQ2OTI5
+MTMxOV19
 -->
