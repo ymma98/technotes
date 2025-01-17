@@ -27,13 +27,13 @@ $$ u = g_1 $$
 
 $$ n \cdot \nabla u = g_2 $$
 
-在其余部分 $\Gamma_2 = \Gamma \setminus \Gamma_1$ 。我们将使用 $\Gamma_1 = \Gamma \cap \{ \{ x = 1 \} \cup \{ y = 1 \} \} $。（我们称这个方程具有“良好符号”，因为算子 $-\Delta + \alpha I$（其中$I$为单位算子）和$\alpha > 0$是一个正定算子；带有“坏符号”的方程是 $-\Delta - \alpha u$，它源于时间谐波过程的建模。对于带有“坏符号”的方程，如果$\alpha > 0$较大，算子 $-\Delta - \alpha I$ 不是正定的，这会导致许多我们在这里无需讨论的问题。如果$\alpha$恰好是$-\Delta$的特征值，则算子也可能不可逆——即方程没有唯一解。）
+在其余部分 $\Gamma_2 = \Gamma \setminus \Gamma_1$ 。我们将使用 $\Gamma_1 = \Gamma \cap \{ \{ x = 1 \} \cup \{ y = 1 \} \}$。（我们称这个方程具有“良好符号”，因为算子 $-\Delta + \alpha I$（其中$I$为单位算子）和$\alpha > 0$是一个正定算子；带有“坏符号”的方程是 $-\Delta - \alpha u$，对于带有“坏符号”的方程，如果$\alpha > 0$较大，算子 $-\Delta - \alpha I$ 不是正定的，这会导致许多我们在这里无需讨论的问题。如果$\alpha$恰好是$-\Delta$的特征值，则算子也可能不可逆——即方程没有唯一解。）
 
 使用上述定义，我们可以陈述该方程的弱形式，公式如下：求解 $u \in H^1_g = \{ v \in H^1 : v|_{\Gamma_1} = g_1 \}$ 使得
 
 $$ (\nabla v, \nabla u)_\Omega + (v, u)_\Gamma = (v, f)_\Omega + (v, g_2)_\Gamma $$
 
-对所有测试函数 $v \in H^1_0 = \{ v \in H^1 : v|_{\Gamma_1} = 0 \}$。边界项 $(v, g_2)_{\Gamma_2}$ 是通过分部积分得到的，使用 $\partial n u = g_2$ 在 $\Gamma_2$ 上，$v = 0$ 在 $\Gamma_1$ 上。我们用来构建全局矩阵和右端向量的单元矩阵和向量因此如下所示：
+对所有测试函数 $v \in H^1_0 = \{ v \in H^1 : v|_{\Gamma_1} = 0 \}$。边界项 $(v, g_2)_{\Gamma_2}$ 是通过分部积分得到的，使用 $\partial_n u = g_2$ 在 $\Gamma_2$ 上，$v = 0$ 在 $\Gamma_1$ 上。我们用来构建全局矩阵和右端向量的单元矩阵和向量因此如下所示：
 
 $$ A_{ij}^K = (\nabla \varphi_i, \nabla \varphi_j)_K + (\varphi_i, \varphi_j)_K, $$
 
@@ -43,6 +43,6 @@ $$ F^K_i = (\varphi_i, f)_K + (\varphi_i, g_2) \partial K \cap \Gamma_2. $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTc2NTgwNTQsLTQzNDk3OTgwNCwxNz
-U0NjE2NjkzXX0=
+eyJoaXN0b3J5IjpbODgxODg2MDYxLC00MzQ5Nzk4MDQsMTc1ND
+YxNjY5M119
 -->
