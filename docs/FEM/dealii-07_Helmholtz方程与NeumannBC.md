@@ -39,10 +39,9 @@ $$ A_{ij}^K = (\nabla \varphi_i, \nabla \varphi_j)_K + (\varphi_i, \varphi_j)_K,
 
 $$ F^K_i = (\varphi_i, f)_K + (\varphi_i, g_2) \partial K \cap \Gamma_2. $$
 
-由于之前的例子中已经多次展示了域积分的生成，因此在此更感兴趣的是边界积分的生成。它大致按照以下步骤进行：对于域积分，我们有 `FEValues` 类，该类提供形状值的值和梯度，以及雅可比，并且我们使用该类执行这些任务，来对单元面的积分进行操作。它为我们提供了一个求积公式，适用于我们希望执行积分的面，这个面上的维度与单元面相同。然后，类会计算该面的值、梯度、法向量、权重等。
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODgxODg2MDYxLC00MzQ5Nzk4MDQsMTc1ND
-YxNjY5M119
+eyJoaXN0b3J5IjpbLTEzOTY3MjAyNDQsLTQzNDk3OTgwNCwxNz
+U0NjE2NjkzXX0=
 -->
