@@ -46,6 +46,8 @@ a(\mathbf{x}) =
 \end{cases}
 $$
 
+
+
 ## 代码拆解
 
 ```bash
@@ -242,6 +244,7 @@ int main() {
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0MzI5MjU4OSwtMTc3MjU5NzY3NywxOT
-I4MzkzMzYsLTIwMDEwNjAzNDgsLTE0NjkyOTEzMTldfQ==
+eyJoaXN0b3J5IjpbLTcxMjcyMTgwMSwtNzQzMjkyNTg5LC0xNz
+cyNTk3Njc3LDE5MjgzOTMzNiwtMjAwMTA2MDM0OCwtMTQ2OTI5
+MTMxOV19
 -->
