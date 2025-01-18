@@ -29,6 +29,8 @@ $$ n \cdot \nabla u = g_2 $$
 
 在其余部分 $\Gamma_2 = \Gamma \setminus \Gamma_1$ 。我们将使用 $\Gamma_1 = \Gamma \cap \{ \{ x = 1 \} \cup \{ y = 1 \} \}$。（我们称这个方程具有“良好符号”，因为算子 $-\Delta + \alpha I$（其中$I$为单位算子）和$\alpha > 0$是一个正定算子；带有“坏符号”的方程是 $-\Delta - \alpha u$，对于带有“坏符号”的方程，如果$\alpha > 0$较大，算子 $-\Delta - \alpha I$ 不是正定的，这会导致许多我们在这里无需讨论的问题。如果$\alpha$恰好是$-\Delta$的特征值，则算子也可能不可逆——即方程没有唯一解。）
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250119/image.5j4aimvnlc.webp)
+
 使用上述定义，我们可以陈述该方程的弱形式，公式如下：求解 $u \in H^1_g = \{ v \in H^1 : v|_{\Gamma_1} = g_1 \}$ 使得
 
 $$ (\nabla v, \nabla u)_\Omega + (v, u)_\Gamma = (v, f)_\Omega + (v, g_2)_\Gamma $$
@@ -71,6 +73,7 @@ $$ g_2 = n \cdot \nabla \bar{u}, $$
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwMDc5OTU4OSwtOTk0OTM0MDIsLTk1MT
-U1MDkyMCwtNDM0OTc5ODA0LDE3NTQ2MTY2OTNdfQ==
+eyJoaXN0b3J5IjpbMjg4MjkzNjE4LDExMDA3OTk1ODksLTk5ND
+kzNDAyLC05NTE1NTA5MjAsLTQzNDk3OTgwNCwxNzU0NjE2Njkz
+XX0=
 -->
