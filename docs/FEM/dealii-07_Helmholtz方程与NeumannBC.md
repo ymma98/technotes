@@ -41,7 +41,7 @@ $$ F^K_i = (\varphi_i, f)_K + (\varphi_i, g_2) \partial K \cap \Gamma_2. $$
 
 
 
-# 构造解法
+## 构造解法
 
 为了验证我们的数值解 $u_h$ 的收敛性，我们希望设置一个精确解 $u$, 选择一个函数
 
@@ -62,7 +62,13 @@ $$ g_2 = n \cdot \nabla \bar{u}, $$
 
 我们选择的解 $\bar{u}$ 满足所有这些要求：（i）它相对容易微分；（ii）它不z是一个多项式；（iii）它是平滑的；（iv）它的长度尺度为 $\sigma = \frac{1}{8}$，在 $[-1, 1]^d$ 范围内相对容易用每个坐标方向上至少16个单元的网格来解析。
 
+
+## 代码拆解
+
+```cpp
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NDkzNDAyLC05NTE1NTA5MjAsLTQzND
-k3OTgwNCwxNzU0NjE2NjkzXX0=
+eyJoaXN0b3J5IjpbLTEwNzI4MTQ1OTEsLTk5NDkzNDAyLC05NT
+E1NTA5MjAsLTQzNDk3OTgwNCwxNzU0NjE2NjkzXX0=
 -->
