@@ -21,9 +21,10 @@ $$
 其中 $\vec{x}=\vec{x}_0$ 是方程的根, 其中 $\delta \mathbf{x}=\vec{x}_0-\vec{x}_k$，那么
 
 $$
-\vec{x}_0 = \frac{-F(\vec{x}_k)}{\frac{}{}}
+\vec{x}_0 = \frac{-F(\vec{x}_k)}{\frac{\partial F(\vec{x}_k)}{\partial \vec{x}}} + \vec{x}_k
 $$
 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNjIyNzgyXX0=
+eyJoaXN0b3J5IjpbLTk5NjU2NTI1NF19
 -->
