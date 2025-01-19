@@ -24,7 +24,8 @@ $$
 \vec{x}_0 = \frac{-F(\vec{x}_k)}{\frac{\partial F(\vec{x}_k)}{\partial \vec{x}}} + \vec{x}_k
 $$
 
+这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbLTQzODcwOTE5MiwtOTk2NTY1MjU0XX0=
 -->
