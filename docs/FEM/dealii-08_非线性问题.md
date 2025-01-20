@@ -85,20 +85,10 @@ $$
 [R'(u_k)] \delta u_k = -R(u_k), \quad u_{k+1} = u_k + \delta u_k
 $$
 
-**Goal:** Solve
-$$
-- \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) = f
-$$
-
-**Newton's method:** Iterate on
-$$
-[R'(u_k)] \delta u_k = -R(u_k), \quad u_{k+1} = u_k + \delta u_k
-$$
 
 Here, this means:
-$$
-- \nabla \cdot \left( \frac{A}{\sqrt{1 + |\nabla u_k|^2}} \nabla \delta u_k \right) + \nabla \cdot \left( \frac{A \nabla u_k \cdot \nabla \delta u_k}{(1 + |\nabla u_k|^2)^{3/2}} \nabla u_k \right) = f + \nabla \cdot \left( \frac{A}{\sqrt{1 + |\nabla u_k|^2}} \nabla u_k \right)
-$$
+
+$$- \nabla \cdot \left( \frac{A}{\sqrt{1 + |\nabla u_k|^2}} \nabla \delta u_k \right) + \nabla \cdot \left( \frac{A \nabla u_k \cdot \nabla \delta u_k}{(1 + |\nabla u_k|^2)^{3/2}} \nabla u_k \right) = f + \nabla \cdot \left( \frac{A}{\sqrt{1 + |\nabla u_k|^2}} \nabla u_k \right)$$
 
 This is in fact a symmetric and positive definite problem.
 
@@ -133,8 +123,8 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDkxNTE1ODcsMTkwMzQ0NDM0MiwtMT
-gyMDUyMTY1MiwtMzY1NTc0NTkxLC0xMjMwODUxMzIzLC04OTk2
-MjcyNzQsNDM2NDc4NTcxLC02Mzg2MTE5NjQsLTQzODcwOTE5Mi
-wtOTk2NTY1MjU0XX0=
+eyJoaXN0b3J5IjpbMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xOD
+IwNTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4NTEzMjMsLTg5OTYy
+NzI3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC
+05OTY1NjUyNTRdfQ==
 -->
