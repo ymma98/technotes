@@ -13,7 +13,7 @@ All algorithms for this kind of problem are iterative:
 
 **Goal:** Choose $g(x)$ so that
 
-$$ x = g(x) \quad \Longleftrightarrow \quad f(x) = 0 $$
+$$ x_{k+1} = g(x_k) \quad \Longleftrightarrow \quad f(x) = 0 $$
 
 **Examples:**
 
@@ -57,6 +57,6 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDM2NDc4NTcxLC02Mzg2MTE5NjQsLTQzOD
-cwOTE5MiwtOTk2NTY1MjU0XX0=
+eyJoaXN0b3J5IjpbNjU1MjI0MDMxLDQzNjQ3ODU3MSwtNjM4Nj
+ExOTY0LC00Mzg3MDkxOTIsLTk5NjU2NTI1NF19
 -->
