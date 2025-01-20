@@ -33,6 +33,27 @@ $$ x_{k+1} = g(x_k) \quad \Longleftrightarrow \quad f(x) = 0 $$
 
 ### Picard iteration 
 
+**Goal:** Solve
+
+$$- \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) = f$$
+
+**Picard iteration:** Repeatedly solve
+
+$$
+\left( \nabla \varphi, \frac{A \nabla u_{k+1}}{\sqrt{1 + |\nabla u_k|^2}} \right) = (\varphi, f), \quad \nabla \varphi \in H_0^1
+$$
+
+- Converges frequently
+- Picard iteration typically converges rather slowly
+
+
+
+
+
+
+
+
+
 对于非线性问题, 我们有方程:
 
 $$
@@ -60,7 +81,7 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzA4NTEzMjMsLTg5OTYyNzI3NCw0Mz
-Y0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC05OTY1NjUy
-NTRdfQ==
+eyJoaXN0b3J5IjpbLTM2NTU3NDU5MSwtMTIzMDg1MTMyMywtOD
+k5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00Mzg3MDkx
+OTIsLTk5NjU2NTI1NF19
 -->
