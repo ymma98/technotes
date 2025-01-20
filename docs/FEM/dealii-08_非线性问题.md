@@ -1,5 +1,6 @@
 # 非线性问题
 
+## 理论
 
 There is no finite algorithm to find a root of a single general nonlinear equation:
 
@@ -30,6 +31,8 @@ $$ x_{k+1} = g(x_k) \quad \Longleftrightarrow \quad f(x) = 0 $$
   $$ g(x) = x - \frac{f(x)}{f'(x)} \quad \Longrightarrow \quad x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)} $$
 
 
+### Picard iteration 
+
 对于非线性问题, 我们有方程:
 
 $$
@@ -57,6 +60,7 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5OTYyNzI3NCw0MzY0Nzg1NzEsLTYzOD
-YxMTk2NCwtNDM4NzA5MTkyLC05OTY1NjUyNTRdfQ==
+eyJoaXN0b3J5IjpbLTEyMzA4NTEzMjMsLTg5OTYyNzI3NCw0Mz
+Y0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC05OTY1NjUy
+NTRdfQ==
 -->
