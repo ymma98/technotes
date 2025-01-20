@@ -1,5 +1,17 @@
 # 非线性问题
 
+
+There is no finite algorithm to find a root of a single general nonlinear equation:
+
+$$ f(x) = 0 $$
+
+All algorithms for this kind of problem are iterative:
+
+- Start with an initial guess $x_0$
+- Compute a sequence of iterates $\{ x_k \}$
+- Hope (or prove) that $x_k \to x$ where $x$ is a root of $f(.)$
+
+
 对于非线性问题, 我们有方程:
 
 $$
@@ -27,5 +39,6 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzODcwOTE5MiwtOTk2NTY1MjU0XX0=
+eyJoaXN0b3J5IjpbLTYzODYxMTk2NCwtNDM4NzA5MTkyLC05OT
+Y1NjUyNTRdfQ==
 -->
