@@ -46,8 +46,17 @@ $$
 - Converges frequently
 - Picard iteration typically converges rather slowly
 
+### Pseudo-timestepping
 
+**Pseudo-timestepping:** Iterate to $\tau \to \infty$ the equation
+$$
+\frac{\partial u(\tau)}{\partial \tau} - \nabla \cdot \left( A \frac{\nabla u(\tau)}{\sqrt{1 + |\nabla u(\tau)|^2}} \right) = f
+$$
 
+For example using the explicit Euler method:
+$$
+\frac{u_{k+1} - u_k}{\Delta \tau} - \nabla \cdot \left( A \frac{\nabla u_k}{\sqrt{1 + |\nabla u_k|^2}} \right) = f
+$$
 
 
 
@@ -81,7 +90,7 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2NTU3NDU5MSwtMTIzMDg1MTMyMywtOD
-k5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00Mzg3MDkx
-OTIsLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbLTE4MjA1MjE2NTIsLTM2NTU3NDU5MSwtMT
+IzMDg1MTMyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjEx
+OTY0LC00Mzg3MDkxOTIsLTk5NjU2NTI1NF19
 -->
