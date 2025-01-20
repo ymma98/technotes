@@ -68,6 +68,25 @@ $$
 - With implicit method, can make time step larger + larger
 - Often takes many, many time steps
 
+### Newton's method
+
+**Newton's method:** Consider the residual
+$$
+R(u) = f - \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right)
+$$
+
+Solve $R(u) = 0$ by using the iteration
+$$
+u_{k+1} = u_k - [R'(u_k)]^{-1} R(u_k)
+$$
+
+or equivalently:
+$$
+[R'(u_k)] \delta u_k = -R(u_k), \quad u_{k+1} = u_k + \delta u_k
+$$
+
+
+
 
 
 
@@ -98,8 +117,8 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwMzQ0NDM0MiwtMTgyMDUyMTY1MiwtMz
-Y1NTc0NTkxLC0xMjMwODUxMzIzLC04OTk2MjcyNzQsNDM2NDc4
-NTcxLC02Mzg2MTE5NjQsLTQzODcwOTE5MiwtOTk2NTY1MjU0XX
-0=
+eyJoaXN0b3J5IjpbMTA5ODA2NDcxOSwxOTAzNDQ0MzQyLC0xOD
+IwNTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4NTEzMjMsLTg5OTYy
+NzI3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC
+05OTY1NjUyNTRdfQ==
 -->
