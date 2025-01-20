@@ -45,7 +45,7 @@ $$
 于是, 
 
 $$
-F(\vec{x}_0) = F(\vec{x}_k) + \frac{\partial F(\vec{x}_k)}{\partial \vec{x}} (\vec{x}_0-\vec{x}_k) = 0
+F(\vec{x}_{k+1}) = F(\vec{x}_k) + \frac{\partial F(\vec{x}_k)}{\partial \vec{x}} (\vec{x}_0-\vec{x}_k) = 0
 $$
 
 其中 $\vec{x}=\vec{x}_0$ 是方程的根, 其中 $\delta \mathbf{x}=\vec{x}_0-\vec{x}_k$，那么
@@ -57,6 +57,6 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjU1MjI0MDMxLDQzNjQ3ODU3MSwtNjM4Nj
-ExOTY0LC00Mzg3MDkxOTIsLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbLTg5OTYyNzI3NCw0MzY0Nzg1NzEsLTYzOD
+YxMTk2NCwtNDM4NzA5MTkyLC05OTY1NjUyNTRdfQ==
 -->
