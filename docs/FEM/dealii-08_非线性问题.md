@@ -58,7 +58,15 @@ $$
 \frac{u_{k+1} - u_k}{\Delta \tau} - \nabla \cdot \left( A \frac{\nabla u_k}{\sqrt{1 + |\nabla u_k|^2}} \right) = f
 $$
 
+Semi-implicit Euler method
+$$
+\frac{u_{k+1} - u_k}{\Delta \tau} - \nabla \cdot \left( A \frac{\nabla u_{k+1}}{\sqrt{1 + |\nabla u_k|^2}} \right) = f
+$$
 
+- Pseudo-timestepping converges almost always
+- Easy to implement (it's just a heat equation)
+- With implicit method, can make time step larger + larger
+- Often takes many, many time steps
 
 
 
@@ -90,7 +98,8 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjA1MjE2NTIsLTM2NTU3NDU5MSwtMT
-IzMDg1MTMyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjEx
-OTY0LC00Mzg3MDkxOTIsLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbMTkwMzQ0NDM0MiwtMTgyMDUyMTY1MiwtMz
+Y1NTc0NTkxLC0xMjMwODUxMzIzLC04OTk2MjcyNzQsNDM2NDc4
+NTcxLC02Mzg2MTE5NjQsLTQzODcwOTE5MiwtOTk2NTY1MjU0XX
+0=
 -->
