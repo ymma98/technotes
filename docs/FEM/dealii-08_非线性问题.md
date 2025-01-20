@@ -11,13 +11,13 @@ All algorithms for this kind of problem are iterative:
 - Compute a sequence of iterates $\{ x_k \}$
 - Hope (or prove) that $x_k \to x$ where $x$ is a root of $f(.)$
 
-**Goal:** Choose \( g(x) \) so that
+**Goal:** Choose $g(x)$ so that
 
 $$ x = g(x) \quad \Longleftrightarrow \quad f(x) = 0 $$
 
 **Examples:**
 
-- "Picard iteration" (assume that \( f(x) = p(x) x - h \)):
+- "Picard iteration" (assume that $f(x) = p(x) x - h$):
 
   $$ g(x) = \frac{1}{p(x)} h \quad \Longrightarrow \quad p(x_k) x_{k+1} = h $$
 
@@ -57,6 +57,6 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NTQ2MzcwNywtNjM4NjExOTY0LC00Mz
-g3MDkxOTIsLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbNDM2NDc4NTcxLC02Mzg2MTE5NjQsLTQzOD
+cwOTE5MiwtOTk2NTY1MjU0XX0=
 -->
