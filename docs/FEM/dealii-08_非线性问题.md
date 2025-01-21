@@ -74,11 +74,13 @@ $$
 
 $$- \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) = f$$
 
-定义方程的残差为 $R(u)$
+定义方程的残差为 $R(u)$: 
 
 $$
-R(u) = f - \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right)
+R(u) = f + \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right)
 $$
+
+此时相当于求解 $R(u) = 0$。
 
 Solve $R(u) = 0$ by using the iteration
 $$
@@ -128,8 +130,9 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4MTM4MDQ4MiwtMTgzMDM2NDc0MSwxNj
-QyMDU4MDg1LDE5MDM0NDQzNDIsLTE4MjA1MjE2NTIsLTM2NTU3
-NDU5MSwtMTIzMDg1MTMyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MS
-wtNjM4NjExOTY0LC00Mzg3MDkxOTIsLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbLTY3MzAyMDIxOSwtNjgxMzgwNDgyLC0xOD
+MwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0MiwtMTgyMDUy
+MTY1MiwtMzY1NTc0NTkxLC0xMjMwODUxMzIzLC04OTk2MjcyNz
+QsNDM2NDc4NTcxLC02Mzg2MTE5NjQsLTQzODcwOTE5MiwtOTk2
+NTY1MjU0XX0=
 -->
