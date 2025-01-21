@@ -188,7 +188,7 @@ b_i^n := -(\nabla \varphi_i, a_n \nabla u^n).
 $$
 
 
-Overall, the program we have here is not unlike step-6 in many regards. The layout of the main class is essentially the same. On the other hand, the driving algorithm in the `run()` function is different and works as follows:
+求解流程:
 
 1. Start with the function $u^0 \equiv 0$ and modify it in such a way that the values of $u^0$ along the boundary equal the correct boundary values $g$ (this happens in the call to `AffineConstraints::distribute()`). Set $n = 0$.
 
@@ -217,11 +217,11 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE3NjE0NDMwLC0yMDA2NDY3NzczLC0xOT
-M4NTkxNzg5LC00NjE0NjA4OTcsNDkwOTc4NTI3LC0xMDMzNzI3
-NDMsMTM0MDY5OTQ0NSwtMjU3MTkyNzUyLDI0NjUwMDY1OSwxNz
-EwNDI5NDAyLDE3NzA2MjIzNjIsMjAyODg4Njk1OSw0MTczMjI5
-NzAsLTE4NjA1MTM5NTMsLTEyNTYwMzY5ODQsLTY4MTM4MDQ4Mi
-wtMTgzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0NDQzNDIsLTE4
-MjA1MjE2NTJdfQ==
+eyJoaXN0b3J5IjpbLTE5NjU5MjQ2MTMsLTIwMDY0Njc3NzMsLT
+E5Mzg1OTE3ODksLTQ2MTQ2MDg5Nyw0OTA5Nzg1MjcsLTEwMzM3
+Mjc0MywxMzQwNjk5NDQ1LC0yNTcxOTI3NTIsMjQ2NTAwNjU5LD
+E3MTA0Mjk0MDIsMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNzMy
+Mjk3MCwtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgwND
+gyLC0xODMwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0Miwt
+MTgyMDUyMTY1Ml19
 -->
