@@ -80,7 +80,7 @@ $$
 R(u) = f + \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right)
 $$
 
-此时相当于求解 $R(u) = 0$。
+此时相当于求解 $R(u) = 0$。对于非线性方程, 应用牛顿迭代, 相当于求解 
 
 Solve $R(u) = 0$ by using the iteration
 $$
@@ -130,9 +130,9 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3MzAyMDIxOSwtNjgxMzgwNDgyLC0xOD
-MwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0MiwtMTgyMDUy
-MTY1MiwtMzY1NTc0NTkxLC0xMjMwODUxMzIzLC04OTk2MjcyNz
-QsNDM2NDc4NTcxLC02Mzg2MTE5NjQsLTQzODcwOTE5MiwtOTk2
-NTY1MjU0XX0=
+eyJoaXN0b3J5IjpbLTEyNTYwMzY5ODQsLTY4MTM4MDQ4MiwtMT
+gzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0NDQzNDIsLTE4MjA1
+MjE2NTIsLTM2NTU3NDU5MSwtMTIzMDg1MTMyMywtODk5NjI3Mj
+c0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00Mzg3MDkxOTIsLTk5
+NjU2NTI1NF19
 -->
