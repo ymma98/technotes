@@ -45,10 +45,10 @@ $$
 
 我们的目标是求解 $R(u) = 0$。
 
-假设 $u_{k}$ 是方程的解, 对 $R(u)$ 进行泰勒展开,
+假设 $u_{k}$ 是当前值, 对 $R(u)$ 在 $u_k$ 处进行泰勒展开,
 
 $$
-R(u) = 
+R(u) = R(u_k) + \frac{dR(u_k)}{du_k}
 $$
 
 则根据牛顿法有
@@ -157,10 +157,10 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNz
-MyMjk3MCwtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgw
-NDgyLC0xODMwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0Mi
-wtMTgyMDUyMTY1MiwtMzY1NTc0NTkxLC0xMjMwODUxMzIzLC04
-OTk2MjcyNzQsNDM2NDc4NTcxLC02Mzg2MTE5NjQsLTQzODcwOT
-E5MiwtOTk2NTY1MjU0XX0=
+eyJoaXN0b3J5IjpbLTEwMzI5NTI4NDAsMTc3MDYyMjM2MiwyMD
+I4ODg2OTU5LDQxNzMyMjk3MCwtMTg2MDUxMzk1MywtMTI1NjAz
+Njk4NCwtNjgxMzgwNDgyLC0xODMwMzY0NzQxLDE2NDIwNTgwOD
+UsMTkwMzQ0NDM0MiwtMTgyMDUyMTY1MiwtMzY1NTc0NTkxLC0x
+MjMwODUxMzIzLC04OTk2MjcyNzQsNDM2NDc4NTcxLC02Mzg2MT
+E5NjQsLTQzODcwOTE5MiwtOTk2NTY1MjU0XX0=
 -->
