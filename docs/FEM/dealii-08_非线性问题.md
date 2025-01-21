@@ -31,6 +31,25 @@ $$ x_{k+1} = g(x_k) \quad \Longleftrightarrow \quad f(x) = 0 $$
   $$ g(x) = x - \frac{f(x)}{f'(x)} \quad \Longrightarrow \quad x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)} $$
 
 
+对于非线性的有限元，相当于求解线性系统 
+
+$$
+K(u) u = f
+$$
+
+定义残差:
+
+$$
+R(u) = K(u) u -f 
+$$
+
+则根据牛顿法有
+
+$$
+\frac{dR(u)}{u} 
+$$
+
+
 ### Picard iteration 
 
 **Goal:** Solve
@@ -130,9 +149,9 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjA1MTM5NTMsLTEyNTYwMzY5ODQsLT
-Y4MTM4MDQ4MiwtMTgzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0
-NDQzNDIsLTE4MjA1MjE2NTIsLTM2NTU3NDU5MSwtMTIzMDg1MT
-MyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00
-Mzg3MDkxOTIsLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbNDE3MzIyOTcwLC0xODYwNTEzOTUzLC0xMj
+U2MDM2OTg0LC02ODEzODA0ODIsLTE4MzAzNjQ3NDEsMTY0MjA1
+ODA4NSwxOTAzNDQ0MzQyLC0xODIwNTIxNjUyLC0zNjU1NzQ1OT
+EsLTEyMzA4NTEzMjMsLTg5OTYyNzI3NCw0MzY0Nzg1NzEsLTYz
+ODYxMTk2NCwtNDM4NzA5MTkyLC05OTY1NjUyNTRdfQ==
 -->
