@@ -66,7 +66,7 @@ $$
 其中,
 
 $$
-\frac{dR(u_k)}{du_k} = \lim_{\epsilon\rightarrow0} \frac{dR[u_k + \epsilon \delta u_k] - dR[u_k]}{d\epsilon} = \frac{\partial R}{\partial u_k} \delta u_k
+\frac{dR(u_k)}{du_k} \delta u_k = \frac{D}{} = \lim_{\epsilon\rightarrow0} \frac{dR[u_k + \epsilon \delta u_k] - dR[u_k]}{d\epsilon} = \frac{\partial R}{\partial u_k} \delta u_k
 $$
 
 
@@ -169,11 +169,11 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NTE2MTYwMSwyNDY1MDA2NTksMTcxMD
-QyOTQwMiwxNzcwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIyOTcw
-LC0xODYwNTEzOTUzLC0xMjU2MDM2OTg0LC02ODEzODA0ODIsLT
-E4MzAzNjQ3NDEsMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xODIw
-NTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4NTEzMjMsLTg5OTYyNz
-I3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC05
-OTY1NjUyNTRdfQ==
+eyJoaXN0b3J5IjpbLTUzOTc2NjQxLDI0NjUwMDY1OSwxNzEwND
+I5NDAyLDE3NzA2MjIzNjIsMjAyODg4Njk1OSw0MTczMjI5NzAs
+LTE4NjA1MTM5NTMsLTEyNTYwMzY5ODQsLTY4MTM4MDQ4MiwtMT
+gzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0NDQzNDIsLTE4MjA1
+MjE2NTIsLTM2NTU3NDU5MSwtMTIzMDg1MTMyMywtODk5NjI3Mj
+c0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00Mzg3MDkxOTIsLTk5
+NjU2NTI1NF19
 -->
