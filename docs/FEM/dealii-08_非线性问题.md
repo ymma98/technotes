@@ -248,15 +248,19 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
   #include <fstream>
   #include <iostream>
+  // transfer solution from old mesh to a new one (adaptive mesh grid)
+  #include <deal.II/numerics/solution_transfer.h>
 ```
 
 
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Njg1NjMwNDgsMTg3NTU2ODg1NywtMj
-AwNjQ2Nzc3MywtMTkzODU5MTc4OSwtNDYxNDYwODk3LDQ5MDk3
-ODUyNywtMTAzMzcyNzQzLDEzNDA2OTk0NDUsLTI1NzE5Mjc1Mi
-wyNDY1MDA2NTksMTcxMDQyOTQwMiwxNzcwNjIyMzYyLDIwMjg4
-ODY5NTksNDE3MzIyOTcwLC0xODYwNTEzOTUzLC0xMjU2MDM2OT
-g0LC02ODEzODA0ODIsLTE4MzAzNjQ3NDEsMTY0MjA1ODA4NSwx
-OTAzNDQ0MzQyXX0=
+eyJoaXN0b3J5IjpbLTg4MjU2MjA0NCwtMTQ2ODU2MzA0OCwxOD
+c1NTY4ODU3LC0yMDA2NDY3NzczLC0xOTM4NTkxNzg5LC00NjE0
+NjA4OTcsNDkwOTc4NTI3LC0xMDMzNzI3NDMsMTM0MDY5OTQ0NS
+wtMjU3MTkyNzUyLDI0NjUwMDY1OSwxNzEwNDI5NDAyLDE3NzA2
+MjIzNjIsMjAyODg4Njk1OSw0MTczMjI5NzAsLTE4NjA1MTM5NT
+MsLTEyNTYwMzY5ODQsLTY4MTM4MDQ4MiwtMTgzMDM2NDc0MSwx
+NjQyMDU4MDg1XX0=
 -->
