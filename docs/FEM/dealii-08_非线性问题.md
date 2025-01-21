@@ -215,11 +215,13 @@ $$
 $$
 where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) := \sin(2\pi(x + y))$ along the boundary.
 
-## 代码
+## 代码拆解
+
+```cpp
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDg0MDU3NjcsMTg3NTU2ODg1NywtMj
+eyJoaXN0b3J5IjpbLTE2MjkwNjMzMDcsMTg3NTU2ODg1NywtMj
 AwNjQ2Nzc3MywtMTkzODU5MTc4OSwtNDYxNDYwODk3LDQ5MDk3
 ODUyNywtMTAzMzcyNzQzLDEzNDA2OTk0NDUsLTI1NzE5Mjc1Mi
 wyNDY1MDA2NTksMTcxMDQyOTQwMiwxNzcwNjIyMzYyLDIwMjg4
