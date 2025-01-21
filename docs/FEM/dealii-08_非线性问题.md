@@ -217,11 +217,42 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 ## 代码拆解
 
+记是不可能记住的。
+
 ```cpp
+  #include <deal.II/base/quadrature_lib.h>
+  #include <deal.II/base/function.h>
+  #include <deal.II/base/utilities.h>
+
+  #include <deal.II/lac/vector.h>
+  #include <deal.II/lac/full_matrix.h>
+  #include <deal.II/lac/sparse_matrix.h>
+  #include <deal.II/lac/dynamic_sparsity_pattern.h>
+  #include <deal.II/lac/solver_cg.h>
+  #include <deal.II/lac/precondition.h>
+  #include <deal.II/lac/affine_constraints.h>
+
+  #include <deal.II/grid/tria.h>
+  #include <deal.II/grid/grid_generator.h>
+  #include <deal.II/grid/grid_refinement.h>
+
+  #include <deal.II/dofs/dof_handler.h>
+  #include <deal.II/dofs/dof_tools.h>
+
+  #include <deal.II/fe/fe_values.h>
+  #include <deal.II/fe/fe_q.h>
+
+  #include <deal.II/numerics/vector_tools.h>
+  #include <deal.II/numerics/data_out.h>
+  #include <deal.II/numerics/error_estimator.h>
+
+  #include <fstream>
+  #include <iostream>
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjkwNjMzMDcsMTg3NTU2ODg1NywtMj
+eyJoaXN0b3J5IjpbLTE0Njg1NjMwNDgsMTg3NTU2ODg1NywtMj
 AwNjQ2Nzc3MywtMTkzODU5MTc4OSwtNDYxNDYwODk3LDQ5MDk3
 ODUyNywtMTAzMzcyNzQzLDEzNDA2OTk0NDUsLTI1NzE5Mjc1Mi
 wyNDY1MDA2NTksMTcxMDQyOTQwMiwxNzcwNjIyMzYyLDIwMjg4
