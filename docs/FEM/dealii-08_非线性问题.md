@@ -121,14 +121,15 @@ $$
 
 此时相当于求解 $R(u) = 0$。对于非线性方程, 应用牛顿迭代, 相当于求解 
 
-Solve $R(u) = 0$ by using the iteration
+
 $$
-u_{k+1} = u_k - [R'(u_k)]^{-1} R(u_k)
+\frac{dR(u_k)}{du_k} \delta u_k = -R(u_k)
 $$
 
-or equivalently (linear equation):
+其中,
+
 $$
-[R'(u_k)] \delta u_k = -R(u_k), \quad u_{k+1} = u_k + \delta u_k
+\frac{dR(u_k)}{du_k} \delta u_k = \frac{dR}{d\epsilon} = \lim_{\epsilon\rightarrow0} \frac{dR[u_k + \epsilon \delta u_k] - dR[u_k]}{\epsilon} = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u_k
 $$
 
 
@@ -169,7 +170,7 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDUxOTgzNCwyNDY1MDA2NTksMTcxMD
+eyJoaXN0b3J5IjpbLTI1NzE5Mjc1MiwyNDY1MDA2NTksMTcxMD
 QyOTQwMiwxNzcwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIyOTcw
 LC0xODYwNTEzOTUzLC0xMjU2MDM2OTg0LC02ODEzODA0ODIsLT
 E4MzAzNjQ3NDEsMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xODIw
