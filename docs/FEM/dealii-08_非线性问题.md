@@ -43,7 +43,13 @@ $$
 R(u) = K(u) u -f 
 $$
 
-我们
+我们的目标是求解 $R(u) = 0$。
+
+假设 $u_{k}$ 是方程的解, 对 $R(u)$ 进行泰勒展开,
+
+$$
+R(u) = 
+$$
 
 则根据牛顿法有
 
@@ -151,7 +157,7 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NjU4MzIxOCwyMDI4ODg2OTU5LDQxNz
+eyJoaXN0b3J5IjpbMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNz
 MyMjk3MCwtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgw
 NDgyLC0xODMwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0Mi
 wtMTgyMDUyMTY1MiwtMzY1NTc0NTkxLC0xMjMwODUxMzIzLC04
