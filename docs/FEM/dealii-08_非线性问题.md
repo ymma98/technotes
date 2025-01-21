@@ -70,7 +70,12 @@ $$
 
 ### Newton's method
 
-**Newton's method:** Consider the residual
+对于方程:
+
+$$- \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) = f$$
+
+定义方程的残差为 $R(u)$
+
 $$
 R(u) = f - \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right)
 $$
@@ -123,8 +128,8 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzAzNjQ3NDEsMTY0MjA1ODA4NSwxOT
-AzNDQ0MzQyLC0xODIwNTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4
-NTEzMjMsLTg5OTYyNzI3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NC
-wtNDM4NzA5MTkyLC05OTY1NjUyNTRdfQ==
+eyJoaXN0b3J5IjpbLTY4MTM4MDQ4MiwtMTgzMDM2NDc0MSwxNj
+QyMDU4MDg1LDE5MDM0NDQzNDIsLTE4MjA1MjE2NTIsLTM2NTU3
+NDU5MSwtMTIzMDg1MTMyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MS
+wtNjM4NjExOTY0LC00Mzg3MDkxOTIsLTk5NjU2NTI1NF19
 -->
