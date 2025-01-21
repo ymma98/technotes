@@ -54,22 +54,19 @@ $$
 令 $u_{k+1}$ 是 $R(u)=0$ 的解, $\delta u_k = u_{k+1} - u_k$ 有:
 
 $$
-R(u_{k+1}) + \frac{dR(u_k)}{du_k} \delta u_k = 0
+R(u_{k}) + \frac{dR(u_k)}{du_k} \delta u_k = 0
 $$
 
 于是得到线性方程组:
 
 $$
-
+\frac{dR(u_k)}{du_k} \delta u_k = -R(u_k)
 $$
 
-
-
-
-则根据牛顿法有
+其中,
 
 $$
-\frac{dR(u)}{du} \delta u = -R(u)
+\frac{dR(u_k)}{du_k} = \frac{dR(u_k, u_k + \epsilon \phi)}{}
 $$
 
 
@@ -172,11 +169,11 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTE3NjgyODIsMjQ2NTAwNjU5LDE3MT
-A0Mjk0MDIsMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNzMyMjk3
-MCwtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgwNDgyLC
-0xODMwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0MiwtMTgy
-MDUyMTY1MiwtMzY1NTc0NTkxLC0xMjMwODUxMzIzLC04OTk2Mj
-cyNzQsNDM2NDc4NTcxLC02Mzg2MTE5NjQsLTQzODcwOTE5Miwt
-OTk2NTY1MjU0XX0=
+eyJoaXN0b3J5IjpbMTQ2NDMxNjI0NCwyNDY1MDA2NTksMTcxMD
+QyOTQwMiwxNzcwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIyOTcw
+LC0xODYwNTEzOTUzLC0xMjU2MDM2OTg0LC02ODEzODA0ODIsLT
+E4MzAzNjQ3NDEsMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xODIw
+NTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4NTEzMjMsLTg5OTYyNz
+I3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC05
+OTY1NjUyNTRdfQ==
 -->
