@@ -198,7 +198,7 @@ A^n \delta u^n = b^n
 $$
 with boundary condition $\delta u^n = 0$ on $\partial \Omega$.
 
-3. Compute a step length $\alpha^n$. In this program, we always set $\alpha^n = 0.1$. To make things easier to extend later on, this happens in a function of its own, namely in `MinimalSurfaceProblem::determine_step_length`. (The strategy of always choosing $\alpha^n = 0.1$ is of course not optimal – we should choose a step length that works for a given search direction – but it requires a bit of work to do that. In the end, we leave these sorts of things to external packages: step-77)
+3. Compute a step length $\alpha^n$. In this program, we always set $\alpha^n = 0.1$. To make things easier to extend later on, this happens in a function of its own, namely in `MinimalSurfaceProblem::determine_step_length`.  (step-77 有更复杂的策略)
 
 4. The new approximation of the solution is given by
 $$
@@ -217,11 +217,11 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjU5MjQ2MTMsLTIwMDY0Njc3NzMsLT
-E5Mzg1OTE3ODksLTQ2MTQ2MDg5Nyw0OTA5Nzg1MjcsLTEwMzM3
-Mjc0MywxMzQwNjk5NDQ1LC0yNTcxOTI3NTIsMjQ2NTAwNjU5LD
-E3MTA0Mjk0MDIsMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNzMy
-Mjk3MCwtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgwND
-gyLC0xODMwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0Miwt
-MTgyMDUyMTY1Ml19
+eyJoaXN0b3J5IjpbMTg3NTU2ODg1NywtMjAwNjQ2Nzc3MywtMT
+kzODU5MTc4OSwtNDYxNDYwODk3LDQ5MDk3ODUyNywtMTAzMzcy
+NzQzLDEzNDA2OTk0NDUsLTI1NzE5Mjc1MiwyNDY1MDA2NTksMT
+cxMDQyOTQwMiwxNzcwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIy
+OTcwLC0xODYwNTEzOTUzLC0xMjU2MDM2OTg0LC02ODEzODA0OD
+IsLTE4MzAzNjQ3NDEsMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0x
+ODIwNTIxNjUyXX0=
 -->
