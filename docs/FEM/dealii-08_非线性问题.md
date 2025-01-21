@@ -146,8 +146,7 @@ This is in fact a symmetric and positive definite problem.
 
 ## 弱格式
 
-
-Starting with the strong formulation above, we get the weak formulation by multiplying both sides of the PDE with a test function $\varphi$ and integrating by parts on both sides:
+假设 test function 是 $\varphi$:
 
 $$
 \left( \nabla \varphi, \frac{1}{\left( 1 + |\nabla u^n|^2 \right)^{\frac{1}{2}}} \nabla \delta u^n \right) 
@@ -155,13 +154,13 @@ $$
 = - \left( \nabla \varphi, \frac{1}{\left( 1 + |\nabla u^n|^2 \right)^{\frac{1}{2}}} \nabla u^n \right).
 $$
 
-Here the solution $\delta u^n$ is a function in $H^1(\Omega)$, subject to the boundary conditions discussed above. Reducing this space to a finite-dimensional space with basis $\{\varphi_0, \ldots, \varphi_{N-1}\}$, we can write the solution:
+假设基函数为 $\{\varphi_0, \ldots, \varphi_{N-1}\}$, 有:
 
 $$
 \delta u^n = \sum_{j=0}^{N-1} \delta U_j^n \varphi_j.
 $$
 
-Using the basis functions as test functions and defining $a_n := \frac{1}{\sqrt{1 + |\nabla u^n|^2}}$, we can rewrite the weak formulation:
+定义 $a_n := \frac{1}{\sqrt{1 + |\nabla u^n|^2}}$, we can rewrite the weak formulation:
 
 $$
 \sum_{j=0}^{N-1} \left[ (\nabla \varphi_i, a_n \nabla \varphi_j) 
@@ -192,7 +191,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxMzIzOTY5OSwtMTkzODU5MTc4OSwtND
+eyJoaXN0b3J5IjpbLTM4NDI2MDQ3MCwtMTkzODU5MTc4OSwtND
 YxNDYwODk3LDQ5MDk3ODUyNywtMTAzMzcyNzQzLDEzNDA2OTk0
 NDUsLTI1NzE5Mjc1MiwyNDY1MDA2NTksMTcxMDQyOTQwMiwxNz
 cwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIyOTcwLC0xODYwNTEz
