@@ -132,8 +132,9 @@ $$
 \frac{dR(u_k)}{du_k} \delta u_k = \frac{dR}{d\epsilon} = \lim_{\epsilon\rightarrow0} \frac{dR[u_k + \epsilon \delta u_k] - dR[u_k]}{\epsilon} = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u_k
 $$
 
+
 $$
- \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u = 0 -\nabla\cdot \left[ A \left(- \frac{\nabla u \cdot \nabla u \nabla\delta u_k}{1+|\nabla u|^{3/2}} + \frac{\nabla \delta u_k}{\sqrt{1+|\nabla u|^2}} \right)  \right]
+ R.H.S = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u = 0 -\nabla\cdot \left[ A \left(- \frac{\nabla u \cdot  \nabla\delta u_k}{1+|\nabla u|^{3/2}}\nabla u  + \frac{\nabla \delta u_k}{\sqrt{1+|\nabla u|^2}} \right)  \right]
 $$
 
 
@@ -174,11 +175,11 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDkwOTc4NTI3LC0xMDMzNzI3NDMsMTM0MD
-Y5OTQ0NSwtMjU3MTkyNzUyLDI0NjUwMDY1OSwxNzEwNDI5NDAy
-LDE3NzA2MjIzNjIsMjAyODg4Njk1OSw0MTczMjI5NzAsLTE4Nj
-A1MTM5NTMsLTEyNTYwMzY5ODQsLTY4MTM4MDQ4MiwtMTgzMDM2
-NDc0MSwxNjQyMDU4MDg1LDE5MDM0NDQzNDIsLTE4MjA1MjE2NT
-IsLTM2NTU3NDU5MSwtMTIzMDg1MTMyMywtODk5NjI3Mjc0LDQz
-NjQ3ODU3MV19
+eyJoaXN0b3J5IjpbMTAzMDY5NDA4Nyw0OTA5Nzg1MjcsLTEwMz
+M3Mjc0MywxMzQwNjk5NDQ1LC0yNTcxOTI3NTIsMjQ2NTAwNjU5
+LDE3MTA0Mjk0MDIsMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNz
+MyMjk3MCwtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgw
+NDgyLC0xODMwMzY0NzQxLDE2NDIwNTgwODUsMTkwMzQ0NDM0Mi
+wtMTgyMDUyMTY1MiwtMzY1NTc0NTkxLC0xMjMwODUxMzIzLC04
+OTk2MjcyNzRdfQ==
 -->
