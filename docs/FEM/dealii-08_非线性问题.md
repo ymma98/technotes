@@ -77,7 +77,7 @@ $$- \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) = f$$
 定义方程的残差为 $R(u)$: 
 
 $$
-R(u) = f + \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right)
+R(u) = -\nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) -f
 $$
 
 此时相当于求解 $R(u) = 0$。对于非线性方程, 应用牛顿迭代, 相当于求解 
@@ -130,9 +130,9 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTYwMzY5ODQsLTY4MTM4MDQ4MiwtMT
-gzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0NDQzNDIsLTE4MjA1
-MjE2NTIsLTM2NTU3NDU5MSwtMTIzMDg1MTMyMywtODk5NjI3Mj
-c0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00Mzg3MDkxOTIsLTk5
-NjU2NTI1NF19
+eyJoaXN0b3J5IjpbLTE4NjA1MTM5NTMsLTEyNTYwMzY5ODQsLT
+Y4MTM4MDQ4MiwtMTgzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0
+NDQzNDIsLTE4MjA1MjE2NTIsLTM2NTU3NDU5MSwtMTIzMDg1MT
+MyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00
+Mzg3MDkxOTIsLTk5NjU2NTI1NF19
 -->
