@@ -48,8 +48,15 @@ $$
 假设 $u_{k}$ 是当前值, 对 $R(u)$ 在 $u_k$ 处进行泰勒展开,
 
 $$
-R(u) = R(u_k) + \frac{dR(u_k)}{du_k}
+R(u) = R(u_k) + \frac{dR(u_k)}{du_k} (u-u_k)
 $$
+
+令 $u_{k+1}$ 是 $R(u)=0$ 的解, 有:
+
+$$
+R(u_{k+1})-R
+$$
+
 
 则根据牛顿法有
 
@@ -157,10 +164,10 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzI5NTI4NDAsMTc3MDYyMjM2MiwyMD
-I4ODg2OTU5LDQxNzMyMjk3MCwtMTg2MDUxMzk1MywtMTI1NjAz
-Njk4NCwtNjgxMzgwNDgyLC0xODMwMzY0NzQxLDE2NDIwNTgwOD
-UsMTkwMzQ0NDM0MiwtMTgyMDUyMTY1MiwtMzY1NTc0NTkxLC0x
-MjMwODUxMzIzLC04OTk2MjcyNzQsNDM2NDc4NTcxLC02Mzg2MT
-E5NjQsLTQzODcwOTE5MiwtOTk2NTY1MjU0XX0=
+eyJoaXN0b3J5IjpbMTcxMDQyOTQwMiwxNzcwNjIyMzYyLDIwMj
+g4ODY5NTksNDE3MzIyOTcwLC0xODYwNTEzOTUzLC0xMjU2MDM2
+OTg0LC02ODEzODA0ODIsLTE4MzAzNjQ3NDEsMTY0MjA1ODA4NS
+wxOTAzNDQ0MzQyLC0xODIwNTIxNjUyLC0zNjU1NzQ1OTEsLTEy
+MzA4NTEzMjMsLTg5OTYyNzI3NCw0MzY0Nzg1NzEsLTYzODYxMT
+k2NCwtNDM4NzA5MTkyLC05OTY1NjUyNTRdfQ==
 -->
