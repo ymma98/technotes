@@ -133,7 +133,7 @@ $$
 $$
 
 $$
- \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u = 0 -\nabla\cdot \left(  \right)
+ \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u = 0 -\nabla\cdot \left[ A \left(- \frac{}{1+|\nabla u|^{3/2}}} \right)  \right]
 $$
 
 
@@ -174,11 +174,11 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0MDY5OTQ0NSwtMjU3MTkyNzUyLDI0Nj
-UwMDY1OSwxNzEwNDI5NDAyLDE3NzA2MjIzNjIsMjAyODg4Njk1
-OSw0MTczMjI5NzAsLTE4NjA1MTM5NTMsLTEyNTYwMzY5ODQsLT
-Y4MTM4MDQ4MiwtMTgzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0
-NDQzNDIsLTE4MjA1MjE2NTIsLTM2NTU3NDU5MSwtMTIzMDg1MT
-MyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00
-Mzg3MDkxOTJdfQ==
+eyJoaXN0b3J5IjpbMTA5MTc0MDg4MiwxMzQwNjk5NDQ1LC0yNT
+cxOTI3NTIsMjQ2NTAwNjU5LDE3MTA0Mjk0MDIsMTc3MDYyMjM2
+MiwyMDI4ODg2OTU5LDQxNzMyMjk3MCwtMTg2MDUxMzk1MywtMT
+I1NjAzNjk4NCwtNjgxMzgwNDgyLC0xODMwMzY0NzQxLDE2NDIw
+NTgwODUsMTkwMzQ0NDM0MiwtMTgyMDUyMTY1MiwtMzY1NTc0NT
+kxLC0xMjMwODUxMzIzLC04OTk2MjcyNzQsNDM2NDc4NTcxLC02
+Mzg2MTE5NjRdfQ==
 -->
