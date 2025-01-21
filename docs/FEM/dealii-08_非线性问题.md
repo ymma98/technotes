@@ -51,7 +51,7 @@ $$
 R(u) = R(u_k) + \frac{dR(u_k)}{du_k} (u-u_k)
 $$
 
-令 $u_{k+1}$ 是 $R(u)=0$ 的解, $\del$ 有:
+令 $u_{k+1}$ 是 $R(u)=0$ 的解, $\delta u_k = u_{k+1} - u_k$ 有:
 
 $$
 R(u_{k+1})-R
@@ -164,11 +164,11 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0ODgyMDA5MywxNzEwNDI5NDAyLDE3Nz
-A2MjIzNjIsMjAyODg4Njk1OSw0MTczMjI5NzAsLTE4NjA1MTM5
-NTMsLTEyNTYwMzY5ODQsLTY4MTM4MDQ4MiwtMTgzMDM2NDc0MS
-wxNjQyMDU4MDg1LDE5MDM0NDQzNDIsLTE4MjA1MjE2NTIsLTM2
-NTU3NDU5MSwtMTIzMDg1MTMyMywtODk5NjI3Mjc0LDQzNjQ3OD
-U3MSwtNjM4NjExOTY0LC00Mzg3MDkxOTIsLTk5NjU2NTI1NF19
+eyJoaXN0b3J5IjpbMjQ2NTAwNjU5LDE3MTA0Mjk0MDIsMTc3MD
+YyMjM2MiwyMDI4ODg2OTU5LDQxNzMyMjk3MCwtMTg2MDUxMzk1
+MywtMTI1NjAzNjk4NCwtNjgxMzgwNDgyLC0xODMwMzY0NzQxLD
+E2NDIwNTgwODUsMTkwMzQ0NDM0MiwtMTgyMDUyMTY1MiwtMzY1
+NTc0NTkxLC0xMjMwODUxMzIzLC04OTk2MjcyNzQsNDM2NDc4NT
+cxLC02Mzg2MTE5NjQsLTQzODcwOTE5MiwtOTk2NTY1MjU0XX0=
 
 -->
