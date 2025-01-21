@@ -146,36 +146,8 @@ This is in fact a symmetric and positive definite problem.
 
 
 
-
-
-对于非线性问题, 我们有方程:
-
-$$
-F(\vec{x}) = 0
-$$
-
-根据 Taylor expansion, 有
-
-$$
-F(\vec{x}) = F(\vec{x}_k) + \frac{\partial F(\vec{x})}{\partial \vec{x}} (\vec{x}-\vec{x}_k)
-$$
-
-于是, 
-
-$$
-F(\vec{x}_{k+1}) = F(\vec{x}_k) + \frac{\partial F(\vec{x}_k)}{\partial \vec{x}} (\vec{x}_0-\vec{x}_k) = 0
-$$
-
-其中 $\vec{x}=\vec{x}_0$ 是方程的根, 其中 $\delta \mathbf{x}=\vec{x}_0-\vec{x}_k$，那么
-
-$$
-\vec{x}_0 = \frac{-F(\vec{x}_k)}{\frac{\partial F(\vec{x}_k)}{\partial \vec{x}}} + \vec{x}_k
-$$
-
-这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMDY5NDA4Nyw0OTA5Nzg1MjcsLTEwMz
+eyJoaXN0b3J5IjpbLTQ2MTQ2MDg5Nyw0OTA5Nzg1MjcsLTEwMz
 M3Mjc0MywxMzQwNjk5NDQ1LC0yNTcxOTI3NTIsMjQ2NTAwNjU5
 LDE3MTA0Mjk0MDIsMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNz
 MyMjk3MCwtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgw
