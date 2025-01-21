@@ -122,7 +122,7 @@ $ make test
 
 ### 最佳安装方法
 
-最佳安装 dealii 的方法是通过 [`candi`](https://github.com/dealii/candi), 根据脚本中的指令一步步做即可, 并且自带 hdf5。不知道为什么, 
+最佳安装 dealii 的方法是通过 [`candi`](https://github.com/dealii/candi), 根据脚本中的指令一步步做即可, 并且自带 hdf5, petsc 等常用的库
 
 
 ### 安装包含 hdf5 的 dealii (deprecated)
@@ -174,7 +174,7 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDUwNTE1ODAsMjY4OTkxOTQyLC0xNz
+eyJoaXN0b3J5IjpbLTE1MTU2MTgyNzQsMjY4OTkxOTQyLC0xNz
 UwMDAwOTgxLDE3NTcyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0
 NDE2Miw1MTQyMDQyODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC
 03NjkyMzEwMTgsODg4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAx
