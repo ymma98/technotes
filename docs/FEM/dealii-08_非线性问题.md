@@ -132,6 +132,10 @@ $$
 \frac{dR(u_k)}{du_k} \delta u_k = \frac{dR}{d\epsilon} = \lim_{\epsilon\rightarrow0} \frac{dR[u_k + \epsilon \delta u_k] - dR[u_k]}{\epsilon} = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u_k
 $$
 
+$$
+ \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u = 0 -\nabla\cdot \left(  \right)
+$$
+
 
 Here, this means:
 
@@ -170,11 +174,11 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1NzE5Mjc1MiwyNDY1MDA2NTksMTcxMD
-QyOTQwMiwxNzcwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIyOTcw
-LC0xODYwNTEzOTUzLC0xMjU2MDM2OTg0LC02ODEzODA0ODIsLT
-E4MzAzNjQ3NDEsMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xODIw
-NTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4NTEzMjMsLTg5OTYyNz
-I3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC05
-OTY1NjUyNTRdfQ==
+eyJoaXN0b3J5IjpbMTM0MDY5OTQ0NSwtMjU3MTkyNzUyLDI0Nj
+UwMDY1OSwxNzEwNDI5NDAyLDE3NzA2MjIzNjIsMjAyODg4Njk1
+OSw0MTczMjI5NzAsLTE4NjA1MTM5NTMsLTEyNTYwMzY5ODQsLT
+Y4MTM4MDQ4MiwtMTgzMDM2NDc0MSwxNjQyMDU4MDg1LDE5MDM0
+NDQzNDIsLTE4MjA1MjE2NTIsLTM2NTU3NDU5MSwtMTIzMDg1MT
+MyMywtODk5NjI3Mjc0LDQzNjQ3ODU3MSwtNjM4NjExOTY0LC00
+Mzg3MDkxOTJdfQ==
 -->
