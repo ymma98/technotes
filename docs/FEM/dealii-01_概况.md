@@ -120,7 +120,12 @@ $ make install    (alternatively $ make -j<N> install)
 $ make test
 ```
 
-### 安装包含 hdf5 的 dealii
+### 最佳安装方法
+
+最佳安装 dealii 的方法是通过 [`candi`](https://github.com/dealii/candi), 根据脚本中的指令一步步做即可, 并且自带 hdf5。不知道为什么, 
+
+
+### 安装包含 hdf5 的 dealii (deprecated)
 
 官网教程直接安装的版本是不支持 hdf5 的。
 
@@ -169,11 +174,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY4OTkxOTQyLC0xNzUwMDAwOTgxLDE3NT
-cyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0NDE2Miw1MTQyMDQy
-ODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC03NjkyMzEwMTgsOD
-g4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAxMTYzMDMsLTE4NjM1
-ODQ4MjEsMjUwOTc2ODA0LDY1MjQwMzUzOCwxODA1Njg3MzY4LD
-U5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAzNTI2NzgsLTQ3MTQ0
-MTc0MV19
+eyJoaXN0b3J5IjpbLTEzNDUwNTE1ODAsMjY4OTkxOTQyLC0xNz
+UwMDAwOTgxLDE3NTcyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0
+NDE2Miw1MTQyMDQyODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC
+03NjkyMzEwMTgsODg4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAx
+MTYzMDMsLTE4NjM1ODQ4MjEsMjUwOTc2ODA0LDY1MjQwMzUzOC
+wxODA1Njg3MzY4LDU5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAz
+NTI2NzhdfQ==
 -->
