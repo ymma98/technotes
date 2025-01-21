@@ -147,15 +147,56 @@ This is in fact a symmetric and positive definite problem.
 ## 弱格式
 
 
+Starting with the strong formulation above, we get the weak formulation by multiplying both sides of the PDE with a test function $\varphi$ and integrating by parts on both sides:
+
+$$
+\left( \nabla \varphi, \frac{1}{\left( 1 + |\nabla u^n|^2 \right)^{\frac{1}{2}}} \nabla \delta u^n \right) 
+    - \left( \nabla \varphi, \frac{\nabla u^n \cdot \nabla \delta u^n}{\left( 1 + |\nabla u^n|^2 \right)^{\frac{3}{2}}} \nabla u^n \right) 
+= - \left( \nabla \varphi, \frac{1}{\left( 1 + |\nabla u^n|^2 \right)^{\frac{1}{2}}} \nabla u^n \right).
+$$
+
+Here the solution $\delta u^n$ is a function in $H^1(\Omega)$, subject to the boundary conditions discussed above. Reducing this space to a finite-dimensional space with basis $\{\varphi_0, \ldots, \varphi_{N-1}\}$, we can write the solution:
+
+$$
+\delta u^n = \sum_{j=0}^{N-1} \delta U_j^n \varphi_j.
+$$
+
+Using the basis functions as test functions and defining $a_n := \frac{1}{\sqrt{1 + |\nabla u^n|^2}}$, we can rewrite the weak formulation:
+
+$$
+\sum_{j=0}^{N-1} \left[ (\nabla \varphi_i, a_n \nabla \varphi_j) 
+    - (\nabla u^n \cdot \nabla \varphi_i, a_n^3 \nabla u^n \cdot \nabla \varphi_j) \right] \delta U_j 
+= - (\nabla \varphi_i, a_n \nabla u^n) \quad \forall i = 0, \ldots, N-1,
+$$
+
+where the solution $\delta u^n$ is given by the coefficients $\delta U_j^n$. This linear system of equations can be rewritten as:
+
+$$
+A^n \delta U^n = b^n,
+$$
+
+where the entries of the matrix $A^n$ are given by:
+
+$$
+A_{ij}^n := (\nabla \varphi_i, a_n \nabla \varphi_j) 
+    - (\nabla u^n \cdot \nabla \varphi_i, a_n^3 \nabla u^n \cdot \nabla \varphi_j),
+$$
+
+and the right-hand side $b^n$ is given by:
+
+$$
+b_i^n := -(\nabla \varphi_i, a_n \nabla u^n).
+$$
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mzg1OTE3ODksLTQ2MTQ2MDg5Nyw0OT
-A5Nzg1MjcsLTEwMzM3Mjc0MywxMzQwNjk5NDQ1LC0yNTcxOTI3
-NTIsMjQ2NTAwNjU5LDE3MTA0Mjk0MDIsMTc3MDYyMjM2MiwyMD
-I4ODg2OTU5LDQxNzMyMjk3MCwtMTg2MDUxMzk1MywtMTI1NjAz
-Njk4NCwtNjgxMzgwNDgyLC0xODMwMzY0NzQxLDE2NDIwNTgwOD
-UsMTkwMzQ0NDM0MiwtMTgyMDUyMTY1MiwtMzY1NTc0NTkxLC0x
-MjMwODUxMzIzXX0=
+eyJoaXN0b3J5IjpbMTMxMzIzOTY5OSwtMTkzODU5MTc4OSwtND
+YxNDYwODk3LDQ5MDk3ODUyNywtMTAzMzcyNzQzLDEzNDA2OTk0
+NDUsLTI1NzE5Mjc1MiwyNDY1MDA2NTksMTcxMDQyOTQwMiwxNz
+cwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIyOTcwLC0xODYwNTEz
+OTUzLC0xMjU2MDM2OTg0LC02ODEzODA0ODIsLTE4MzAzNjQ3ND
+EsMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xODIwNTIxNjUyLC0z
+NjU1NzQ1OTFdfQ==
 -->
