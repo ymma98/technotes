@@ -160,7 +160,7 @@ $$
 \delta u^n = \sum_{j=0}^{N-1} \delta U_j^n \varphi_j.
 $$
 
-定义 $a_n := \frac{1}{\sqrt{1 + |\nabla u^n|^2}}$, we can rewrite the weak formulation:
+定义 $a_n := \frac{1}{\sqrt{1 + |\nabla u^n|^2}}$,  $n$ 是指第 n 次牛顿迭代, 有:
 
 $$
 \sum_{j=0}^{N-1} \left[ (\nabla \varphi_i, a_n \nabla \varphi_j) 
@@ -191,11 +191,11 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4NDI2MDQ3MCwtMTkzODU5MTc4OSwtND
-YxNDYwODk3LDQ5MDk3ODUyNywtMTAzMzcyNzQzLDEzNDA2OTk0
-NDUsLTI1NzE5Mjc1MiwyNDY1MDA2NTksMTcxMDQyOTQwMiwxNz
-cwNjIyMzYyLDIwMjg4ODY5NTksNDE3MzIyOTcwLC0xODYwNTEz
-OTUzLC0xMjU2MDM2OTg0LC02ODEzODA0ODIsLTE4MzAzNjQ3ND
-EsMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xODIwNTIxNjUyLC0z
-NjU1NzQ1OTFdfQ==
+eyJoaXN0b3J5IjpbLTIwMDY0Njc3NzMsLTE5Mzg1OTE3ODksLT
+Q2MTQ2MDg5Nyw0OTA5Nzg1MjcsLTEwMzM3Mjc0MywxMzQwNjk5
+NDQ1LC0yNTcxOTI3NTIsMjQ2NTAwNjU5LDE3MTA0Mjk0MDIsMT
+c3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNzMyMjk3MCwtMTg2MDUx
+Mzk1MywtMTI1NjAzNjk4NCwtNjgxMzgwNDgyLC0xODMwMzY0Nz
+QxLDE2NDIwNTgwODUsMTkwMzQ0NDM0MiwtMTgyMDUyMTY1Miwt
+MzY1NTc0NTkxXX0=
 -->
