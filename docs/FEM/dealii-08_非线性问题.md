@@ -80,7 +80,7 @@ $$
 u_{k+1} = u_k - [R'(u_k)]^{-1} R(u_k)
 $$
 
-or equivalently:
+or equivalently (linear equation):
 $$
 [R'(u_k)] \delta u_k = -R(u_k), \quad u_{k+1} = u_k + \delta u_k
 $$
@@ -123,8 +123,8 @@ $$
 这里 $\vec{x}_0$ 可以看作 $\vec{x}_{n+1}$, $\vec{x}_k$ 可以看作 $\vec{x}_n$。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0MjA1ODA4NSwxOTAzNDQ0MzQyLC0xOD
-IwNTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4NTEzMjMsLTg5OTYy
-NzI3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NCwtNDM4NzA5MTkyLC
-05OTY1NjUyNTRdfQ==
+eyJoaXN0b3J5IjpbLTE4MzAzNjQ3NDEsMTY0MjA1ODA4NSwxOT
+AzNDQ0MzQyLC0xODIwNTIxNjUyLC0zNjU1NzQ1OTEsLTEyMzA4
+NTEzMjMsLTg5OTYyNzI3NCw0MzY0Nzg1NzEsLTYzODYxMTk2NC
+wtNDM4NzA5MTkyLC05OTY1NjUyNTRdfQ==
 -->
