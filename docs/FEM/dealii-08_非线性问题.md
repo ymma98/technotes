@@ -252,11 +252,15 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
   #include <deal.II/numerics/solution_transfer.h>
 ```
 
-
+```cpp
+  namespace Step15
+  {
+    using namespace dealii;
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4MjU2MjA0NCwtMTQ2ODU2MzA0OCwxOD
+eyJoaXN0b3J5IjpbLTMzNjc3MDEyMSwtMTQ2ODU2MzA0OCwxOD
 c1NTY4ODU3LC0yMDA2NDY3NzczLC0xOTM4NTkxNzg5LC00NjE0
 NjA4OTcsNDkwOTc4NTI3LC0xMDMzNzI3NDMsMTM0MDY5OTQ0NS
 wtMjU3MTkyNzUyLDI0NjUwMDY1OSwxNzEwNDI5NDAyLDE3NzA2
