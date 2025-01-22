@@ -291,12 +291,6 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
     };
 ```
 
-$$
-x^2 + \frac{y}{z}\sin(kx) = 0 \\
-\int_0^2 \alpha \beta \gamma \epsilon^2_k dr \\
-\vec{d}
-$$
-
 
 
 - The single `AffineConstraints<>` object in `step-6` that is used to store boundary conditions and hanging node constraints, is replaced by two different objects of the same type: `zero_constraints` and `nonzero_constraints`. The former contains homogeneous boundary conditions to be used for the residual and solution updates, while the latter contains the correct boundary conditions for the solution. Both objects also contain the hanging nodes constraints.
@@ -306,7 +300,7 @@ We then also need a few new functions: `compute_residual()` is a function that c
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzNjE4NjU2MSwtMjc5MzY1MDk3LC03OD
+eyJoaXN0b3J5IjpbLTg3NTk4OTcxOSwtMjc5MzY1MDk3LC03OD
 M4MTA2NDksLTMzNjc3MDEyMSwtMTQ2ODU2MzA0OCwxODc1NTY4
 ODU3LC0yMDA2NDY3NzczLC0xOTM4NTkxNzg5LC00NjE0NjA4OT
 csNDkwOTc4NTI3LC0xMDMzNzI3NDMsMTM0MDY5OTQ0NSwtMjU3
