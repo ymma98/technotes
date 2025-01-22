@@ -253,18 +253,51 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 ```
 
 ```cpp
-  namespace Step15
-  {
-    using namespace dealii;
+  namespace Step15
+  {
+    using namespace dealii;
+        template <int dim>
+    class MinimalSurfaceProblem
+    {
+    public:
+      MinimalSurfaceProblem();
+      void run();
+
+    private:
+      void   setup_system();
+      void   assemble_system();
+      void   solve();
+      void   refine_mesh();
+      double compute_residual(const double alpha) const;
+      double determine_step_length() const;
+      void   output_results(const unsigned int refinement_cycle) const;
+
+      Triangulation<dim> triangulation;
+
+      DoFHandler<dim> dof_handler;
+      const FE_Q<dim> fe;
+
+      AffineConstraints<double> zero_constraints;
+      AffineConstraints<double> nonzero_constraints;
+
+      SparsityPattern      sparsity_pattern;
+      SparseMatrix<double> system_matrix;
+
+      // u_n
+      Vector<double> current_solution;
+      // delta u_n
+      Vector<double> newton_update;
+      Vector<double> system_rhs;
+    };
 ```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzNjc3MDEyMSwtMTQ2ODU2MzA0OCwxOD
-c1NTY4ODU3LC0yMDA2NDY3NzczLC0xOTM4NTkxNzg5LC00NjE0
-NjA4OTcsNDkwOTc4NTI3LC0xMDMzNzI3NDMsMTM0MDY5OTQ0NS
-wtMjU3MTkyNzUyLDI0NjUwMDY1OSwxNzEwNDI5NDAyLDE3NzA2
-MjIzNjIsMjAyODg4Njk1OSw0MTczMjI5NzAsLTE4NjA1MTM5NT
-MsLTEyNTYwMzY5ODQsLTY4MTM4MDQ4MiwtMTgzMDM2NDc0MSwx
-NjQyMDU4MDg1XX0=
+eyJoaXN0b3J5IjpbLTc4MzgxMDY0OSwtMzM2NzcwMTIxLC0xND
+Y4NTYzMDQ4LDE4NzU1Njg4NTcsLTIwMDY0Njc3NzMsLTE5Mzg1
+OTE3ODksLTQ2MTQ2MDg5Nyw0OTA5Nzg1MjcsLTEwMzM3Mjc0My
+wxMzQwNjk5NDQ1LC0yNTcxOTI3NTIsMjQ2NTAwNjU5LDE3MTA0
+Mjk0MDIsMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNzMyMjk3MC
+wtMTg2MDUxMzk1MywtMTI1NjAzNjk4NCwtNjgxMzgwNDgyLC0x
+ODMwMzY0NzQxXX0=
 -->
