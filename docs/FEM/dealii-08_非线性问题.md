@@ -291,6 +291,11 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
     };
 ```
 
+$$
+x^2 + \frac{y}{z}\sin(kx) = 0 \\
+\int_0^2 \alpha \beta \gamma \epsilon^2_k dr
+\ve
+$$
 
 
 
@@ -301,11 +306,11 @@ We then also need a few new functions: `compute_residual()` is a function that c
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3OTM2NTA5NywtNzgzODEwNjQ5LC0zMz
-Y3NzAxMjEsLTE0Njg1NjMwNDgsMTg3NTU2ODg1NywtMjAwNjQ2
-Nzc3MywtMTkzODU5MTc4OSwtNDYxNDYwODk3LDQ5MDk3ODUyNy
-wtMTAzMzcyNzQzLDEzNDA2OTk0NDUsLTI1NzE5Mjc1MiwyNDY1
-MDA2NTksMTcxMDQyOTQwMiwxNzcwNjIyMzYyLDIwMjg4ODY5NT
-ksNDE3MzIyOTcwLC0xODYwNTEzOTUzLC0xMjU2MDM2OTg0LC02
-ODEzODA0ODJdfQ==
+eyJoaXN0b3J5IjpbLTEwMzMzNjM0NjIsLTI3OTM2NTA5NywtNz
+gzODEwNjQ5LC0zMzY3NzAxMjEsLTE0Njg1NjMwNDgsMTg3NTU2
+ODg1NywtMjAwNjQ2Nzc3MywtMTkzODU5MTc4OSwtNDYxNDYwOD
+k3LDQ5MDk3ODUyNywtMTAzMzcyNzQzLDEzNDA2OTk0NDUsLTI1
+NzE5Mjc1MiwyNDY1MDA2NTksMTcxMDQyOTQwMiwxNzcwNjIyMz
+YyLDIwMjg4ODY5NTksNDE3MzIyOTcwLC0xODYwNTEzOTUzLC0x
+MjU2MDM2OTg0XX0=
 -->
