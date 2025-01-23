@@ -196,16 +196,16 @@ $$
 
 1. initial guess $u^0 \equiv 0$, 并且 $u^0$ 满足边界条件 $u=g$ (in the call to `AffineConstraints::distribute()`). Set $n = 0$. 上标是牛顿迭代的编号。
 
-2. Compute the Newton update by solving the system 
+2. 计算$\delta u_n$. Compute the Newton update by solving the system 
 
 $$
 A^n \delta u^n = b^n
 $$
-with boundary condition $\delta u^n = 0$ on $\partial \Omega$ (第一步设置了正确的边界条件, 之后每一步 $$).
+with boundary condition $\delta u^n = 0$ on $\partial \Omega$ (第一步设置了正确的边界条件, 之后每一步 $\delta u^n$ 都设置在边界处为0，这样确保最后的边界条件是正确的).
 
-4. Compute a step length $\alpha^n$. In this program, we always set $\alpha^n = 0.1$. To make things easier to extend later on, this happens in a function of its own, namely in `MinimalSurfaceProblem::determine_step_length`.  (step-77 有更复杂的策略)
+4. 计算 $\alpha^n$. Compute a step length $\alpha^n$. In this program, we always set $\alpha^n = 0.1$. To make things easier to extend later on, this happens in a function of its own, namely in `MinimalSurfaceProblem::determine_step_length`.  (step-77 有更复杂的策略)
 
-5. The new approximation of the solution is given by
+5. 计算 $u^{n+1}$. The new approximation of the solution is given by
 $$
 u^{n+1} = u^n + \alpha^n \delta u^n.
 $$
@@ -303,6 +303,6 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyMTU0MjQzNywtMTM5MTA0NTIwNywxOT
+eyJoaXN0b3J5IjpbMTc1MjY4OTY5NiwtMTM5MTA0NTIwNywxOT
 Q1NDQ0MjgxXX0=
 -->
