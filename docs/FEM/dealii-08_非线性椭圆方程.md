@@ -192,7 +192,7 @@ $$
 
 求解流程:
 
-1. Start with the function $u^0 \equiv 0$ and modify it in such a way that the values of $u^0$ along the boundary equal the correct boundary values $g$ (this happens in the call to `AffineConstraints::distribute()`). Set $n = 0$.
+1. initial guess $u^0 \equiv 0$, 并且 $u^0$ and modify it in such a way that the values of $u^0$ along the boundary equal the correct boundary values $g$ (this happens in the call to `AffineConstraints::distribute()`). Set $n = 0$.
 
 2. Compute the Newton update by solving the system 
 $$
@@ -270,6 +270,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
       void   assemble_system();
       void   solve();
       void   refine_mesh();
+      // 非线性迭代残差计算
       double compute_residual(const double alpha) const;
       double determine_step_length() const;
       void   output_results(const unsigned int refinement_cycle) const;
@@ -296,9 +297,8 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 ```
 
 
-We then also need a few new functions: `compute_residual()` is a function that computes the norm of the nonlinear (discrete) residual. We use this function to monitor convergence of the Newton iteration. The function takes a step length $\alpha^n$ as an argument to compute the residual of $u^n + \alpha^n \delta u^n$. This is something one typically needs for step length control, although we will not use this feature here. Finally, `determine_step_length()` computes the step length $ \alpha^n $ in each Newton iteration. As discussed in the introduction, we here use a fixed step length and leave implementing a better strategy as an exercise. ([step-77](link) does this differently: It simply uses an external package for the whole solution process, and a good line search strategy is part of what that package provides.)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NDc3NDIzNCwxOTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTUxNjAyNjMzMSwxOTQ1NDQ0MjgxXX0=
 -->
