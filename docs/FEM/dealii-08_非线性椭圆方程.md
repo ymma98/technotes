@@ -201,7 +201,7 @@ $$
 $$
 A^n \delta u^n = b^n
 $$
-with boundary condition $\delta u^n = 0$ on $\partial \Omega$.
+with boundary condition $\delta u^n = 0$ on $\partial \Omega$ (第一步设置了正确的边界条件, 之后每一步 $$).
 
 4. Compute a step length $\alpha^n$. In this program, we always set $\alpha^n = 0.1$. To make things easier to extend later on, this happens in a function of its own, namely in `MinimalSurfaceProblem::determine_step_length`.  (step-77 有更复杂的策略)
 
@@ -303,5 +303,6 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
+eyJoaXN0b3J5IjpbLTYyMTU0MjQzNywtMTM5MTA0NTIwNywxOT
+Q1NDQ0MjgxXX0=
 -->
