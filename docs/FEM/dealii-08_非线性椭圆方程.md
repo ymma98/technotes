@@ -296,13 +296,9 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 ```
 
 
-
-- The single `AffineConstraints<>` object in `step-6` that is used to store boundary conditions and hanging node constraints, is replaced by two different objects of the same type: `zero_constraints` and `nonzero_constraints`. The former contains homogeneous boundary conditions to be used for the residual and solution updates, while the latter contains the correct boundary conditions for the solution. Both objects also contain the hanging nodes constraints.
-- The `setup_system` function takes an argument that denotes whether this is the first time it is called or not. The difference is that the first time around we need to distribute the degrees of freedom and set the solution vector for $ u^n $ to the correct size. The following times, the function is called after we have already done these steps as part of refining the mesh in `refine_mesh`.
-
 We then also need a few new functions: `compute_residual()` is a function that computes the norm of the nonlinear (discrete) residual. We use this function to monitor convergence of the Newton iteration. The function takes a step length $\alpha^n$ as an argument to compute the residual of $u^n + \alpha^n \delta u^n$. This is something one typically needs for step length control, although we will not use this feature here. Finally, `determine_step_length()` computes the step length $ \alpha^n $ in each Newton iteration. As discussed in the introduction, we here use a fixed step length and leave implementing a better strategy as an exercise. ([step-77](link) does this differently: It simply uses an external package for the whole solution process, and a good line search strategy is part of what that package provides.)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NTQ0NDI4MV19
+eyJoaXN0b3J5IjpbLTI3NDc3NDIzNCwxOTQ1NDQ0MjgxXX0=
 -->
