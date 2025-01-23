@@ -373,43 +373,84 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 ### 矩阵组装
 
+定义 $a_n := \frac{1}{\sqrt{1 + |\nabla u^n|^2}}$,  $n$ 是指第 n 次牛顿迭代, 有:
+
+$$
+\sum_{j=0}^{N-1} \left[ (\nabla \varphi_i, a_n \nabla \varphi_j) 
+    - (\nabla u^n \cdot \nabla \varphi_i, a_n^3 \nabla u^n \cdot \nabla \varphi_j) \right] \delta U_j 
+= - (\nabla \varphi_i, a_n \nabla u^n) \quad \forall i = 0, \ldots, N-1,
+$$
+
 ```cpp
-    template <int dim>
-    void MinimalSurfaceProblem<dim>::assemble_system()
-    {
-      const QGauss<dim> quadrature_formula(fe.degree + 1);
+    template <int dim>
+    void MinimalSurfaceProblem<dim>::assemble_system()
+    {
+      const QGauss<dim> quadrature_formula(fe.degree + 1);
 
-      system_matrix = 0;
-      system_rhs    = 0;
+      system_matrix = 0;
+      system_rhs    = 0;
 
-      FEValues<dim> fe_values(fe,
-                              quadrature_formula,
-                              update_gradients | update_quadrature_points |
-                                update_JxW_values);
+      FEValues<dim> fe_values(fe,
+                              quadrature_formula,
+                              update_gradients | update_quadrature_points |
+                                update_JxW_values);
 
-      const unsigned int dofs_per_cell = fe.n_dofs_per_cell();
-      const unsigned int n_q_points    = quadrature_formula.size();
+      const unsigned int dofs_per_cell = fe.n_dofs_per_cell();
+      const unsigned int n_q_points    = quadrature_formula.size();
 
-      FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
-      Vector<double>     cell_rhs(dofs_per_cell);
+      FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
+      Vector<double>     cell_rhs(dofs_per_cell);
 
-      std::vector<Tensor<1, dim>> old_solution_gradients(n_q_points);
+      std::vector<Tensor<1, dim>> old_solution_gradients(n_q_points);
 
-      std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
+      std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
 
-      for (const auto &cell : dof_handler.active_cell_iterators())
-        {
-          cell_matrix = 0;
-          cell_rhs    = 0;
+      for (const auto &cell : dof_handler.active_cell_iterators())
+        {
+          cell_matrix = 0;
+          cell_rhs    = 0;
 
-          fe_values.reinit(cell);
+          fe_values.reinit(cell);
+          for (unsigned int q = 0; q < n_q_points; ++q)
+            {
+              const double coeff =
+                1.0 / std::sqrt(1 + old_solution_gradients[q] *
+                                      old_solution_gradients[q]);
+
+              for (unsigned int i = 0; i < dofs_per_cell; ++i)
+                {
+                  for (unsigned int j = 0; j < dofs_per_cell; ++j)
+                    cell_matrix(i, j) +=
+                      (((fe_values.shape_grad(i, q)      // ((\nabla \phi_i
+                         * coeff                         //   * a_n
+                         * fe_values.shape_grad(j, q))   //   * \nabla \phi_j)
+                        -                                //  -
+                        (fe_values.shape_grad(i, q)      //  (\nabla \phi_i
+                         * coeff * coeff * coeff         //   * a_n^3
+                         * (fe_values.shape_grad(j, q)   //   * (\nabla \phi_j
+                            * old_solution_gradients[q]) //      * \nabla u_n)
+                         * old_solution_gradients[q]))   //   * \nabla u_n)))
+                       * fe_values.JxW(q));              // * dx
+
+                  cell_rhs(i) -= (fe_values.shape_grad(i, q)  // \nabla \phi_i
+                                  * coeff                     // * a_n
+                                  * old_solution_gradients[q] // * \nabla u_n
+                                  * fe_values.JxW(q));        // * dx
+                }
+            }
+
+          cell->get_dof_indices(local_dof_indices);
+          zero_constraints.distribute_local_to_global(
+            cell_matrix, cell_rhs, local_dof_indices, system_matrix, system_rhs);
+        }
+    }
 ```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5Njk1NDc2OCwyMDcwMTkzMjA4LC0xNz
-I2ODM5Nzk5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0
-NDI4MV19
+eyJoaXN0b3J5IjpbMTI5NzkxMDkyNywxMDk2OTU0NzY4LDIwNz
+AxOTMyMDgsLTE3MjY4Mzk3OTksMTM3OTAzMDI0NywtMTM5MTA0
+NTIwNywxOTQ1NDQ0MjgxXX0=
 -->
