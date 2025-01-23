@@ -194,24 +194,25 @@ $$
 
 求解流程:
 
-1. initial guess $u^0 \equiv 0$, 并且 $u^0$ 满足边界条件 $u=g$  and modify it in such a way that the values of $u^0$ along the boundary equal the correct boundary values $g$ (this happens in the call to `AffineConstraints::distribute()`). Set $n = 0$.
+1. initial guess $u^0 \equiv 0$, 并且 $u^0$ 满足边界条件 $u=g$ (in the call to `AffineConstraints::distribute()`). Set $n = 0$. 上标是牛顿迭代的编号。
 
 2. Compute the Newton update by solving the system 
+
 $$
 A^n \delta u^n = b^n
 $$
 with boundary condition $\delta u^n = 0$ on $\partial \Omega$.
 
-3. Compute a step length $\alpha^n$. In this program, we always set $\alpha^n = 0.1$. To make things easier to extend later on, this happens in a function of its own, namely in `MinimalSurfaceProblem::determine_step_length`.  (step-77 有更复杂的策略)
+4. Compute a step length $\alpha^n$. In this program, we always set $\alpha^n = 0.1$. To make things easier to extend later on, this happens in a function of its own, namely in `MinimalSurfaceProblem::determine_step_length`.  (step-77 有更复杂的策略)
 
-4. The new approximation of the solution is given by
+5. The new approximation of the solution is given by
 $$
 u^{n+1} = u^n + \alpha^n \delta u^n.
 $$
 
-5. If $n$ is a multiple of 5 then refine the mesh, transfer the solution $u^{n+1}$ to the new mesh and set the values of $u^{n+1}$ in such a way that along the boundary we have $u^{n+1}_{|\partial \Omega} = g$. Note that this isn't automatically guaranteed even though by construction we had that before mesh refinement $u^{n+1}_{|\partial \Omega} = g$ because mesh refinement adds new nodes to the mesh where we have to interpolate the old solution to the new nodes upon bringing the solution from the old to the new mesh. The values we choose by interpolation may be close to the exact boundary conditions but are, in general, nonetheless not the correct values.
+6. If $n$ is a multiple of 5 then refine the mesh, transfer the solution $u^{n+1}$ to the new mesh and set the values of $u^{n+1}$ in such a way that along the boundary we have $u^{n+1}_{|\partial \Omega} = g$. Note that this isn't automatically guaranteed even though by construction we had that before mesh refinement $u^{n+1}_{|\partial \Omega} = g$ because mesh refinement adds new nodes to the mesh where we have to interpolate the old solution to the new nodes upon bringing the solution from the old to the new mesh. The values we choose by interpolation may be close to the exact boundary conditions but are, in general, nonetheless not the correct values.
 
-6. Set $n \leftarrow n + 1$ and go to step 2.
+7. Set $n \leftarrow n + 1$ and go to step 2.
 
 The testcase we solve is chosen as follows: We seek to find the solution of minimal surface over the unit disk 
 $$
@@ -302,5 +303,5 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3NzU3OTkzOSwxOTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
 -->
