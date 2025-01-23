@@ -334,44 +334,45 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 ```cpp
-    template <int dim>
-    void MinimalSurfaceProblem<dim>::setup_system()
-    {
-      dof_handler.distribute_dofs(fe);
-      current_solution.reinit(dof_handler.n_dofs());
+    template <int dim>
+    void MinimalSurfaceProblem<dim>::setup_system()
+    {
+      dof_handler.distribute_dofs(fe);
+      current_solution.reinit(dof_handler.n_dofs());
 
-      zero_constraints.clear();
-      VectorTools::interpolate_boundary_values(dof_handler,
-                                               0,
-                                               Functions::ZeroFunction<dim>(),
-                                               zero_constraints);
-      DoFTools::make_hanging_node_constraints(dof_handler, zero_constraints);
-      zero_constraints.close();
+	  // 这里 clear 的作用是, 清除上个 system 的 constraint
+      zero_constraints.clear();
+      VectorTools::interpolate_boundary_values(dof_handler,
+                                               0,
+                                               Functions::ZeroFunction<dim>(),
+                                               zero_constraints);
+      DoFTools::make_hanging_node_constraints(dof_handler, zero_constraints);
+      zero_constraints.close();
 
-      nonzero_constraints.clear();
-      VectorTools::interpolate_boundary_values(dof_handler,
-                                               0,
-                                               BoundaryValues<dim>(),
-                                               nonzero_constraints);
+      nonzero_constraints.clear();
+      VectorTools::interpolate_boundary_values(dof_handler,
+                                               0,
+                                               BoundaryValues<dim>(),
+                                               nonzero_constraints);
 
-      DoFTools::make_hanging_node_constraints(dof_handler, nonzero_constraints);
-      nonzero_constraints.close();
+      DoFTools::make_hanging_node_constraints(dof_handler, nonzero_constraints);
+      nonzero_constraints.close();
 
-      newton_update.reinit(dof_handler.n_dofs());
-      system_rhs.reinit(dof_handler.n_dofs());
+      newton_update.reinit(dof_handler.n_dofs());
+      system_rhs.reinit(dof_handler.n_dofs());
 
-      DynamicSparsityPattern dsp(dof_handler.n_dofs());
-      DoFTools::make_sparsity_pattern(dof_handler, dsp, zero_constraints);
+      DynamicSparsityPattern dsp(dof_handler.n_dofs());
+      DoFTools::make_sparsity_pattern(dof_handler, dsp, zero_constraints);
 
-      sparsity_pattern.copy_from(dsp);
-      system_matrix.reinit(sparsity_pattern);
-    }
+      sparsity_pattern.copy_from(dsp);
+      system_matrix.reinit(sparsity_pattern);
+    }
 ```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2ODg2NDcwLC0xNzI2ODM5Nzk5LDEzNz
+eyJoaXN0b3J5IjpbMjU3NzA3Nzk2LC0xNzI2ODM5Nzk5LDEzNz
 kwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
 -->
