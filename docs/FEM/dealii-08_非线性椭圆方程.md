@@ -306,19 +306,65 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 * BC
 
 ```cpp
-    template <int dim>
-    class BoundaryValues : public Function<dim>
-    {
-    public:
-      virtual double value(const Point<dim>  &p,
-                           const unsigned int component = 0) const override;
-    };
+    template <int dim>
+    class BoundaryValues : public Function<dim>
+    {
+    public:
+      virtual double value(const Point<dim>  &p,
+                           const unsigned int component = 0) const override;
+    };
 
+    template <int dim>
+    double BoundaryValues<dim>::value(const Point<dim> &p,
+                                      const unsigned int /*component*/) const
+    {
+      return std::sin(2 * numbers::PI * (p[0] + p[1]));
+    }
+```
+
+### 设置求解器的构造函数与初始化函数
+
+```cpp
+    template <int dim>
+    MinimalSurfaceProblem<dim>::MinimalSurfaceProblem()
+      : dof_handler(triangulation)
+      , fe(2)
+    {}
+```
+
+
+```cpp
     template <int dim>
-    double BoundaryValues<dim>::value(const Point<dim> &p,
-                                      const unsigned int /*component*/) const
+    void MinimalSurfaceProblem<dim>::setup_system()
     {
-      return std::sin(2 * numbers::PI * (p[0] + p[1]));
+      dof_handler.distribute_dofs(fe);
+      current_solution.reinit(dof_handler.n_dofs());
+
+      zero_constraints.clear();
+      VectorTools::interpolate_boundary_values(dof_handler,
+                                               0,
+                                               Functions::ZeroFunction<dim>(),
+                                               zero_constraints);
+      DoFTools::make_hanging_node_constraints(dof_handler, zero_constraints);
+      zero_constraints.close();
+
+      nonzero_constraints.clear();
+      VectorTools::interpolate_boundary_values(dof_handler,
+                                               0,
+                                               BoundaryValues<dim>(),
+                                               nonzero_constraints);
+
+      DoFTools::make_hanging_node_constraints(dof_handler, nonzero_constraints);
+      nonzero_constraints.close();
+
+      newton_update.reinit(dof_handler.n_dofs());
+      system_rhs.reinit(dof_handler.n_dofs());
+
+      DynamicSparsityPattern dsp(dof_handler.n_dofs());
+      DoFTools::make_sparsity_pattern(dof_handler, dsp, zero_constraints);
+
+      sparsity_pattern.copy_from(dsp);
+      system_matrix.reinit(sparsity_pattern);
     }
 ```
 
@@ -326,6 +372,6 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjY4Mzk3OTksMTM3OTAzMDI0NywtMT
-M5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTc2ODg2NDcwLC0xNzI2ODM5Nzk5LDEzNz
+kwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
 -->
