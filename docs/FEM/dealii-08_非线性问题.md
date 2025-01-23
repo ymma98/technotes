@@ -277,6 +277,8 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
       DoFHandler<dim> dof_handler;
       const FE_Q<dim> fe;
 
+      // 自适应网格会用到, zero_constraints -> \delta u_n
+      //                 nonzero-
       AffineConstraints<double> zero_constraints;
       AffineConstraints<double> nonzero_constraints;
 
@@ -300,11 +302,11 @@ We then also need a few new functions: `compute_residual()` is a function that c
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3NTk4OTcxOSwtMjc5MzY1MDk3LC03OD
-M4MTA2NDksLTMzNjc3MDEyMSwtMTQ2ODU2MzA0OCwxODc1NTY4
-ODU3LC0yMDA2NDY3NzczLC0xOTM4NTkxNzg5LC00NjE0NjA4OT
-csNDkwOTc4NTI3LC0xMDMzNzI3NDMsMTM0MDY5OTQ0NSwtMjU3
-MTkyNzUyLDI0NjUwMDY1OSwxNzEwNDI5NDAyLDE3NzA2MjIzNj
-IsMjAyODg4Njk1OSw0MTczMjI5NzAsLTE4NjA1MTM5NTMsLTEy
-NTYwMzY5ODRdfQ==
+eyJoaXN0b3J5IjpbLTkyOTE4Njg2MCwtODc1OTg5NzE5LC0yNz
+kzNjUwOTcsLTc4MzgxMDY0OSwtMzM2NzcwMTIxLC0xNDY4NTYz
+MDQ4LDE4NzU1Njg4NTcsLTIwMDY0Njc3NzMsLTE5Mzg1OTE3OD
+ksLTQ2MTQ2MDg5Nyw0OTA5Nzg1MjcsLTEwMzM3Mjc0MywxMzQw
+Njk5NDQ1LC0yNTcxOTI3NTIsMjQ2NTAwNjU5LDE3MTA0Mjk0MD
+IsMTc3MDYyMjM2MiwyMDI4ODg2OTU5LDQxNzMyMjk3MCwtMTg2
+MDUxMzk1M119
 -->
