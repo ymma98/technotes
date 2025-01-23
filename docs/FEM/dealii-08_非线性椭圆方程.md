@@ -77,7 +77,7 @@ $$
 **Goal:** Solve
 
 $$- \nabla \cdot \left( A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} \right) = f \\
-u=g \quad \text{on} \partial
+u=g \quad \text{on} \quad \partial\Omega
 $$
 
 **Picard iteration:** Repeatedly solve
@@ -194,7 +194,7 @@ $$
 
 求解流程:
 
-1. initial guess $u^0 \equiv 0$, 并且 $u^0$ 满足边界条件  and modify it in such a way that the values of $u^0$ along the boundary equal the correct boundary values $g$ (this happens in the call to `AffineConstraints::distribute()`). Set $n = 0$.
+1. initial guess $u^0 \equiv 0$, 并且 $u^0$ 满足边界条件 $u=g$  and modify it in such a way that the values of $u^0$ along the boundary equal the correct boundary values $g$ (this happens in the call to `AffineConstraints::distribute()`). Set $n = 0$.
 
 2. Compute the Newton update by solving the system 
 $$
@@ -302,5 +302,5 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjIyNTc2NzYsMTk0NTQ0NDI4MV19
+eyJoaXN0b3J5IjpbMTI3NzU3OTkzOSwxOTQ1NDQ0MjgxXX0=
 -->
