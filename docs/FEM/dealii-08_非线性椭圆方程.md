@@ -257,7 +257,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
   #include <deal.II/numerics/solution_transfer.h>
 ```
 
-### 定义问题框架
+### 设置solver框架
 
 ```cpp
   namespace Step15
@@ -301,12 +301,31 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
     };
 ```
 
-### 边界条件函数
+### 定义求解问题
+
+* BC
+
+```cpp
+    template <int dim>
+    class BoundaryValues : public Function<dim>
+    {
+    public:
+      virtual double value(const Point<dim>  &p,
+                           const unsigned int component = 0) const override;
+    };
+
+    template <int dim>
+    double BoundaryValues<dim>::value(const Point<dim> &p,
+                                      const unsigned int /*component*/) const
+    {
+      return std::sin(2 * numbers::PI * (p[0] + p[1]));
+    }
+```
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NTE4NjM5OSwxMzc5MDMwMjQ3LC0xMz
-kxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
+eyJoaXN0b3J5IjpbLTE3MjY4Mzk3OTksMTM3OTAzMDI0NywtMT
+M5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
 -->
