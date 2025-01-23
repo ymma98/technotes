@@ -359,6 +359,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
       DoFTools::make_hanging_node_constraints(dof_handler, nonzero_constraints);
       nonzero_constraints.close();
 
+	  // delta u_n
       newton_update.reinit(dof_handler.n_dofs());
       system_rhs.reinit(dof_handler.n_dofs());
 
@@ -374,6 +375,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3MDE5MzIwOCwtMTcyNjgzOTc5OSwxMz
-c5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
+eyJoaXN0b3J5IjpbLTEyNTU5NTM4MjYsMjA3MDE5MzIwOCwtMT
+cyNjgzOTc5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0
+NDQyODFdfQ==
 -->
