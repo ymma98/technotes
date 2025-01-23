@@ -371,11 +371,45 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
     }
 ```
 
+### 矩阵组装
+
+```cpp
+    template <int dim>
+    void MinimalSurfaceProblem<dim>::assemble_system()
+    {
+      const QGauss<dim> quadrature_formula(fe.degree + 1);
+
+      system_matrix = 0;
+      system_rhs    = 0;
+
+      FEValues<dim> fe_values(fe,
+                              quadrature_formula,
+                              update_gradients | update_quadrature_points |
+                                update_JxW_values);
+
+      const unsigned int dofs_per_cell = fe.n_dofs_per_cell();
+      const unsigned int n_q_points    = quadrature_formula.size();
+
+      FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
+      Vector<double>     cell_rhs(dofs_per_cell);
+
+      std::vector<Tensor<1, dim>> old_solution_gradients(n_q_points);
+
+      std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
+
+      for (const auto &cell : dof_handler.active_cell_iterators())
+        {
+          cell_matrix = 0;
+          cell_rhs    = 0;
+
+          fe_values.reinit(cell);
+```
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTU5NTM4MjYsMjA3MDE5MzIwOCwtMT
-cyNjgzOTc5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0
-NDQyODFdfQ==
+eyJoaXN0b3J5IjpbMTA5Njk1NDc2OCwyMDcwMTkzMjA4LC0xNz
+I2ODM5Nzk5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0
+NDI4MV19
 -->
