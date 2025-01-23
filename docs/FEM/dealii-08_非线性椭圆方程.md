@@ -342,6 +342,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 	  // 这里 clear 的作用是, 清除上个 system 的 constraint
       zero_constraints.clear();
+      // 在边界条件上补充
       VectorTools::interpolate_boundary_values(dof_handler,
                                                0,
                                                Functions::ZeroFunction<dim>(),
@@ -373,6 +374,6 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU3NzA3Nzk2LC0xNzI2ODM5Nzk5LDEzNz
-kwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
+eyJoaXN0b3J5IjpbMjExMDY3MjAxOCwtMTcyNjgzOTc5OSwxMz
+c5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
 -->
