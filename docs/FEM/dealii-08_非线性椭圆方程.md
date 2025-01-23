@@ -210,7 +210,7 @@ $$
 u^{n+1} = u^n + \alpha^n \delta u^n.
 $$
 
-6. If $n$ is a multiple of 5 then refine the mesh, transfer the solution $u^{n+1}$ to the new mesh and set the values of $u^{n+1}$ in such a way that along the boundary we have $u^{n+1}_{|\partial \Omega} = g$. Note that this isn't automatically guaranteed even though by construction we had that before mesh refinement $u^{n+1}_{|\partial \Omega} = g$ because mesh refinement adds new nodes to the mesh where we have to interpolate the old solution to the new nodes upon bringing the solution from the old to the new mesh. The values we choose by interpolation may be close to the exact boundary conditions but are, in general, nonetheless not the correct values.
+6. 每五步更新一次网格. If $n$ is a multiple of 5 then refine the mesh, transfer the solution $u^{n+1}$ to the new mesh and set the values of $u^{n+1}$ in such a way that along the boundary we have $u^{n+1}_{|\partial \Omega} = g$. 
 
 7. Set $n \leftarrow n + 1$ and go to step 2.
 
@@ -303,6 +303,6 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MjY4OTY5NiwtMTM5MTA0NTIwNywxOT
+eyJoaXN0b3J5IjpbMTM3OTAzMDI0NywtMTM5MTA0NTIwNywxOT
 Q1NDQ0MjgxXX0=
 -->
