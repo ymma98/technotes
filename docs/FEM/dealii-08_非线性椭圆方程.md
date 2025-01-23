@@ -257,6 +257,8 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
   #include <deal.II/numerics/solution_transfer.h>
 ```
 
+### 定义问题框架
+
 ```cpp
   namespace Step15
   {
@@ -299,10 +301,12 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
     };
 ```
 
+### 边界条件函数
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3OTAzMDI0NywtMTM5MTA0NTIwNywxOT
-Q1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTU4NTE4NjM5OSwxMzc5MDMwMjQ3LC0xMz
+kxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
 -->
