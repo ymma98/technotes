@@ -324,6 +324,8 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
 
 ### 设置求解器的构造函数与初始化函数
 
+* 构造函数, 和之前的构造函数没有不同
+
 ```cpp
     template <int dim>
     MinimalSurfaceProblem<dim>::MinimalSurfaceProblem()
@@ -338,6 +340,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
     void MinimalSurfaceProblem<dim>::setup_system()
     {
       dof_handler.distribute_dofs(fe);
+      // u_n
       current_solution.reinit(dof_handler.n_dofs());
 
 	  // 这里 clear 的作用是, 清除上个 system 的 constraint
@@ -450,7 +453,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5NzkxMDkyNywxMDk2OTU0NzY4LDIwNz
-AxOTMyMDgsLTE3MjY4Mzk3OTksMTM3OTAzMDI0NywtMTM5MTA0
-NTIwNywxOTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTEwMDY0NDQxMDAsMTI5NzkxMDkyNywxMD
+k2OTU0NzY4LDIwNzAxOTMyMDgsLTE3MjY4Mzk3OTksMTM3OTAz
+MDI0NywtMTM5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
 -->
