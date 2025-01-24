@@ -478,28 +478,29 @@ $$
 ### 细化网格
 
 ```cpp
-    template <int dim>
-    void MinimalSurfaceProblem<dim>::refine_mesh()
-    {
-      Vector<float> estimated_error_per_cell(triangulation.n_active_cells());
+    template <int dim>
+    void MinimalSurfaceProblem<dim>::refine_mesh()
+    {
+      Vector<float> estimated_error_per_cell(triangulation.n_active_cells());
 
-      KellyErrorEstimator<dim>::estimate(
-        dof_handler,
-        QGauss<dim - 1>(fe.degree + 1),
-        std::map<types::boundary_id, const Function<dim> *>(),
-        current_solution,
-        estimated_error_per_cell);
+      KellyErrorEstimator<dim>::estimate(
+        dof_handler,
+        QGauss<dim - 1>(fe.degree + 1),
+        std::map<types::boundary_id, const Function<dim> *>(),
+        current_solution,
+        estimated_error_per_cell);
 
-      GridRefinement::refine_and_coarsen_fixed_number(triangulation,
-                                                      estimated_error_per_cell,
-                                                      0.3,
-                                                      0.03);
+      GridRefinement::refine_and_coarsen_fixed_number(triangulation,
+                                                      estimated_error_per_cell,
+                                                      0.3,
+                                                      0.03);
+	                                                              triangulation.prepare_coarsening_and_refinement();
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzQxOTIxMDMsLTE1MDQ3NzA1MjUsLT
-gxNzEzODU0NywtMjA5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2
-NDQ0MTAwLDEyOTc5MTA5MjcsMTA5Njk1NDc2OCwyMDcwMTkzMj
-A4LC0xNzI2ODM5Nzk5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcs
-MTk0NTQ0NDI4MV19
+eyJoaXN0b3J5IjpbMTk2ODA1ODg1MywtMTUwNDc3MDUyNSwtOD
+E3MTM4NTQ3LC0yMDkzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0
+NDQxMDAsMTI5NzkxMDkyNywxMDk2OTU0NzY4LDIwNzAxOTMyMD
+gsLTE3MjY4Mzk3OTksMTM3OTAzMDI0NywtMTM5MTA0NTIwNywx
+OTQ1NDQ0MjgxXX0=
 -->
