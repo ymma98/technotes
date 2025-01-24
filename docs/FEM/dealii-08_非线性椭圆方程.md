@@ -452,12 +452,32 @@ $$
     }
 ```
 
+### 求解 $\delta u_n$
 
+```cpp
+    template <int dim>
+    void MinimalSurfaceProblem<dim>::solve()
+    {
+      SolverControl            solver_control(system_rhs.size(),
+                                   system_rhs.l2_norm() * 1e-6);
+      SolverCG<Vector<double>> solver(solver_control);
 
+      PreconditionSSOR<SparseMatrix<double>> preconditioner;
+      preconditioner.initialize(system_matrix, 1.2);
+
+      solver.solve(system_matrix, newton_update, system_rhs, preconditioner);
+
+      zero_constraints.distribute(newton_update);
+
+      const double alpha = determine_step_length();
+      current_solution.add(alpha, newton_update);
+    }
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNzEzODU0NywtMjA5Mzc4NDExNCwxOT
-Q1NzExNTA3LC0xMDA2NDQ0MTAwLDEyOTc5MTA5MjcsMTA5Njk1
-NDc2OCwyMDcwMTkzMjA4LC0xNzI2ODM5Nzk5LDEzNzkwMzAyND
-csLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
+eyJoaXN0b3J5IjpbLTE1MDQ3NzA1MjUsLTgxNzEzODU0NywtMj
+A5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2NDQ0MTAwLDEyOTc5
+MTA5MjcsMTA5Njk1NDc2OCwyMDcwMTkzMjA4LC0xNzI2ODM5Nz
+k5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
+
 -->
