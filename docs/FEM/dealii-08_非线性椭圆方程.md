@@ -343,6 +343,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
       // u_n
       current_solution.reinit(dof_handler.n_dofs());
 
+	  // 从 .clear 到 .close 是自适应网格的固定流程
 	  // 这里 clear 的作用是, 清除上个 system 的 constraint
       zero_constraints.clear();
       // 在 constraints 上增加边界条件的信息
@@ -358,7 +359,6 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
                                                0,
                                                BoundaryValues<dim>(),
                                                nonzero_constraints);
-
       DoFTools::make_hanging_node_constraints(dof_handler, nonzero_constraints);
       nonzero_constraints.close();
 
@@ -453,7 +453,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDY0NDQxMDAsMTI5NzkxMDkyNywxMD
-k2OTU0NzY4LDIwNzAxOTMyMDgsLTE3MjY4Mzk3OTksMTM3OTAz
-MDI0NywtMTM5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMj
+k3OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgz
+OTc5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyOD
+FdfQ==
 -->
