@@ -415,6 +415,8 @@ $$
           cell_rhs    = 0;
 
           fe_values.reinit(cell);
+          fe_values.get_function_gradients(current_solution,
+                                           old_solution_gradients);
           for (unsigned int q = 0; q < n_q_points; ++q)
             {
               const double coeff =
@@ -454,8 +456,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTM3ODQxMTQsMTk0NTcxMTUwNywtMT
-AwNjQ0NDEwMCwxMjk3OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5
-MzIwOCwtMTcyNjgzOTc5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1Mj
-A3LDE5NDU0NDQyODFdfQ==
+eyJoaXN0b3J5IjpbLTgxNzEzODU0NywtMjA5Mzc4NDExNCwxOT
+Q1NzExNTA3LC0xMDA2NDQ0MTAwLDEyOTc5MTA5MjcsMTA5Njk1
+NDc2OCwyMDcwMTkzMjA4LC0xNzI2ODM5Nzk5LDEzNzkwMzAyND
+csLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
 -->
