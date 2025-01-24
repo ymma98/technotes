@@ -506,14 +506,15 @@ $$
       setup_system();
 
       solution_transfer.interpolate(coarse_solution, current_solution);
+      // 必须要有这一步
       nonzero_constraints.distribute(current_solution);
     }
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNDM0MTc1NjMsMjA3NjU5MTYxNiwtMT
-UwNDc3MDUyNSwtODE3MTM4NTQ3LC0yMDkzNzg0MTE0LDE5NDU3
-MTE1MDcsLTEwMDY0NDQxMDAsMTI5NzkxMDkyNywxMDk2OTU0Nz
-Y4LDIwNzAxOTMyMDgsLTE3MjY4Mzk3OTksMTM3OTAzMDI0Nywt
-MTM5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTU2MDkxMzA5NywtMjE0MzQxNzU2MywyMD
+c2NTkxNjE2LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLTIwOTM3
+ODQxMTQsMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3OTEwOT
+I3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOTc5OSwx
+Mzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
 -->
