@@ -474,10 +474,32 @@ $$
     }
 ```
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDQ3NzA1MjUsLTgxNzEzODU0NywtMj
-A5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2NDQ0MTAwLDEyOTc5
-MTA5MjcsMTA5Njk1NDc2OCwyMDcwMTkzMjA4LC0xNzI2ODM5Nz
-k5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
 
+### 细化网格
+
+```cpp
+    template <int dim>
+    void MinimalSurfaceProblem<dim>::refine_mesh()
+    {
+      Vector<float> estimated_error_per_cell(triangulation.n_active_cells());
+
+      KellyErrorEstimator<dim>::estimate(
+        dof_handler,
+        QGauss<dim - 1>(fe.degree + 1),
+        std::map<types::boundary_id, const Function<dim> *>(),
+        current_solution,
+        estimated_error_per_cell);
+
+      GridRefinement::refine_and_coarsen_fixed_number(triangulation,
+                                                      estimated_error_per_cell,
+                                                      0.3,
+                                                      0.03);
+```
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExNzQxOTIxMDMsLTE1MDQ3NzA1MjUsLT
+gxNzEzODU0NywtMjA5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2
+NDQ0MTAwLDEyOTc5MTA5MjcsMTA5Njk1NDc2OCwyMDcwMTkzMj
+A4LC0xNzI2ODM5Nzk5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcs
+MTk0NTQ0NDI4MV19
 -->
