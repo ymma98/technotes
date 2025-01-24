@@ -493,7 +493,9 @@ $$
       GridRefinement::refine_and_coarsen_fixed_number(triangulation,
                                                       estimated_error_per_cell,
                                                       0.3,
-                                                      0.03);	                                                                 
+                                                      0.03);	
+      // 该函数本应会被 triangulation.execute_coarsening_and_refinement() 隐式地调用
+      // 当适用 SolutionTransfer 的时候, 需要显式调用该函数                                                            
       triangulation.prepare_coarsening_and_refinement();
       SolutionTransfer<dim> solution_transfer(dof_handler);
       const Vector<double>  coarse_solution = current_solution;
@@ -509,9 +511,9 @@ $$
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NjU5MTYxNiwtMTUwNDc3MDUyNSwtOD
-E3MTM4NTQ3LC0yMDkzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0
-NDQxMDAsMTI5NzkxMDkyNywxMDk2OTU0NzY4LDIwNzAxOTMyMD
-gsLTE3MjY4Mzk3OTksMTM3OTAzMDI0NywtMTM5MTA0NTIwNywx
-OTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTIxNDM0MTc1NjMsMjA3NjU5MTYxNiwtMT
+UwNDc3MDUyNSwtODE3MTM4NTQ3LC0yMDkzNzg0MTE0LDE5NDU3
+MTE1MDcsLTEwMDY0NDQxMDAsMTI5NzkxMDkyNywxMDk2OTU0Nz
+Y4LDIwNzAxOTMyMDgsLTE3MjY4Mzk3OTksMTM3OTAzMDI0Nywt
+MTM5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
 -->
