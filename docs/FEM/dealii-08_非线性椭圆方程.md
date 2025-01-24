@@ -366,6 +366,7 @@ where the surface attains the values $u(x, y) \Big|_{\partial \Omega} = g(x, y) 
       newton_update.reinit(dof_handler.n_dofs());
       system_rhs.reinit(dof_handler.n_dofs());
 
+      // keep_constrained_dofs = true (默认值), 是最安全可靠的做法
       DynamicSparsityPattern dsp(dof_handler.n_dofs());
       DoFTools::make_sparsity_pattern(dof_handler, dsp, zero_constraints);
 
@@ -453,8 +454,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMj
-k3OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgz
-OTc5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyOD
-FdfQ==
+eyJoaXN0b3J5IjpbLTIwOTM3ODQxMTQsMTk0NTcxMTUwNywtMT
+AwNjQ0NDEwMCwxMjk3OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5
+MzIwOCwtMTcyNjgzOTc5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1Mj
+A3LDE5NDU0NDQyODFdfQ==
 -->
