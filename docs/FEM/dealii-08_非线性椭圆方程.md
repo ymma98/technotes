@@ -493,12 +493,23 @@ $$
       GridRefinement::refine_and_coarsen_fixed_number(triangulation,
                                                       estimated_error_per_cell,
                                                       0.3,
-                                                      0.03);
-	                                                              triangulation.prepare_coarsening_and_refinement();
+                                                      0.03);	                                                                 
+      triangulation.prepare_coarsening_and_refinement();
+      SolutionTransfer<dim> solution_transfer(dof_handler);
+      const Vector<double>  coarse_solution = current_solution;
+      solution_transfer.prepare_for_coarsening_and_refinement(coarse_solution);
+
+      triangulation.execute_coarsening_and_refinement();
+
+      setup_system();
+
+      solution_transfer.interpolate(coarse_solution, current_solution);
+      nonzero_constraints.distribute(current_solution);
+    }
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2ODA1ODg1MywtMTUwNDc3MDUyNSwtOD
+eyJoaXN0b3J5IjpbMjA3NjU5MTYxNiwtMTUwNDc3MDUyNSwtOD
 E3MTM4NTQ3LC0yMDkzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0
 NDQxMDAsMTI5NzkxMDkyNywxMDk2OTU0NzY4LDIwNzAxOTMyMD
 gsLTE3MjY4Mzk3OTksMTM3OTAzMDI0NywtMTM5MTA0NTIwNywx
