@@ -511,10 +511,167 @@ $$
     }
 ```
 
+### 求解
+
+```cpp
+  template <int dim>
+  double MinimalSurfaceProblem<dim>::compute_residual(const double alpha) const
+  {
+    Vector<double> residual(dof_handler.n_dofs());
+
+    Vector<double> evaluation_point(dof_handler.n_dofs());
+    evaluation_point = current_solution;
+    evaluation_point.add(alpha, newton_update);
+
+    const QGauss<dim> quadrature_formula(fe.degree + 1);
+    FEValues<dim>     fe_values(fe,
+                            quadrature_formula,
+                            update_gradients | update_quadrature_points |
+                              update_JxW_values);
+
+    const unsigned int dofs_per_cell = fe.n_dofs_per_cell();
+    const unsigned int n_q_points    = quadrature_formula.size();
+
+    Vector<double>              cell_residual(dofs_per_cell);
+    std::vector<Tensor<1, dim>> gradients(n_q_points);
+
+    std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
+
+    for (const auto &cell : dof_handler.active_cell_iterators())
+      {
+        cell_residual = 0;
+        fe_values.reinit(cell);
+
+        fe_values.get_function_gradients(evaluation_point, gradients);
+
+        for (unsigned int q = 0; q < n_q_points; ++q)
+          {
+            const double coeff =
+              1. / std::sqrt(1 + gradients[q] * gradients[q]);
+
+            for (unsigned int i = 0; i < dofs_per_cell; ++i)
+              cell_residual(i) -= (fe_values.shape_grad(i, q) // \nabla \phi_i
+                                   * coeff                    // * a_n
+                                   * gradients[q]             // * \nabla u_n
+                                   * fe_values.JxW(q));       // * dx
+          }
+
+        cell->get_dof_indices(local_dof_indices);
+        zero_constraints.distribute_local_to_global(cell_residual,
+                                                    local_dof_indices,
+                                                    residual);
+      }
+
+    return residual.l2_norm();
+  }
+
+  template <int dim>
+  double MinimalSurfaceProblem<dim>::determine_step_length() const
+  {
+    return 0.1;
+  }
+
+  template <int dim>
+  void MinimalSurfaceProblem<dim>::output_results(
+    const unsigned int refinement_cycle) const
+  {
+    DataOut<dim> data_out;
+
+    data_out.attach_dof_handler(dof_handler);
+    data_out.add_data_vector(current_solution, "solution");
+    data_out.add_data_vector(newton_update, "update");
+    data_out.build_patches();
+
+    const std::string filename =
+      "solution-" + Utilities::int_to_string(refinement_cycle, 2) + ".vtu";
+    std::ofstream output(filename);
+    data_out.write_vtu(output);
+  }
+
+  template <int dim>
+  void MinimalSurfaceProblem<dim>::run()
+  {
+    GridGenerator::hyper_ball(triangulation);
+    triangulation.refine_global(2);
+
+    setup_system();
+    nonzero_constraints.distribute(current_solution);
+
+    double       last_residual_norm = std::numeric_limits<double>::max();
+    unsigned int refinement_cycle   = 0;
+    do
+      {
+        std::cout << "Mesh refinement step " << refinement_cycle << std::endl;
+
+        if (refinement_cycle != 0)
+          refine_mesh();
+
+        std::cout << "  Initial residual: " << compute_residual(0) << std::endl;
+
+        for (unsigned int inner_iteration = 0; inner_iteration < 5;
+             ++inner_iteration)
+          {
+            assemble_system();
+            last_residual_norm = system_rhs.l2_norm();
+
+            solve();
+
+            std::cout << "  Residual: " << compute_residual(0) << std::endl;
+          }
+
+        output_results(refinement_cycle);
+
+        ++refinement_cycle;
+        std::cout << std::endl;
+      }
+    while (last_residual_norm > 1e-2);
+  }
+} // namespace Step15
+
+int main()
+{
+  try
+    {
+      using namespace Step15;
+
+      MinimalSurfaceProblem<2> problem;
+      problem.run();
+    }
+  catch (std::exception &exc)
+    {
+      std::cerr << std::endl
+                << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+      std::cerr << "Exception on processing: " << std::endl
+                << exc.what() << std::endl
+                << "Aborting!" << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+
+      return 1;
+    }
+  catch (...)
+    {
+      std::cerr << std::endl
+                << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+      std::cerr << "Unknown exception!" << std::endl
+                << "Aborting!" << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+      return 1;
+    }
+  return 0;
+}
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MDkxMzA5NywtMjE0MzQxNzU2MywyMD
-c2NTkxNjE2LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLTIwOTM3
-ODQxMTQsMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3OTEwOT
-I3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOTc5OSwx
-Mzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
+eyJoaXN0b3J5IjpbNDk2OTk5NzQ4LC01NjA5MTMwOTcsLTIxND
+M0MTc1NjMsMjA3NjU5MTYxNiwtMTUwNDc3MDUyNSwtODE3MTM4
+NTQ3LC0yMDkzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0NDQxMD
+AsMTI5NzkxMDkyNywxMDk2OTU0NzY4LDIwNzAxOTMyMDgsLTE3
+MjY4Mzk3OTksMTM3OTAzMDI0NywtMTM5MTA0NTIwNywxOTQ1ND
+Q0MjgxXX0=
 -->
