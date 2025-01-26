@@ -38,15 +38,17 @@ $$
 其中
 
 $$
-A(\{\mathbf{u}, p\}, \{\mathbf{v}, q\}) = (\mathbf{v}, K^{-1} \mathbf{u})_\Omega - (q, \text{div } \mathbf{u})_\Omega - (\mathbf{v}, \nabla p)_\Omega,
+A(\{\mathbf{u}, p\}, \{\mathbf{v}, q\}) = (\mathbf{v}, K^{-1} \mathbf{u})_\Omega - (\text{div } \mathbf{v}, p)_\Omega - (q, \text{div } \mathbf{u})_\Omega
 $$
+
 $$
-F(\{\mathbf{v}, q\}) = -(g, \mathbf{v} \cdot \mathbf{n})_{\partial \Omega} - (f, q)_\Omega.
+F(\{\mathbf{v}, q\}) = -(g, \mathbf{v} \cdot \mathbf{n})_{\partial \Omega} - (f, q)_\Omega
 $$
+
 
 这里，$\mathbf{n}$ 是边界上的外法向量。注意，在这种形式中，原问题的狄利克雷边界值被包含在弱形式中。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Mjk2OTAzNSwxOTYyNDUzNDQxLDc3Mj
-c4NzIwNSwxNzQwNDA5MzU5XX0=
+eyJoaXN0b3J5IjpbLTE5ODQ0NDMxOTMsLTE3Mjk2OTAzNSwxOT
+YyNDUzNDQxLDc3Mjc4NzIwNSwxNzQwNDA5MzU5XX0=
 -->
