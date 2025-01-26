@@ -58,11 +58,16 @@ $x_h = \{\mathbf{u_h}, p_h\}$，$w_h = \{\mathbf{v_h}, q_h\}$。$x_h$和$w_h$来
 
 finite elements that are either scalar or for which every vector-valued shape function is nonzero only in a single vector component are called **primitive**, RT elements 是 non-primitive. _non-primitive_：形函数在多个矢量分量上都有贡献，需要用更通用的接口取值。
 
+## 灾难: 矩阵求解
+
+本问题得到的系统 $Ax=b$ 中的矩阵 $A$,
+
+Conjugate Gradient method
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0NjQ0NzU2MywxNjAzNDAwMTExLC05Mz
-kxMzIyNTIsLTIwNTA0NTk3NSwtMzQxNjc2MDg0LDUwNDU2Njg5
-Miw0NTYzOTQyMjcsLTE3Mjk2OTAzNSwxOTYyNDUzNDQxLDc3Mj
-c4NzIwNSwxNzQwNDA5MzU5XX0=
+eyJoaXN0b3J5IjpbODIyODMwMDUyLDE2NDY0NDc1NjMsMTYwMz
+QwMDExMSwtOTM5MTMyMjUyLC0yMDUwNDU5NzUsLTM0MTY3NjA4
+NCw1MDQ1NjY4OTIsNDU2Mzk0MjI3LC0xNzI5NjkwMzUsMTk2Mj
+Q1MzQ0MSw3NzI3ODcyMDUsMTc0MDQwOTM1OV19
 -->
