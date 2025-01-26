@@ -62,15 +62,15 @@ finite elements that are either scalar or for which every vector-valued shape fu
 
 本问题得到的系统 $Ax=b$ 中的矩阵 $A$, 是对称但不定的(indefinite), 这意味着无法使用 CG 方法求解。另外，$A$ 的对角线上有 zero block, 这使得一般的 preconditioner (Jacobi, SSOR) 都不起作用。
 
-Conjugate Gradient method: 只适用于对称的正定矩阵。对于本问题不适用。tutorial 中提到的  Schur complement 这个方法并不通用, 而且要手动推导化简分块矩阵，对于不关心矩阵求解过程的我们来说简直是灾难。
+Conjugate Gradient method: 只适用于对称的正定矩阵。对于本问题不适用。tutorial 中提到的  Schur complement 这个方法并不通用, 而且要手动推导化简分块矩阵，对于不关心矩阵求解过程的我们来说简直是灾难。只能先...跳过？
 
 * matlab 中关于稀疏矩阵的求解似乎比较智能，[文档](https://www.mathworks.com/help/matlab/math/iterative-methods-for-linear-systems.html)质量也高
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTYxOTE3OTEsLTkyMTI4MzQ2NSwxNj
-Q2NDQ3NTYzLDE2MDM0MDAxMTEsLTkzOTEzMjI1MiwtMjA1MDQ1
-OTc1LC0zNDE2NzYwODQsNTA0NTY2ODkyLDQ1NjM5NDIyNywtMT
-cyOTY5MDM1LDE5NjI0NTM0NDEsNzcyNzg3MjA1LDE3NDA0MDkz
-NTldfQ==
+eyJoaXN0b3J5IjpbLTQ1ODY2NzgwMSwtMTA5NjE5MTc5MSwtOT
+IxMjgzNDY1LDE2NDY0NDc1NjMsMTYwMzQwMDExMSwtOTM5MTMy
+MjUyLC0yMDUwNDU5NzUsLTM0MTY3NjA4NCw1MDQ1NjY4OTIsND
+U2Mzk0MjI3LC0xNzI5NjkwMzUsMTk2MjQ1MzQ0MSw3NzI3ODcy
+MDUsMTc0MDQwOTM1OV19
 -->
