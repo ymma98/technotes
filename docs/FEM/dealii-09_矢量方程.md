@@ -60,14 +60,14 @@ finite elements that are either scalar or for which every vector-valued shape fu
 
 ## 灾难: 矩阵求解
 
-本问题得到的系统 $Ax=b$ 中的矩阵 $A$, 是对称但不定的(indefinite), 这意味着无法使用 CG 方法求解。另外，$A$ 的对
+本问题得到的系统 $Ax=b$ 中的矩阵 $A$, 是对称但不定的(indefinite), 这意味着无法使用 CG 方法求解。另外，$A$ 的对角线上有 zero block, 这使得一般的 preconditioner (Jacobi, SSOR) 都不起作用。
 
 Conjugate Gradient method: 只适用于对称的正定矩阵。
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTE2MTU5NDk1LDE2NDY0NDc1NjMsMTYwMz
-QwMDExMSwtOTM5MTMyMjUyLC0yMDUwNDU5NzUsLTM0MTY3NjA4
-NCw1MDQ1NjY4OTIsNDU2Mzk0MjI3LC0xNzI5NjkwMzUsMTk2Mj
-Q1MzQ0MSw3NzI3ODcyMDUsMTc0MDQwOTM1OV19
+eyJoaXN0b3J5IjpbLTkyMTI4MzQ2NSwxNjQ2NDQ3NTYzLDE2MD
+M0MDAxMTEsLTkzOTEzMjI1MiwtMjA1MDQ1OTc1LC0zNDE2NzYw
+ODQsNTA0NTY2ODkyLDQ1NjM5NDIyNywtMTcyOTY5MDM1LDE5Nj
+I0NTM0NDEsNzcyNzg3MjA1LDE3NDA0MDkzNTldfQ==
 -->
