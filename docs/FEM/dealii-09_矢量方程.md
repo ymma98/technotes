@@ -54,7 +54,7 @@ $$
 
 $x_h = \{\mathbf{u_h}, p_h\}$，$w_h = \{\mathbf{v_h}, q_h\}$。$x_h$和$w_h$来自空间$X_h = RT(k) \times DQ(k)$，其中$RT(k)$是一个 $dim$ 维的函数空间，用于表示流速是矢量值。$k$ 代表 $k$ 阶有限元, RT 代表 Raviart-Thomas elements, DG 代表 discontinuous elements。
 
-矢量值单元已经在之前的教程中讨论过，首次详细介绍是在\texttt{step-8}中。主要区别在于，矢量值空间$V_h$在所有分量上是统一的：位移矢量的$dim$个分量都是相等的，并来自同一函数空间。因此，我们将$V_h$构建为$dim$个通常的$Q(1)$有限元空间的外积，从而确保所有形函数只有一个非零的矢量分量。与其处理矢量值形函数，在\texttt{step-8}中我们只需查看唯一的非零标量分量，并通过调用\texttt{fe.system\_to\_component\_index(i).first}来确定该分量。
+finite elements that are either scalar or for which every vector-valued shape function is nonzero only in a single vector component are called **primitive**, RT elements 是 non-primitive. 
 
 这种方法不适用于Raviart-Thomas单元。由于其构造需满足$H(\text{div})$空间的特定正则性性质，$RT(k)$的形函数通常在所有矢量分量上都非零。因此，如果直接使用\texttt{fe.system\_to\_component\_index(i).first}来确定形函数$i$唯一的非零分量，将会产生异常。我们需要获取形函数的所有矢量分量。按照deal.II的术语，这类有限元称为\textbf{非原始单元}（non-primitive），而那些标量有限元或矢量值形函数仅在一个矢量分量上非零的有限元称为\textbf{原始单元}（primitive）。
 
@@ -63,7 +63,7 @@ $x_h = \{\mathbf{u_h}, p_h\}$，$w_h = \{\mathbf{v_h}, q_h\}$。$x_h$和$w_h$来
 对于非原始形函数，这显然行不通：形函数$i$没有单一的非零矢量分量，因此调用\texttt{fe\_values.shape\_value(i, q\_point)}并无意义。然而，deal.II提供了另一个函数调用\texttt{fe\_values.shape\_value\_component(i, q\_point, comp)}，它返回形函数$i$在积分点$q\_point$处第$comp$个矢量分量的值，其中$comp$的索引在零到当前有限元矢量分量数之间。例如，我们用于描述速度和压力的单元将具有$dim+1$个分量。需要注意的是，该函数调用也可用于原始形函数：它会对除一个分量外的其他分量返回零；而对于非原始形函数，通常会返回多个非零值。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA0NTY2ODkyLDQ1NjM5NDIyNywtMTcyOT
-Y5MDM1LDE5NjI0NTM0NDEsNzcyNzg3MjA1LDE3NDA0MDkzNTld
-fQ==
+eyJoaXN0b3J5IjpbLTM0MTY3NjA4NCw1MDQ1NjY4OTIsNDU2Mz
+k0MjI3LC0xNzI5NjkwMzUsMTk2MjQ1MzQ0MSw3NzI3ODcyMDUs
+MTc0MDQwOTM1OV19
 -->
