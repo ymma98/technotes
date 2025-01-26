@@ -51,7 +51,7 @@ $$
 A(\mathbf{x}_h, \mathbf{w}_h) = F(\mathbf{w}_h),
 $$
 
-其中的双线性形式和右端项如上所述，并且 xh={uh,ph},wh={vh,qh}\mathbf{x}_h = \{\mathbf{u}_h, p_h\}, \mathbf{w}_h = \{\mathbf{v}_h, q_h\}。xh\mathbf{x}_h 和 wh\mathbf{w}_h 都来自空间 Xh=RT(k)×DQ(k)X_h = RT(k) \times DQ(k)，其中 RT(k)RT(k) 本身是一个由 dim\text{dim}-维函数组成的空间，用于处理流速是向量值的情况。那么关键问题是：我们如何在程序中实现这一点？
+$x_h={u_h,p_h},wh={vh,qh}\mathbf{x}_h = \{\mathbf{u}_h, p_h\}$, \mathbf{w}_h = \{\mathbf{v}_h, q_h\}。xh\mathbf{x}_h 和 wh\mathbf{w}_h 都来自空间 Xh=RT(k)×DQ(k)X_h = RT(k) \times DQ(k)，其中 RT(k)RT(k) 本身是一个由 dim\text{dim}-维函数组成的空间，用于处理流速是向量值的情况。那么关键问题是：我们如何在程序中实现这一点？
 
 向量值单元在之前的教程程序中已经讨论过，第一次详细讲解是在 \texttt{step-8}。主要区别在于，向量值空间 VhV_h 的所有分量是统一的：位移向量的 dim\text{dim} 个分量全都相同，并且来自同一个函数空间。因此，我们可以通过将 dim\text{dim} 乘以常规 Q(1)Q(1) 有限元空间的外积来构建 VhV_h，确保所有形函数只有一个非零的向量分量。我们在 \texttt{step-8} 中的做法是，只查看唯一的（标量）非零分量，并使用 \texttt{fe.system_to_component_index(i).first} 函数来确定这个分量究竟是哪一个。
 
@@ -65,7 +65,7 @@ $$
 
 这是对原始内容的准确中文翻译，同时保持技术术语的清晰和一致性。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA1NTA1NTA2LDQ1NjM5NDIyNywtMTcyOT
-Y5MDM1LDE5NjI0NTM0NDEsNzcyNzg3MjA1LDE3NDA0MDkzNTld
-fQ==
+eyJoaXN0b3J5IjpbMTc5MDgxNDI0OCw0NTYzOTQyMjcsLTE3Mj
+k2OTAzNSwxOTYyNDUzNDQxLDc3Mjc4NzIwNSwxNzQwNDA5MzU5
+XX0=
 -->
