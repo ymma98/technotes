@@ -46,9 +46,7 @@ F(\{\mathbf{v}, q\}) = -(g, \mathbf{v} \cdot \mathbf{n})_{\partial \Omega} - (f,
 $$
 
 
-这里，$\mathbf{n}$ 是边界上的外法向量。注意，在这种形式中，原问题的狄利克雷边界值被包含在弱形式中。
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODQ0NDMxOTMsLTE3Mjk2OTAzNSwxOT
-YyNDUzNDQxLDc3Mjc4NzIwNSwxNzQwNDA5MzU5XX0=
+eyJoaXN0b3J5IjpbNDU2Mzk0MjI3LC0xNzI5NjkwMzUsMTk2Mj
+Q1MzQ0MSw3NzI3ODcyMDUsMTc0MDQwOTM1OV19
 -->
