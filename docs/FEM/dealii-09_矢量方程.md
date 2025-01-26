@@ -52,7 +52,7 @@ $$
 A(x_h, w_h) = F(w_h),
 $$
 
-$x_h = \{\mathbf{u_h}, p_h\}$，$w_h = \{\mathbf{v_h}, q_h\}$。$x_h$和$w_h$来自空间$X_h = RT(k) \times DQ(k)$，其中$RT(k)$是一个 $dim$ 维的函数空间，用于表示流速是矢量值。$k$
+$x_h = \{\mathbf{u_h}, p_h\}$，$w_h = \{\mathbf{v_h}, q_h\}$。$x_h$和$w_h$来自空间$X_h = RT(k) \times DQ(k)$，其中$RT(k)$是一个 $dim$ 维的函数空间，用于表示流速是矢量值。$k$ 代表 $k$ 阶有限元, RT 代表 Raviart-Thomas elements, DG 代表 discontinuous elements。
 
 矢量值单元已经在之前的教程中讨论过，首次详细介绍是在\texttt{step-8}中。主要区别在于，矢量值空间$V_h$在所有分量上是统一的：位移矢量的$dim$个分量都是相等的，并来自同一函数空间。因此，我们将$V_h$构建为$dim$个通常的$Q(1)$有限元空间的外积，从而确保所有形函数只有一个非零的矢量分量。与其处理矢量值形函数，在\texttt{step-8}中我们只需查看唯一的非零标量分量，并通过调用\texttt{fe.system\_to\_component\_index(i).first}来确定该分量。
 
@@ -63,7 +63,7 @@ $x_h = \{\mathbf{u_h}, p_h\}$，$w_h = \{\mathbf{v_h}, q_h\}$。$x_h$和$w_h$来
 对于非原始形函数，这显然行不通：形函数$i$没有单一的非零矢量分量，因此调用\texttt{fe\_values.shape\_value(i, q\_point)}并无意义。然而，deal.II提供了另一个函数调用\texttt{fe\_values.shape\_value\_component(i, q\_point, comp)}，它返回形函数$i$在积分点$q\_point$处第$comp$个矢量分量的值，其中$comp$的索引在零到当前有限元矢量分量数之间。例如，我们用于描述速度和压力的单元将具有$dim+1$个分量。需要注意的是，该函数调用也可用于原始形函数：它会对除一个分量外的其他分量返回零；而对于非原始形函数，通常会返回多个非零值。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIwNDQ0NzEyLDQ1NjM5NDIyNywtMTcyOT
+eyJoaXN0b3J5IjpbNTA0NTY2ODkyLDQ1NjM5NDIyNywtMTcyOT
 Y5MDM1LDE5NjI0NTM0NDEsNzcyNzg3MjA1LDE3NDA0MDkzNTld
 fQ==
 -->
