@@ -67,7 +67,7 @@ $$ g_2 = n \cdot \nabla \bar{u}, $$
 
 ## 代码拆解
 
-Neumann BC 的核心是，用到了 `FEFaceValues` 而不是 `FEValues`。修改的是 \vec{b}
+Neumann BC 的核心是，用到了 `FEFaceValues` 而不是 `FEValues`。修改的是 $\vec{b}$
 
 
 ```cpp
@@ -923,7 +923,7 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4ODQyMjEwNywtMTk5NDI4MzQxOSwxND
-Q5NDA0OTIsMTEwMDc5OTU4OSwtOTk0OTM0MDIsLTk1MTU1MDky
-MCwtNDM0OTc5ODA0LDE3NTQ2MTY2OTNdfQ==
+eyJoaXN0b3J5IjpbNjExMDIyMTc1LC0xOTk0MjgzNDE5LDE0ND
+k0MDQ5MiwxMTAwNzk5NTg5LC05OTQ5MzQwMiwtOTUxNTUwOTIw
+LC00MzQ5Nzk4MDQsMTc1NDYxNjY5M119
 -->
