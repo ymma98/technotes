@@ -16,15 +16,16 @@ $$
 
 如果假设 $\mathbf{u} = -K \nabla p$，有：
 
+$$
+K^{-1} \mathbf{u} + \nabla p = 0 \quad \text{in } \Omega,
+$$
 
 $$
-K^{-1} \mathbf{u} + \nabla p = 0 \quad \text{在 } \Omega,
+-\text{div } \mathbf{u} = -f \quad \text{in } \Omega,
 $$
+
 $$
--\text{div } \mathbf{u} = -f \quad \text{在 } \Omega,
-$$
-$$
-p = g \quad \text{在 } \partial \Omega.
+p = g \quad \text{on} \quad \partial \Omega.
 $$
 
 这里，将定义速度 $\mathbf{u}$ 的方程乘以 $K^{-1}$ 是为了使方程组对称化：一个方程包含梯度，另一个包含负散度，而这两个方程是彼此的伴随，从而在假设 $K$ 是对称张量的前提下，得到一个对称的双线性形式，以及一个对称的系统矩阵。
@@ -47,6 +48,6 @@ $$
 这里，$\mathbf{n}$ 是边界上的外法向量。注意，在这种形式中，原问题的狄利克雷边界值被包含在弱形式中。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzExOTcwNjY2LDE5NjI0NTM0NDEsNzcyNz
-g3MjA1LDE3NDA0MDkzNTldfQ==
+eyJoaXN0b3J5IjpbLTE1MjIzMDE3MTIsMTk2MjQ1MzQ0MSw3Nz
+I3ODcyMDUsMTc0MDQwOTM1OV19
 -->
