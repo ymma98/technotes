@@ -54,12 +54,15 @@ $$
 
 $x_h = \{\mathbf{u_h}, p_h\}$，$w_h = \{\mathbf{v_h}, q_h\}$。$x_h$和$w_h$来自空间$X_h = RT(k) \times DQ(k)$，其中$RT(k)$是一个 $dim$ 维的函数空间，用于表示流速是矢量值。$k$ 代表 $k$ 阶有限元, RT 代表 Raviart-Thomas elements, DG 代表 discontinuous elements。RT(k) 属于 $H(div)$ 单元，可保证通量（或速度）在单元间的法向连续，有助于局部守恒。
 
+对于向量问题, test function 也是矢量, $\mathbf{v_h} = (v_1, v_2)$。最后还是将方程转换为标量方程。
+
 finite elements that are either scalar or for which every vector-valued shape function is nonzero only in a single vector component are called **primitive**, RT elements 是 non-primitive. _non-primitive_：形函数在多个矢量分量上都有贡献，需要用更通用的接口取值。
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzOTEzMjI1MiwtMjA1MDQ1OTc1LC0zND
-E2NzYwODQsNTA0NTY2ODkyLDQ1NjM5NDIyNywtMTcyOTY5MDM1
-LDE5NjI0NTM0NDEsNzcyNzg3MjA1LDE3NDA0MDkzNTldfQ==
+eyJoaXN0b3J5IjpbMTYwMzQwMDExMSwtOTM5MTMyMjUyLC0yMD
+UwNDU5NzUsLTM0MTY3NjA4NCw1MDQ1NjY4OTIsNDU2Mzk0MjI3
+LC0xNzI5NjkwMzUsMTk2MjQ1MzQ0MSw3NzI3ODcyMDUsMTc0MD
+QwOTM1OV19
 -->
