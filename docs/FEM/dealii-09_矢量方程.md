@@ -1,6 +1,6 @@
 # step-20, 矢量方程
 
-* step-22 (待看)
+这个 tutorial 用到了 Block and Schur complement solvers，跳过！... 矩阵求解变得无比麻烦。
 
 ## 问题描述
 
@@ -61,8 +61,8 @@ finite elements that are either scalar or for which every vector-valued shape fu
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMzQwMDExMSwtOTM5MTMyMjUyLC0yMD
-UwNDU5NzUsLTM0MTY3NjA4NCw1MDQ1NjY4OTIsNDU2Mzk0MjI3
-LC0xNzI5NjkwMzUsMTk2MjQ1MzQ0MSw3NzI3ODcyMDUsMTc0MD
-QwOTM1OV19
+eyJoaXN0b3J5IjpbMTY0NjQ0NzU2MywxNjAzNDAwMTExLC05Mz
+kxMzIyNTIsLTIwNTA0NTk3NSwtMzQxNjc2MDg0LDUwNDU2Njg5
+Miw0NTYzOTQyMjcsLTE3Mjk2OTAzNSwxOTYyNDUzNDQxLDc3Mj
+c4NzIwNSwxNzQwNDA5MzU5XX0=
 -->
