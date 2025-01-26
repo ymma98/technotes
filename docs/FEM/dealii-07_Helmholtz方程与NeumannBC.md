@@ -67,6 +67,8 @@ $$ g_2 = n \cdot \nabla \bar{u}, $$
 
 ## 代码拆解
 
+Neumann BC 的核心是，用到了 `FEFaceValues` 而不是 `FEValues`。修改的是 \vec{b}
+
 
 ```cpp
 #include <deal.II/base/quadrature_lib.h>
@@ -921,7 +923,7 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5OTQyODM0MTksMTQ0OTQwNDkyLDExMD
-A3OTk1ODksLTk5NDkzNDAyLC05NTE1NTA5MjAsLTQzNDk3OTgw
-NCwxNzU0NjE2NjkzXX0=
+eyJoaXN0b3J5IjpbMjA4ODQyMjEwNywtMTk5NDI4MzQxOSwxND
+Q5NDA0OTIsMTEwMDc5OTU4OSwtOTk0OTM0MDIsLTk1MTU1MDky
+MCwtNDM0OTc5ODA0LDE3NTQ2MTY2OTNdfQ==
 -->
