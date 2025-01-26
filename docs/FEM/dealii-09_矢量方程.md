@@ -60,13 +60,13 @@ finite elements that are either scalar or for which every vector-valued shape fu
 
 ## 灾难: 矩阵求解
 
-本问题得到的系统 $Ax=b$ 中的矩阵 $A$,
+本问题得到的系统 $Ax=b$ 中的矩阵 $A$, 是对称但不定的()。
 
-Conjugate Gradient method
+Conjugate Gradient method: 只适用于
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODIyODMwMDUyLDE2NDY0NDc1NjMsMTYwMz
+eyJoaXN0b3J5IjpbOTMxNjIwODY4LDE2NDY0NDc1NjMsMTYwMz
 QwMDExMSwtOTM5MTMyMjUyLC0yMDUwNDU5NzUsLTM0MTY3NjA4
 NCw1MDQ1NjY4OTIsNDU2Mzk0MjI3LC0xNzI5NjkwMzUsMTk2Mj
 Q1MzQ0MSw3NzI3ODcyMDUsMTc0MDQwOTM1OV19
