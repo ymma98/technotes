@@ -114,7 +114,7 @@ $$
 
 其中 $n_x,\,n_y$ 为整数。当初始条件、右端项和边界值都类似地取成 $\sin(n_x\pi x)\sin(n_y\pi y)$ 时，这种形式成立。其原因在于 $\sin(n_x\pi x)\sin(n_y\pi y)$ 是拉普拉斯算子的特征函数，因此可以直接计算它在 $\partial_t$ 和 $-\Delta$ 下的行为。
 
-* **设置非零初值$u_0$，以及 $f=0$和 $g=0$, 检查是否是 $k_n$ 项出现问题**
+* **设置非零初值$u_0$，以及 $f=0$和 $g=0$, 检查是否是 $k_n$ 项或 出现问题**
 
 例如，令
 $$
@@ -205,7 +205,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4OTM3OTcxOCwtMjUzMjEyOTEzLC0xND
-c1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1NzkwMzcsMTE5NDQx
-MzYyOSwtNDE3ODY3MzgxXX0=
+eyJoaXN0b3J5IjpbMTYwMDU1Mzk4OCwtOTg5Mzc5NzE4LC0yNT
+MyMTI5MTMsLTE0NzUxMjM0NzgsLTQzNjE1OTMxMywtMTkwNDU3
+OTAzNywxMTk0NDEzNjI5LC00MTc4NjczODFdfQ==
 -->
