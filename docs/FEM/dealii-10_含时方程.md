@@ -148,7 +148,7 @@ $$
 
 如果在时间积分方案中（例如对各项的 $\theta$ 或 $k$ 系数）出错，往往会导致解的时间衰减不准确。通过比较不同步长或网格尺寸时解在某一点的数值演化，可以检查衰减是否翻倍或减半。由于此测试中边界条件和右端项都为零，因此错误不太可能来自这两处。
 
-* **设置$u_0$，以及 $f=0$和 $g=0$, 排除右端项和边界条件, 检查是否是 $k_n$ 项或 $\theta$ 出现问题**
+* **设置$u_0=0$，以及$g=0$, 检查是否是右端项出现问题**
 
 若确认时间积分器正确，可接着考虑右端项非零而初始条件为零的情形：$u_0(x,y) = 0$ 并 $f(x,y,t) = \sin(n_x\pi x)\sin(n_y\pi y)$。再次有
 $$
@@ -173,7 +173,7 @@ $$
 
 在确认时间积分和右端项的处理均无问题后，我们可以使用类似思路来验证边界值的处理。
 
-\subsection*{测试用例}
+## 测试算例
 
 在简单区域上用简单的右端项解热方程，通常会得到解快速变平滑且变化不大的结果。因此，这里我们选择在一个 L 形区域内求解热方程，边界条件与初始条件都为零，而右端项定义为
 $$
@@ -207,7 +207,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTcwMzk3ODgsLTk4OTM3OTcxOCwtMj
-UzMjEyOTEzLC0xNDc1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1
-NzkwMzcsMTE5NDQxMzYyOSwtNDE3ODY3MzgxXX0=
+eyJoaXN0b3J5IjpbMjM0Nzc1OTk5LC05ODkzNzk3MTgsLTI1Mz
+IxMjkxMywtMTQ3NTEyMzQ3OCwtNDM2MTU5MzEzLC0xOTA0NTc5
+MDM3LDExOTQ0MTM2MjksLTQxNzg2NzM4MV19
 -->
