@@ -92,28 +92,26 @@ $$
 
 ## benchmark
 
+常见错误:
 
+* 将 $\theta$ 与 $(1-\theta)$ 搞混。
+* 处理右端项时，比如忘记乘上 $k_n$ 或 $\theta$。
+* 错误地处理边界条件，比如忘记乘上 $k_n$ 或 $\theta$，或者只在右端项而不是系统矩阵中施加非零边界值。
 
-在实现有限元代码（尤其是时间相关问题）时，通常会遇到许多潜在错误。对于时间依赖方程，下列情况特别常见：
-
-\begin{itemize}
-  \item 时间积分过程中，错误地给当前或上一步的系数赋值（例如，将 $\theta$ 与 $(1-\theta)$ 搞混）。
-  \item 处理右端项时，比如忘记乘上 $k_n$ 或 $\theta$。
-  \item 错误地处理边界条件，比如忘记乘上 $k_n$ 或 $\theta$，或者只在右端项而不是系统矩阵中施加非零边界值。
-\end{itemize}
 
 还有一种不太常见但也可能出现的问题是初始条件设置错误。不过，这往往可以通过输出第一次时间步的结果来发现。无论如何，为了确保代码正确性，最好有一套测试方案来分别验证这些不同的部分。具体而言：
 
-\begin{itemize}
-  \item 用非零初始条件、但右端项和边界值都为零的情形来测试，并验证时间演化是否正确。
-  \item 然后，用零初始条件和零边界值但非零右端项来测试，并再次检查正确性。
-  \item 最后，用零初始条件和零右端项但非零边界值来测试。
-\end{itemize}
+* 用非零初始条件、但右端项和边界值都为零的情形来测试，并验证时间演化是否正确。
+* 然后，用零初始条件和零边界值但非零右端项来测试，并再次检查正确性。
+* 最后，用零初始条件和零右端项但非零边界值来测试。
+
 
 这些听起来很复杂，但对于线性偏微分方程（无系数或系数恒定）来说，其实有一套相对成熟的测试流程，基于以下观察：如果将区域选为 $[0,1]^2$（或者作稍许修改选用矩形），那么精确解可以写成
+
 $$
 u(x,y,t) \;=\; a(t)\,\sin(n_x\pi x)\,\sin(n_y\pi y),
 $$
+
 其中 $n_x,\,n_y$ 为整数。当初始条件、右端项和边界值都类似地取成 $\sin(n_x\pi x)\sin(n_y\pi y)$ 时，这种形式成立。其原因在于 $\sin(n_x\pi x)\sin(n_y\pi y)$ 是拉普拉斯算子的特征函数，因此可以直接计算它在 $\partial_t$ 和 $-\Delta$ 下的行为。
 
 例如，令
@@ -201,7 +199,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTM5ODA4MjUsLTE0NzUxMjM0NzgsLT
-QzNjE1OTMxMywtMTkwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4
-NjczODFdfQ==
+eyJoaXN0b3J5IjpbMjE5MDYzNDc1LC0xNDc1MTIzNDc4LC00Mz
+YxNTkzMTMsLTE5MDQ1NzkwMzcsMTE5NDQxMzYyOSwtNDE3ODY3
+MzgxXX0=
 -->
