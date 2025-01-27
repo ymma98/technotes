@@ -129,11 +129,15 @@ $$
 \bigl[a'(t) + (n_x^2 + n_y^2)\,\pi^2\,a(t)\bigr]\,
 \sin(n_x\pi x)\,\sin(n_y\pi y).
 $$
+
 要使它等于 $f(x,y,t)=0$，必须满足
+
 $$
 a'(t) + (n_x^2 + n_y^2)\,\pi^2\,a(t) = 0,
 $$
+
 并由于初始条件 $a(0)=1$，将此方程对时间积分可得
+
 $$
 a(t) = e^{-(n_x^2 + n_y^2)\,\pi^2\,t}.
 $$
@@ -199,7 +203,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE5MDYzNDc1LC0xNDc1MTIzNDc4LC00Mz
-YxNTkzMTMsLTE5MDQ1NzkwMzcsMTE5NDQxMzYyOSwtNDE3ODY3
-MzgxXX0=
+eyJoaXN0b3J5IjpbLTI1MzIxMjkxMywtMTQ3NTEyMzQ3OCwtND
+M2MTU5MzEzLC0xOTA0NTc5MDM3LDExOTQ0MTM2MjksLTQxNzg2
+NzM4MV19
 -->
