@@ -337,7 +337,9 @@ namespace Step26
     (void)component;
     AssertIndexRange(component, 1);
     Assert(dim == 2, ExcNotImplemented());
-
+    // 在每个时间步之前，通过调用 set_time(current_time) 方法，
+    // 将当前的时间值设置到 Function<dim> 对象中
+    // 之后通过 get_time() 获取时间值
     const double time = this->get_time();
     const double point_within_period =
       (time / period - std::floor(time / period));
@@ -753,8 +755,8 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzNjE2ODEzOCw3MzAxNzk3NTAsNjE4Nz
-M3Mzg2LC05ODkzNzk3MTgsLTI1MzIxMjkxMywtMTQ3NTEyMzQ3
-OCwtNDM2MTU5MzEzLC0xOTA0NTc5MDM3LDExOTQ0MTM2MjksLT
-QxNzg2NzM4MV19
+eyJoaXN0b3J5IjpbMTE4OTM0NzMzMywxODM2MTY4MTM4LDczMD
+E3OTc1MCw2MTg3MzczODYsLTk4OTM3OTcxOCwtMjUzMjEyOTEz
+LC0xNDc1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1NzkwMzcsMT
+E5NDQxMzYyOSwtNDE3ODY3MzgxXX0=
 -->
