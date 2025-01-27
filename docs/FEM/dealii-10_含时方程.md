@@ -207,52 +207,7 @@ $$
 
 如果将热方程视为导体中随时间和空间变化的温度分布，那么上述测试用例对应一个 L 形区域，其边界温度始终保持在零，而在域的两个部分交替加热。加热时，这些位置的温度上升，随后向周围扩散并下降。这些初始条件的关键之处在于，解在时间（热源开关）和空间（凹角及边界、顶点等）都具有奇异性。
 
-## 问题通用步骤
 
-* 定义问题的 class，包含
-	* 
-
-```cpp
-namespace Step26
-{
-  using namespace dealii;
-
-  template <int dim>
-  class HeatEquation
-  {
-  public:
-    HeatEquation();
-    void run();
-
-  private:
-    void setup_system();
-    void solve_time_step();
-    void output_results() const;
-    void refine_mesh(const unsigned int min_grid_level,
-                     const unsigned int max_grid_level);
-
-    Triangulation<dim> triangulation;
-    FE_Q<dim>          fe;
-    DoFHandler<dim>    dof_handler;
-
-    AffineConstraints<double> constraints;
-
-    SparsityPattern      sparsity_pattern;
-    SparseMatrix<double> mass_matrix;
-    SparseMatrix<double> laplace_matrix;
-    SparseMatrix<double> system_matrix;
-
-    Vector<double> solution;
-    Vector<double> old_solution;
-    Vector<double> system_rhs;
-
-    double       time;
-    double       time_step;
-    unsigned int timestep_number;
-
-    const double theta;
-  };
-```
 
 
 
@@ -800,7 +755,7 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzMTgzMjc0LDYxODczNzM4NiwtOTg5Mz
+eyJoaXN0b3J5IjpbNzMwMTc5NzUwLDYxODczNzM4NiwtOTg5Mz
 c5NzE4LC0yNTMyMTI5MTMsLTE0NzUxMjM0NzgsLTQzNjE1OTMx
 MywtMTkwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4NjczODFdfQ
 ==
