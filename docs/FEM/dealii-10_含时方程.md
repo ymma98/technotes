@@ -334,7 +334,12 @@ namespace Step26
   double RightHandSide<dim>::value(const Point<dim>  &p,
                                    const unsigned int component) const
   {
+    // (void)component 并不会改变 component 的类型或其值
+    // 它仅仅是一个表达式，告诉编译器“我知道这个参数未被使用
+    // ，并且这是有意为之
     (void)component;
+    // 确保 component 的值在 [0, 1) 范围内，
+    // 即仅允许 component = 0
     AssertIndexRange(component, 1);
     Assert(dim == 2, ExcNotImplemented());
     // 在每个时间步之前，通过调用 set_time(current_time) 方法，
@@ -755,8 +760,8 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4OTM0NzMzMywxODM2MTY4MTM4LDczMD
-E3OTc1MCw2MTg3MzczODYsLTk4OTM3OTcxOCwtMjUzMjEyOTEz
-LC0xNDc1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1NzkwMzcsMT
-E5NDQxMzYyOSwtNDE3ODY3MzgxXX0=
+eyJoaXN0b3J5IjpbMTgzMzUzMjU3NCwxMTg5MzQ3MzMzLDE4Mz
+YxNjgxMzgsNzMwMTc5NzUwLDYxODczNzM4NiwtOTg5Mzc5NzE4
+LC0yNTMyMTI5MTMsLTE0NzUxMjM0NzgsLTQzNjE1OTMxMywtMT
+kwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4NjczODFdfQ==
 -->
