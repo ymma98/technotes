@@ -42,9 +42,7 @@ $$
 u^n(x) \approx u_h^n(x) \;=\; \sum_{j} U_j^n\,\phi_j(x)
 $$
 
-替换 $u^n(x)$，并用测试函数 $\phi_i(x)$ 相乘，需要时进行分部积分。按上述过程，我们可以得到
-
-接下来，我们通过将方程乘以试函数并进行分部积分，然后限制在有限维子空间上来离散空间。在两边乘以 $k_n$ 后，得到如下全离散形式：
+替换 $u^n(x)$，并用测试函数 $\phi_i(x)$ 相乘，需要时进行分部积分。按上述过程，我们可以得到如下全离散形式：
 
 $$
 M\,U^n \;-\; M\,U^{n-1}
@@ -52,6 +50,7 @@ M\,U^n \;-\; M\,U^{n-1}
 \;=\;
 k_n\,\Bigl[\,(1-\theta)\,F^{n-1} \;+\; \theta\,F^n\Bigr],
 $$
+
 其中 $M$ 称为质量矩阵，$A$ 称为刚度矩阵，源自对拉普拉斯算子的离散化。把所有已知量移到右侧后，我们在每个时间步需求解的线性系统是：
 
 $$
@@ -91,16 +90,12 @@ $$
 
 其中 $I_h^n$ 是将解插值到时间步 $n$ 所用有限元空间的算子。
 
-
-
-
-
 如果初始时刻已经得到节点系数 $U^0$，就可以开始上述迭代。这里，$U^0$ 通过将初值 $u_0(x)$ 插值到首次时间步使用的网格上获得。
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODE5MDUzNSwtNDM2MTU5MzEzLC0xOT
-A0NTc5MDM3LDExOTQ0MTM2MjksLTQxNzg2NzM4MV19
+eyJoaXN0b3J5IjpbLTE0NzUxMjM0NzgsLTQzNjE1OTMxMywtMT
+kwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4NjczODFdfQ==
 -->
