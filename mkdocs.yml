@@ -56,6 +56,7 @@ nav:
     - dealii-07_Helmholtz方程与NeumannBC: FEM/dealii-07_Helmholtz方程与NeumannBC.md
     - dealii-08_非线性椭圆方程: FEM/dealii-08_非线性椭圆方程.md
     - dealii-09_矢量方程: FEM/dealii-09_矢量方程.md
+    - dealii-10_含时方程: FEM/dealii-10_含时方程.md
     - paraview使用: FEM/paraview使用.md
   - python:
       - pdb: python/pdb.md
