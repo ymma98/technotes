@@ -176,28 +176,32 @@ $$
 ## 测试算例
 
 在简单区域上用简单的右端项解热方程，通常会得到解快速变平滑且变化不大的结果。因此，这里我们选择在一个 L 形区域内求解热方程，边界条件与初始条件都为零，而右端项定义为
+
 $$
-f(x,t) \;=\;
+f(x, t) =
 \begin{cases}
-\chi_1(x) & \text{若 } 0 \le t \le 0.2\tau \text{ 或 } \tau \le t \le 1.2\tau \text{ 或 } 2\tau \le t \le 2.2\tau,\\
-\chi_2(x) & \text{若 } 0.5\tau \le t \le 0.7\tau \text{ 或 } 1.5\tau \le t \le 1.7\tau \text{ 或 } 2.5\tau \le t \le 2.7\tau,\\
-0 & \text{否则},
+\chi_1(x) & \text{if } 0 \leq t \leq 0.2\tau \text{ or } \tau \leq t \leq 1.2\tau \text{ or } 2\tau \leq t \leq 2.2\tau, \text{ etc.} \\
+\chi_2(x) & \text{if } 0.5\tau \leq t \leq 0.7\tau \text{ or } 1.5\tau \leq t \leq 1.7\tau \text{ or } 2.5\tau \leq t \leq 2.7\tau, \text{ etc.} \\
+0 & \text{otherwise.}
 \end{cases}
 $$
-其中
+
 $$
-\chi_1(x) \;=\;
+\chi_1(x) =
 \begin{cases}
-1 & \text{当 } x>0.5 \text{ 且 } y>-0.5,\\
-0 & \text{否则},
-\end{cases}
-\quad
-\chi_2(x) \;=\;
-\begin{cases}
-1 & \text{当 } x>-0.5 \text{ 且 } y>0.5,\\
-0 & \text{否则}.
+1 & \text{if } x > 0.5 \text{ and } y > -0.5, \\
+0 & \text{otherwise.}
 \end{cases}
 $$
+
+$$
+\chi_2(x) =
+\begin{cases}
+1 & \text{if } x > -0.5 \text{ and } y > 0.5, \\
+0 & \text{otherwise.}
+\end{cases}
+$$
+
 
 换言之，在每个长度为 $\tau$ 的周期里，右端项先在区域 1 上开启，然后关闭，再在区域 2 上开启，随后再次关闭。在结果部分中可以通过一个小动画直观地看到这一模式。
 
@@ -207,7 +211,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM0Nzc1OTk5LC05ODkzNzk3MTgsLTI1Mz
+eyJoaXN0b3J5IjpbNjE4NzM3Mzg2LC05ODkzNzk3MTgsLTI1Mz
 IxMjkxMywtMTQ3NTEyMzQ3OCwtNDM2MTU5MzEzLC0xOTA0NTc5
 MDM3LDExOTQ0MTM2MjksLTQxNzg2NzM4MV19
 -->
