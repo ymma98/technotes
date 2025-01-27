@@ -114,7 +114,7 @@ $$
 
 其中 $n_x,\,n_y$ 为整数。当初始条件、右端项和边界值都类似地取成 $\sin(n_x\pi x)\sin(n_y\pi y)$ 时，这种形式成立。其原因在于 $\sin(n_x\pi x)\sin(n_y\pi y)$ 是拉普拉斯算子的特征函数，因此可以直接计算它在 $\partial_t$ 和 $-\Delta$ 下的行为。
 
-* **设置非零初值$u_0$，以及 $f=0$和 $g=0$, 检查是否是 $k_n$ 项或 出现问题**
+* **设置非零初值$u_0$，以及 $f=0$和 $g=0$, 排除右端项和边界条件, 检查是否是 $k_n$ 项或 $\theta$ 出现问题**
 
 例如，令
 $$
@@ -147,6 +147,8 @@ $$
 换言之，如果初始条件是若干正弦函数之积，则解依旧保持该形状，并以已知的时间依赖衰减。这对在网格与时间步足够细时进行验证非常方便。
 
 如果在时间积分方案中（例如对各项的 $\theta$ 或 $k$ 系数）出错，往往会导致解的时间衰减不准确。通过比较不同步长或网格尺寸时解在某一点的数值演化，可以检查衰减是否翻倍或减半。由于此测试中边界条件和右端项都为零，因此错误不太可能来自这两处。
+
+* **设置$u_0$，以及 $f=0$和 $g=0$, 排除右端项和边界条件, 检查是否是 $k_n$ 项或 $\theta$ 出现问题**
 
 若确认时间积分器正确，可接着考虑右端项非零而初始条件为零的情形：$u_0(x,y) = 0$ 并 $f(x,y,t) = \sin(n_x\pi x)\sin(n_y\pi y)$。再次有
 $$
@@ -205,7 +207,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMDU1Mzk4OCwtOTg5Mzc5NzE4LC0yNT
-MyMTI5MTMsLTE0NzUxMjM0NzgsLTQzNjE1OTMxMywtMTkwNDU3
-OTAzNywxMTk0NDEzNjI5LC00MTc4NjczODFdfQ==
+eyJoaXN0b3J5IjpbLTIwNTcwMzk3ODgsLTk4OTM3OTcxOCwtMj
+UzMjEyOTEzLC0xNDc1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1
+NzkwMzcsMTE5NDQxMzYyOSwtNDE3ODY3MzgxXX0=
 -->
