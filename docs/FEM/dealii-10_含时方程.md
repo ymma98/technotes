@@ -22,7 +22,7 @@ $$
 
 $$
 \frac{u^n(x) - u^{n-1}(x)}{k_n}
-\;=\;
+\;-\;
 \bigl[(1-\theta)\,\Delta\,u^{n-1}(x) \;+\; \theta\,\Delta\,u^n(x)\bigr]
 \;=\;
 \bigl[(1-\theta)\,f(x,t_{n-1}) \;+\; \theta\,f(x,t_n)\bigr],
@@ -45,19 +45,21 @@ M\,U^n \;-\; M\,U^{n-1}
 k_n\,\Bigl[\,(1-\theta)\,F^{n-1} \;+\; \theta\,F^n\Bigr],
 $$
 其中 $M$ 称为质量矩阵，$A$ 称为刚度矩阵，源自对拉普拉斯算子的离散化。把所有已知量移到右侧后，我们在每个时间步需求解的线性系统是：
-\[
+
+$$
 \bigl(M + k_n\,\theta\,A\bigr)\,U^n
 \;=\;
 M\,U^{n-1}
 \;-\; k_n\,(1-\theta)\,A\,U^{n-1}
 \;+\;
 k_n\,\Bigl[\,(1-\theta)\,F^{n-1} \;+\; \theta\,F^n\Bigr].
-\]
+$$
 
 由于左端矩阵是对称且正定的，我们可以使用共轭梯度法（Conjugate Gradient）高效地求解该系统。
 
 如果初始时刻已经得到节点系数 $U^0$，我们就可以开始上述迭代。这里，$U^0$ 通过将初值 $u_0(x)$ 插值到首次时间步使用的网格上获得。此外，我们还需要选择时间步长；在本程序中，我们将其设为固定值，但更高级的模拟器通常会自适应地进行选择。我们会在后续结果部分对这一点做简要讨论。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5NDQxMzYyOSwtNDE3ODY3MzgxXX0=
+eyJoaXN0b3J5IjpbLTE5MDQ1NzkwMzcsMTE5NDQxMzYyOSwtND
+E3ODY3MzgxXX0=
 -->
