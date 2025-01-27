@@ -54,6 +54,8 @@ k_n\,(1-\theta)\,\bigl(\nabla\phi_i,\;\nabla u_h^{n-1}\bigr)
 k_n\,\Bigl[(1-\theta)\,F^{n-1} \;+\; \theta\,F^n\Bigr].
 $$
 
+现在，设想在时间步 $n-1$ 与 $n$ 之间更换了网格。
+
 
 接下来，我们通过将方程乘以试函数并进行分部积分，然后限制在有限维子空间上来离散空间。在两边乘以 $k_n$ 后，得到如下全离散形式：
 
@@ -109,6 +111,6 @@ $$
 其中 $I_h^n$ 是将解插值到时间步 $n$ 所用有限元空间的算子。此方法并非最优，因为它在时间与空间离散的基础上又引入了额外误差，但它是一种务实的方案，使得对网格进行随时间的自适应加密成为可能。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTk1MDc3NDIsLTQzNjE1OTMxMywtMT
-kwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4NjczODFdfQ==
+eyJoaXN0b3J5IjpbNTY2MDQzMzU2LC00MzYxNTkzMTMsLTE5MD
+Q1NzkwMzcsMTE5NDQxMzYyOSwtNDE3ODY3MzgxXX0=
 -->
