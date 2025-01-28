@@ -589,6 +589,7 @@ namespace Step26
 
     Vector<double> previous_solution;
     previous_solution = solution;
+    // 需要插值的时候, 就要加这一行
     triangulation.prepare_coarsening_and_refinement();
     solution_trans.prepare_for_coarsening_and_refinement(previous_solution);
 
@@ -797,9 +798,10 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDM4OTAyOCwtMTg0NTg2MzIzOCwtMT
-U5NzIzODY4MywxODMzNTMyNTc0LDExODkzNDczMzMsMTgzNjE2
-ODEzOCw3MzAxNzk3NTAsNjE4NzM3Mzg2LC05ODkzNzk3MTgsLT
-I1MzIxMjkxMywtMTQ3NTEyMzQ3OCwtNDM2MTU5MzEzLC0xOTA0
-NTc5MDM3LDExOTQ0MTM2MjksLTQxNzg2NzM4MV19
+eyJoaXN0b3J5IjpbLTE5MzkyMjc2NzUsLTE2NDM4OTAyOCwtMT
+g0NTg2MzIzOCwtMTU5NzIzODY4MywxODMzNTMyNTc0LDExODkz
+NDczMzMsMTgzNjE2ODEzOCw3MzAxNzk3NTAsNjE4NzM3Mzg2LC
+05ODkzNzk3MTgsLTI1MzIxMjkxMywtMTQ3NTEyMzQ3OCwtNDM2
+MTU5MzEzLC0xOTA0NTc5MDM3LDExOTQ0MTM2MjksLTQxNzg2Nz
+M4MV19
 -->
