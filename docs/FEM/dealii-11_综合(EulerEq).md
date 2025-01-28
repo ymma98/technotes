@@ -364,16 +364,13 @@ static const unsigned int energy_component      = dim + 1;
 
 在程序的后续部分，我们需要指定解变量的名称，以及如何将不同的组件分组为矢量场和标量场。我们可以在代码的其他地方描述这些内容，但为了使与欧拉方程相关的内容保持局部化，而使程序的其余部分尽可能通用，我们将在以下两个函数中提供这些信息。
 
-```
 
-This Markdown version maintains clarity while ensuring all equations are properly enclosed within `$$...$$` or `$...$`. Let me know if you need further refinements!
-```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2ODE0MjUwOSwyMDYwNDMxNTAyLDkyMj
-A2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MTY4MjAs
-LTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjIsLTE4OD
-M5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1LDE4NjE4OTM4ODYs
-LTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcwMCw0NT
-k0NDkxOTUsMTEwMTE5MDg1N119
+eyJoaXN0b3J5IjpbNDMzODIwOTE1LDIwNjA0MzE1MDIsOTIyMD
+Y0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwt
+NjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mz
+k4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4Niwt
+MTM5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OT
+Q0OTE5NSwxMTAxMTkwODU3XX0=
 -->
