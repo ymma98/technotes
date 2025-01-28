@@ -450,14 +450,31 @@ static void compute_flux_matrix(const InputVector &W,
             EulerEquations<dim>::n_components,
             dim> &flux)
 {
+```
+
+
+首先计算出出现在通量矩阵中的压力项，然后计算矩阵前 $dim$ 列，这些列对应于动量项：
+
+```cpp
+const typename InputVector::value_type pressure = compute_pressure(W);
+
+for (unsigned int d = 0; d < dim; ++d)
+{
+    for (unsigned int e = 0; e < dim; ++e)
+        flux[first_momentum_component + d][e] =
+            W[first_momentum_component + d] *
+            W[first_momentum_component + e] / W[density_component];
+
+    flux[first_momentum_component + d][d] += pressure;
 }
 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY2NTM5Nzg4MSw4MDk5ODM2OTQsOTA0OD
-c0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1
-MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMzk4NDIsLTgzNjU4MT
-E3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1
-MjAwNDUyNSwxODYxODkzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nz
-c3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5MTk1LDExMDExOTA4NTdd
-fQ==
+eyJoaXN0b3J5IjpbMTM0ODU5MTAsODA5OTgzNjk0LDkwNDg3ND
+k0LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0
+NjE2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNz
+MsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQsNTIw
+MDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMTE5Nzc3Nz
+E5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkwODU3XX0=
+
 -->
