@@ -364,13 +364,36 @@ static const unsigned int energy_component      = dim + 1;
 
 在程序的后续部分，我们需要指定解变量的名称，以及如何将不同的组件分组为矢量场和标量场。我们可以在代码的其他地方描述这些内容，但为了使与欧拉方程相关的内容保持局部化，而使程序的其余部分尽可能通用，我们将在以下两个函数中提供这些信息。
 
+```cpp
+      static std::vector<std::string> component_names()
+      {
+        std::vector<std::string> names(dim, "momentum");
+        names.emplace_back("density");
+        names.emplace_back("energy_density");
 
+        return names;
+      }
+
+      static std::vector<DataComponentInterpretation::DataComponentInterpretation>
+      component_interpretation()
+      {
+        std::vector<DataComponentInterpretation::DataComponentInterpretation>
+          data_component_interpretation(
+            dim, DataComponentInterpretation::component_is_part_of_vector);
+        data_component_interpretation.push_back(
+          DataComponentInterpretation::component_is_scalar);
+        data_component_interpretation.push_back(
+          DataComponentInterpretation::component_is_scalar);
+
+        return data_component_interpretation;
+      }
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMzODIwOTE1LDIwNjA0MzE1MDIsOTIyMD
-Y0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwt
-NjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mz
-k4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4Niwt
-MTM5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OT
-Q0OTE5NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNj
+QxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwLC02
+MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xODgzOT
+g0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2LC0x
+Mzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5ND
+Q5MTk1LDExMDExOTA4NTddfQ==
 -->
