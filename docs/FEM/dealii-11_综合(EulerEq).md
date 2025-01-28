@@ -351,12 +351,29 @@ struct EulerEquations
 }
 ```
 
+首先，我们定义一些变量来描述解向量（solution vector）的各个components。这包括系统中component的数量（欧拉方程在每个空间方向上都有一个动量项，再加上能量和密度项，因此总共有 $dim + 2$ 个component），以及描述解向量中第一个动量组件、密度组件和能量密度组件索引的函数。
+
+请注意，所有这些数值都依赖于空间维度；以通用的方式（而不是通过隐式约定）定义它们，使得代码更具灵活性，并且在以后扩展它（例如向方程添加更多组件）时更容易。
+
+```cpp
+static const unsigned int n_components          = dim + 2;
+static const unsigned int first_momentum_component = 0;
+static const unsigned int density_component     = dim;
+static const unsigned int energy_component      = dim + 1;
+```
+
+在程序的后续部分，我们需要指定解变量的名称，以及如何将不同的组件分组为矢量场和标量场。我们可以在代码的其他地方描述这些内容，但为了使与欧拉方程相关的内容保持局部化，而使程序的其余部分尽可能通用，我们将在以下两个函数中提供这些信息。
+
+```
+
+This Markdown version maintains clarity while ensuring all equations are properly enclosed within `$$...$$` or `$...$`. Let me know if you need further refinements!
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwODQ0MzIzLDIwNjA0MzE1MDIsOTIyMD
-Y0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwt
-NjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mz
-k4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4Niwt
-MTM5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OT
-Q0OTE5NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbLTE2MDc0NzIzNTgsMjA2MDQzMTUwMiw5Mj
+IwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIw
+LC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xOD
+gzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2
+LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsND
+U5NDQ5MTk1LDExMDExOTA4NTddfQ==
 -->
