@@ -388,13 +388,12 @@ static const unsigned int energy_component      = dim + 1;
       }
 ```
 
-## 变量之间的转换
 
 接下来，我们定义气体常数（gas constant）。我们将在该类的声明之后立即将其定义为 $1.4$（与上面定义的整数变量不同，在 C++ 中，`static const` 浮点成员变量不能在类声明中初始化）。该值 $1.4$ 代表由双原子分子组成的气体，例如空气，其中几乎完全由 $N_2$ 和 $O_2$ 组成，仅包含少量其他痕量气体。
 
 ```cpp
 static const double gas_gamma;
-````
+```
 
 在接下来的计算中，我们需要从守恒变量向量中计算动能和压力。我们可以基于能量密度以及动能计算这些值：
 
@@ -408,10 +407,10 @@ This Markdown preserves clarity while ensuring that mathematical expressions are
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTU4OTk2MjUsOTA0ODc0OTQsMjA2MD
-QzMTUwMiw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAs
-NTM0NjE2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OT
-gzMzIyLC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwx
-ODYxODkzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1OD
-YyMTU3MDAsNDU5NDQ5MTk1LDExMDExOTA4NTddfQ==
+eyJoaXN0b3J5IjpbLTU4NzIwODg4Nyw5MDQ4NzQ5NCwyMDYwND
+MxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1
+MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5OD
+MzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1LDE4
+NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4Nj
+IxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
 -->
