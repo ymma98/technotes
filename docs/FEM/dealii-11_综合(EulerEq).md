@@ -259,7 +259,7 @@ $$
 
 在之前的示例程序中，我们通常将初始条件和边界条件硬编码在程序里。而在本程序中，我们改用 `FunctionParser` 表达式解析器类，这样就可以在输入文件中指定通用表达式，并在运行时进行解析 —— 也就是说，我们无需重新编译程序就能更改初始条件。因此，在下面的程序中不会声明名为 `InitialConditions` 或 `BoundaryConditions` 的类。
 
-# 实现 (Implementation)
+## 实现 (Implementation)
 
 本程序的实现分为三个主要部分：
 
@@ -280,7 +280,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0NTc2NTMxMywtODM2NTgxMTczLDE2Nz
+eyJoaXN0b3J5IjpbLTYyMTIzOTg0MiwtODM2NTgxMTczLDE2Nz
 Y5ODMzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1
 LDE4NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMT
 U4NjIxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
