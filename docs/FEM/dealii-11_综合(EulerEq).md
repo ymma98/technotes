@@ -71,6 +71,10 @@ $$
 \partial_t \mathbf{w} + \nabla \cdot \mathbf{F}(\mathbf{w}) = 0
 $$
 
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx + \int_{\Omega} \nabla \cdot \mathbf{F}(\mathbf{w}) \cdot \mathbf{z} \, dx = 0
+$$
+
 
 并用数值通量 $\mathbf{H}$ 来近似边界通量：
 
@@ -147,7 +151,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3NTg3NjQ4OSwxODYxODkzODg2LC0xMz
-k5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5
-MTk1LDExMDExOTA4NTddfQ==
+eyJoaXN0b3J5IjpbLTEyMDEwOTMyNTQsMTg2MTg5Mzg4NiwtMT
+M5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0
+OTE5NSwxMTAxMTkwODU3XX0=
 -->
