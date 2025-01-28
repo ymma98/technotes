@@ -1034,12 +1034,1263 @@ namespace Step33
     }
 
 
+// @sect4{Parameters::AllParameters}
+//
+// 最后将所有内容整合在一起的类。它自己声明了许多参数，大多数是参数文件顶层的参数，以及几个不够大而不值得单独类的部分。它还包含所有实际依赖空间维度的内容，例如初始条件或边界条件。
+//
+// 由于这个类是从上面所有类派生而来，所以<code>declare_parameters()</code>和<code>parse_parameters()</code>函数也调用了基类的相应函数。
+//
+// 注意，这个类还处理输入文件中指定的初始条件和边界条件的声明。为此，在这两种情况下，都有类似“w_0 value”的条目，表示一个以$x,y,z$为变量的表达式，描述初始条件或边界条件作为一个将由FunctionParser类解析的公式。类似的表达式存在于“w_1”、“w_2”等，用于表示Euler系统的<code>dim+2</code>个守恒变量。类似地，我们允许在输入文件中使用最多<code>max_n_boundaries</code>个边界指示符，每个边界指示符可以与流入、流出或压力边界条件相关联，并且对于每个组件和每个边界指示符，分别指定齐次边界条件。
+//
+// 用于存储边界指示符的数据结构有点复杂。它是一个包含<code>max_n_boundaries</code>个元素的数组，指示将被接受的边界指示符范围。对于这个数组中的每个条目，我们在<code>BoundaryCondition</code>结构中存储一对数据：首先，一个大小为<code>n_components</code>的数组，对于解向量的每个组件，指示它是流入、流出还是其他类型的边界；其次，一个FunctionParser对象，一次性描述这个边界ID的解向量的所有组件。
+//
+// <code>BoundaryCondition</code>结构需要一个构造函数，因为我们需要在构造时告诉函数解析器对象它要描述多少个向量组件。因此，这个初始化不能等待我们在<code>AllParameters::parse_parameters()</code>中实际设置FunctionParser对象表示的公式。
+//
+// 出于同样的原因，我们必须在构造函数中告诉Function对象它们的向量大小，我们必须有一个<code>AllParameters</code>类的构造函数，至少初始化另一个FunctionParser对象，即描述初始条件的那个对象。
+template <int dim>
+struct AllParameters : public Solver,
+                       public Refinement,
+                       public Flux,
+                       public Output
+{
+  static const unsigned int max_n_boundaries = 10;
+
+  struct BoundaryConditions
+  {
+    std::array<typename EulerEquations<dim>::BoundaryKind,
+               EulerEquations<dim>::n_components>
+      kind;
+
+    FunctionParser<dim> values;
+
+    BoundaryConditions();
+  };
+
+
+  AllParameters();
+
+  double diffusion_power;
+
+  double time_step, final_time;
+  double theta;
+  bool   is_stationary;
+
+  std::string mesh_filename;
+
+  FunctionParser<dim> initial_conditions;
+  BoundaryConditions  boundary_conditions[max_n_boundaries];
+
+  static void declare_parameters(ParameterHandler &prm);
+  void        parse_parameters(ParameterHandler &prm);
+};
+
+
+
+template <int dim>
+AllParameters<dim>::BoundaryConditions::BoundaryConditions()
+  : values(EulerEquations<dim>::n_components)
+{
+  std::fill(kind.begin(),
+            kind.end(),
+            EulerEquations<dim>::no_penetration_boundary);
+}
+
+
+template <int dim>
+AllParameters<dim>::AllParameters()
+  : diffusion_power(0.)
+  , time_step(1.)
+  , final_time(1.)
+  , theta(.5)
+  , is_stationary(true)
+  , initial_conditions(EulerEquations<dim>::n_components)
+{}
+
+
+template <int dim>
+void AllParameters<dim>::declare_parameters(ParameterHandler &prm)
+{
+  prm.declare_entry("mesh",
+                    "grid.inp",
+                    Patterns::Anything(),
+                    "input file name");
+
+  prm.declare_entry("diffusion power",
+                    "2.0",
+                    Patterns::Double(),
+                    "power of mesh size for diffusion");
+
+  prm.enter_subsection("time stepping");
+  {
+    prm.declare_entry("time step",
+                      "0.1",
+                      Patterns::Double(0),
+                      "simulation time step");
+    prm.declare_entry("final time",
+                      "10.0",
+                      Patterns::Double(0),
+                      "simulation end time");
+    prm.declare_entry("theta scheme value",
+                      "0.5",
+                      Patterns::Double(0, 1),
+                      "value for theta that interpolated between explicit "
+                      "Euler (theta=0), Crank-Nicolson (theta=0.5), and "
+                      "implicit Euler (theta=1).");
+  }
+  prm.leave_subsection();
+
+
+  for (unsigned int b = 0; b < max_n_boundaries; ++b)
+    {
+      prm.enter_subsection("boundary_" + Utilities::int_to_string(b));
+      {
+        prm.declare_entry("no penetration",
+                          "false",
+                          Patterns::Bool(),
+                          "whether the named boundary allows gas to "
+                          "penetrate or is a rigid wall");
+
+        for (unsigned int di = 0; di < EulerEquations<dim>::n_components;
+             ++di)
+          {
+            prm.declare_entry("w_" + Utilities::int_to_string(di),
+                              "outflow",
+                              Patterns::Selection(
+                                "inflow|outflow|pressure"),
+                              "<inflow|outflow|pressure>");
+
+            prm.declare_entry("w_" + Utilities::int_to_string(di) +
+                                " value",
+                              "0.0",
+                              Patterns::Anything(),
+                              "expression in x,y,z");
+          }
+      }
+      prm.leave_subsection();
+    }
+
+  prm.enter_subsection("initial condition");
+  {
+    for (unsigned int di = 0; di < EulerEquations<dim>::n_components; ++di)
+      prm.declare_entry("w_" + Utilities::int_to_string(di) + " value",
+                        "0.0",
+                        Patterns::Anything(),
+                        "expression in x,y,z");
+  }
+  prm.leave_subsection();
+
+  Parameters::Solver::declare_parameters(prm);
+  Parameters::Refinement::declare_parameters(prm);
+  Parameters::Flux::declare_parameters(prm);
+  Parameters::Output::declare_parameters(prm);
+}
+
+
+template <int dim>
+void AllParameters<dim>::parse_parameters(ParameterHandler &prm)
+{
+  mesh_filename   = prm.get("mesh");
+  diffusion_power = prm.get_double("diffusion power");
+
+  prm.enter_subsection("time stepping");
+  {
+    time_step = prm.get_double("time step");
+    if (time_step == 0)
+      {
+        is_stationary = true;
+        time_step     = 1.0;
+        final_time    = 1.0;
+      }
+    else
+      is_stationary = false;
+
+    final_time = prm.get_double("final time");
+    theta      = prm.get_double("theta scheme value");
+  }
+  prm.leave_subsection();
+
+  for (unsigned int boundary_id = 0; boundary_id < max_n_boundaries;
+       ++boundary_id)
+    {
+      prm.enter_subsection("boundary_" +
+                           Utilities::int_to_string(boundary_id));
+      {
+        std::vector<std::string> expressions(
+          EulerEquations<dim>::n_components, "0.0");
+
+        const bool no_penetration = prm.get_bool("no penetration");
+
+        for (unsigned int di = 0; di < EulerEquations<dim>::n_components;
+             ++di)
+          {
+            const std::string boundary_type =
+              prm.get("w_" + Utilities::int_to_string(di));
+
+            if ((di < dim) && (no_penetration == true))
+              boundary_conditions[boundary_id].kind[di] =
+                EulerEquations<dim>::no_penetration_boundary;
+            else if (boundary_type == "inflow")
+              boundary_conditions[boundary_id].kind[di] =
+                EulerEquations<dim>::inflow_boundary;
+            else if (boundary_type == "pressure")
+              boundary_conditions[boundary_id].kind[di] =
+                EulerEquations<dim>::pressure_boundary;
+            else if (boundary_type == "outflow")
+              boundary_conditions[boundary_id].kind[di] =
+                EulerEquations<dim>::outflow_boundary;
+            else
+              AssertThrow(false, ExcNotImplemented());
+
+            expressions[di] =
+              prm.get("w_" + Utilities::int_to_string(di) + " value");
+          }
+
+        boundary_conditions[boundary_id].values.initialize(
+          FunctionParser<dim>::default_variable_names(),
+          expressions,
+          std::map<std::string, double>());
+      }
+      prm.leave_subsection();
+    }
+
+  prm.enter_subsection("initial condition");
+  {
+    std::vector<std::string> expressions(EulerEquations<dim>::n_components,
+                                         "0.0");
+    for (unsigned int di = 0; di < EulerEquations<dim>::n_components; ++di)
+      expressions[di] =
+        prm.get("w_" + Utilities::int_to_string(di) + " value");
+    initial_conditions.initialize(
+      FunctionParser<dim>::default_variable_names(),
+      expressions,
+      std::map<std::string, double>());
+  }
+  prm.leave_subsection();
+
+  Parameters::Solver::parse_parameters(prm);
+  Parameters::Refinement::parse_parameters(prm);
+  Parameters::Flux::parse_parameters(prm);
+  Parameters::Output::parse_parameters(prm);
+}
+} // namespace Parameters
+
+
+
+// @sect3{Conservation law class}
+//
+// 这里终于是一个实际使用我们上面定义的所有Euler方程和参数特性的类。公共接口与往常几乎相同（构造函数现在接受一个从中读取参数的文件名，该文件名在命令行中传递）。私有函数接口也与通常的安排相似，<code>assemble_system</code>函数被分成三部分：一个包含所有单元的主循环，然后分别调用另外两个函数来处理单元和面的积分。
+template <int dim>
+class ConservationLaw
+{
+public:
+  ConservationLaw(const char *input_filename);
+  void run();
+
+private:
+  void setup_system();
+
+  void assemble_system();
+  void assemble_cell_term(const FEValues<dim>                        &fe_v,
+                          const std::vector<types::global_dof_index> &dofs);
+  void assemble_face_term(
+    const unsigned int                          face_no,
+    const FEFaceValuesBase<dim>                &fe_v,
+    const FEFaceValuesBase<dim>                &fe_v_neighbor,
+    const std::vector<types::global_dof_index> &dofs,
+    const std::vector<types::global_dof_index> &dofs_neighbor,
+    const bool                                  external_face,
+    const unsigned int                          boundary_id,
+    const double                                face_diameter);
+
+  std::pair<unsigned int, double> solve(Vector<double> &solution);
+
+  void compute_refinement_indicators(Vector<double> &indicator) const;
+  void refine_grid(const Vector<double> &indicator);
+
+  void output_results() const;
+
+
+
+  // 前几个成员变量也相当标准。注意，我们定义了一个映射对象，在整个程序中用于组装项（我们将它传递给每个FEValues和FEFaceValues对象）；我们使用的映射只是标准的$Q_1$映射——换句话说，没有什么特别的——但在这里声明一个并在整个程序中使用它，将使以后更容易在需要时更改它。事实上，这一点相当相关：已知对于Euler方程的跨声速模拟，如果边界近似的阶数不够高，计算即使在$h\rightarrow 0$时也不会收敛。
+  Triangulation<dim>   triangulation;
+  const MappingQ1<dim> mapping;
+
+  const FESystem<dim> fe;
+  DoFHandler<dim>     dof_handler;
+
+  const QGauss<dim>     quadrature;
+  const QGauss<dim - 1> face_quadrature;
+
+  // 接下来是一系列数据向量，分别对应于前一个时间步的解（<code>old_solution</code>）、当前解的最佳猜测（<code>current_solution</code>；我们称之为<em>guess</em>，因为用于计算它的牛顿迭代可能尚未收敛，而<code>old_solution</code>指的是前一个时间步的完全收敛的最终结果），以及通过将当前和前一个解外推一个时间步到未来来计算的下一个时间步的解的预测值：
+  Vector<double> old_solution;
+  Vector<double> current_solution;
+  Vector<double> predictor;
+
+  Vector<double> right_hand_side;
+
+  // 这一组最终的成员变量（除了位于最底部的持有所有运行时参数的对象和仅在请求详细输出时才打印内容的屏幕输出流）处理我们在这个程序中与Trilinos库的接口，该库为我们提供了线性求解器。类似于在step-17和step-18中包含PETSc矩阵，所有我们需要做的就是创建一个Trilinos稀疏矩阵，而不是标准的deal.II类。系统矩阵用于每个牛顿步骤中的雅可比矩阵。由于我们不打算在并行环境中运行这个程序（尽管使用Trilinos数据结构并不太难），因此我们不必考虑像分配自由度之类的其他事情。
+  TrilinosWrappers::SparseMatrix system_matrix;
+
+  Parameters::AllParameters<dim> parameters;
+  ConditionalOStream             verbose_cout;
+};
+
+
+// @sect4{ConservationLaw::ConservationLaw}
+//
+// 关于构造函数没什么多说的。基本上，它读取输入文件并用解析的值填充参数对象：
+template <int dim>
+ConservationLaw<dim>::ConservationLaw(const char *input_filename)
+  : mapping()
+  , fe(FE_Q<dim>(1) ^ EulerEquations<dim>::n_components)
+  , dof_handler(triangulation)
+  , quadrature(fe.degree + 1)
+  , face_quadrature(fe.degree + 1)
+  , verbose_cout(std::cout, false)
+{
+  ParameterHandler prm;
+  Parameters::AllParameters<dim>::declare_parameters(prm);
+
+  prm.parse_input(input_filename);
+  parameters.parse_parameters(prm);
+
+  verbose_cout.set_condition(parameters.output ==
+                             Parameters::Solver::verbose);
+}
+
+
+
+// @sect4{ConservationLaw::setup_system}
+//
+// 以下（简单的）函数在每次网格更改时被调用。它所做的就是根据我们在所有以前的教程程序中生成的稀疏模式调整Trilinos矩阵的大小。
+template <int dim>
+void ConservationLaw<dim>::setup_system()
+{
+  DynamicSparsityPattern dsp(dof_handler.n_dofs(), dof_handler.n_dofs());
+  DoFTools::make_sparsity_pattern(dof_handler, dsp);
+
+  system_matrix.reinit(dsp);
+}
+
+
+// @sect4{ConservationLaw::assemble_system}
+//
+// 这个函数和接下来的两个函数是这个程序的核心：它们组装了应用牛顿法到非线性守恒方程系统后产生的线性系统。
+//
+// 这个第一个函数将所有的组装部分整合在一个例程中，该例程为每个单元/面分派正确的部分。实际的组装实现是在接下来的函数中完成的。
+//
+// 在函数顶部，我们进行通常的整理工作：分配FEValues、FEFaceValues和FESubfaceValues对象，这些对象对于在单元、面和子面（在不同细化级别的相邻单元的情况下）上的积分是必要的。注意，我们不需要所有信息（例如值、梯度或求积点的实际位置）用于所有这些对象，因此我们只通过指定最小的一组UpdateFlags来让FEValues类获取实际需要的内容。例如，当使用FEFaceValues对象用于相邻单元时，我们只需要形状值：给定一个特定的面，求积点和<code>JxW</code>值与当前单元相同，并且法向量已知为当前单元法向量的负值。
+template <int dim>
+void ConservationLaw<dim>::assemble_system()
+{
+  const unsigned int dofs_per_cell = dof_handler.get_fe().n_dofs_per_cell();
+
+  std::vector<types::global_dof_index> dof_indices(dofs_per_cell);
+  std::vector<types::global_dof_index> dof_indices_neighbor(dofs_per_cell);
+
+  const UpdateFlags update_flags = update_values | update_gradients |
+                                   update_quadrature_points |
+                                   update_JxW_values,
+                    face_update_flags =
+                      update_values | update_quadrature_points |
+                      update_JxW_values | update_normal_vectors,
+                    neighbor_face_update_flags = update_values;
+
+  FEValues<dim>        fe_v(mapping, fe, quadrature, update_flags);
+  FEFaceValues<dim>    fe_v_face(mapping,
+                              fe,
+                              face_quadrature,
+                              face_update_flags);
+  FESubfaceValues<dim> fe_v_subface(mapping,
+                                    fe,
+                                    face_quadrature,
+                                    face_update_flags);
+  FEFaceValues<dim>    fe_v_face_neighbor(mapping,
+                                       fe,
+                                       face_quadrature,
+                                       neighbor_face_update_flags);
+  FESubfaceValues<dim> fe_v_subface_neighbor(mapping,
+                                             fe,
+                                             face_quadrature,
+                                             neighbor_face_update_flags);
+
+  // 然后循环遍历所有单元，初始化当前单元的FEValues对象，并调用组装该单元问题的函数。
+  for (const auto &cell : dof_handler.active_cell_iterators())
+    {
+      fe_v.reinit(cell);
+      cell->get_dof_indices(dof_indices);
+
+      assemble_cell_term(fe_v, dof_indices);
+
+      // 然后循环遍历这个单元的所有面。如果一个面是外部边界的一部分，那么就在那里组装边界条件（<code>assemble_face_terms</code>的第五个参数指示我们是否在处理外部或内部面；如果是外部面，表示邻居的自由度索引的第四个参数将被忽略，因此我们传递一个空向量）：
+      for (const auto face_no : cell->face_indices())
+        if (cell->at_boundary(face_no))
+          {
+            fe_v_face.reinit(cell, face_no);
+            assemble_face_term(face_no,
+                               fe_v_face,
+                               fe_v_face,
+                               dof_indices,
+                               std::vector<types::global_dof_index>(),
+                               true,
+                               cell->face(face_no)->boundary_id(),
+                               cell->face(face_no)->diameter());
+          }
+
+        // 另一种情况是我们正在处理一个内部面。有两种情况需要区分：这是一个在相同细化级别的两个单元之间的正常面，还是在不同细化级别的两个单元之间的面。
+        //
+        // 在第一种情况下，我们不需要做任何事情：我们使用的是连续有限元，并且在这种情况下双线性形式中不会出现面项。如果我们强制执行悬挂节点约束（如迄今为止在所有以前的教程程序中使用连续有限元时所做的那样），第二种情况通常也不会导致面项的出现（这种约束是由AffineConstraints类与DoFTools::make_hanging_node_constraints一起完成的）。然而，在当前程序中，我们选择在不同细化级别的单元之间的面上弱地强制连续性，原因有两个：（i）因为我们可以这样做，且更重要的是（ii）因为我们必须通过AffineConstraints类的操作将用于从残差计算牛顿矩阵元素的自动微分穿线。这是可能的，但并不简单，因此我们选择这种替代方法。
+        //
+        // 需要决定的是，我们处于不同细化级别的两个单元之间接口的哪一侧。
+        //
+        // 让我们先考虑邻居更细化的情况。然后我们必须循环遍历当前单元面的子单元并在每个子单元上进行积分。我们在代码中加入了一些断言，以确保我们试图确定哪个邻居子单元的面与当前单元面的给定子面重合的推理是正确的——一点防御性编程总是有益的。
+        //
+        // 然后我们调用在面上积分的函数；由于这是一个内部面，第五个参数是false，第六个参数被忽略，因此我们再次传递一个无效值：
+        else
+          {
+            if (cell->neighbor(face_no)->has_children())
+              {
+                const unsigned int neighbor2 =
+                  cell->neighbor_of_neighbor(face_no);
+
+                for (unsigned int subface_no = 0;
+                     subface_no < cell->face(face_no)->n_children();
+                     ++subface_no)
+                  {
+                    const typename DoFHandler<dim>::active_cell_iterator
+                      neighbor_child =
+                        cell->neighbor_child_on_subface(face_no, subface_no);
+
+                    Assert(neighbor_child->face(neighbor2) ==
+                             cell->face(face_no)->child(subface_no),
+                           ExcInternalError());
+                    Assert(neighbor_child->is_active(), ExcInternalError());
+
+                    fe_v_subface.reinit(cell, face_no, subface_no);
+                    fe_v_face_neighbor.reinit(neighbor_child, neighbor2);
+
+                    neighbor_child->get_dof_indices(dof_indices_neighbor);
+
+                    assemble_face_term(
+                      face_no,
+                      fe_v_subface,
+                      fe_v_face_neighbor,
+                      dof_indices,
+                      dof_indices_neighbor,
+                      false,
+                      numbers::invalid_unsigned_int,
+                      neighbor_child->face(neighbor2)->diameter());
+                  }
+              }
+
+            // 另一种情况是如果邻居比当前单元更粗糙（特别是因为通常每个面只有一个悬挂节点的限制，邻居必须比当前单元精确粗化一级，这一点我们通过断言进行了检查）。同样，我们随后在这个接口上进行积分：
+            else if (cell->neighbor(face_no)->level() != cell->level())
+              {
+                const typename DoFHandler<dim>::cell_iterator neighbor =
+                  cell->neighbor(face_no);
+                Assert(neighbor->level() == cell->level() - 1,
+                       ExcInternalError());
+
+                neighbor->get_dof_indices(dof_indices_neighbor);
+
+                const std::pair<unsigned int, unsigned int> faceno_subfaceno =
+                  cell->neighbor_of_coarser_neighbor(face_no);
+                const unsigned int neighbor_face_no = faceno_subfaceno.first,
+                                   neighbor_subface_no =
+                                     faceno_subfaceno.second;
+
+                Assert(neighbor->neighbor_child_on_subface(
+                         neighbor_face_no, neighbor_subface_no) == cell,
+                       ExcInternalError());
+
+                fe_v_face.reinit(cell, face_no);
+                fe_v_subface_neighbor.reinit(neighbor,
+                                             neighbor_face_no,
+                                             neighbor_subface_no);
+
+                assemble_face_term(face_no,
+                                   fe_v_face,
+                                   fe_v_subface_neighbor,
+                                   dof_indices,
+                                   dof_indices_neighbor,
+                                   false,
+                                   numbers::invalid_unsigned_int,
+                                   cell->face(face_no)->diameter());
+              }
+          }
+    }
+}
+
+
+// @sect4{ConservationLaw::assemble_cell_term}
+//
+// 这个函数通过计算残差的单元部分，将其负值添加到右端向量中，并将其相对于局部变量的导数添加到雅可比矩阵（即牛顿矩阵）中，从而组装单元项。回想一下，残差的单元贡献表示为
+// $R_i = \left(\frac{\mathbf{w}^{k}_{n+1} - \mathbf{w}_n}{\delta t} ,
+// \mathbf{z}_i \right)_K $ $ +
+// \theta \mathbf{B}(\mathbf{w}^{k}_{n+1})(\mathbf{z}_i)_K $ $ +
+// (1-\theta) \mathbf{B}(\mathbf{w}_{n}) (\mathbf{z}_i)_K $
+// 其中
+// $\mathbf{B}(\mathbf{w})(\mathbf{z}_i)_K =
+// - \left(\mathbf{F}(\mathbf{w}),\nabla\mathbf{z}_i\right)_K $ $
+// + h^{\eta}(\nabla \mathbf{w} , \nabla \mathbf{z}_i)_K $ $
+// - (\mathbf{G}(\mathbf {w}), \mathbf{z}_i)_K $
+// 对于 $\mathbf{w} = \mathbf{w}^k_{n+1}$ 和 $\mathbf{w} = \mathbf{w}_{n}$ 都成立，
+// $\mathbf{z}_i$ 是第 $i$ 个向量值测试函数。
+// 另外，标量积
+// $\left(\mathbf{F}(\mathbf{w}), \nabla\mathbf{z}_i\right)_K$ 被理解为
+// $\int_K \sum_{c=1}^{\text{n_components}} \sum_{d=1}^{\text{dim}} \mathbf{F}(\mathbf{w})_{cd}
+// \frac{\partial z^c_i}{\partial x_d}$
+// 其中 $z^c_i$ 是第 $i$ 个测试函数的第 $c$ 个组件。
+//
+// 在这个函数的顶部，我们进行通常的整理工作，分配一些稍后需要的局部变量。特别是，我们将分配一些变量，这些变量将保存当前解 $W_{n+1}^k$ 在第 $k$ 次牛顿迭代后的值（变量<code>W</code>）和前一个时间步的解 $W_{n}$（变量<code>W_old</code>）。
+//
+// 除了这些，我们还需要当前变量的梯度。有点遗憾我们必须计算这些；我们几乎不需要。简单守恒定律的好处是通量通常不涉及任何梯度。然而，我们确实需要这些用于扩散稳定化。
+//
+// 我们实际存储这些变量的格式需要一些解释。首先，我们需要在每个求积点为解向量的每个<code>EulerEquations::n_components</code>组件获取值。这形成了一个二维表，我们使用deal.II的Table类（这比使用<code>std::vector@<std::vector@<T@> @></code>更高效，因为它只需要一次分配内存，而不是为外部向量的每个元素分配一次）。类似地，梯度是一个三维表，Table类也支持这种结构。
+//
+// 其次，我们希望使用自动微分。为此，我们对所有从我们希望计算导数的变量计算出的内容使用Sacado::Fad::DFad模板。这包括当前解和求积点处的梯度（它们是自由度的线性组合）以及从它们计算出的所有内容，如残差，但不包括前一个时间步的解。这些变量都在函数的第一部分中找到，以及一个我们将用来存储残差单个组件导数的变量：
+template <int dim>
+void ConservationLaw<dim>::assemble_cell_term(
+  const FEValues<dim>                        &fe_v,
+  const std::vector<types::global_dof_index> &dof_indices)
+{
+  const unsigned int dofs_per_cell = fe_v.dofs_per_cell;
+  const unsigned int n_q_points    = fe_v.n_quadrature_points;
+
+  Table<2, Sacado::Fad::DFad<double>> W(n_q_points,
+                                        EulerEquations<dim>::n_components);
+
+  Table<2, double> W_old(n_q_points, EulerEquations<dim>::n_components);
+
+  Table<3, Sacado::Fad::DFad<double>> grad_W(
+    n_q_points, EulerEquations<dim>::n_components, dim);
+
+  Table<3, double> grad_W_old(n_q_points,
+                              EulerEquations<dim>::n_components,
+                              dim);
+
+  std::vector<double> residual_derivatives(dofs_per_cell);
+
+  // 接下来，我们必须定义在求解牛顿步长时将尝试确定的独立变量。这些独立变量是我们在这里提取的局部自由度的值：
+  std::vector<Sacado::Fad::DFad<double>> independent_local_dof_values(
+    dofs_per_cell);
+  for (unsigned int i = 0; i < dofs_per_cell; ++i)
+    independent_local_dof_values[i] = current_solution(dof_indices[i]);
+
+  // 下一步融合了所有的魔力：我们将自动微分变量的一个子集声明为独立的自由度，而所有其他变量仍然是依赖函数。它们正是刚刚提取的局部自由度。所有引用它们的计算（无论是直接还是间接的）都将累积对这些变量的敏感性。
+  //
+  // 为了标记这些变量为独立变量，以下代码起到了作用，将<code>independent_local_dof_values[i]</code>标记为总共<code>dofs_per_cell</code>个独立变量中的第$i$个：
+  for (unsigned int i = 0; i < dofs_per_cell; ++i)
+    independent_local_dof_values[i].diff(i, dofs_per_cell);
+
+  // 在所有这些声明之后，让我们实际计算一些东西。首先，<code>W</code>、<code>W_old</code>、<code>grad_W</code>和<code>grad_W_old</code>的值，我们可以通过使用公式$W(x_q)=\sum_i \mathbf W_i \Phi_i(x_q)$从局部自由度值计算出来，
+  // 其中$\mathbf W_i$是（局部部分的）解向量的第$i$个条目，$\Phi_i(x_q)$是在求积点$x_q$处评估的第$i$个向量值形状函数的值。梯度可以以类似的方式计算。
+  //
+  // 理想情况下，我们可以使用类似FEValues::get_function_values和FEValues::get_function_gradients的调用来计算这些信息，但由于（i）我们必须为此扩展FEValues类，且（ii）我们不希望将整个<code>old_solution</code>向量设为fad类型，只希望将局部单元变量设为fad类型，因此我们显式地编写了上面的循环。在此之前，我们添加了另一个循环，将所有fad变量初始化为零：
+  for (unsigned int q = 0; q < n_q_points; ++q)
+    for (unsigned int c = 0; c < EulerEquations<dim>::n_components; ++c)
+      {
+        W[q][c]     = 0;
+        W_old[q][c] = 0;
+        for (unsigned int d = 0; d < dim; ++d)
+          {
+            grad_W[q][c][d]     = 0;
+            grad_W_old[q][c][d] = 0;
+          }
+      }
+
+  for (unsigned int q = 0; q < n_q_points; ++q)
+    for (unsigned int i = 0; i < dofs_per_cell; ++i)
+      {
+        const unsigned int c =
+          fe_v.get_fe().system_to_component_index(i).first;
+
+        W[q][c] += independent_local_dof_values[i] *
+                   fe_v.shape_value_component(i, q, c);
+        W_old[q][c] +=
+          old_solution(dof_indices[i]) * fe_v.shape_value_component(i, q, c);
+
+        for (unsigned int d = 0; d < dim; ++d)
+          {
+            grad_W[q][c][d] += independent_local_dof_values[i] *
+                               fe_v.shape_grad_component(i, q, c)[d];
+            grad_W_old[q][c][d] += old_solution(dof_indices[i]) *
+                                   fe_v.shape_grad_component(i, q, c)[d];
+          }
+      }
+
+
+  // 接下来，为了计算单元贡献，我们需要在所有求积点处评估$\mathbf{F}({\mathbf w}^k_{n+1})$、$\mathbf{G}({\mathbf w}^k_{n+1})$以及$\mathbf{F}({\mathbf w}_n)$、$\mathbf{G}({\mathbf w}_n)$。为了存储这些，我们还需要分配一些内存。注意，我们以自动微分变量的形式计算通量矩阵和右端向量，这样以后可以很容易地从中计算雅可比矩阵的贡献：
+  
+  std::vector<ndarray<Sacado::Fad::DFad<double>,
+                      EulerEquations<dim>::n_components,
+                      dim>>
+    flux(n_q_points);
+
+  std::vector<ndarray<double, EulerEquations<dim>::n_components, dim>>
+    flux_old(n_q_points);
+
+  std::vector<
+    std::array<Sacado::Fad::DFad<double>, EulerEquations<dim>::n_components>>
+    forcing(n_q_points);
+
+  std::vector<std::array<double, EulerEquations<dim>::n_components>>
+    forcing_old(n_q_points);
+
+  for (unsigned int q = 0; q < n_q_points; ++q)
+    {
+      EulerEquations<dim>::compute_flux_matrix(W_old[q], flux_old[q]);
+      EulerEquations<dim>::compute_forcing_vector(W_old[q], forcing_old[q]);
+      EulerEquations<dim>::compute_flux_matrix(W[q], flux[q]);
+      EulerEquations<dim>::compute_forcing_vector(W[q], forcing[q]);
+    }
+
+
+  // 我们现在已经准备好了所有的组件，因此开始进行组装。我们有一个针对系统组件的外层循环，以及一个针对求积点的内层循环，在那里我们累积对第$i$个残差$R_i$的贡献。这个残差的一般公式在介绍和这个函数的顶部给出。然而，我们可以稍微简化它，考虑到第$i$个（向量值的）测试函数$\mathbf{z}_i$实际上只有一个非零分量（更多关于这个主题的内容可以在@ref vector_valued模块中找到）。它将由下面的<code>component_i</code>变量表示。有了这个，残差项可以重写为
+  // @f{eqnarray*}{
+  // R_i &=&
+  // \left(\frac{(\mathbf{w}_{n+1} -
+  // \mathbf{w}_n)_{\text{component_i}}}{\delta
+  // t},(\mathbf{z}_i)_{\text{component_i}}\right)_K
+  // \\ &-& \sum_{d=1}^{\text{dim}} \left(  \theta \mathbf{F}
+  // ({\mathbf{w}^k_{n+1}})_{\text{component_i},d} + (1-\theta)
+  // \mathbf{F} ({\mathbf{w}_{n}})_{\text{component_i},d}  ,
+  // \frac{\partial(\mathbf{z}_i)_{\text{component_i}}} {\partial
+  // x_d}\right)_K
+  // \\ &+& \sum_{d=1}^{\text{dim}} h^{\eta} \left( \theta \frac{\partial
+  // (\mathbf{w}^k_{n+1})_{\text{component_i}}}{\partial x_d} + (1-\theta)
+  // \frac{\partial (\mathbf{w}_n)_{\text{component_i}}}{\partial x_d} ,
+  // \frac{\partial (\mathbf{z}_i)_{\text{component_i}}}{\partial x_d}
+  // \right)_K
+  // \\ &-& \left( \theta\mathbf{G}({\mathbf{w}^k_n+1} )_{\text{component_i}}
+  // + (1-\theta)\mathbf{G}({\mathbf{w}_n})_{\text{component_i}} ,
+  // (\mathbf{z}_i)_{\text{component_i}} \right)_K ,
+  // @f}
+  // 其中积分被理解为通过对求积点求和来计算。
+  //
+  // 我们最初以正的方式累积所有残差的贡献，这样我们就不需要对雅可比矩阵的条目取负值。然后，当我们将其累加到<code>right_hand_side</code>向量时，我们取这个残差的负值。
+  for (unsigned int i = 0; i < fe_v.dofs_per_cell; ++i)
+    {
+      Sacado::Fad::DFad<double> R_i = 0;
+
+      const unsigned int component_i =
+        fe_v.get_fe().system_to_component_index(i).first;
+
+      // 每一行（i）的残差将累积到这个fad变量中。在为这一行完成组装后，我们将查询对这个变量的敏感性，并将它们添加到雅可比矩阵中。
+
+      for (unsigned int point = 0; point < fe_v.n_quadrature_points; ++point)
+        {
+          if (parameters.is_stationary == false)
+            R_i += 1.0 / parameters.time_step *
+                   (W[point][component_i] - W_old[point][component_i]) *
+                   fe_v.shape_value_component(i, point, component_i) *
+                   fe_v.JxW(point);
+
+          for (unsigned int d = 0; d < dim; ++d)
+            R_i -=
+              (parameters.theta * flux[point][component_i][d] +
+               (1.0 - parameters.theta) * flux_old[point][component_i][d]) *
+              fe_v.shape_grad_component(i, point, component_i)[d] *
+              fe_v.JxW(point);
+
+          for (unsigned int d = 0; d < dim; ++d)
+            R_i +=
+              1.0 *
+              std::pow(fe_v.get_cell()->diameter(),
+                       parameters.diffusion_power) *
+              (parameters.theta * grad_W[point][component_i][d] +
+               (1.0 - parameters.theta) * grad_W_old[point][component_i][d]) *
+              fe_v.shape_grad_component(i, point, component_i)[d] *
+              fe_v.JxW(point);
+
+          R_i -=
+            (parameters.theta * forcing[point][component_i] +
+             (1.0 - parameters.theta) * forcing_old[point][component_i]) *
+            fe_v.shape_value_component(i, point, component_i) *
+            fe_v.JxW(point);
+        }
+
+      // 在循环结束时，我们必须将敏感性添加到矩阵中，并将残差从右端向量中减去。Trilinos的FAD数据类型通过<code>R_i.fastAccessDx(k)</code>使我们能够访问导数，因此我们将数据存储在一个临时数组中。然后，这些关于局部自由度整行的信息被一次性添加到Trilinos矩阵中（它支持我们选择的数据类型）。
+      for (unsigned int k = 0; k < dofs_per_cell; ++k)
+        residual_derivatives[k] = R_i.fastAccessDx(k);
+      system_matrix.add(dof_indices[i], dof_indices, residual_derivatives);
+      right_hand_side(dof_indices[i]) -= R_i.val();
+    }
+}
+
+
+// @sect4{ConservationLaw::assemble_face_term}
+//
+// 在这里，我们基本上做了与前一个函数相同的事情。在顶部，我们引入了独立变量。因为当前函数也用于处理两个单元之间的内部面，独立变量不仅包括当前单元的自由度，而且在内部面情况下还包括邻居单元的自由度。
+template <int dim>
+void ConservationLaw<dim>::assemble_face_term(
+  const unsigned int                          face_no,
+  const FEFaceValuesBase<dim>                &fe_v,
+  const FEFaceValuesBase<dim>                &fe_v_neighbor,
+  const std::vector<types::global_dof_index> &dof_indices,
+  const std::vector<types::global_dof_index> &dof_indices_neighbor,
+  const bool                                  external_face,
+  const unsigned int                          boundary_id,
+  const double                                face_diameter)
+{
+  const unsigned int n_q_points    = fe_v.n_quadrature_points;
+  const unsigned int dofs_per_cell = fe_v.dofs_per_cell;
+
+  std::vector<Sacado::Fad::DFad<double>> independent_local_dof_values(
+    dofs_per_cell),
+    independent_neighbor_dof_values(external_face == false ? dofs_per_cell :
+                                                             0);
+
+  const unsigned int n_independent_variables =
+    (external_face == false ? 2 * dofs_per_cell : dofs_per_cell);
+
+  for (unsigned int i = 0; i < dofs_per_cell; ++i)
+    {
+      independent_local_dof_values[i] = current_solution(dof_indices[i]);
+      independent_local_dof_values[i].diff(i, n_independent_variables);
+    }
+
+  if (external_face == false)
+    for (unsigned int i = 0; i < dofs_per_cell; ++i)
+      {
+        independent_neighbor_dof_values[i] =
+          current_solution(dof_indices_neighbor[i]);
+        independent_neighbor_dof_values[i].diff(i + dofs_per_cell,
+                                                n_independent_variables);
+      }
+
+
+  // 接下来，我们需要定义这个面这边的守恒变量值${\mathbf W}$（$ {\mathbf W}^+$）
+  // 和另一边的守恒变量值（${\mathbf W}^-$），对于${\mathbf W} =
+  // {\mathbf W}^k_{n+1}$和${\mathbf W} = {\mathbf W}_n$都是如此。
+  // “这边”的值可以与前一个函数完全相同地计算出来，但请注意
+  // <code>fe_v</code>变量现在是FEFaceValues或FESubfaceValues类型：
+  Table<2, Sacado::Fad::DFad<double>> Wplus(
+    n_q_points, EulerEquations<dim>::n_components),
+    Wminus(n_q_points, EulerEquations<dim>::n_components);
+  Table<2, double> Wplus_old(n_q_points, EulerEquations<dim>::n_components),
+    Wminus_old(n_q_points, EulerEquations<dim>::n_components);
+
+  for (unsigned int q = 0; q < n_q_points; ++q)
+    for (unsigned int i = 0; i < dofs_per_cell; ++i)
+      {
+        const unsigned int component_i =
+          fe_v.get_fe().system_to_component_index(i).first;
+        Wplus[q][component_i] +=
+          independent_local_dof_values[i] *
+          fe_v.shape_value_component(i, q, component_i);
+        Wplus_old[q][component_i] +=
+          old_solution(dof_indices[i]) *
+          fe_v.shape_value_component(i, q, component_i);
+      }
+
+  // 计算“另一边”有点复杂。如果这是一个内部面，我们可以像上面一样通过简单地使用来自邻居的独立变量来计算：
+  if (external_face == false)
+    {
+      for (unsigned int q = 0; q < n_q_points; ++q)
+        for (unsigned int i = 0; i < dofs_per_cell; ++i)
+          {
+            const unsigned int component_i =
+              fe_v_neighbor.get_fe().system_to_component_index(i).first;
+            Wminus[q][component_i] +=
+              independent_neighbor_dof_values[i] *
+              fe_v_neighbor.shape_value_component(i, q, component_i);
+            Wminus_old[q][component_i] +=
+              old_solution(dof_indices_neighbor[i]) *
+              fe_v_neighbor.shape_value_component(i, q, component_i);
+          }
+    }
+  // 另一方面，如果这是一个外部边界面，那么$\mathbf{W}^-$的值将是$\mathbf{W}^+$的函数，或者它们将被规定，具体取决于这里施加的边界条件的类型。
+  //
+  // 要开始评估，让我们确保为这个边界指定的边界ID是我们在
+  // 参数对象中实际上有数据的ID。接下来，我们评估不齐次性的函数对象。这有点棘手：给定的边界可能既有规定的值，也有隐式值。如果某个特定组件没有被规定，值将评估为零，并在下面被忽略。
+  //
+  // 剩下的工作由一个实际上了解Euler方程边界条件具体细节的函数完成。请注意，由于我们在这里使用的是fad变量，敏感性将被适当地更新，这是一个否则会非常复杂的过程。
+  else
+    {
+      Assert(boundary_id < Parameters::AllParameters<dim>::max_n_boundaries,
+             ExcIndexRange(boundary_id,
+                           0,
+                           Parameters::AllParameters<dim>::max_n_boundaries));
+
+      std::vector<Vector<double>> boundary_values(
+        n_q_points, Vector<double>(EulerEquations<dim>::n_components));
+      parameters.boundary_conditions[boundary_id].values.vector_value_list(
+        fe_v.get_quadrature_points(), boundary_values);
+
+      for (unsigned int q = 0; q < n_q_points; ++q)
+        {
+          EulerEquations<dim>::compute_Wminus(
+            parameters.boundary_conditions[boundary_id].kind,
+            fe_v.normal_vector(q),
+            Wplus[q],
+            boundary_values[q],
+            Wminus[q]);
+          // 这里我们假设边界类型、边界法向量和边界数据值在时间推进过程中保持不变。
+          EulerEquations<dim>::compute_Wminus(
+            parameters.boundary_conditions[boundary_id].kind,
+            fe_v.normal_vector(q),
+            Wplus_old[q],
+            boundary_values[q],
+            Wminus_old[q]);
+        }
+    }
+
+
+  // 现在我们已经有了$\mathbf w^+$和$\mathbf w^-$，我们可以开始为每个求积点计算数值通量函数$\mathbf H(\mathbf w^+,\mathbf w^-, \mathbf n)$。在调用执行此操作的函数之前，我们还需要确定Lax-Friedrich的稳定性参数：
+  
+  std::vector<
+    std::array<Sacado::Fad::DFad<double>, EulerEquations<dim>::n_components>>
+    normal_fluxes(n_q_points);
+  std::vector<std::array<double, EulerEquations<dim>::n_components>>
+    normal_fluxes_old(n_q_points);
+
+  double alpha;
+
+  switch (parameters.stabilization_kind)
+    {
+      case Parameters::Flux::constant:
+        alpha = parameters.stabilization_value;
+        break;
+      case Parameters::Flux::mesh_dependent:
+        alpha = face_diameter / (2.0 * parameters.time_step);
+        break;
+      default:
+        DEAL_II_NOT_IMPLEMENTED();
+        alpha = 1;
+    }
+
+  for (unsigned int q = 0; q < n_q_points; ++q)
+    {
+      EulerEquations<dim>::numerical_normal_flux(
+        fe_v.normal_vector(q), Wplus[q], Wminus[q], alpha, normal_fluxes[q]);
+      EulerEquations<dim>::numerical_normal_flux(fe_v.normal_vector(q),
+                                                 Wplus_old[q],
+                                                 Wminus_old[q],
+                                                 alpha,
+                                                 normal_fluxes_old[q]);
+    }
+
+  // 现在组装面项，以与前一个函数中单元贡献的方式完全相同。唯一的区别是，如果这是一个内部面，我们还必须考虑残差贡献对相邻单元自由度的敏感性：
+  std::vector<double> residual_derivatives(dofs_per_cell);
+  for (unsigned int i = 0; i < fe_v.dofs_per_cell; ++i)
+    if (fe_v.get_fe().has_support_on_face(i, face_no) == true)
+      {
+        Sacado::Fad::DFad<double> R_i = 0;
+
+        for (unsigned int point = 0; point < n_q_points; ++point)
+          {
+            const unsigned int component_i =
+              fe_v.get_fe().system_to_component_index(i).first;
+
+            R_i += (parameters.theta * normal_fluxes[point][component_i] +
+                    (1.0 - parameters.theta) *
+                      normal_fluxes_old[point][component_i]) *
+                   fe_v.shape_value_component(i, point, component_i) *
+                   fe_v.JxW(point);
+          }
+
+        for (unsigned int k = 0; k < dofs_per_cell; ++k)
+          residual_derivatives[k] = R_i.fastAccessDx(k);
+        system_matrix.add(dof_indices[i], dof_indices, residual_derivatives);
+
+        if (external_face == false)
+          {
+            for (unsigned int k = 0; k < dofs_per_cell; ++k)
+              residual_derivatives[k] = R_i.fastAccessDx(dofs_per_cell + k);
+            system_matrix.add(dof_indices[i],
+                              dof_indices_neighbor,
+                              residual_derivatives);
+          }
+
+        right_hand_side(dof_indices[i]) -= R_i.val();
+      }
+}
+
+
+// @sect4{ConservationLaw::solve}
+//
+// 在这里，我们实际上求解线性系统，使用Trilinos的Aztec或Amesos线性求解器中的任意一个。计算的结果将写入传递给此函数的参数向量。结果是迭代次数和最终线性残差的一个对。
+template <int dim>
+std::pair<unsigned int, double>
+ConservationLaw<dim>::solve(Vector<double> &newton_update)
+{
+  switch (parameters.solver)
+    {
+      // 如果参数文件指定使用直接求解器，那么我们会进入这里。这个过程是直接的，因为deal.II在Trilinos中提供了Amesos直接求解器的包装类。我们所要做的就是创建一个求解器控制对象（这里只是一个虚拟对象，因为我们不会执行任何迭代），然后创建直接求解器对象。在实际求解时，请注意，我们不传递预条件器。这对于直接求解器来说也没有什么意义。最后，我们返回求解器控制的统计信息——这将表明没有执行迭代，并且最终线性残差为零，除非这里提供了更好的信息：
+      case Parameters::Solver::direct:
+        {
+          SolverControl                                  solver_control(1, 0);
+          TrilinosWrappers::SolverDirect::AdditionalData data(
+            parameters.output == Parameters::Solver::verbose);
+          TrilinosWrappers::SolverDirect direct(solver_control, data);
+
+          direct.solve(system_matrix, newton_update, right_hand_side);
+
+          return {solver_control.last_step(), solver_control.last_value()};
+        }
+
+      // 同样地，如果我们要使用迭代求解器，我们使用Aztec的GMRES求解器。我们也可以在这里使用Trilinos迭代求解器和预条件器的包装类，但我们选择直接使用Aztec求解器。对于给定的问题，Aztec的内部预条件器实现优于deal.II的包装类，因此我们在AztecOO求解器中使用ILU-T预条件，并设置一堆可以从参数文件中更改的选项。
+      //
+      // 还有两个实际问题：由于我们已经将右端向量和解向量构建为deal.II的Vector对象（而不是矩阵，它是Trilinos对象），我们必须向求解器提供Trilinos的Epetra向量。幸运的是，它们支持“视图”的概念，因此我们只需传递一个指向我们的deal.II向量的指针。我们必须为向量提供一个设置并行分布的Epetra_Map，这是一个在串行中只是一个虚拟对象。最简单的方法是询问矩阵的映射，因为我们将准备好进行矩阵向量乘法。
+      //
+      // 其次，Aztec求解器希望我们传递一个Trilinos的Epetra_CrsMatrix，而不是deal.II的包装类本身。因此，我们通过命令trilinos_matrix()访问Trilinos包装类中的实际Trilinos矩阵。Trilinos希望矩阵是非常量的，因此我们必须手动使用const_cast来去除常量性。
+      case Parameters::Solver::gmres:
+        {
+          Epetra_Vector x(View,
+                          system_matrix.trilinos_matrix().DomainMap(),
+                          newton_update.begin());
+          Epetra_Vector b(View,
+                          system_matrix.trilinos_matrix().RangeMap(),
+                          right_hand_side.begin());
+
+          AztecOO solver;
+          solver.SetAztecOption(
+            AZ_output,
+            (parameters.output == Parameters::Solver::quiet ? AZ_none :
+                                                              AZ_all));
+          solver.SetAztecOption(AZ_solver, AZ_gmres);
+          solver.SetRHS(&b);
+          solver.SetLHS(&x);
+
+          solver.SetAztecOption(AZ_precond, AZ_dom_decomp);
+          solver.SetAztecOption(AZ_subdomain_solve, AZ_ilut);
+          solver.SetAztecOption(AZ_overlap, 0);
+          solver.SetAztecOption(AZ_reorder, 0);
+
+          solver.SetAztecParam(AZ_drop, parameters.ilut_drop);
+          solver.SetAztecParam(AZ_ilut_fill, parameters.ilut_fill);
+          solver.SetAztecParam(AZ_athresh, parameters.ilut_atol);
+          solver.SetAztecParam(AZ_rthresh, parameters.ilut_rtol);
+
+          solver.SetUserMatrix(
+            const_cast<Epetra_CrsMatrix *>(&system_matrix.trilinos_matrix()));
+
+          solver.Iterate(parameters.max_iterations,
+                         parameters.linear_residual);
+
+          return {solver.NumIters(), solver.TrueResidual()};
+        }
+    }
+
+  DEAL_II_NOT_IMPLEMENTED();
+  return {0, 0};
+}
+
+
+// @sect4{ConservationLaw::compute_refinement_indicators}
+//
+// 这个函数非常简单：我们不假装这里知道一个好的细化指标是什么。相反，我们假设<EulerEquation>类会知道这一点，因此我们只是将各自的函数委托给我们在那里实现的函数：
+template <int dim>
+void ConservationLaw<dim>::compute_refinement_indicators(
+  Vector<double> &refinement_indicators) const
+{
+  EulerEquations<dim>::compute_refinement_indicators(dof_handler,
+                                                     mapping,
+                                                     predictor,
+                                                     refinement_indicators);
+}
+
+
+// @sect4{ConservationLaw::refine_grid}
+//
+// 在这里，我们使用之前计算的细化指标来细化网格。开始时，我们遍历所有单元并标记那些我们认为应该被细化的单元：
+template <int dim>
+void
+ConservationLaw<dim>::refine_grid(const Vector<double> &refinement_indicators)
+{
+  for (const auto &cell : dof_handler.active_cell_iterators())
+    {
+      const unsigned int cell_no = cell->active_cell_index();
+      cell->clear_coarsen_flag();
+      cell->clear_refine_flag();
+
+      if ((cell->level() < parameters.shock_levels) &&
+          (std::fabs(refinement_indicators(cell_no)) > parameters.shock_val))
+        cell->set_refine_flag();
+      else if ((cell->level() > 0) &&
+               (std::fabs(refinement_indicators(cell_no)) <
+                0.75 * parameters.shock_val))
+        cell->set_coarsen_flag();
+    }
+
+  // 下一步解决了引言中的一个注释中提到的问题：我们想要稍后使用的SolutionTransfer类测试我们程序中解函数在悬挂节点处连续的假设。实际上，这在这个程序中并非如此，因为我们不明智地选择以弱方式强制执行悬挂节点约束，就像例如使用不连续元件时所做的那样。但是我们这里使用的元件是连续的（即FE_Q的多个副本），因此断言将失败并且程序将中止。为了避免这个问题（而不必重写整个程序），我们只需确保解确实满足悬挂节点约束，但创建一个包含悬挂节点约束的AffineConstraints对象，并将约束应用于我们希望SolutionTransfer类传输到下一个网格的两个解向量：
+  {
+    AffineConstraints<double> hanging_node_constraints;
+    DoFTools::make_hanging_node_constraints(dof_handler,
+                                            hanging_node_constraints);
+    hanging_node_constraints.close();
+
+    hanging_node_constraints.distribute(old_solution);
+    hanging_node_constraints.distribute(predictor);
+  }
+
+  // 然后，我们需要在进行细化时将各种解向量从旧网格转移到新网格。SolutionTransfer类在这里是我们的朋友；它有相当详细的文档，包括示例，因此我们不会对以下代码进行太多注释。最后三行只是将一些其他向量的大小重置为现在正确的大小：
+  const std::vector<Vector<double>> transfer_in = {old_solution, predictor};
+
+  triangulation.prepare_coarsening_and_refinement();
+
+  SolutionTransfer<dim> soltrans(dof_handler);
+  soltrans.prepare_for_coarsening_and_refinement(transfer_in);
+
+  triangulation.execute_coarsening_and_refinement();
+
+  dof_handler.clear();
+  dof_handler.distribute_dofs(fe);
+
+  std::vector<Vector<double>> transfer_out = {
+    Vector<double>(dof_handler.n_dofs()),
+    Vector<double>(dof_handler.n_dofs())};
+  soltrans.interpolate(transfer_in, transfer_out);
+
+  old_solution = std::move(transfer_out[0]);
+  predictor    = std::move(transfer_out[1]);
+
+  current_solution.reinit(dof_handler.n_dofs());
+  current_solution = old_solution;
+
+  right_hand_side.reinit(dof_handler.n_dofs());
+}
+
+
+// @sect4{ConservationLaw::output_results}
+//
+// 这个函数现在相当直接。所有的魔力，包括将数据从守恒变量转换为物理变量，都已被抽象并移到了EulerEquations类中，以便在我们想要解决其他超弦守恒定律时可以替换它。
+//
+// 注意，输出文件的编号是通过保持一个计数器作为静态变量来确定的，该计数器在第一次调用此函数时设置为零，并在每次调用结束时递增。
+template <int dim>
+void ConservationLaw<dim>::output_results() const
+{
+  typename EulerEquations<dim>::Postprocessor postprocessor(
+    parameters.schlieren_plot);
+
+  DataOut<dim> data_out;
+  data_out.attach_dof_handler(dof_handler);
+
+  data_out.add_data_vector(current_solution,
+                           EulerEquations<dim>::component_names(),
+                           DataOut<dim>::type_dof_data,
+                           EulerEquations<dim>::component_interpretation());
+
+  data_out.add_data_vector(current_solution, postprocessor);
+
+  data_out.build_patches();
+
+  static unsigned int output_file_number = 0;
+  std::string         filename =
+    "solution-" + Utilities::int_to_string(output_file_number, 3) + ".vtk";
+  std::ofstream output(filename);
+  data_out.write_vtk(output);
+
+  ++output_file_number;
+}
+
+
+
+// @sect4{ConservationLaw::run}
+//
+// 这个函数包含了这个程序的顶层逻辑：初始化、时间循环和内部牛顿迭代。
+//
+// 在开始时，我们读取参数文件中指定的网格文件，设置DoFHandler和各种向量，然后在这个网格上插值给定的初始条件。然后，我们根据初始条件执行多次网格细化，以获得一个已经很好地适应初始解的网格。在这个过程中结束时，我们输出初始解。
+template <int dim>
+void ConservationLaw<dim>::run()
+{
+  {
+    GridIn<dim> grid_in;
+    grid_in.attach_triangulation(triangulation);
+
+    std::ifstream input_file(parameters.mesh_filename);
+    Assert(input_file, ExcFileNotOpen(parameters.mesh_filename));
+
+    grid_in.read_ucd(input_file);
+  }
+
+  dof_handler.distribute_dofs(fe);
+
+  // 为所有字段分配大小。
+  old_solution.reinit(dof_handler.n_dofs());
+  current_solution.reinit(dof_handler.n_dofs());
+  predictor.reinit(dof_handler.n_dofs());
+  right_hand_side.reinit(dof_handler.n_dofs());
+
+  setup_system();
+
+  VectorTools::interpolate(dof_handler,
+                           parameters.initial_conditions,
+                           old_solution);
+  current_solution = old_solution;
+  predictor        = old_solution;
+
+  if (parameters.do_refine == true)
+    for (unsigned int i = 0; i < parameters.shock_levels; ++i)
+      {
+        Vector<double> refinement_indicators(triangulation.n_active_cells());
+
+        compute_refinement_indicators(refinement_indicators);
+        refine_grid(refinement_indicators);
+
+        setup_system();
+
+        VectorTools::interpolate(dof_handler,
+                                 parameters.initial_conditions,
+                                 old_solution);
+        current_solution = old_solution;
+        predictor        = old_solution;
+      }
+
+  output_results();
+
+  // 然后进入主时间步循环。在顶部，我们简单地输出一些状态信息，以便跟踪计算进度，以及一个指示非线性内部迭代进度的表头：
+  Vector<double> newton_update(dof_handler.n_dofs());
+
+  double time        = 0;
+  double next_output = time + parameters.output_step;
+
+  predictor = old_solution;
+  while (time < parameters.final_time)
+    {
+      std::cout << "T=" << time << std::endl
+                << "   Number of active cells:       "
+                << triangulation.n_active_cells() << std::endl
+                << "   Number of degrees of freedom: " << dof_handler.n_dofs()
+                << std::endl
+                << std::endl;
+
+      std::cout << "   NonLin Res     Lin Iter       Lin Res" << std::endl
+                << "   _____________________________________" << std::endl;
+
+      // 然后是用于在每个时间步中解决非线性问题的内部牛顿迭代。顶部的做法是重置矩阵和右端向量，然后组装线性系统。如果残差的范数足够小，那么我们声明牛顿迭代已经收敛。否则，我们求解线性系统，使用牛顿增量更新当前解，并输出收敛信息。最后，我们检查牛顿迭代次数是否超过了10的限制——如果是，很可能迭代正在发散，进一步的迭代将无济于事。如果发生这种情况，我们抛出一个异常，<code>main()</code>中将捕获它并显示状态信息，然后程序中止。
+      //
+      // 请注意，我们在下面使用的AssertThrow宏的写法在很大程度上等同于编写类似<code>if (!(nonlin_iter <= 10)) throw ExcMessage("No convergence in nonlinear solver");</code>的代码。唯一的显著区别是，AssertThrow还确保抛出的异常携带有关生成位置（文件名和行号）的信息。这在这里并不至关重要，因为只有一个地方可能发生这种异常；然而，当人们想要找出错误发生的位置时，它通常是一个非常有用的工具。
+      unsigned int nonlin_iter = 0;
+      current_solution         = predictor;
+      while (true)
+        {
+          system_matrix = 0;
+
+          right_hand_side = 0;
+          assemble_system();
+
+          const double res_norm = right_hand_side.l2_norm();
+          if (std::fabs(res_norm) < 1e-10)
+            {
+              std::printf("   %-16.3e (converged)\n\n", res_norm);
+              break;
+            }
+          else
+            {
+              newton_update = 0;
+
+              std::pair<unsigned int, double> convergence =
+                solve(newton_update);
+
+              current_solution += newton_update;
+
+              std::printf("   %-16.3e %04d        %-5.2e\n",
+                          res_norm,
+                          convergence.first,
+                          convergence.second);
+            }
+
+          ++nonlin_iter;
+          AssertThrow(nonlin_iter <= 10,
+                      ExcMessage("No convergence in nonlinear solver"));
+        }
+
+      // 我们只有在牛顿迭代已经收敛的情况下才会到达这一点，因此在此执行各种收敛后任务：
+      //
+      // 首先，我们更新时间并根据需要生成图形输出。然后，我们通过近似$\mathbf w^{n+1}\approx \mathbf w^n +
+      // \delta t \frac{\partial \mathbf w}{\partial t} \approx \mathbf w^n
+      // + \delta t \; \frac{\mathbf w^n-\mathbf w^{n-1}}{\delta t} = 2
+      // \mathbf w^n - \mathbf w^{n-1}$来更新下一个时间步的解的预测值，以尝试使适应性工作得更好。其思想是尝试在前沿之前进行细化，而不是步入一组粗糙的单元并将old_solution扩散开来。这个简单的时间外推器完成了工作。有了这个，我们然后根据用户的需要细化网格，并最终继续下一个时间步：
+      time += parameters.time_step;
+
+      if (parameters.output_step < 0)
+        output_results();
+      else if (time >= next_output)
+        {
+          output_results();
+          next_output += parameters.output_step;
+        }
+
+      predictor = current_solution;
+      predictor.sadd(2.0, -1.0, old_solution);
+
+      old_solution = current_solution;
+
+      if (parameters.do_refine == true)
+        {
+          Vector<double> refinement_indicators(
+            triangulation.n_active_cells());
+          compute_refinement_indicators(refinement_indicators);
+
+          refine_grid(refinement_indicators);
+          setup_system();
+
+          newton_update.reinit(dof_handler.n_dofs());
+        }
+    }
+}
+} // namespace Step33
+
+// @sect3{main()}
+
+// 以下的“main”函数与以前的示例类似，无需特别注释。注意，如果在命令行中未给出输入文件名，程序将中止。
+int main(int argc, char *argv[])
+{
+  try
+    {
+      using namespace dealii;
+      using namespace Step33;
+
+      if (argc != 2)
+        {
+          std::cout << "Usage:" << argv[0] << " input_file" << std::endl;
+          std::exit(1);
+        }
+
+      Utilities::MPI::MPI_InitFinalize mpi_initialization(
+        argc, argv, numbers::invalid_unsigned_int);
+
+      ConservationLaw<2> cons(argv[1]);
+      cons.run();
+    }
+  catch (std::exception &exc)
+    {
+      std::cerr << std::endl
+                << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+      std::cerr << "Exception on processing: " << std::endl
+                << exc.what() << std::endl
+                << "Aborting!" << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+      return 1;
+    }
+  catch (...)
+    {
+      std::cerr << std::endl
+                << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+      std::cerr << "Unknown exception!" << std::endl
+                << "Aborting!" << std::endl
+                << "----------------------------------------------------"
+                << std::endl;
+      return 1;
+    };
+
+  return 0;
+}
+
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0Nj
-E2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMs
-MTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQsNTIwMD
-Q1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMTE5Nzc3NzE5
-MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbLTEzMTMyNzQxNjIsOTIyMDY0MTAzLDIwNj
+A0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQy
+LC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2Nj
+E4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQy
+NCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMT
+AxMTkwODU3XX0=
 -->
