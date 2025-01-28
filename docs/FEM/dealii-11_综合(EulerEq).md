@@ -523,38 +523,72 @@ $$
 $$
 
 ```cpp
-      template <typename InputVector>
-      static void numerical_normal_flux(
-        const Tensor<1, dim>                                       &normal,
-        const InputVector                                          &Wplus,
-        const InputVector                                          &Wminus,
-        const double                                                alpha,
-        std::array<typename InputVector::value_type, n_components> &normal_flux)
-      {
-        ndarray<typename InputVector::value_type,
-                EulerEquations<dim>::n_components,
-                dim>
-          iflux, oflux;
+      template <typename InputVector>
+      static void numerical_normal_flux(
+        const Tensor<1, dim>                                       &normal,
+        const InputVector                                          &Wplus,
+        const InputVector                                          &Wminus,
+        const double                                                alpha,
+        std::array<typename InputVector::value_type, n_components> &normal_flux)
+      {
+        ndarray<typename InputVector::value_type,
+                EulerEquations<dim>::n_components,
+                dim>
+          iflux, oflux;
 
-        compute_flux_matrix(Wplus, iflux);
-        compute_flux_matrix(Wminus, oflux);
+        compute_flux_matrix(Wplus, iflux);
+        compute_flux_matrix(Wminus, oflux);
 
-        for (unsigned int di = 0; di < n_components; ++di)
-          {
-            normal_flux[di] = 0;
-            for (unsigned int d = 0; d < dim; ++d)
-              normal_flux[di] += 0.5 * (iflux[di][d] + oflux[di][d]) * normal[d];
+        for (unsigned int di = 0; di < n_components; ++di)
+          {
+            normal_flux[di] = 0;
+            for (unsigned int d = 0; d < dim; ++d)
+              normal_flux[di] += 0.5 * (iflux[di][d] + oflux[di][d]) * normal[d];
 
-            normal_flux[di] += 0.5 * alpha * (Wplus[di] - Wminus[di]);
-          }
-      }
+            normal_flux[di] += 0.5 * alpha * (Wplus[di] - Wminus[di]);
+          }
+      }
+```
+
+与描述通量函数 $\mathbf{F}(\mathbf{w})$ 相同，我们还需要一种方法来描述右端项的外力。正如介绍部分所提到的，我们这里仅考虑重力，这导致特定形式：
+
+$$
+\mathbf{G}(\mathbf{w}) = (g_1 \rho, g_2 \rho, g_3 \rho, 0, \rho \mathbf{g} \cdot \mathbf{v})^T
+$$
+
+这里展示的是三维情况。更具体地说，我们仅考虑：$\mathbf{g} = (0, 0, -1)^T \quad \text{在 3D 中，或} \quad \mathbf{g} = (0, -1)^T \quad \text{在 2D 中}$
+
+这自然引出了以下函数：
+
+
+```cpp
+      template <typename InputVector>
+      static void compute_forcing_vector(
+        const InputVector                                          &W,
+        std::array<typename InputVector::value_type, n_components> &forcing)
+      {
+        const double gravity = -1.0;
+
+        for (unsigned int c = 0; c < n_components; ++c)
+          switch (c)
+            {
+              case first_momentum_component + dim - 1:
+                forcing[c] = gravity * W[density_component];
+                break;
+              case energy_component:
+                forcing[c] = gravity * W[first_momentum_component + dim - 1];
+                break;
+              default:
+                forcing[c] = 0;
+            }
+      }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzMzcxNzIxLDE4ODM5MTE3MzUsLTIwOD
-czMzcxNzIsLTYwMTIzMTYxMywtMTExNDQ3MjM5OSw4MDk5ODM2
-OTQsOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMsMjA2MD
-QzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMzk4NDIs
-LTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MT
-g4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2LC0xMzk5NDY5NDI0
-XX0=
+eyJoaXN0b3J5IjpbMTIxMjMwODcwOCwxOTMzNzE3MjEsMTg4Mz
+kxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMTE0NDcy
+Mzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAyLDkyMj
+A2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MTY4MjAs
+LTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjIsLTE4OD
+M5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1LDE4NjE4OTM4ODZd
+fQ==
 -->
