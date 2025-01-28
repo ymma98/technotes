@@ -395,9 +395,11 @@ static const unsigned int energy_component      = dim + 1;
 static const double gas_gamma;
 ```
 
-在接下来的计算中，我们需要从守恒变量向量中计算动能和压力。我们可以基于能量密度以及动能计算这些值：
+在接下来的计算中，我们需要从守恒变量向量中计算动能和压强。我们可以基于能量密度以及动能计算这些值：
 
-12ρ∣v∣2=∣ρv∣22ρ\frac{1}{2} \rho |\mathbf{v}|^2 = \frac{|\rho \mathbf{v}|^2}{2 \rho}
+$$
+\frac{1}{2} \rho |\mathbf{v}|^2 = \frac{|\rho \mathbf{v}|^2}{2\rho}
+$$
 
 （请注意，独立变量包含的是动量分量 $\rho v_i$，而不是速度分量 $v_i$）。
 
@@ -407,10 +409,10 @@ This Markdown preserves clarity while ensuring that mathematical expressions are
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NzIwODg4Nyw5MDQ4NzQ5NCwyMDYwND
-MxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1
-MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5OD
-MzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1LDE4
-NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4Nj
-IxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
+eyJoaXN0b3J5IjpbODAzMzUwMjExLDkwNDg3NDk0LDIwNjA0Mz
+E1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUz
+NDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4Mz
+MyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjUsMTg2
+MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2Mj
+E1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkwODU3XX0=
 -->
