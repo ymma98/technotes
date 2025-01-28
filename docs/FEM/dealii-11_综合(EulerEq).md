@@ -348,7 +348,6 @@ Sacado是Trilinos中的自动微分包，用于找到完全隐式牛顿迭代的
 template <int dim>
 struct EulerEquations
 {
-}
 ```
 
 首先，我们定义一些变量来描述解向量（solution vector）的各个components。这包括系统中component的数量（欧拉方程在每个空间方向上都有一个动量项，再加上能量和密度项，因此总共有 $dim + 2$ 个component），以及描述解向量中第一个动量component、密度component和能量密度component索引的函数。
@@ -365,35 +364,54 @@ static const unsigned int energy_component      = dim + 1;
 在程序的后续部分，我们需要指定解变量的名称，以及如何将不同的组件分组为矢量场和标量场。我们可以在代码的其他地方描述这些内容，但为了使与欧拉方程相关的内容保持局部化，而使程序的其余部分尽可能通用，我们将在以下两个函数中提供这些信息。
 
 ```cpp
-      static std::vector<std::string> component_names()
-      {
-        std::vector<std::string> names(dim, "momentum");
-        names.emplace_back("density");
-        names.emplace_back("energy_density");
+      static std::vector<std::string> component_names()
+      {
+        std::vector<std::string> names(dim, "momentum");
+        names.emplace_back("density");
+        names.emplace_back("energy_density");
 
-        return names;
-      }
+        return names;
+      }
 
-      static std::vector<DataComponentInterpretation::DataComponentInterpretation>
-      component_interpretation()
-      {
-        std::vector<DataComponentInterpretation::DataComponentInterpretation>
-          data_component_interpretation(
-            dim, DataComponentInterpretation::component_is_part_of_vector);
-        data_component_interpretation.push_back(
-          DataComponentInterpretation::component_is_scalar);
-        data_component_interpretation.push_back(
-          DataComponentInterpretation::component_is_scalar);
+      static std::vector<DataComponentInterpretation::DataComponentInterpretation>
+      component_interpretation()
+      {
+        std::vector<DataComponentInterpretation::DataComponentInterpretation>
+          data_component_interpretation(
+            dim, DataComponentInterpretation::component_is_part_of_vector);
+        data_component_interpretation.push_back(
+          DataComponentInterpretation::component_is_scalar);
+        data_component_interpretation.push_back(
+          DataComponentInterpretation::component_is_scalar);
 
-        return data_component_interpretation;
-      }
+        return data_component_interpretation;
+      }
+```
+
+## 变量之间的转换
+
+接下来，我们定义气体常数（gas constant）。我们将在该类的声明之后立即将其定义为 $1.4$（与上面定义的整数变量不同，在 C++ 中，`static const` 浮点成员变量不能在类声明中初始化）。该值 $1.4$ 代表由双原子分子组成的气体，例如空气，其中几乎完全由 $N_2$ 和 $O_2$ 组成，仅包含少量其他痕量气体。
+
+```cpp
+static const double gas_gamma;
+````
+
+在接下来的计算中，我们需要从守恒变量向量中计算动能和压力。我们可以基于能量密度以及动能计算这些值：
+
+12ρ∣v∣2=∣ρv∣22ρ\frac{1}{2} \rho |\mathbf{v}|^2 = \frac{|\rho \mathbf{v}|^2}{2 \rho}
+
+（请注意，独立变量包含的是动量分量 $\rho v_i$，而不是速度分量 $v_i$）。
+
+```
+
+This Markdown preserves clarity while ensuring that mathematical expressions are properly enclosed within `$$...$$` or `$...$`. Let me know if you need any refinements!
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNj
-QxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwLC02
-MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xODgzOT
-g0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2LC0x
-Mzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5ND
-Q5MTk1LDExMDExOTA4NTddfQ==
+eyJoaXN0b3J5IjpbLTIwNTU4OTk2MjUsOTA0ODc0OTQsMjA2MD
+QzMTUwMiw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAs
+NTM0NjE2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OT
+gzMzIyLC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwx
+ODYxODkzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1OD
+YyMTU3MDAsNDU5NDQ5MTk1LDExMDExOTA4NTddfQ==
 -->
