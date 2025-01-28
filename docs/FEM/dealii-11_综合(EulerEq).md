@@ -87,7 +87,6 @@ $$
 \int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx- \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx+ \int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \cdot \mathbf{z} \, ds = 0
 $$
 
-### 3. 引入数值通量
 
 在边界 $\partial \Omega$ 上，直接使用 $\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}$ 可能导致数值不稳定，特别是在高对流流动非线性问题中。因此，引入数值通量 $\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$，其中 $\mathbf{w}^+$ 和 $\mathbf{w}^-$ 分别表示边界两侧的解。
 
@@ -104,6 +103,24 @@ $$
 $$
 \int_{\Omega} \partial_t \mathbf{w} \cdot z \, dx - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds = 0
 $$
+
+
+直接使用弱形式可能在数值计算中引入不稳定性，尤其是在高对流流动非线性问题中。为了提高稳定性，通常会添加稳定化项，例如人工黏性或拉普拉斯扩散项。
+
+在给定的方程中，添加了一个稳定化项 $h^\eta (\nabla \mathbf{w}, \nabla z)$，其中：
+
+- $h$ 是网格尺寸。
+- $\eta$ 是一个与问题相关的指数，通常用于控制稳定化项的强度。
+- $(\nabla \mathbf{w}, \nabla z)$ 表示 $\mathbf{w}$ 和 $z$ 的梯度的内积。
+
+因此，最终的弱形式为：
+
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot z \, dx - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla z \, dx + h^\eta \int_{\Omega} \nabla \mathbf{w} : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds \approx 0
+$$
+
+这与用户提供的近似式相符。
+
 
 
 并用数值通量 $\mathbf{H}$ 来近似边界通量：
@@ -181,7 +198,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzODUzMTkwNywxODYxODkzODg2LC0xMz
-k5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5
-MTk1LDExMDExOTA4NTddfQ==
+eyJoaXN0b3J5IjpbLTE0ODUyNjE4NzUsMTg2MTg5Mzg4NiwtMT
+M5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0
+OTE5NSwxMTAxMTkwODU3XX0=
 -->
