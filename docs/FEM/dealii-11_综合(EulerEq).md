@@ -436,7 +436,21 @@ $$
 \rho v_1 v_3 & \rho v_2 v_3 & \rho v_3^2 + p \\
 \rho v_1 & \rho v_2 & \rho v_3 \\
 (E + p)v_1 & (E + p)v_2 & (E + p)v_3
-\end{pmatrix},
+\end{pmatrix}
+$$
+
+完整的方程组为：
+
+$$
+\partial_t (\rho v_1) + \sum_{i=1}^d \frac{\partial (\rho v_i v_i + \delta u_i v_i)}{\partial x_i} = g_i \rho, \quad i = 1, \ldots, d,
+$$
+
+$$
+\partial_t \rho + \sum_{i=1}^d \frac{\partial (\rho v_i v_i)}{\partial x_i} = 0,
+$$
+
+$$
+\partial_t E + \sum_{i=1}^d \frac{\partial ((E + p)v_i)}{\partial x_i} = \rho g \cdot v.
 $$
 
 我们将通量函数 $F(\mathbf{W})$ 定义为一个大矩阵。该矩阵的每一行代表该行对应的分量的标量守恒定律。该矩阵的具体形式在介绍部分已经给出。需要注意的是，我们知道该矩阵的大小：它有与系统组件数量相等的行数，以及 $dim$ 列数；而不是使用 `FullMatrix` 对象（`FullMatrix` 具有可变的行数和列数，因此每次创建这样一个矩阵时都必须在堆上分配内存），我们直接使用一个规则的数值数组。
@@ -470,11 +484,11 @@ for (unsigned int d = 0; d < dim; ++d)
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1OTA2MzkzMCw4MDk5ODM2OTQsOTA0OD
-c0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1
-MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMzk4NDIsLTgzNjU4MT
-E3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1
-MjAwNDUyNSwxODYxODkzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nz
-c3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5MTk1LDExMDExOTA4NTdd
-fQ==
+eyJoaXN0b3J5IjpbLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwND
+g3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIs
+NTM0NjE2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1OD
+ExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQs
+NTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMTE5Nz
+c3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkwODU3
+XX0=
 -->
