@@ -564,7 +564,8 @@ namespace Step26
       std::map<types::boundary_id, const Function<dim> *>(),
       solution,
       estimated_error_per_cell);
-
+    // 前 60% 误差最大的单元将被标记为细化
+    // 前 40% 误差最小的单元将被标记为粗化
     GridRefinement::refine_and_coarsen_fixed_fraction(triangulation,
                                                       estimated_error_per_cell,
                                                       0.6,
@@ -798,10 +799,10 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzkyMjc2NzUsLTE2NDM4OTAyOCwtMT
-g0NTg2MzIzOCwtMTU5NzIzODY4MywxODMzNTMyNTc0LDExODkz
-NDczMzMsMTgzNjE2ODEzOCw3MzAxNzk3NTAsNjE4NzM3Mzg2LC
-05ODkzNzk3MTgsLTI1MzIxMjkxMywtMTQ3NTEyMzQ3OCwtNDM2
-MTU5MzEzLC0xOTA0NTc5MDM3LDExOTQ0MTM2MjksLTQxNzg2Nz
-M4MV19
+eyJoaXN0b3J5IjpbMTA4MDg3MTEzNCwtMTY0Mzg5MDI4LC0xOD
+Q1ODYzMjM4LC0xNTk3MjM4NjgzLDE4MzM1MzI1NzQsMTE4OTM0
+NzMzMywxODM2MTY4MTM4LDczMDE3OTc1MCw2MTg3MzczODYsLT
+k4OTM3OTcxOCwtMjUzMjEyOTEzLC0xNDc1MTIzNDc4LC00MzYx
+NTkzMTMsLTE5MDQ1NzkwMzcsMTE5NDQxMzYyOSwtNDE3ODY3Mz
+gxXX0=
 -->
