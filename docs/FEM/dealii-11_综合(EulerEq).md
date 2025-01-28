@@ -518,15 +518,43 @@ Then the terms for the density (i.e. mass conservation), and, lastly, conservati
 ```
 
 $$
-\mathbf{H}(\mathbf{w}_{n+}, \mathbf{w}{n-}, \mathbf{n})
-= \tfrac12\Bigl(\mathbf{F}(\mathbf{w}_{n+})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{w}_{n+}-\mathbf{w}{n-}\bigr)\Bigr),
+\mathbf{H}(\mathbf{w}_{n+}, \mathbf{w}_{n-}, \mathbf{n})
+= \tfrac12\Bigl(\mathbf{F}(\mathbf{w}_{n+})\cdot \mathbf{n} + \mathbf{F}(\mathbf{w}_{n-})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{w}_{n+}-\mathbf{w}_{n-}\bigr)\Bigr),
 $$
+
+```cpp
+      template <typename InputVector>
+      static void numerical_normal_flux(
+        const Tensor<1, dim>                                       &normal,
+        const InputVector                                          &Wplus,
+        const InputVector                                          &Wminus,
+        const double                                                alpha,
+        std::array<typename InputVector::value_type, n_components> &normal_flux)
+      {
+        ndarray<typename InputVector::value_type,
+                EulerEquations<dim>::n_components,
+                dim>
+          iflux, oflux;
+
+        compute_flux_matrix(Wplus, iflux);
+        compute_flux_matrix(Wminus, oflux);
+
+        for (unsigned int di = 0; di < n_components; ++di)
+          {
+            normal_flux[di] = 0;
+            for (unsigned int d = 0; d < dim; ++d)
+              normal_flux[di] += 0.5 * (iflux[di][d] + oflux[di][d]) * normal[d];
+
+            normal_flux[di] += 0.5 * alpha * (Wplus[di] - Wminus[di]);
+          }
+      }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzNzA5ODUwMiwxODgzOTExNzM1LC0yMD
-g3MzM3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgz
-Njk0LDkwNDg3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNj
-A0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQy
-LC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2Nj
-E4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQy
-NF19
+eyJoaXN0b3J5IjpbMTkzMzcxNzIxLDE4ODM5MTE3MzUsLTIwOD
+czMzcxNzIsLTYwMTIzMTYxMywtMTExNDQ3MjM5OSw4MDk5ODM2
+OTQsOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMsMjA2MD
+QzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMzk4NDIs
+LTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MT
+g4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2LC0xMzk5NDY5NDI0
+XX0=
 -->
