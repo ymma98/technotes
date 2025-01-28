@@ -196,8 +196,6 @@ $$
 
 ## 自动微分
 
-# 自动微分
-
 由于计算雅可比矩阵 $\mathbf{R}'(\mathbf{W}^k)$ 极其繁琐，我们使用自动微分工具包 Sacado 来完成此任务。Sacado 是 Trilinos 框架中的一个包，提供了 C++ 模板类 `Sacado::Fad::DFad`（Fad 代表“前向自动微分”），支持常见算术运算以及诸如 $\sqrt{\phantom{x}}$、$\sin$、$\cos$、$\mathrm{pow}$ 等函数。要使用该功能，需要先声明一组此类变量，并将其中一些标记为自由度，其他变量作为独立变量的函数。这些变量在算法中被使用，并且当变量被使用时，它们相对于自由度的敏感性会被持续更新。
 
 可以想象，对于整体的完整雅可比矩阵而言，这个过程可能会非常昂贵：独立变量是 $\mathbf{W}^k$，而依赖变量是向量 $\mathbf{R}(\mathbf{W}^k)$ 的各个分量。这两种向量都可能拥有数万甚至更多分量。然而，需要注意的是，并非 $\mathbf{R}$ 的所有分量都依赖于 $\mathbf{W}^k$ 的所有分量：实际上，$\mathbf{R}$ 中的某个分量仅在其对应的形函数与 $\mathbf{W}^k$ 中的某个分量所对应的形函数在弱形式上有重叠且耦合时才会依赖它。
@@ -233,14 +231,62 @@ main() {
 }
 ```
 
+输出结果是以下偏导数
+$$
+\frac{\partial c(a,b)}{\partial a}, \quad \frac{\partial c(a,b)}{\partial b}
+$$
+其中
+$$
+c(a,b) = 2a + \cos(a\,b)
+$$
+并在 $a=1, b=2$ 处进行计算。
+
+需要注意的是，Sacado 能提供比上述程序中使用的那部分更多的自动微分功能。然而，理解上述示例已经足以让我们理解如何在本 Euler 流动程序中使用 Sacado。
+
+## Trilinos 求解器
+
+该程序使用 Trilinos 包提供的 Aztec 迭代求解器或 Amesos 稀疏直接求解器。该包本质上是为并行程序设计的，但在这里也可以方便地用于串行方式。Epetra 包是构建这些求解器所基于的基础向量/矩阵库。这个功能非常强大的包可以用来描述向量在并行环境下的分布，以及定义在这些向量上操作的稀疏矩阵。有关在示例中如何使用这些求解器的更多细节，可参阅带有注释的代码。
+
+## 自适应 (Adaptivity)
+
+本示例采用一种特定的加密指标，用于在激波类型的问题以及包含向下流动示例中展现一定的效果。我们根据密度的平方梯度来进行网格加密。在相邻单元具有不同细化级别的情况下，通过计算它们之间的数值通量来处理悬挂节点，而不是像之前的所有教程程序那样使用 `AffineConstraints` 类。这样一来，该示例结合了连续与 DG 的方法，并且在使用自动微分计算雅可比矩阵时，无需跟踪被约束的自由度，从而简化了雅可比矩阵的生成过程。
+
+> **注意**
+> 当本程序在 2008 年编写时，我们并不知道有任何正式发表的工作使用了这种方法。然而，A. Dedner、R. Klöfkorn 和 M. Kränkel 在一篇更近期的论文（“Continuous Finite-Elements on Non-Conforming Grids Using Discontinuous Galerkin Stabilization”，刊于 *Proceedings of Finite Volumes for Complex Applications VII – Methods and Theoretical Aspects*, Springer, 2014）中所述的内容与之相近。
+>
+> 事后看来，以这种方式处理悬挂节点或许并不是最好的选择。deal.II 中很多地方都假设单元在顶点、边、面上拥有自由度（如这里使用的 `FE_Q` 单元）时，所代表的有限元函数在网格剖分上具有一定的连续性假设。调用 `DoFTools::make_hanging_node_constraints()` 并将得到的结果输出到一个 `AffineConstraints` 对象中后，可以在求解线性系统结束时调用 `AffineConstraints::distribute()` 来强制满足这些假设——其他所有教程程序都使用了悬挂节点网格，并且会在此调用下确保悬挂节点处的解与相邻父单元节点的值一致。相反，本程序并未这样做，因此会遇到一个后来添加到库中的断言检查，即测试函数是否确实连续。为了处理因不满足该断言而导致的错误，我们最终还是在 `ConservationLaw::refine_grid()` 函数中，在将解从一个网格转移到另一个网格之前，对悬挂节点处的解进行了连续性强制。
+
+此外，我们还限制了最大细化层数来避免细化过程失控。根据作者的经验，在时间相关问题中，如果不加以控制，细化会使得模拟速度严重下降，因为当某个区域的网格过于精细时，时间步长可能会变得非常小。在本示例中，通过让用户指定网格中可能出现的最高细化级别来限制细化程度，从而避免模拟因过度细化而停滞。当然，这只是一种启发式做法；如果作者的导师得知此事，作者很可能会被永远逐出有限元误差估计领域。
+
+# 输入文件、初始与边界条件
+
+我们使用一个输入文件（input deck）来控制模拟。通过这种方式，可以在不重新编译的情况下更改边界条件和其他重要属性。关于输入文件格式的更多信息，请参阅结尾的 results 小节，其中详细介绍了一个示例输入文件。
+
+在之前的示例程序中，我们通常将初始条件和边界条件硬编码在程序里。而在本程序中，我们改用 `FunctionParser` 表达式解析器类，这样就可以在输入文件中指定通用表达式，并在运行时进行解析 —— 也就是说，我们无需重新编译程序就能更改初始条件。因此，在下面的程序中不会声明名为 `InitialConditions` 或 `BoundaryConditions` 的类。
+
+# 实现 (Implementation)
+
+本程序的实现分为三个主要部分：
+
+- `EulerEquations` 类：封装所有完全描述欧拉方程特性的内容，包括通量矩阵 $\mathbf{F}(\mathbf{W})$，数值通量 $\mathbf{F}(\mathbf{W}^+, \mathbf{W}^-, \mathbf{n})$，右端项 $\mathbf{G}(\mathbf{W})$，边界条件，加密指标以及后处理输出等需要了解解向量和方程各分量意义的内容。
+
+- 一个命名空间（namespace），包含所有与运行时参数相关的内容。
+
+- `ConservationLaw` 类：处理时间步进、外层非线性和内层线性求解、组装线性系统，以及驱动这一切的顶层逻辑。
+
+之所以这样安排，是因为它将程序中的各种关注点分开：`ConservationLaw` 的写法使得我们可以相对容易地将其改为适用于另一组方程：只需为其他双曲方程重新实现 `EulerEquations` 类的成员，或者通过添加新的方程（例如对额外变量的输运，或者加入化学反应等）来扩展当前方程即可。然而，这样的修改不会影响时间步进或非线性求解（只要实现正确），因此也无需修改 `ConservationLaw` 中的任何内容。
+
+同样，如果我们想改进线性或非线性求解器，或者像在 results 小节末尾所暗示的那样改进时间步进方案，那么这也不需要对 `EulerEquations` 做任何改动。
+
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2Nj
-E4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQy
-NCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMT
-AxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xOD
+gzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2
+LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsND
+U5NDQ5MTk1LDExMDExOTA4NTddfQ==
 -->
