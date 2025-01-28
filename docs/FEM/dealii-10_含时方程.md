@@ -412,9 +412,10 @@ namespace Step26
   // 
   // 在装配(assemble)质量矩阵和拉普拉斯矩阵时，
   // 没有把悬挂节点约束 (hanging node constraints) 直接纳入装配。
-  因为在时间循环的 `run()` 函数中，
+  // 因为在时间循环的 `run()` 函数中，
   // 我们会先把这两个矩阵组合成一个【系统矩阵】(system_matrix)，
   // 然后再 ‘condense’ 这些悬挂节点约束
+  // Step-26 这类时间依赖问题中，程序先将 mass_matrix\text{mass\_matrix}mass_matrix 和 laplace_matrix\text{laplace\_matrix}laplace_matrix 各自建立起来（暂时不考虑悬挂节点），因为这两个矩阵是与网格/形函数本身相关的“基”矩阵，可以复用。之后在每个时间步，会通过类似
   template <int dim>
   void HeatEquation<dim>::setup_system()
   {
@@ -781,7 +782,7 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY3ODgxMDc3LC0xNTk3MjM4NjgzLDE4Mz
+eyJoaXN0b3J5IjpbMTc2NDYyNzg4LC0xNTk3MjM4NjgzLDE4Mz
 M1MzI1NzQsMTE4OTM0NzMzMywxODM2MTY4MTM4LDczMDE3OTc1
 MCw2MTg3MzczODYsLTk4OTM3OTcxOCwtMjUzMjEyOTEzLC0xND
 c1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1NzkwMzcsMTE5NDQx
