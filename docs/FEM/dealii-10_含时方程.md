@@ -425,10 +425,28 @@ namespace Step26
               << std::endl
               << std::endl;
 
+    // 本例中并未在 setup_system() 阶段通过
+    // VectorTools::interpolate_boundary_values(..., constraints);
+    // 来施加边界条件，是因为边界值并未写入全局的线性约束
+    // 而是 在每个时间步装配完后，通过 
+    // MatrixTools::apply_boundary_values()
+    // 动态地对矩阵和右端项进行处理。
+    // 本程序求解随时间演化的方程
+    // 边界条件（即使是零边界值）每个时间步都要重新施加
     constraints.clear();
     DoFTools::make_hanging_node_constraints(dof_handler, constraints);
     constraints.close();
 
+    // 当 keep_constrained_dofs = false 时，
+    // 受约束的自由度在稀疏模式里会被彻底删去（或合并），
+    // 生成的矩阵规模会更小，对有些静态/稳态问题来说，
+    // 这样能节省存储、提高效率。
+    // 若为true, 矩阵里依旧存在受约束自由度对应的行列条目，
+    // 直到后续我们手动调用
+    // constraints.condense(system_matrix, system_rhs);
+    // keep_constrained_dofs = true 是为了让矩阵包含所有
+    // 自由度所需的条目，等装配完并加入时间步、右端项等信息后，
+    // 再通过 constraints.condense(...) 统一处理
     DynamicSparsityPattern dsp(dof_handler.n_dofs());
     DoFTools::make_sparsity_pattern(dof_handler,
                                     dsp,
@@ -760,8 +778,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzMzUzMjU3NCwxMTg5MzQ3MzMzLDE4Mz
-YxNjgxMzgsNzMwMTc5NzUwLDYxODczNzM4NiwtOTg5Mzc5NzE4
-LC0yNTMyMTI5MTMsLTE0NzUxMjM0NzgsLTQzNjE1OTMxMywtMT
-kwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4NjczODFdfQ==
+eyJoaXN0b3J5IjpbLTE1OTcyMzg2ODMsMTgzMzUzMjU3NCwxMT
+g5MzQ3MzMzLDE4MzYxNjgxMzgsNzMwMTc5NzUwLDYxODczNzM4
+NiwtOTg5Mzc5NzE4LC0yNTMyMTI5MTMsLTE0NzUxMjM0NzgsLT
+QzNjE1OTMxMywtMTkwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4
+NjczODFdfQ==
 -->
