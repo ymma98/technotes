@@ -140,7 +140,11 @@ $$
 
 通常，该线性方程组既不对称也没有特定的正定性。我们将使用直接求解器或 Trilinos 的 GMRES 方法来求解它。正如后文所示，这种全隐式迭代往往收敛非常迅速（通常 3 步左右），并且具有牛顿方法所期望的二次收敛阶。
 
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTc3NzcxOTIsMTU4NjIxNTcwMCw0NT
-k0NDkxOTUsMTEwMTE5MDg1N119
+eyJoaXN0b3J5IjpbLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMT
+U4NjIxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
 -->
