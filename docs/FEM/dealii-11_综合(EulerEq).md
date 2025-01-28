@@ -403,13 +403,30 @@ $$
 
 （请注意，独立变量包含的是动量分量 $\rho v_i$，而不是速度分量 $v_i$）。
 
-```
+```cpp
+      template <typename InputVector>
+      static typename InputVector::value_type
+      compute_kinetic_energy(const InputVector &W)
+      {
+        typename InputVector::value_type kinetic_energy = 0;
+        for (unsigned int d = 0; d < dim; ++d)
+          kinetic_energy +=
+            W[first_momentum_component + d] * W[first_momentum_component + d];
+        kinetic_energy *= 1. / (2 * W[density_component]);
 
-This Markdown preserves clarity while ensuring that mathematical expressions are properly enclosed within `$$...$$` or `$...$`. Let me know if you need any refinements!
-```
+        return kinetic_energy;
+      }
 
+      template <typename InputVector>
+      static typename InputVector::value_type
+      compute_pressure(const InputVector &W)
+      {
+        return ((gas_gamma - 1.0) *
+                (W[energy_component] - compute_kinetic_energy(W)));
+      }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODAzMzUwMjExLDkwNDg3NDk0LDIwNjA0Mz
+eyJoaXN0b3J5IjpbODA5OTgzNjk0LDkwNDg3NDk0LDIwNjA0Mz
 E1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUz
 NDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4Mz
 MyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjUsMTg2
