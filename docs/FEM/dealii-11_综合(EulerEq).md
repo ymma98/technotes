@@ -143,7 +143,7 @@ $$
   $$
 - **反射边界（Reflective boundary）**：设定 $\mathbf{w}^-$ 满足 $(\mathbf{v}^+ + \mathbf{v}^-)\cdot \mathbf{n} = 0$，且 $\rho^- = \rho^+$，$E^- = E^+$。
 
-关于这些边界条件的更多信息，可参见 Ralf Hartmann 的博士论文 *“Adaptive Finite Element Methods for the Compressible Euler Equations”*（海德堡大学，2002）。
+
 
 我们使用时间步进方法来代替上述方程中的时间导数。为简化起见，我们定义在时间步 $n$ 时的空间残差 $\mathbf{B}(\mathbf{w}_n)(\mathbf{z})$：
 
@@ -198,7 +198,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OT
-Q2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5
-NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbNTEyMzc4NTM5LDUyMDA0NTI1LDE4NjE4OT
+M4ODYsLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcw
+MCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
 -->
