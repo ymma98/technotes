@@ -276,13 +276,43 @@ $$
 
 ## commented program
 
+```cpp
+  #include <deal.II/base/quadrature_lib.h>
+  #include <deal.II/base/function.h>
+  #include <deal.II/base/parameter_handler.h>
+  #include <deal.II/base/function_parser.h>
+  #include <deal.II/base/utilities.h>
+  #include <deal.II/base/conditional_ostream.h>
 
+  #include <deal.II/lac/vector.h>
+  #include <deal.II/lac/dynamic_sparsity_pattern.h>
+
+  #include <deal.II/grid/tria.h>
+  #include <deal.II/grid/grid_generator.h>
+  #include <deal.II/grid/grid_out.h>
+  #include <deal.II/grid/grid_refinement.h>
+  #include <deal.II/grid/grid_in.h>
+
+  #include <deal.II/dofs/dof_handler.h>
+  #include <deal.II/dofs/dof_tools.h>
+
+  #include <deal.II/fe/fe_values.h>
+  #include <deal.II/fe/fe_system.h>
+  #include <deal.II/fe/mapping_q1.h>
+  #include <deal.II/fe/fe_q.h>
+
+  #include <deal.II/numerics/data_out.h>
+  #include <deal.II/numerics/vector_tools.h>
+  #include <deal.II/numerics/solution_transfer.h>
+```
+
+然后，如引言中提到的，我们使用各种Trilinos包作为线性求解器以及自动微分。这些在以下包含文件中。由于deal.ll提供了对基本Trilinos矩阵、预处理器和求解器的接口，因此我们将它们类似于deal.ll线性代数结构进行包含。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2MDQzMTUwMiw5MjIwNjQxMDMsMjA2MD
-QzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMzk4NDIs
-LTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MT
-g4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2LC0xMzk5NDY5NDI0
-LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5MTk1LDExMD
-ExOTA4NTddfQ==
+eyJoaXN0b3J5IjpbLTE4NzUxOTc0NzEsMjA2MDQzMTUwMiw5Mj
+IwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIw
+LC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xOD
+gzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2
+LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsND
+U5NDQ5MTk1LDExMDExOTA4NTddfQ==
 -->
