@@ -73,7 +73,7 @@ $$
 
 近似为：
 $$
-\int_{\Omega} \left( \partial_t \mathbf{w}, \mathbf{z} \right) - \left( \mathbf{F}(\mathbf{w}), \nabla \mathbf{z} \right) + h^\psi \left( \nabla \mathbf{w}, \nabla \mathbf{z} \right) + \int_{\partial \Omega} \left( H(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}), \mathbf{z}^+ \right),
+\int_{\Omega} \left( \partial_t \mathbf{w}, \mathbf{z} \right) - \left( \mathbf{F}(\mathbf{w}), \nabla \mathbf{z} \right) + h^\eta \left( \nabla \mathbf{w}, \nabla \mathbf{z} \right) + \int_{\partial \Omega} \left( H(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}), \mathbf{z}^+ \right),
 $$
 
 其中上标 $+$ 表示函数的内侧迹，$-$ 表示外侧迹。扩散项 $h^\psi (\nabla \mathbf{w}, \nabla \mathbf{z})$ 完全为稳定性引入，其中 $h$ 是网格尺寸，$\eta$ 是控制扩散量的参数。
@@ -121,6 +121,6 @@ $$
 
 该线性系统通常非对称且无特定定性性质。我们使用直接求解器或 Trilinos 的 GMRES 实现进行求解。如下方结果所示，此全隐式迭代收敛极快（通常 3 步内），并具有牛顿法预期的二次收敛阶。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzOTMxMzk4Nyw0NTk0NDkxOTUsMTEwMT
+eyJoaXN0b3J5IjpbLTEzOTc1NDYzOSw0NTk0NDkxOTUsMTEwMT
 E5MDg1N119
 -->
