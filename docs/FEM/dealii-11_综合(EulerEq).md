@@ -467,7 +467,7 @@ const typename InputVector::value_type pressure = compute_pressure(W);
 
 for (unsigned int d = 0; d < dim; ++d) // d 对应 i
 {
-    for (unsigned int e = 0; e < dim; ++e)
+    for (unsigned int e = 0; e < dim; ++e) // e 对应 s
         flux[first_momentum_component + d][e] =
             W[first_momentum_component + d] *
             W[first_momentum_component + e] / W[density_component];
@@ -477,11 +477,11 @@ for (unsigned int d = 0; d < dim; ++d) // d 对应 i
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5OTM4Mjg3NywtNjAxMjMxNjEzLC0xMT
-E0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAy
-LDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MT
-Y4MjAsLTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjIs
-LTE4ODM5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1LDE4NjE4OT
-M4ODYsLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcw
-MF19
+eyJoaXN0b3J5IjpbLTIwODczMzcxNzIsLTYwMTIzMTYxMywtMT
+ExNDQ3MjM5OSw4MDk5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUw
+Miw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0Nj
+E2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIy
+LC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxOD
+kzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3
+MDBdfQ==
 -->
