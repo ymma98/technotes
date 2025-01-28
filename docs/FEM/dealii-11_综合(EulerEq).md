@@ -342,7 +342,7 @@ Sacado是Trilinos中的自动微分包，用于找到完全隐式牛顿迭代的
 
 在这里，我们定义了该特定系统的守恒定律的通量函数，以及与欧拉方程（用于气体动力学）相关的所有其他内容。我们将所有这些内容分组到一个结构体中，以定义与通量相关的所有内容。
 
-该结构体的所有成员都是 `static` 的，即该结构体没有由实例成员变量指定的实际状态。实现这一点的更好方式，而不是使用一个所有成员均为 `static` 的结构体，是使用命名空间——但命名空间无法模板化，而我们希望结构体的某些成员变量依赖于空间维度。因此，我们按照通常的方式使用模板参数进行引入：
+该结构体的所有成员都是 `static` 的，即该结构体没有由实例成员变量指定的实际状态。声明为 `static` 可以在不创建类实例的情况下调用这些函数，提高了代码的灵活性和可重用性。实现这一点的更好方式，而不是使用一个所有成员均为 `static` 的结构体，是使用命名空间——但命名空间无法模板化，而我们希望结构体的某些成员变量依赖于空间维度。因此，我们按照通常的方式使用模板参数进行引入：
 
 ```cpp
 template <int dim>
@@ -404,32 +404,33 @@ $$
 （请注意，独立变量包含的是动量分量 $\rho v_i$，而不是速度分量 $v_i$）。
 
 ```cpp
-      template <typename InputVector>
-      static typename InputVector::value_type
-      compute_kinetic_energy(const InputVector &W)
-      {
-        typename InputVector::value_type kinetic_energy = 0;
-        for (unsigned int d = 0; d < dim; ++d)
-          kinetic_energy +=
-            W[first_momentum_component + d] * W[first_momentum_component + d];
-        kinetic_energy *= 1. / (2 * W[density_component]);
+      template <typename InputVector>
+      static typename InputVector::value_type
+      compute_kinetic_energy(const InputVector &W)
+      {
+        typename InputVector::value_type kinetic_energy = 0;
+        for (unsigned int d = 0; d < dim; ++d)
+          kinetic_energy +=
+            W[first_momentum_component + d] * W[first_momentum_component + d];
+        kinetic_energy *= 1. / (2 * W[density_component]);
 
-        return kinetic_energy;
-      }
+        return kinetic_energy;
+      }
 
-      template <typename InputVector>
-      static typename InputVector::value_type
-      compute_pressure(const InputVector &W)
-      {
-        return ((gas_gamma - 1.0) *
-                (W[energy_component] - compute_kinetic_energy(W)));
-      }
+      template <typename InputVector>
+      static typename InputVector::value_type
+      compute_pressure(const InputVector &W)
+      {
+        return ((gas_gamma - 1.0) *
+                (W[energy_component] - compute_kinetic_energy(W)));
+      }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA5OTgzNjk0LDkwNDg3NDk0LDIwNjA0Mz
-E1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUz
-NDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4Mz
-MyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjUsMTg2
-MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2Mj
-E1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbOTA3OTQ5Nzc5LDgwOTk4MzY5NCw5MDQ4Nz
+Q5NCwyMDYwNDMxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUz
+NDYxNjgyMCw1MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NTgxMT
+czLDE2NzY5ODMzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUy
+MDA0NTI1LDE4NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3Nz
+cxOTIsMTU4NjIxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
+
 -->
