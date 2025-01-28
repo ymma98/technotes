@@ -465,7 +465,7 @@ static void compute_flux_matrix(const InputVector &W,
 ```cpp
 const typename InputVector::value_type pressure = compute_pressure(W);
 
-for (unsigned int d = 0; d < dim; ++d)
+for (unsigned int d = 0; d < dim; ++d) // d 对应 
 {
     for (unsigned int e = 0; e < dim; ++e)
         flux[first_momentum_component + d][e] =
@@ -477,11 +477,11 @@ for (unsigned int d = 0; d < dim; ++d)
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMTIzMTYxMywtMTExNDQ3MjM5OSw4MD
-k5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMs
-MjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMz
-k4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4
-LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2LC0xMzk5ND
-Y5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5MTk1
-XX0=
+eyJoaXN0b3J5IjpbLTE5MTA1MDUwMTIsLTYwMTIzMTYxMywtMT
+ExNDQ3MjM5OSw4MDk5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUw
+Miw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0Nj
+E2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIy
+LC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxOD
+kzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3
+MDBdfQ==
 -->
