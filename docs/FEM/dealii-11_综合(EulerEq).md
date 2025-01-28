@@ -76,20 +76,23 @@ $$
 \int_{\Omega} \left( \partial_t \mathbf{w}, \mathbf{z} \right) - \left( \mathbf{F}(\mathbf{w}), \nabla \mathbf{z} \right) + h^\eta \left( \nabla \mathbf{w}, \nabla \mathbf{z} \right) + \int_{\partial \Omega} \left( H(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}), \mathbf{z}^+ \right),
 $$
 
-其中上标 $+$ 表示函数的内侧迹，$-$ 表示外侧迹。扩散项 $h^\psi (\nabla \mathbf{w}, \nabla \mathbf{z})$ 完全为稳定性引入，其中 $h$ 是网格尺寸，$\eta$ 是控制扩散量的参数。
+其中上标 $+$ 表示函数的内侧迹，$-$ 表示外侧迹。扩散项 $h^\eta (\nabla \mathbf{w}, \nabla \mathbf{z})$ 完全为稳定性引入，其中 $h$ 是网格尺寸，$\eta$ 是控制扩散量的参数。
 
 在边界上，需指定外侧迹 $\mathbf{w}^-$ 的值。根据边界条件，可设定以下类型之一：
 - **流入边界**：$\mathbf{w}^-$ 被指定为期望值。
 - **超音速流出边界**：$\mathbf{w}^- = \mathbf{w}^+$。
 - **亚音速流出边界**：$\mathbf{w}^- = \mathbf{w}^+$，但能量变量被修改以支持预设压力 $p_\omega$，即：
+- 
 $$
 \mathbf{w}^- = \left( \rho^+, \rho v_1^+, \ldots, \rho v_d^+, \frac{p_\omega}{\gamma - 1} + \frac{1}{2}\rho |\mathbf{v}^+|^2 \right).
 $$
+
 - **反射边界**：设定 $\mathbf{w}^-$ 使得 $(\mathbf{v}^+ + \mathbf{v}^-) \cdot \mathbf{n} = 0$，且 $\rho^- = \rho^+$，$E^- = E^+$。
 
-更多细节可参考 Ralf Hartmann 的博士论文（《Adaptive Finite Element Methods for the Compressible Euler Equations》，海德堡大学，2002）。
+
 
 通过时间步进格式替换方程中的时间导数。为简化，定义时间步 $n$ 的空间残量 $\mathbf{B}(\mathbf{w}_n)(\mathbf{z})$：
+
 $$
 \mathbf{B}(\mathbf{w}_n)(\mathbf{z}) = -\int_{\Omega} \left( \mathbf{F}(\mathbf{w}_n), \nabla \mathbf{z} \right) + h^\psi \left( \nabla \mathbf{w}_n, \nabla \mathbf{z} \right) + \int_{\partial \Omega} \left( H(\mathbf{w}_n^+, \mathbf{w}^-(\mathbf{w}_n^+), \mathbf{n}), \mathbf{z} \right) - \int_{\Omega} \left( \mathbf{G}(\mathbf{w}_n), \mathbf{z} \right).
 $$
@@ -121,6 +124,6 @@ $$
 
 该线性系统通常非对称且无特定定性性质。我们使用直接求解器或 Trilinos 的 GMRES 实现进行求解。如下方结果所示，此全隐式迭代收敛极快（通常 3 步内），并具有牛顿法预期的二次收敛阶。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTc1NDYzOSw0NTk0NDkxOTUsMTEwMT
+eyJoaXN0b3J5IjpbLTk4MTYwMzg1Nyw0NTk0NDkxOTUsMTEwMT
 E5MDg1N119
 -->
