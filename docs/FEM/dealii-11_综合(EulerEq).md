@@ -65,7 +65,7 @@ $$
 
 ### 离散化
 
-离散化过程遵循常规方法，考虑到这是一个与 step-12 中讨论的简单问题类似的超定问题。我们选择一个有限元空间 $V_A$，并将守恒律与（向量值）测试函数 $\mathbf{z} \in V_A$ 进行积分。然后通过分部积分，并用数值通量 $H$ 近似边界通量：
+离散化过程遵循常规方法，考虑到这是一个与 step-12 中讨论的简单问题类似的双曲问题。我们选择一个有限元空间 $V_A$，并将守恒律与（向量值）测试函数 $\mathbf{z} \in V_A$ 进行积分。然后通过分部积分，并用数值通量 $H$ 近似边界通量：
 
 $$
 \int_{\Omega} \left( \partial_t \mathbf{w}, \mathbf{z} \right) + \left( \nabla \cdot \mathbf{F}(\mathbf{w}), \mathbf{z} \right)
@@ -121,6 +121,6 @@ $$
 
 该线性系统通常非对称且无特定定性性质。我们使用直接求解器或 Trilinos 的 GMRES 实现进行求解。如下方结果所示，此全隐式迭代收敛极快（通常 3 步内），并具有牛顿法预期的二次收敛阶。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg0Mjk2MDEyLDQ1OTQ0OTE5NSwxMTAxMT
-kwODU3XX0=
+eyJoaXN0b3J5IjpbLTkzOTMxMzk4Nyw0NTk0NDkxOTUsMTEwMT
+E5MDg1N119
 -->
