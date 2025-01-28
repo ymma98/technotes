@@ -208,14 +208,39 @@ $$
 
 说到这里，下面给出一个如何使用 Sacado 的简短示例：
 
+```cpp
+#include <Sacado.hpp>
+#include <iostream>
+
+using fad_double = Sacado::Fad::DFad<double>;
+
+main() {
+
+  fad_double a,b,c;
+
+  a = 1; b = 2;
+
+  a.diff(0,2);  // Set a to be dof 0, in a 2-dof system.
+
+  b.diff(1,2);  // Set b to be dof 1, in a 2-dof system.
+
+  c = 2*a+cos(a*b);
+
+  double *derivs = &c.fastAccessDx(0); // Access derivatives
+
+  std::cout << "dc/da = " << derivs[0] << ", dc/db=" << derivs[1] << std::endl;
+
+}
+```
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDkyMTQzMTYsLTE4ODM5ODQzNjgsNj
-YxODg1OTg0LDUyMDA0NTI1LDE4NjE4OTM4ODYsLTEzOTk0Njk0
-MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcwMCw0NTk0NDkxOTUsMT
-EwMTE5MDg1N119
+eyJoaXN0b3J5IjpbMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2Nj
+E4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQy
+NCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMT
+AxMTkwODU3XX0=
 -->
