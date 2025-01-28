@@ -111,12 +111,12 @@ $$
 
 - $h$ 是网格尺寸。
 - $\eta$ 是一个与问题相关的指数，通常用于控制稳定化项的强度。
-- $(\nabla \mathbf{w}, \nabla z)$ 表示 $\mathbf{w}$ 和 $z$ 的梯度的内积。
+- $(\nabla \mathbf{w}, \nabla \mathbf{z})$ 表示 $\mathbf{w}$ 和 $\mathbf{z}$ 的梯度的内积。
 
 因此，最终的弱形式为：
 
 $$
-\int_{\Omega} \partial_t \mathbf{w} \cdot z \, dx - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla z \, dx + h^\eta \int_{\Omega} \nabla \mathbf{w} : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds \approx 0
+\int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx + h^\eta \int_{\Omega} \nabla \mathbf{w} : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds \approx 0
 $$
 
 这与用户提供的近似式相符。
@@ -198,7 +198,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODUyNjE4NzUsMTg2MTg5Mzg4NiwtMT
-M5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0
-OTE5NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OT
+Q2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5
+NSwxMTAxMTkwODU3XX0=
 -->
