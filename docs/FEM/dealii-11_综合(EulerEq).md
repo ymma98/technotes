@@ -425,12 +425,27 @@ $$
                 (W[energy_component] - compute_kinetic_energy(W)));
       }
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA3OTQ5Nzc5LDgwOTk4MzY5NCw5MDQ4Nz
-Q5NCwyMDYwNDMxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUz
-NDYxNjgyMCw1MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NTgxMT
-czLDE2NzY5ODMzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUy
-MDA0NTI1LDE4NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3Nz
-cxOTIsMTU4NjIxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
 
+
+我们将通量函数 $F(\mathbf{W})$ 定义为一个大矩阵。该矩阵的每一行代表该行对应的分量的标量守恒定律。该矩阵的具体形式在介绍部分已经给出。需要注意的是，我们知道该矩阵的大小：它有与系统组件数量相等的行数，以及 $dim$ 列数；而不是使用 `FullMatrix` 对象（`FullMatrix` 具有可变的行数和列数，因此每次创建这样一个矩阵时都必须在堆上分配内存），我们直接使用一个规则的数值数组。
+
+我们对通量函数的数值类型进行模板化，以便可以在此处使用自动微分类型。同样，我们会使用不同类型的输入向量调用该函数，因此我们也对其进行模板化：
+
+```cpp
+template <typename InputVector>
+static void compute_flux_matrix(const InputVector &W,
+    ndarray<typename InputVector::value_type,
+            EulerEquations<dim>::n_components,
+            dim> &flux)
+{
+}
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTgwNzY5Njg4OSw4MDk5ODM2OTQsOTA0OD
+c0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1
+MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMzk4NDIsLTgzNjU4MT
+E3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1
+MjAwNDUyNSwxODYxODkzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nz
+c3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5MTk1LDExMDExOTA4NTdd
+fQ==
 -->
