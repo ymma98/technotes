@@ -47,16 +47,13 @@ g_3 \rho \\
 $$
 其中 $g = (g_1, g_2, g_3)^T$ 表示重力向量。由此，完整的方程组为：
 
-$$
-\partial_t (\rho v_1) + \sum_{i=1}^d \frac{\partial (\rho v_i v_i + \delta u_i v_i)}{\partial x_i} = g_i \rho, \quad i = 1, \ldots, d,
-$$
 
 $$
-\partial_t \rho + \sum_{i=1}^d \frac{\partial (\rho v_i v_i)}{\partial x_i} = 0,
-$$
-
-$$
-\partial_t E + \sum_{i=1}^d \frac{\partial ((E + p)v_i)}{\partial x_i} = \rho g \cdot v.
+\begin{aligned}
+\partial_t (\rho v_i) + \sum_{s=1}^{d} \frac{\partial (\rho v_i v_s + \delta_{is} p)}{\partial x_s} &= g_i \rho, \quad i = 1, \dots, d, \\
+\partial_t \rho + \sum_{s=1}^{d} \frac{\partial (\rho v_s)}{\partial x_s} &= 0, \\
+\partial_t E + \sum_{s=1}^{d} \frac{\partial ((E + p) v_s)}{\partial x_s} &= \rho \mathbf{g} \cdot \mathbf{v}.
+\end{aligned}
 $$
 
 这些方程分别描述了动量、质量和能量的守恒。系统通过定义压力的关系闭合：
@@ -442,15 +439,11 @@ $$
 完整的方程组为：
 
 $$
-\partial_t (\rho v_1) + \sum_{i=1}^d \frac{\partial (\rho v_i v_i + \delta u_i v_i)}{\partial x_i} = g_i \rho, \quad i = 1, \ldots, d,
-$$
-
-$$
-\partial_t \rho + \sum_{i=1}^d \frac{\partial (\rho v_i v_i)}{\partial x_i} = 0,
-$$
-
-$$
-\partial_t E + \sum_{i=1}^d \frac{\partial ((E + p)v_i)}{\partial x_i} = \rho g \cdot v.
+\begin{aligned}
+\partial_t (\rho v_i) + \sum_{s=1}^{d} \frac{\partial (\rho v_i v_s + \delta_{is} p)}{\partial x_s} &= g_i \rho, \quad i = 1, \dots, d, \\
+\partial_t \rho + \sum_{s=1}^{d} \frac{\partial (\rho v_s)}{\partial x_s} &= 0, \\
+\partial_t E + \sum_{s=1}^{d} \frac{\partial ((E + p) v_s)}{\partial x_s} &= \rho \mathbf{g} \cdot \mathbf{v}.
+\end{aligned}
 $$
 
 我们将通量函数 $F(\mathbf{W})$ 定义为一个大矩阵。该矩阵的每一行代表该行对应的分量的标量守恒定律。该矩阵的具体形式在介绍部分已经给出。需要注意的是，我们知道该矩阵的大小：它有与系统组件数量相等的行数，以及 $dim$ 列数；而不是使用 `FullMatrix` 对象（`FullMatrix` 具有可变的行数和列数，因此每次创建这样一个矩阵时都必须在堆上分配内存），我们直接使用一个规则的数值数组。
@@ -484,11 +477,11 @@ for (unsigned int d = 0; d < dim; ++d)
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwND
-g3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIs
-NTM0NjE2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1OD
-ExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQs
-NTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMTE5Nz
-c3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkwODU3
+eyJoaXN0b3J5IjpbLTYwMTIzMTYxMywtMTExNDQ3MjM5OSw4MD
+k5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMs
+MjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMz
+k4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4
+LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2LC0xMzk5ND
+Y5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5MTk1
 XX0=
 -->
