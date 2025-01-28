@@ -16,11 +16,13 @@ $$
 - $E$ 为气体的能量密度  
 
 该方程组可具体展开为：
+
 $$
 \partial_t \mathbf{w}_i + \nabla \cdot \mathbf{F}_i(\mathbf{w}) = \mathbf{G}_i(\mathbf{w}), \quad i = 1, \ldots, \text{dim} + 2.
 $$
 
 对于欧拉方程，通量矩阵 $\mathbf{F}$（或通量函数系统）定义为（以 $d = 3$ 为例）：
+
 $$
 \mathbf{F}(\mathbf{w}) = 
 \begin{pmatrix}
@@ -426,6 +428,16 @@ $$
       }
 ```
 
+$$
+\mathbf{F}(\mathbf{w}) = 
+\begin{pmatrix}
+\rho v_1^2 + p & \rho v_2 v_1 & \rho v_3 v_1 \\
+\rho v_1 v_2 & \rho v_2^2 + p & \rho v_3 v_2 \\
+\rho v_1 v_3 & \rho v_2 v_3 & \rho v_3^2 + p \\
+\rho v_1 & \rho v_2 & \rho v_3 \\
+(E + p)v_1 & (E + p)v_2 & (E + p)v_3
+\end{pmatrix},
+$$
 
 我们将通量函数 $F(\mathbf{W})$ 定义为一个大矩阵。该矩阵的每一行代表该行对应的分量的标量守恒定律。该矩阵的具体形式在介绍部分已经给出。需要注意的是，我们知道该矩阵的大小：它有与系统组件数量相等的行数，以及 $dim$ 列数；而不是使用 `FullMatrix` 对象（`FullMatrix` 具有可变的行数和列数，因此每次创建这样一个矩阵时都必须在堆上分配内存），我们直接使用一个规则的数值数组。
 
@@ -441,7 +453,7 @@ static void compute_flux_matrix(const InputVector &W,
 }
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNzY5Njg4OSw4MDk5ODM2OTQsOTA0OD
+eyJoaXN0b3J5IjpbMTY2NTM5Nzg4MSw4MDk5ODM2OTQsOTA0OD
 c0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1
 MzQ2MTY4MjAsNTM0NjE2ODIwLC02MjEyMzk4NDIsLTgzNjU4MT
 E3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1
