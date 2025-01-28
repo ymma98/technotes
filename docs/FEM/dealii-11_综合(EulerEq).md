@@ -276,45 +276,12 @@ $$
 
 ## commented program
 
-```cpp
-  #include <deal.II/base/quadrature_lib.h>
-  #include <deal.II/base/function.h>
-  #include <deal.II/base/parameter_handler.h>
-  #include <deal.II/base/function_parser.h>
-  #include <deal.II/base/utilities.h>
-  #include <deal.II/base/conditional_ostream.h>
-
-  #include <deal.II/lac/vector.h>
-  #include <deal.II/lac/dynamic_sparsity_pattern.h>
-
-  #include <deal.II/grid/tria.h>
-  #include <deal.II/grid/grid_generator.h>
-  #include <deal.II/grid/grid_out.h>
-  #include <deal.II/grid/grid_refinement.h>
-  #include <deal.II/grid/grid_in.h>
-
-  #include <deal.II/dofs/dof_handler.h>
-  #include <deal.II/dofs/dof_tools.h>
-
-  #include <deal.II/fe/fe_values.h>
-  #include <deal.II/fe/fe_system.h>
-  #include <deal.II/fe/mapping_q1.h>
-  #include <deal.II/fe/fe_q.h>
-
-  #include <deal.II/numerics/data_out.h>
-  #include <deal.II/numerics/vector_tools.h>
-  #include <deal.II/numerics/solution_transfer.h>
-```
-
-
-
-
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODY3OTQ0MDIsNTM0NjE2ODIwLDUzND
-YxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMy
-MiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjUsMTg2MT
-g5Mzg4NiwtMTM5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1
-NzAwLDQ1OTQ0OTE5NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0Nj
+E2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIy
+LC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxOD
+kzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3
+MDAsNDU5NDQ5MTk1LDExMDExOTA4NTddfQ==
 -->
