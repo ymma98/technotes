@@ -75,6 +75,11 @@ $$
 \int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx + \int_{\Omega} \nabla \cdot \mathbf{F}(\mathbf{w}) \cdot \mathbf{z} \, dx = 0
 $$
 
+对上式第二项应用分部积分，将导数从 $\mathbf{F}(\mathbf{w})$ 转移到测试函数 $\mathbf{z}$ 上：
+
+$$
+\int_{\Omega} \nabla \cdot \mathbf{F}(\mathbf{w}) \cdot \mathbf{z} \, dx =- \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx+ \int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \cdot \mathbf{z} \, ds
+$$
 
 并用数值通量 $\mathbf{H}$ 来近似边界通量：
 
@@ -151,7 +156,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDEwOTMyNTQsMTg2MTg5Mzg4NiwtMT
-M5OTQ2OTQyNCwtMTE5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0
-OTE5NSwxMTAxMTkwODU3XX0=
+eyJoaXN0b3J5IjpbNDU2OTkwNzI1LDE4NjE4OTM4ODYsLTEzOT
+k0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcwMCw0NTk0NDkx
+OTUsMTEwMTE5MDg1N119
 -->
