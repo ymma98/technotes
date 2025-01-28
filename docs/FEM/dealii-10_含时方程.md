@@ -415,7 +415,12 @@ namespace Step26
   // 因为在时间循环的 `run()` 函数中，
   // 我们会先把这两个矩阵组合成一个【系统矩阵】(system_matrix)，
   // 然后再 ‘condense’ 这些悬挂节点约束
-  // Step-26 这类时间依赖问题中，程序先将 mass_matrix\text{mass\_matrix}mass_matrix 和 laplace_matrix\text{laplace\_matrix}laplace_matrix 各自建立起来（暂时不考虑悬挂节点），因为这两个矩阵是与网格/形函数本身相关的“基”矩阵，可以复用。之后在每个时间步，会通过类似
+  // Step-26 这类时间依赖问题中，程序先将 mass_matrix 和 laplace_matrix 各自建立起来
+  // （暂时不考虑悬挂节点），之后在每个时间步，会通过类似
+  // system_matrix.copy_from(mass_matrix); 
+  // system_matrix.add(theta * time_step, laplace_matrix);
+  // 的方式，组合出实际要用来求解的 system_matrix。只有在得到真正要解的系统(含时间步)之后，才调用
+  // constraints.condense(system_matrix, system_rhs);
   template <int dim>
   void HeatEquation<dim>::setup_system()
   {
@@ -782,9 +787,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NDYyNzg4LC0xNTk3MjM4NjgzLDE4Mz
-M1MzI1NzQsMTE4OTM0NzMzMywxODM2MTY4MTM4LDczMDE3OTc1
-MCw2MTg3MzczODYsLTk4OTM3OTcxOCwtMjUzMjEyOTEzLC0xND
-c1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1NzkwMzcsMTE5NDQx
-MzYyOSwtNDE3ODY3MzgxXX0=
+eyJoaXN0b3J5IjpbLTE4NDU4NjMyMzgsLTE1OTcyMzg2ODMsMT
+gzMzUzMjU3NCwxMTg5MzQ3MzMzLDE4MzYxNjgxMzgsNzMwMTc5
+NzUwLDYxODczNzM4NiwtOTg5Mzc5NzE4LC0yNTMyMTI5MTMsLT
+E0NzUxMjM0NzgsLTQzNjE1OTMxMywtMTkwNDU3OTAzNywxMTk0
+NDEzNjI5LC00MTc4NjczODFdfQ==
 -->
