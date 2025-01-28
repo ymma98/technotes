@@ -82,9 +82,9 @@ nav:
     - 本地与在线overleaf区别: latex/本地与在线overleaf区别.md
     - 在beamer中插入动画: latex/在beamer中插入动画.md
     - windows中使用latex: latex/windows_latex.md
-  - 娱乐:
-    - RO2反坦克枪: 娱乐/RO2反坦克枪.md
-    - 大富翁10: 娱乐/大富翁10.md
+  # - 娱乐:
+  #  - RO2反坦克枪: 娱乐/RO2反坦克枪.md
+  #  - 大富翁10: 娱乐/大富翁10.md
 
      
 
