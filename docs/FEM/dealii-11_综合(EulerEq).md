@@ -128,7 +128,7 @@ $$
 $$
 \int_{\Omega} (\partial_t \mathbf{w}, \mathbf{z}) + (\nabla \cdot \mathbf{F}(\mathbf{w}), \mathbf{z})
 \approx
-\int_{\Omega} (\partial_t \mathbf{w}, \mathbf{z}) - (\mathbf{F}(\mathbf{w}), \nabla \mathbf{z}) + h^\eta(\nabla \mathbf{w}, \nabla \mathbf{z}) + \int_{\partial \Omega} \bigl(\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}), \mathbf{z}^+\bigr),+ 
+\int_{\Omega} (\partial_t \mathbf{w}, \mathbf{z}) - (\mathbf{F}(\mathbf{w}), \nabla \mathbf{z}) + h^\eta(\nabla \mathbf{w}, \nabla \mathbf{z}) + \int_{\partial \Omega} \bigl(\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}), \mathbf{z}^+\bigr),
 $$
 
 其中，上标 $+$ 表示函数的内部迹，$-$ 表示外部迹。扩散项 $h^\eta(\nabla \mathbf{w}, \nabla \mathbf{z})$ 是为了稳定性而引入的，其中 $h$ 为网格尺寸，$\eta$ 为决定扩散量大小的参数。
@@ -198,7 +198,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTEyMzc4NTM5LDUyMDA0NTI1LDE4NjE4OT
+eyJoaXN0b3J5IjpbNjYxODg1OTg0LDUyMDA0NTI1LDE4NjE4OT
 M4ODYsLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcw
 MCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
 -->
