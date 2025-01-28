@@ -65,7 +65,14 @@ $$
 
 ### 离散化
 
-离散化的过程与通常方式相同，需要考虑这是一个与 step-12 中讨论的简单问题相同类型的双曲问题。我们选择一个有限元空间 $V_h$，并将我们的守恒方程与一个（向量值）测试函数 $\mathbf{z} \in V_h$ 做内积。然后，我们进行分部积分，并用数值通量 $\mathbf{H}$ 来近似边界通量：
+离散化的过程与通常方式相同，需要考虑这是一个与 step-12 中讨论的简单问题相同类型的双曲问题。我们选择一个有限元空间 $V_h$，并将我们的守恒方程与一个（向量值）测试函数 $\mathbf{z} \in V_h$ 做内积。然后，我们进行分部积分，
+
+$$
+\partial_t \mathbf{w} + \nabla \cdot \mathbf{F}(\mathbf{w}) = 0
+$$
+
+
+并用数值通量 $\mathbf{H}$ 来近似边界通量：
 
 $$
 \int_{\Omega} (\partial_t \mathbf{w}, \mathbf{z}) + (\nabla \cdot \mathbf{F}(\mathbf{w}), \mathbf{z})
@@ -140,7 +147,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMT
-E5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkw
-ODU3XX0=
+eyJoaXN0b3J5IjpbMTI3NTg3NjQ4OSwxODYxODkzODg2LC0xMz
+k5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5
+MTk1LDExMDExOTA4NTddfQ==
 -->
