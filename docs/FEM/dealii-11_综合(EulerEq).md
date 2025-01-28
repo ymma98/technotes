@@ -274,7 +274,9 @@ $$
 同样，如果我们想改进线性或非线性求解器，或者像在 results 小节末尾所暗示的那样改进时间步进方案，那么这也不需要对 `EulerEquations` 做任何改动。
 
 
-##
+## commented program
+
+
 
 
 
@@ -282,9 +284,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5NzI2Njg1NCwtNjIxMjM5ODQyLC04Mz
-Y1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5
-ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMT
-E5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkw
-ODU3XX0=
+eyJoaXN0b3J5IjpbNTM0NjE2ODIwLC02MjEyMzk4NDIsLTgzNj
+U4MTE3MywxNjc2OTgzMzIyLC0xODgzOTg0MzY4LDY2MTg4NTk4
+NCw1MjAwNDUyNSwxODYxODkzODg2LC0xMzk5NDY5NDI0LC0xMT
+k3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5MTk1LDExMDExOTA4
+NTddfQ==
 -->
