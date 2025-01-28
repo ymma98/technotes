@@ -490,38 +490,43 @@ Then the terms for the density (i.e. mass conservation), and, lastly, conservati
 在领域的边界和悬挂节点上，我们使用数值通量函数来强制执行边界条件。这个例程是基本的Lax-Friedrich通量，带有一个稳定化参数a。它的形式已经在引言中给出：
 
 ```cpp
-      template <typename InputVector>
-      static void numerical_normal_flux(
-        const Tensor<1, dim>                                       &normal,
-        const InputVector                                          &Wplus,
-        const InputVector                                          &Wminus,
-        const double                                                alpha,
-        std::array<typename InputVector::value_type, n_components> &normal_flux)
-      {
-        ndarray<typename InputVector::value_type,
-                EulerEquations<dim>::n_components,
-                dim>
-          iflux, oflux;
+      template <typename InputVector>
+      static void numerical_normal_flux(
+        const Tensor<1, dim>                                       &normal,
+        const InputVector                                          &Wplus,
+        const InputVector                                          &Wminus,
+        const double                                                alpha,
+        std::array<typename InputVector::value_type, n_components> &normal_flux)
+      {
+        ndarray<typename InputVector::value_type,
+                EulerEquations<dim>::n_components,
+                dim>
+          iflux, oflux;
 
-        compute_flux_matrix(Wplus, iflux);
-        compute_flux_matrix(Wminus, oflux);
+        compute_flux_matrix(Wplus, iflux);
+        compute_flux_matrix(Wminus, oflux);
 
-        for (unsigned int di = 0; di < n_components; ++di)
-          {
-            normal_flux[di] = 0;
-            for (unsigned int d = 0; d < dim; ++d)
-              normal_flux[di] += 0.5 * (iflux[di][d] + oflux[di][d]) * normal[d];
+        for (unsigned int di = 0; di < n_components; ++di)
+          {
+            normal_flux[di] = 0;
+            for (unsigned int d = 0; d < dim; ++d)
+              normal_flux[di] += 0.5 * (iflux[di][d] + oflux[di][d]) * normal[d];
 
-            normal_flux[di] += 0.5 * alpha * (Wplus[di] - Wminus[di]);
-          }
-      }
+            normal_flux[di] += 0.5 * alpha * (Wplus[di] - Wminus[di]);
+          }
+      }
 ```
+
+$$
+\mathbf{H}(\mathbf{w}_{n+}, \mathbf{w}{n-}, \mathbf{n})
+= \tfrac12\Bigl(\mathbf{F}(\mathbf{w}_{n+})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{w}_{n+}-\mathbf{w}{n-}\bigr)\Bigr),
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNj
-AxMjMxNjEzLC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5
-NCwyMDYwNDMxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzND
-YxNjgyMCw1MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NTgxMTcz
-LDE2NzY5ODMzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUyMD
-A0NTI1LDE4NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3Nzcx
-OTJdfQ==
+eyJoaXN0b3J5IjpbLTQzNzA5ODUwMiwxODgzOTExNzM1LC0yMD
+g3MzM3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgz
+Njk0LDkwNDg3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNj
+A0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQy
+LC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2OCw2Nj
+E4ODU5ODQsNTIwMDQ1MjUsMTg2MTg5Mzg4NiwtMTM5OTQ2OTQy
+NF19
 -->
