@@ -49,7 +49,14 @@ M\,U^n \;-\; M\,U^{n-1}
 k_n\,\Bigl[\,(1-\theta)\,F^{n-1} \;+\; \theta\,F^n\Bigr],
 $$
 
-其中 $M$ 称为质量矩阵，$A$ 称为刚度矩阵，源自对拉普拉斯算子的离散化。把所有已知量移到右侧后，我们在每个时间步需求解的线性系统是：
+其中 $M$ 称为质量矩阵，$A$ 称为刚度矩阵，源自对拉普拉斯算子的离散化。
+
+$$
+M_{ij} = 
+$$
+
+
+把所有已知量移到右侧后，我们在每个时间步需求解的线性系统是：
 
 $$
 \bigl(M + k_n\,\theta\,A\bigr)\,U^n
@@ -787,9 +794,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDU4NjMyMzgsLTE1OTcyMzg2ODMsMT
-gzMzUzMjU3NCwxMTg5MzQ3MzMzLDE4MzYxNjgxMzgsNzMwMTc5
-NzUwLDYxODczNzM4NiwtOTg5Mzc5NzE4LC0yNTMyMTI5MTMsLT
-E0NzUxMjM0NzgsLTQzNjE1OTMxMywtMTkwNDU3OTAzNywxMTk0
-NDEzNjI5LC00MTc4NjczODFdfQ==
+eyJoaXN0b3J5IjpbMTk1NTcyMjYwNCwtMTg0NTg2MzIzOCwtMT
+U5NzIzODY4MywxODMzNTMyNTc0LDExODkzNDczMzMsMTgzNjE2
+ODEzOCw3MzAxNzk3NTAsNjE4NzM3Mzg2LC05ODkzNzk3MTgsLT
+I1MzIxMjkxMywtMTQ3NTEyMzQ3OCwtNDM2MTU5MzEzLC0xOTA0
+NTc5MDM3LDExOTQ0MTM2MjksLTQxNzg2NzM4MV19
 -->
