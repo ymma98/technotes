@@ -463,25 +463,65 @@ static void compute_flux_matrix(const InputVector &W,
 首先计算出出现在通量矩阵中的压力项，然后计算矩阵前 $dim$ 列，这些列对应于动量项：
 
 ```cpp
-const typename InputVector::value_type pressure = compute_pressure(W);
+        const typename InputVector::value_type pressure = compute_pressure(W);
 
-for (unsigned int d = 0; d < dim; ++d) // d 对应 i
-{
-    for (unsigned int e = 0; e < dim; ++e) // e 对应 s
-        flux[first_momentum_component + d][e] =
-            W[first_momentum_component + d] *
-            W[first_momentum_component + e] / W[density_component];
+        for (unsigned int d = 0; d < dim; ++d)
+          {
+            for (unsigned int e = 0; e < dim; ++e)
+              flux[first_momentum_component + d][e] =
+                W[first_momentum_component + d] *
+                W[first_momentum_component + e] / W[density_component];
 
-    flux[first_momentum_component + d][d] += pressure;
-}
+            flux[first_momentum_component + d][d] += pressure;
+          }
+```
+Then the terms for the density (i.e. mass conservation), and, lastly, conservation of energy:
+```cpp
+        for (unsigned int d = 0; d < dim; ++d)
+          flux[density_component][d] = W[first_momentum_component + d];
+
+        for (unsigned int d = 0; d < dim; ++d)
+          flux[energy_component][d] = W[first_momentum_component + d] /
+                                      W[density_component] *
+                                      (W[energy_component] + pressure);
+      }
 ```
 
+在领域的边界和悬挂节点上，我们使用数值通量函数来强制执行边界条件。这个例程是基本的Lax-Friedrich通量，带有一个稳定化参数a。它的形式已经在引言中给出：
+
+```cpp
+      template <typename InputVector>
+      static void numerical_normal_flux(
+        const Tensor<1, dim>                                       &normal,
+        const InputVector                                          &Wplus,
+        const InputVector                                          &Wminus,
+        const double                                                alpha,
+        std::array<typename InputVector::value_type, n_components> &normal_flux)
+      {
+        ndarray<typename InputVector::value_type,
+                EulerEquations<dim>::n_components,
+                dim>
+          iflux, oflux;
+
+        compute_flux_matrix(Wplus, iflux);
+        compute_flux_matrix(Wminus, oflux);
+
+        for (unsigned int di = 0; di < n_components; ++di)
+          {
+            normal_flux[di] = 0;
+            for (unsigned int d = 0; d < dim; ++d)
+              normal_flux[di] += 0.5 * (iflux[di][d] + oflux[di][d]) * normal[d];
+
+            normal_flux[di] += 0.5 * alpha * (Wplus[di] - Wminus[di]);
+          }
+      }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODczMzcxNzIsLTYwMTIzMTYxMywtMT
-ExNDQ3MjM5OSw4MDk5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUw
-Miw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0Nj
-E2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIy
-LC0xODgzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxOD
-kzODg2LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3
-MDBdfQ==
+eyJoaXN0b3J5IjpbMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNj
+AxMjMxNjEzLC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5
+NCwyMDYwNDMxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzND
+YxNjgyMCw1MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NTgxMTcz
+LDE2NzY5ODMzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUyMD
+A0NTI1LDE4NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3Nzcx
+OTJdfQ==
 -->
