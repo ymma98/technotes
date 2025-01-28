@@ -410,8 +410,11 @@ namespace Step26
   // 本函数中，我们分配自由度、构建约束 (constraints) 并根据正确的大小初始化
   // 线性代数对象。同时，我们也使用库函数构造质量矩阵和拉普拉斯矩阵。
   // 
-  // 注意，这里在装配矩阵时没有考虑悬挂节点约束（AffineConstraints 参数使用了默认
-  // 空对象）。我们会在 run() 中将这些约束“压缩”到矩阵中。
+  // 在装配(assemble)质量矩阵和拉普拉斯矩阵时，
+  // 没有把悬挂节点约束 (hanging node constraints) 直接纳入装配。
+  因为在时间循环的 `run()` 函数中，
+  // 我们会先把这两个矩阵组合成一个【系统矩阵】(system_matrix)，
+  // 然后再 ‘condense’ 这些悬挂节点约束
   template <int dim>
   void HeatEquation<dim>::setup_system()
   {
@@ -778,9 +781,9 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTcyMzg2ODMsMTgzMzUzMjU3NCwxMT
-g5MzQ3MzMzLDE4MzYxNjgxMzgsNzMwMTc5NzUwLDYxODczNzM4
-NiwtOTg5Mzc5NzE4LC0yNTMyMTI5MTMsLTE0NzUxMjM0NzgsLT
-QzNjE1OTMxMywtMTkwNDU3OTAzNywxMTk0NDEzNjI5LC00MTc4
-NjczODFdfQ==
+eyJoaXN0b3J5IjpbNzY3ODgxMDc3LC0xNTk3MjM4NjgzLDE4Mz
+M1MzI1NzQsMTE4OTM0NzMzMywxODM2MTY4MTM4LDczMDE3OTc1
+MCw2MTg3MzczODYsLTk4OTM3OTcxOCwtMjUzMjEyOTEzLC0xND
+c1MTIzNDc4LC00MzYxNTkzMTMsLTE5MDQ1NzkwMzcsMTE5NDQx
+MzYyOSwtNDE3ODY3MzgxXX0=
 -->
