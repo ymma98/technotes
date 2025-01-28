@@ -306,13 +306,29 @@ $$
   #include <deal.II/numerics/solution_transfer.h>
 ```
 
-然后，如引言中提到的，我们使用各种Trilinos包作为线性求解器以及自动微分。这些在以下包含文件中。由于deal.ll提供了对基本Trilinos矩阵、预处理器和求解器的接口，因此我们将它们类似于deal.ll线性代数结构进行包含。
+然后，如引言中提到的，我们使用各种Trilinos包作为线性求解器以及自动微分。这些在以下包含文件中
+
+```cpp
+  #include <deal.II/lac/trilinos_sparse_matrix.h>
+  #include <deal.II/lac/trilinos_precondition.h>
+  #include <deal.II/lac/trilinos_solver.h>
+```
+
+Sacado是Trilinos中的自动微分包，用于找到完全隐式牛顿迭代的雅可比矩阵：
+
+```cpp
+  #include <Sacado.hpp>
+```
+
+```cpp
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzUxOTc0NzEsMjA2MDQzMTUwMiw5Mj
-IwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIw
-LC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xOD
-gzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2
-LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsND
-U5NDQ5MTk1LDExMDExOTA4NTddfQ==
+eyJoaXN0b3J5IjpbLTgwNDY2MTUxMSwyMDYwNDMxNTAyLDkyMj
+A2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MTY4MjAs
+LTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjIsLTE4OD
+M5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1LDE4NjE4OTM4ODYs
+LTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcwMCw0NT
+k0NDkxOTUsMTEwMTE5MDg1N119
 -->
