@@ -145,7 +145,7 @@ $$
 
 
 
-我们使用时间步进方法来代替上述方程中的时间导数。为简化起见，我们定义在时间步 $n$ 时的空间残差 $\mathbf{B}(\mathbf{w}_n)(\mathbf{z})$：
+我们使用时间步进方法来代替上述方程中的时间导数。为简化起见，我们定义在时间步 $n$ 时的空间残差 $\mathbf{B}(\mathbf{w}_n)(\mathbf{z})$ (即与时间导数无关项的和)：
 
 $$
 \mathbf{B}(\mathbf{w}_n)(\mathbf{z})
@@ -198,7 +198,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYxODg1OTg0LDUyMDA0NTI1LDE4NjE4OT
-M4ODYsLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcw
-MCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
+eyJoaXN0b3J5IjpbLTE4ODM5ODQzNjgsNjYxODg1OTg0LDUyMD
+A0NTI1LDE4NjE4OTM4ODYsLTEzOTk0Njk0MjQsLTExOTc3Nzcx
+OTIsMTU4NjIxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
 -->
