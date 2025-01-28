@@ -57,6 +57,7 @@ nav:
     - dealii-08_非线性椭圆方程: FEM/dealii-08_非线性椭圆方程.md
     - dealii-09_矢量方程: FEM/dealii-09_矢量方程.md
     - dealii-10_含时方程: FEM/dealii-10_含时方程.md
+    - dealii-11_综合(EulerEq): FEM/dealii-11_综合(EulerEq).md
     - paraview使用: FEM/paraview使用.md
   - python:
       - pdb: python/pdb.md
