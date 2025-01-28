@@ -52,9 +52,12 @@ $$
 其中 $M$ 称为质量矩阵，$A$ 称为刚度矩阵，源自对拉普拉斯算子的离散化。
 
 $$
-M_{ij} = 
+M_{i j}=\int_{\Omega} \phi_i(\mathbf{x}) \phi_j(\mathbf{x}) d \Omega
 $$
 
+$$
+A_{i j}=\int_{\Omega} \nabla \phi_i(\mathbf{x}) \cdot \nabla \phi_j(\mathbf{x}) d \Omega
+$$
 
 把所有已知量移到右侧后，我们在每个时间步需求解的线性系统是：
 
@@ -794,7 +797,7 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk1NTcyMjYwNCwtMTg0NTg2MzIzOCwtMT
+eyJoaXN0b3J5IjpbLTE2NDM4OTAyOCwtMTg0NTg2MzIzOCwtMT
 U5NzIzODY4MywxODMzNTMyNTc0LDExODkzNDczMzMsMTgzNjE2
 ODEzOCw3MzAxNzk3NTAsNjE4NzM3Mzg2LC05ODkzNzk3MTgsLT
 I1MzIxMjkxMywtMTQ3NTEyMzQ3OCwtNDM2MTU5MzEzLC0xOTA0
