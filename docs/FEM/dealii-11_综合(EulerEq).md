@@ -556,9 +556,7 @@ $$
 \mathbf{G}(\mathbf{w}) = (g_1 \rho, g_2 \rho, g_3 \rho, 0, \rho \mathbf{g} \cdot \mathbf{v})^T
 $$
 
-这里展示的是三维情况。更具体地说，我们仅考虑：$\mathbf{g} = (0, 0, -1)^T \quad \text{在 3D 中，或} \quad \mathbf{g} = (0, -1)^T \quad \text{在 2D 中}$
-
-这自然引出了以下函数：
+这里展示的是三维情况。更具体地说，我们仅考虑：在 3D 中 $\mathbf{g} = (0, 0, -1)^T$，或在 2D 中$\mathbf{g} = (0, -1)^T$
 
 
 ```cpp
@@ -584,7 +582,7 @@ $$
       }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxMjMwODcwOCwxOTMzNzE3MjEsMTg4Mz
+eyJoaXN0b3J5IjpbMTQ1NzcwNjMyMCwxOTMzNzE3MjEsMTg4Mz
 kxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMTE0NDcy
 Mzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAyLDkyMj
 A2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MTY4MjAs
