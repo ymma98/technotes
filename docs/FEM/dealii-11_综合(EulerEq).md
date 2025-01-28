@@ -81,6 +81,31 @@ $$
 \int_{\Omega} \nabla \cdot \mathbf{F}(\mathbf{w}) \cdot \mathbf{z} \, dx =- \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx+ \int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \cdot \mathbf{z} \, ds
 $$
 
+因此弱形式变为: 
+
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx- \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx+ \int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \cdot \mathbf{z} \, ds = 0
+$$
+
+### 3. 引入数值通量
+
+在边界 $\partial \Omega$ 上，直接使用 $\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}$ 可能导致数值不稳定，特别是在高对流流动非线性问题中。因此，引入数值通量 $\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$，其中 $\mathbf{w}^+$ 和 $\mathbf{w}^-$ 分别表示边界两侧的解。
+
+替换边界项:
+
+$$
+\int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \, z \, ds \approx \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds
+$$
+
+这里，$z^+$ 通常表示测试函数在边界的上游侧值。
+
+因此，弱形式变为:
+
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot z \, dx - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds = 0
+$$
+
+
 并用数值通量 $\mathbf{H}$ 来近似边界通量：
 
 $$
@@ -156,7 +181,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDU2OTkwNzI1LDE4NjE4OTM4ODYsLTEzOT
-k0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcwMCw0NTk0NDkx
-OTUsMTEwMTE5MDg1N119
+eyJoaXN0b3J5IjpbMjEzODUzMTkwNywxODYxODkzODg2LC0xMz
+k5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsNDU5NDQ5
+MTk1LDExMDExOTA4NTddfQ==
 -->
