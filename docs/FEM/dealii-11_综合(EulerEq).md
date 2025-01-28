@@ -351,7 +351,7 @@ struct EulerEquations
 }
 ```
 
-首先，我们定义一些变量来描述解向量（solution vector）的各个components。这包括系统中component的数量（欧拉方程在每个空间方向上都有一个动量项，再加上能量和密度项，因此总共有 $dim + 2$ 个component），以及描述解向量中第一个动量组件、密度组件和能量密度组件索引的函数。
+首先，我们定义一些变量来描述解向量（solution vector）的各个components。这包括系统中component的数量（欧拉方程在每个空间方向上都有一个动量项，再加上能量和密度项，因此总共有 $dim + 2$ 个component），以及描述解向量中第一个动量component、密度component和能量密度component索引的函数。
 
 请注意，所有这些数值都依赖于空间维度；以通用的方式（而不是通过隐式约定）定义它们，使得代码更具灵活性，并且在以后扩展它（例如向方程添加更多组件）时更容易。
 
@@ -370,10 +370,10 @@ This Markdown version maintains clarity while ensuring all equations are properl
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDc0NzIzNTgsMjA2MDQzMTUwMiw5Mj
-IwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIw
-LC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIyLC0xOD
-gzOTg0MzY4LDY2MTg4NTk4NCw1MjAwNDUyNSwxODYxODkzODg2
-LC0xMzk5NDY5NDI0LC0xMTk3Nzc3MTkyLDE1ODYyMTU3MDAsND
-U5NDQ5MTk1LDExMDExOTA4NTddfQ==
+eyJoaXN0b3J5IjpbMTE2ODE0MjUwOSwyMDYwNDMxNTAyLDkyMj
+A2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MTY4MjAs
+LTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjIsLTE4OD
+M5ODQzNjgsNjYxODg1OTg0LDUyMDA0NTI1LDE4NjE4OTM4ODYs
+LTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMTU4NjIxNTcwMCw0NT
+k0NDkxOTUsMTEwMTE5MDg1N119
 -->
