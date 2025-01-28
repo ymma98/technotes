@@ -91,19 +91,14 @@ $$
 
 $$
 \mathbf{B}(\mathbf{w}_n)(\mathbf{z})
-= - \int_{\Omega} \bigl(\mathbf{F}(\mathbf{w}_n), \nabla \mathbf{z}\bigr)
-+ h^\eta \bigl(\nabla \mathbf{w}_n, \nabla \mathbf{z}\bigr)
-+ \int_{\partial \Omega} \bigl(\mathbf{H}(\mathbf{w}_n^+, \mathbf{w}_n^-, \mathbf{n}), \mathbf{z}\bigr)
-- \int_{\Omega} \bigl(\mathbf{G}(\mathbf{w}_n), \mathbf{z}\bigr).
+= - \int_{\Omega} \bigl(\mathbf{F}(\mathbf{w}_n), \nabla \mathbf{z}\bigr)+ h^\eta \bigl(\nabla \mathbf{w}_n, \nabla \mathbf{z}\bigr)+ \int_{\partial \Omega} \bigl(\mathbf{H}(\mathbf{w}_n^+, \mathbf{w}_n^-, \mathbf{n}), \mathbf{z}\bigr)- \int_{\Omega} \bigl(\mathbf{G}(\mathbf{w}_n), \mathbf{z}\bigr).
 $$
 
 在每个时间步，我们的完整离散化要求对任意测试函数 $\mathbf{z}$ 所得到的残差为零：
 
 $$
 \mathbf{R}(\mathbf{W}_{n+1})(\mathbf{z})
-= \int_{\Omega} \Bigl(\frac{\mathbf{w}_{n+1} - \mathbf{w}_n}{\delta t}, \mathbf{z}\Bigr)
-+ \theta \,\mathbf{B}(\mathbf{w}_{n+1})
-+ (1 - \theta)\,\mathbf{B}(\mathbf{w}_n)
+= \int_{\Omega} \Bigl(\frac{\mathbf{w}_{n+1} - \mathbf{w}_n}{\delta t}, \mathbf{z}\Bigr)+ \theta \,\mathbf{B}(\mathbf{w}_{n+1})+ (1 - \theta)\,\mathbf{B}(\mathbf{w}_n)
 = 0,
 $$
 
@@ -145,6 +140,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTk0Njk0MjQsLTExOTc3NzcxOTIsMT
-U4NjIxNTcwMCw0NTk0NDkxOTUsMTEwMTE5MDg1N119
+eyJoaXN0b3J5IjpbMTg2MTg5Mzg4NiwtMTM5OTQ2OTQyNCwtMT
+E5Nzc3NzE5MiwxNTg2MjE1NzAwLDQ1OTQ0OTE5NSwxMTAxMTkw
+ODU3XX0=
 -->
