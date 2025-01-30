@@ -600,7 +600,7 @@ enum BoundaryKind
 
 然而，这个函数在 C++ 语言层面存在一个小问题：输出向量 $\mathbf{w}_{\text{minus}}$ 当然会被修改，因此它不应该是 `const` 参数。然而，在下面的实现中，它被定义为 `const`，这是为了让代码能够编译。
 
-出现这个问题的原因是，我们在 $\mathbf{w}_{\text{minus}}$ 类型为 `Table<2, Sacado::Fad::DFad<double>>` 时调用该函数。该类型表示一个二维表，其中索引分别代表求积点（quadrature point）和向量分量。我们以 `W_{\text{minus}}[q]` 作为最后一个参数调用该函数，而对二维表进行下标访问时，会得到一个表示一维向量的临时访问对象（accessor object），这正是我们想要的行为。
+出现这个问题的原因是，我们在 $\mathbf{w}_{\text{minus}}$ 类型为 `Table<2, Sacado::Fad::DFad<double>>` 时调用该函数。该类型表示一个二维表，其中索引分别代表求积点（quadrature point）和向量分量。我们以 `Wminus[q]` 作为最后一个参数调用该函数，而对二维表进行下标访问时，会得到一个表示一维向量的临时访问对象（accessor object），这正是我们想要的行为。
 
 问题在于，根据 C++ 1998 和 2003 标准，临时访问对象不能绑定到非 `const` 引用参数，而这正是我们希望在这里实现的（这个问题将在下一个标准中修复，通过 rvalue 引用来解决）。
 
@@ -614,11 +614,11 @@ This Markdown version maintains clarity and structure while ensuring that mathem
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1OD
-Q5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1
-LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksOD
-A5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAz
-LDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwtNjIxMj
-M5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2
-OF19
+eyJoaXN0b3J5IjpbNzA4OTEyNDUyLC02NzkwMDg1NDIsNjEzOT
+g3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNzE3MjEs
+MTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMT
+E0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAy
+LDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MT
+Y4MjAsLTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjJd
+fQ==
 -->
