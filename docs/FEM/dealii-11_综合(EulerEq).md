@@ -608,17 +608,12 @@ enum BoundaryKind
 
 在目前没有更好的解决方案的情况下，我们选择一种务实的方法，即使它并不完美，具体实现如下：
 
-```
-
-This Markdown version maintains clarity and structure while ensuring that mathematical expressions are properly enclosed within `$$...$$` or `$...$`. Let me know if you need any refinements!
-```
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA4OTEyNDUyLC02NzkwMDg1NDIsNjEzOT
-g3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNzE3MjEs
-MTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMT
-E0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAy
-LDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MT
-Y4MjAsLTYyMTIzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjJd
-fQ==
+eyJoaXN0b3J5IjpbLTEzNTk2MjE5MDgsLTY3OTAwODU0Miw2MT
+M5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcy
+MSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLT
+ExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1
+MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUzND
+YxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMy
+Ml19
 -->
