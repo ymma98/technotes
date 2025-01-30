@@ -607,9 +607,46 @@ enum BoundaryKind
 
 这么做也限制了可用在这个函数模板中的数据类型：如果我们换成普通向量类型，那么被标记为 `const` 后就没法再写入了。眼下没有更好的解决方案，所以我们只好采用这套实用但并不完美的方案。
 
+```cpp
+template <typename DataVector>
+static void
+compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
+               const Tensor<1, dim>                         &normal_vector,
+               const DataVector                             &Wplus,
+               const Vector<double> &boundary_values,
+               /* 
+                * 注意这里: Wminus 是 const 形参, 
+                * 但我们却在函数体内对它做写操作 (见下方 Wminus[c] = ...).
+                * 这是因为 Wminus 可能是一个临时"访问器"对象, 
+                * C++98/03 中只能用 const 引用接收临时对象.
+                * 在这种情况下,"const"修饰的是这个"访问器"自身, 
+                * 而真正的底层数据仍然是可写的.
+                */
+               const DataVector     &Wminus)
+{
+  for (unsigned int c = 0; c < n_components; ++c)
+    switch (boundary_kind[c])
+      {
+        case inflow_boundary:
+          {
+            // 入口边界: 指定某分量 c 的外侧值 = 给定的 boundary_values(c)
+            Wminus[c] = boundary_values(c);
+            break;
+          }
 
+        case outflow_boundary:
+          {
+            // 出口边界: 外侧值和内侧相同
+            Wminus[c] = Wplus[c];
+            break;
+          }
+
+        // 其他情况略...
+      }
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNTU5MTk2NCwxMjk5NzczMjYsMjAyMj
+eyJoaXN0b3J5IjpbMjAzODE4OTMxMywxMjk5NzczMjYsMjAyMj
 A2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4
 LDE0NTc3MDYzMjAsMTkzMzcxNzIxLDE4ODM5MTE3MzUsLTIwOD
 czMzcxNzIsLTYwMTIzMTYxMywtMTExNDQ3MjM5OSw4MDk5ODM2
