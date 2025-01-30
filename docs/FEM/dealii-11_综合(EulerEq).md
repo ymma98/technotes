@@ -582,13 +582,57 @@ $$
       }
 ```
 
+另一个需要处理的问题是边界条件。为此，首先定义目前可以处理的边界条件类型：
+
+```cpp
+enum BoundaryKind
+{
+    inflow_boundary,
+    outflow_boundary,
+    no_penetration_boundary,
+    pressure_boundary
+};
+```
+
+接下来的问题是如何决定在每种边界上该做什么。为此，请回忆介绍部分的内容，边界条件是通过在边界外部选择一个值 $\mathbf{w}^-$（给定一个非均匀性 $\mathbf{j}$，以及可能的解值 $\mathbf{w}^+$ 在内部）来指定的。这些值随后被传递给数值通量函数：
+
+$$
+H(w+,w−,n)\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})
+$$
+
+用于定义边界对双线性形式的贡献。
+
+在某些情况下，边界条件可以针对解向量的每个分量单独指定。例如，如果分量 $c$ 被标记为流入边界（inflow），则：
+
+wc−=jcw_c^- = j_c
+
+如果是流出边界（outflow），则：
+
+wc−=wc+w_c^- = w_c^+
+
+这两个简单情况首先在下面的函数中处理。
+
+然而，这个函数在 C++ 语言层面存在一个小问题：输出向量 $\mathbf{w}_{\text{minus}}$ 当然会被修改，因此它不应该是 `const` 参数。然而，在下面的实现中，它被定义为 `const`，这是为了让代码能够编译。
+
+出现这个问题的原因是，我们在 $\mathbf{w}_{\text{minus}}$ 类型为 `Table<2, Sacado::Fad::DFad<double>>` 时调用该函数。该类型表示一个二维表，其中索引分别代表求积点（quadrature point）和向量分量。我们以 `W_{\text{minus}}[q]` 作为最后一个参数调用该函数，而对二维表进行下标访问时，会得到一个表示一维向量的临时访问对象（accessor object），这正是我们想要的行为。
+
+问题在于，根据 C++ 1998 和 2003 标准，临时访问对象不能绑定到非 `const` 引用参数，而这正是我们希望在这里实现的（这个问题将在下一个标准中修复，通过 rvalue 引用来解决）。
+
+在这里，我们通过让输出参数成为 `const` 进行绕过，这是因为 `const` 仅作用于访问对象，而不是它所指向的表，因此仍然可以对其进行写入。这种技巧虽然不太优雅，但它限制了该函数所能使用的模板参数类型——例如，普通向量不适用，因为标记为 `const` 后无法修改。
+
+在目前没有更好的解决方案的情况下，我们选择一种务实的方法，即使它并不完美，具体实现如下：
+
+```
+
+This Markdown version maintains clarity and structure while ensuring that mathematical expressions are properly enclosed within `$$...$$` or `$...$`. Let me know if you need any refinements!
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5Mz
-M3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2
-MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0LDIwNj
-A0MzE1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIw
-LDUzNDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Nj
-k4MzMyMiwtMTg4Mzk4NDM2OCw2NjE4ODU5ODQsNTIwMDQ1MjVd
-fQ==
+eyJoaXN0b3J5IjpbODE0MzkxODE0LDEzNTg0OTMyMjgsMTQ1Nz
+cwNjMyMCwxOTMzNzE3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3
+MiwtNjAxMjMxNjEzLC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MD
+Q4NzQ5NCwyMDYwNDMxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAy
+LDUzNDYxNjgyMCw1MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NT
+gxMTczLDE2NzY5ODMzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0
+XX0=
 -->
