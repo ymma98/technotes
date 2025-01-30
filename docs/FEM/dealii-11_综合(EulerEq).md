@@ -594,9 +594,9 @@ enum BoundaryKind
 };
 ```
 
-接下来的问题是如何决定在每种边界上该做什么。边界条件是通过在边界外部选择一个值 $\mathbf{w}^-$（给定一个非均匀性 $\mathbf{j}$，以及可能的内部解值 $\mathbf{w}^+$ ）来指定的。这些值随后被传递给数值通量函数$\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$ 用于定义边界对双线性形式的贡献。
+接下来的问题是如何决定在每种边界上该做什么。边界条件是通过在边界外部选择一个值 $\mathbf{w}^-$（给定一个“边界上给定的外部数据”或“外部源项/不均匀项 $\mathbf{j}$，以及可能的内部解值 $\mathbf{w}^+$ ）来指定的。这些值随后被传递给数值通量函数$\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$ 用于定义边界对双线性形式的贡献。
 
-在某些情况下，边界条件可以针对解向量的每个分量单独指定。例如，如果分量 $c$ 被标记为流入边界（inflow），则 $w_c^−=j_c$ 如果是流出边界（outflow），则：$w_c^- = w_c^+$ 这两个简单情况首先在下面的函数中处理。
+在某些情况下，边界条件可以针对解向量的每个分量单独指定。例如，如果分量 $c$ 被标记为流入边界（inflow），则 $w_c^−=j_c$, 也就是说把该分量的外侧值直接指定成函数 $j_c$​ 的值; 如果是流出边界（outflow），则：$w_c^- = w_c^+$, 表示外侧解就与内侧相同. 这两个简单情况首先在下面的函数中处理。
 
 然而，这个函数在 C++ 语言层面存在一个小问题：输出向量 $\mathbf{w}_{\text{minus}}$ 当然会被修改，因此它不应该是 `const` 参数。然而，在下面的实现中，它被定义为 `const`，这是为了让代码能够编译。
 
@@ -609,11 +609,11 @@ enum BoundaryKind
 在目前没有更好的解决方案的情况下，我们选择一种务实的方法，即使它并不完美，具体实现如下：
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTk2MjE5MDgsLTY3OTAwODU0Miw2MT
-M5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcy
-MSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLT
-ExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1
-MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUzND
-YxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMy
-Ml19
+eyJoaXN0b3J5IjpbMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMz
+k4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNzIx
+LDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMTIzMTYxMywtMT
+ExNDQ3MjM5OSw4MDk5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUw
+Miw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0Nj
+E2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIy
+XX0=
 -->
