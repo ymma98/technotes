@@ -596,15 +596,7 @@ enum BoundaryKind
 
 接下来的问题是如何决定在每种边界上该做什么。边界条件是通过在边界外部选择一个值 $\mathbf{w}^-$（给定一个非均匀性 $\mathbf{j}$，以及可能的内部解值 $\mathbf{w}^+$ ）来指定的。这些值随后被传递给数值通量函数$\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$ 用于定义边界对双线性形式的贡献。
 
-在某些情况下，边界条件可以针对解向量的每个分量单独指定。例如，如果分量 $c$ 被标记为流入边界（inflow），则：
-
-wc−=jcw_c^- = j_c
-
-如果是流出边界（outflow），则：
-
-wc−=wc+w_c^- = w_c^+
-
-这两个简单情况首先在下面的函数中处理。
+在某些情况下，边界条件可以针对解向量的每个分量单独指定。例如，如果分量 $c$ 被标记为流入边界（inflow），则 $w_c^−=j_c$ 如果是流出边界（outflow），则：$w_c^- = w_c^+$ 这两个简单情况首先在下面的函数中处理。
 
 然而，这个函数在 C++ 语言层面存在一个小问题：输出向量 $\mathbf{w}_{\text{minus}}$ 当然会被修改，因此它不应该是 `const` 参数。然而，在下面的实现中，它被定义为 `const`，这是为了让代码能够编译。
 
@@ -622,11 +614,11 @@ This Markdown version maintains clarity and structure while ensuring that mathem
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjEwMzk4MTEsNjEzOTg3NjYwLDEzNT
-g0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNzE3MjEsMTg4MzkxMTcz
-NSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMTE0NDcyMzk5LD
-gwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAyLDkyMjA2NDEw
-MywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MTY4MjAsLTYyMT
-IzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjIsLTE4ODM5ODQz
-NjhdfQ==
+eyJoaXN0b3J5IjpbLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1OD
+Q5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1
+LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksOD
+A5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAz
+LDIwNjA0MzE1MDIsNTM0NjE2ODIwLDUzNDYxNjgyMCwtNjIxMj
+M5ODQyLC04MzY1ODExNzMsMTY3Njk4MzMyMiwtMTg4Mzk4NDM2
+OF19
 -->
