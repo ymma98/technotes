@@ -594,7 +594,7 @@ enum BoundaryKind
 };
 ```
 
-接下来的问题是如何决定在每种边界上该做什么。为此，请回忆介绍部分的内容，边界条件是通过在边界外部选择一个值 $\mathbf{w}^-$（给定一个非均匀性 $\mathbf{j}$，以及可能的解值 $\mathbf{w}^+$ 在内部）来指定的。这些值随后被传递给数值通量函数$\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$ 用于定义边界对双线性形式的贡献。
+接下来的问题是如何决定在每种边界上该做什么。边界条件是通过在边界外部选择一个值 $\mathbf{w}^-$（给定一个非均匀性 $\mathbf{j}$，以及可能的内部解值 $\mathbf{w}^+$ ）来指定的。这些值随后被传递给数值通量函数$\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$ 用于定义边界对双线性形式的贡献。
 
 在某些情况下，边界条件可以针对解向量的每个分量单独指定。例如，如果分量 $c$ 被标记为流入边界（inflow），则：
 
@@ -622,11 +622,11 @@ This Markdown version maintains clarity and structure while ensuring that mathem
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1Nz
-cwNjMyMCwxOTMzNzE3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3
-MiwtNjAxMjMxNjEzLC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MD
-Q4NzQ5NCwyMDYwNDMxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAy
-LDUzNDYxNjgyMCw1MzQ2MTY4MjAsLTYyMTIzOTg0MiwtODM2NT
-gxMTczLDE2NzY5ODMzMjIsLTE4ODM5ODQzNjgsNjYxODg1OTg0
-XX0=
+eyJoaXN0b3J5IjpbLTE3MjEwMzk4MTEsNjEzOTg3NjYwLDEzNT
+g0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNzE3MjEsMTg4MzkxMTcz
+NSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMTE0NDcyMzk5LD
+gwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAyLDkyMjA2NDEw
+MywyMDYwNDMxNTAyLDUzNDYxNjgyMCw1MzQ2MTY4MjAsLTYyMT
+IzOTg0MiwtODM2NTgxMTczLDE2NzY5ODMzMjIsLTE4ODM5ODQz
+NjhdfQ==
 -->
