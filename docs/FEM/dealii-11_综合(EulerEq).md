@@ -598,22 +598,21 @@ enum BoundaryKind
 
 在某些情况下，边界条件可以针对解向量的每个分量单独指定。例如，如果分量 $c$ 被标记为流入边界（inflow），则 $w_c^−=j_c$, 也就是说把该分量的外侧值直接指定成函数 $j_c$​ 的值; 如果是流出边界（outflow），则：$w_c^- = w_c^+$, 表示外侧解就与内侧相同. 这两个简单情况首先在下面的函数中处理。
 
-然而，这个函数在 C++ 语言层面存在一个小问题：输出向量 $\mathbf{w}_{\text{minus}}$ 当然会被修改，因此它不应该是 `const` 参数。然而，在下面的实现中，它被定义为 `const`，这是为了让代码能够编译。
 
-出现这个问题的原因是，我们在 $\mathbf{w}_{\text{minus}}$ 类型为 `Table<2, Sacado::Fad::DFad<double>>` 时调用该函数。该类型表示一个二维表，其中索引分别代表求积点（quadrature point）和向量分量。我们以 `Wminus[q]` 作为最后一个参数调用该函数，而对二维表进行下标访问时，会得到一个表示一维向量的临时访问对象（accessor object），这正是我们想要的行为。
+不过这里有一个小麻烦，在 C++ 语言层面会显得不太优雅：我们要对输出向量 `Wminus` 进行修改，所以它本不应该是一个 `const` 形参。但在随后的实现里，你会看到它却被写成了 `const`，这是为了让代码可以编译通过。
 
-问题在于，根据 C++ 1998 和 2003 标准，临时访问对象不能绑定到非 `const` 引用参数，而这正是我们希望在这里实现的（这个问题将在下一个标准中修复，通过 rvalue 引用来解决）。
+之所以如此，是因为我们调用这个函数的地方， `Wminus`  的类型是 `Table<2, Sacado::Fad::DFad<double>>`，也就是一个二维的表格（下标分别表示积分点和解向量分量）。当我们调用函数时，写的是 `wminus[q]` 作为最后一个实参。对一个二维 `Table` 进行下标访问，会产生一个**临时访问器对象**（它相当于一个“一维向量”的视图），正是我们所需要的类型。
 
-在这里，我们通过让输出参数成为 `const` 进行绕过，这是因为 `const` 仅作用于访问对象，而不是它所指向的表，因此仍然可以对其进行写入。这种技巧虽然不太优雅，但它限制了该函数所能使用的模板参数类型——例如，普通向量不适用，因为标记为 `const` 后无法修改。
+然而根据 C++ 1998 和 2003 标准，临时对象不能被绑定到一个**非常量**的引用形参上（C++11 的 rvalue 引用可以解决这个问题，但当时的标准还不支持）。因此，我们不得不让该形参是 `const`，以便临时对象能够被绑定上。这样做虽然可以让我们继续写入数据（因为真正被 `const` 修饰的是这个访问器对象，而不是它底层指向的表数据），但这仍然是一个不太优雅的“黑科技”做法。
 
-在目前没有更好的解决方案的情况下，我们选择一种务实的方法，即使它并不完美，具体实现如下：
+这么做也限制了可用在这个函数模板中的数据类型：如果我们换成普通向量类型，那么被标记为 `const` 后就没法再写入了。眼下没有更好的解决方案，所以我们只好采用这套实用但并不完美的方案。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMz
-k4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNzIx
-LDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMTIzMTYxMywtMT
-ExNDQ3MjM5OSw4MDk5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUw
-Miw5MjIwNjQxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0Nj
-E2ODIwLC02MjEyMzk4NDIsLTgzNjU4MTE3MywxNjc2OTgzMzIy
-XX0=
+eyJoaXN0b3J5IjpbMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OT
+AwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIw
+LDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MD
+EyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0
+LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDIsNTM0Nj
+E2ODIwLDUzNDYxNjgyMCwtNjIxMjM5ODQyLC04MzY1ODExNzNd
+fQ==
 -->
