@@ -2115,9 +2115,94 @@ $$
             }
 ```
 
-同样，如果我们要使用迭代求解器，我们使用Aztec的GMRES求解器。我们也可以在这里使用Trilinos包装器类来处理迭代求解器和预条件器，但是我们选择直接使用Aztec求解器。对于给定的问题，Aztec的内部预条件器实现优于deal.II的包装器类，因此我们在AztecOO求解器中使用ILU-T预条件，并设置一些可以从参数文件中更改的选项。 还有两个实际问题：由于我们已经将右侧和解向量构建为deal.II向量对象（与矩阵不同，矩阵是Trilinos对象），我们必须将Trilinos Epetra向量传递给求解器。幸运的是，它们支持“视图”的概念，因此我们只需传入deal.II向量的指针即可。我们必须为向量提供`Epetra_Map`，以设置并行分布，这在串行中只是一个虚拟对象。最简单的方法是让矩阵获取其映射，然后我们就可以准备好使用它进行矩阵-向量乘积。 其次，Aztec求解器希望我们传入Trilinos `Epetra_CrsMatrix`，而不是deal.II包装器类本身。因此，我们通过命令trilinos_matrix()`访问Trilinos包装器类中的实际Trilinos矩阵。Trilinos希望矩阵是非常量，因此我们必须手动删除常量性，使用const_cast。
+同样，如果我们要使用迭代求解器，我们使用Aztec的GMRES求解器。我们也可以在这里使用Trilinos包装器类来处理迭代求解器和预条件器，但是我们选择直接使用Aztec求解器。对于给定的问题，Aztec的内部预条件器实现优于deal.II的包装器类，因此我们在AztecOO求解器中使用ILU-T预条件，并设置一些可以从参数文件中更改的选项。 还有两个实际问题：由于我们已经将右侧和解向量构建为deal.II向量对象（与矩阵不同，矩阵是Trilinos对象），我们必须将Trilinos Epetra向量传递给求解器。幸运的是，它们支持“视图”的概念，因此我们只需传入deal.II向量的指针即可。我们必须为向量提供`Epetra_Map`，以设置并行分布，这在串行中只是一个虚拟对象。最简单的方法是让矩阵获取其映射，然后我们就可以准备好使用它进行矩阵-向量乘积。 其次，Aztec求解器希望我们传入Trilinos `Epetra_CrsMatrix`，而不是deal.II包装器类本身。因此，我们通过命令`trilinos_matrix()`访问Trilinos包装器类中的实际Trilinos矩阵。Trilinos希望矩阵是非常量，因此我们必须手动删除常量性，使用const_cast。
+
+```cpp
+          case Parameters::Solver::gmres:
+            {
+              Epetra_Vector x(View,
+                              system_matrix.trilinos_matrix().DomainMap(),
+                              newton_update.begin());
+              Epetra_Vector b(View,
+                              system_matrix.trilinos_matrix().RangeMap(),
+                              right_hand_side.begin());
+
+              AztecOO solver;
+              solver.SetAztecOption(
+                AZ_output,
+                (parameters.output == Parameters::Solver::quiet ? AZ_none :
+                                                                  AZ_all));
+              solver.SetAztecOption(AZ_solver, AZ_gmres);
+              solver.SetRHS(&b);
+              solver.SetLHS(&x);
+
+              solver.SetAztecOption(AZ_precond, AZ_dom_decomp);
+              solver.SetAztecOption(AZ_subdomain_solve, AZ_ilut);
+              solver.SetAztecOption(AZ_overlap, 0);
+              solver.SetAztecOption(AZ_reorder, 0);
+
+              solver.SetAztecParam(AZ_drop, parameters.ilut_drop);
+              solver.SetAztecParam(AZ_ilut_fill, parameters.ilut_fill);
+              solver.SetAztecParam(AZ_athresh, parameters.ilut_atol);
+              solver.SetAztecParam(AZ_rthresh, parameters.ilut_rtol);
+
+              solver.SetUserMatrix(
+                const_cast<Epetra_CrsMatrix *>(&system_matrix.trilinos_matrix()));
+
+              solver.Iterate(parameters.max_iterations,
+                             parameters.linear_residual);
+
+              return {solver.NumIters(), solver.TrueResidual()};
+            }
+        }
+
+      DEAL_II_NOT_IMPLEMENTED();
+      return {0, 0};
+    }
+```
+
+#### ConservationLaw::compute_refinement_indicators
+
+这个函数很简单：我们不假定在这里知道什么是好的细化指标。相反，我们假设 EulerEquation 类知道这一点，因此我们只需委托给我们在那里实现的相应函数即可。
+
+```cpp
+    template <int dim>
+    void ConservationLaw<dim>::compute_refinement_indicators(
+      Vector<double> &refinement_indicators) const
+    {
+      EulerEquations<dim>::compute_refinement_indicators(dof_handler,
+                                                         mapping,
+                                                         predictor,
+                                                         refinement_indicators);
+    }
+```
+
+#### ConservationLaw::refine_grid
+
+这里，我们使用之前计算出的细化指标来细化网格。一开始，我们循环遍历所有单元格，标记那些我们认为应该细化的单元格：
+
+```cpp
+    template <int dim>
+    void
+    ConservationLaw<dim>::refine_grid(const Vector<double> &refinement_indicators)
+    {
+      for (const auto &cell : dof_handler.active_cell_iterators())
+        {
+          const unsigned int cell_no = cell->active_cell_index();
+          cell->clear_coarsen_flag();
+          cell->clear_refine_flag();
+
+          if ((cell->level() < parameters.shock_levels) &&
+              (std::fabs(refinement_indicators(cell_no)) > parameters.shock_val))
+            cell->set_refine_flag();
+          else if ((cell->level() > 0) &&
+                   (std::fabs(refinement_indicators(cell_no)) <
+                    0.75 * parameters.shock_val))
+            cell->set_coarsen_flag();
+        }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3Mjk5MjI1OCwxOTA4MjM4NDIwLC0xMz
+eyJoaXN0b3J5IjpbLTIwNzE0MjQ3MywxOTA4MjM4NDIwLC0xMz
 M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
 LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
 Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
