@@ -1574,12 +1574,23 @@ $$
                                    cell->face(face_no)->diameter());
               }
 ```
+
+另一种情况是，我们正在处理一个内部面。在这种情况下，需要区分两种情况：一种是两个单元位于相同的细化级别，另一种是该面位于两个不同细化级别的单元之间。
+
+在第一种情况下，我们无需做任何额外操作：我们使用的是连续有限元，因此面项不会出现在双线性形式中。第二种情况通常也不会导致面项的出现，如果我们强制悬挂节点约束（就像之前的所有教程程序中处理连续有限元的方式），这由 `AffineConstraints` 类与 `DoFTools::make_hanging_node_constraints` 一起完成。然而，在当前程序中，我们选择在不同细化级别的单元之间的面上弱地强制连续性，原因有两个：(i) 我们可以这样做；(ii) 更重要的是，我们需要利用 `AffineConstraints` 类的运算，将残差自动求导以计算牛顿矩阵的元素。如果强制约束也是可行的，但实现起来并不简单，因此我们选择了这种替代方法。
+
+需要决定的是，我们当前处于不同细化级别的两个单元接口的哪一侧。
+
+让我们先考虑邻居单元比当前单元更细化的情况。在这种情况下，我们需要遍历当前单元面上的所有子面，并在每个子面上执行积分。我们在代码中添加了一些断言，以确保我们的逻辑正确，即试图判断邻居子单元的某个面的哪个子面与当前单元的某个子面相匹配——这种防御性编程有助于减少错误。
+
+然后，我们调用用于计算面积分的函数；由于这是一个内部面，因此第五个参数为 `false`，第六个参数被忽略，所以我们再次传递了一个无效值。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwODIzODQyMCwtMTMzOTIyNTY4OSwzMD
-A1NzE1NTEsNTI5MjE5NDI4LDE1NDM0NzQyNiwtMTQ2MTg3MDk2
-Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3Mj
-QxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUs
-MjAzODE4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MD
-A4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjBd
-fQ==
+eyJoaXN0b3J5IjpbMTg0NTA0NzQzLDE5MDgyMzg0MjAsLTEzMz
+kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
+LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
+YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
+LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
+E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
+
 -->
