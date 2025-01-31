@@ -1671,15 +1671,15 @@ $$
 
 $$
 \begin{cases}
-R(\mathbf{U}) = 0, \\
-\mathbf{U}^{(m+1)} = \mathbf{U}^{(m)} - \left[ \mathbf{J}(\mathbf{U}^{(m)}) \right]^{-1} R(\mathbf{U}^{(m)}),
+\mathbf{R}(\mathbf{U}) = 0, \\
+\mathbf{U}^{(m+1)} = \mathbf{U}^{(m)} - \left[ \mathbf{J}(\mathbf{U}^{(m)}) \right]^{-1} \mathbf{R}(\mathbf{U}^{(m)}),
 \end{cases}
 $$
 
 其中：
 
 - $\mathbf{U}$ 是我们求解的未知向量（在有限元中对应所有自由度）。
-- $R(\mathbf{U})$ 是残量（residual），即离散方程 $\mathbf{R}(\mathbf{U}) = 0$。
+- $\mathbf{R}(\mathbf{U})$ 是残量（residual），即离散方程 $\mathbf{R}(\mathbf{U}) = 0$。
 - $\mathbf{J}(\mathbf{U})$ 是残量对未知量的雅可比矩阵，即 $\mathbf{J}(\mathbf{U}) = \frac{\partial \mathbf{R}}{\partial \mathbf{U}}$。
 
 **核心**：每次迭代需要同时组装 $\mathbf{R}(\mathbf{U}^{(m)})$ 和 $\mathbf{J}(\mathbf{U}^{(m)})$ 并求解增量 $\Delta \mathbf{U}^{(m)} = -\mathbf{J}^{-1} \mathbf{R}$，进而更新：
@@ -2587,7 +2587,7 @@ $$
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NDIwNDEyMiwtNDA1ODg1NzYsMTkwOD
+eyJoaXN0b3J5IjpbMTgzMDIyMzQ3MCwtNDA1ODg1NzYsMTkwOD
 IzODQyMCwtMTMzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4
 LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNz
 EwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAy
