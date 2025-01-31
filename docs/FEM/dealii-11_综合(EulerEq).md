@@ -2332,26 +2332,39 @@ $$
           }
 
       output_results();
-      Vector<double> newton_update(dof_handler.n_dofs());
+      Vector<double> newton_update(dof_handler.n_dofs());
 
-      double time        = 0;
-      double next_output = time + parameters.output_step;
+      double time        = 0;
+      double next_output = time + parameters.output_step;
 
-      predictor = old_solution;
-      while (time < parameters.final_time)
-        {
-          std::cout << "T=" << time << std::endl
-                    << "   Number of active cells:       "
-                    << triangulation.n_active_cells() << std::endl
-                    << "   Number of degrees of freedom: " << dof_handler.n_dofs()
-                    << std::endl
-                    << std::endl;
+      predictor = old_solution;
+      while (time < parameters.final_time)
+        {
+          std::cout << "T=" << time << std::endl
+                    << "   Number of active cells:       "
+                    << triangulation.n_active_cells() << std::endl
+                    << "   Number of degrees of freedom: " << dof_handler.n_dofs()
+                    << std::endl
+                    << std::endl;
 
-          std::cout << "   NonLin Res     Lin Iter       Lin Res" << std::endl
-                    << "   _____________________________________" << std::endl;
+          std::cout << "   NonLin Res     Lin Iter       Lin Res" << std::endl
+                    << "   _____________________________________" << std::endl;
 ```
+
+接下来是内部牛顿迭代过程，用于在每个时间步求解非线性问题。其工作方式如下：首先将矩阵和右端向量重置为零，然后组装线性系统。如果右端向量的范数足够小，则声明牛顿迭代已收敛。否则，我们求解线性系统，使用牛顿增量更新当前解，并输出收敛信息。最后，我们检查牛顿迭代次数是否超出上限（10 次）——如果超出，这表明迭代可能已经发散，继续迭代不会有任何好处。如果发生这种情况，我们抛出一个异常，该异常将在 `main()` 中被捕获，并在程序终止前显示状态信息。
+
+需要注意的是，我们编写 `AssertThrow` 宏的方式基本等同于以下代码：
+
+```cpp
+if (!(nonlin_iter <= 10))
+    throw ExcMessage("No convergence in nonlinear solver");
+```
+
+唯一的重要区别是，`AssertThrow` 还会确保所抛出的异常携带有关其生成位置的信息（如文件名和行号）。在这里，这并不是一个关键问题，因为这种异常仅可能发生在一个特定的位置。然而，当我们需要查明错误发生的位置时，它通常是一个非常有用的工具。
+
+```c
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg1NjgxNTI0LDE5MDgyMzg0MjAsLTEzMz
+eyJoaXN0b3J5IjpbMzg4MDI4ODIzLDE5MDgyMzg0MjAsLTEzMz
 kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
 LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
 YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
