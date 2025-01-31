@@ -1172,232 +1172,269 @@ $$
 出于同样的原因，由于 `Function` 对象在构造时需要知道其向量大小，我们必须在 `AllParameters` 类的构造函数中至少初始化另一个 `FunctionParser` 对象，即用于描述初始条件的那个。
 
 ```cpp
-      template <int dim>
-      struct AllParameters : public Solver,
-                             public Refinement,
-                             public Flux,
-                             public Output
-      {
-        static const unsigned int max_n_boundaries = 10;
+      template <int dim>
+      struct AllParameters : public Solver,
+                             public Refinement,
+                             public Flux,
+                             public Output
+      {
+        static const unsigned int max_n_boundaries = 10;
 
-        struct BoundaryConditions
-        {
-          std::array<typename EulerEquations<dim>::BoundaryKind,
-                     EulerEquations<dim>::n_components>
-            kind;
+        struct BoundaryConditions
+        {
+          std::array<typename EulerEquations<dim>::BoundaryKind,
+                     EulerEquations<dim>::n_components>
+            kind;
 
-          FunctionParser<dim> values;
+          FunctionParser<dim> values;
 
-          BoundaryConditions();
-        };
+          BoundaryConditions();
+        };
 
-        AllParameters();
+        AllParameters();
 
-        double diffusion_power;
+        double diffusion_power;
 
-        double time_step, final_time;
-        double theta;
-        bool   is_stationary;
+        double time_step, final_time;
+        double theta;
+        bool   is_stationary;
 
-        std::string mesh_filename;
+        std::string mesh_filename;
 
-        FunctionParser<dim> initial_conditions;
-        BoundaryConditions  boundary_conditions[max_n_boundaries];
+        FunctionParser<dim> initial_conditions;
+        BoundaryConditions  boundary_conditions[max_n_boundaries];
 
-        static void declare_parameters(ParameterHandler &prm);
-        void        parse_parameters(ParameterHandler &prm);
-      };
+        static void declare_parameters(ParameterHandler &prm);
+        void        parse_parameters(ParameterHandler &prm);
+      };
 
-      template <int dim>
-      AllParameters<dim>::BoundaryConditions::BoundaryConditions()
-        : values(EulerEquations<dim>::n_components)
-      {
-        std::fill(kind.begin(),
-                  kind.end(),
-                  EulerEquations<dim>::no_penetration_boundary);
-      }
+      template <int dim>
+      AllParameters<dim>::BoundaryConditions::BoundaryConditions()
+        : values(EulerEquations<dim>::n_components)
+      {
+        std::fill(kind.begin(),
+                  kind.end(),
+                  EulerEquations<dim>::no_penetration_boundary);
+      }
 
-      template <int dim>
-      AllParameters<dim>::AllParameters()
-        : diffusion_power(0.)
-        , time_step(1.)
-        , final_time(1.)
-        , theta(.5)
-        , is_stationary(true)
-        , initial_conditions(EulerEquations<dim>::n_components)
-      {}
+      template <int dim>
+      AllParameters<dim>::AllParameters()
+        : diffusion_power(0.)
+        , time_step(1.)
+        , final_time(1.)
+        , theta(.5)
+        , is_stationary(true)
+        , initial_conditions(EulerEquations<dim>::n_components)
+      {}
 
-      template <int dim>
-      void AllParameters<dim>::declare_parameters(ParameterHandler &prm)
-      {
-        prm.declare_entry("mesh",
-                          "grid.inp",
-                          Patterns::Anything(),
-                          "input file name");
+      template <int dim>
+      void AllParameters<dim>::declare_parameters(ParameterHandler &prm)
+      {
+        prm.declare_entry("mesh",
+                          "grid.inp",
+                          Patterns::Anything(),
+                          "input file name");
 
-        prm.declare_entry("diffusion power",
-                          "2.0",
-                          Patterns::Double(),
-                          "power of mesh size for diffusion");
+        prm.declare_entry("diffusion power",
+                          "2.0",
+                          Patterns::Double(),
+                          "power of mesh size for diffusion");
 
-        prm.enter_subsection("time stepping");
-        {
-          prm.declare_entry("time step",
-                            "0.1",
-                            Patterns::Double(0),
-                            "simulation time step");
-          prm.declare_entry("final time",
-                            "10.0",
-                            Patterns::Double(0),
-                            "simulation end time");
-          prm.declare_entry("theta scheme value",
-                            "0.5",
-                            Patterns::Double(0, 1),
-                            "value for theta that interpolated between explicit "
-                            "Euler (theta=0), Crank-Nicolson (theta=0.5), and "
-                            "implicit Euler (theta=1).");
-        }
-        prm.leave_subsection();
+        prm.enter_subsection("time stepping");
+        {
+          prm.declare_entry("time step",
+                            "0.1",
+                            Patterns::Double(0),
+                            "simulation time step");
+          prm.declare_entry("final time",
+                            "10.0",
+                            Patterns::Double(0),
+                            "simulation end time");
+          prm.declare_entry("theta scheme value",
+                            "0.5",
+                            Patterns::Double(0, 1),
+                            "value for theta that interpolated between explicit "
+                            "Euler (theta=0), Crank-Nicolson (theta=0.5), and "
+                            "implicit Euler (theta=1).");
+        }
+        prm.leave_subsection();
 
-        for (unsigned int b = 0; b < max_n_boundaries; ++b)
-          {
-            prm.enter_subsection("boundary_" + Utilities::int_to_string(b));
-            {
-              prm.declare_entry("no penetration",
-                                "false",
-                                Patterns::Bool(),
-                                "whether the named boundary allows gas to "
-                                "penetrate or is a rigid wall");
+        for (unsigned int b = 0; b < max_n_boundaries; ++b)
+          {
+            prm.enter_subsection("boundary_" + Utilities::int_to_string(b));
+            {
+              prm.declare_entry("no penetration",
+                                "false",
+                                Patterns::Bool(),
+                                "whether the named boundary allows gas to "
+                                "penetrate or is a rigid wall");
 
-              for (unsigned int di = 0; di < EulerEquations<dim>::n_components;
-                   ++di)
-                {
-                  prm.declare_entry("w_" + Utilities::int_to_string(di),
-                                    "outflow",
-                                    Patterns::Selection(
-                                      "inflow|outflow|pressure"),
-                                    "<inflow|outflow|pressure>");
+              for (unsigned int di = 0; di < EulerEquations<dim>::n_components;
+                   ++di)
+                {
+                  prm.declare_entry("w_" + Utilities::int_to_string(di),
+                                    "outflow",
+                                    Patterns::Selection(
+                                      "inflow|outflow|pressure"),
+                                    "<inflow|outflow|pressure>");
 
-                  prm.declare_entry("w_" + Utilities::int_to_string(di) +
-                                      " value",
-                                    "0.0",
-                                    Patterns::Anything(),
-                                    "expression in x,y,z");
-                }
-            }
-            prm.leave_subsection();
-          }
+                  prm.declare_entry("w_" + Utilities::int_to_string(di) +
+                                      " value",
+                                    "0.0",
+                                    Patterns::Anything(),
+                                    "expression in x,y,z");
+                }
+            }
+            prm.leave_subsection();
+          }
 
-        prm.enter_subsection("initial condition");
-        {
-          for (unsigned int di = 0; di < EulerEquations<dim>::n_components; ++di)
-            prm.declare_entry("w_" + Utilities::int_to_string(di) + " value",
-                              "0.0",
-                              Patterns::Anything(),
-                              "expression in x,y,z");
-        }
-        prm.leave_subsection();
+        prm.enter_subsection("initial condition");
+        {
+          for (unsigned int di = 0; di < EulerEquations<dim>::n_components; ++di)
+            prm.declare_entry("w_" + Utilities::int_to_string(di) + " value",
+                              "0.0",
+                              Patterns::Anything(),
+                              "expression in x,y,z");
+        }
+        prm.leave_subsection();
 
-        Parameters::Solver::declare_parameters(prm);
-        Parameters::Refinement::declare_parameters(prm);
-        Parameters::Flux::declare_parameters(prm);
-        Parameters::Output::declare_parameters(prm);
-      }
+        Parameters::Solver::declare_parameters(prm);
+        Parameters::Refinement::declare_parameters(prm);
+        Parameters::Flux::declare_parameters(prm);
+        Parameters::Output::declare_parameters(prm);
+      }
 
-      template <int dim>
-      void AllParameters<dim>::parse_parameters(ParameterHandler &prm)
-      {
-        mesh_filename   = prm.get("mesh");
-        diffusion_power = prm.get_double("diffusion power");
+      template <int dim>
+      void AllParameters<dim>::parse_parameters(ParameterHandler &prm)
+      {
+        mesh_filename   = prm.get("mesh");
+        diffusion_power = prm.get_double("diffusion power");
 
-        prm.enter_subsection("time stepping");
-        {
-          time_step = prm.get_double("time step");
-          if (time_step == 0)
-            {
-              is_stationary = true;
-              time_step     = 1.0;
-              final_time    = 1.0;
-            }
-          else
-            is_stationary = false;
+        prm.enter_subsection("time stepping");
+        {
+          time_step = prm.get_double("time step");
+          if (time_step == 0)
+            {
+              is_stationary = true;
+              time_step     = 1.0;
+              final_time    = 1.0;
+            }
+          else
+            is_stationary = false;
 
-          final_time = prm.get_double("final time");
-          theta      = prm.get_double("theta scheme value");
-        }
-        prm.leave_subsection();
+          final_time = prm.get_double("final time");
+          theta      = prm.get_double("theta scheme value");
+        }
+        prm.leave_subsection();
 
-        for (unsigned int boundary_id = 0; boundary_id < max_n_boundaries;
-             ++boundary_id)
-          {
-            prm.enter_subsection("boundary_" +
-                                 Utilities::int_to_string(boundary_id));
-            {
-              std::vector<std::string> expressions(
-                EulerEquations<dim>::n_components, "0.0");
+        for (unsigned int boundary_id = 0; boundary_id < max_n_boundaries;
+             ++boundary_id)
+          {
+            prm.enter_subsection("boundary_" +
+                                 Utilities::int_to_string(boundary_id));
+            {
+              std::vector<std::string> expressions(
+                EulerEquations<dim>::n_components, "0.0");
 
-              const bool no_penetration = prm.get_bool("no penetration");
+              const bool no_penetration = prm.get_bool("no penetration");
 
-              for (unsigned int di = 0; di < EulerEquations<dim>::n_components;
-                   ++di)
-                {
-                  const std::string boundary_type =
-                    prm.get("w_" + Utilities::int_to_string(di));
+              for (unsigned int di = 0; di < EulerEquations<dim>::n_components;
+                   ++di)
+                {
+                  const std::string boundary_type =
+                    prm.get("w_" + Utilities::int_to_string(di));
 
-                  if ((di < dim) && (no_penetration == true))
-                    boundary_conditions[boundary_id].kind[di] =
-                      EulerEquations<dim>::no_penetration_boundary;
-                  else if (boundary_type == "inflow")
-                    boundary_conditions[boundary_id].kind[di] =
-                      EulerEquations<dim>::inflow_boundary;
-                  else if (boundary_type == "pressure")
-                    boundary_conditions[boundary_id].kind[di] =
-                      EulerEquations<dim>::pressure_boundary;
-                  else if (boundary_type == "outflow")
-                    boundary_conditions[boundary_id].kind[di] =
-                      EulerEquations<dim>::outflow_boundary;
-                  else
-                    AssertThrow(false, ExcNotImplemented());
+                  if ((di < dim) && (no_penetration == true))
+                    boundary_conditions[boundary_id].kind[di] =
+                      EulerEquations<dim>::no_penetration_boundary;
+                  else if (boundary_type == "inflow")
+                    boundary_conditions[boundary_id].kind[di] =
+                      EulerEquations<dim>::inflow_boundary;
+                  else if (boundary_type == "pressure")
+                    boundary_conditions[boundary_id].kind[di] =
+                      EulerEquations<dim>::pressure_boundary;
+                  else if (boundary_type == "outflow")
+                    boundary_conditions[boundary_id].kind[di] =
+                      EulerEquations<dim>::outflow_boundary;
+                  else
+                    AssertThrow(false, ExcNotImplemented());
 
-                  expressions[di] =
-                    prm.get("w_" + Utilities::int_to_string(di) + " value");
-                }
+                  expressions[di] =
+                    prm.get("w_" + Utilities::int_to_string(di) + " value");
+                }
 
-              boundary_conditions[boundary_id].values.initialize(
-                FunctionParser<dim>::default_variable_names(),
-                expressions,
-                std::map<std::string, double>());
-            }
-            prm.leave_subsection();
-          }
+              boundary_conditions[boundary_id].values.initialize(
+                FunctionParser<dim>::default_variable_names(),
+                expressions,
+                std::map<std::string, double>());
+            }
+            prm.leave_subsection();
+          }
 
-        prm.enter_subsection("initial condition");
-        {
-          std::vector<std::string> expressions(EulerEquations<dim>::n_components,
-                                               "0.0");
-          for (unsigned int di = 0; di < EulerEquations<dim>::n_components; ++di)
-            expressions[di] =
-              prm.get("w_" + Utilities::int_to_string(di) + " value");
-          initial_conditions.initialize(
-            FunctionParser<dim>::default_variable_names(),
-            expressions,
-            std::map<std::string, double>());
-        }
-        prm.leave_subsection();
+        prm.enter_subsection("initial condition");
+        {
+          std::vector<std::string> expressions(EulerEquations<dim>::n_components,
+                                               "0.0");
+          for (unsigned int di = 0; di < EulerEquations<dim>::n_components; ++di)
+            expressions[di] =
+              prm.get("w_" + Utilities::int_to_string(di) + " value");
+          initial_conditions.initialize(
+            FunctionParser<dim>::default_variable_names(),
+            expressions,
+            std::map<std::string, double>());
+        }
+        prm.leave_subsection();
 
-        Parameters::Solver::parse_parameters(prm);
-        Parameters::Refinement::parse_parameters(prm);
-        Parameters::Flux::parse_parameters(prm);
-        Parameters::Output::parse_parameters(prm);
-      }
-    } // namespace Parameters
+        Parameters::Solver::parse_parameters(prm);
+        Parameters::Refinement::parse_parameters(prm);
+        Parameters::Flux::parse_parameters(prm);
+        Parameters::Output::parse_parameters(prm);
+      }
+    } // namespace Parameters
 ```
+
+### Conservation law class
+
+最终，我们定义了一个真正执行操作的类，它处理我们之前定义的所有欧拉方程和参数相关的内容。其公共接口基本与以往相同（现在构造函数接受一个文件名，该文件用于读取参数，并通过命令行传递）。私有函数接口的设计也与通常的结构类似，其中 `assemble_system` 函数被拆分为三个部分：其中一个部分包含对所有单元的主循环，而另外两个部分分别用于计算单元积分和面积分。
+
+```cpp
+    template <int dim>
+    class ConservationLaw
+    {
+    public:
+      ConservationLaw(const char *input_filename);
+      void run();
+
+    private:
+      void setup_system();
+
+      void assemble_system();
+      void assemble_cell_term(const FEValues<dim>                        &fe_v,
+                              const std::vector<types::global_dof_index> &dofs);
+      void assemble_face_term(
+        const unsigned int                          face_no,
+        const FEFaceValuesBase<dim>                &fe_v,
+        const FEFaceValuesBase<dim>                &fe_v_neighbor,
+        const std::vector<types::global_dof_index> &dofs,
+        const std::vector<types::global_dof_index> &dofs_neighbor,
+        const bool                                  external_face,
+        const unsigned int                          boundary_id,
+        const double                                face_diameter);
+
+      std::pair<unsigned int, double> solve(Vector<double> &solution);
+
+      void compute_refinement_indicators(Vector<double> &indicator) const;
+      void refine_grid(const Vector<double> &indicator);
+
+      void output_results() const;
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDU5MDI1NTEsLTE0NjE4NzA5NjYsOD
-A1MTk2ODE0LDQwMTcxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUw
-ODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMz
-gxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0
-Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5Mz
-M3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2
-MTNdfQ==
+eyJoaXN0b3J5IjpbOTQ4MzAxNzA5LC0xNDYxODcwOTY2LDgwNT
+E5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3
+LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MT
+g5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIs
+NjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNz
+E3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEz
+XX0=
 -->
