@@ -1398,39 +1398,42 @@ $$
 最终，我们定义了一个真正执行操作的类，它处理我们之前定义的所有欧拉方程和参数相关的内容。其公共接口基本与以往相同（现在构造函数接受一个文件名，该文件用于读取参数，并通过命令行传递）。私有函数接口的设计也与通常的结构类似，其中 `assemble_system` 函数被拆分为三个部分：其中一个部分包含对所有单元的主循环，而另外两个部分分别用于计算单元积分和面积分。
 
 ```cpp
-    template <int dim>
-    class ConservationLaw
-    {
-    public:
-      ConservationLaw(const char *input_filename);
-      void run();
+    template <int dim>
+    class ConservationLaw
+    {
+    public:
+      ConservationLaw(const char *input_filename);
+      void run();
 
-    private:
-      void setup_system();
+    private:
+      void setup_system();
 
-      void assemble_system();
-      void assemble_cell_term(const FEValues<dim>                        &fe_v,
-                              const std::vector<types::global_dof_index> &dofs);
-      void assemble_face_term(
-        const unsigned int                          face_no,
-        const FEFaceValuesBase<dim>                &fe_v,
-        const FEFaceValuesBase<dim>                &fe_v_neighbor,
-        const std::vector<types::global_dof_index> &dofs,
-        const std::vector<types::global_dof_index> &dofs_neighbor,
-        const bool                                  external_face,
-        const unsigned int                          boundary_id,
-        const double                                face_diameter);
+      void assemble_system();
+      void assemble_cell_term(const FEValues<dim>                        &fe_v,
+                              const std::vector<types::global_dof_index> &dofs);
+      void assemble_face_term(
+        const unsigned int                          face_no,
+        const FEFaceValuesBase<dim>                &fe_v,
+        const FEFaceValuesBase<dim>                &fe_v_neighbor,
+        const std::vector<types::global_dof_index> &dofs,
+        const std::vector<types::global_dof_index> &dofs_neighbor,
+        const bool                                  external_face,
+        const unsigned int                          boundary_id,
+        const double                                face_diameter);
 
-      std::pair<unsigned int, double> solve(Vector<double> &solution);
+      std::pair<unsigned int, double> solve(Vector<double> &solution);
 
-      void compute_refinement_indicators(Vector<double> &indicator) const;
-      void refine_grid(const Vector<double> &indicator);
+      void compute_refinement_indicators(Vector<double> &indicator) const;
+      void refine_grid(const Vector<double> &indicator);
 
-      void output_results() const;
+      void output_results() const;
 ```
 
+前几个成员变量也相当标准。需要注意的是，我们定义了一个映射对象，在程序中用于组装各项计算（我们会将其传递给每个 `FEValues` 和 `FEFaceValues` 对象）；我们使用的映射只是标准的 $Q_1$ 映射——换句话说，并没有什么特别的复杂性——但在这里声明一个映射对象并在整个程序中使用它，会使后续需要更改时更加简单。这一点实际上相当重要：众所周知，对于包含欧拉方程的跨音速模拟，如果边界逼近阶次不够高，则即使当 $h \to 0$，计算仍然不会收敛。
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ4MzAxNzA5LC0xNDYxODcwOTY2LDgwNT
+eyJoaXN0b3J5IjpbMTU0MzQ3NDI2LC0xNDYxODcwOTY2LDgwNT
 E5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3
 LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MT
 g5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIs
