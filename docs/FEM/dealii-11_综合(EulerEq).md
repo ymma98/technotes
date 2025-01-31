@@ -741,14 +741,48 @@ $$
 
 这个词的由来是指三维体积的二维投影（我们看到的是3d流体的2d图片）。在计算流体动力学中，我们可以通过考虑什么导致了密度变化来了解这种效应。Schlieren图因此是通过绘制$s=|\nabla \rho|^2$ 生成的；显然，在冲击波和其他高动态位置，$s$的值很大。如果用户希望（通过在输入文件中指定），我们还希望除了上面列出的其他派生量之外，生成这些schlieren图。
 
-这些算法的实现是为了计算从解决我们问题的量中导出的量，并将它们输出到数据文件中，这一任务依赖于 **DataPostprocessor*类。它有广泛的文档，并且该类的其他用途也可以在 **step-29** 中找到。因此我们在此不再赘述。
+这些算法的实现是为了计算从解决我们问题的量中导出的量，并将它们输出到数据文件中，这一任务依赖于 `DataPostprocessor`类。
+
+
+```cpp
+      class Postprocessor : public DataPostprocessor<dim>
+      {
+      public:
+        Postprocessor(const bool do_schlieren_plot);
+
+        virtual void evaluate_vector_field(
+          const DataPostprocessorInputs::Vector<dim> &inputs,
+          std::vector<Vector<double>> &computed_quantities) const override;
+
+        virtual std::vector<std::string> get_names() const override;
+
+        virtual std::vector<
+          DataComponentInterpretation::DataComponentInterpretation>
+        get_data_component_interpretation() const override;
+
+        virtual UpdateFlags get_needed_update_flags() const override;
+
+      private:
+        const bool do_schlieren_plot;
+      };
+    };
+
+    template <int dim>
+    const double EulerEquations<dim>::gas_gamma = 1.4;
+
+    template <int dim>
+    EulerEquations<dim>::Postprocessor::Postprocessor(
+      const bool do_schlieren_plot)
+      : do_schlieren_plot(do_schlieren_plot)
+    {}
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMDE0OCwyMTA5NjYyMTMwLDE1NzI0MT
-UwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIw
-MzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwOD
-U0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5
-MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMz
-E2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0XX0=
-
+eyJoaXN0b3J5IjpbMTUzODY5MTQ4NSwyMTA5NjYyMTMwLDE1Nz
+I0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1
+LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OT
+AwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIw
+LDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MD
+EyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0
+XX0=
 -->
