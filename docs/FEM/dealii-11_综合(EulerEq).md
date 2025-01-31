@@ -878,16 +878,29 @@ $$
 这里需要指出一点：下面的所有类都没有构造函数来初始化各个成员变量。不过这并不是问题，因为我们会从输入文件中读取这些类中声明的所有变量（或者间接地：`ParameterHandler` 对象会从输入文件中读取它们，并提供这些值），这样它们就会被正确初始化。如果某个变量在输入文件中根本没有指定，这同样不是问题：在这种情况下，`ParameterHandler` 类会采用 `declare_parameters()` 函数声明该条目时指定的默认值。
 
 ```cpp
-    namespace Parameters
-    {
+    namespace Parameters
+    {
 ```
 
+####  Parameters::Solver
+
+处理线性求解器的参数。它提供的参数包括用于指定求解器的选项（例如 GMRES 作为一般非对称不定系统的求解器，或稀疏直接求解器）、输出量的控制，以及调整阈值不完全 LU 分解（ILUT）的各种参数，该分解用于 GMRES 的预处理。
+
+具体来说，ILUT 接受以下参数：
+
+- `ilut_fill`：在执行 ILU 分解时需要添加的额外条目数。
+- `ilut_atol`，`ilut_rtol`：在构造预处理器时，对于某些问题，糟糕的条件数（或单纯的运气不好）可能导致预处理器的条件非常差。因此，可以通过在对角线上添加扰动来改善原始矩阵，并基于此构造一个条件稍好的预处理器。`ATOL` 是一个绝对扰动量，被添加到对角线上以形成预处理器，而 `RTOL` 是一个缩放因子，满足 $r_{tol} \geq 1$。
+- `ilut_drop`：ILUT 会丢弃任何小于此值的数值。这是控制该预处理器使用内存量的一种方式。
+
+每个参数的含义也在 `declare_parameters()` 函数中 `ParameterHandler::declare_entry` 调用的第三个参数中进行了简要说明。
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NTI2NTUwLC0xNDYxODcwOTY2LDgwNT
-E5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3
-LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MT
-g5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIs
-NjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNz
-E3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEz
-XX0=
+eyJoaXN0b3J5IjpbMTk3NDg4ODE1OCwtMTQ2MTg3MDk2Niw4MD
+UxOTY4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4
+NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzOD
+E4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQy
+LDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMz
+cxNzIxLDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMTIzMTYx
+M119
 -->
