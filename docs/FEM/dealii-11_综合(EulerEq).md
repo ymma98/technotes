@@ -1443,6 +1443,7 @@ $$
       const QGauss<dim - 1> face_quadrature;
 ```
 
+接下来是一些数据向量，它们对应于前一个时间步的解（`old_solution`）、当前解的最佳猜测（`current_solution`，我们称之为“猜测”，因为计算它的牛顿迭代可能尚未收敛），以及下一个时间步解的预测值，该预测值通过对当前解和前一个解进行外推来计算。`old_solution` 指的是前一个时间步的最终收敛解。
 
 
 ```cpp
@@ -1453,11 +1454,11 @@ $$
       Vector<double> right_hand_side;
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI5MjE5NDI4LDE1NDM0NzQyNiwtMTQ2MT
-g3MDk2Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAs
-MTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMj
-k3MzUsMjAzODE4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3Niwt
-Njc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MD
-YzMjAsMTkzMzcxNzIxLDE4ODM5MTE3MzUsLTIwODczMzcxNzJd
-fQ==
+eyJoaXN0b3J5IjpbMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzND
+c0MjYsLTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4Niwy
+MTA5NjYyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MT
+QyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIw
+MjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5Mz
+IyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1XX0=
+
 -->
