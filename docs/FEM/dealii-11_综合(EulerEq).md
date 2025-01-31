@@ -760,11 +760,11 @@ $$
           std::vector<Vector<double>> &computed_quantities) const override;
         // 返回输出量对应的名称列表
         virtual std::vector<std::string> get_names() const override;
-
+        // 返回各输出分量如何被解释，是矢量分量还是标量分量等
         virtual std::vector<
           DataComponentInterpretation::DataComponentInterpretation>
         get_data_component_interpretation() const override;
-
+        // 返回一个 `UpdateFlags` 集合，用于告诉该后处理在评估时，需要从有限元求解器或后处理框架获得哪些信息
         virtual UpdateFlags get_needed_update_flags() const override;
 
       private:
@@ -867,7 +867,7 @@ $$
 在生成图形输出时，`DataOut` 及其相关类会在每个单元上调用此函数，并可访问每个求积点上的值、梯度、Hessians 和法向量（如果我们正在处理面）。我们要在这里做的是计算我们感兴趣的物理量，并在每个求积点处存储这些量。请注意，在这里我们可以忽略 Hessians（`inputs.solution_hessians`）和法向量（`inputs.normals`）。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NDI1NDAzNjAsODA1MTk2ODE0LDQwMT
+eyJoaXN0b3J5IjpbLTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMT
 cxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcw
 MiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OT
 c3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAs
