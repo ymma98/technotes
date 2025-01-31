@@ -692,9 +692,9 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
 
 另一方面，我们在这里可以定义一个合理的选择：我们简单地查看密度的梯度，并计算：
 
-\[
+$$
 \eta_K = \log(1 + |\nabla \rho(\mathbf{x}_K)|)
-\]
+$$
 
 其中，$\mathbf{x}_K$ 是单元 $K$ 的中心。
 
@@ -733,11 +733,11 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
       }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjk1MDQ1NTMsMTE4MDM3NTcwMiwtMz
-E4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2
-LDIwMjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1OD
-Q5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1
-LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksOD
-A5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAz
-XX0=
+eyJoaXN0b3J5IjpbMTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMT
+gxNDI4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5NzczMjYs
+MjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4ND
+kzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNzIxLDE4ODM5MTE3MzUs
+LTIwODczMzcxNzIsLTYwMTIzMTYxMywtMTExNDQ3MjM5OSw4MD
+k5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDNd
+fQ==
 -->
