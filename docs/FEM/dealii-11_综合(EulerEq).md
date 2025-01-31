@@ -1489,14 +1489,37 @@ $$
 
 #### ConservationLaw::setup_system
 
-每次改变网格时，都会调用以下函数。它所做的只是根据稀疏性模式调整特里诺斯矩阵的大小，而稀疏性模式是我们在之前所有教程程序中生成的。
+每次改变网格时，都会调用以下函数。它所做的只是根据稀疏性模式调整Trilinos 矩阵的大小
+
+```cpp
+    template <int dim>
+    void ConservationLaw<dim>::setup_system()
+    {
+      DynamicSparsityPattern dsp(dof_handler.n_dofs(), dof_handler.n_dofs());
+      DoFTools::make_sparsity_pattern(dof_handler, dsp);
+
+      system_matrix.reinit(dsp);
+    }
+```
+
+#### ConservationLaw::assemble_system
+
+这个函数以及接下来的两个函数是该程序的核心部分：它们组装由牛顿方法应用于非线性守恒方程系统所产生的线性系统。
+
+这个第一个函数将所有组装部分整合到一个例程中，并为每个单元/面分配正确的部分。这些对象的实际组装实现是在接下来的函数中完成的。
+
+在函数的开头，我们进行常规的初始化工作：分配 `FEValues`、`FEFaceValues` 和 `FESubfaceValues` 对象，以执行单元、面和子面的积分（在不同细化级别的相邻单元情况下）。需要注意的是，我们不需要为所有对象存储所有信息（例如值、梯度或求积点的真实位置），因此我们仅让 `FEValues` 类根据需要获取最小集合的 `UpdateFlags`。例如，当为相邻单元使用 `FEFaceValues` 对象时，我们只需要形函数值：对于特定的面，求积点和 $J_x^W$ 的值与当前单元的值相同，而法向量已知是当前单元法向量的相反数。
+
+```cpp
+
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MjgxMTg3MSwzMDA1NzE1NTEsNTI5Mj
-E5NDI4LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQs
-NDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4NywxMTgwMz
-c1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywx
-Mjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMzk4Nz
-Y2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNzIxXX0=
+eyJoaXN0b3J5IjpbLTEzMzkyOTAyMjksMzAwNTcxNTUxLDUyOT
+IxOTQyOCwxNTQzNDc0MjYsLTE0NjE4NzA5NjYsODA1MTk2ODE0
+LDQwMTcxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUwODcsMTE4MD
+M3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMs
+MTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5OD
+c2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMV19
 
 -->
