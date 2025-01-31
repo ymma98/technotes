@@ -1955,8 +1955,65 @@ $$
 ```
 
 计算“对面”稍微复杂一些。如果这是一个内部面，我们可以像上面那样计算，只需使用邻居的独立变量即可。
+
+```cpp
+      if (external_face == false)
+        {
+          for (unsigned int q = 0; q < n_q_points; ++q)
+            for (unsigned int i = 0; i < dofs_per_cell; ++i)
+              {
+                const unsigned int component_i =
+                  fe_v_neighbor.get_fe().system_to_component_index(i).first;
+                Wminus[q][component_i] +=
+                  independent_neighbor_dof_values[i] *
+                  fe_v_neighbor.shape_value_component(i, q, component_i);
+                Wminus_old[q][component_i] +=
+                  old_solution(dof_indices_neighbor[i]) *
+                  fe_v_neighbor.shape_value_component(i, q, component_i);
+              }
+        }
+```
+另一方面，如果这是一个外部边界面，那么 $\mathbf{W}^-$ 的值要么是 $\mathbf{W}^+$ 的函数，要么是预设值，这取决于此处施加的边界条件类型。
+
+为了开始计算，我们首先要确保为该边界指定的边界 ID 在参数对象中确实有相应的数据。接下来，我们计算非齐次项的函数对象。这部分有些复杂：一个给定的边界可能同时具有规定值和隐式值。如果某个特定分量没有规定值，则其计算结果为零，并在后续计算中被忽略。
+
+其余部分由一个专门处理欧拉方程边界条件的函数完成。需要注意的是，由于这里使用了 FAD 变量，敏感性将被适当更新，而这一过程在其他情况下可能会极其复杂。
+
+```cpp
+      else
+        {
+          Assert(boundary_id < Parameters::AllParameters<dim>::max_n_boundaries,
+                 ExcIndexRange(boundary_id,
+                               0,
+                               Parameters::AllParameters<dim>::max_n_boundaries));
+
+          std::vector<Vector<double>> boundary_values(
+            n_q_points, Vector<double>(EulerEquations<dim>::n_components));
+          parameters.boundary_conditions[boundary_id].values.vector_value_list(
+            fe_v.get_quadrature_points(), boundary_values);
+
+          for (unsigned int q = 0; q < n_q_points; ++q)
+            {
+              EulerEquations<dim>::compute_Wminus(
+                parameters.boundary_conditions[boundary_id].kind,
+                fe_v.normal_vector(q),
+                Wplus[q],
+                boundary_values[q],
+                Wminus[q]);
+```
+这里我们假设边界类型、边界法向量和边界数据值在时间推进过程中保持不变。
+```cpp
+              EulerEquations<dim>::compute_Wminus(
+                parameters.boundary_conditions[boundary_id].kind,
+                fe_v.normal_vector(q),
+                Wplus_old[q],
+                boundary_values[q],
+                Wminus_old[q]);
+            }
+        }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MDE1MTI0MCwxOTA4MjM4NDIwLC0xMz
+eyJoaXN0b3J5IjpbLTQxMjIwNDM1MywxOTA4MjM4NDIwLC0xMz
 M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
 LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
 Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
