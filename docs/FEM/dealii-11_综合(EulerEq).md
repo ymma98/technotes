@@ -1827,20 +1827,74 @@ $$+ \sum_{d=1}^{\dim} h^n\left(
 \frac{\partial (\mathbf{z}_i)_{\text{component}_i}}{\partial x_d} \Bigg|_K
 $$
 
-$$
-- \left( \theta \mathbf{G}(\mathbf{w}_{n+1}^{k})_{\text{component}_i} + (1 - \theta) \mathbf{G}(\mathbf{w}_n)_{\text{component}_i}, (\mathbf{z}_i)_{\text{component}_i} \right)_K.
+$$- \left( \theta \mathbf{G}(\mathbf{w}_{n+1}^{k})_{\text{component}_i} + (1 - \theta) \mathbf{G}(\mathbf{w}_n)_{\text{component}_i}, (\mathbf{z}_i)_{\text{component}_i} \right)_K.
 $$
 
 其中，积分默认通过对求积点求和来计算。
 
 我们最初以正向累加残差的所有贡献，以避免对雅可比矩阵条目取负值。然后，在将其累加到 `right_hand_side` 向量时，我们对该残差取负值。
 
+```cpp
+      for (unsigned int i = 0; i < fe_v.dofs_per_cell; ++i)
+        {
+          Sacado::Fad::DFad<double> R_i = 0;
+
+          const unsigned int component_i =
+            fe_v.get_fe().system_to_component_index(i).first;
+```
+每一行（i）的残差都将累积到这个fad变量中。在该行组装结束时，我们将查询该变量的敏感性并将其添加到雅可比矩阵中。
+```cpp
+          for (unsigned int point = 0; point < fe_v.n_quadrature_points; ++point)
+            {
+              if (parameters.is_stationary == false)
+                R_i += 1.0 / parameters.time_step *
+                       (W[point][component_i] - W_old[point][component_i]) *
+                       fe_v.shape_value_component(i, point, component_i) *
+                       fe_v.JxW(point);
+
+              for (unsigned int d = 0; d < dim; ++d)
+                R_i -=
+                  (parameters.theta * flux[point][component_i][d] +
+                   (1.0 - parameters.theta) * flux_old[point][component_i][d]) *
+                  fe_v.shape_grad_component(i, point, component_i)[d] *
+                  fe_v.JxW(point);
+
+              for (unsigned int d = 0; d < dim; ++d)
+                R_i +=
+                  1.0 *
+                  std::pow(fe_v.get_cell()->diameter(),
+                           parameters.diffusion_power) *
+                  (parameters.theta * grad_W[point][component_i][d] +
+                   (1.0 - parameters.theta) * grad_W_old[point][component_i][d]) *
+                  fe_v.shape_grad_component(i, point, component_i)[d] *
+                  fe_v.JxW(point);
+
+              R_i -=
+                (parameters.theta * forcing[point][component_i] +
+                 (1.0 - parameters.theta) * forcing_old[point][component_i]) *
+                fe_v.shape_value_component(i, point, component_i) *
+                fe_v.JxW(point);
+            }
+```
+
+循环结束时，我们需要将灵敏度添加到矩阵，并将残差从右侧减去。Trilinos FAD 数据类型允许我们使用 `R_i.fastAccessDx(k)` 访问导数，因此我们将数据存储在临时数组中。然后，将关于局部自由度的整行信息一次性添加到 Trilinos 矩阵中（它支持我们选择的 数据类型）
+
+```cpp
+          for (unsigned int k = 0; k < dofs_per_cell; ++k)
+            residual_derivatives[k] = R_i.fastAccessDx(k);
+          system_matrix.add(dof_indices[i], dof_indices, residual_derivatives);
+          right_hand_side(dof_indices[i]) -= R_i.val();
+        }
+    }
+```
+
+#### ConservationLaw::assemble_face_term
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzY0NTkxMzUsMTkwODIzODQyMCwtMT
-MzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4LDE1NDM0NzQy
-NiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMD
-k2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4
-NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5NzczMjYsMjAyMj
-A2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4
-XX0=
+eyJoaXN0b3J5IjpbMTkyMjQxMzg2NSwxOTA4MjM4NDIwLC0xMz
+M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
+LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
+Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
+Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMD
+YxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwLDEzNTg0OTMyMjhd
+fQ==
 -->
