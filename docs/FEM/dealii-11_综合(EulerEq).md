@@ -1889,8 +1889,74 @@ $$
 ```
 
 #### ConservationLaw::assemble_face_term
+
+这里，我们基本上做与前一个函数相同的事情。在顶部，我们引入了自变量。由于当前函数还在处理两个单元之间的内部面时使用，因此自变量不仅是当前单元上的自由度，还在内部面情况下包括相邻单元上的自由度。
+
+```cpp
+    template <int dim>
+    void ConservationLaw<dim>::assemble_face_term(
+      const unsigned int                          face_no,
+      const FEFaceValuesBase<dim>                &fe_v,
+      const FEFaceValuesBase<dim>                &fe_v_neighbor,
+      const std::vector<types::global_dof_index> &dof_indices,
+      const std::vector<types::global_dof_index> &dof_indices_neighbor,
+      const bool                                  external_face,
+      const unsigned int                          boundary_id,
+      const double                                face_diameter)
+    {
+      const unsigned int n_q_points    = fe_v.n_quadrature_points;
+      const unsigned int dofs_per_cell = fe_v.dofs_per_cell;
+
+      std::vector<Sacado::Fad::DFad<double>> independent_local_dof_values(
+        dofs_per_cell),
+        independent_neighbor_dof_values(external_face == false ? dofs_per_cell :
+                                                                 0);
+
+      const unsigned int n_independent_variables =
+        (external_face == false ? 2 * dofs_per_cell : dofs_per_cell);
+
+      for (unsigned int i = 0; i < dofs_per_cell; ++i)
+        {
+          independent_local_dof_values[i] = current_solution(dof_indices[i]);
+          independent_local_dof_values[i].diff(i, n_independent_variables);
+        }
+
+      if (external_face == false)
+        for (unsigned int i = 0; i < dofs_per_cell; ++i)
+          {
+            independent_neighbor_dof_values[i] =
+              current_solution(dof_indices_neighbor[i]);
+            independent_neighbor_dof_values[i].diff(i + dofs_per_cell,
+                                                    n_independent_variables);
+          }
+```
+
+接下来，我们需要定义守恒变量 $\mathbf{W}$ 在该面的本侧（$\mathbf{W}^+$）和对侧（$\mathbf{W}^-$）的值，对于 $\mathbf{W} = \mathbf{W}_{n+1}^{k}$ 和 $\mathbf{W} = \mathbf{W}_n$ 这两种情况。"本侧" 的值可以完全按照前一个函数的方式计算，但需要注意的是，`fe_v` 变量现在的类型是 `FEFaceValues` 或 `FESubfaceValues`：
+
+```cpp
+      Table<2, Sacado::Fad::DFad<double>> Wplus(
+        n_q_points, EulerEquations<dim>::n_components),
+        Wminus(n_q_points, EulerEquations<dim>::n_components);
+      Table<2, double> Wplus_old(n_q_points, EulerEquations<dim>::n_components),
+        Wminus_old(n_q_points, EulerEquations<dim>::n_components);
+
+      for (unsigned int q = 0; q < n_q_points; ++q)
+        for (unsigned int i = 0; i < dofs_per_cell; ++i)
+          {
+            const unsigned int component_i =
+              fe_v.get_fe().system_to_component_index(i).first;
+            Wplus[q][component_i] +=
+              independent_local_dof_values[i] *
+              fe_v.shape_value_component(i, q, component_i);
+            Wplus_old[q][component_i] +=
+              old_solution(dof_indices[i]) *
+              fe_v.shape_value_component(i, q, component_i);
+          }
+```
+
+计算“对面”稍微复杂一些。如果这是一个内部面，我们可以像上面那样计算，只需使用邻居的独立变量即可。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyMjQxMzg2NSwxOTA4MjM4NDIwLC0xMz
+eyJoaXN0b3J5IjpbLTE1MDE1MTI0MCwxOTA4MjM4NDIwLC0xMz
 M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
 LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
 Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
