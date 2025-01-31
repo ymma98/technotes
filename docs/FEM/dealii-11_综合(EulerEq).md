@@ -1695,6 +1695,67 @@ $$
 
 其次，我们希望使用自动微分（automatic differentiation）。为此，我们使用 `Sacado::Fad::DFad` 模板，以便计算变量相对于解分量的导数，包括在求积点上的当前解和梯度（它们是自由度的线性组合），以及从这些变量计算的所有内容，如残差，但不包括前一时间步的解。这些变量都存储在一个大的数组中，该数组用于计算残差的单个分量的导数。
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```cpp
     template <int dim>
     void ConservationLaw<dim>::assemble_cell_term(
@@ -2445,65 +2506,65 @@ $$
 ### main
 
 ```cpp
-  int main(int argc, char *argv[])
-  {
-    try
-      {
-        using namespace dealii;
-        using namespace Step33;
+  int main(int argc, char *argv[])
+  {
+    try
+      {
+        using namespace dealii;
+        using namespace Step33;
 
-        if (argc != 2)
-          {
-            std::cout << "Usage:" << argv[0] << " input_file" << std::endl;
-            std::exit(1);
-          }
+        if (argc != 2)
+          {
+            std::cout << "Usage:" << argv[0] << " input_file" << std::endl;
+            std::exit(1);
+          }
 
-        Utilities::MPI::MPI_InitFinalize mpi_initialization(
-          argc, argv, numbers::invalid_unsigned_int);
+        Utilities::MPI::MPI_InitFinalize mpi_initialization(
+          argc, argv, numbers::invalid_unsigned_int);
 
-        AssertThrow(
-          Utilities::MPI::n_mpi_processes(MPI_COMM_WORLD) == 1,
-          ExcMessage(
-            "This program does not support parallel computing via MPI."));
+        AssertThrow(
+          Utilities::MPI::n_mpi_processes(MPI_COMM_WORLD) == 1,
+          ExcMessage(
+            "This program does not support parallel computing via MPI."));
 
-        ConservationLaw<2> cons(argv[1]);
-        cons.run();
-      }
-    catch (std::exception &exc)
-      {
-        std::cerr << std::endl
-                  << std::endl
-                  << "----------------------------------------------------"
-                  << std::endl;
-        std::cerr << "Exception on processing: " << std::endl
-                  << exc.what() << std::endl
-                  << "Aborting!" << std::endl
-                  << "----------------------------------------------------"
-                  << std::endl;
-        return 1;
-      }
-    catch (...)
-      {
-        std::cerr << std::endl
-                  << std::endl
-                  << "----------------------------------------------------"
-                  << std::endl;
-        std::cerr << "Unknown exception!" << std::endl
-                  << "Aborting!" << std::endl
-                  << "----------------------------------------------------"
-                  << std::endl;
-        return 1;
-      };
+        ConservationLaw<2> cons(argv[1]);
+        cons.run();
+      }
+    catch (std::exception &exc)
+      {
+        std::cerr << std::endl
+                  << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        std::cerr << "Exception on processing: " << std::endl
+                  << exc.what() << std::endl
+                  << "Aborting!" << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        return 1;
+      }
+    catch (...)
+      {
+        std::cerr << std::endl
+                  << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        std::cerr << "Unknown exception!" << std::endl
+                  << "Aborting!" << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        return 1;
+      };
 
-    return 0;
-  }
+    return 0;
+  }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQwNTg4NTc2LDE5MDgyMzg0MjAsLTEzMz
-kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
-LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
-YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
-LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
-E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
+eyJoaXN0b3J5IjpbODcwMjIxMjI2LC00MDU4ODU3NiwxOTA4Mj
+M4NDIwLC0xMzM5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0Mjgs
+MTU0MzQ3NDI2LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MT
+AzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIs
+LTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3Nz
+MyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwXX0=
 
 -->
