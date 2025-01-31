@@ -649,6 +649,7 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
 规定的压强边界条件比其他情况更复杂，因为尽管我们直接规定了压强，但实际上我们是在设置能量分量，而该分量将取决于速度和压强。因此，即使这看起来像是狄利克雷（Dirichlet）类型的边界条件，我们仍然会得到能量对速度和密度的敏感性：
 
 ```cpp
+              // 在该边界上指定或已知p，然后根据内侧解(或入口解)去确定别的量（比如速度、密度），再用理想气体公式填充总能量
               case pressure_boundary:
                 {
                   const typename DataVector::value_type density =
@@ -689,7 +690,7 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MDc3OTk0OSwtMzE4MTQyODc3LDU1MD
+eyJoaXN0b3J5IjpbMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MD
 I5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYs
 LTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3Nz
 A2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcy
