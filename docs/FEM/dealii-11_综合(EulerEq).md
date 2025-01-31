@@ -754,10 +754,11 @@ $$
       public:
         Postprocessor(const bool do_schlieren_plot);
 
+        // 核心函数，用于计算需要输出的量
         virtual void evaluate_vector_field(
           const DataPostprocessorInputs::Vector<dim> &inputs,
           std::vector<Vector<double>> &computed_quantities) const override;
-
+        // 返回输出量对应的名称列表
         virtual std::vector<std::string> get_names() const override;
 
         virtual std::vector<
@@ -866,11 +867,11 @@ $$
 在生成图形输出时，`DataOut` 及其相关类会在每个单元上调用此函数，并可访问每个求积点上的值、梯度、Hessians 和法向量（如果我们正在处理面）。我们要在这里做的是计算我们感兴趣的物理量，并在每个求积点处存储这些量。请注意，在这里我们可以忽略 Hessians（`inputs.solution_hessians`）和法向量（`inputs.normals`）。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
-YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
-LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
-E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwx
-NDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3Mz
-M3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0
-XX0=
+eyJoaXN0b3J5IjpbLTE0NDI1NDAzNjAsODA1MTk2ODE0LDQwMT
+cxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcw
+MiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OT
+c3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAs
+MTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOT
+ExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIz
+OTldfQ==
 -->
