@@ -1676,7 +1676,7 @@ $$
 其中，
 
 $$
-\mathbf{B}(\mathbf{w})(\mathbf{z}_i)_K = -(\mathbf{F}(\mathbf{w}), \nabla \mathbf{z}_i)_K + h^n (\nabla \mathbf{w}, \nabla \mathbf{z}_i)_K - (\mathbf{G}(\mathbf{w}), \mathbf{z}_i)_K
+\mathbf{B}(\mathbf{w})(\mathbf{z}_i)_K = -(\mathbf{F}(\mathbf{w}), \nabla \mathbf{z}_i)_K + h^\eta (\nabla \mathbf{w}, \nabla \mathbf{z}_i)_K - (\mathbf{G}(\mathbf{w}), \mathbf{z}_i)_K
 $$
 
 对于两个 $\mathbf{w} = \mathbf{w}_{n+1}^{k}$ 和 $\mathbf{w} = \mathbf{w}_n$，$\mathbf{z}_i$ 是第 $i$ 个向量值测试函数。此外，标量积 $(\mathbf{F}(\mathbf{w}), \nabla \mathbf{z}_i)_K$ 被理解为：
@@ -1695,10 +1695,34 @@ $$
 
 其次，我们希望使用自动微分（automatic differentiation）。为此，我们使用 `Sacado::Fad::DFad` 模板，以便计算变量相对于解分量的导数，包括在求积点上的当前解和梯度（它们是自由度的线性组合），以及从这些变量计算的所有内容，如残差，但不包括前一时间步的解。这些变量都存储在一个大的数组中，该数组用于计算残差的单个分量的导数。
 
+```cpp
+    template <int dim>
+    void ConservationLaw<dim>::assemble_cell_term(
+      const FEValues<dim>                        &fe_v,
+      const std::vector<types::global_dof_index> &dof_indices)
+    {
+      const unsigned int dofs_per_cell = fe_v.dofs_per_cell;
+      const unsigned int n_q_points    = fe_v.n_quadrature_points;
+
+      Table<2, Sacado::Fad::DFad<double>> W(n_q_points,
+                                            EulerEquations<dim>::n_components);
+
+      Table<2, double> W_old(n_q_points, EulerEquations<dim>::n_components);
+
+      Table<3, Sacado::Fad::DFad<double>> grad_W(
+        n_q_points, EulerEquations<dim>::n_components, dim);
+
+      Table<3, double> grad_W_old(n_q_points,
+                                  EulerEquations<dim>::n_components,
+                                  dim);
+
+      std::vector<double> residual_derivatives(dofs_per_cell);
+```
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA5MzMyNjY0LDE5MDgyMzg0MjAsLTEzMz
+eyJoaXN0b3J5IjpbLTM2ODA1Mzc5LDE5MDgyMzg0MjAsLTEzMz
 kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
 LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
 YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
