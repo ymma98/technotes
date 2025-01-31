@@ -677,7 +677,7 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
                     {
                       vdotn += Wplus[d] * normal_vector[d];
                     }
-
+                  // 这里, -2.0 * ... 意味着法向分量被反弹
                   Wminus[c] = Wplus[c] - 2.0 * vdotn * normal_vector[c];
                   break;
                 }
@@ -689,11 +689,11 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MT
-g5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIs
-NjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNz
-E3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEz
-LC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwND
-MxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMF19
-
+eyJoaXN0b3J5IjpbLTg5MDc3OTk0OSwtMzE4MTQyODc3LDU1MD
+I5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYs
+LTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3Nz
+A2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcy
+LC02MDEyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwND
+g3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDJd
+fQ==
 -->
