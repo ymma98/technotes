@@ -735,20 +735,20 @@ $$
 ```
 
 
-最后，我们定义了一个类，用于实现数据组件的后处理。这个类解决的问题是，我们在欧拉方程的公式中使用的变量是保守的而不是物理的形式：它们是动量密度 $\mathrm{m} = \rho \mathrm{v}$，密度 $\rho$，和能量密度 $E$。我们还希望在输出文件中包括速度 $\mathrm{v} = \mathrm{m}/\rho$ 和压力 $p = (\gamma-1)(E-\frac{1}{2}\rho \)$ **p = (γ - 1) (E - \frac{1}{2} ρ|v|^2)**。
+最后，我们定义了一个类，用于实现数据组件的后处理。这个类解决的问题是，我们在欧拉方程的公式中使用的变量是保守的而不是物理的形式：它们是动量密度 $\mathrm{m} = \rho \mathrm{v}$，密度 $\rho$，和能量密度 $E$。我们还希望在输出文件中包括速度 $\mathrm{v} = \mathrm{m}/\rho$ 和压力 $p = (\gamma-1)(E-\frac{1}{2}\rho |\mathrm{v}|^2)$。
 
-此外，我们希望添加生成schlieren图的功能。schlieren图是一种可视化冲击波和其他锐利界面的方式。用一个例子来解释可能更简单：schlieren是你在倒入高浓度酒精或透明盐水溶液时看到的现象；两者颜色相同，但它们的折射率不同，因此在光通过混合物的弯曲光线时，如果你看它，会因为折射率（因此是气体密度）的变化而产生亮度变化。这就是"schlieren"。类似的效果也发生在可压缩流中，因为折射率取决于压力（因此是气体的密度）。
+此外，我们希望添加生成schlieren图的功能。schlieren图是一种可视化冲击波和其他锐利界面的方式。用一个例子来解释可能更简单：schlieren是你在倒入高浓度酒精或透明盐水溶液时看到的现象；两者颜色相同，但它们的折射率不同，因此在光通过混合物的弯曲光线时，如果你看它，会因为折射率（因此是气体密度）的变化而产生亮度变化。这就是"schlieren"。类似的效果也发生在可压缩流中，因为折射率取决于压强（因此是气体的密度）。
 
-这个词的由来是指三维体积的二维投影（我们看到的是3d流体的2d图片）。在计算流体动力学中，我们可以通过考虑什么导致了密度变化来了解这种效应。Schlieren图因此是通过绘制 **s = |\nabla ρ|^2** 生成的；显然，在冲击波和其他高动态位置，**s** 的值很大。如果用户希望（通过在输入文件中指定），我们还希望除了上面列出的其他派生量之外，生成这些schlieren图。
+这个词的由来是指三维体积的二维投影（我们看到的是3d流体的2d图片）。在计算流体动力学中，我们可以通过考虑什么导致了密度变化来了解这种效应。Schlieren图因此是通过绘制$s=|\nabla \rho|^2$ 生成的；显然，在冲击波和其他高动态位置，$s$的值很大。如果用户希望（通过在输入文件中指定），我们还希望除了上面列出的其他派生量之外，生成这些schlieren图。
 
-这些算法的实现是为了计算从解决我们问题的量中导出的量，并将它们输出到数据文件中，这一任务依赖于 **DataPostprocessor** 类。它有广泛的文档，并且该类的其他用途也可以在 **step-29** 中找到。因此我们在此不再赘述。
+这些算法的实现是为了计算从解决我们问题的量中导出的量，并将它们输出到数据文件中，这一任务依赖于 **DataPostprocessor*类。它有广泛的文档，并且该类的其他用途也可以在 **step-29** 中找到。因此我们在此不再赘述。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzMTMzNzczMiwyMTA5NjYyMTMwLDE1Nz
-I0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1
-LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OT
-AwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIw
-LDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MD
-EyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0
-XX0=
+eyJoaXN0b3J5IjpbLTQxMDE0OCwyMTA5NjYyMTMwLDE1NzI0MT
+UwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIw
+MzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwOD
+U0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5
+MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMz
+E2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0XX0=
+
 -->
