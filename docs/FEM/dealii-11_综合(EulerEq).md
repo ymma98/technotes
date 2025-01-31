@@ -1696,37 +1696,51 @@ $$
 其次，我们希望使用自动微分（automatic differentiation）。为此，我们使用 `Sacado::Fad::DFad` 模板，以便计算变量相对于解分量的导数，包括在求积点上的当前解和梯度（它们是自由度的线性组合），以及从这些变量计算的所有内容，如残差，但不包括前一时间步的解。这些变量都存储在一个大的数组中，该数组用于计算残差的单个分量的导数。
 
 ```cpp
-    template <int dim>
-    void ConservationLaw<dim>::assemble_cell_term(
-      const FEValues<dim>                        &fe_v,
-      const std::vector<types::global_dof_index> &dof_indices)
-    {
-      const unsigned int dofs_per_cell = fe_v.dofs_per_cell;
-      const unsigned int n_q_points    = fe_v.n_quadrature_points;
+    template <int dim>
+    void ConservationLaw<dim>::assemble_cell_term(
+      const FEValues<dim>                        &fe_v,
+      const std::vector<types::global_dof_index> &dof_indices)
+    {
+      const unsigned int dofs_per_cell = fe_v.dofs_per_cell;
+      const unsigned int n_q_points    = fe_v.n_quadrature_points;
 
-      Table<2, Sacado::Fad::DFad<double>> W(n_q_points,
-                                            EulerEquations<dim>::n_components);
+      Table<2, Sacado::Fad::DFad<double>> W(n_q_points,
+                                            EulerEquations<dim>::n_components);
 
-      Table<2, double> W_old(n_q_points, EulerEquations<dim>::n_components);
+      Table<2, double> W_old(n_q_points, EulerEquations<dim>::n_components);
 
-      Table<3, Sacado::Fad::DFad<double>> grad_W(
-        n_q_points, EulerEquations<dim>::n_components, dim);
+      Table<3, Sacado::Fad::DFad<double>> grad_W(
+        n_q_points, EulerEquations<dim>::n_components, dim);
 
-      Table<3, double> grad_W_old(n_q_points,
-                                  EulerEquations<dim>::n_components,
-                                  dim);
+      Table<3, double> grad_W_old(n_q_points,
+                                  EulerEquations<dim>::n_components,
+                                  dim);
 
-      std::vector<double> residual_derivatives(dofs_per_cell);
+      std::vector<double> residual_derivatives(dofs_per_cell);
 ```
 
+接下来，我们需要定义独立变量，这些变量将通过牛顿迭代法求解。这些独立变量是局部自由度的值，我们在这里提取它们
 
+```cpp
+      std::vector<Sacado::Fad::DFad<double>> independent_local_dof_values(
+        dofs_per_cell);
+      for (unsigned int i = 0; i < dofs_per_cell; ++i)
+        independent_local_dof_values[i] = current_solution(dof_indices[i]);
+```
+
+下一步包含了所有神奇之处：我们将自动微分变量的子集声明为独立自由度，而所有其他变量都保持为依赖函数。这些正是刚刚提取的局部自由度。所有引用它们的计算（无论是直接还是间接）都将累积相对于这些变量的敏感性。 为了将变量标记为独立变量，以下操作即可实现，将`independent_local_dof_values[i]`标记为`dofs_per_cell`中的第i个独立变量：
+
+```cpp
+      for (unsigned int i = 0; i < dofs_per_cell; ++i)
+        independent_local_dof_values[i].diff(i, dofs_per_cell);
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2ODA1Mzc5LDE5MDgyMzg0MjAsLTEzMz
-kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
-LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
-YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
-LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
-E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
-
+eyJoaXN0b3J5IjpbLTE3Mzg5ODA5NTMsMTkwODIzODQyMCwtMT
+MzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4LDE1NDM0NzQy
+NiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMD
+k2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4
+NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5NzczMjYsMjAyMj
+A2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4
+XX0=
 -->
