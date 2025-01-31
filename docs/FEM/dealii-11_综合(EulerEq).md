@@ -1731,16 +1731,26 @@ $$
 下一步包含了所有神奇之处：我们将自动微分变量的子集声明为独立自由度，而所有其他变量都保持为依赖函数。这些正是刚刚提取的局部自由度。所有引用它们的计算（无论是直接还是间接）都将累积相对于这些变量的敏感性。 为了将变量标记为独立变量，以下操作即可实现，将`independent_local_dof_values[i]`标记为`dofs_per_cell`中的第i个独立变量：
 
 ```cpp
-      for (unsigned int i = 0; i < dofs_per_cell; ++i)
-        independent_local_dof_values[i].diff(i, dofs_per_cell);
+      for (unsigned int i = 0; i < dofs_per_cell; ++i)
+        independent_local_dof_values[i].diff(i, dofs_per_cell);
 ```
 
+在完成所有这些声明之后，让我们真正计算一些内容。首先，我们计算 `W`、`W_old`、`grad_W` 和 `grad_W_old` 的值，这些值可以通过局部自由度（DoF）值计算，使用以下公式：
+
+$$
+\mathbf{W}(\mathbf{x}_q) = \sum_i \mathbf{W}_i \Phi_i(\mathbf{x}_q)
+$$
+
+其中，$\mathbf{W}_i$ 是（局部部分的）解向量的第 $i$ 个分量，$\Phi_i(\mathbf{x}_q)$ 是在求积点 $\mathbf{x}_q$ 处评估的第 $i$ 个向量值形函数。梯度可以用类似的方法计算。
+
+理想情况下，我们可以通过调用 `FEValues::get_function_values` 和 `FEValues::get_function_gradients` 来计算这些信息，但是由于 (i) 这需要扩展 `FEValues` 类，(ii) 我们不希望将整个 `old_solution` 向量转换为 fad 类型，而只是局部单元变量，因此我们显式地编写了上述循环。在此之前，我们还添加了一个初始化所有 fad 变量为零的循环：
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Mzg5ODA5NTMsMTkwODIzODQyMCwtMT
-MzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4LDE1NDM0NzQy
-NiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMD
-k2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4
-NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5NzczMjYsMjAyMj
-A2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4
-XX0=
+eyJoaXN0b3J5IjpbNjA4MDAwMDIzLDE5MDgyMzg0MjAsLTEzMz
+kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
+LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
+YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
+LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
+E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
+
 -->
