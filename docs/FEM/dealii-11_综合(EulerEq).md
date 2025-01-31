@@ -1782,12 +1782,65 @@ $$
 
 接下来，为了计算单元贡献，我们需要在所有求积点处评估 $\mathbf{F}(\mathbf{w}_{n+1}^{k})$、$\mathbf{G}(\mathbf{w}_{n+1}^{k})$ 以及 $\mathbf{F}(\mathbf{w}_n)$、$\mathbf{G}(\mathbf{w}_n)$。为了存储这些值，我们还需要分配一些内存。需要注意的是，我们使用自动微分变量计算通量矩阵和右端向量，以便稍后可以从中轻松计算雅可比矩阵的贡献。
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ1OTg2NjQ3LDE5MDgyMzg0MjAsLTEzMz
-kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
-LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
-YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
-LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
-E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
+```cpp
+      std::vector<ndarray<Sacado::Fad::DFad<double>,
+                          EulerEquations<dim>::n_components,
+                          dim>>
+        flux(n_q_points);
 
+      std::vector<ndarray<double, EulerEquations<dim>::n_components, dim>>
+        flux_old(n_q_points);
+
+      std::vector<
+        std::array<Sacado::Fad::DFad<double>, EulerEquations<dim>::n_components>>
+        forcing(n_q_points);
+
+      std::vector<std::array<double, EulerEquations<dim>::n_components>>
+        forcing_old(n_q_points);
+
+      for (unsigned int q = 0; q < n_q_points; ++q)
+        {
+          EulerEquations<dim>::compute_flux_matrix(W_old[q], flux_old[q]);
+          EulerEquations<dim>::compute_forcing_vector(W_old[q], forcing_old[q]);
+          EulerEquations<dim>::compute_flux_matrix(W[q], flux[q]);
+          EulerEquations<dim>::compute_forcing_vector(W[q], forcing[q]);
+        }
+```
+
+现在，我们已经准备好所有的部分，可以执行组装过程。我们通过系统的各个分量进行外部循环，并在求积点上进行内部循环，在此过程中累积对第 $i$ 个残差 $R_i$ 的贡献。该残差的一般公式已在介绍部分和本函数开头给出。然而，我们可以稍作简化，考虑到第 $i$ 个（向量值的）测试函数 $\mathbf{z}_i$ 事实上只有一个非零分量。该分量在下面由变量 `component_i` 表示。在此基础上，残差项可以重写为：
+
+$$
+R_i =
+\left(
+\frac{(\mathbf{w}_{n+1} - \mathbf{w}_n)_{\text{component}_i}}{\delta t}, (\mathbf{z}_i)_{\text{component}_i}
+\right)_K
+$$
+
+$$- \sum_{d=1}^{\dim}\left(
+\theta \mathbf{F}(\mathbf{w}_{n+1}^{k})_{\text{component}_i, d} + (1- \theta) \mathbf{F}(\mathbf{w}_n)_{\text{component}_i, d}
+\right)\frac{\partial (\mathbf{z}_i)_{\text{component}_i}}{\partial x_d} \Bigg|_K
+$$
+
+$$+ \sum_{d=1}^{\dim} h^n\left(
+\theta \frac{\partial (\mathbf{w}_{n+1}^{k})_{\text{component}_i}}{\partial x_d}+ (1 - \theta) \frac{\partial (\mathbf{w}_n)_{\text{component}_i}}{\partial x_d}
+\right)
+\frac{\partial (\mathbf{z}_i)_{\text{component}_i}}{\partial x_d} \Bigg|_K
+$$
+
+$$
+- \left( \theta \mathbf{G}(\mathbf{w}_{n+1}^{k})_{\text{component}_i} + (1 - \theta) \mathbf{G}(\mathbf{w}_n)_{\text{component}_i}, (\mathbf{z}_i)_{\text{component}_i} \right)_K.
+$$
+
+其中，积分默认通过对求积点求和来计算。
+
+我们最初以正向累加残差的所有贡献，以避免对雅可比矩阵条目取负值。然后，在将其累加到 `right_hand_side` 向量时，我们对该残差取负值。
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTIwMzY0NTkxMzUsMTkwODIzODQyMCwtMT
+MzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4LDE1NDM0NzQy
+NiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMD
+k2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4
+NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5NzczMjYsMjAyMj
+A2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4
+XX0=
 -->
