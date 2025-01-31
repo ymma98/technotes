@@ -737,11 +737,15 @@ $$
 
 最后，我们定义了一个类，用于实现数据组件的后处理。这个类解决的问题是，我们在欧拉方程的公式中使用的变量是保守的而不是物理的形式：它们是动量密度 $\mathrm{m} = \rho \mathrm{v}$，密度 $\rho$，和能量密度 $E$。我们还希望在输出文件中包括速度 $\mathrm{v} = \mathrm{m}/\rho$ 和压力 $p = (\gamma-1)(E-\frac{1}{2}\rho |\mathrm{v}|^2)$。
 
-此外，我们希望添加生成schlieren图的功能。schlieren图是一种可视化冲击波和其他锐利界面的方式。用一个例子来解释可能更简单：schlieren是你在倒入高浓度酒精或透明盐水溶液时看到的现象；两者颜色相同，但它们的折射率不同，因此在光通过混合物的弯曲光线时，如果你看它，会因为折射率（因此是气体密度）的变化而产生亮度变化。这就是"schlieren"。类似的效果也发生在可压缩流中，因为折射率取决于压强（因此是气体的密度）。
+`Postprocessor` 类（继承自 `DataPostprocessor<dim>`) 主要做的就是：
 
-这个词的由来是指三维体积的二维投影（我们看到的是3d流体的2d图片）。在计算流体动力学中，我们可以通过考虑什么导致了密度变化来了解这种效应。Schlieren图因此是通过绘制$s=|\nabla \rho|^2$ 生成的；显然，在冲击波和其他高动态位置，$s$的值很大。如果用户希望（通过在输入文件中指定），我们还希望除了上面列出的其他派生量之外，生成这些schlieren图。
+-   接收当前求解得到的解（以及其梯度等信息），
+-   将其转换为我们感兴趣的物理量（如速度、压力等），
+-   告诉可视化工具如何解释各分量，并对输出命名。
 
-这些算法的实现是为了计算从解决我们问题的量中导出的量，并将它们输出到数据文件中，这一任务依赖于 `DataPostprocessor`类。
+在 `step-33` 中，为了进一步观察流体特征，还可能绘制 schlieren plot（施利伦图），它通常用来反映流体密度梯度大小，用于可视化激波或涡流等较剧烈的密度变化区域。代码中通过一个布尔量 `do_schlieren_plot` 来决定是否要输出这个额外的标量场（其值往往与密度梯度的模相关）。
+
+
 
 
 ```cpp
@@ -800,73 +804,73 @@ $$
         {
           Assert(computed_quantities[0].size() == dim + 1, ExcInternalError());
         }
-            for (unsigned int p = 0; p < n_evaluation_points; ++p)
-        {
-          const double density = inputs.solution_values[p](density_component);
+            for (unsigned int p = 0; p < n_evaluation_points; ++p)
+        {
+          const double density = inputs.solution_values[p](density_component);
 
-          for (unsigned int d = 0; d < dim; ++d)
-            computed_quantities[p](d) =
-              inputs.solution_values[p](first_momentum_component + d) / density;
+          for (unsigned int d = 0; d < dim; ++d)
+            computed_quantities[p](d) =
+              inputs.solution_values[p](first_momentum_component + d) / density;
 
-          computed_quantities[p](dim) =
-            compute_pressure(inputs.solution_values[p]);
+          computed_quantities[p](dim) =
+            compute_pressure(inputs.solution_values[p]);
 
-          if (do_schlieren_plot == true)
-            computed_quantities[p](dim + 1) =
-              inputs.solution_gradients[p][density_component] *
-              inputs.solution_gradients[p][density_component];
-        }
-    }
+          if (do_schlieren_plot == true)
+            computed_quantities[p](dim + 1) =
+              inputs.solution_gradients[p][density_component] *
+              inputs.solution_gradients[p][density_component];
+        }
+    }
 
-    template <int dim>
-    std::vector<std::string> EulerEquations<dim>::Postprocessor::get_names() const
-    {
-      std::vector<std::string> names;
-      for (unsigned int d = 0; d < dim; ++d)
-        names.emplace_back("velocity");
-      names.emplace_back("pressure");
+    template <int dim>
+    std::vector<std::string> EulerEquations<dim>::Postprocessor::get_names() const
+    {
+      std::vector<std::string> names;
+      for (unsigned int d = 0; d < dim; ++d)
+        names.emplace_back("velocity");
+      names.emplace_back("pressure");
 
-      if (do_schlieren_plot == true)
-        names.emplace_back("schlieren_plot");
+      if (do_schlieren_plot == true)
+        names.emplace_back("schlieren_plot");
 
-      return names;
-    }
+      return names;
+    }
 
-    template <int dim>
-    std::vector<DataComponentInterpretation::DataComponentInterpretation>
-    EulerEquations<dim>::Postprocessor::get_data_component_interpretation() const
-    {
-      std::vector<DataComponentInterpretation::DataComponentInterpretation>
-        interpretation(dim,
-                       DataComponentInterpretation::component_is_part_of_vector);
+    template <int dim>
+    std::vector<DataComponentInterpretation::DataComponentInterpretation>
+    EulerEquations<dim>::Postprocessor::get_data_component_interpretation() const
+    {
+      std::vector<DataComponentInterpretation::DataComponentInterpretation>
+        interpretation(dim,
+                       DataComponentInterpretation::component_is_part_of_vector);
 
-      interpretation.push_back(DataComponentInterpretation::component_is_scalar);
+      interpretation.push_back(DataComponentInterpretation::component_is_scalar);
 
-      if (do_schlieren_plot == true)
-        interpretation.push_back(
-          DataComponentInterpretation::component_is_scalar);
+      if (do_schlieren_plot == true)
+        interpretation.push_back(
+          DataComponentInterpretation::component_is_scalar);
 
-      return interpretation;
-    }
+      return interpretation;
+    }
 
-    template <int dim>
-    UpdateFlags
-    EulerEquations<dim>::Postprocessor::get_needed_update_flags() const
-    {
-      if (do_schlieren_plot == true)
-        return update_values | update_gradients;
-      else
-        return update_values;
-    }
+    template <int dim>
+    UpdateFlags
+    EulerEquations<dim>::Postprocessor::get_needed_update_flags() const
+    {
+      if (do_schlieren_plot == true)
+        return update_values | update_gradients;
+      else
+        return update_values;
+    }
 ```
 在生成图形输出时，`DataOut` 及其相关类会在每个单元上调用此函数，并可访问每个求积点上的值、梯度、Hessians 和法向量（如果我们正在处理面）。我们要在这里做的是计算我们感兴趣的物理量，并在每个求积点处存储这些量。请注意，在这里我们可以忽略 Hessians（`inputs.solution_hessians`）和法向量（`inputs.normals`）。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3Mj
-QxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUs
-MjAzODE4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MD
-A4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAs
-MTkzMzcxNzIxLDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMT
-IzMTYxMywtMTExNDQ3MjM5OSw4MDk5ODM2OTQsOTA0ODc0OTRd
-fQ==
+eyJoaXN0b3J5IjpbODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
+YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
+LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
+E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwx
+NDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3Mz
+M3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0
+XX0=
 -->
