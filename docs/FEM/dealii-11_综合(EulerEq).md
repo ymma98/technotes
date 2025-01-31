@@ -2087,8 +2087,37 @@ $$
 ```
 
 #### ConservationLaw::solve
+
+这里，我们实际上使用Trilinos的Aztec或Amesos线性求解器来求解线性系统。计算结果将写入传递给该函数的参数向量。结果是一对迭代次数和最终线性残差。
+
+```cpp
+    template <int dim>
+    std::pair<unsigned int, double>
+    ConservationLaw<dim>::solve(Vector<double> &newton_update)
+    {
+      switch (parameters.solver)
+        {
+```
+
+如果参数文件指定使用直接求解器，那么我们将到达这里。这个过程很简单，因为 deal.II 为 Trilinos 中的 Amesos 直接求解器提供了一个包装类。我们所需要做的就是创建一个求解器控制对象（这里只是一个虚拟对象，因为我们不会执行任何迭代），然后创建直接求解器对象。在实际求解时，请注意我们不会传递预条件器。对于直接求解器来说，这没有任何意义。最后，我们返回求解器控制统计信息——这将表明没有执行迭代，并且最终线性残差为零，除非这里提供了更好的信息：
+
+```cpp
+          case Parameters::Solver::direct:
+            {
+              SolverControl                                  solver_control(1, 0);
+              TrilinosWrappers::SolverDirect::AdditionalData data(
+                parameters.output == Parameters::Solver::verbose);
+              TrilinosWrappers::SolverDirect direct(solver_control, data);
+
+              direct.solve(system_matrix, newton_update, right_hand_side);
+
+              return {solver_control.last_step(), solver_control.last_value()};
+            }
+```
+
+同样，如果我们要使用迭代求解器，我们使用Aztec的GMRES求解器。我们也可以在这里使用Trilinos包装器类来处理迭代求解器和预条件器，但是我们选择直接使用Aztec求解器。对于给定的问题，Aztec的内部预条件器实现优于deal.II的包装器类，因此我们在AztecOO求解器中使用ILU-T预条件，并设置一些可以从参数文件中更改的选项。 还有两个实际问题：由于我们已经将右侧和解向量构建为deal.II向量对象（与矩阵不同，矩阵是Trilinos对象），我们必须将Trilinos Epetra向量传递给求解器。幸运的是，它们支持“视图”的概念，因此我们只需传入deal.II向量的指针即可。我们必须为向量提供`Epetra_Map`，以设置并行分布，这在串行中只是一个虚拟对象。最简单的方法是让矩阵获取其映射，然后我们就可以准备好使用它进行矩阵-向量乘积。 其次，Aztec求解器希望我们传入Trilinos `Epetra_CrsMatrix`，而不是deal.II包装器类本身。因此，我们通过命令trilinos_matrix()`访问Trilinos包装器类中的实际Trilinos矩阵。Trilinos希望矩阵是非常量，因此我们必须手动删除常量性，使用const_cast。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1MDc4ODU1NSwxOTA4MjM4NDIwLC0xMz
+eyJoaXN0b3J5IjpbMTY3Mjk5MjI1OCwxOTA4MjM4NDIwLC0xMz
 M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
 LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
 Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
