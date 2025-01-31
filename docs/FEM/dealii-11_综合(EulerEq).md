@@ -869,7 +869,7 @@ $$
 
 ### Run time parameter handling
 
-我们的下一个任务是定义一些类，这些类将包含运行时参数（例如求解器容差、迭代次数、稳定化参数等）。我们本可以在主类中完成此操作，但为了使程序更加模块化并易于阅读，我们将其分离出来。所有与运行时参数相关的内容都将在下面的命名空间中，而程序逻辑则位于主类中。
+我们的下一个任务是定义一些类，这些类将包含运行时参数（例如求解器容差、迭代次数、稳定化参数等）。
 
 我们将运行时参数拆分为几个独立的结构，并将它们全部放入命名空间 `Parameters` 中。在这些类中，有一些用于特定类别的参数组，例如求解器、网格细化或输出。每个类都有 `declare_parameters()` 和 `parse_parameters()` 函数，它们用于在 `ParameterHandler` 对象中声明参数子部分和条目，并从该对象中检索实际参数值。这些类的所有参数都声明在 `ParameterHandler` 的子部分中。
 
@@ -877,12 +877,17 @@ $$
 
 这里需要指出一点：下面的所有类都没有构造函数来初始化各个成员变量。不过这并不是问题，因为我们会从输入文件中读取这些类中声明的所有变量（或者间接地：`ParameterHandler` 对象会从输入文件中读取它们，并提供这些值），这样它们就会被正确初始化。如果某个变量在输入文件中根本没有指定，这同样不是问题：在这种情况下，`ParameterHandler` 类会采用 `declare_parameters()` 函数声明该条目时指定的默认值。
 
+```cpp
+    namespace Parameters
+    {
+```
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDM3MDg5MjMsLTE0NjE4NzA5NjYsOD
-A1MTk2ODE0LDQwMTcxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUw
-ODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMz
-gxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0
-Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5Mz
-M3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2
-MTNdfQ==
+eyJoaXN0b3J5IjpbMTc2NTI2NTUwLC0xNDYxODcwOTY2LDgwNT
+E5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3
+LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MT
+g5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIs
+NjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNz
+E3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEz
+XX0=
 -->
