@@ -1457,14 +1457,42 @@ $$
 这组最终的成员变量（除了最底部存储所有运行时参数的对象以及仅在请求详细输出时才打印内容的屏幕输出流）处理程序中与 Trilinos 库的接口，该库为我们提供线性求解器。类似于在 `step-17` 和 `step-18` 中包含 PETSc 矩阵，我们所需做的只是创建一个 Trilinos 稀疏矩阵，而不是标准的 deal.II 矩阵。系统矩阵用于每个牛顿迭代步骤中的雅可比计算。由于我们不打算以并行方式运行该程序（尽管使用 Trilinos 数据结构进行并行化并不困难），因此我们无需考虑诸如自由度分布之类的其他问题。
 
 ```cpp
-      TrilinosWrappers::SparseMatrix system_matrix;
+      TrilinosWrappers::SparseMatrix system_matrix;
 
-      Parameters::AllParameters<dim> parameters;
-      ConditionalOStream             verbose_cout;
-    };
+      Parameters::AllParameters<dim> parameters;
+      ConditionalOStream             verbose_cout;
+    };
 ```
+
+#### ConservationLaw::ConservationLaw
+
+```cpp
+    template <int dim>
+    ConservationLaw<dim>::ConservationLaw(const char *input_filename)
+      : mapping()
+      , fe(FE_Q<dim>(1) ^ EulerEquations<dim>::n_components)
+      , dof_handler(triangulation)
+      , quadrature(fe.degree + 1)
+      , face_quadrature(fe.degree + 1)
+      , verbose_cout(std::cout, false)
+    {
+      ParameterHandler prm;
+      Parameters::AllParameters<dim>::declare_parameters(prm);
+
+      prm.parse_input(input_filename);
+      parameters.parse_parameters(prm);
+
+      verbose_cout.set_condition(parameters.output ==
+                                 Parameters::Solver::verbose);
+    }
+```
+
+#### ConservationLaw::setup_system
+
+每次改变网格时，都会调用以下函数。它所做的只是根据稀疏性模式调整特里诺斯矩阵的大小，而稀疏性模式是我们在之前所有教程程序中生成的。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwNDQ4OTY3NiwzMDA1NzE1NTEsNTI5Mj
+eyJoaXN0b3J5IjpbMTE5MjgxMTg3MSwzMDA1NzE1NTEsNTI5Mj
 E5NDI4LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQs
 NDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4NywxMTgwMz
 c1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywx
