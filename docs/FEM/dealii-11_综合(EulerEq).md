@@ -2003,17 +2003,92 @@ $$
 ```
 这里我们假设边界类型、边界法向量和边界数据值在时间推进过程中保持不变。
 ```cpp
-              EulerEquations<dim>::compute_Wminus(
-                parameters.boundary_conditions[boundary_id].kind,
-                fe_v.normal_vector(q),
-                Wplus_old[q],
-                boundary_values[q],
-                Wminus_old[q]);
-            }
-        }
+              EulerEquations<dim>::compute_Wminus(
+                parameters.boundary_conditions[boundary_id].kind,
+                fe_v.normal_vector(q),
+                Wplus_old[q],
+                boundary_values[q],
+                Wminus_old[q]);
+            }
+        }
 ```
+
+现在我们已经得到了 $\mathbf{w}^+$ 和 $\mathbf{w}^-$，可以计算每个求积点的数值通量函数 $\mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n})$。在调用执行此计算的函数之前，我们还需要确定 Lax-Friedrichs 的稳定性参数：
+
+```cpp
+      std::vector<
+        std::array<Sacado::Fad::DFad<double>, EulerEquations<dim>::n_components>>
+        normal_fluxes(n_q_points);
+      std::vector<std::array<double, EulerEquations<dim>::n_components>>
+        normal_fluxes_old(n_q_points);
+
+      double alpha;
+
+      switch (parameters.stabilization_kind)
+        {
+          case Parameters::Flux::constant:
+            alpha = parameters.stabilization_value;
+            break;
+          case Parameters::Flux::mesh_dependent:
+            alpha = face_diameter / (2.0 * parameters.time_step);
+            break;
+          default:
+            DEAL_II_NOT_IMPLEMENTED();
+            alpha = 1;
+        }
+
+      for (unsigned int q = 0; q < n_q_points; ++q)
+        {
+          EulerEquations<dim>::numerical_normal_flux(
+            fe_v.normal_vector(q), Wplus[q], Wminus[q], alpha, normal_fluxes[q]);
+          EulerEquations<dim>::numerical_normal_flux(fe_v.normal_vector(q),
+                                                     Wplus_old[q],
+                                                     Wminus_old[q],
+                                                     alpha,
+                                                     normal_fluxes_old[q]);
+        }
+```
+现在以与先前函数中单元贡献完全相同的方式组装面项。唯一的区别是，如果这是一个内部面，我们还需要考虑残差贡献对相邻单元自由度的敏感性。
+```cpp      
+	  std::vector<double> residual_derivatives(dofs_per_cell);
+      for (unsigned int i = 0; i < fe_v.dofs_per_cell; ++i)
+        if (fe_v.get_fe().has_support_on_face(i, face_no) == true)
+          {
+            Sacado::Fad::DFad<double> R_i = 0;
+
+            for (unsigned int point = 0; point < n_q_points; ++point)
+              {
+                const unsigned int component_i =
+                  fe_v.get_fe().system_to_component_index(i).first;
+
+                R_i += (parameters.theta * normal_fluxes[point][component_i] +
+                        (1.0 - parameters.theta) *
+                          normal_fluxes_old[point][component_i]) *
+                       fe_v.shape_value_component(i, point, component_i) *
+                       fe_v.JxW(point);
+              }
+
+            for (unsigned int k = 0; k < dofs_per_cell; ++k)
+              residual_derivatives[k] = R_i.fastAccessDx(k);
+            system_matrix.add(dof_indices[i], dof_indices, residual_derivatives);
+
+            if (external_face == false)
+              {
+                for (unsigned int k = 0; k < dofs_per_cell; ++k)
+                  residual_derivatives[k] = R_i.fastAccessDx(dofs_per_cell + k);
+                system_matrix.add(dof_indices[i],
+                                  dof_indices_neighbor,
+                                  residual_derivatives);
+              }
+
+            right_hand_side(dof_indices[i]) -= R_i.val();
+          }
+    }
+```
+
+#### ConservationLaw::solve
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMjIwNDM1MywxOTA4MjM4NDIwLC0xMz
+eyJoaXN0b3J5IjpbMTg1MDc4ODU1NSwxOTA4MjM4NDIwLC0xMz
 M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
 LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
 Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
