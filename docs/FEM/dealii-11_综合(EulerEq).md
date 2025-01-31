@@ -688,13 +688,56 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
             }
       }
 ```
+在这个类中，我们还需要指定如何细化网格。`ConservationLaw` 类将使用 `EulerEquation` 类中提供的所有信息，但它对所求解的具体守恒定律并不关心：它甚至不关心解向量有多少个分量。因此，它无法知道一个合理的refinement indicator应该是什么。
 
+另一方面，我们在这里可以定义一个合理的选择：我们简单地查看密度的梯度，并计算：
+
+\[
+\eta_K = \log(1 + |\nabla \rho(\mathbf{x}_K)|)
+\]
+
+其中，$\mathbf{x}_K$ 是单元 $K$ 的中心。
+
+当然，也有许多同样合理的细化指示子，但这个方法有效，并且计算简单：
+
+
+```cpp
+      static void
+      compute_refinement_indicators(const DoFHandler<dim> &dof_handler,
+                                    const Mapping<dim>    &mapping,
+                                    const Vector<double>  &solution,
+                                    Vector<double>        &refinement_indicators)
+      {
+        const unsigned int dofs_per_cell = dof_handler.get_fe().n_dofs_per_cell();
+        std::vector<unsigned int> dofs(dofs_per_cell);
+
+        const QMidpoint<dim> quadrature_formula;
+        const UpdateFlags    update_flags = update_gradients;
+        FEValues<dim>        fe_v(mapping,
+                           dof_handler.get_fe(),
+                           quadrature_formula,
+                           update_flags);
+
+        std::vector<std::vector<Tensor<1, dim>>> dU(
+          1, std::vector<Tensor<1, dim>>(n_components));
+
+        for (const auto &cell : dof_handler.active_cell_iterators())
+          {
+            const unsigned int cell_no = cell->active_cell_index();
+            fe_v.reinit(cell);
+            fe_v.get_function_gradients(solution, dU);
+
+            refinement_indicators(cell_no) = std::log(
+              1 + std::sqrt(dU[0][density_component] * dU[0][density_component]));
+          }
+      }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MD
-I5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYs
-LTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3Nz
-A2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcy
-LC02MDEyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwND
-g3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAzLDIwNjA0MzE1MDJd
-fQ==
+eyJoaXN0b3J5IjpbLTIxMjk1MDQ1NTMsMTE4MDM3NTcwMiwtMz
+E4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2
+LDIwMjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1OD
+Q5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1
+LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLTExMTQ0NzIzOTksOD
+A5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1MDIsOTIyMDY0MTAz
+XX0=
 -->
