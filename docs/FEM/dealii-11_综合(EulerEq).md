@@ -649,37 +649,51 @@ compute_Wminus(const std::array<BoundaryKind, n_components> &boundary_kind,
 规定的压强边界条件比其他情况更复杂，因为尽管我们直接规定了压强，但实际上我们是在设置能量分量，而该分量将取决于速度和压强。因此，即使这看起来像是狄利克雷（Dirichlet）类型的边界条件，我们仍然会得到能量对速度和密度的敏感性：
 
 ```cpp
-              case pressure_boundary:
-                {
-                  const typename DataVector::value_type density =
-                    (boundary_kind[density_component] == inflow_boundary ?
-                       boundary_values(density_component) :
-                       Wplus[density_component]);
+              case pressure_boundary:
+                {
+                  const typename DataVector::value_type density =
+                    (boundary_kind[density_component] == inflow_boundary ?
+                       boundary_values(density_component) :
+                       Wplus[density_component]);
 
-                  typename DataVector::value_type kinetic_energy = 0;
-                  for (unsigned int d = 0; d < dim; ++d)
-                    if (boundary_kind[d] == inflow_boundary)
-                      kinetic_energy += boundary_values(d) * boundary_values(d);
-                    else
-                      kinetic_energy += Wplus[d] * Wplus[d];
-                  kinetic_energy *= 1. / 2. / density;
+                  typename DataVector::value_type kinetic_energy = 0;
+                  for (unsigned int d = 0; d < dim; ++d)
+                    if (boundary_kind[d] == inflow_boundary)
+                      kinetic_energy += boundary_values(d) * boundary_values(d);
+                    else
+                      kinetic_energy += Wplus[d] * Wplus[d];
+                  kinetic_energy *= 1. / 2. / density;
 
-                  Wminus[c] =
-                    boundary_values(c) / (gas_gamma - 1.0) + kinetic_energy;
+                  Wminus[c] =
+                    boundary_values(c) / (gas_gamma - 1.0) + kinetic_energy;
 
-                  break;
-                }
+                  break;
+                }
 
-              case no_penetration_boundary:
-                {
+              case no_penetration_boundary:
+                {
+                  typename DataVector::value_type vdotn = 0;
+                  for (unsigned int d = 0; d < dim; ++d)
+                    {
+                      vdotn += Wplus[d] * normal_vector[d];
+                    }
+
+                  Wminus[c] = Wplus[c] - 2.0 * vdotn * normal_vector[c];
+                  break;
+                }
+
+              default:
+                DEAL_II_NOT_IMPLEMENTED();
+            }
+      }
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5Nz
-czMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwx
-MzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNzIxLDE4ODM5MT
-E3MzUsLTIwODczMzcxNzIsLTYwMTIzMTYxMywtMTExNDQ3MjM5
-OSw4MDk5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNj
-QxMDMsMjA2MDQzMTUwMiw1MzQ2MTY4MjAsNTM0NjE2ODIwXX0=
+eyJoaXN0b3J5IjpbLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MT
+g5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIs
+NjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNz
+E3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEz
+LC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwND
+MxNTAyLDkyMjA2NDEwMywyMDYwNDMxNTAyLDUzNDYxNjgyMF19
 
 -->
