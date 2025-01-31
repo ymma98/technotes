@@ -1511,11 +1511,43 @@ $$
 在函数的开头，我们进行常规的初始化工作：分配 `FEValues`、`FEFaceValues` 和 `FESubfaceValues` 对象，以执行单元、面和子面的积分（在不同细化级别的相邻单元情况下）。需要注意的是，我们不需要为所有对象存储所有信息（例如值、梯度或求积点的真实位置），因此我们仅让 `FEValues` 类根据需要获取最小集合的 `UpdateFlags`。例如，当为相邻单元使用 `FEFaceValues` 对象时，我们只需要形函数值：对于特定的面，求积点和 $J_x^W$ 的值与当前单元的值相同，而法向量已知是当前单元法向量的相反数。
 
 ```cpp
+    template <int dim>
+    void ConservationLaw<dim>::assemble_system()
+    {
+      const unsigned int dofs_per_cell = dof_handler.get_fe().n_dofs_per_cell();
 
+      std::vector<types::global_dof_index> dof_indices(dofs_per_cell);
+      std::vector<types::global_dof_index> dof_indices_neighbor(dofs_per_cell);
+
+      const UpdateFlags update_flags = update_values | update_gradients |
+                                       update_quadrature_points |
+                                       update_JxW_values,
+                        face_update_flags =
+                          update_values | update_quadrature_points |
+                          update_JxW_values | update_normal_vectors,
+                        neighbor_face_update_flags = update_values;
+
+      FEValues<dim>        fe_v(mapping, fe, quadrature, update_flags);
+      FEFaceValues<dim>    fe_v_face(mapping,
+                                  fe,
+                                  face_quadrature,
+                                  face_update_flags);
+      FESubfaceValues<dim> fe_v_subface(mapping,
+                                        fe,
+                                        face_quadrature,
+                                        face_update_flags);
+      FEFaceValues<dim>    fe_v_face_neighbor(mapping,
+                                           fe,
+                                           face_quadrature,
+                                           neighbor_face_update_flags);
+      FESubfaceValues<dim> fe_v_subface_neighbor(mapping,
+                                                 fe,
+                                                 face_quadrature,
+                                                 neighbor_face_update_flags);
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzkyOTAyMjksMzAwNTcxNTUxLDUyOT
+eyJoaXN0b3J5IjpbLTEzMzkyMjU2ODksMzAwNTcxNTUxLDUyOT
 IxOTQyOCwxNTQzNDc0MjYsLTE0NjE4NzA5NjYsODA1MTk2ODE0
 LDQwMTcxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUwODcsMTE4MD
 M3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMs
