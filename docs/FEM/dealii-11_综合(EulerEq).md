@@ -710,14 +710,14 @@ $$
       {
         const unsigned int dofs_per_cell = dof_handler.get_fe().n_dofs_per_cell();
         std::vector<unsigned int> dofs(dofs_per_cell);
-
+     
         const QMidpoint<dim> quadrature_formula;
         const UpdateFlags    update_flags = update_gradients;
         FEValues<dim>        fe_v(mapping,
                            dof_handler.get_fe(),
                            quadrature_formula,
                            update_flags);
-
+        // 外层 std::vector：大小为 1，对应于使用的求积公式 QMidpoint<dim> 仅有一个求积点（中点
         std::vector<std::vector<Tensor<1, dim>>> dU(
           1, std::vector<Tensor<1, dim>>(n_components));
 
@@ -733,11 +733,11 @@ $$
       }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMT
-gxNDI4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5NzczMjYs
-MjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4ND
-kzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNzIxLDE4ODM5MTE3MzUs
-LTIwODczMzcxNzIsLTYwMTIzMTYxMywtMTExNDQ3MjM5OSw4MD
-k5ODM2OTQsOTA0ODc0OTQsMjA2MDQzMTUwMiw5MjIwNjQxMDNd
+eyJoaXN0b3J5IjpbMjg4ODc1MzgzLDE1NzI0MTUwODcsMTE4MD
+M3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMs
+MTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5OD
+c2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwx
+ODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLTExMT
+Q0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1MDJd
 fQ==
 -->
