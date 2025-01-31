@@ -1627,49 +1627,82 @@ $$
 我们还需要考虑另一种情况，即邻居单元比当前单元更粗糙（特别是由于通常每面最多只有一个悬挂节点的限制，邻居单元必须比当前单元恰好低一级，我们通过断言来检查这一点）。同样，我们在此接口上进行积分：
 
 ```cpp
-                else if (cell->neighbor(face_no)->level() != cell->level())
-                  {
-                    const typename DoFHandler<dim>::cell_iterator neighbor =
-                      cell->neighbor(face_no);
-                    Assert(neighbor->level() == cell->level() - 1,
-                           ExcInternalError());
+                else if (cell->neighbor(face_no)->level() != cell->level())
+                  {
+                    const typename DoFHandler<dim>::cell_iterator neighbor =
+                      cell->neighbor(face_no);
+                    Assert(neighbor->level() == cell->level() - 1,
+                           ExcInternalError());
 
-                    neighbor->get_dof_indices(dof_indices_neighbor);
+                    neighbor->get_dof_indices(dof_indices_neighbor);
 
-                    const std::pair<unsigned int, unsigned int> faceno_subfaceno =
-                      cell->neighbor_of_coarser_neighbor(face_no);
-                    const unsigned int neighbor_face_no = faceno_subfaceno.first,
-                                       neighbor_subface_no =
-                                         faceno_subfaceno.second;
+                    const std::pair<unsigned int, unsigned int> faceno_subfaceno =
+                      cell->neighbor_of_coarser_neighbor(face_no);
+                    const unsigned int neighbor_face_no = faceno_subfaceno.first,
+                                       neighbor_subface_no =
+                                         faceno_subfaceno.second;
 
-                    Assert(neighbor->neighbor_child_on_subface(
-                             neighbor_face_no, neighbor_subface_no) == cell,
-                           ExcInternalError());
+                    Assert(neighbor->neighbor_child_on_subface(
+                             neighbor_face_no, neighbor_subface_no) == cell,
+                           ExcInternalError());
 
-                    fe_v_face.reinit(cell, face_no);
-                    fe_v_subface_neighbor.reinit(neighbor,
-                                                 neighbor_face_no,
-                                                 neighbor_subface_no);
+                    fe_v_face.reinit(cell, face_no);
+                    fe_v_subface_neighbor.reinit(neighbor,
+                                                 neighbor_face_no,
+                                                 neighbor_subface_no);
 
-                    assemble_face_term(face_no,
-                                       fe_v_face,
-                                       fe_v_subface_neighbor,
-                                       dof_indices,
-                                       dof_indices_neighbor,
-                                       false,
-                                       numbers::invalid_unsigned_int,
-                                       cell->face(face_no)->diameter());
-                  }
-              }
-        }
-    }
+                    assemble_face_term(face_no,
+                                       fe_v_face,
+                                       fe_v_subface_neighbor,
+                                       dof_indices,
+                                       dof_indices_neighbor,
+                                       false,
+                                       numbers::invalid_unsigned_int,
+                                       cell->face(face_no)->diameter());
+                  }
+              }
+        }
+    }
 ```
+
+#### ConservationLaw::assemble_cell_term
+
+该函数通过计算残差的单元部分来组装单元项，并将其负值添加到右端向量中，同时将其对局部变量的导数添加到雅可比矩阵（即牛顿矩阵）中。回顾一下，单元对残差的贡献表示为：
+
+$$
+R_i = \left( \frac{\mathbf{w}_{n+1}^{k} - \mathbf{w}_n}{\delta t}, \mathbf{z}_i \right)_K + \theta \mathbf{B}(\mathbf{w}_{n+1}^{k})(\mathbf{z}_i)_K + (1 - \theta) \mathbf{B}(\mathbf{w}_n)(\mathbf{z}_i)_K
+$$
+
+其中，
+
+$$
+\mathbf{B}(\mathbf{w})(\mathbf{z}_i)_K = -(\mathbf{F}(\mathbf{w}), \nabla \mathbf{z}_i)_K + h^n (\nabla \mathbf{w}, \nabla \mathbf{z}_i)_K - (\mathbf{G}(\mathbf{w}), \mathbf{z}_i)_K
+$$
+
+对于两个 $\mathbf{w} = \mathbf{w}_{n+1}^{k}$ 和 $\mathbf{w} = \mathbf{w}_n$，$\mathbf{z}_i$ 是第 $i$ 个向量值测试函数。此外，标量积 $(\mathbf{F}(\mathbf{w}), \nabla \mathbf{z}_i)_K$ 被理解为：
+
+$$
+\int_K \sum_{c=1}^{n\_components} \sum_{d=1}^{\dim} F(\mathbf{w})_{cd} \frac{\partial z_i^c}{\partial x_d}
+$$
+
+其中 $z_i^c$ 是第 $i$ 个测试函数的第 $c$ 个分量。
+
+在该函数的开始部分，我们进行常规初始化，包括分配一些稍后需要的局部变量。特别是，我们分配变量以存储牛顿迭代第 $k$ 次迭代后的当前解 $\mathbf{W}_{n+1}^{k}$（变量 $\mathbf{w}$）和前一时间步的解 $\mathbf{W}_n$（变量 $\mathbf{w}\_old$）。
+
+除此之外，我们还需要计算当前变量的梯度。这有点令人遗憾，因为我们几乎不需要它们。简单的守恒定律的一个好处是通量通常不涉及任何梯度。然而，在扩散稳定化（diffusion stabilization）中，我们确实需要它们。
+
+存储这些变量的实际格式需要一些说明。首先，我们需要为解向量的 `EulerEquations::n_components` 个分量在每个求积点存储数值。为此，我们使用 deal.II 的 `Table` 类创建一个二维表（这比 `std::vector<std::vector<T>>` 更高效，因为它只需要分配一次内存，而不是为外层向量的每个元素单独分配内存）。类似地，梯度是一个三维表，这同样受 `Table` 类支持。
+
+其次，我们希望使用自动微分（automatic differentiation）。为此，我们使用 `Sacado::Fad::DFad` 模板，以便计算变量相对于解分量的导数，包括在求积点上的当前解和梯度（它们是自由度的线性组合），以及从这些变量计算的所有内容，如残差，但不包括前一时间步的解。这些变量都存储在一个大的数组中，该数组用于计算残差的单个分量的导数。
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0NDg3OTczOSwxOTA4MjM4NDIwLC0xMz
-M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
-LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
-Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
-Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMD
-YxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwLDEzNTg0OTMyMjhd
-fQ==
+eyJoaXN0b3J5IjpbNjA5MzMyNjY0LDE5MDgyMzg0MjAsLTEzMz
+kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
+LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
+YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
+LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
+E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
+
 -->
