@@ -1067,58 +1067,112 @@ $$
 其中，$h$ 是应用通量的面直径，$\delta T$ 是当前的时间步长。
 
 ```cpp
-      struct Flux
-      {
-        enum StabilizationKind
-        {
-          constant,
-          mesh_dependent
-        };
-        StabilizationKind stabilization_kind;
+      struct Flux
+      {
+        enum StabilizationKind
+        {
+          constant,
+          mesh_dependent
+        };
+        StabilizationKind stabilization_kind;
 
-        double stabilization_value;
+        double stabilization_value;
 
-        static void declare_parameters(ParameterHandler &prm);
-        void        parse_parameters(ParameterHandler &prm);
-      };
+        static void declare_parameters(ParameterHandler &prm);
+        void        parse_parameters(ParameterHandler &prm);
+      };
 
-      void Flux::declare_parameters(ParameterHandler &prm)
-      {
-        prm.enter_subsection("flux");
-        {
-          prm.declare_entry(
-            "stab",
-            "mesh",
-            Patterns::Selection("constant|mesh"),
-            "Whether to use a constant stabilization parameter or "
-            "a mesh-dependent one");
-          prm.declare_entry("stab value",
-                            "1",
-                            Patterns::Double(),
-                            "alpha stabilization");
-        }
-        prm.leave_subsection();
-      }
+      void Flux::declare_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("flux");
+        {
+          prm.declare_entry(
+            "stab",
+            "mesh",
+            Patterns::Selection("constant|mesh"),
+            "Whether to use a constant stabilization parameter or "
+            "a mesh-dependent one");
+          prm.declare_entry("stab value",
+                            "1",
+                            Patterns::Double(),
+                            "alpha stabilization");
+        }
+        prm.leave_subsection();
+      }
 
-      void Flux::parse_parameters(ParameterHandler &prm)
-      {
-        prm.enter_subsection("flux");
-        {
-          const std::string stab = prm.get("stab");
-          if (stab == "constant")
-            stabilization_kind = constant;
-          else if (stab == "mesh")
-            stabilization_kind = mesh_dependent;
-          else
-            AssertThrow(false, ExcNotImplemented());
+      void Flux::parse_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("flux");
+        {
+          const std::string stab = prm.get("stab");
+          if (stab == "constant")
+            stabilization_kind = constant;
+          else if (stab == "mesh")
+            stabilization_kind = mesh_dependent;
+          else
+            AssertThrow(false, ExcNotImplemented());
 
-          stabilization_value = prm.get_double("stab value");
-        }
-        prm.leave_subsection();
-      }
+          stabilization_value = prm.get_double("stab value");
+        }
+        prm.leave_subsection();
+      }
 ```
+
+#### Parameters::Output
+
+```cpp
+      struct Output
+      {
+        bool   schlieren_plot;
+        double output_step;
+
+        static void declare_parameters(ParameterHandler &prm);
+        void        parse_parameters(ParameterHandler &prm);
+      };
+
+      void Output::declare_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("output");
+        {
+          prm.declare_entry("schlieren plot",
+                            "true",
+                            Patterns::Bool(),
+                            "Whether or not to produce schlieren plots");
+          prm.declare_entry("step",
+                            "-1",
+                            Patterns::Double(),
+                            "Output once per this period");
+        }
+        prm.leave_subsection();
+      }
+
+      void Output::parse_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("output");
+        {
+          schlieren_plot = prm.get_bool("schlieren plot");
+          output_step    = prm.get_double("step");
+        }
+        prm.leave_subsection();
+      }
+```
+
+#### Parameters::AllParameters
+
+最终，这个类将所有部分整合在一起。它自身声明了一些参数，其中大多数位于参数文件的顶层，同时还包括一些过小而不值得单独创建类的部分。它还包含所有真正与空间维度相关的内容，例如初始条件或边界条件。
+
+由于此类继承自上述所有类，`declare_parameters()` 和 `parse_parameters()` 函数也会调用基类的相应函数。
+
+需要注意的是，该类还负责声明输入文件中指定的初始和边界条件。为此，在这两种情况下，都有类似 `"w_0 value"` 这样的条目，它表示一个关于 $x, y, z$ 的表达式，该表达式用于描述初始条件或边界条件，稍后将由 `FunctionParser` 类解析。类似地，`"w_1"`, `"w_2"` 等也存在，它们表示欧拉方程组的 $dim+2$ 个守恒变量。同样，我们允许在输入文件中使用最多 `max_n_boundaries` 个边界指示符，并且每个指示符可以与流入、流出或压力边界条件相关联，同时对每个分量和每个边界指示符分别指定齐次边界条件。
+
+用于存储边界指示符的数据结构稍微复杂一些。它是一个大小为 `max_n_boundaries` 的数组，其中的元素表示将被接受的边界指示符的范围。对于该数组中的每个条目，我们在 `BoundaryCondition` 结构中存储一对数据：首先，一个大小为 `n_components` 的数组，其中的每个分量指示该解向量分量是否为流入、流出或其他类型的边界；其次，一个 `FunctionParser` 对象，该对象描述此边界 ID 的所有解向量分量。
+
+`BoundaryCondition` 结构需要一个构造函数，因为我们需要在构造时告诉函数解析器对象要描述多少个向量分量。因此，在 `AllParameters::parse_parameters()` 中的 `FunctionParser` 参数表示的公式在初始化时就必须指定，而不能等到解析输入文件时才设定。
+
+出于同样的原因，由于 `Function` 对象在构造时需要知道其向量大小，我们必须在 `AllParameters` 类的构造函数中至少初始化另一个 `FunctionParser` 对象，即用于描述初始条件的那个。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjU0MzczNjAsLTE0NjE4NzA5NjYsOD
+eyJoaXN0b3J5IjpbLTE4NDc5NzA2MjMsLTE0NjE4NzA5NjYsOD
 A1MTk2ODE0LDQwMTcxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUw
 ODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMz
 gxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0
