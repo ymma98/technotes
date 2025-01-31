@@ -1432,12 +1432,32 @@ $$
 前几个成员变量也相当标准。需要注意的是，我们定义了一个映射对象，在程序中用于组装各项计算（我们会将其传递给每个 `FEValues` 和 `FEFaceValues` 对象）；我们使用的映射只是标准的 $Q_1$ 映射——换句话说，并没有什么特别的复杂性——但在这里声明一个映射对象并在整个程序中使用它，会使后续需要更改时更加简单。这一点实际上相当重要：众所周知，对于包含欧拉方程的跨音速模拟，如果边界逼近阶次不够高，则即使当 $h \to 0$，计算仍然不会收敛。
 
 
+```cpp
+      Triangulation<dim>   triangulation;
+      const MappingQ1<dim> mapping;
+
+      const FESystem<dim> fe;
+      DoFHandler<dim>     dof_handler;
+
+      const QGauss<dim>     quadrature;
+      const QGauss<dim - 1> face_quadrature;
+```
+
+
+
+```cpp
+      Vector<double> old_solution;
+      Vector<double> current_solution;
+      Vector<double> predictor;
+
+      Vector<double> right_hand_side;
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0MzQ3NDI2LC0xNDYxODcwOTY2LDgwNT
-E5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3
-LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MT
-g5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIs
-NjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNz
-E3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEz
-XX0=
+eyJoaXN0b3J5IjpbNTI5MjE5NDI4LDE1NDM0NzQyNiwtMTQ2MT
+g3MDk2Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAs
+MTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMj
+k3MzUsMjAzODE4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3Niwt
+Njc5MDA4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MD
+YzMjAsMTkzMzcxNzIxLDE4ODM5MTE3MzUsLTIwODczMzcxNzJd
+fQ==
 -->
