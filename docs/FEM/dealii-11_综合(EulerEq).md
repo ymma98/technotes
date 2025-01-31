@@ -1667,6 +1667,33 @@ $$
 
 #### ConservationLaw::assemble_cell_term
 
+在有限元框架中，对于非线性方程组，我们通常使用牛顿迭代来求解。牛顿迭代的一般形式是：
+
+$$
+\begin{cases}
+R(\mathbf{U}) = 0, \\
+\mathbf{U}^{(m+1)} = \mathbf{U}^{(m)} - \left[ \mathbf{J}(\mathbf{U}^{(m)}) \right]^{-1} R(\mathbf{U}^{(m)}),
+\end{cases}
+$$
+
+其中：
+
+- $\mathbf{U}$ 是我们求解的未知向量（在有限元中对应所有自由度）。
+- $R(\mathbf{U})$ 是残量（residual），即离散方程 $\mathbf{R}(\mathbf{U}) = 0$。
+- $\mathbf{J}(\mathbf{U})$ 是残量对未知量的雅可比矩阵，即 $\mathbf{J}(\mathbf{U}) = \frac{\partial \mathbf{R}}{\partial \mathbf{U}}$。
+
+**核心**：每次迭代需要同时组装 $\mathbf{R}(\mathbf{U}^{(m)})$ 和 $\mathbf{J}(\mathbf{U}^{(m)})$ 并求解增量 $\Delta \mathbf{U}^{(m)} = -\mathbf{J}^{-1} \mathbf{R}$，进而更新：
+
+$$
+\mathbf{U}^{(m+1)} = \mathbf{U}^{(m)} + \Delta \mathbf{U}^{(m)}.
+$$
+
+
+
+
+
+
+
 该函数通过计算残差的单元部分来组装单元项，并将其负值添加到右端向量中，同时将其对局部变量的导数添加到雅可比矩阵（即牛顿矩阵）中。回顾一下，单元对残差的贡献表示为：
 
 $$
@@ -2560,11 +2587,11 @@ $$
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcwMjIxMjI2LC00MDU4ODU3NiwxOTA4Mj
-M4NDIwLC0xMzM5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0Mjgs
-MTU0MzQ3NDI2LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MT
-AzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIs
-LTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3Nz
-MyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwXX0=
+eyJoaXN0b3J5IjpbLTU4NDIwNDEyMiwtNDA1ODg1NzYsMTkwOD
+IzODQyMCwtMTMzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4
+LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNz
+EwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAy
+LC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5Nz
+czMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MF19
 
 -->
