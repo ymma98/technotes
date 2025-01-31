@@ -996,66 +996,133 @@ determine how the mesh is to be refined
 
 
 ```cpp
-      struct Refinement
+      struct Refinement
+      {
+        bool   do_refine;
+        double shock_val;
+        double shock_levels;
+
+        static void declare_parameters(ParameterHandler &prm);
+        void        parse_parameters(ParameterHandler &prm);
+      };
+
+      void Refinement::declare_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("refinement");
+        {
+          prm.declare_entry("refinement",
+                            "true",
+                            Patterns::Bool(),
+                            "Whether to perform mesh refinement or not");
+          prm.declare_entry("refinement fraction",
+                            "0.1",
+                            Patterns::Double(),
+                            "Fraction of high refinement");
+          prm.declare_entry("unrefinement fraction",
+                            "0.1",
+                            Patterns::Double(),
+                            "Fraction of low unrefinement");
+          prm.declare_entry("max elements",
+                            "1000000",
+                            Patterns::Double(),
+                            "maximum number of elements");
+          prm.declare_entry("shock value",
+                            "4.0",
+                            Patterns::Double(),
+                            "value for shock indicator");
+          prm.declare_entry("shock levels",
+                            "3.0",
+                            Patterns::Double(),
+                            "number of shock refinement levels");
+        }
+        prm.leave_subsection();
+      }
+
+      void Refinement::parse_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("refinement");
+        {
+          do_refine    = prm.get_bool("refinement");
+          shock_val    = prm.get_double("shock value");
+          shock_levels = prm.get_double("shock levels");
+        }
+        prm.leave_subsection();
+      }
+```
+
+#### Parameters::Flux
+
+接下来是关于通量修改的部分，以提高其稳定性。具体来说，提供了两种选项来稳定 Lax-Friedrichs 通量：可以选择
+
+$$
+\mathbf{H}(\mathbf{a}, \mathbf{b}, \mathbf{n}) = \frac{1}{2} \left( \mathbf{F}(\mathbf{a}) \cdot \mathbf{n} + \mathbf{F}(\mathbf{b}) \cdot \mathbf{n} + \alpha (\mathbf{a} - \mathbf{b}) \right)
+$$
+
+其中，$\alpha$ 可以是输入文件中指定的固定数值，或者是依赖于网格的值。在后一种情况下，它被选择为
+
+$$
+\alpha = \frac{h}{2\delta T}
+$$
+
+其中，$h$ 是应用通量的面直径，$\delta T$ 是当前的时间步长。
+
+```cpp
+      struct Flux
       {
-        bool   do_refine;
-        double shock_val;
-        double shock_levels;
+        enum StabilizationKind
+        {
+          constant,
+          mesh_dependent
+        };
+        StabilizationKind stabilization_kind;
+
+        double stabilization_value;
 
         static void declare_parameters(ParameterHandler &prm);
         void        parse_parameters(ParameterHandler &prm);
       };
 
-      void Refinement::declare_parameters(ParameterHandler &prm)
+      void Flux::declare_parameters(ParameterHandler &prm)
       {
-        prm.enter_subsection("refinement");
+        prm.enter_subsection("flux");
         {
-          prm.declare_entry("refinement",
-                            "true",
-                            Patterns::Bool(),
-                            "Whether to perform mesh refinement or not");
-          prm.declare_entry("refinement fraction",
-                            "0.1",
+          prm.declare_entry(
+            "stab",
+            "mesh",
+            Patterns::Selection("constant|mesh"),
+            "Whether to use a constant stabilization parameter or "
+            "a mesh-dependent one");
+          prm.declare_entry("stab value",
+                            "1",
                             Patterns::Double(),
-                            "Fraction of high refinement");
-          prm.declare_entry("unrefinement fraction",
-                            "0.1",
-                            Patterns::Double(),
-                            "Fraction of low unrefinement");
-          prm.declare_entry("max elements",
-                            "1000000",
-                            Patterns::Double(),
-                            "maximum number of elements");
-          prm.declare_entry("shock value",
-                            "4.0",
-                            Patterns::Double(),
-                            "value for shock indicator");
-          prm.declare_entry("shock levels",
-                            "3.0",
-                            Patterns::Double(),
-                            "number of shock refinement levels");
+                            "alpha stabilization");
         }
         prm.leave_subsection();
       }
 
-      void Refinement::parse_parameters(ParameterHandler &prm)
+      void Flux::parse_parameters(ParameterHandler &prm)
       {
-        prm.enter_subsection("refinement");
+        prm.enter_subsection("flux");
         {
-          do_refine    = prm.get_bool("refinement");
-          shock_val    = prm.get_double("shock value");
-          shock_levels = prm.get_double("shock levels");
+          const std::string stab = prm.get("stab");
+          if (stab == "constant")
+            stabilization_kind = constant;
+          else if (stab == "mesh")
+            stabilization_kind = mesh_dependent;
+          else
+            AssertThrow(false, ExcNotImplemented());
+
+          stabilization_value = prm.get_double("stab value");
         }
         prm.leave_subsection();
       }
 ```
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxOTMzNDQxMiwtMTQ2MTg3MDk2Niw4MD
-UxOTY4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4
-NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzOD
-E4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQy
-LDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMz
-cxNzIxLDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMTIzMTYx
-M119
+eyJoaXN0b3J5IjpbLTIwMjU0MzczNjAsLTE0NjE4NzA5NjYsOD
+A1MTk2ODE0LDQwMTcxMDM4NiwyMTA5NjYyMTMwLDE1NzI0MTUw
+ODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMz
+gxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0
+Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5Mz
+M3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2
+MTNdfQ==
 -->
