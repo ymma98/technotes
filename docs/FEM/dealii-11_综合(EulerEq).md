@@ -1546,10 +1546,19 @@ $$
                                                  neighbor_face_update_flags);
 ```
 
+然后遍历所有单元格，初始化当前单元格的FEValues对象，并调用在该单元格上组装问题的函数。
 
+```cpp
+      for (const auto &cell : dof_handler.active_cell_iterators())
+        {
+          fe_v.reinit(cell);
+          cell->get_dof_indices(dof_indices);
+
+          assemble_cell_term(fe_v, dof_indices);
+```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxNjc1OTM2LC0xMzM5MjI1Njg5LDMwMD
+eyJoaXN0b3J5IjpbNTUwNTEyNzc5LC0xMzM5MjI1Njg5LDMwMD
 U3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2LC0xNDYxODcwOTY2
 LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwxNTcyND
 E1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwy
