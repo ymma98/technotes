@@ -1549,20 +1549,37 @@ $$
 然后遍历所有单元格，初始化当前单元格的FEValues对象，并调用在该单元格上组装问题的函数。
 
 ```cpp
-      for (const auto &cell : dof_handler.active_cell_iterators())
-        {
-          fe_v.reinit(cell);
-          cell->get_dof_indices(dof_indices);
+      for (const auto &cell : dof_handler.active_cell_iterators())
+        {
+          fe_v.reinit(cell);
+          cell->get_dof_indices(dof_indices);
 
-          assemble_cell_term(fe_v, dof_indices);
+          assemble_cell_term(fe_v, dof_indices);
 ```
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUwNTEyNzc5LC0xMzM5MjI1Njg5LDMwMD
-U3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2LC0xNDYxODcwOTY2
-LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwxNTcyND
-E1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwy
-MDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMD
-g1NDIsNjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMF19
+然后遍历该单元格的所有面。如果一个面是外部边界的一部分，则在该处组装边界条件（组装面项的第五个参数指示我们是在外部面还是内部面；如果是外部面，则忽略表示邻居自由度索引的第四个参数，因此我们传递一个空向量）
 
+```cpp
+          for (const auto face_no : cell->face_indices())
+            if (cell->at_boundary(face_no))
+              {
+                fe_v_face.reinit(cell, face_no);
+                assemble_face_term(face_no,
+                                   fe_v_face,
+                                   fe_v_face,
+                                   dof_indices,
+                                   std::vector<types::global_dof_index>(),
+                                   true,
+                                   cell->face(face_no)->boundary_id(),
+                                   cell->face(face_no)->diameter());
+              }
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTkwODIzODQyMCwtMTMzOTIyNTY4OSwzMD
+A1NzE1NTEsNTI5MjE5NDI4LDE1NDM0NzQyNiwtMTQ2MTg3MDk2
+Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3Mj
+QxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUs
+MjAzODE4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MD
+A4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjBd
+fQ==
 -->
