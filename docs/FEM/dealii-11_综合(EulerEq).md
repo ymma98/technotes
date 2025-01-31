@@ -1585,12 +1585,91 @@ $$
 
 然后，我们调用用于计算面积分的函数；由于这是一个内部面，因此第五个参数为 `false`，第六个参数被忽略，所以我们再次传递了一个无效值。
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg0NTA0NzQzLDE5MDgyMzg0MjAsLTEzMz
-kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
-LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
-YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
-LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
-E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
+```cpp
+            else
+              {
+                if (cell->neighbor(face_no)->has_children())
+                  {
+                    const unsigned int neighbor2 =
+                      cell->neighbor_of_neighbor(face_no);
 
+                    for (unsigned int subface_no = 0;
+                         subface_no < cell->face(face_no)->n_children();
+                         ++subface_no)
+                      {
+                        const typename DoFHandler<dim>::active_cell_iterator
+                          neighbor_child =
+                            cell->neighbor_child_on_subface(face_no, subface_no);
+
+                        Assert(neighbor_child->face(neighbor2) ==
+                                 cell->face(face_no)->child(subface_no),
+                               ExcInternalError());
+                        Assert(neighbor_child->is_active(), ExcInternalError());
+
+                        fe_v_subface.reinit(cell, face_no, subface_no);
+                        fe_v_face_neighbor.reinit(neighbor_child, neighbor2);
+
+                        neighbor_child->get_dof_indices(dof_indices_neighbor);
+
+                        assemble_face_term(
+                          face_no,
+                          fe_v_subface,
+                          fe_v_face_neighbor,
+                          dof_indices,
+                          dof_indices_neighbor,
+                          false,
+                          numbers::invalid_unsigned_int,
+                          neighbor_child->face(neighbor2)->diameter());
+                      }
+                  }
+```
+
+我们还需要考虑另一种情况，即邻居单元比当前单元更粗糙（特别是由于通常每面最多只有一个悬挂节点的限制，邻居单元必须比当前单元恰好低一级，我们通过断言来检查这一点）。同样，我们在此接口上进行积分：
+
+```cpp
+                else if (cell->neighbor(face_no)->level() != cell->level())
+                  {
+                    const typename DoFHandler<dim>::cell_iterator neighbor =
+                      cell->neighbor(face_no);
+                    Assert(neighbor->level() == cell->level() - 1,
+                           ExcInternalError());
+
+                    neighbor->get_dof_indices(dof_indices_neighbor);
+
+                    const std::pair<unsigned int, unsigned int> faceno_subfaceno =
+                      cell->neighbor_of_coarser_neighbor(face_no);
+                    const unsigned int neighbor_face_no = faceno_subfaceno.first,
+                                       neighbor_subface_no =
+                                         faceno_subfaceno.second;
+
+                    Assert(neighbor->neighbor_child_on_subface(
+                             neighbor_face_no, neighbor_subface_no) == cell,
+                           ExcInternalError());
+
+                    fe_v_face.reinit(cell, face_no);
+                    fe_v_subface_neighbor.reinit(neighbor,
+                                                 neighbor_face_no,
+                                                 neighbor_subface_no);
+
+                    assemble_face_term(face_no,
+                                       fe_v_face,
+                                       fe_v_subface_neighbor,
+                                       dof_indices,
+                                       dof_indices_neighbor,
+                                       false,
+                                       numbers::invalid_unsigned_int,
+                                       cell->face(face_no)->diameter());
+                  }
+              }
+        }
+    }
+```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTc0NDg3OTczOSwxOTA4MjM4NDIwLC0xMz
+M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
+LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
+Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
+Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMD
+YxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwLDEzNTg0OTMyMjhd
+fQ==
 -->
