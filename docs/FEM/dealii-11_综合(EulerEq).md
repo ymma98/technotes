@@ -2362,9 +2362,144 @@ if (!(nonlin_iter <= 10))
 
 唯一的重要区别是，`AssertThrow` 还会确保所抛出的异常携带有关其生成位置的信息（如文件名和行号）。在这里，这并不是一个关键问题，因为这种异常仅可能发生在一个特定的位置。然而，当我们需要查明错误发生的位置时，它通常是一个非常有用的工具。
 
-```c
+```cpp
+          unsigned int nonlin_iter = 0;
+          current_solution         = predictor;
+          while (true)
+            {
+              system_matrix = 0;
+
+              right_hand_side = 0;
+              assemble_system();
+
+              const double res_norm = right_hand_side.l2_norm();
+              if (std::fabs(res_norm) < 1e-10)
+                {
+                  std::printf("   %-16.3e (converged)\n\n", res_norm);
+                  break;
+                }
+              else
+                {
+                  newton_update = 0;
+
+                  std::pair<unsigned int, double> convergence =
+                    solve(newton_update);
+
+                  current_solution += newton_update;
+
+                  std::printf("   %-16.3e %04d        %-5.2e\n",
+                              res_norm,
+                              convergence.first,
+                              convergence.second);
+                }
+
+              ++nonlin_iter;
+              AssertThrow(nonlin_iter <= 10,
+                          ExcMessage("No convergence in nonlinear solver"));
+            }
+```
+
+只有当牛顿迭代已收敛时，我们才会执行到这里，因此在此执行各种收敛后的任务：
+
+首先，我们更新时间，并在需要时生成图形输出。然后，我们更新下一个时间步的解预测值，通过以下近似计算：
+
+$$
+\mathbf{w}^{n+1} \approx \mathbf{w}^{n} + \delta t \frac{\partial \mathbf{w}}{\partial t} \approx \mathbf{w}^{n} + \delta t \frac{\mathbf{w}^{n} - \mathbf{w}^{n-1}}{\delta t} = 2 \mathbf{w}^{n} - \mathbf{w}^{n-1}
+$$
+
+目的是尝试提前细化，而不是进入一组较粗糙的单元并使 `old_solution` 变得模糊。这个简单的时间外推方法完成了这项工作。完成此步骤后，如果用户希望细化网格，则执行网格细化，最后继续进行下一个时间步：
+
+
+```cpp
+          time += parameters.time_step;
+
+          if (parameters.output_step < 0)
+            output_results();
+          else if (time >= next_output)
+            {
+              output_results();
+              next_output += parameters.output_step;
+            }
+
+          predictor = current_solution;
+          predictor.sadd(2.0, -1.0, old_solution);
+
+          old_solution = current_solution;
+
+          if (parameters.do_refine == true)
+            {
+              Vector<double> refinement_indicators(
+                triangulation.n_active_cells());
+              compute_refinement_indicators(refinement_indicators);
+
+              refine_grid(refinement_indicators);
+              setup_system();
+
+              newton_update.reinit(dof_handler.n_dofs());
+            }
+        }
+    }
+  } // namespace Step33
+```
+
+### main
+
+```cpp
+  int main(int argc, char *argv[])
+  {
+    try
+      {
+        using namespace dealii;
+        using namespace Step33;
+
+        if (argc != 2)
+          {
+            std::cout << "Usage:" << argv[0] << " input_file" << std::endl;
+            std::exit(1);
+          }
+
+        Utilities::MPI::MPI_InitFinalize mpi_initialization(
+          argc, argv, numbers::invalid_unsigned_int);
+
+        AssertThrow(
+          Utilities::MPI::n_mpi_processes(MPI_COMM_WORLD) == 1,
+          ExcMessage(
+            "This program does not support parallel computing via MPI."));
+
+        ConservationLaw<2> cons(argv[1]);
+        cons.run();
+      }
+    catch (std::exception &exc)
+      {
+        std::cerr << std::endl
+                  << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        std::cerr << "Exception on processing: " << std::endl
+                  << exc.what() << std::endl
+                  << "Aborting!" << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        return 1;
+      }
+    catch (...)
+      {
+        std::cerr << std::endl
+                  << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        std::cerr << "Unknown exception!" << std::endl
+                  << "Aborting!" << std::endl
+                  << "----------------------------------------------------"
+                  << std::endl;
+        return 1;
+      };
+
+    return 0;
+  }
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzg4MDI4ODIzLDE5MDgyMzg0MjAsLTEzMz
+eyJoaXN0b3J5IjpbLTQwNTg4NTc2LDE5MDgyMzg0MjAsLTEzMz
 kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
 LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
 YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
