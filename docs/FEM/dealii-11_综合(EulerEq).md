@@ -2182,27 +2182,76 @@ $$
 这里，我们使用之前计算出的细化指标来细化网格。一开始，我们循环遍历所有单元格，标记那些我们认为应该细化的单元格：
 
 ```cpp
-    template <int dim>
-    void
-    ConservationLaw<dim>::refine_grid(const Vector<double> &refinement_indicators)
-    {
-      for (const auto &cell : dof_handler.active_cell_iterators())
-        {
-          const unsigned int cell_no = cell->active_cell_index();
-          cell->clear_coarsen_flag();
-          cell->clear_refine_flag();
+    template <int dim>
+    void
+    ConservationLaw<dim>::refine_grid(const Vector<double> &refinement_indicators)
+    {
+      for (const auto &cell : dof_handler.active_cell_iterators())
+        {
+          const unsigned int cell_no = cell->active_cell_index();
+          cell->clear_coarsen_flag();
+          cell->clear_refine_flag();
 
-          if ((cell->level() < parameters.shock_levels) &&
-              (std::fabs(refinement_indicators(cell_no)) > parameters.shock_val))
-            cell->set_refine_flag();
-          else if ((cell->level() > 0) &&
-                   (std::fabs(refinement_indicators(cell_no)) <
-                    0.75 * parameters.shock_val))
-            cell->set_coarsen_flag();
-        }
+          if ((cell->level() < parameters.shock_levels) &&
+              (std::fabs(refinement_indicators(cell_no)) > parameters.shock_val))
+            cell->set_refine_flag();
+          else if ((cell->level() > 0) &&
+                   (std::fabs(refinement_indicators(cell_no)) <
+                    0.75 * parameters.shock_val))
+            cell->set_coarsen_flag();
+        }
 ```
+
+下一步涉及在介绍部分提到的一个问题：我们稍后要使用的 `SolutionTransfer` 类假设解函数在悬挂节点处是连续的。然而，在本程序中，这一假设并不完全成立，因为我们选择了（也许并不明智地）以较弱的方式强制悬挂节点约束，就像处理非连续单元时所做的那样。但我们这里使用的单元是连续的（即多个 `FE_Q` 副本），因此断言将会失败，并导致程序终止。
+
+为了避免这个问题（而无需重写整个程序），我们简单地确保解**确实**满足悬挂节点约束，而不是直接创建 `AffineConstraints` 对象以存储悬挂节点约束，并将这些约束应用于我们希望 `SolutionTransfer` 类传输到下一个网格的两个解向量：
+
+
+```cpp
+      {
+        AffineConstraints<double> hanging_node_constraints;
+        DoFTools::make_hanging_node_constraints(dof_handler,
+                                                hanging_node_constraints);
+        hanging_node_constraints.close();
+
+        hanging_node_constraints.distribute(old_solution);
+        hanging_node_constraints.distribute(predictor);
+      }
+```
+
+然后，我们需要在进行细化时，将各种解向量从旧网格转移到新网格。SolutionTransfer 类在这里帮了大忙；它有相当全面的文档，包括示例，因此我们不会对下面的代码进行太多注释。最后三行只是将一些其他向量的尺寸重置为现在正确的尺寸
+
+```cpp
+      const std::vector<Vector<double>> transfer_in = {old_solution, predictor};
+
+      triangulation.prepare_coarsening_and_refinement();
+
+      SolutionTransfer<dim> soltrans(dof_handler);
+      soltrans.prepare_for_coarsening_and_refinement(transfer_in);
+
+      triangulation.execute_coarsening_and_refinement();
+
+      dof_handler.clear();
+      dof_handler.distribute_dofs(fe);
+
+      std::vector<Vector<double>> transfer_out = {
+        Vector<double>(dof_handler.n_dofs()),
+        Vector<double>(dof_handler.n_dofs())};
+      soltrans.interpolate(transfer_in, transfer_out);
+
+      old_solution = std::move(transfer_out[0]);
+      predictor    = std::move(transfer_out[1]);
+
+      current_solution.reinit(dof_handler.n_dofs());
+      current_solution = old_solution;
+
+      right_hand_side.reinit(dof_handler.n_dofs());
+    }
+```
+
+#### ConservationLaw::output_results
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzE0MjQ3MywxOTA4MjM4NDIwLC0xMz
+eyJoaXN0b3J5IjpbMTI4ODUwNDk0MiwxOTA4MjM4NDIwLC0xMz
 M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
 LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
 Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
