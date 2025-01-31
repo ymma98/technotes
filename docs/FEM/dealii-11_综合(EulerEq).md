@@ -1688,12 +1688,6 @@ $$
 \mathbf{U}^{(m+1)} = \mathbf{U}^{(m)} + \Delta \mathbf{U}^{(m)}.
 $$
 
-
-
-
-
-
-
 该函数通过计算残差的单元部分来组装单元项，并将其负值添加到右端向量中，同时将其对局部变量的导数添加到雅可比矩阵（即牛顿矩阵）中。回顾一下，单元对残差的贡献表示为：
 
 $$
@@ -1721,65 +1715,6 @@ $$
 存储这些变量的实际格式需要一些说明。首先，我们需要为解向量的 `EulerEquations::n_components` 个分量在每个求积点存储数值。为此，我们使用 deal.II 的 `Table` 类创建一个二维表（这比 `std::vector<std::vector<T>>` 更高效，因为它只需要分配一次内存，而不是为外层向量的每个元素单独分配内存）。类似地，梯度是一个三维表，这同样受 `Table` 类支持。
 
 其次，我们希望使用自动微分（automatic differentiation）。为此，我们使用 `Sacado::Fad::DFad` 模板，以便计算变量相对于解分量的导数，包括在求积点上的当前解和梯度（它们是自由度的线性组合），以及从这些变量计算的所有内容，如残差，但不包括前一时间步的解。这些变量都存储在一个大的数组中，该数组用于计算残差的单个分量的导数。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -2587,11 +2522,11 @@ $$
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzMDIyMzQ3MCwtNDA1ODg1NzYsMTkwOD
-IzODQyMCwtMTMzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4
-LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNz
-EwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAy
-LC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5Nz
-czMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMzk4NzY2MF19
+eyJoaXN0b3J5IjpbNTUwOTQ4NTcyLC00MDU4ODU3NiwxOTA4Mj
+M4NDIwLC0xMzM5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0Mjgs
+MTU0MzQ3NDI2LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MT
+AzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIs
+LTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3Nz
+MyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwXX0=
 
 -->
