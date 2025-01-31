@@ -2250,12 +2250,112 @@ $$
 ```
 
 #### ConservationLaw::output_results
+
+这个函数现在相当直接。所有魔法，包括将数据从守恒变量转换为物理变量的转换，都被抽象并移入 EulerEquations 类中，以便在需要求解其他双曲守恒定律时可以替换它。 请注意，输出文件的编号是通过一个静态变量计数器确定的，该计数器在第一次调用此函数时设置为零，并在每次调用结束时递增。
+
+```cpp
+    template <int dim>
+    void ConservationLaw<dim>::output_results() const
+    {
+      typename EulerEquations<dim>::Postprocessor postprocessor(
+        parameters.schlieren_plot);
+
+      DataOut<dim> data_out;
+      data_out.attach_dof_handler(dof_handler);
+
+      data_out.add_data_vector(current_solution,
+                               EulerEquations<dim>::component_names(),
+                               DataOut<dim>::type_dof_data,
+                               EulerEquations<dim>::component_interpretation());
+
+      data_out.add_data_vector(current_solution, postprocessor);
+
+      data_out.build_patches();
+
+      static unsigned int output_file_number = 0;
+      std::string         filename =
+        "solution-" + Utilities::int_to_string(output_file_number, 3) + ".vtk";
+      std::ofstream output(filename);
+      data_out.write_vtk(output);
+
+      ++output_file_number;
+    }
+```
+
+#### ConservationLaw::run
+
+该函数包含该程序的顶级逻辑：初始化、时间循环和内部牛顿迭代。 开始时，我们读取参数文件中指定的网格文件，设置 DoFHandler 和各种向量，然后将给定的初始条件插值到该网格上。然后，我们根据初始条件执行多次网格细化，以获得一个已经很好地适应初始解的网格。在这个过程的最后，我们输出初始解。
+
+```cpp
+    template <int dim>
+    void ConservationLaw<dim>::run()
+    {
+      {
+        GridIn<dim> grid_in;
+        grid_in.attach_triangulation(triangulation);
+
+        std::ifstream input_file(parameters.mesh_filename);
+        Assert(input_file, ExcFileNotOpen(parameters.mesh_filename));
+
+        grid_in.read_ucd(input_file);
+      }
+
+      dof_handler.distribute_dofs(fe);
+      old_solution.reinit(dof_handler.n_dofs());
+      current_solution.reinit(dof_handler.n_dofs());
+      predictor.reinit(dof_handler.n_dofs());
+      right_hand_side.reinit(dof_handler.n_dofs());
+
+      setup_system();
+
+      VectorTools::interpolate(dof_handler,
+                               parameters.initial_conditions,
+                               old_solution);
+      current_solution = old_solution;
+      predictor        = old_solution;
+
+      if (parameters.do_refine == true)
+        for (unsigned int i = 0; i < parameters.shock_levels; ++i)
+          {
+            Vector<double> refinement_indicators(triangulation.n_active_cells());
+
+            compute_refinement_indicators(refinement_indicators);
+            refine_grid(refinement_indicators);
+
+            setup_system();
+
+            VectorTools::interpolate(dof_handler,
+                                     parameters.initial_conditions,
+                                     old_solution);
+            current_solution = old_solution;
+            predictor        = old_solution;
+          }
+
+      output_results();
+      Vector<double> newton_update(dof_handler.n_dofs());
+
+      double time        = 0;
+      double next_output = time + parameters.output_step;
+
+      predictor = old_solution;
+      while (time < parameters.final_time)
+        {
+          std::cout << "T=" << time << std::endl
+                    << "   Number of active cells:       "
+                    << triangulation.n_active_cells() << std::endl
+                    << "   Number of degrees of freedom: " << dof_handler.n_dofs()
+                    << std::endl
+                    << std::endl;
+
+          std::cout << "   NonLin Res     Lin Iter       Lin Res" << std::endl
+                    << "   _____________________________________" << std::endl;
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4ODUwNDk0MiwxOTA4MjM4NDIwLC0xMz
-M5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2
-LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOT
-Y2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3
-Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMD
-YxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwLDEzNTg0OTMyMjhd
-fQ==
+eyJoaXN0b3J5IjpbNTg1NjgxNTI0LDE5MDgyMzg0MjAsLTEzMz
+kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
+LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
+YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
+LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNj
+E5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOF19
+
 -->
