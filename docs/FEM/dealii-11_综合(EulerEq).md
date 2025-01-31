@@ -892,15 +892,110 @@ $$
 - `ilut_drop`：ILUT 会丢弃任何小于此值的数值。这是控制该预处理器使用内存量的一种方式。
 
 ```cpp
+      struct Solver
+      {
+        enum SolverType
+        {
+          gmres,
+          direct
+        };
+        SolverType solver;
 
+        enum OutputType
+        {
+          quiet,
+          verbose
+        };
+        OutputType output;
+
+        double linear_residual;
+        int    max_iterations;
+
+        double ilut_fill;
+        double ilut_atol;
+        double ilut_rtol;
+        double ilut_drop;
+
+        static void declare_parameters(ParameterHandler &prm);
+        void        parse_parameters(ParameterHandler &prm);
+      };
+
+      void Solver::declare_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("linear solver");
+        {
+          prm.declare_entry(
+            "output",
+            "quiet",
+            Patterns::Selection("quiet|verbose"),
+            "State whether output from solver runs should be printed. "
+            "Choices are <quiet|verbose>.");
+          prm.declare_entry("method",
+                            "gmres",
+                            Patterns::Selection("gmres|direct"),
+                            "The kind of solver for the linear system. "
+                            "Choices are <gmres|direct>.");
+          prm.declare_entry("residual",
+                            "1e-10",
+                            Patterns::Double(),
+                            "Linear solver residual");
+          prm.declare_entry("max iters",
+                            "300",
+                            Patterns::Integer(),
+                            "Maximum solver iterations");
+          prm.declare_entry("ilut fill",
+                            "2",
+                            Patterns::Double(),
+                            "Ilut preconditioner fill");
+          prm.declare_entry("ilut absolute tolerance",
+                            "1e-9",
+                            Patterns::Double(),
+                            "Ilut preconditioner tolerance");
+          prm.declare_entry("ilut relative tolerance",
+                            "1.1",
+                            Patterns::Double(),
+                            "Ilut relative tolerance");
+          prm.declare_entry("ilut drop tolerance",
+                            "1e-10",
+                            Patterns::Double(),
+                            "Ilut drop tolerance");
+        }
+        prm.leave_subsection();
+      }
+
+      void Solver::parse_parameters(ParameterHandler &prm)
+      {
+        prm.enter_subsection("linear solver");
+        {
+          const std::string op = prm.get("output");
+          if (op == "verbose")
+            output = verbose;
+          if (op == "quiet")
+            output = quiet;
+
+          const std::string sv = prm.get("method");
+          if (sv == "direct")
+            solver = direct;
+          else if (sv == "gmres")
+            solver = gmres;
+
+          linear_residual = prm.get_double("residual");
+          max_iterations  = prm.get_integer("max iters");
+          ilut_fill       = prm.get_double("ilut fill");
+          ilut_atol       = prm.get_double("ilut absolute tolerance");
+          ilut_rtol       = prm.get_double("ilut relative tolerance");
+          ilut_drop       = prm.get_double("ilut drop tolerance");
+        }
+        prm.leave_subsection();
+      }
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2MTExMjM4OCwtMTQ2MTg3MDk2Niw4MD
-UxOTY4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4
-NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzOD
-E4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQy
-LDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMz
-cxNzIxLDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMTIzMTYx
-M119
+eyJoaXN0b3J5IjpbNDkwODU4NCwtMTQ2MTg3MDk2Niw4MDUxOT
+Y4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4Nywx
+MTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OT
+MxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYx
+Mzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNz
+IxLDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMTIzMTYxM119
+
 -->
