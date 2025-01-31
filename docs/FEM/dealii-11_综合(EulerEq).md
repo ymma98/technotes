@@ -1745,8 +1745,45 @@ $$
 
 理想情况下，我们可以通过调用 `FEValues::get_function_values` 和 `FEValues::get_function_gradients` 来计算这些信息，但是由于 (i) 这需要扩展 `FEValues` 类，(ii) 我们不希望将整个 `old_solution` 向量转换为 fad 类型，而只是局部单元变量，因此我们显式地编写了上述循环。在此之前，我们还添加了一个初始化所有 fad 变量为零的循环：
 
+
+```cpp
+      for (unsigned int q = 0; q < n_q_points; ++q)
+        for (unsigned int c = 0; c < EulerEquations<dim>::n_components; ++c)
+          {
+            W[q][c]     = 0;
+            W_old[q][c] = 0;
+            for (unsigned int d = 0; d < dim; ++d)
+              {
+                grad_W[q][c][d]     = 0;
+                grad_W_old[q][c][d] = 0;
+              }
+          }
+
+      for (unsigned int q = 0; q < n_q_points; ++q)
+        for (unsigned int i = 0; i < dofs_per_cell; ++i)
+          {
+            const unsigned int c =
+              fe_v.get_fe().system_to_component_index(i).first;
+
+            W[q][c] += independent_local_dof_values[i] *
+                       fe_v.shape_value_component(i, q, c);
+            W_old[q][c] +=
+              old_solution(dof_indices[i]) * fe_v.shape_value_component(i, q, c);
+
+            for (unsigned int d = 0; d < dim; ++d)
+              {
+                grad_W[q][c][d] += independent_local_dof_values[i] *
+                                   fe_v.shape_grad_component(i, q, c)[d];
+                grad_W_old[q][c][d] += old_solution(dof_indices[i]) *
+                                       fe_v.shape_grad_component(i, q, c)[d];
+              }
+          }
+```
+
+接下来，为了计算单元贡献，我们需要在所有求积点处评估 $\mathbf{F}(\mathbf{w}_{n+1}^{k})$、$\mathbf{G}(\mathbf{w}_{n+1}^{k})$ 以及 $\mathbf{F}(\mathbf{w}_n)$、$\mathbf{G}(\mathbf{w}_n)$。为了存储这些值，我们还需要分配一些内存。需要注意的是，我们使用自动微分变量计算通量矩阵和右端向量，以便稍后可以从中轻松计算雅可比矩阵的贡献。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA4MDAwMDIzLDE5MDgyMzg0MjAsLTEzMz
+eyJoaXN0b3J5IjpbODQ1OTg2NjQ3LDE5MDgyMzg0MjAsLTEzMz
 kyMjU2ODksMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzNDc0MjYs
 LTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4NiwyMTA5Nj
 YyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3
