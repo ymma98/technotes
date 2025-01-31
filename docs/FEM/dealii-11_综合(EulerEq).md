@@ -745,40 +745,41 @@ $$
 
 
 ```cpp
-      class Postprocessor : public DataPostprocessor<dim>
-      {
-      public:
-        Postprocessor(const bool do_schlieren_plot);
+      class Postprocessor : public DataPostprocessor<dim>
+      {
+      public:
+        Postprocessor(const bool do_schlieren_plot);
 
-        virtual void evaluate_vector_field(
-          const DataPostprocessorInputs::Vector<dim> &inputs,
-          std::vector<Vector<double>> &computed_quantities) const override;
+        virtual void evaluate_vector_field(
+          const DataPostprocessorInputs::Vector<dim> &inputs,
+          std::vector<Vector<double>> &computed_quantities) const override;
 
-        virtual std::vector<std::string> get_names() const override;
+        virtual std::vector<std::string> get_names() const override;
 
-        virtual std::vector<
-          DataComponentInterpretation::DataComponentInterpretation>
-        get_data_component_interpretation() const override;
+        virtual std::vector<
+          DataComponentInterpretation::DataComponentInterpretation>
+        get_data_component_interpretation() const override;
 
-        virtual UpdateFlags get_needed_update_flags() const override;
+        virtual UpdateFlags get_needed_update_flags() const override;
 
-      private:
-        const bool do_schlieren_plot;
-      };
-    };
+      private:
+        const bool do_schlieren_plot;
+      };
+    };
 
-    template <int dim>
-    const double EulerEquations<dim>::gas_gamma = 1.4;
+    template <int dim>
+    const double EulerEquations<dim>::gas_gamma = 1.4;
 
-    template <int dim>
-    EulerEquations<dim>::Postprocessor::Postprocessor(
-      const bool do_schlieren_plot)
-      : do_schlieren_plot(do_schlieren_plot)
-    {}
+    template <int dim>
+    EulerEquations<dim>::Postprocessor::Postprocessor(
+      const bool do_schlieren_plot)
+      : do_schlieren_plot(do_schlieren_plot)
+    {}
 ```
+在生成图形输出时，`DataOut` 及其相关类会在每个单元上调用此函数，并可访问每个求积点上的值、梯度、Hessians 和法向量（如果我们正在处理面）。我们要在这里做的是计算我们感兴趣的物理量，并在每个求积点处存储这些量。请注意，在这里我们可以忽略 Hessians（`inputs.solution_hessians`）和法向量（`inputs.normals`）。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzODY5MTQ4NSwyMTA5NjYyMTMwLDE1Nz
+eyJoaXN0b3J5IjpbLTQ1MzM2NDI2NCwyMTA5NjYyMTMwLDE1Nz
 I0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1
 LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OT
 AwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIw
