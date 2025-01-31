@@ -133,7 +133,7 @@ $$
 其中,
 
 $$
-\frac{dR(u_k)}{du_k} \delta u_k = \frac{dR}{d\epsilon} = \lim_{\epsilon\rightarrow0} \frac{dR[u_k + \epsilon \delta u_k] - dR[u_k]}{\epsilon} = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u_k
+\frac{dR(u_k)}{du_k} \delta u_k = \frac{dR}{d\epsilon} = \lim_{\epsilon\rightarrow0} \frac{R[u_k + \epsilon \delta u_k] - R[u_k]}{\epsilon} = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u_k
 $$
 
 
@@ -668,7 +668,7 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk2OTk5NzQ4LC01NjA5MTMwOTcsLTIxND
+eyJoaXN0b3J5IjpbNTEwOTE5Nzk2LC01NjA5MTMwOTcsLTIxND
 M0MTc1NjMsMjA3NjU5MTYxNiwtMTUwNDc3MDUyNSwtODE3MTM4
 NTQ3LC0yMDkzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0NDQxMD
 AsMTI5NzkxMDkyNywxMDk2OTU0NzY4LDIwNzAxOTMyMDgsLTE3
