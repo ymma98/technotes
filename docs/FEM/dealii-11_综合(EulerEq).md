@@ -717,7 +717,8 @@ $$
                            dof_handler.get_fe(),
                            quadrature_formula,
                            update_flags);
-        // 外层 std::vector：大小为 1，对应于使用的求积公式 QMidpoint<dim> 仅有一个求积点（中点
+        // 外层 std::vector：大小为 1，对应于使用的求积公式 QMidpoint<dim> 仅有一个求积点(中点)
+        // 内层 std::vector：大小为 n_components，对应于问题的各个分量
         std::vector<std::vector<Tensor<1, dim>>> dU(
           1, std::vector<Tensor<1, dim>>(n_components));
 
@@ -733,11 +734,11 @@ $$
       }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg4ODc1MzgzLDE1NzI0MTUwODcsMTE4MD
-M3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMs
-MTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5OD
-c2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwx
-ODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MDEyMzE2MTMsLTExMT
-Q0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0LDIwNjA0MzE1MDJd
-fQ==
+eyJoaXN0b3J5IjpbMjEwOTY2MjEzMCwxNTcyNDE1MDg3LDExOD
+AzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MTg5MzEz
+LDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIsNjEzOT
+g3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNzE3MjEs
+MTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMT
+E0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAy
+XX0=
 -->
