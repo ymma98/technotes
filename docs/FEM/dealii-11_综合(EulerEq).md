@@ -775,15 +775,98 @@ $$
       const bool do_schlieren_plot)
       : do_schlieren_plot(do_schlieren_plot)
     {}
+    template <int dim>
+    void EulerEquations<dim>::Postprocessor::evaluate_vector_field(
+      const DataPostprocessorInputs::Vector<dim> &inputs,
+      std::vector<Vector<double>>                &computed_quantities) const
+    {
+          const unsigned int n_evaluation_points = inputs.solution_values.size();
+
+      if (do_schlieren_plot == true)
+        Assert(inputs.solution_gradients.size() == n_evaluation_points,
+               ExcInternalError());
+
+      Assert(computed_quantities.size() == n_evaluation_points,
+             ExcInternalError());
+
+      Assert(inputs.solution_values[0].size() == n_components,
+             ExcInternalError());
+
+      if (do_schlieren_plot == true)
+        {
+          Assert(computed_quantities[0].size() == dim + 2, ExcInternalError());
+        }
+      else
+        {
+          Assert(computed_quantities[0].size() == dim + 1, ExcInternalError());
+        }
+            for (unsigned int p = 0; p < n_evaluation_points; ++p)
+        {
+          const double density = inputs.solution_values[p](density_component);
+
+          for (unsigned int d = 0; d < dim; ++d)
+            computed_quantities[p](d) =
+              inputs.solution_values[p](first_momentum_component + d) / density;
+
+          computed_quantities[p](dim) =
+            compute_pressure(inputs.solution_values[p]);
+
+          if (do_schlieren_plot == true)
+            computed_quantities[p](dim + 1) =
+              inputs.solution_gradients[p][density_component] *
+              inputs.solution_gradients[p][density_component];
+        }
+    }
+
+    template <int dim>
+    std::vector<std::string> EulerEquations<dim>::Postprocessor::get_names() const
+    {
+      std::vector<std::string> names;
+      for (unsigned int d = 0; d < dim; ++d)
+        names.emplace_back("velocity");
+      names.emplace_back("pressure");
+
+      if (do_schlieren_plot == true)
+        names.emplace_back("schlieren_plot");
+
+      return names;
+    }
+
+    template <int dim>
+    std::vector<DataComponentInterpretation::DataComponentInterpretation>
+    EulerEquations<dim>::Postprocessor::get_data_component_interpretation() const
+    {
+      std::vector<DataComponentInterpretation::DataComponentInterpretation>
+        interpretation(dim,
+                       DataComponentInterpretation::component_is_part_of_vector);
+
+      interpretation.push_back(DataComponentInterpretation::component_is_scalar);
+
+      if (do_schlieren_plot == true)
+        interpretation.push_back(
+          DataComponentInterpretation::component_is_scalar);
+
+      return interpretation;
+    }
+
+    template <int dim>
+    UpdateFlags
+    EulerEquations<dim>::Postprocessor::get_needed_update_flags() const
+    {
+      if (do_schlieren_plot == true)
+        return update_values | update_gradients;
+      else
+        return update_values;
+    }
 ```
 在生成图形输出时，`DataOut` 及其相关类会在每个单元上调用此函数，并可访问每个求积点上的值、梯度、Hessians 和法向量（如果我们正在处理面）。我们要在这里做的是计算我们感兴趣的物理量，并在每个求积点处存储这些量。请注意，在这里我们可以忽略 Hessians（`inputs.solution_hessians`）和法向量（`inputs.normals`）。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1MzM2NDI2NCwyMTA5NjYyMTMwLDE1Nz
-I0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1
-LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OT
-AwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIw
-LDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MD
-EyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0
-XX0=
+eyJoaXN0b3J5IjpbNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3Mj
+QxNTA4NywxMTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUs
+MjAzODE4OTMxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MD
+A4NTQyLDYxMzk4NzY2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAs
+MTkzMzcxNzIxLDE4ODM5MTE3MzUsLTIwODczMzcxNzIsLTYwMT
+IzMTYxMywtMTExNDQ3MjM5OSw4MDk5ODM2OTQsOTA0ODc0OTRd
+fQ==
 -->
