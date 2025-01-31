@@ -733,12 +733,24 @@ $$
           }
       }
 ```
+
+
+
+最后，我们声明了一个实现数据组件后处理的类。这个类解决的问题是，我们在欧拉方程的表述中使用的变量是保守的而不是物理的形式：它们是动量密度 $m=ρvm = \rho v$，密度 ρ\rho，和能量密度 EE。我们还想在输出文件中包括速度 v=mρv = \frac{m}{\rho} 和压力 p=(γ−1)(E−12ρ∣v∣2)p = (\gamma - 1)(E - \frac{1}{2}\rho |v|^2)。
+
+此外，我们希望增加生成“云纹图”（schlieren plots）的可能性。云纹图是一种可视化冲击波和其他尖锐界面的方法。“云纹”这个词可以被翻译为“条纹”——当你例如将高浓度酒精或透明的盐水溶液倒入水中时，你看到的就是云纹，这两者虽然颜色相同，但在完全混合之前，不同折射率的光穿过混合物时会沿着弯曲的光线传播，如果你看它的话，会导致亮度变化。这就是“云纹”。在可压缩流中也会发生类似的效果，因为折射率依赖于气体的压力（因此是密度）。
+
+这个词的起源是指三维体的二维投影（我们看到的是3d流体的2d图像）。在计算流体动力学中，我们可以通过考虑产生密度变化的原因来了解这种效果。因此，在冲击波和其他高度动态的地方，s=∣∇p∣s = | \nabla p | 很大。如果用户希望（通过在输入文件中指定），我们希望除了上面列出的其他衍生量之外，还能生成这些云纹图。
+
+计算从解决我们问题的算法中衍生量的算法的实现，以及将它们输出到数据文件中的使用，依赖于 DataPostprocessor 类。这个类有广泛的文档，并且这个类的其他用途也可以在 step-29 中找到。因此我们在这里不做过多评论。
+
+----------
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwOTY2MjEzMCwxNTcyNDE1MDg3LDExOD
-AzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MTg5MzEz
-LDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIsNjEzOT
-g3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMyMCwxOTMzNzE3MjEs
-MTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNjAxMjMxNjEzLC0xMT
-E0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5NCwyMDYwNDMxNTAy
-XX0=
+eyJoaXN0b3J5IjpbLTEyNTg4NTA2NjAsMjEwOTY2MjEzMCwxNT
+cyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTcz
+NSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02Nz
+kwMDg1NDIsNjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMy
+MCwxOTMzNzE3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNj
+AxMjMxNjEzLC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5
+NF19
 -->
