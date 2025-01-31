@@ -735,7 +735,7 @@ $$
 ```
 
 
-最后，我们定义了一个类，用于实现数据组件的后处理。这个类解决的问题是，我们在欧拉方程的公式中使用的变量是保守的而不是物理的形式：它们是动量密度 $\mathrm{m} = \rho \mathrm{v}$，密度 **ρ**，和能量密度 **E**。我们还希望在输出文件中包括速度 **v = m/ρ** 和压力 **p = (γ - 1) (E - \frac{1}{2} ρ|v|^2)**。
+最后，我们定义了一个类，用于实现数据组件的后处理。这个类解决的问题是，我们在欧拉方程的公式中使用的变量是保守的而不是物理的形式：它们是动量密度 $\mathrm{m} = \rho \mathrm{v}$，密度 $\rho$，和能量密度 $E$。我们还希望在输出文件中包括速度 $\mathrm{v} = \mathrm{m}/\rho$ 和压力 $p = (\gamma-1)(E-\frac{1}{2}\rho \)$ **p = (γ - 1) (E - \frac{1}{2} ρ|v|^2)**。
 
 此外，我们希望添加生成schlieren图的功能。schlieren图是一种可视化冲击波和其他锐利界面的方式。用一个例子来解释可能更简单：schlieren是你在倒入高浓度酒精或透明盐水溶液时看到的现象；两者颜色相同，但它们的折射率不同，因此在光通过混合物的弯曲光线时，如果你看它，会因为折射率（因此是气体密度）的变化而产生亮度变化。这就是"schlieren"。类似的效果也发生在可压缩流中，因为折射率取决于压力（因此是气体的密度）。
 
@@ -744,11 +744,11 @@ $$
 这些算法的实现是为了计算从解决我们问题的量中导出的量，并将它们输出到数据文件中，这一任务依赖于 **DataPostprocessor** 类。它有广泛的文档，并且该类的其他用途也可以在 **step-29** 中找到。因此我们在此不再赘述。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzcyNjYzMTIsMjEwOTY2MjEzMCwxNT
-cyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOTcz
-NSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2LC02Nz
-kwMDg1NDIsNjEzOTg3NjYwLDEzNTg0OTMyMjgsMTQ1NzcwNjMy
-MCwxOTMzNzE3MjEsMTg4MzkxMTczNSwtMjA4NzMzNzE3MiwtNj
-AxMjMxNjEzLC0xMTE0NDcyMzk5LDgwOTk4MzY5NCw5MDQ4NzQ5
-NF19
+eyJoaXN0b3J5IjpbLTIzMTMzNzczMiwyMTA5NjYyMTMwLDE1Nz
+I0MTUwODcsMTE4MDM3NTcwMiwtMzE4MTQyODc3LDU1MDI5NzM1
+LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIwMjIwNjE5NzYsLTY3OT
+AwODU0Miw2MTM5ODc2NjAsMTM1ODQ5MzIyOCwxNDU3NzA2MzIw
+LDE5MzM3MTcyMSwxODgzOTExNzM1LC0yMDg3MzM3MTcyLC02MD
+EyMzE2MTMsLTExMTQ0NzIzOTksODA5OTgzNjk0LDkwNDg3NDk0
+XX0=
 -->
