@@ -1453,12 +1453,22 @@ $$
 
       Vector<double> right_hand_side;
 ```
+
+这组最终的成员变量（除了最底部存储所有运行时参数的对象以及仅在请求详细输出时才打印内容的屏幕输出流）处理程序中与 Trilinos 库的接口，该库为我们提供线性求解器。类似于在 `step-17` 和 `step-18` 中包含 PETSc 矩阵，我们所需做的只是创建一个 Trilinos 稀疏矩阵，而不是标准的 deal.II 矩阵。系统矩阵用于每个牛顿迭代步骤中的雅可比计算。由于我们不打算以并行方式运行该程序（尽管使用 Trilinos 数据结构进行并行化并不困难），因此我们无需考虑诸如自由度分布之类的其他问题。
+
+```cpp
+      TrilinosWrappers::SparseMatrix system_matrix;
+
+      Parameters::AllParameters<dim> parameters;
+      ConditionalOStream             verbose_cout;
+    };
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAwNTcxNTUxLDUyOTIxOTQyOCwxNTQzND
-c0MjYsLTE0NjE4NzA5NjYsODA1MTk2ODE0LDQwMTcxMDM4Niwy
-MTA5NjYyMTMwLDE1NzI0MTUwODcsMTE4MDM3NTcwMiwtMzE4MT
-QyODc3LDU1MDI5NzM1LDIwMzgxODkzMTMsMTI5OTc3MzI2LDIw
-MjIwNjE5NzYsLTY3OTAwODU0Miw2MTM5ODc2NjAsMTM1ODQ5Mz
-IyOCwxNDU3NzA2MzIwLDE5MzM3MTcyMSwxODgzOTExNzM1XX0=
+eyJoaXN0b3J5IjpbLTkwNDQ4OTY3NiwzMDA1NzE1NTEsNTI5Mj
+E5NDI4LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQs
+NDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4NywxMTgwMz
+c1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywx
+Mjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyLDYxMzk4Nz
+Y2MCwxMzU4NDkzMjI4LDE0NTc3MDYzMjAsMTkzMzcxNzIxXX0=
 
 -->
