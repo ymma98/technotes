@@ -1,8 +1,8 @@
-# # 计算机意外的重新启动或遇到错误, windows安装无法继续
+# 计算机意外的重新启动或遇到错误, windows安装无法继续
 
 记录一次给 thinkpad-X1 重装win11-专业版系统过程中遇到的问题 (安装win10专业版、教育版也有类似的问题)。中间略过若干尝试，只记录最终解决了问题的一个流程。
 
-注: F1`
+注: `F1` 设置 BIOS (关闭 security boot), `F12` 设置启动介质
 
 ___
 
@@ -23,5 +23,5 @@ ___
 ---
 出现以上问题的原因未知, 可能的关键步骤是安装时保持接入有线网, 以及拔出u盘后设置 security boot, 但后者不知道是不是多余的操作。稀里糊涂地把问题解决了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1MDk2MjEzM119
+eyJoaXN0b3J5IjpbMTEwNzQyNjI2OV19
 -->
