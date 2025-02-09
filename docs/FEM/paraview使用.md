@@ -29,8 +29,11 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250209/image.4g4m2npufo.webp){ width="400" }
 
-
+* 切换到 FRC 的 x-z 视角
+	* set view direction to -Y
+	* Rotate 90d clockwise
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQxODIwODI2LDYxNzQxNTEwNiw5MjExND
-k0MTQsLTEyNjcyOTMyOTQsLTEwMDkyMjU4MzNdfQ==
+eyJoaXN0b3J5IjpbLTIwNzY5NjM3NDQsMzQxODIwODI2LDYxNz
+QxNTEwNiw5MjExNDk0MTQsLTEyNjcyOTMyOTQsLTEwMDkyMjU4
+MzNdfQ==
 -->
