@@ -15,7 +15,11 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 
 
 ## 基本操作
+
+* 将默认的蓝色背景改为白色背景
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2MDQ2NjE0MiwtMTI2NzI5MzI5NCwtMT
+eyJoaXN0b3J5IjpbLTc4NTA1MDY1OSwtMTI2NzI5MzI5NCwtMT
 AwOTIyNTgzM119
 -->
