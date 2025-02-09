@@ -25,8 +25,12 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 	* 鼠标滚轮: 放大/缩小物体
 	* 按住滚轮: 上下平移物体
 
+* 切换回默认视角
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250209/image.4g4m2npufo.webp){ width="400" }
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjE3NDE1MTA2LDkyMTE0OTQxNCwtMTI2Nz
-I5MzI5NCwtMTAwOTIyNTgzM119
+eyJoaXN0b3J5IjpbMzQxODIwODI2LDYxNzQxNTEwNiw5MjExND
+k0MTQsLTEyNjcyOTMyOTQsLTEwMDkyMjU4MzNdfQ==
 -->
