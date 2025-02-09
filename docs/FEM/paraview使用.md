@@ -13,7 +13,9 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 
 从这种视角来看，可视化管线是 ParaView 工作流的核心：通过创建一个 reader（即 source）将数据导入系统，然后使用 filter 提取信息（例如生成等值面）并在 view 中进行渲染，或者利用 writer（作为一种 sink）将数据保存到磁盘。
 
+
+## 基本操作
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0Mzg1OTEyOSwtMTI2NzI5MzI5NCwtMT
+eyJoaXN0b3J5IjpbMTc2MDQ2NjE0MiwtMTI2NzI5MzI5NCwtMT
 AwOTIyNTgzM119
 -->
