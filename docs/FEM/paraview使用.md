@@ -20,10 +20,13 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250209/image.2yyh0vzztr.webp){ width="400" }
 
-* 
+* 移动 3D 视角
+	* 鼠标左键: 拖拽物体
+	* 鼠标滚轮: 放大/缩小物体
+	* 按住滚轮: 上下平移物体
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2MDY5NTk1Miw5MjExNDk0MTQsLTEyNj
-cyOTMyOTQsLTEwMDkyMjU4MzNdfQ==
+eyJoaXN0b3J5IjpbNjE3NDE1MTA2LDkyMTE0OTQxNCwtMTI2Nz
+I5MzI5NCwtMTAwOTIyNTgzM119
 -->
