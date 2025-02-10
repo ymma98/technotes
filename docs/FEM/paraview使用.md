@@ -33,11 +33,13 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 	* set view direction to -Y
 	* Rotate 90d clockwise
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250209/image.2vev4hvzn4.webp){ width="400" }
+
 * 指定 seed point
 	* 在 panel 的 `Source` 一栏中添加 source
 	* 如果想打包多个 source, 可以选中这些 source 后选择: `Filters > Alphabetical > GroupDatasets`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjEzMDgzODksLTIwNzY5NjM3NDQsMz
-QxODIwODI2LDYxNzQxNTEwNiw5MjExNDk0MTQsLTEyNjcyOTMy
-OTQsLTEwMDkyMjU4MzNdfQ==
+eyJoaXN0b3J5IjpbLTMyMzIxMzcwOSwtMTYyMTMwODM4OSwtMj
+A3Njk2Mzc0NCwzNDE4MjA4MjYsNjE3NDE1MTA2LDkyMTE0OTQx
+NCwtMTI2NzI5MzI5NCwtMTAwOTIyNTgzM119
 -->
