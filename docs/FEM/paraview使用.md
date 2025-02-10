@@ -35,9 +35,9 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 
 * 指定 seed point
 	* 在 panel 的 `Source` 一栏中添加 source
-	* 如果想打包多个 source, 可以选中这些 sour选择: `Filters > Alphabetical > GroupDatasets`
+	* 如果想打包多个 source, 可以选中这些 source 后选择: `Filters > Alphabetical > GroupDatasets`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ5NTUyMzYzLC0yMDc2OTYzNzQ0LDM0MT
-gyMDgyNiw2MTc0MTUxMDYsOTIxMTQ5NDE0LC0xMjY3MjkzMjk0
-LC0xMDA5MjI1ODMzXX0=
+eyJoaXN0b3J5IjpbLTE2MjEzMDgzODksLTIwNzY5NjM3NDQsMz
+QxODIwODI2LDYxNzQxNTEwNiw5MjExNDk0MTQsLTEyNjcyOTMy
+OTQsLTEwMDkyMjU4MzNdfQ==
 -->
