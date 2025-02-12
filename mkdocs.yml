@@ -68,6 +68,7 @@ nav:
       - matplotlib画streamline: python/matplotlib画streamline.md
       - python无法支持汉字: python/python无法支持汉字.md
       - paraview读入csv画streamline: python/paraview读入csv画streamline.md
+      - 并行命令行并使用expect: python/并行命令行并使用expect.md
   - cpp:
      - GDB速查: cpp/GDB速查.md
      - cheatsheet: cpp/cheatsheet.md
