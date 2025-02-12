@@ -54,13 +54,13 @@ tmux new-session -s work
 tmux new-session -s work2 -t work
 ```
 
-### 附加/分离会话
+### 附加/Detach会话
 
 ```bash
 tmux attach -t work
 ```
 
-分离当前会话：
+Detach当前会话：
 
 ```bash
 C-b d
@@ -214,5 +214,5 @@ setw -g xterm-keys on
 
 以上即是基于 `C-b` 作为前缀键的 tmux 快捷键与配置说明。祝使用愉快！
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3MTc0ODc0OSwtOTI3NDIxNjkwXX0=
+eyJoaXN0b3J5IjpbMTQzOTkyOTM5NSwtOTI3NDIxNjkwXX0=
 -->
