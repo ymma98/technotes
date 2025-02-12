@@ -47,14 +47,20 @@ tmux new -s work
 
 **Create a new session that shares all windows with an existing session (but has its own notion of which window is current):**
 
+目标会话名称为 `work`，表示新会话 `work2` 将共享 `work` 会话中的所有窗口。
+
 ```bash
 tmux new-session -s work2 -t work
+# 或者
+tmux new -s work2 -t work
 ```
 
 **Attach to a session:**
 
 ```bash
 tmux attach -t work
+# 或者
+tmux a -t work
 ```
 
 **Detach from a session:**
@@ -187,6 +193,6 @@ bind r source-file ~/.tmux.conf
 setw -g xterm-keys on
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDkxMDQ5NjQsMTQzOTkyOTM5NSwtOT
-I3NDIxNjkwXX0=
+eyJoaXN0b3J5IjpbMTI2NTUxMDQyNCwtMTg0OTEwNDk2NCwxND
+M5OTI5Mzk1LC05Mjc0MjE2OTBdfQ==
 -->
