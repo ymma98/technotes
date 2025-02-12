@@ -1,6 +1,6 @@
 # 并行命令行并使用expect
 
-
+* 记得 `pexpect.spawn` 设置合理的 `timeout`
 
 
 ```python
@@ -24,7 +24,7 @@ def process_dump(dump_name):
         print "Processing {}...".format(dump_name)
 
         # 启动 nimplot 程序
-        child = pexpect.spawn('nimplot',timeout=320,env=os.environ)
+        child = pexpect.spawn('nimplot',timeout=320)
 
         # 交互步骤，模拟用户输入
         child.expect('hit return to just create the xdraw binary files')
@@ -70,12 +70,13 @@ def process_dump(dump_name):
         print "Failed to process {}: {}".format(dump_name, e)
 
 def main():
-    pool = multiprocessing.Pool(processes=50)
+    pool = multiprocessing.Pool(processes=2)
     pool.map(process_dump, dump_list)
 
 if __name__ == "__main__":
     main()
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTk5NTI3MThdfQ==
+eyJoaXN0b3J5IjpbLTEwMTkzMTQ2MzQsLTEzNTk5NTI3MThdfQ
+==
 -->
