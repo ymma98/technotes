@@ -2,162 +2,217 @@
 
 * [参考](https://gist.github.com/andreyvit/2921703)
 
-(C-x means ctrl+x, M-x means alt+x)
+
+（注：C-x 表示 Ctrl + x，M-x 表示 Alt + x）
 
 
-## Prefix key
+以下所有快捷键均假设你使用 `C-b` 作为前缀。
 
-The default prefix is C-b. If you (or your muscle memory) prefer C-a, you need to add this to `~/.tmux.conf`:
+----------
 
-    # remap prefix to Control + a
-    set -g prefix C-a
-    # bind 'C-a C-a' to type 'C-a'
-    bind C-a send-prefix
-    unbind C-b
+## 会话（Sessions）、窗口（Windows）、面板（Panes）
 
-I'm going to assume that C-a is your prefix.
+-   **会话（Session）**：一组窗口，并且包含当前正在使用的窗口信息。
+-   **窗口（Window）**：相当于一个「虚拟桌面」，其中可以包含多个面板。
+-   **面板（Pane）**：窗口中的一个矩形区域，运行一个特定的命令（如一个 shell）。
 
+----------
 
-## Sessions, windows, panes
+## 查看帮助
 
-Session is a set of windows, plus a notion of which window is current.
+显示所有快捷键列表：
 
-Window is a single screen covered with panes. (Once might compare it to a ‘virtual desktop’ or a ‘space’.)
+```bash
+C-b ?
+```
 
-Pane is a rectangular part of a window that runs a specific command, e.g. a shell.
+如果想在查看帮助和复制模式下使用 Vim 按键（例如 j、k、C-u、C-d 等），需要在 `~/.tmux.conf` 中添加：
 
+```bash
+setw -g mode-keys vi
+```
 
-## Getting help
+提示：本 cheatsheet 中提到的所有命令，都可以通过以下方式执行：
 
-Display a list of keyboard shortcuts:
+-   在终端中直接输入 `tmux <command>`
+-   在 tmux 中先按 `C-b :`，然后输入 `<command>`
+-   或者将它们加入到 `~/.tmux.conf`
 
-    C-a ?
+----------
 
-Navigate using Vim or Emacs shortcuts, depending on the value of `mode-keys`. Emacs is the default, and if you want Vim shortcuts for help and copy modes (e.g. j, k, C-u, C-d), add the following line to `~/.tmux.conf`:
+## 管理会话（Sessions）
 
-    setw -g mode-keys vi
+### 创建会话
 
-Any command mentioned in this list can be executed as `tmux something` or `C-a :something` (or added to `~/.tmux.conf`).
+```bash
+tmux new-session -s work
+```
 
+创建一个与已有会话共享窗口，但拥有自己当前窗口指针的新会话：
 
-## Managing sessions
+```bash
+tmux new-session -s work2 -t work
+```
 
-Creating a session:
+### 附加/分离会话
 
-    tmux new-session -s work
+```bash
+tmux attach -t work
+```
 
-Create a new session that shares all windows with an existing session, but has its own separate notion of which window is current:
+分离当前会话：
 
-    tmux new-session -s work2 -t work
+```bash
+C-b d
+```
 
-Attach to a session:
+### 切换会话
 
-    tmux attach -t work
+```bash
+C-b (    # 上一个会话
+C-b )    # 下一个会话
+C-b L    # 最后使用过的会话
+C-b s    # 从会话列表中选择
+```
 
-Detach from a session: `C-a d`.
+### 其他会话操作
 
-Switch between sessions:
+```bash
+C-b $
+```
 
-    C-a (          previous session
-    C-a )          next session
-    C-a L          ‘last’ (previously used) session
-    C-a s          choose a session from a list
+重命名当前会话（弹出命令行让你输入新名称）。
 
-Other:
+----------
 
-    C-a $          rename the current session
-    C-a
+## 管理窗口（Windows）
 
+### 创建新窗口
 
-## Managing windows
+```bash
+C-b c
+```
 
-Create a window:
+创建一个新的窗口。
 
-    C-a c          create a new window
+### 切换窗口
 
-Switch between windows:
+```bash
+C-b 1 ... C-b 9  C-b 0   # 切换到对应编号的窗口（1~9, 0）
+C-b p                   # 切换到上一个窗口
+C-b n                   # 切换到下一个窗口
+C-b l                   # 切换到上一次使用的窗口
+C-b w                   # 从窗口列表中选择
+```
 
-    C-a 1 ...      switch to window 1, ..., 9, 0
-    C-a 9
-    C-a 0
-    C-a p          previous window
-    C-a n          next window
-    C-a l          ‘last’ (previously used) window
-    C-a w          choose window from a list
+### 针对带提示的窗口切换
 
-Switch between windows with a twist:
+```bash
+C-b M-n  # 切换到下一个有提示（bell/activity/content alert）的窗口
+C-b M-p  # 切换到上一个有提示的窗口
+```
 
-    C-a M-n        next window with a bell, activity or
-                   content alert
-    C-a M-p        previous such window
+### 其他窗口操作
 
+```bash
+C-b ,
+```
 
-Other:
+重命名当前窗口（弹出命令行输入名称）。
 
-    C-a ,          rename the current window
-    C-a &          kill the current window
+```bash
+C-b &
+```
 
+关闭（kill）当前窗口。
 
-## Managing split panes
+----------
 
-Creating a new pane by splitting an existing one:
+## 管理拆分面板（Panes）
 
-    C-a "          split vertically (top/bottom)
-    C-a %          split horizontally (left/right)
+### 创建新面板
 
-Switching between panes:
+```bash
+C-b "   # 垂直分割（上下）
+C-b %   # 水平分割（左右）
+```
 
-    C-a left       go to the next pane on the left
-    C-a right      (or one of these other directions)
-    C-a up
-    C-a down
-    C-a o          go to the next pane (cycle through all of them)
-    C-a ;          go to the ‘last’ (previously used) pane
+### 切换面板
 
-Moving panes around:
+```bash
+C-b 左/右/上/下   # 切换到相应方向的面板
+C-b o            # 在所有面板间依次循环切换
+C-b ;            # 切换到上一次使用的面板
+```
 
-    C-a {          move the current pane to the previous position
-    C-a }          move the current pane to the next position
-    C-a C-o        rotate window ‘up’ (i.e. move all panes)
-    C-a M-o        rotate window ‘down’
-    C-a !          move the current pane into a new separate
-                   window (‘break pane’)
-    C-a :move-pane -t :3.2
-                   split window 3's pane 2 and move the current pane there
+### 移动面板
 
-Resizing panes:
+```bash
+C-b {      # 将当前面板向前移动
+C-b }      # 将当前面板向后移动
+C-b C-o    # 整个窗口的面板“上移”轮换
+C-b M-o    # 整个窗口的面板“下移”轮换
+C-b !      # 将当前面板移出到一个新窗口
+```
 
-    C-a M-up, C-a M-down, C-a M-left, C-a M-right
-                   resize by 5 rows/columns
-    C-a C-up, C-a C-down, C-a C-left, C-a C-right
-                   resize by 1 row/column
+也可以使用命令将当前面板移动到指定会话/窗口的指定面板位置，例如：
 
-Applying predefined layouts:
+```bash
+C-b :move-pane -t :3.2
+```
 
-    C-a M-1        switch to even-horizontal layout
-    C-a M-2        switch to even-vertical layout
-    C-a M-3        switch to main-horizontal layout
-    C-a M-4        switch to main-vertical layout
-    C-a M-5        switch to tiled layout
-    C-a space      switch to the next layout
+将当前面板拆分到“窗口3”的“面板2”位置。
 
+### 调整面板大小
 
-Other:
+```bash
+C-b M-↑ / C-b M-↓ / C-b M-← / C-b M-→
+# 每次调整 5 行/列
 
-    C-a x          kill the current pane
-    C-a q          display pane numbers for a short while
+C-b C-↑ / C-b C-↓ / C-b C-← / C-b C-→
+# 每次调整 1 行/列
+```
 
+### 预设布局
 
-## Other config file settings
+```bash
+C-b M-1  # 切换到 even-horizontal 布局
+C-b M-2  # 切换到 even-vertical 布局
+C-b M-3  # 切换到 main-horizontal 布局
+C-b M-4  # 切换到 main-vertical 布局
+C-b M-5  # 切换到 tiled 布局
+C-b space  # 切换到下一个布局
+```
 
-Force a reload of the config file on C-a r:
+### 其他操作
 
-    unbind r
-    bind r source-file ~/.tmux.conf
+```bash
+C-b x   # 关闭（kill）当前面板
+C-b q   # 短暂显示所有面板编号
+```
 
-Some other settings that I use:
+----------
 
-    setw -g xterm-keys on
+## 其他配置文件设置
+
+在 `C-b r` 重新载入配置文件：
+
+```bash
+unbind r
+bind r source-file ~/.tmux.conf
+```
+
+其他常用设置示例：
+
+```bash
+setw -g xterm-keys on
+```
+
+这条设置可以让 tmux 正确处理更多复杂按键。
+
+----------
+
+以上即是基于 `C-b` 作为前缀键的 tmux 快捷键与配置说明。祝使用愉快！
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyNzQyMTY5MF19
+eyJoaXN0b3J5IjpbLTc3MTc0ODc0OSwtOTI3NDIxNjkwXX0=
 -->
