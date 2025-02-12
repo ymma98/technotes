@@ -23,6 +23,7 @@ nav:
       - markdown速查: Linux/markdown速查.md
       - spack速查: Linux/spack速查.md
       - wsl速查: Linux/wsl速查.md
+      - tmux速查: Linux/tmux速查.md
       - terminal_快捷键以及配置: Linux/terminal_快捷键以及配置.md
       - bashrc: Linux/bashrc.md
       - vim_使用nvim: Linux/vim_使用nvim.md
