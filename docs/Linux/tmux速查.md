@@ -37,10 +37,12 @@ Any command mentioned in this list can also be executed by running `tmux somethi
 
 ## Managing sessions
 
-**Create a new session:**
+创建一个新的 tmux 会话，并将该会话命名为 work
 
 ```bash
 tmux new-session -s work
+# 或者
+tmux new -s work
 ```
 
 **Create a new session that shares all windows with an existing session (but has its own notion of which window is current):**
@@ -185,6 +187,6 @@ bind r source-file ~/.tmux.conf
 setw -g xterm-keys on
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NDMwMjA2MSwxNDM5OTI5Mzk1LC05Mj
-c0MjE2OTBdfQ==
+eyJoaXN0b3J5IjpbLTE4NDkxMDQ5NjQsMTQzOTkyOTM5NSwtOT
+I3NDIxNjkwXX0=
 -->
