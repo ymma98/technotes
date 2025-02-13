@@ -1,6 +1,7 @@
 # 并行命令行并使用expect
 
 * 记得 `pexpect.spawn` 设置合理的 `timeout`
+*  如果 `pexepct` 运行的命令有创建临时文件的操作, 需要单独为每个进程单独创建一个文件夹
 
 
 ```python
@@ -94,6 +95,6 @@ if __name__ == "__main__":
     main()
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMjg4NDY4NSwtMTAxOTMxNDYzNCwtMT
-M1OTk1MjcxOF19
+eyJoaXN0b3J5IjpbNDYwOTU1MjE4LDE1MzI4ODQ2ODUsLTEwMT
+kzMTQ2MzQsLTEzNTk5NTI3MThdfQ==
 -->
