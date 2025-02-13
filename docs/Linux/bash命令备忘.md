@@ -52,7 +52,47 @@ alias cpwd=" pwd | xsel --clipboard --input"
 ```
 
 如果这行命令失效 (windows + wsl + Xlaunch), 就 **重启XLaunch**。
+
+
+* 参数匹配, 截取 `prefix`, `postfix`
+
+```bash
+#!/bin/bash
+
+# 指定 vtk 文件所在的目录
+vtk_dir="./vtk3dcartesian/"
+
+# 遍历所有 vtk 文件
+for vtk_path in "$vtk_dir"/*.vtk; do
+    # 取得文件名（去掉路径）
+    filename=$(basename "$vtk_path")
+    # <prefix>.<number>.3d.cartesian.vtk 
+    # "${var%%pattern}" 是一种参数扩展语法，
+    # 用来从 变量 var 的值 中，匹配并删除最长的、位于末尾的 pattern
+    prefix="${filename%%.*}"
+    
+    # "${var#pattern}" 同样是一种参数扩展，用来从 变量 var 的值中，
+    # 匹配并删除最短的、位于开头的 pattern
+    rest="${filename#*.}"
+    
+    number="${rest%%.*}"
+    
+    # 构造输出 csv 文件名：<prefix>.<number>.y0slice.ynorm1.csv
+    csv_file="${prefix}.${number}.y0slice.ynorm1.csv"
+    
+    echo "Processing $filename -> $csv_file"
+    
+    # 并行执行命令（在后台运行），根据需要可以使用 & 让它们同时运行
+    /opt/software/ParaView-5.11.0-RC2-MPI-Linux-Python3.9-x86_64/bin/pvpython autoparaviewslice.py "$filename" "$csv_file" &
+done
+
+# 等待所有后台任务结束
+wait
+
+echo "All tasks finished."
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNzY0OTA0MiwxNjM5NjY2NjM5LDc1OD
-A1MjAxMyw0MDI0MDMxNjAsLTE5NzMwMjI4NDBdfQ==
+eyJoaXN0b3J5IjpbLTEzOTgwMDQ2MjAsMTcxNzY0OTA0MiwxNj
+M5NjY2NjM5LDc1ODA1MjAxMyw0MDI0MDMxNjAsLTE5NzMwMjI4
+NDBdfQ==
 -->
