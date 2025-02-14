@@ -158,10 +158,18 @@ lvim.plugins = {
         "kevinhwang91/nvim-ufo",
         dependencies = "kevinhwang91/promise-async",
     },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
 }
 
 
 
+-- show colorcolumn and set the width=0
+vim.opt.colorcolumn = "80"
 
 vim.opt.clipboard = "unnamedplus"
 vim.opt.relativenumber = false
@@ -291,7 +299,7 @@ Configured servers list:
 
 然后, 尝试运行: `:LvimCacheReset`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzMTQ4ODcwMiwtNTY1ODAyNTAxLC04MT
+eyJoaXN0b3J5IjpbMTczODc1NTIzNiwtNTY1ODAyNTAxLC04MT
 g2NSw2NjY0MjQ3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMw
 OTkzODcsMTk4MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LD
 UzNTczNjEzNiw2MTk4NTQ3NDFdfQ==
