@@ -58,10 +58,15 @@ autocmd FileType * setlocal 这样的设置更有强制性，强制应用到当�
 会报错，提示当前的工作目录不是 `.py` 文件所在的目录。这时候，需要在 vim 中执行一次:
 
 ```bash
-
+:cd %:p:h
 ```
+
+-   `%`：代表当前文件的名称。
+-   `:p`：将 `%` 扩展为完整的（绝对）路径。
+-   `:h`：获取该完整路径的“头部”，也就是目录部分（去掉文件名）。
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NzA1NjgzM119
+eyJoaXN0b3J5IjpbLTEzODE4MDQxNDZdfQ==
 -->
