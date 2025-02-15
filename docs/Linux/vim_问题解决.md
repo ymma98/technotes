@@ -49,9 +49,19 @@ autocmd FileType * setlocal 这样的设置更有强制性，强制应用到当�
 
 ## 工作目录切换到当前目录
 
-有时候，如果
+有时候，如果运行
+
+```bash
+:w !python
+```
+
+会报错，提示当前的工作目录不是 `.py` 文件所在的目录。这时候，需要在 vim 中执行一次:
+
+```bash
+
+```
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxNDgxNzMyMF19
+eyJoaXN0b3J5IjpbMTA5NzA1NjgzM119
 -->
