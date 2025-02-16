@@ -280,6 +280,23 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
     desc = "load view (folds), when opening file",
     command = "silent! loadview"
 })
+
+
+-- github copilot
+-- https://www.lunarvim.org/docs/configuration/plugins/example-configurations#copilotlua-and-copilot-cmp
+-- Make sure to run :Lazy load copilot-cmp followed by :Copilot auth once
+-- the plugin is installed to start the authentication process.
+table.insert(lvim.plugins, {
+    "zbirenbaum/copilot-cmp",
+    event = "InsertEnter",
+    dependencies = { "zbirenbaum/copilot.lua" },
+    config = function()
+        vim.defer_fn(function()
+            require("copilot").setup()     -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
+            require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
+        end, 100)
+    end,
+})
 ```
 
 
@@ -299,8 +316,8 @@ Configured servers list:
 
 然后, 尝试运行: `:LvimCacheReset`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTczODc1NTIzNiwtNTY1ODAyNTAxLC04MT
-g2NSw2NjY0MjQ3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMw
-OTkzODcsMTk4MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LD
-UzNTczNjEzNiw2MTk4NTQ3NDFdfQ==
+eyJoaXN0b3J5IjpbNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLTU2NT
+gwMjUwMSwtODE4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIz
+MjQyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOTI4LD
+c1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
 -->
