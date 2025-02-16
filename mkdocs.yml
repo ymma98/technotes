@@ -32,7 +32,7 @@ nav:
       - 安装linux发行版: Linux/安装linux发行版.md
       - v2rayA配置: Linux/v2raya配置.md
       - 非管理员权限安装htop: Linux/非管理员权限安装htop.md
-      - vim_强制tab对应4空格: Linux/vim_问题解决.md
+      - vim_问题解决: Linux/vim_问题解决.md
       - 集群_mpirun报错: Linux/集群_mpirun报错.md
       - terminal_显示中文: Linux/linux_terminal显示中文.md
   - math:
