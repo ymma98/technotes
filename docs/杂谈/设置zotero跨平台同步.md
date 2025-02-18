@@ -14,7 +14,12 @@
 
 知乎上这个[帖子](https://zhuanlan.zhihu.com/p/31453719)是较为详细的教程。
 
-总的来说，就是通过 zotfile 或者 zotero-attanger 插件，将所有的文献都存储在网盘文件夹内，并且存储的文件名和文件夹结构和 zotero 界面看到的一样（我怀疑zotero产品将存储的文件名设置为乱码是的恶意？如果早知道 zotero 是以乱码的形式存储文件，我或许一开始就不会使用 zotero，但是发觉的时候已经晚了）。
+总的来说，就是通过 zotfile 或者 zotero-attanger 插件，将所有的文献都存储在网盘文件夹内，并且存储的文件名和文件夹结构和 zotero 界面看到的一样。
+
+网盘：
+* Onedrive, 学生邮箱ke
+
+我怀疑zotero产品将存储的文件名设置为乱码是出于一种恶意？让大家购买其同步功能，而不是可以方便地在没有 zotero 的环境中工作。如果早知道 zotero 是以乱码的形式存储文件，我或许一开始就不会使用 zotero，但是发觉的时候已经晚了。
 
 注意：
 * zotfile 仅支持 zotero 6，并且作者无意更新支持 zotero 7.
@@ -25,5 +30,5 @@
 
 使用 webdav + infiniCloud
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5NTE1MzQzNV19
+eyJoaXN0b3J5IjpbOTQxODg2MDgxXX0=
 -->
