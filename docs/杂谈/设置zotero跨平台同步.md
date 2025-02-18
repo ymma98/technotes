@@ -6,7 +6,7 @@
 
 需要网盘支持 webdav 功能才可以。经过各种尝试，结论：
 
-* [infiniCloud](https://infini-cloud.net/en/) 就是最好的选择。免费用户就有20G的容量，并且支持 webdav 功能，对于 zotero 的使用是基本足够的。
+* [infiniCloud](https://infini-cloud.net/en/) 就是最好的选择。免费用户就有20G的容量，并且支持 webdav 功能，对于 zotero 的使用是基本足够的。教程在[这里](https://infini-cloud.net/en/clients_zotero.html)。
 
 * 坚果云。太贵了，而且网上说[坚果云会存在误删文件的问题](https://www.zhihu.com/question/443637707/answer/2063893553)，当然，不只是这一个帖子
 
@@ -44,6 +44,6 @@ infiniCloud 本身也将对zotero的便捷支持作为一个很大的卖点。
 
 说实话，如果国内不对 pCloud 作限制，pCloud 简直是最理想的网盘了。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDE2MzE4MTcsLTE2MDEyOTQzMDldfQ
-==
+eyJoaXN0b3J5IjpbLTc3Mjk1NTQyOCwtMTQwMTYzMTgxNywtMT
+YwMTI5NDMwOV19
 -->
