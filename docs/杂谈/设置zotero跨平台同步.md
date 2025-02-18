@@ -34,7 +34,7 @@
 
 infiniCloud 本身也将对zotero的便捷支持作为一个很大的卖点。
 
-说实话，如果国内不对 pCloud zuo
+说实话，如果国内不对 pCloud 作限制，pCloud 简直是最理想的网盘了。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNzY0OTE5OTldfQ==
+eyJoaXN0b3J5IjpbLTE2MDEyOTQzMDldfQ==
 -->
