@@ -14,7 +14,7 @@
 
 知乎上这个[帖子](https://zhuanlan.zhihu.com/p/31453719)是较为详细的教程。
 
-总的来说，就是通过 zotfile 或者 zotero-attanger 插件，将所有的文献都存储在网盘文件夹内，并且存储的文件名和文件夹结构和 zotero 界面看到的一样（我怀疑zotero产品将存储的文件名和）。
+总的来说，就是通过 zotfile 或者 zotero-attanger 插件，将所有的文献都存储在网盘文件夹内，并且存储的文件名和文件夹结构和 zotero 界面看到的一样（我怀疑zotero产品将存储的文件名设置为乱码是一种卑劣的恶意？如果早知道 zotero 是以乱码的形式存储文件，我或许一开始就不会使用 zotero，但是发觉的时候已经晚了）。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzM3NTcwODVdfQ==
+eyJoaXN0b3J5IjpbLTcwNzM5NzU1MF19
 -->
