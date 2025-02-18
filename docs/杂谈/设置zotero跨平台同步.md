@@ -18,6 +18,8 @@
 
 网盘：
 * Onedrive, 学校邮箱可以直接申请 1T 的免费空间。我之前一直是用的这个方法。虽然Onedrive在linux平台上不好用，但1T的免费空间是非常慷慨的，足以抵消其它任何不足。然而，如今华科已经不再允许终身使用学校邮箱，毕业就销户。
+* Google drive. 免费15G空间
+* 坚果云 
 
 我怀疑zotero产品将存储的文件名设置为乱码是出于一种恶意？让大家购买其同步功能，而不是可以方便地在没有 zotero 的环境中工作。如果早知道 zotero 是以乱码的形式存储文件，我或许一开始就不会使用 zotero，但是发觉的时候已经晚了。
 
@@ -28,7 +30,11 @@
 
 ## 最佳实践
 
-使用 webdav + infiniCloud
+使用 webdav + [infiniCloud](https://infini-cloud.net/en/)
+
+infiniCloud 本身也将对zotero的便捷支持作为一个很大的卖点。
+
+说实话，如果国内不对 pCloud zuo
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMTQ1Njg4NzNdfQ==
+eyJoaXN0b3J5IjpbLTEwNzY0OTE5OTldfQ==
 -->
