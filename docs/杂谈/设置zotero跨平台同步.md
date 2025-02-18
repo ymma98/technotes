@@ -12,7 +12,9 @@
 
 ## 网盘+ zotfile/zotero-attanger
 
-知乎上这个[帖子]()是较为详细的教程。
+知乎上这个[帖子](https://zhuanlan.zhihu.com/p/31453719)是较为详细的教程。
+
+总的来说，就是通过 zotfile 或者 zotero-attanger 插件，将所有的文献都存储在网盘文件夹内，并且存储的文件名和文件夹结构和 zotero 界面看到的一样（我怀疑zotero产品将存储的文件名和）。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3ODY2NDc1N119
+eyJoaXN0b3J5IjpbLTEyNzM3NTcwODVdfQ==
 -->
