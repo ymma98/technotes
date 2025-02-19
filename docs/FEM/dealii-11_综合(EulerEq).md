@@ -50,9 +50,9 @@ $$
 
 $$
 \begin{aligned}
-\partial_t (\rho v_i) + \sum_{s=1}^{d} \frac{\partial (\rho v_i v_s + \delta_{is} p)}{\partial x_s} &= g_i \rho, \quad i = 1, \dots, d, \\
-\partial_t \rho + \sum_{s=1}^{d} \frac{\partial (\rho v_s)}{\partial x_s} &= 0, \\
-\partial_t E + \sum_{s=1}^{d} \frac{\partial ((E + p) v_s)}{\partial x_s} &= \rho \mathbf{g} \cdot \mathbf{v}.
+\partial_t (\rho v_i) + \sum_{s=1}^ \frac{\partial (\rho v_i v_s + \delta_{is} p)}{\partial x_s} &= g_i \rho, \quad i = 1, \dots, d, \\
+\partial_t \rho + \sum_{=1}^\frac{\partial (\rho v_s)}{\partial x_s} &= 0, \\
+\partial_t E + \sum_{si=1}^{d}d \frac{\partial ((E + p) v_s)}{\partial x_s} &= \rho \mathbf{g} \cdot \mathbf{v}.
 \end{aligned}
 $$
 
@@ -2521,12 +2521,14 @@ $$
     return 0;
   }
 ```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUwOTQ4NTcyLC00MDU4ODU3NiwxOTA4Mj
-M4NDIwLC0xMzM5MjI1Njg5LDMwMDU3MTU1MSw1MjkyMTk0Mjgs
-MTU0MzQ3NDI2LC0xNDYxODcwOTY2LDgwNTE5NjgxNCw0MDE3MT
-AzODYsMjEwOTY2MjEzMCwxNTcyNDE1MDg3LDExODAzNzU3MDIs
-LTMxODE0Mjg3Nyw1NTAyOTczNSwyMDM4MTg5MzEzLDEyOTk3Nz
-MyNiwyMDIyMDYxOTc2LC02NzkwMDg1NDIsNjEzOTg3NjYwXX0=
+eyJoaXN0b3J5IjpbNjg0MDExODY0LDU1MDk0ODU3MiwtNDA1OD
+g1NzYsMTkwODIzODQyMCwtMTMzOTIyNTY4OSwzMDA1NzE1NTEs
+NTI5MjE5NDI4LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOT
+Y4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4Nywx
+MTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OT
+MxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyXX0=
 
 -->
