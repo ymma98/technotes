@@ -164,9 +164,9 @@ lvim.plugins = {
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
     },
-
+}
 -- show colorcolumn and set the width=0
-vim.opt.colorcolumn = "80"}
+vim.opt.colorcolumn = "80"
 
 
 
@@ -316,9 +316,9 @@ Configured servers list:
 
 然后, 尝试运行: `:LvimCacheReset`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDIyOTgyMzMsNzU5Nzc4MDgxLDE3Mz
-g3NTUyMzYsLTU2NTgwMjUwMSwtODE4NjUsNjY2NDI0NzM3LDg5
-Mzg1MjM2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOT
-MsMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0
-NzQxXX0=
+eyJoaXN0b3J5IjpbNDMzOTkxOTI1LC0yMDQyMjk4MjMzLDc1OT
+c3ODA4MSwxNzM4NzU1MjM2LC01NjU4MDI1MDEsLTgxODY1LDY2
+NjQyNDczNyw4OTM4NTIzNjcsODQyMzI0MjE5LDUzMzA5OTM4Ny
+wxOTgxMjY4MjkzLDI1NDY3MzkyOCw3NTE1MjQxMzUsNTM1NzM2
+MTM2LDYxOTg1NDc0MV19
 -->
