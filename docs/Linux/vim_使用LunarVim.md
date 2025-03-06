@@ -193,6 +193,13 @@ lvim.colorscheme = "jellybeans"
 
 -- autocompletion in command window: <C-n> and <C-p>
 
+lvim.builtin.terminal.direction = "horizontal" -- 终端在底部水平展开
+lvim.builtin.terminal.size = 15                -- 你想要的高度
+lvim.builtin.which_key.mappings["t"] = {
+    name = "Terminal",
+    t = { "<cmd>ToggleTerm<cr>", "Toggle Terminal" }, -- <leader> + t + t
+}
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 
 
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -316,9 +323,9 @@ Configured servers list:
 
 然后, 尝试运行: `:LvimCacheReset`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMzOTkxOTI1LC0yMDQyMjk4MjMzLDc1OT
-c3ODA4MSwxNzM4NzU1MjM2LC01NjU4MDI1MDEsLTgxODY1LDY2
-NjQyNDczNyw4OTM4NTIzNjcsODQyMzI0MjE5LDUzMzA5OTM4Ny
-wxOTgxMjY4MjkzLDI1NDY3MzkyOCw3NTE1MjQxMzUsNTM1NzM2
-MTM2LDYxOTg1NDc0MV19
+eyJoaXN0b3J5IjpbLTY1OTMwMjczNiw0MzM5OTE5MjUsLTIwND
+IyOTgyMzMsNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLTU2NTgwMjUw
+MSwtODE4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIzMjQyMT
+ksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOTI4LDc1MTUy
+NDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
 -->
