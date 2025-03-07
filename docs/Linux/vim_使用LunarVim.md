@@ -164,7 +164,61 @@ lvim.plugins = {
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
     },
+    {
+        "yetone/avante.nvim",
+        event = "VeryLazy",
+        lazy = false,
+        version = false, -- set this if you want to always pull the latest change
+        opts = {
+            provider = "deepseek",
+            vendors = {
+                deepseek = {
+                    __inherited_from = "openai",
+                    endpoint = "https://api.deepseek.com/v1",
+                    model = "deepseek-coder",
+                },
+            },
+        },
+        -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+        build = "make",
+        -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            "zbirenbaum/copilot.lua",      -- for providers='copilot'
+            {
+                -- support for image pasting
+                "HakonHarnes/img-clip.nvim",
+                event = "VeryLazy",
+                opts = {
+                    -- recommended settings
+                    default = {
+                        embed_image_as_base64 = false,
+                        prompt_for_file_name = false,
+                        drag_and_drop = {
+                            insert_mode = true,
+                        },
+                        -- required for Windows users
+                        use_absolute_path = true,
+                    },
+                },
+            },
+            {
+                -- Make sure to set this up properly if you have lazy=true
+                'MeanderingProgrammer/render-markdown.nvim',
+                opts = {
+                    file_types = { "markdown", "Avante" },
+                },
+                ft = { "markdown", "Avante" },
+            },
+        },
+    },
 }
+
 -- show colorcolumn and set the width=0
 vim.opt.colorcolumn = "80"
 
@@ -323,9 +377,10 @@ Configured servers list:
 
 然后, 尝试运行: `:LvimCacheReset`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1OTMwMjczNiw0MzM5OTE5MjUsLTIwND
-IyOTgyMzMsNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLTU2NTgwMjUw
-MSwtODE4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIzMjQyMT
-ksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOTI4LDc1MTUy
-NDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
+eyJoaXN0b3J5IjpbLTE1MjA3MTg5OTAsLTY1OTMwMjczNiw0Mz
+M5OTE5MjUsLTIwNDIyOTgyMzMsNzU5Nzc4MDgxLDE3Mzg3NTUy
+MzYsLTU2NTgwMjUwMSwtODE4NjUsNjY2NDI0NzM3LDg5Mzg1Mj
+M2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0
+NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX
+0=
 -->
