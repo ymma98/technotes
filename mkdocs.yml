@@ -106,7 +106,10 @@ markdown_extensions:
   - markdown.extensions.codehilite
   - markdown.extensions.extra
   - pymdownx.superfences
-  - pymdownx.github
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.smartsymbols
+  - markdown.extensions.tables
   - pymdownx.arithmatex:
       generic: true
   - markdown.extensions.tables
