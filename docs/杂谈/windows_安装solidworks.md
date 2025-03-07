@@ -39,6 +39,7 @@
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.9kgbspk0km.webp)
 
 
+* 之后，和其它所有教程都不一样，需要把 `Crack\SOLIDWORKS Corp`  
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5OTMxNzkzOCwxMjA1MDYwODY0XX0=
+eyJoaXN0b3J5IjpbMjAzMzE5Njk0NiwxMjA1MDYwODY0XX0=
 -->
