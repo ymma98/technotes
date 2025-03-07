@@ -39,7 +39,9 @@
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.9kgbspk0km.webp)
 
 
-* 之后，和其它所有教程都不一样，需要把 `Crack\SOLIDWORKS Corp`  
+* 之后，和其它所有教程都不一样，需要把 `Crack\SOLIDWORKS Corp`  目录下面的文件复制覆盖安装目录下面的对应文件
+
+* 之后启动 sw 就可以了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAzMzE5Njk0NiwxMjA1MDYwODY0XX0=
+eyJoaXN0b3J5IjpbLTE5MTEzMjcxNDEsMTIwNTA2MDg2NF19
 -->
