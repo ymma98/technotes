@@ -20,6 +20,15 @@
 * setup 程序右键可以直接禁用网络访问，官方这么做，看来也是有意让个人用户使用破解版的
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.13lx91w2f5.webp)
+
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.m7y64stj.webp)
+
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.7zqkt8kccz.webp)
+
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.92qa44go98.webp)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjM0NDM4MjY0LDEyMDUwNjA4NjRdfQ==
+eyJoaXN0b3J5IjpbLTM1NDIxNjEyNywxMjA1MDYwODY0XX0=
 -->
