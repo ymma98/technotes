@@ -4,6 +4,7 @@
 * 不重启
 * 不断网
 
+
 dd
 $$
 f(x)
@@ -50,7 +51,7 @@ $$
 
 * 之后启动 sw 就可以了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3OTk5NjM1OSwyMDYzMzg5ODgsLTIwNj
-Q3NDUwOTAsMjA2MzM4OTg4LC0xOTExMzI3MTQxLDEyMDUwNjA4
-NjRdfQ==
+eyJoaXN0b3J5IjpbLTEyNDU3NzAyMjksLTg3OTk5NjM1OSwyMD
+YzMzg5ODgsLTIwNjQ3NDUwOTAsMjA2MzM4OTg4LC0xOTExMzI3
+MTQxLDEyMDUwNjA4NjRdfQ==
 -->
