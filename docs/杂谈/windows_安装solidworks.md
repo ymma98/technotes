@@ -8,8 +8,10 @@
 
 * [这里](https://getintopc.com/softwares/3d-cad/solidworks-2024-free-download/)下载 solidworks
 
-* 
+* 运行以下步骤,
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIwNTA2MDg2NF19
+eyJoaXN0b3J5IjpbMTEwODAyMjU5MywxMjA1MDYwODY0XX0=
 -->
