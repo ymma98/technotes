@@ -8,6 +8,8 @@
 
 * [这里](https://getintopc.com/softwares/3d-cad/solidworks-2024-free-download/)下载 solidworks
 
+* 参考教程 [这里](https://mp.weixin.qq.com/s/qDKmaNZK2qGJ5vRdjixkzA)和[这里]()
+
 * 不同 sw 破解教程都大同小异。截图中的 `_SolidSQUAD_` 文件夹相当于链接中下载的 `crash` 文件夹
 
 * 运行以下步骤,
@@ -43,5 +45,6 @@
 
 * 之后启动 sw 就可以了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTEzMjcxNDEsMTIwNTA2MDg2NF19
+eyJoaXN0b3J5IjpbMzQ4OTUxNjM3LC0xOTExMzI3MTQxLDEyMD
+UwNjA4NjRdfQ==
 -->
