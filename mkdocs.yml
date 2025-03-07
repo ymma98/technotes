@@ -106,6 +106,8 @@ markdown_extensions:
   - markdown.extensions.codehilite
   - markdown.extensions.extra
   - pymdownx.superfences
+  - pymdownx.saneheaders
+  - pymdownx.smartsymbols
   - pymdownx.arithmatex:
       generic: true
   - markdown.extensions.tables
