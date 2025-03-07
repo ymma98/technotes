@@ -4,6 +4,11 @@
 * 不重启
 * 不断网
 
+dd
+$$
+f(x)
+$$
+
 ## 步骤
 
 * [这里](https://getintopc.com/softwares/3d-cad/solidworks-2024-free-download/)下载 solidworks
@@ -45,6 +50,7 @@
 
 * 之后启动 sw 就可以了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2MzM4OTg4LC0yMDY0NzQ1MDkwLDIwNj
-MzODk4OCwtMTkxMTMyNzE0MSwxMjA1MDYwODY0XX0=
+eyJoaXN0b3J5IjpbLTg3OTk5NjM1OSwyMDYzMzg5ODgsLTIwNj
+Q3NDUwOTAsMjA2MzM4OTg4LC0xOTExMzI3MTQxLDEyMDUwNjA4
+NjRdfQ==
 -->
