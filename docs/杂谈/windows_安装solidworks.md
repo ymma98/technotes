@@ -17,8 +17,9 @@
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.8z6o6ehcc9.webp)
 
-* setup 程序右键可以直接禁用网络访问，官方这么做，看来
+* setup 程序右键可以直接禁用网络访问，官方这么做，看来也是有意让个人用户使用破解版的
+
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250307/image.13lx91w2f5.webp)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM2NzE5Mzg2LDEyMDUwNjA4NjRdfQ==
+eyJoaXN0b3J5IjpbNjM0NDM4MjY0LDEyMDUwNjA4NjRdfQ==
 -->
