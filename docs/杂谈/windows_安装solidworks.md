@@ -1,6 +1,7 @@
 # 安装 solidworks
 
 要求:
+
 * 不重启
 * 不断网
 
@@ -45,6 +46,6 @@
 
 * 之后启动 sw 就可以了
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2MzM4OTg4LC0xOTExMzI3MTQxLDEyMD
-UwNjA4NjRdfQ==
+eyJoaXN0b3J5IjpbLTIwNjQ3NDUwOTAsMjA2MzM4OTg4LC0xOT
+ExMzI3MTQxLDEyMDUwNjA4NjRdfQ==
 -->
