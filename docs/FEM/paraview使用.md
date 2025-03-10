@@ -64,10 +64,22 @@ print("camera_view_up ", camera_view_up)
 print("***"*10)
 ```
 
-jiu'k
+就可以在终端中打印出来当前视角信息。恢复视角信息需要如下脚本 (举例):
+
+```python
+import paraview.simple as pvs
+
+view = pvs.GetActiveView()
+camera = view.GetActiveCamera()
+
+camera.SetPosition((-4.321512334973823, 2.3072399926926477, 4.314802542504586))
+camera.SetFocalPoint((0.0, 0.0, 0.0))
+camera.SetViewAngle(30.0)
+camera.SetViewUp((0.3001369851601892, 0.9330516719604416, -0.19832389566256708))
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ5NTQzMzQ0OSwxNjAxNjg4NzU2LC0zMj
-MyMTM3MDksLTE2MjEzMDgzODksLTIwNzY5NjM3NDQsMzQxODIw
-ODI2LDYxNzQxNTEwNiw5MjExNDk0MTQsLTEyNjcyOTMyOTQsLT
-EwMDkyMjU4MzNdfQ==
+eyJoaXN0b3J5IjpbMTI1MDYyNTA5LDE2MDE2ODg3NTYsLTMyMz
+IxMzcwOSwtMTYyMTMwODM4OSwtMjA3Njk2Mzc0NCwzNDE4MjA4
+MjYsNjE3NDE1MTA2LDkyMTE0OTQxNCwtMTI2NzI5MzI5NCwtMT
+AwOTIyNTgzM119
 -->
