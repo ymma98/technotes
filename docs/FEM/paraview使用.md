@@ -38,9 +38,31 @@ VTK 的模型基于数据流（data-flow）范式。在这种范式下，数据�
 * 指定 seed point
 	* 在 panel 的 `Source` 一栏中添加 source
 	* 如果想打包多个 source, 可以选中这些 source 后选择: `Filters > Alphabetical > GroupDatasets`
+
+## 保存视角信息
+
+在 paraview 中运行如下脚本
+
+```python
+import paraview.simple as pvs
+
+# 获取当前视图和相机
+view = pvs.GetActiveView()
+camera = view.GetActiveCamera()
+
+# 保存当前相机位置和角度
+camera_position = camera.GetPosition()
+camera_focal_point = camera.GetFocalPoint()
+camera_view_angle = camera.GetViewAngle()
+camera_view_up = camera.GetViewUp()
+
+print("***"*10)
+print()
+print("***"*10)
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwMTY4ODc1NiwtMzIzMjEzNzA5LC0xNj
-IxMzA4Mzg5LC0yMDc2OTYzNzQ0LDM0MTgyMDgyNiw2MTc0MTUx
-MDYsOTIxMTQ5NDE0LC0xMjY3MjkzMjk0LC0xMDA5MjI1ODMzXX
-0=
+eyJoaXN0b3J5IjpbLTExNDIyMDQ5MzEsMTYwMTY4ODc1NiwtMz
+IzMjEzNzA5LC0xNjIxMzA4Mzg5LC0yMDc2OTYzNzQ0LDM0MTgy
+MDgyNiw2MTc0MTUxMDYsOTIxMTQ5NDE0LC0xMjY3MjkzMjk0LC
+0xMDA5MjI1ODMzXX0=
 -->
