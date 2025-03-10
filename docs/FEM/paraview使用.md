@@ -57,12 +57,17 @@ camera_view_angle = camera.GetViewAngle()
 camera_view_up = camera.GetViewUp()
 
 print("***"*10)
-print()
+print("camera_position ", camera_position)
+print("camera_focal_point ", camera_focal_point)
+print("camera_view_angle ", camera_view_angle)
+print("camera_view_up ", camera_view_up)
 print("***"*10)
 ```
+
+jiu'k
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDIyMDQ5MzEsMTYwMTY4ODc1NiwtMz
-IzMjEzNzA5LC0xNjIxMzA4Mzg5LC0yMDc2OTYzNzQ0LDM0MTgy
-MDgyNiw2MTc0MTUxMDYsOTIxMTQ5NDE0LC0xMjY3MjkzMjk0LC
-0xMDA5MjI1ODMzXX0=
+eyJoaXN0b3J5IjpbMTQ5NTQzMzQ0OSwxNjAxNjg4NzU2LC0zMj
+MyMTM3MDksLTE2MjEzMDgzODksLTIwNzY5NjM3NDQsMzQxODIw
+ODI2LDYxNzQxNTEwNiw5MjExNDk0MTQsLTEyNjcyOTMyOTQsLT
+EwMDkyMjU4MzNdfQ==
 -->
