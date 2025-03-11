@@ -85,9 +85,21 @@ camera.SetViewUp((0.30210918260735825, 0.9328669149578858, -0.19618705553952975)
 比如，想对一个 $r=0.3$m，$z\in[-2,2]$ 的圆柱做 clip, 
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.5c14omq0pk.webp){ width="400" }
+
+
+### cylinder source 
+
+如果想显示计算区域的 Box, 像下图中的白色框线那样，
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.8ades570ik.webp){ width="400" }
+
+可以定义一个 cylinder source:
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxNDk4OTY0OCwtMzIyNzAyMTAsMTI1MD
-YyNTA5LDE2MDE2ODg3NTYsLTMyMzIxMzcwOSwtMTYyMTMwODM4
-OSwtMjA3Njk2Mzc0NCwzNDE4MjA4MjYsNjE3NDE1MTA2LDkyMT
-E0OTQxNCwtMTI2NzI5MzI5NCwtMTAwOTIyNTgzM119
+eyJoaXN0b3J5IjpbLTkxNjc2MzM1NiwtNjE0OTg5NjQ4LC0zMj
+I3MDIxMCwxMjUwNjI1MDksMTYwMTY4ODc1NiwtMzIzMjEzNzA5
+LC0xNjIxMzA4Mzg5LC0yMDc2OTYzNzQ0LDM0MTgyMDgyNiw2MT
+c0MTUxMDYsOTIxMTQ5NDE0LC0xMjY3MjkzMjk0LC0xMDA5MjI1
+ODMzXX0=
 -->
