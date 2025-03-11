@@ -80,10 +80,14 @@ camera.SetViewUp((0.30210918260735825, 0.9328669149578858, -0.19618705553952975)
 
 ## 常用的设置
 
-### d
+### clip box
+
+比如，xiang
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.5c14omq0pk.webp){ width="400" }
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDkxODI2NjEsLTMyMjcwMjEwLDEyNT
-A2MjUwOSwxNjAxNjg4NzU2LC0zMjMyMTM3MDksLTE2MjEzMDgz
-ODksLTIwNzY5NjM3NDQsMzQxODIwODI2LDYxNzQxNTEwNiw5Mj
-ExNDk0MTQsLTEyNjcyOTMyOTQsLTEwMDkyMjU4MzNdfQ==
+eyJoaXN0b3J5IjpbLTY2OTg0NjE4MSwtMzIyNzAyMTAsMTI1MD
+YyNTA5LDE2MDE2ODg3NTYsLTMyMzIxMzcwOSwtMTYyMTMwODM4
+OSwtMjA3Njk2Mzc0NCwzNDE4MjA4MjYsNjE3NDE1MTA2LDkyMT
+E0OTQxNCwtMTI2NzI5MzI5NCwtMTAwOTIyNTgzM119
 -->
