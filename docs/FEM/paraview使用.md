@@ -97,6 +97,8 @@ camera.SetViewUp((0.30210918260735825, 0.9328669149578858, -0.19618705553952975)
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.3uuzmvx5d5.webp){ width="400" }
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.8hgmnw13d3.webp){ width="400" }
+
 
 ### 定义参考平面
 
@@ -108,9 +110,10 @@ camera.SetViewUp((0.30210918260735825, 0.9328669149578858, -0.19618705553952975)
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.26lmppdu4s.webp){ width="400" }
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NDAzNTE0LC0xMTAwODc0ODYwLC05MT
-Y3NjMzNTYsLTYxNDk4OTY0OCwtMzIyNzAyMTAsMTI1MDYyNTA5
-LDE2MDE2ODg3NTYsLTMyMzIxMzcwOSwtMTYyMTMwODM4OSwtMj
-A3Njk2Mzc0NCwzNDE4MjA4MjYsNjE3NDE1MTA2LDkyMTE0OTQx
-NCwtMTI2NzI5MzI5NCwtMTAwOTIyNTgzM119
+eyJoaXN0b3J5IjpbNTc2NzQ3MTA1LDEwNjQwMzUxNCwtMTEwMD
+g3NDg2MCwtOTE2NzYzMzU2LC02MTQ5ODk2NDgsLTMyMjcwMjEw
+LDEyNTA2MjUwOSwxNjAxNjg4NzU2LC0zMjMyMTM3MDksLTE2Mj
+EzMDgzODksLTIwNzY5NjM3NDQsMzQxODIwODI2LDYxNzQxNTEw
+Niw5MjExNDk0MTQsLTEyNjcyOTMyOTQsLTEwMDkyMjU4MzNdfQ
+==
 -->
