@@ -95,11 +95,20 @@ camera.SetViewUp((0.30210918260735825, 0.9328669149578858, -0.19618705553952975)
 
 可以定义一个 cylinder source:
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.3uuzmvx5d5.webp){ width="400" }
+
+
+### 定义参考平面
+
+如果想高亮 $x=0$ 的 YZ 平面作为参考平面，像下面的淡绿色平面:
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250311/image.5q7kfiahdm.webp){ width="400" }
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxNjc2MzM1NiwtNjE0OTg5NjQ4LC0zMj
-I3MDIxMCwxMjUwNjI1MDksMTYwMTY4ODc1NiwtMzIzMjEzNzA5
-LC0xNjIxMzA4Mzg5LC0yMDc2OTYzNzQ0LDM0MTgyMDgyNiw2MT
-c0MTUxMDYsOTIxMTQ5NDE0LC0xMjY3MjkzMjk0LC0xMDA5MjI1
-ODMzXX0=
+eyJoaXN0b3J5IjpbLTExMDA4NzQ4NjAsLTkxNjc2MzM1NiwtNj
+E0OTg5NjQ4LC0zMjI3MDIxMCwxMjUwNjI1MDksMTYwMTY4ODc1
+NiwtMzIzMjEzNzA5LC0xNjIxMzA4Mzg5LC0yMDc2OTYzNzQ0LD
+M0MTgyMDgyNiw2MTc0MTUxMDYsOTIxMTQ5NDE0LC0xMjY3Mjkz
+Mjk0LC0xMDA5MjI1ODMzXX0=
 -->
