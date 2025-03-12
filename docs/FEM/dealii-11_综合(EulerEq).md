@@ -49,12 +49,17 @@ $$
 
 
 $$
-\begin{aligned}
-\partial_t (\rho v_i) + \sum_{s=1}^ \frac{\partial (\rho v_i v_s + \delta_{is} p)}{\partial x_s} &= g_i \rho, \quad i = 1, \dots, d, \\
-\partial_t \rho + \sum_{=1}^\frac{\partial (\rho v_s)}{\partial x_s} &= 0, \\
-\partial_t E + \sum_{si=1}^{d}d \frac{\partial ((E + p) v_s)}{\partial x_s} &= \rho \mathbf{g} \cdot \mathbf{v}.
-\end{aligned}
+\partial_t (\rho v_i) + \sum_{s=1}^{d} \frac{\partial (\rho v_i v_s + \delta_{is} p)}{\partial x_s} = g_i \rho, \quad i = 1, \dots, d,
 $$
+
+$$
+\partial_t \rho + \sum_{s=1}^{d} \frac{\partial (\rho v_s)}{\partial x_s} = 0,
+$$
+
+$$
+\partial_t E + \sum_{s=1}^{d} \frac{\partial ((E + p) v_s)}{\partial x_s} = \rho \mathbf{g} \cdot \mathbf{v}.
+$$
+
 
 这些方程分别描述了动量、质量和能量的守恒。系统通过定义压力的关系闭合：
 $$
@@ -2524,11 +2529,11 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg0MDExODY0LDU1MDk0ODU3MiwtNDA1OD
-g1NzYsMTkwODIzODQyMCwtMTMzOTIyNTY4OSwzMDA1NzE1NTEs
-NTI5MjE5NDI4LDE1NDM0NzQyNiwtMTQ2MTg3MDk2Niw4MDUxOT
-Y4MTQsNDAxNzEwMzg2LDIxMDk2NjIxMzAsMTU3MjQxNTA4Nywx
-MTgwMzc1NzAyLC0zMTgxNDI4NzcsNTUwMjk3MzUsMjAzODE4OT
-MxMywxMjk5NzczMjYsMjAyMjA2MTk3NiwtNjc5MDA4NTQyXX0=
+eyJoaXN0b3J5IjpbLTUwMTk5Njc2NCw2ODQwMTE4NjQsNTUwOT
+Q4NTcyLC00MDU4ODU3NiwxOTA4MjM4NDIwLC0xMzM5MjI1Njg5
+LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2LC0xNDYxOD
+cwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwx
+NTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOT
+czNSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2XX0=
 
 -->
