@@ -21,6 +21,16 @@ $$
 \partial_t \mathbf{w}_i + \nabla \cdot \mathbf{F}_i(\mathbf{w}) = \mathbf{G}_i(\mathbf{w}), \quad i = 1, \ldots, \text{dim} + 2.
 $$
 
+$$
+\mathbf{F}(\mathbf{w}) = 
+\begin{pmatrix}
+\rho \mathbf{v} \otimes \mathbf{v} + p \mathbf{I} \\[6pt]
+\rho \mathbf{v} \\[6pt]
+(E+p)\mathbf{v}
+\end{pmatrix}
+$$
+
+
 对于欧拉方程，通量矩阵 $\mathbf{F}$（或通量函数系统）定义为（以 $d = 3$ 为例）：
 
 $$
@@ -2529,11 +2539,11 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMTk5Njc2NCw2ODQwMTE4NjQsNTUwOT
-Q4NTcyLC00MDU4ODU3NiwxOTA4MjM4NDIwLC0xMzM5MjI1Njg5
-LDMwMDU3MTU1MSw1MjkyMTk0MjgsMTU0MzQ3NDI2LC0xNDYxOD
-cwOTY2LDgwNTE5NjgxNCw0MDE3MTAzODYsMjEwOTY2MjEzMCwx
-NTcyNDE1MDg3LDExODAzNzU3MDIsLTMxODE0Mjg3Nyw1NTAyOT
-czNSwyMDM4MTg5MzEzLDEyOTk3NzMyNiwyMDIyMDYxOTc2XX0=
+eyJoaXN0b3J5IjpbODc4MzcyMDg5LC01MDE5OTY3NjQsNjg0MD
+ExODY0LDU1MDk0ODU3MiwtNDA1ODg1NzYsMTkwODIzODQyMCwt
+MTMzOTIyNTY4OSwzMDA1NzE1NTEsNTI5MjE5NDI4LDE1NDM0Nz
+QyNiwtMTQ2MTg3MDk2Niw4MDUxOTY4MTQsNDAxNzEwMzg2LDIx
+MDk2NjIxMzAsMTU3MjQxNTA4NywxMTgwMzc1NzAyLC0zMTgxND
+I4NzcsNTUwMjk3MzUsMjAzODE4OTMxMywxMjk5NzczMjZdfQ==
 
 -->
