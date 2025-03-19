@@ -30,11 +30,11 @@
 | **22** | $\int_{\Omega} \nabla \mathbf{u} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} (\Delta \mathbf{u}) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} \frac{\partial \mathbf{u}}{\partial n} \,\cdot\, \mathbf{v} \, dS$ |
 | **23** | $(\nabla \mathbf{u}) : (\nabla \mathbf{v}) \;=\; \sum_{i,j} \frac{\partial u_i}{\partial x_j} \,\frac{\partial v_i}{\partial x_j}$ |
 | **24** | $\nabla \cdot \bigl(\nabla \mathbf{u}\bigr)^T \;=\; \Delta \mathbf{u} \quad\Longleftrightarrow\quad \sum_{j} \frac{\partial^2 u_i}{\partial x_j^2} \; e_i$ |
-| **25** | $\Delta \mathbf{u} \;=\; \nabla \bigl(\nabla \cdot \mathbf{u}\bigr) \;-\; \nabla \times \bigl(\nabla \times \mathbf{u}\bigr) \quad\text{(逐分量拉普拉斯)}$ |
+| **25** | $\Delta \mathbf{u} \;=\; \nabla \bigl(\nabla \cdot \mathbf{u}\bigr) \;-\; \nabla \times \bigl(\nabla \times \mathbf{u}\bigr)$ |
 | **26** | $\int_{\Omega} \mathbf{A} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} \bigl(\nabla \cdot \mathbf{A}^T\bigr) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} (\mathbf{A}^T \mathbf{v}) \cdot \mathbf{n} \, dS$ |
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk3Njc4ODk1LC02Njk3NDcwNDcsLTE3Mz
-g5NjU5NzhdfQ==
+eyJoaXN0b3J5IjpbMTcxNTY1NjcyOCwtNjY5NzQ3MDQ3LC0xNz
+M4OTY1OTc4XX0=
 -->
