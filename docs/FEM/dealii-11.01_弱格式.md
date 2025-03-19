@@ -29,12 +29,11 @@
 | **21** | $\int_{\Omega} \nabla \mathbf{u} : \nabla \mathbf{v} \, d\Omega \;=\; \int_{\Omega} \sum_{i,j} \frac{\partial u_i}{\partial x_j} \,\frac{\partial v_i}{\partial x_j} \, d\Omega$ |
 | **22** | $\int_{\Omega} \nabla \mathbf{u} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} (\Delta \mathbf{u}) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} \frac{\partial \mathbf{u}}{\partial n} \,\cdot\, \mathbf{v} \, dS$ |
 | **23** | $(\nabla \mathbf{u}) : (\nabla \mathbf{v}) \;=\; \sum_{i,j} \frac{\partial u_i}{\partial x_j} \,\frac{\partial v_i}{\partial x_j}$ |
-| **24** | $\nabla \cdot \bigl(\nabla \mathbf{u}\bigr)^T \;=\; \Delta \mathbf{u} \quad\Longleftrightarrow\quad \sum_{j} \frac{\partial^2 u_i}{\partial x_j^2} \; e_i$ |
-| **25** | $\Delta \mathbf{u} \;=\; \nabla \bigl(\nabla \cdot \mathbf{u}\bigr) \;-\; \nabla \times \bigl(\nabla \times \mathbf{u}\bigr)$ |
-| **26** | $\int_{\Omega} \mathbf{A} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} \bigl(\nabla \cdot \mathbf{A}^T\bigr) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} (\mathbf{A}^T \mathbf{v}) \cdot \mathbf{n} \, dS$ |
+| **24** | $\Delta \mathbf{u} \;=\; \nabla \bigl(\nabla \cdot \mathbf{u}\bigr) \;-\; \nabla \times \bigl(\nabla \times \mathbf{u}\bigr)$ |
+| **25** | $\int_{\Omega} \mathbf{A} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} \bigl(\nabla \cdot \mathbf{A}^T\bigr) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} (\mathbf{A}^T \mathbf{v}) \cdot \mathbf{n} \, dS$ |
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxNTY1NjcyOCwtNjY5NzQ3MDQ3LC0xNz
-M4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2OT
+c0NzA0NywtMTczODk2NTk3OF19
 -->
