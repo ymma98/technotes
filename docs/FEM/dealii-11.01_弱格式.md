@@ -22,7 +22,19 @@
 | **14** | $\int_{\Omega} \nabla u \cdot \nabla v \, d\Omega \;=\; \int_{\Omega} (\nabla u) \cdot (\nabla v) \, d\Omega$ |
 | **15** | $\int_{\Omega} (\nabla \cdot \vec{u}) \, (\nabla \cdot \vec{v}) \, d\Omega$ |
 | **16** | $\int_{\Omega} (\nabla \times \vec{u}) \cdot (\nabla \times \vec{v}) \, d\Omega$ |
+| **17** | $\nabla \mathbf{u} \;=\; \left(\frac{\partial u_i}{\partial x_j}\right) e_i \otimes e_j \;=\; \begin{pmatrix} \frac{\partial u_1}{\partial x_1} & \frac{\partial u_1}{\partial x_2} & \frac{\partial u_1}{\partial x_3} \\[6pt] \frac{\partial u_2}{\partial x_1} & \frac{\partial u_2}{\partial x_2} & \frac{\partial u_2}{\partial x_3} \\[6pt] \frac{\partial u_3}{\partial x_1} & \frac{\partial u_3}{\partial x_2} & \frac{\partial u_3}{\partial x_3} \end{pmatrix}$ |
+| **18** | $\nabla \cdot \mathbf{A} \;=\; \left(\sum_{j} \frac{\partial A_{ij}}{\partial x_j}\right) e_i \;=\; \begin{pmatrix} \sum_{j} \frac{\partial A_{1j}}{\partial x_j} \\[6pt] \sum_{j} \frac{\partial A_{2j}}{\partial x_j} \\[6pt] \sum_{j} \frac{\partial A_{3j}}{\partial x_j} \end{pmatrix}$ |
+| **19** | $\mathbf{A} : \mathbf{B} \;=\; \sum_{i,j} A_{ij} \, B_{ij} \;=\; \mathrm{trace}\,(\mathbf{A}^T \mathbf{B})$ |
+| **20** | $\nabla \cdot (\mathbf{u} \otimes \mathbf{v}) \;=\; (\nabla \cdot \mathbf{u}) \,\mathbf{v} \;+\; (\nabla \mathbf{v})^T \mathbf{u}$ |
+| **21** | $\int_{\Omega} \nabla \mathbf{u} : \nabla \mathbf{v} \, d\Omega \;=\; \int_{\Omega} \sum_{i,j} \frac{\partial u_i}{\partial x_j} \,\frac{\partial v_i}{\partial x_j} \, d\Omega$ |
+| **22** | $\int_{\Omega} \nabla \mathbf{u} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} (\Delta \mathbf{u}) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} \frac{\partial \mathbf{u}}{\partial n} \,\cdot\, \mathbf{v} \, dS$ |
+| **23** | $(\nabla \mathbf{u}) : (\nabla \mathbf{v}) \;=\; \sum_{i,j} \frac{\partial u_i}{\partial x_j} \,\frac{\partial v_i}{\partial x_j}$ |
+| **24** | $\nabla \cdot \bigl(\nabla \mathbf{u}\bigr)^T \;=\; \Delta \mathbf{u} \quad\Longleftrightarrow\quad \sum_{j} \frac{\partial^2 u_i}{\partial x_j^2} \; e_i$ |
+| **25** | $\Delta \mathbf{u} \;=\; \nabla \bigl(\nabla \cdot \mathbf{u}\bigr) \;-\; \nabla \times \bigl(\nabla \times \mathbf{u}\bigr) \quad\text{(逐分量拉普拉斯)}$ |
+| **26** | $\int_{\Omega} \mathbf{A} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} \bigl(\nabla \cdot \mathbf{A}^T\bigr) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} (\mathbf{A}^T \mathbf{v}) \cdot \mathbf{n} \, dS$ |
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2OTc0NzA0NywtMTczODk2NTk3OF19
+eyJoaXN0b3J5IjpbOTk3Njc4ODk1LC02Njk3NDcwNDcsLTE3Mz
+g5NjU5NzhdfQ==
 -->
