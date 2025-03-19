@@ -15,14 +15,14 @@
 | **7** | $\nabla (\nabla \cdot \vec{u}) - \nabla \times (\nabla \times \vec{u}) = \Delta \vec{u}$ |
 | **8** | $\Delta (f \,\vec{u}) = f \,\Delta \vec{u} + \vec{u} \,\Delta f + 2 \,\nabla f \cdot \nabla \vec{u}$ |
 | **9** | $\int_{\Omega} \nabla u \cdot \nabla v \, d\Omega \;=\; -\int_{\Omega} (\Delta u)\, v \, d\Omega \;+\; \int_{\partial \Omega} \frac{\partial u}{\partial n} \, v \, dS$ |
-| **10** | $ \int_{\Omega} \nabla u \cdot \vec{v}\, d\Omega \;=\; - \int_{\Omega} u\,(\nabla \cdot \vec{v}) \, d\Omega \;+\; \int_{\partial \Omega} u \;\vec{v}\cdot \vec{n} \, dS $ |
-| **11** | $ \int_{\Omega} (\nabla \cdot \vec{u}) \, v \, d\Omega \;=\; -\int_{\Omega} \vec{u}\cdot (\nabla v) \, d\Omega \;+\; \int_{\partial \Omega} v \;\vec{u}\cdot \vec{n} \, dS $ |
-| **12** | $ \int_{\Omega} (\nabla \times \vec{u}) \cdot \vec{v}\, d\Omega \;=\; \int_{\Omega} \vec{u}\cdot (\nabla \times \vec{v}) \, d\Omega \;-\; \int_{\partial \Omega} (\vec{u}\times \vec{v}) \cdot \vec{n} \, dS $ |
-| **13** | $ \int_{\Omega} \vec{u}\cdot (\nabla \times \vec{v}) \, d\Omega \;=\; \int_{\Omega} (\nabla \times \vec{u}) \cdot \vec{v}\, d\Omega \;+\; \int_{\partial \Omega} (\vec{v}\times \vec{u}) \cdot \vec{n} \, dS $ |
-| **14** | $ \int_{\Omega} \nabla u \cdot \nabla v \, d\Omega \;=\; \int_{\Omega} (\nabla u) \cdot (\nabla v) \, d\Omega \;=\; \text{常用于标量场的弱形式} $ |
-| **15** | $ \int_{\Omega} (\nabla \cdot \vec{u}) \, (\nabla \cdot \vec{v}) \, d\Omega \;=\; \text{常用于H(div)空间中的弱形式} $ |
-| **16** | $ \int_{\Omega} (\nabla \times \vec{u}) \cdot (\nabla \times \vec{v}) \, d\Omega \;=\; \text{常用于H(curl)空间中的弱形式} $ |
+| **10** | $\int_{\Omega} \nabla u \cdot \vec{v}\, d\Omega \;=\; - \int_{\Omega} u\,(\nabla \cdot \vec{v}) \, d\Omega \;+\; \int_{\partial \Omega} u \;\vec{v}\cdot \vec{n} \, dS$ |
+| **11** | $\int_{\Omega} (\nabla \cdot \vec{u}) \, v \, d\Omega \;=\; -\int_{\Omega} \vec{u}\cdot (\nabla v) \, d\Omega \;+\; \int_{\partial \Omega} v \;\vec{u}\cdot \vec{n} \, dS$ |
+| **12** | $\int_{\Omega} (\nabla \times \vec{u}) \cdot \vec{v}\, d\Omega \;=\; \int_{\Omega} \vec{u}\cdot (\nabla \times \vec{v}) \, d\Omega \;-\; \int_{\partial \Omega} (\vec{u}\times \vec{v}) \cdot \vec{n} \, dS$ |
+| **13** | $\int_{\Omega} \vec{u}\cdot (\nabla \times \vec{v}) \, d\Omega \;=\; \int_{\Omega} (\nabla \times \vec{u}) \cdot \vec{v}\, d\Omega \;+\; \int_{\partial \Omega} (\vec{v}\times \vec{u}) \cdot \vec{n} \, dS$ |
+| **14** | $\int_{\Omega} \nabla u \cdot \nabla v \, d\Omega \;=\; \int_{\Omega} (\nabla u) \cdot (\nabla v) \, d\Omega$ |
+| **15** | $\int_{\Omega} (\nabla \cdot \vec{u}) \, (\nabla \cdot \vec{v}) \, d\Omega$ |
+| **16** | $\int_{\Omega} (\nabla \times \vec{u}) \cdot (\nabla \times \vec{v}) \, d\Omega$ |
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgzMjE1NTg2LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbLTY2OTc0NzA0NywtMTczODk2NTk3OF19
 -->
