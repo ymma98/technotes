@@ -68,12 +68,34 @@ $$
 \end{pmatrix}
 $$
 
+将我们的守恒方程与一个（向量值）测试函数 $\mathbf{z} \in V_h$ 做内积。然后，我们进行分部积分，
+
+$$
+\partial_t \mathbf{w} + \nabla \cdot \mathbf{F}(\mathbf{w}) 
+$$
+
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dV + \int_{\Omega} \nabla \cdot \mathbf{F}(\mathbf{w}) \cdot \mathbf{z} \, dV
+$$
+
+对上式第二项应用分部积分，将导数从 $\mathbf{F}(\mathbf{w})$ 转移到测试函数 $\mathbf{z}$ 上：
+
+$$
+\int_{\Omega} \nabla \cdot \mathbf{F}(\mathbf{w}) \cdot \mathbf{z} \, dx =- \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx+ \int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \cdot \mathbf{z} \, ds
+$$
+
+因此弱形式变为: 
+
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx- \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx+ \int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \cdot \mathbf{z} \, ds = 0
+$$
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNjgzODEwMywzOTA1Mzc2ODIsMTcxNT
+eyJoaXN0b3J5IjpbMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNT
 Y1NjcyOCwtNjY5NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
