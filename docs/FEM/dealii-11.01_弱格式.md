@@ -59,12 +59,21 @@ g_3 \rho \\
 $$
 其中 $g = (g_1, g_2, g_3)^T$ 表示重力向量。
 
+$$
+\mathbf{F}(\mathbf{w}) = 
+\begin{pmatrix}
+\rho \mathbf{v} \otimes \mathbf{v} + p \mathbf{I} \\[6pt]
+\rho \mathbf{v} \\[6pt]
+(E+p)\mathbf{v}
+\end{pmatrix}
+$$
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5MDMxMzIxNCwzOTA1Mzc2ODIsMTcxNT
+eyJoaXN0b3J5IjpbLTYyNjgzODEwMywzOTA1Mzc2ODIsMTcxNT
 Y1NjcyOCwtNjY5NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
