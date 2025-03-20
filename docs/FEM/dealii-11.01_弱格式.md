@@ -35,12 +35,36 @@
 
 ## Euler equation 弱格式推导
 
+描述可压缩无粘气体运动的方程（即气体动力学的欧拉方程）是一组基本的守恒定律系统。在空间维度 $d$ 下，其形式为：
+
+$$
+\partial_t \mathbf{w} + \nabla \cdot \mathbf{F}(\mathbf{w}) = \mathbf{G}(\mathbf{w}),
+$$
+
+其中解向量 $\mathbf{w} = (\rho v_1, \ldots, \rho v_d, \rho, E)^T$ 包含以下物理量：  
+- $\rho$ 为流体密度  
+- $\mathbf{v} = (v_1, \ldots, v_d)^T$ 为流速（因此 $\rho\mathbf{v}$ 表示线性动量密度）  
+- $E$ 为气体的能量密度 
+
+右侧源项仅考虑重力效应时，其形式为：
+$$
+\mathbf{G}(\mathbf{w}) = 
+\begin{pmatrix}
+g_1 \rho \\
+g_2 \rho \\
+g_3 \rho \\
+0 \\
+\rho \mathbf{g} \cdot \mathbf{v}
+\end{pmatrix},
+$$
+其中 $g = (g_1, g_2, g_3)^T$ 表示重力向量。
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ2Njc3MDA1LDM5MDUzNzY4MiwxNzE1Nj
-U2NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
+eyJoaXN0b3J5IjpbLTk5MDMxMzIxNCwzOTA1Mzc2ODIsMTcxNT
+Y1NjcyOCwtNjY5NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
