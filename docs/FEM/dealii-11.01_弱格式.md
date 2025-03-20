@@ -33,7 +33,12 @@
 | **25** | $\int_{\Omega} \mathbf{A} : \nabla \mathbf{v} \, d\Omega \;=\; -\,\int_{\Omega} \bigl(\nabla \cdot \mathbf{A}^T\bigr) \cdot \mathbf{v} \, d\Omega \;+\; \int_{\partial \Omega} (\mathbf{A}^T \mathbf{v}) \cdot \mathbf{n} \, dS$ |
 
 
+## Euler equation 弱格式推导
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2OT
-c0NzA0NywtMTczODk2NTk3OF19
+eyJoaXN0b3J5IjpbLTE5NjgzNTg0NzksMzkwNTM3NjgyLDE3MT
+U2NTY3MjgsLTY2OTc0NzA0NywtMTczODk2NTk3OF19
 -->
