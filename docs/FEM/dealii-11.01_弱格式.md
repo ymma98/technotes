@@ -4,6 +4,52 @@
 
 ## 常用弱格式推导公式
 
+$$
+\nabla f(\mathbf{x}) = \frac{\partial f(\mathbf{x})}{\partial x_i} = f_{,i}(\mathbf{x}) \mathbf{e}_i
+$$
+
+$$
+\nabla f(\mathbf{x}) =
+\begin{bmatrix}
+    f_{,1} \\
+    f_{,2} \\
+    f_{,3}
+\end{bmatrix}
+$$
+
+$$
+\nabla \mathbf{f}(\mathbf{x}) = \frac{\partial f_i(\mathbf{x})}{\partial x_j} = f_{i,j}(\mathbf{x}) \mathbf{e}_i \otimes \mathbf{e}_j
+$$
+
+$$
+\nabla \mathbf{f}(\mathbf{x}) =
+\begin{bmatrix}
+    f_{1,1} & f_{1,2} & f_{1,3} \\
+    f_{2,1} & f_{2,2} & f_{2,3} \\
+    f_{3,1} & f_{3,2} & f_{3,3}
+\end{bmatrix}
+$$
+
+$$
+\text{div}(\mathbf{f}(\mathbf{x})) = \text{tr}(\nabla \mathbf{f}(\mathbf{x})) = \nabla \mathbf{f}(\mathbf{x}) : \mathbf{I}
+$$
+
+$$
+\text{div}(\mathbf{f}(\mathbf{x})) = f_{i,i}(\mathbf{x}) = f_{1,1} + f_{2,2} + f_{3,3}
+$$
+
+$$
+\text{div}(\mathbf{F}(\mathbf{x})) = \text{tr}(\nabla \mathbf{F}(\mathbf{x})) = \nabla \mathbf{F}(\mathbf{x}) : \mathbf{I}
+$$
+
+$$
+\text{div}(\mathbf{F}(\mathbf{x})) = F_{ij,j}(\mathbf{x}) =
+\begin{bmatrix}
+    F_{11,1} + F_{12,2} + F_{13,3} \\
+    F_{21,1} + F_{22,2} + F_{23,3} \\
+    F_{31,1} + F_{32,2} + F_{33,3}
+\end{bmatrix}
+$$
 
 
 
@@ -70,7 +116,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjUwNDUzNTgsMTgxMzU1NDM3MCwzOT
-A1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3MDQ3LC0xNzM4OTY1
-OTc4XX0=
+eyJoaXN0b3J5IjpbLTE3NDA1NDAxMDMsLTE4NjUwNDUzNTgsMT
+gxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3
+MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
