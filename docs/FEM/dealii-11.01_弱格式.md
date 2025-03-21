@@ -74,6 +74,31 @@ $$
 \end{bmatrix}
 $$
 
+* tensor
+
+$$
+\nabla (\alpha \mathbf{u}) = \mathbf{u} \otimes \nabla \alpha + \alpha \nabla \mathbf{u}
+$$
+
+$$
+\nabla (\mathbf{u} \cdot \mathbf{v}) = \mathbf{u} \cdot \nabla \mathbf{v} + \mathbf{v} \cdot \nabla \mathbf{u}
+$$
+
+$$
+\text{div} (\alpha \mathbf{u}) = \alpha \text{div}(\mathbf{u}) + \mathbf{u} \cdot \nabla \alpha
+$$
+
+$$
+\text{div} (\alpha \mathbf{A}) = \alpha \text{div}(\mathbf{A}) + \mathbf{A} \cdot \nabla \alpha
+$$
+
+$$
+\text{div} (\mathbf{u} \cdot \mathbf{A}) = \mathbf{u} \cdot \text{div}(\mathbf{A}) + \mathbf{A} : \nabla \mathbf{u}
+$$
+
+$$
+\text{div} (\mathbf{u} \otimes \mathbf{v}) = \mathbf{u} \text{div}(\mathbf{v}) + \mathbf{v} \cdot \nabla \mathbf{u}^{\text{T}}
+$$
 
 
 
@@ -140,7 +165,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NjcwOTY1MiwtMTg2NTA0NTM1OCwxOD
-EzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2NzI4LC02Njk3NDcw
-NDcsLTE3Mzg5NjU5NzhdfQ==
+eyJoaXN0b3J5IjpbLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNTgsMT
+gxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3
+MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
