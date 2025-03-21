@@ -2,7 +2,9 @@
 
 > step-33 几乎包含了所有构造有限元求解器需要掌握的内容, 因此详细学习该 tutorial.
 
-## 常用弱格式推导公式
+## 常用公式
+
+* gradient
 
 $$
 \nabla f(\mathbf{x}) = \frac{\partial f(\mathbf{x})}{\partial x_i} = f_{,i}(\mathbf{x}) \mathbf{e}_i
@@ -30,6 +32,8 @@ $$
 \end{bmatrix}
 $$
 
+* divergence
+
 $$
 \text{div}(\mathbf{f}(\mathbf{x})) = \text{tr}(\nabla \mathbf{f}(\mathbf{x})) = \nabla \mathbf{f}(\mathbf{x}) : \mathbf{I}
 $$
@@ -50,6 +54,26 @@ $$
     F_{31,1} + F_{32,2} + F_{33,3}
 \end{bmatrix}
 $$
+
+* Laplace
+
+$$
+\Delta f(\mathbf{x}) = \text{div}(\nabla f(\mathbf{x})) = f_{,ii} = f_{,11} + f_{,22} + f_{,33}
+$$
+
+$$
+\Delta \mathbf{f}(\mathbf{x}) = \text{div}(\nabla (\mathbf{f}(\mathbf{x}))) = f_{i,jj}
+$$
+
+$$
+\Delta \mathbf{f}(\mathbf{x}) =
+\begin{bmatrix}
+    f_{1,11} + f_{1,22} + f_{1,33} \\
+    f_{2,11} + f_{2,22} + f_{2,33} \\
+    f_{3,11} + f_{3,22} + f_{3,33}
+\end{bmatrix}
+$$
+
 
 
 
@@ -116,7 +140,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDA1NDAxMDMsLTE4NjUwNDUzNTgsMT
-gxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3
-MDQ3LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbLTY1NjcwOTY1MiwtMTg2NTA0NTM1OCwxOD
+EzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2NzI4LC02Njk3NDcw
+NDcsLTE3Mzg5NjU5NzhdfQ==
 -->
