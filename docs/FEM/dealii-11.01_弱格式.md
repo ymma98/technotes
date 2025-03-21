@@ -100,6 +100,31 @@ $$
 \text{div} (\mathbf{u} \otimes \mathbf{v}) = \mathbf{u} \text{div}(\mathbf{v}) + \mathbf{v} \cdot \nabla \mathbf{u}^{\text{T}}
 $$
 
+$$
+\left( \alpha \, u_i \right)_{,j} = u_i \, \alpha_{,j} + \alpha \, u_{i,j}
+$$
+
+$$
+\left( u_i \, v_i \right)_{,j} = u_i \, v_{i,j} + v_i \, u_{i,j}
+$$
+
+$$
+\left( \alpha \, u_i \right)_{,i} = \alpha \, u_{i,i} + u_i \, \alpha_{,i}
+$$
+
+$$
+\left( \alpha \, A_{ij} \right)_{,j} = \alpha \, A_{ij,j} + A_{ij} \, \alpha_{,j}
+$$
+
+$$
+\left( u_i \, A_{ij} \right)_{,j} = u_i \, A_{ij,j} + A_{ij} \, u_{i,j}
+$$
+
+$$
+\left( u_i \, v_j \right)_{,j} = u_i \, v_{j,j} + v_j \, u_{i,j}
+$$
+
+
 
 $$
 \int_{\partial \mathcal{B}} \alpha \mathbf{n} \, dA = \int_{\mathcal{B}} \nabla \alpha \, dV \quad \text{green}
@@ -112,6 +137,23 @@ $$
 $$
 \int_{\partial \mathcal{B}} \mathbf{A} \cdot \mathbf{n} \, dA = \int_{\mathcal{B}} \text{div}(\mathbf{A}) \, dV \quad \text{gauss}
 $$
+
+$$
+\int_{\partial \mathcal{B}} \alpha \, n_i \, \mathrm{d}A = \int_{\mathcal{B}} \alpha_{,i} \, \mathrm{d}V
+$$
+
+$$
+\int_{\partial \mathcal{B}} u_i \, n_i \, \mathrm{d}A = \int_{\mathcal{B}} u_{i,i} \, \mathrm{d}V
+$$
+
+$$
+\int_{\partial \mathcal{B}} A_{ij} \, n_j \, \mathrm{d}A = \int_{\mathcal{B}} A_{ij,j} \, \mathrm{d}V
+$$
+
+green  
+gauss  
+gauss
+
 
 
 
@@ -178,7 +220,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5MzY4MzIyMSwtMTk0ODYyNDY5NywtMT
+eyJoaXN0b3J5IjpbLTUzNzg4ODQ4OSwtMTk0ODYyNDY5NywtMT
 g2NTA0NTM1OCwxODEzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2
 NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
 -->
