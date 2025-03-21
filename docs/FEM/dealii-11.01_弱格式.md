@@ -150,9 +150,6 @@ $$
 \int_{\partial \mathcal{B}} A_{ij} \, n_j \, \mathrm{d}A = \int_{\mathcal{B}} A_{ij,j} \, \mathrm{d}V
 $$
 
-green  
-gauss  
-gauss
 
 
 
@@ -220,7 +217,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNzg4ODQ4OSwtMTk0ODYyNDY5NywtMT
-g2NTA0NTM1OCwxODEzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2
-NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
+eyJoaXN0b3J5IjpbNTcwMjgyODQ2LC0xOTQ4NjI0Njk3LC0xOD
+Y1MDQ1MzU4LDE4MTM1NTQzNzAsMzkwNTM3NjgyLDE3MTU2NTY3
+MjgsLTY2OTc0NzA0NywtMTczODk2NTk3OF19
 -->
