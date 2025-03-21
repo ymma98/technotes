@@ -101,6 +101,19 @@ $$
 $$
 
 
+$$
+\int_{\partial \mathcal{B}} \alpha \mathbf{n} \, dA = \int_{\mathcal{B}} \nabla \alpha \, dV \quad \text{green}
+$$
+
+$$
+\int_{\partial \mathcal{B}} \mathbf{u} \cdot \mathbf{n} \, dA = \int_{\mathcal{B}} \text{div}(\mathbf{u}) \, dV \quad \text{gauss}
+$$
+
+$$
+\int_{\partial \mathcal{B}} \mathbf{A} \cdot \mathbf{n} \, dA = \int_{\mathcal{B}} \text{div}(\mathbf{A}) \, dV \quad \text{gauss}
+$$
+
+
 
 ## Euler equation 弱格式推导
 
@@ -165,7 +178,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNTgsMT
-gxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3
-MDQ3LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbMTg5MzY4MzIyMSwtMTk0ODYyNDY5NywtMT
+g2NTA0NTM1OCwxODEzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2
+NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
 -->
