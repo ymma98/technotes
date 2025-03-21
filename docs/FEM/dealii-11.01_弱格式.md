@@ -9,12 +9,15 @@
 $$
 \alpha : \mathcal{B} \to \mathbb{R}
 $$
+
 $$
 \mathbf{u} : \mathcal{B} \to \mathbb{R}^3
 $$
+
 $$
 \mathbf{v} : \mathcal{B} \to \mathbb{R}^3
 $$
+
 $$
 \mathbf{A} : \mathcal{B} \to \mathbb{R}^3 \otimes \mathbb{R}^3
 $$
@@ -22,23 +25,26 @@ $$
 $$
 \alpha : \mathbf{x} \mapsto \alpha \left( \mathbf{x} \right)
 $$
+
 $$
 \mathbf{u} : \mathbf{x} \mapsto \mathbf{u} \left( \mathbf{x} \right)
 $$
+
 $$
 \mathbf{v} : \mathbf{x} \mapsto \mathbf{v} \left( \mathbf{x} \right)
 $$
+
 $$
 \mathbf{A} : \mathbf{x} \mapsto \mathbf{A} \left( \mathbf{x} \right)
 $$
 
----
 
 - **consider scalar- and vector field in domain** $\mathcal{B} \in \mathbb{R}^3$
 
 $$
 f : \mathcal{B} \to \mathbb{R}
 $$
+
 $$
 f : \mathcal{B} \to \mathbb{R}^3
 $$
@@ -46,6 +52,7 @@ $$
 $$
 f : \mathbf{x} \mapsto f \left( \mathbf{x} \right)
 $$
+
 $$
 f : \mathbf{x} \mapsto f \left( \mathbf{x} \right)
 $$
@@ -264,7 +271,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODQ0MzA4NTIsLTE5NDg2MjQ2OTcsLT
-E4NjUwNDUzNTgsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1
-NjcyOCwtNjY5NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbLTk5NDAxNzk1NSwtMTk0ODYyNDY5NywtMT
+g2NTA0NTM1OCwxODEzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2
+NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
 -->
