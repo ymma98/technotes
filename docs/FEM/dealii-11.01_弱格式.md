@@ -316,7 +316,18 @@ $$
 其中 $\frac{dR(u)}{du}$ 是 $R(u)$ 关于 u 的 Jacobian. 
 
 
-对于本wen't
+对于本问题，牛顿迭代的第 $k$ 步对应于:
+
+$$
+\mathbf{W}_{n+1}^{k+1}
+= \mathbf{W}_{n+1}^k + \delta \mathbf{W}_{n+1}^k,
+$$
+
+$$
+\mathbf{R}'\bigl(\mathbf{W}_{n+1}^k\bigr)\,\delta \mathbf{W}_{n+1}^k
+= -\,\mathbf{R}\bigl(\mathbf{W}_{n+1}^k\bigr).
+$$
+
 
 
 
@@ -325,9 +336,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyMDA1MDAwNywtNTIxNTIxNDgzLDIwMz
-EwNDEwNzcsLTEzMzY4OTA0OTksMTE5MTM4MTcyNSwtMzI2MTgw
-MjA2LC05OTQwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNT
-gsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5
-NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbLTExNTM4OTExMzQsLTUyMTUyMTQ4MywyMD
+MxMDQxMDc3LC0xMzM2ODkwNDk5LDExOTEzODE3MjUsLTMyNjE4
+MDIwNiwtOTk0MDE3OTU1LC0xOTQ4NjI0Njk3LC0xODY1MDQ1Mz
+U4LDE4MTM1NTQzNzAsMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2
+OTc0NzA0NywtMTczODk2NTk3OF19
 -->
