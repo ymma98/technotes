@@ -269,14 +269,18 @@ $$
 \int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx- \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx+ \int_{\partial \Omega} (\mathbf{F}(\mathbf{w}) \cdot \mathbf{n}) \cdot \mathbf{z} \, ds = 0
 $$
 
+为了数值稳定性，对以上弱格式作以下处理：
+
+* 边界项中，$\mathbf{F}(\mathbf{w})=$$\int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds$
+
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyNjE4MDIwNiwtOTk0MDE3OTU1LC0xOT
-Q4NjI0Njk3LC0xODY1MDQ1MzU4LDE4MTM1NTQzNzAsMzkwNTM3
-NjgyLDE3MTU2NTY3MjgsLTY2OTc0NzA0NywtMTczODk2NTk3OF
-19
+eyJoaXN0b3J5IjpbODA3Njc0MDA5LC0zMjYxODAyMDYsLTk5ND
+AxNzk1NSwtMTk0ODYyNDY5NywtMTg2NTA0NTM1OCwxODEzNTU0
+MzcwLDM5MDUzNzY4MiwxNzE1NjU2NzI4LC02Njk3NDcwNDcsLT
+E3Mzg5NjU5NzhdfQ==
 -->
