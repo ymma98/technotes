@@ -271,7 +271,7 @@ $$
 
 为了数值稳定性，对以上弱格式作以下处理：
 
-* 边界项中，$\mathbf{F}(\mathbf{w})\rightarrow \mathbf{H}(\mathbf{w}^+,\mathbf{w}^-, \mathbf{n})$, 从而边界项变为 $\int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds$
+* 边界项中，$\mathbf{F}(\mathbf{w})\rightarrow \mathbf{H}(\mathbf{w}^+,\mathbf{w}^-, \mathbf{n})$, 从而边界项变为 $\int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds$， $\mathbf{w}^+$ 是内侧解
 	* 其中, $\mathbf{H}$ 是 Lax–Friedrichs 通量, $\mathbf{H}(\mathbf{a}, \mathbf{b}, \mathbf{n})
 = \tfrac12\Bigl(\mathbf{F}(\mathbf{a})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{a}-\mathbf{b}\bigr)\Bigr)$
 	* $\alpha$ 要么是输入文件中给定的常数，要么是与网格相关的量。在后者情况下，它可取为 $-\tfrac{h}{2\,\delta t}$，其中 $h$ 是施加该通量的面的直径，$\delta t$ 是当前时间步
@@ -291,8 +291,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MTM4MTcyNSwtMzI2MTgwMjA2LC05OT
-QwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNTgsMTgxMzU1
-NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3MDQ3LC
-0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbLTEzMzY4OTA0OTksMTE5MTM4MTcyNSwtMz
+I2MTgwMjA2LC05OTQwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUw
+NDUzNTgsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOC
+wtNjY5NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
