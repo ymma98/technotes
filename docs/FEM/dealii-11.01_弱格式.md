@@ -271,7 +271,9 @@ $$
 
 为了数值稳定性，对以上弱格式作以下处理：
 
-* 边界项中，$\mathbf{F}(\mathbf{w})=$$\int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds$
+* 边界项中，$\mathbf{F}(\mathbf{w})\rightarrow \mathbf{H}(\mathbf{w}^+,\mathbf{w}^-, \mathbf{n})$, 从而边界项变为 $\int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds$
+	* 其中, $\mathbf{H}(\mathbf{a}, \mathbf{b}, \mathbf{n})
+= \tfrac12\Bigl(\mathbf{F}(\mathbf{a})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{a}-\mathbf{b}\bigr)\Bigr),$ 
 
 
 
@@ -279,8 +281,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA3Njc0MDA5LC0zMjYxODAyMDYsLTk5ND
-AxNzk1NSwtMTk0ODYyNDY5NywtMTg2NTA0NTM1OCwxODEzNTU0
-MzcwLDM5MDUzNzY4MiwxNzE1NjU2NzI4LC02Njk3NDcwNDcsLT
-E3Mzg5NjU5NzhdfQ==
+eyJoaXN0b3J5IjpbLTE4NDI3ODg5ODgsLTMyNjE4MDIwNiwtOT
+k0MDE3OTU1LC0xOTQ4NjI0Njk3LC0xODY1MDQ1MzU4LDE4MTM1
+NTQzNzAsMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2OTc0NzA0Ny
+wtMTczODk2NTk3OF19
 -->
