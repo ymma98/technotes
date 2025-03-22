@@ -110,7 +110,7 @@ $$
 $$
 
 $$
-\nabla \cdot (\nabla \mathbf{w}) \cdot \mathbf{v} = \Delta \mathbf{w} \cdot \mathbf{v} = \nabla \cdot (\nabla \mathbf{w} \cdot \mathbf{v}) - \nabla \mathbf{w} 
+\nabla \cdot (\nabla \mathbf{w}) \cdot \mathbf{v} = \Delta \mathbf{w} \cdot \mathbf{v} = \nabla \cdot (\nabla \mathbf{w} \cdot \mathbf{v}) - \nabla \mathbf{w} : \nabla \mathbf{v}
 $$
 
 * Laplace
@@ -275,7 +275,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxODEwNjE1MiwtOTk0MDE3OTU1LC0xOT
+eyJoaXN0b3J5IjpbLTMyNjE4MDIwNiwtOTk0MDE3OTU1LC0xOT
 Q4NjI0Njk3LC0xODY1MDQ1MzU4LDE4MTM1NTQzNzAsMzkwNTM3
 NjgyLDE3MTU2NTY3MjgsLTY2OTc0NzA0NywtMTczODk2NTk3OF
 19
