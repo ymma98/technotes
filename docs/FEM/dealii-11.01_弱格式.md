@@ -298,7 +298,13 @@ $$
 使用 $\theta-$implicit method, 有
 
 $$
-\int_\Omega \frac{\mathbf{w_{n+1} - \mathbf{w_n}}}{\delta t} \cdot \mathbf{z} + \theta \mathbf{B(w_{n+1})} +
+\int_\Omega \frac{\mathbf{w_{n+1} - \mathbf{w_n}}}{\delta t} \cdot \mathbf{z} dx + \theta \mathbf{B(w_{n+1})} + (1-\theta) \mathbf{B(w_{n})} = 0
+$$
+
+此时，相当于求解非线性方程组: 
+
+$$
+\mathbf{R(w_{n+1})} = \int_\Omega \frac{\mathbf{w_{n+1} - \mathbf{w_n}}}{\delta t} \cdot \mathbf{z} dx + \theta \mathbf{B(w_{n+1})} + (1-\theta) \mathbf{B(w_{n})} = 0
 $$
 
 
@@ -308,9 +314,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2NDIzNTgyNCwtNTIxNTIxNDgzLDIwMz
-EwNDEwNzcsLTEzMzY4OTA0OTksMTE5MTM4MTcyNSwtMzI2MTgw
-MjA2LC05OTQwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNT
-gsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5
-NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbNzY3MzQ1NDU3LC01MjE1MjE0ODMsMjAzMT
+A0MTA3NywtMTMzNjg5MDQ5OSwxMTkxMzgxNzI1LC0zMjYxODAy
+MDYsLTk5NDAxNzk1NSwtMTk0ODYyNDY5NywtMTg2NTA0NTM1OC
+wxODEzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2NzI4LC02Njk3
+NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
 -->
