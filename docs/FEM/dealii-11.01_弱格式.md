@@ -275,7 +275,15 @@ $$
 	* 其中, $\mathbf{H}$ 是 Lax–Friedrichs 通量, $\mathbf{H}(\mathbf{a}, \mathbf{b}, \mathbf{n})
 = \tfrac12\Bigl(\mathbf{F}(\mathbf{a})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{a}-\mathbf{b}\bigr)\Bigr)$
 	* $\alpha$ 要么是输入文件中给定的常数，要么是与网格相关的量。在后者情况下，它可取为 $-\tfrac{h}{2\,\delta t}$，其中 $h$ 是施加该通量的面的直径，$\delta t$ 是当前时间步
-* 在原始的微分方程左侧添加一项 $-\Delta \mathbf{w}$, 从而, $\int \Delta \mathbf{w} \cdot \mathbf{z} d\Omega =\int_{\partial \Omega} \nabla \mathbf{w}\cdot \mathbf{z} \cdot \mathbf{n} dS - \int \nabla \mathbf{w} :\mathbf{z}d\Omega$
+* 在原始的微分方程左侧添加一项 $-\Delta \mathbf{w}$, 从而, $\int \Delta \mathbf{w} \cdot \mathbf{z} d\Omega =\int_{\partial \Omega} \nabla \mathbf{w}\cdot \mathbf{z} \cdot \mathbf{n} dS - \int \nabla \mathbf{w} : \nabla \mathbf{z}d\Omega$. 因为 $\mathbf{z}$ 在边界处为 0，所以相当于在弱格式方程中增加了一项 $\int \nabla \mathbf{w} : \nabla \mathbf{z}d\Omega$
+
+由此, 原弱格式变为
+
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx + h^\eta \int_{\Omega} \nabla \mathbf{w} : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds \approx 0
+$$
+
+
 
 
 
@@ -283,7 +291,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NzA2MTI4OCwtMzI2MTgwMjA2LC05OT
+eyJoaXN0b3J5IjpbMTYyMjE3NTU4OSwtMzI2MTgwMjA2LC05OT
 QwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNTgsMTgxMzU1
 NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3MDQ3LC
 0xNzM4OTY1OTc4XX0=
