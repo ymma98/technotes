@@ -295,7 +295,11 @@ $$
 \int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx + \mathbf{B(w_n)} =0
 $$
 
-使用 
+使用 $\theta-$implicit method, 有
+
+$$
+\int_\Omega \frac{\mathbf{w_{n+1} - \mathbf{w_n}}}{\delta t} \cdot \mathbf{z} + \theta \mathbf{B(w_{n+1})} +
+$$
 
 
 
@@ -304,9 +308,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMTUyMTQ4MywyMDMxMDQxMDc3LC0xMz
-M2ODkwNDk5LDExOTEzODE3MjUsLTMyNjE4MDIwNiwtOTk0MDE3
-OTU1LC0xOTQ4NjI0Njk3LC0xODY1MDQ1MzU4LDE4MTM1NTQzNz
-AsMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2OTc0NzA0NywtMTcz
-ODk2NTk3OF19
+eyJoaXN0b3J5IjpbLTg2NDIzNTgyNCwtNTIxNTIxNDgzLDIwMz
+EwNDEwNzcsLTEzMzY4OTA0OTksMTE5MTM4MTcyNSwtMzI2MTgw
+MjA2LC05OTQwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNT
+gsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5
+NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
