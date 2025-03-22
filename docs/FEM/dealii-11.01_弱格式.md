@@ -307,6 +307,12 @@ $$
 \mathbf{R(w_{n+1})} = \int_\Omega \frac{\mathbf{w_{n+1} - \mathbf{w_n}}}{\delta t} \cdot \mathbf{z} dx + \theta \mathbf{B(w_{n+1})} + (1-\theta) \mathbf{B(w_{n})} = 0
 $$
 
+根据牛顿迭代法，如果要求解非线性方程 (组),  $R(u) = 0$, 相当于求解
+
+$$
+\frac{dR(u)}{du} \delta u = -R(u)
+$$
+
 
 
 
@@ -314,9 +320,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY3MzQ1NDU3LC01MjE1MjE0ODMsMjAzMT
-A0MTA3NywtMTMzNjg5MDQ5OSwxMTkxMzgxNzI1LC0zMjYxODAy
-MDYsLTk5NDAxNzk1NSwtMTk0ODYyNDY5NywtMTg2NTA0NTM1OC
-wxODEzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2NzI4LC02Njk3
-NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
+eyJoaXN0b3J5IjpbLTE1NTE2NTg5OTMsLTUyMTUyMTQ4MywyMD
+MxMDQxMDc3LC0xMzM2ODkwNDk5LDExOTEzODE3MjUsLTMyNjE4
+MDIwNiwtOTk0MDE3OTU1LC0xOTQ4NjI0Njk3LC0xODY1MDQ1Mz
+U4LDE4MTM1NTQzNzAsMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2
+OTc0NzA0NywtMTczODk2NTk3OF19
 -->
