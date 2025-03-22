@@ -273,7 +273,7 @@ $$
 
 * 边界项中，$\mathbf{F}(\mathbf{w})\rightarrow \mathbf{H}(\mathbf{w}^+,\mathbf{w}^-, \mathbf{n})$, 从而边界项变为 $\int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds$， $\mathbf{w}^+$ 是内侧解
 	* 其中, $\mathbf{H}$ 是 Lax–Friedrichs 通量, $\mathbf{H}(\mathbf{a}, \mathbf{b}, \mathbf{n})
-= \tfrac12\Bigl(\mathbf{F}(\mathbf{a})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{a}-\mathbf{b}\bigr)\Bigr)$
+= \tfrac12\Bigl(\mathbf{F}(\mathbf{a})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{a}-\mathbf{b}\bigr)\Bigr)$。如果内侧解更大, $\alpha \,\bigl(\mathbf{w^+}-\mathbf{w^-}\bigr)$  就会增加输运, 减小内外梯度
 	* $\alpha$ 要么是输入文件中给定的常数，要么是与网格相关的量。在后者情况下，它可取为 $-\tfrac{h}{2\,\delta t}$，其中 $h$ 是施加该通量的面的直径，$\delta t$ 是当前时间步
 * 在原始的微分方程左侧添加一项 $-h^\eta \Delta \mathbf{w}$, 从而, $\int \Delta \mathbf{w} \cdot \mathbf{z} d\Omega =\int_{\partial \Omega} \nabla \mathbf{w}\cdot \mathbf{z} \cdot \mathbf{n} dS - \int \nabla \mathbf{w} : \nabla \mathbf{z}d\Omega$. 因为 $\mathbf{z}$ 在边界处为 0，所以相当于在弱格式方程中增加了一项 $h^\eta \int \nabla \mathbf{w} : \nabla \mathbf{z}d\Omega$
 
@@ -291,8 +291,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzY4OTA0OTksMTE5MTM4MTcyNSwtMz
-I2MTgwMjA2LC05OTQwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUw
-NDUzNTgsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOC
-wtNjY5NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbMjAzMTA0MTA3NywtMTMzNjg5MDQ5OSwxMT
+kxMzgxNzI1LC0zMjYxODAyMDYsLTk5NDAxNzk1NSwtMTk0ODYy
+NDY5NywtMTg2NTA0NTM1OCwxODEzNTU0MzcwLDM5MDUzNzY4Mi
+wxNzE1NjU2NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
+
 -->
