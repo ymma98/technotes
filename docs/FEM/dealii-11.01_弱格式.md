@@ -275,7 +275,7 @@ $$
 	* 其中, $\mathbf{H}$ 是 Lax–Friedrichs 通量, $\mathbf{H}(\mathbf{a}, \mathbf{b}, \mathbf{n})
 = \tfrac12\Bigl(\mathbf{F}(\mathbf{a})\cdot \mathbf{n} + \mathbf{F}(\mathbf{b})\cdot \mathbf{n} + \alpha \,\bigl(\mathbf{a}-\mathbf{b}\bigr)\Bigr)$
 	* $\alpha$ 要么是输入文件中给定的常数，要么是与网格相关的量。在后者情况下，它可取为 $-\tfrac{h}{2\,\delta t}$，其中 $h$ 是施加该通量的面的直径，$\delta t$ 是当前时间步
-* 在原始的微分方程左侧添加一项 $\Delta \mathbf{w}$, 从而, $\int \Delta \mathbf{w} \cdot \mathbf{z} d\Omega =\int_{\partial \Omega} \nabla \mathbf{w}\cdot \mathbf{z} \cdot \mathbf{n} dS$
+* 在原始的微分方程左侧添加一项 $-\Delta \mathbf{w}$, 从而, $\int \Delta \mathbf{w} \cdot \mathbf{z} d\Omega =\int_{\partial \Omega} \nabla \mathbf{w}\cdot \mathbf{z} \cdot \mathbf{n} dS - \int \nabla \mathbf{w} :\mathbf{z}d\Omega$
 
 
 
@@ -283,8 +283,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDg5MTI2MzksLTMyNjE4MDIwNiwtOT
-k0MDE3OTU1LC0xOTQ4NjI0Njk3LC0xODY1MDQ1MzU4LDE4MTM1
-NTQzNzAsMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2OTc0NzA0Ny
-wtMTczODk2NTk3OF19
+eyJoaXN0b3J5IjpbLTY1NzA2MTI4OCwtMzI2MTgwMjA2LC05OT
+QwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNTgsMTgxMzU1
+NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5NzQ3MDQ3LC
+0xNzM4OTY1OTc4XX0=
 -->
