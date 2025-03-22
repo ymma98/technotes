@@ -286,9 +286,16 @@ $$
 将空间项表示为 $\mathbf{B(w_n)}$, 有:
 
 $$
-\mathbf{B(w_n)} = - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx + h^\eta \int_{\Omega} \nabla \mathbf{w} : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds 
+\mathbf{B(w_n)} = - \int_{\Omega} \mathbf{F}(\mathbf{w}) : \nabla \mathbf{z} \, dx + h^\eta \int_{\Omega} \nabla \mathbf{w} : \nabla z \, dx + \int_{\partial \Omega} \mathbf{H}(\mathbf{w}^+, \mathbf{w}^-, \mathbf{n}) \cdot z^+ \, ds - \int_{\Omega}\mathbf{G}\mathbf{w}\cdot \mathbf{z} dx
 $$
 
+于是弱格式变为
+
+$$
+\int_{\Omega} \partial_t \mathbf{w} \cdot \mathbf{z} \, dx + \mathbf{B(w_n)} =0
+$$
+
+使用 
 
 
 
@@ -297,7 +304,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1NDYwMDk0OCwyMDMxMDQxMDc3LC0xMz
+eyJoaXN0b3J5IjpbLTUyMTUyMTQ4MywyMDMxMDQxMDc3LC0xMz
 M2ODkwNDk5LDExOTEzODE3MjUsLTMyNjE4MDIwNiwtOTk0MDE3
 OTU1LC0xOTQ4NjI0Njk3LC0xODY1MDQ1MzU4LDE4MTM1NTQzNz
 AsMzkwNTM3NjgyLDE3MTU2NTY3MjgsLTY2OTc0NzA0NywtMTcz
