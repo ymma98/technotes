@@ -109,6 +109,10 @@ $$
 \end{bmatrix}
 $$
 
+$$
+\nabla \cdot (\nabla \mathbf{w}) \cdot \mathbf{v} = \Delta \mathbf{w} \cdot v
+$$
+
 * Laplace
 
 $$
@@ -271,7 +275,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NDAxNzk1NSwtMTk0ODYyNDY5NywtMT
-g2NTA0NTM1OCwxODEzNTU0MzcwLDM5MDUzNzY4MiwxNzE1NjU2
-NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5NzhdfQ==
+eyJoaXN0b3J5IjpbLTEyMDQyODM2MTEsLTk5NDAxNzk1NSwtMT
+k0ODYyNDY5NywtMTg2NTA0NTM1OCwxODEzNTU0MzcwLDM5MDUz
+NzY4MiwxNzE1NjU2NzI4LC02Njk3NDcwNDcsLTE3Mzg5NjU5Nz
+hdfQ==
 -->
