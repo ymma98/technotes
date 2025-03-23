@@ -16,11 +16,16 @@ graph TD
 
 - `EulerEquations` 类：封装所有完全描述欧拉方程特性的内容，包括通量矩阵 $\mathbf{F}(\mathbf{W})$，数值通量 $\mathbf{F}(\mathbf{W}^+, \mathbf{W}^-, \mathbf{n})$，右端项 $\mathbf{G}(\mathbf{W})$，边界条件，加密指标以及后处理输出等需要了解解向量和方程各分量意义的内容。
 
-- Parameters 模块，包含所有与运行时参数相关的内容。
+- Parameters 模块, 处理程序运行所需的参数，包括：
+    -   `Solver`: 求解器相关参数
+    -   `Refinement`: 网格细化相关参数
+    -   `Flux`: 通量计算相关稳定性参数
+    -   `Output`: 输出控制参数
+	-   一个综合结构 `AllParameters` 集合了所有参数的管理和解析。
 
-- `ConservationLaw` 类：处理时间步进、外层非线性和内层线性求解、组装线性系统，以及驱动这一切的顶层逻辑。
+- `ConservationLaw` 类：实现守恒律问题的主程序，包括系统设置、装配系统、求解、网格细化、自适应调整、结果输出等核心功能。
 
-之所以这样安排，是因为它将程序中的各种关注点分开：`ConservationLaw` 的写法使得我们可以相对容易地将其改为适用于另一组方程：只需为其他双曲方程重新实现 `EulerEquations` 类的成员，或者通过添加新的方程（例如对额外变量的输运，或者加入化学反应等）来扩展当前方程即可。然而，这样的修改不会影响时间步进或非线性求解（只要实现正确），因此也无需修改 `ConservationLaw` 中的任何内容。
+`ConservationLaw` 的写法使得我们可以相对容易地将其改为适用于另一组方程：只需为其他双曲方程重新实现 `EulerEquations` 类的成员，或者通过添加新的方程（例如对额外变量的输运，或者加入化学反应等）来扩展当前方程即可。然而，这样的修改不会影响时间步进或非线性求解（只要实现正确），因此也无需修改 `ConservationLaw` 中的任何内容。
 
 同样，如果我们想改进线性或非线性求解器，或者像在 results 小节末尾所暗示的那样改进时间步进方案，那么这也不需要对 `EulerEquations` 做任何改动。
 
@@ -363,7 +368,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyNzc1MzU5NCwtMTYzMDM4NjM1NCwxMz
+eyJoaXN0b3J5IjpbLTczNDY2NTc5NCwtMTYzMDM4NjM1NCwxMz
 cxNTUzMDg2LC01MjE1MjE0ODMsMjAzMTA0MTA3NywtMTMzNjg5
 MDQ5OSwxMTkxMzgxNzI1LC0zMjYxODAyMDYsLTk5NDAxNzk1NS
 wtMTk0ODYyNDY5NywtMTg2NTA0NTM1OCwxODEzNTU0MzcwLDM5
