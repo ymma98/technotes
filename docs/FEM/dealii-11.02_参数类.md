@@ -40,6 +40,8 @@ graph TD
   {
     struct Solver
     {
+      // 1. 首先, 定义变量类型和变量
+      // 2. 调用 
       enum SolverType
       {
         gmres,
@@ -494,6 +496,6 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjYyNDM0MTM1LC0xNDI1OTc2NjcxLC04OT
-I1ODY4OF19
+eyJoaXN0b3J5IjpbOTIzOTM5NTYsMjYyNDM0MTM1LC0xNDI1OT
+c2NjcxLC04OTI1ODY4OF19
 -->
