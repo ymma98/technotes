@@ -114,6 +114,11 @@ markdown_extensions:
   - markdown.extensions.tables
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - markdown.extensions.tables
   - toc:
       permalink: true       # 在每个标题旁添加链接
