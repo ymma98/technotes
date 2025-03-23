@@ -41,7 +41,7 @@ graph TD
     struct Solver
     {
       // 1. 首先, 定义变量类型和变量
-      // 2. 调用 
+      // 2. 调用 declare_parameters(ParameterHandler &prm) 和 parse_parameters(ParameterHandler &prm)
       enum SolverType
       {
         gmres,
@@ -496,6 +496,6 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIzOTM5NTYsMjYyNDM0MTM1LC0xNDI1OT
-c2NjcxLC04OTI1ODY4OF19
+eyJoaXN0b3J5IjpbLTE0MzI3OTM2NzcsMjYyNDM0MTM1LC0xND
+I1OTc2NjcxLC04OTI1ODY4OF19
 -->
