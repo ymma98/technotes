@@ -1,6 +1,93 @@
 # dealii-11.02 参数类
 
 
+## `Parameters` namespace 结构
+
+```mermaid
+classDiagram
+    class Parameters {
+    }
+
+    class Solver {
+        <<struct>>
+        +enum SolverType {gmres, direct}
+        +enum OutputType {quiet, verbose}
+        +solver : SolverType
+        +output : OutputType
+        +linear_residual : double
+        +max_iterations : int
+        +ilut_fill : double
+        +ilut_atol : double
+        +ilut_rtol : double
+        +ilut_drop : double
+        +declare_parameters(ParameterHandler&)
+        +parse_parameters(ParameterHandler&)
+    }
+
+    class Refinement {
+        <<struct>>
+        +do_refine : bool
+        +shock_val : double
+        +shock_levels : double
+        +declare_parameters(ParameterHandler&)
+        +parse_parameters(ParameterHandler&)
+    }
+
+    class Flux {
+        <<struct>>
+        +enum StabilizationKind {constant, mesh_dependent}
+        +stabilization_kind : StabilizationKind
+        +stabilization_value : double
+        +declare_parameters(ParameterHandler&)
+        +parse_parameters(ParameterHandler&)
+    }
+
+    class Output {
+        <<struct>>
+        +schlieren_plot : bool
+        +output_step : double
+        +declare_parameters(ParameterHandler&)
+        +parse_parameters(ParameterHandler&)
+    }
+
+    class AllParameters {
+        <<struct>>
+        +max_n_boundaries : unsigned int
+        +struct BoundaryConditions
+        +diffusion_power : double
+        +time_step : double
+        +final_time : double
+        +theta : double
+        +is_stationary : bool
+        +mesh_filename : string
+        +initial_conditions : FunctionParser
+        +boundary_conditions : BoundaryConditions[max_n_boundaries]
+        +declare_parameters(ParameterHandler&)
+        +parse_parameters(ParameterHandler&)
+    }
+
+    class BoundaryConditions {
+        <<struct>>
+        +kind : EulerEquations::BoundaryKind[n_components]
+        +values : FunctionParser
+        +BoundaryConditions()
+    }
+
+    Parameters --> Solver
+    Parameters --> Refinement
+    Parameters --> Flux
+    Parameters --> Output
+    Parameters --> AllParameters
+
+    AllParameters --|> Solver
+    AllParameters --|> Refinement
+    AllParameters --|> Flux
+    AllParameters --|> Output
+
+    AllParameters *-- BoundaryConditions
+```
+
+
 ## `Parameters` namespace 源程序
 
 
@@ -463,5 +550,5 @@
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MjU4Njg4XX0=
+eyJoaXN0b3J5IjpbLTE0MjU5NzY2NzEsLTg5MjU4Njg4XX0=
 -->
