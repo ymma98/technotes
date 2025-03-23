@@ -2,7 +2,7 @@
 
 
 ## `Parameters` namespace 结构
-d
+
 ```mermaid
 graph TD
     Parameters --> Solver
@@ -18,15 +18,15 @@ graph TD
     AllParameters --> BoundaryConditions
 
     BoundaryConditions --> FunctionParser
-    BoundaryConditions --> EulerEquations_BoundaryKind[EulerEquations::BoundaryKind]
+    BoundaryConditions --> EulerEquations_BoundaryKind["EulerEquations::BoundaryKind"]
 
     Solver --> SolverType[enum SolverType: gmres, direct]
     Solver --> OutputType[enum OutputType: quiet, verbose]
 
-    Flux --> StabilizationKind[enum StabilizationKind: constant, mesh_dependent]
+    Flux --> StabilizationKind["enum StabilizationKind: constant, mesh_dependent"]
 
-    AllParameters --> InitialConditions[Initial Conditions: FunctionParser]
-    AllParameters --> BoundaryConditionsArray[Boundary Conditions Array[max_n_boundaries]]
+    AllParameters --> InitialConditions["Initial Conditions: FunctionParser"]
+    AllParameters --> BoundaryConditionsArray["Boundary Conditions Array[max_n_boundaries]"]
 
     BoundaryConditionsArray --> BoundaryConditions
 ```
@@ -494,6 +494,6 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2NjUwNjcxNywtMTQyNTk3NjY3MSwtOD
-kyNTg2ODhdfQ==
+eyJoaXN0b3J5IjpbMjYyNDM0MTM1LC0xNDI1OTc2NjcxLC04OT
+I1ODY4OF19
 -->
