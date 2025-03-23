@@ -223,7 +223,7 @@ $$
 其中解向量 $\mathbf{w} = (\rho v_1, \ldots, \rho v_d, \rho, E)^T$ 包含以下物理量：  
 - $\rho$ 为流体密度  
 - $\mathbf{v} = (v_1, \ldots, v_d)^T$ 为流速（因此 $\rho\mathbf{v}$ 表示线性动量密度）  
-- $E$ 为气体的能量密度 
+- $E$ 为气体的能量密度， $E = p/(\gamma-1)+\rho \mathbf{v}^2/2$
 
 右侧源项仅考虑重力效应时，其形式为：
 $$
@@ -337,9 +337,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3MTU1MzA4NiwtNTIxNTIxNDgzLDIwMz
-EwNDEwNzcsLTEzMzY4OTA0OTksMTE5MTM4MTcyNSwtMzI2MTgw
-MjA2LC05OTQwMTc5NTUsLTE5NDg2MjQ2OTcsLTE4NjUwNDUzNT
-gsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcxNTY1NjcyOCwtNjY5
-NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
+eyJoaXN0b3J5IjpbLTE2MzAzODYzNTQsMTM3MTU1MzA4NiwtNT
+IxNTIxNDgzLDIwMzEwNDEwNzcsLTEzMzY4OTA0OTksMTE5MTM4
+MTcyNSwtMzI2MTgwMjA2LC05OTQwMTc5NTUsLTE5NDg2MjQ2OT
+csLTE4NjUwNDUzNTgsMTgxMzU1NDM3MCwzOTA1Mzc2ODIsMTcx
+NTY1NjcyOCwtNjY5NzQ3MDQ3LC0xNzM4OTY1OTc4XX0=
 -->
