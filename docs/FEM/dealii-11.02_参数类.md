@@ -506,8 +506,11 @@ graph TD
           expressions[di] =
             prm.get("w_" + Utilities::int_to_string(di) + " value");
         initial_conditions.initialize(
+          // 这个函数返回一个字符串向量，包含了解析表达式时默认使用的变量名。
+          // 例如，对于二维问题，默认变量名通常为 `"x"` 和 `"y"`；对于三维问题，则可能是 `"x"`, `"y"`, `"z"`
           FunctionParser<dim>::default_variable_names(),
           expressions,
+          // `expressions` 是一个字符串向量，其中每个元素对应于一个物理分量的边界条件表达式
           std::map<std::string, double>());
       }
       prm.leave_subsection();
@@ -520,7 +523,8 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk1MzM3OTA1NCwxMDk3NjE1NzEsLTE4Nj
-MwNzE1ODUsLTE0MTc5ODg4MTksNDYwNzA4NjAsLTE0MzI3OTM2
-NzcsMjYyNDM0MTM1LC0xNDI1OTc2NjcxLC04OTI1ODY4OF19
+eyJoaXN0b3J5IjpbMTUzMDQwNjM4OSwtOTUzMzc5MDU0LDEwOT
+c2MTU3MSwtMTg2MzA3MTU4NSwtMTQxNzk4ODgxOSw0NjA3MDg2
+MCwtMTQzMjc5MzY3NywyNjI0MzQxMzUsLTE0MjU5NzY2NzEsLT
+g5MjU4Njg4XX0=
 -->
