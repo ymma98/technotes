@@ -253,7 +253,10 @@ graph TD
       }
       prm.leave_subsection();
     }
+```
 
+* 
+```cpp
     struct Output
     {
       bool   schlieren_plot;
@@ -510,7 +513,7 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjMwNzE1ODUsLTE0MTc5ODg4MTksND
-YwNzA4NjAsLTE0MzI3OTM2NzcsMjYyNDM0MTM1LC0xNDI1OTc2
-NjcxLC04OTI1ODY4OF19
+eyJoaXN0b3J5IjpbNTU5NDc5MTg2LC0xODYzMDcxNTg1LC0xND
+E3OTg4ODE5LDQ2MDcwODYwLC0xNDMyNzkzNjc3LDI2MjQzNDEz
+NSwtMTQyNTk3NjY3MSwtODkyNTg2ODhdfQ==
 -->
