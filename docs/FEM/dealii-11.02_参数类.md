@@ -255,7 +255,8 @@ graph TD
     }
 ```
 
-* 
+* `Output`
+
 ```cpp
     struct Output
     {
@@ -291,7 +292,11 @@ graph TD
       }
       prm.leave_subsection();
     }
+```
 
+* `AllParameters`
+
+```cpp
     template <int dim>
     struct AllParameters : public Solver,
                            public Refinement,
@@ -513,7 +518,7 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTU5NDc5MTg2LC0xODYzMDcxNTg1LC0xND
+eyJoaXN0b3J5IjpbMTA5NzYxNTcxLC0xODYzMDcxNTg1LC0xND
 E3OTg4ODE5LDQ2MDcwODYwLC0xNDMyNzkzNjc3LDI2MjQzNDEz
 NSwtMTQyNTk3NjY3MSwtODkyNTg2ODhdfQ==
 -->
