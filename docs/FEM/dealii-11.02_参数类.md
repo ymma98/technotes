@@ -142,7 +142,11 @@ graph TD
       }
       prm.leave_subsection();
     }
+```
 
+* `Refinement`
+
+```cpp
     struct Refinement
     {
       bool   do_refine;
@@ -195,7 +199,11 @@ graph TD
       }
       prm.leave_subsection();
     }
+```
 
+* `Flux`
+
+```cpp
     struct Flux
     {
       enum StabilizationKind
@@ -502,7 +510,7 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTc5ODg4MTksNDYwNzA4NjAsLTE0Mz
-I3OTM2NzcsMjYyNDM0MTM1LC0xNDI1OTc2NjcxLC04OTI1ODY4
-OF19
+eyJoaXN0b3J5IjpbLTE4NjMwNzE1ODUsLTE0MTc5ODg4MTksND
+YwNzA4NjAsLTE0MzI3OTM2NzcsMjYyNDM0MTM1LC0xNDI1OTc2
+NjcxLC04OTI1ODY4OF19
 -->
