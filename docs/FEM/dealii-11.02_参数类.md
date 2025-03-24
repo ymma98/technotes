@@ -38,6 +38,11 @@ graph TD
 ```cpp
   namespace Parameters
   {
+```
+
+* Solver struct
+
+```cpp
     struct Solver
     {
       // 1. 首先, 定义变量类型和变量
@@ -497,6 +502,7 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDYwNzA4NjAsLTE0MzI3OTM2NzcsMjYyND
-M0MTM1LC0xNDI1OTc2NjcxLC04OTI1ODY4OF19
+eyJoaXN0b3J5IjpbLTE0MTc5ODg4MTksNDYwNzA4NjAsLTE0Mz
+I3OTM2NzcsMjYyNDM0MTM1LC0xNDI1OTc2NjcxLC04OTI1ODY4
+OF19
 -->
