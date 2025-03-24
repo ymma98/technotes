@@ -393,7 +393,9 @@ graph TD
                               Patterns::Bool(),
                               "whether the named boundary allows gas to "
                               "penetrate or is a rigid wall");
-
+		    // 针对当前边界的每个物理分量，声明两个参数：
+		    // 1. "w_i"：边界类型（选择项：inflow、outflow 或 pressure），默认值为 "outflow"
+		    // 2. "w_i value"：对应的边界条件表达式，默认值为 "0.0"
             for (unsigned int di = 0; di < EulerEquations<dim>::n_components;
                  ++di)
               {
@@ -518,7 +520,7 @@ graph TD
   } // namespace Parameters
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5NzYxNTcxLC0xODYzMDcxNTg1LC0xND
-E3OTg4ODE5LDQ2MDcwODYwLC0xNDMyNzkzNjc3LDI2MjQzNDEz
-NSwtMTQyNTk3NjY3MSwtODkyNTg2ODhdfQ==
+eyJoaXN0b3J5IjpbLTk1MzM3OTA1NCwxMDk3NjE1NzEsLTE4Nj
+MwNzE1ODUsLTE0MTc5ODg4MTksNDYwNzA4NjAsLTE0MzI3OTM2
+NzcsMjYyNDM0MTM1LC0xNDI1OTc2NjcxLC04OTI1ODY4OF19
 -->
