@@ -8,6 +8,14 @@
 	* 安家费。坑，很看政策，比如购房才给，租房不给。
 
 总包很坑，重点是薪资结构
+
+* 薪资构成
+	* 现金
+		* 底薪 * 月份 * 0.7-0.8的系数=到手。月份>12的部分为年终奖
+		* 年终奖
+		* 绩效
+		* 其它
+	* d
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzU0ODAxOTk1XX0=
+eyJoaXN0b3J5IjpbLTg2NDA2NzMzN119
 -->
