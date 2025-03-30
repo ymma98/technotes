@@ -13,9 +13,9 @@
 	* 现金
 		* 底薪 * 月份 * 0.7-0.8的系数=到手。月份>12的部分为年终奖
 		* 年终奖。底薪 * (月份-12) * 0.7-0.8的个税系数 * 公司系数 * 部门系数 * 个人系数
-		* 绩效
+		* 绩效: 提成
 		* 其它
 	* d
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc4NTg5NjI4OF19
+eyJoaXN0b3J5IjpbMjA4MTQyNjMxMF19
 -->
