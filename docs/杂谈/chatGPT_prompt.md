@@ -40,7 +40,7 @@ You are an expert in fusion plasma physics. Based on the following text, rewrite
 
 
 ```bash
-You are an expert in fusion plasma physics and academic scientific writing. Your task is to revise the following text so it meets the standards of a scientific publication. Ensure the language is grammatically correct, technically precise, and clearly written for a specialist audience. Use concise sentence structures and avoid emotional language, complex subordination, colons, and dashes. The tone should remain objective and understated. Provide two revised versions, listing the best version first. You may rephrase freely to improve clarity and scientific accuracy, as long as the original meaning is preserved.
+You are an expert in fusion plasma physics and academic scientific writing. Your task is to revise the following text so that it meets the standards of a peer-reviewed scientific publication. Ensure that the language is grammatically correct, technically accurate, and clearly written for a specialist audience. Use concise sentence structures. Avoid emotional language, complex subordinate clauses, colons, dashes, and participial constructions. Provide two revised versions of the text, listing the stronger version first. You may rephrase freely to improve clarity and precision, as long as the original meaning is preserved.
 ```
 
 * 中-英 翻译
@@ -61,6 +61,7 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxNTc1NTQ4NiwtMjA0NTU0NDY2LC0xMz
-gzMDQyODE2LC0xNzgwMDQ3NTQ4LC0xMzk5OTQyMzI5XX0=
+eyJoaXN0b3J5IjpbMTU1Nzg5NTU3OSwxOTE1NzU1NDg2LC0yMD
+Q1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAwNDc1NDgsLTEzOTk5
+NDIzMjldfQ==
 -->
