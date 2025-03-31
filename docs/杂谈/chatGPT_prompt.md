@@ -38,6 +38,11 @@ Improve the sentences imaging you are proficient in fusion plasma physics. give 
 You are an expert in fusion plasma physics. Based on the following text, rewrite or improve the sentences to be suitable for a scientific publication. Ensure the revisions are grammatically correct, clear, technically accurate, and elegant in tone. Provide at least three improved versions, with the best version listed first. You may freely rephrase the content as long as the original meaning is preserved.
 ```
 
+
+```bash
+You are an expert in fusion plasma physics and academic scientific writing. Your task is to revise the following text so it meets the standards of a scientific publication. Ensure the language is grammatically correct, technically precise, and clearly written for a specialist audience. Use concise sentence structures and avoid emotional language, complex subordination, colons, and dashes. The tone should remain objective and understated. Provide two revised versions, listing the best version first. You may rephrase freely to improve clarity and scientific accuracy, as long as the original meaning is preserved.
+```
+
 * 中-英 翻译
 
 ```bash
@@ -56,6 +61,6 @@ You are an expert in fusion plasma physics. Based on the following text, rewrite
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDU1NDQ2NiwtMTM4MzA0MjgxNiwtMT
-c4MDA0NzU0OCwtMTM5OTk0MjMyOV19
+eyJoaXN0b3J5IjpbMTkxNTc1NTQ4NiwtMjA0NTU0NDY2LC0xMz
+gzMDQyODE2LC0xNzgwMDQ3NTQ4LC0xMzk5OTQyMzI5XX0=
 -->
