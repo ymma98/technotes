@@ -63,6 +63,7 @@
               (W[energy_component] - compute_kinetic_energy(W)));
     }
 
+    // 表示一个 n_components × dim 大小的二维数组
     template <typename InputVector>
     static void compute_flux_matrix(const InputVector &W,
                                     ndarray<typename InputVector::value_type,
@@ -259,6 +260,6 @@
   };
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwOTc2NzI0Miw1Nzc2MDc5NDAsLTIwMT
-QxMzczMDcsLTkxNDM0NTc1N119
+eyJoaXN0b3J5IjpbODQxODk2OTQsMTEwOTc2NzI0Miw1Nzc2MD
+c5NDAsLTIwMTQxMzczMDcsLTkxNDM0NTc1N119
 -->
