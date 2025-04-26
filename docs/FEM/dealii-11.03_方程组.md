@@ -23,7 +23,9 @@
 
       return names;
     }
-
+	// 这个函数的作用是告诉 deal.II 的后处理模块（`DataOut` 等）
+	// ——“我这个有限元解向量中的各个分量，应该被当作向量场的组成部分，
+	// 还是被当作标量来处理” (生成 vtk 文件时有用)
     static std::vector<DataComponentInterpretation::DataComponentInterpretation>
     component_interpretation()
     {
@@ -257,6 +259,6 @@
   };
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc3NjA3OTQwLC0yMDE0MTM3MzA3LC05MT
-QzNDU3NTddfQ==
+eyJoaXN0b3J5IjpbMTEwOTc2NzI0Miw1Nzc2MDc5NDAsLTIwMT
+QxMzczMDcsLTkxNDM0NTc1N119
 -->
