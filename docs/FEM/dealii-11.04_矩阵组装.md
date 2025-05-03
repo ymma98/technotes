@@ -45,19 +45,19 @@ ____
       const std::vector<types::global_dof_index> &dofs_neighbor,
       const bool                                  external_face,
       const unsigned int                          boundary_id,
-      const double                                face_diameter);                // :contentReference[oaicite:6]{index=6}:contentReference[oaicite:7]{index=7}
+      const double                                face_diameter);                
 
     // 求解线性/非线性系统：返回 {线性迭代次数, 最终残差}
-    std::pair<unsigned int, double> solve(Vector<double> &solution);                // :contentReference[oaicite:8]{index=8}:contentReference[oaicite:9]{index=9}
+    std::pair<unsigned int, double> solve(Vector<double> &solution);             
 
     // 根据当前解（predictor）计算每个单元的自适应细化指标
-    void compute_refinement_indicators(Vector<double> &indicator) const;            // :contentReference[oaicite:10]{index=10}:contentReference[oaicite:11]{index=11}
+    void compute_refinement_indicators(Vector<double> &indicator) const;          
 
     // 根据细化指标在网格上执行细化或粗化，并插值传递旧解
-    void refine_grid(const Vector<double> &indicator);                              // :contentReference[oaicite:12]{index=12}:contentReference[oaicite:13]{index=13}
+    void refine_grid(const Vector<double> &indicator);                              
 
     // 将当前解输出为 VTK 文件，便于后处理与可视化
-    void output_results() const;                                                    // :contentReference[oaicite:14]{index=14}:contentReference[oaicite:15]{index=15}
+    void output_results() const;                                                  
 
     // -------------------- 核心数据成员 --------------------
 
@@ -820,5 +820,6 @@ ____
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA2NzIwNTkyLDk0NjQzOTc0M119
+eyJoaXN0b3J5IjpbLTE4NzU2NDU1NjgsODA2NzIwNTkyLDk0Nj
+QzOTc0M119
 -->
