@@ -70,6 +70,7 @@ nav:
     - dealii-11.01_弱格式: FEM/dealii-11.01_弱格式.md
     - dealii-11.02_参数类: FEM/dealii-11.02_参数类.md
     - dealii-11.03_方程组: FEM/dealii-11.03_方程组.md
+    - dealii-11.04_矩阵组装: FEM/dealii-11.04_矩阵组装.md
     - paraview使用: FEM/paraview使用.md
   - python:
       - pdb: python/pdb.md
