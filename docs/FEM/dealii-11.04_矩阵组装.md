@@ -83,24 +83,24 @@ ____
 
   };
 
-  template <int dim>
-  ConservationLaw<dim>::ConservationLaw(const char *input_filename)
-    : mapping()
-    , fe(FE_Q<dim>(1) ^ EulerEquations<dim>::n_components)
-    , dof_handler(triangulation)
-    , quadrature(fe.degree + 1)
-    , face_quadrature(fe.degree + 1)
-    , verbose_cout(std::cout, false)
-  {
-    ParameterHandler prm;
-    Parameters::AllParameters<dim>::declare_parameters(prm);
+template <int dim>
+ConservationLaw<dim>::ConservationLaw(const char *input_filename)
+  : mapping()                                                      // ① 默认构造 MappingQ1<dim>，用于在参考单元与实际网格单元之间做线性映射 =
+  , fe(FE_Q<dim>(1) ^ EulerEquations<dim>::n_components)          // ② 构造一个系统有限元：在标量 Q1 元素的基础上重复 n_components 次，生成 FESystem<dim> =
+  , dof_handler(triangulation)                                     // ③ 将 DoFHandler 与 Triangulation 关联，用于后续自由度的分配和管理 =
+  , quadrature(fe.degree + 1)                                      // ④ 根据 fe 的多项式阶数 degree 初始化 Gauss 积分，积分点数为 degree+1 =
+  , face_quadrature(fe.degree + 1)                                 // ⑤ 同理初始化面（边）积分规则 :contentReference[oaicite:8]{index=8}
+  , verbose_cout(std::cout, false)                                 // ⑥ 条件输出流，初始设为 false（即不打印），后续可根据参数打开 =
+{
+  ParameterHandler prm;                                            // ⑦ 声明一个 ParameterHandler，用于读取和管理输入文件中的参数 =
+  Parameters::AllParameters<dim>::declare_parameters(prm);        // ⑧ 注册（声明）所有参数项，以便 parse_input 时能识别 =
 
-    prm.parse_input(input_filename);
-    parameters.parse_parameters(prm);
+  prm.parse_input(input_filename);                                // ⑨ 从指定的 input 文件中读取参数 =
+  parameters.parse_parameters(prm);                               // ⑩ 将读取到的参数值填充到成员变量 parameters 中=
 
-    verbose_cout.set_condition(parameters.output ==
-                               Parameters::Solver::verbose);
-  }
+  verbose_cout.set_condition(                                     
+    parameters.output == Parameters::Solver::verbose);           // ⑪ 如果用户在输入文件中指定了 verbose 模式，则启用详细输出
+}
 
   template <int dim>
   void ConservationLaw<dim>::setup_system()
@@ -820,6 +820,6 @@ ____
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzU2NDU1NjgsODA2NzIwNTkyLDk0Nj
-QzOTc0M119
+eyJoaXN0b3J5IjpbLTE4MDg4NDM1MTIsLTE4NzU2NDU1NjgsOD
+A2NzIwNTkyLDk0NjQzOTc0M119
 -->
