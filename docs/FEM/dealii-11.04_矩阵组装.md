@@ -21,13 +21,13 @@ ____
     void setup_system();                                                           
 
     // 组装全局离散系统，包括单元贡献和面贡献
-    void assemble_system();                                                         // :contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3}
+    void assemble_system();                                               
 
     // 组装单个单元（cell）的体积分项
     // - fe_v: 用于获取该单元的形函数值、梯度和 JxW
     // - dofs: 该单元对应的自由度全局编号列表
     void assemble_cell_term(const FEValues<dim>                        &fe_v,
-                            const std::vector<types::global_dof_index> &dofs);        // :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}
+                            const std::vector<types::global_dof_index> &dofs);       
 
     // 组装单元面的贡献
     // - face_no: 面编号
@@ -820,5 +820,5 @@ ____
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwMzg5NzA5OCw5NDY0Mzk3NDNdfQ==
+eyJoaXN0b3J5IjpbODA2NzIwNTkyLDk0NjQzOTc0M119
 -->
