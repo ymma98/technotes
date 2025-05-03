@@ -16,12 +16,27 @@ ____
     ConservationLaw(const char *input_filename);
     void run();
 
-  private:
-    void setup_system();
+ private:
+    // 配置稀疏矩阵的结构：建立 DoFHandler 上的稀疏模式并初始化 system_matrix
+    void setup_system();                                                           
 
-    void assemble_system();
+    // 组装全局离散系统，包括单元贡献和面贡献
+    void assemble_system();                                                         // :contentReference[oaicite:2]{index=2}:contentReference[oaicite:3]{index=3}
+
+    // 组装单个单元（cell）的体积分项
+    // - fe_v: 用于获取该单元的形函数值、梯度和 JxW
+    // - dofs: 该单元对应的自由度全局编号列表
     void assemble_cell_term(const FEValues<dim>                        &fe_v,
-                            const std::vector<types::global_dof_index> &dofs);
+                            const std::vector<types::global_dof_index> &dofs);        // :contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}
+
+    // 组装单元面的贡献
+    // - face_no: 面编号
+    // - fe_v: 本单元面上的 FEValues
+    // - fe_v_neighbor: 邻居单元面上的 FEValues（若为内部面）
+    // - dofs / dofs_neighbor: 本单元和邻居单元对应的自由度列表
+    // - external_face: 是否为边界面
+    // - boundary_id: 边界面的边界条件编号
+    // - face_diameter: 面的特征尺寸（用于网格依赖的稳定化）
     void assemble_face_term(
       const unsigned int                          face_no,
       const FEFaceValuesBase<dim>                &fe_v,
@@ -30,34 +45,42 @@ ____
       const std::vector<types::global_dof_index> &dofs_neighbor,
       const bool                                  external_face,
       const unsigned int                          boundary_id,
-      const double                                face_diameter);
+      const double                                face_diameter);                // :contentReference[oaicite:6]{index=6}:contentReference[oaicite:7]{index=7}
 
-    std::pair<unsigned int, double> solve(Vector<double> &solution);
+    // 求解线性/非线性系统：返回 {线性迭代次数, 最终残差}
+    std::pair<unsigned int, double> solve(Vector<double> &solution);                // :contentReference[oaicite:8]{index=8}:contentReference[oaicite:9]{index=9}
 
-    void compute_refinement_indicators(Vector<double> &indicator) const;
-    void refine_grid(const Vector<double> &indicator);
+    // 根据当前解（predictor）计算每个单元的自适应细化指标
+    void compute_refinement_indicators(Vector<double> &indicator) const;            // :contentReference[oaicite:10]{index=10}:contentReference[oaicite:11]{index=11}
 
-    void output_results() const;
+    // 根据细化指标在网格上执行细化或粗化，并插值传递旧解
+    void refine_grid(const Vector<double> &indicator);                              // :contentReference[oaicite:12]{index=12}:contentReference[oaicite:13]{index=13}
 
-    Triangulation<dim>   triangulation;
-    const MappingQ1<dim> mapping;
+    // 将当前解输出为 VTK 文件，便于后处理与可视化
+    void output_results() const;                                                    // :contentReference[oaicite:14]{index=14}:contentReference[oaicite:15]{index=15}
 
-    const FESystem<dim> fe;
-    DoFHandler<dim>     dof_handler;
+    // -------------------- 核心数据成员 --------------------
 
-    const QGauss<dim>     quadrature;
-    const QGauss<dim - 1> face_quadrature;
+    Triangulation<dim>   triangulation;     // 存储并管理计算区域的网格拓扑和几何
+    const MappingQ1<dim> mapping;           // 线性映射，用于将参考单元映射到实际单元
 
-    Vector<double> old_solution;
-    Vector<double> current_solution;
-    Vector<double> predictor;
+    const FESystem<dim> fe;                 // 由多个标量 FE_Q 组成的混合有限元空间
+    DoFHandler<dim>     dof_handler;        // 管理全局自由度的分配和约束
 
-    Vector<double> right_hand_side;
+    const QGauss<dim>     quadrature;       // 体积分的 Gauss 点规则（degree+1 点）
+    const QGauss<dim - 1> face_quadrature;  // 面积分的 Gauss 点规则（degree+1 点）
 
-    TrilinosWrappers::SparseMatrix system_matrix;
+    Vector<double> old_solution;            // 上一个时间步的解，作为“旧”解用于时间推进
+    Vector<double> current_solution;        // 当前迭代中的解
+    Vector<double> predictor;               // 时间推进的预测值，用于二阶时间离散（BDF2 等）
 
-    Parameters::AllParameters<dim> parameters;
-    ConditionalOStream             verbose_cout;
+    Vector<double> right_hand_side;         // 全局残差向量或右端项
+
+    TrilinosWrappers::SparseMatrix system_matrix;  // 存储线性系统系数矩阵的稀疏矩阵
+
+    Parameters::AllParameters<dim> parameters;     // 封装所有控制参数（网格、求解器、边界、输出等）
+    ConditionalOStream             verbose_cout;   // 根据 parameters.output 控制日志打印开关
+
   };
 
   template <int dim>
@@ -797,5 +820,5 @@ ____
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ2NDM5NzQzXX0=
+eyJoaXN0b3J5IjpbMTUwMzg5NzA5OCw5NDY0Mzk3NDNdfQ==
 -->
