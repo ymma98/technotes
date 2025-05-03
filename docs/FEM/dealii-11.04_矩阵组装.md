@@ -102,143 +102,170 @@ ConservationLaw<dim>::ConservationLaw(const char *input_filename)
     parameters.output == Parameters::Solver::verbose);           // 如果用户在输入文件中指定了 verbose 模式，则启用详细输出
 }
 
-  template <int dim>
-  void ConservationLaw<dim>::setup_system()
+template <int dim>
+void ConservationLaw<dim>::setup_system()
+{
+  // 1. 构造一个动态稀疏模式（DynamicSparsityPattern），
+  //    尺寸为全局自由度数 × 全局自由度数。
+  DynamicSparsityPattern dsp(dof_handler.n_dofs(),
+                             dof_handler.n_dofs());
+
+  // 2. 根据 DoFHandler 的耦合关系（哪些自由度在同一个单元上）
+  //    填充稀疏模式 dsp。
+  DoFTools::make_sparsity_pattern(dof_handler, dsp);
+
+  // 3. 使用已经填充好的稀疏模式重新初始化 TrilinosWrappers::SparseMatrix，
+  //    为后续线性系统组装分配存储空间。
+  system_matrix.reinit(dsp);
+}
+
+template <int dim>
+void ConservationLaw<dim>::assemble_system()
+{
+  // --- 预备工作：获取单元自由度数并分配索引数组 ---
+  // 本单元上的自由度个数
+  const unsigned int dofs_per_cell =
+    dof_handler.get_fe().n_dofs_per_cell();
+
+  // 存放本单元和邻居单元自由度的全局索引
+  std::vector<types::global_dof_index> dof_indices(dofs_per_cell);
+  std::vector<types::global_dof_index> dof_indices_neighbor(dofs_per_cell);
+
+  // --- 定义 UpdateFlags，用于告诉 FEValues/FEFaceValues 需要哪些更新内容 ---
+  // 单元内部积分需要：形函数值、梯度、积分点位置、JxW（权重）
+  const UpdateFlags update_flags =
+          update_values   |
+          update_gradients|
+          update_quadrature_points |
+          update_JxW_values;
+  // 外部面（含边界）还需更新法向量
+  const UpdateFlags face_update_flags =
+          update_values         |
+          update_quadrature_points |
+          update_JxW_values     |
+          update_normal_vectors;
+  // 邻居面只需更新形函数值
+  const UpdateFlags neighbor_face_update_flags = update_values;
+
+  // --- 创建各种 FEValues 对象 ---
+  // mapping：几何映射；fe：有限元；
+  // quadrature：胞内高斯点；face_quadrature：面上高斯点。
+  FEValues<dim>        fe_v(mapping, fe, quadrature, update_flags);
+  FEFaceValues<dim>    fe_v_face(mapping,
+                                 fe,
+                                 face_quadrature,
+                                 face_update_flags);
+  FESubfaceValues<dim> fe_v_subface(mapping,
+                                    fe,
+                                    face_quadrature,
+                                    face_update_flags);
+  // 用于内部面时，对应邻居单元的 FEValues
+  FEFaceValues<dim>    fe_v_face_neighbor(mapping,
+                                          fe,
+                                          face_quadrature,
+                                          neighbor_face_update_flags);
+  FESubfaceValues<dim> fe_v_subface_neighbor(mapping,
+                                             fe,
+                                             face_quadrature,
+                                             neighbor_face_update_flags);
+
+  // --- 遍历所有活动单元，组装整个线性系统 ---
+  for (const auto &cell : dof_handler.active_cell_iterators())
   {
-    DynamicSparsityPattern dsp(dof_handler.n_dofs(), dof_handler.n_dofs());
-    DoFTools::make_sparsity_pattern(dof_handler, dsp);
+    // 1) 单元体项组装
+    fe_v.reinit(cell);                  // 初始化 FEValues
+    cell->get_dof_indices(dof_indices);// 获取本单元自由度索引
+    assemble_cell_term(fe_v, dof_indices);// 组装体项（质量、对流、扩散、源项等）
 
-    system_matrix.reinit(dsp);
-  }
-
-  template <int dim>
-  void ConservationLaw<dim>::assemble_system()
-  {
-    const unsigned int dofs_per_cell = dof_handler.get_fe().n_dofs_per_cell();
-
-    std::vector<types::global_dof_index> dof_indices(dofs_per_cell);
-    std::vector<types::global_dof_index> dof_indices_neighbor(dofs_per_cell);
-
-    const UpdateFlags update_flags = update_values | update_gradients |
-                                     update_quadrature_points |
-                                     update_JxW_values,
-                      face_update_flags =
-                        update_values | update_quadrature_points |
-                        update_JxW_values | update_normal_vectors,
-                      neighbor_face_update_flags = update_values;
-
-    FEValues<dim>        fe_v(mapping, fe, quadrature, update_flags);
-    FEFaceValues<dim>    fe_v_face(mapping,
-                                fe,
-                                face_quadrature,
-                                face_update_flags);
-    FESubfaceValues<dim> fe_v_subface(mapping,
-                                      fe,
-                                      face_quadrature,
-                                      face_update_flags);
-    FEFaceValues<dim>    fe_v_face_neighbor(mapping,
-                                         fe,
-                                         face_quadrature,
-                                         neighbor_face_update_flags);
-    FESubfaceValues<dim> fe_v_subface_neighbor(mapping,
-                                               fe,
-                                               face_quadrature,
-                                               neighbor_face_update_flags);
-
-    for (const auto &cell : dof_handler.active_cell_iterators())
+    // 2) 单元面项组装
+    for (const auto face_no : cell->face_indices())
+    {
+      if (cell->at_boundary(face_no))
       {
-        fe_v.reinit(cell);
-        cell->get_dof_indices(dof_indices);
-
-        assemble_cell_term(fe_v, dof_indices);
-
-        for (const auto face_no : cell->face_indices())
-          if (cell->at_boundary(face_no))
-            {
-              fe_v_face.reinit(cell, face_no);
-              assemble_face_term(face_no,
-                                 fe_v_face,
-                                 fe_v_face,
-                                 dof_indices,
-                                 std::vector<types::global_dof_index>(),
-                                 true,
-                                 cell->face(face_no)->boundary_id(),
-                                 cell->face(face_no)->diameter());
-            }
-
-          else
-            {
-              if (cell->neighbor(face_no)->has_children())
-                {
-                  const unsigned int neighbor2 =
-                    cell->neighbor_of_neighbor(face_no);
-
-                  for (unsigned int subface_no = 0;
-                       subface_no < cell->face(face_no)->n_children();
-                       ++subface_no)
-                    {
-                      const typename DoFHandler<dim>::active_cell_iterator
-                        neighbor_child =
-                          cell->neighbor_child_on_subface(face_no, subface_no);
-
-                      Assert(neighbor_child->face(neighbor2) ==
-                               cell->face(face_no)->child(subface_no),
-                             ExcInternalError());
-                      Assert(neighbor_child->is_active(), ExcInternalError());
-
-                      fe_v_subface.reinit(cell, face_no, subface_no);
-                      fe_v_face_neighbor.reinit(neighbor_child, neighbor2);
-
-                      neighbor_child->get_dof_indices(dof_indices_neighbor);
-
-                      assemble_face_term(
-                        face_no,
-                        fe_v_subface,
-                        fe_v_face_neighbor,
-                        dof_indices,
-                        dof_indices_neighbor,
-                        false,
-                        numbers::invalid_unsigned_int,
-                        neighbor_child->face(neighbor2)->diameter());
-                    }
-                }
-
-              else if (cell->neighbor(face_no)->level() != cell->level())
-                {
-                  const typename DoFHandler<dim>::cell_iterator neighbor =
-                    cell->neighbor(face_no);
-                  Assert(neighbor->level() == cell->level() - 1,
-                         ExcInternalError());
-
-                  neighbor->get_dof_indices(dof_indices_neighbor);
-
-                  const std::pair<unsigned int, unsigned int> faceno_subfaceno =
-                    cell->neighbor_of_coarser_neighbor(face_no);
-                  const unsigned int neighbor_face_no = faceno_subfaceno.first,
-                                     neighbor_subface_no =
-                                       faceno_subfaceno.second;
-
-                  Assert(neighbor->neighbor_child_on_subface(
-                           neighbor_face_no, neighbor_subface_no) == cell,
-                         ExcInternalError());
-
-                  fe_v_face.reinit(cell, face_no);
-                  fe_v_subface_neighbor.reinit(neighbor,
-                                               neighbor_face_no,
-                                               neighbor_subface_no);
-
-                  assemble_face_term(face_no,
-                                     fe_v_face,
-                                     fe_v_subface_neighbor,
-                                     dof_indices,
-                                     dof_indices_neighbor,
-                                     false,
-                                     numbers::invalid_unsigned_int,
-                                     cell->face(face_no)->diameter());
-                }
-            }
+        // 边界面：只有本侧积分，external_face = true
+        fe_v_face.reinit(cell, face_no);
+        assemble_face_term(face_no,
+                           fe_v_face,          // 本单元面 FEValues
+                           fe_v_face,          // 无邻居，重复传入
+                           dof_indices,        // 本单元自由度
+                           std::vector<types::global_dof_index>(), // 无邻居自由度
+                           true,               // 外部面标志
+                           cell->face(face_no)->boundary_id(),     // 边界 ID
+                           cell->face(face_no)->diameter());       // 面直径（用于稳定化）
       }
-  }
+      else
+      {
+        // 内部面
+        if (cell->neighbor(face_no)->has_children())
+        {
+          // 情况 A：邻居已细化
+          const unsigned int neighbor2 =
+            cell->neighbor_of_neighbor(face_no);
+          for (unsigned int subface_no = 0;
+               subface_no < cell->face(face_no)->n_children();
+               ++subface_no)
+          {
+            auto neighbor_child =
+              cell->neighbor_child_on_subface(face_no, subface_no);
+            // 检查子面一致性
+            Assert(neighbor_child->face(neighbor2) ==
+                   cell->face(face_no)->child(subface_no),
+                   ExcInternalError());
+            Assert(neighbor_child->is_active(), ExcInternalError());
+
+            // 本单元子面积分
+            fe_v_subface.reinit(cell, face_no, subface_no);
+            // 邻居子单元面积分
+            fe_v_face_neighbor.reinit(neighbor_child, neighbor2);
+            // 获取邻居自由度索引
+            neighbor_child->get_dof_indices(dof_indices_neighbor);
+            // 组装面项（internal_face = false）
+            assemble_face_term(face_no,
+                               fe_v_subface,
+                               fe_v_face_neighbor,
+                               dof_indices,
+                               dof_indices_neighbor,
+                               false,
+                               numbers::invalid_unsigned_int,
+                               neighbor_child->face(neighbor2)->diameter());
+          }
+        }
+        else if (cell->neighbor(face_no)->level() != cell->level())
+        {
+          // 情况 B：邻居为更粗层级
+          auto neighbor = cell->neighbor(face_no);
+          Assert(neighbor->level() == cell->level() - 1,
+                 ExcInternalError());
+          neighbor->get_dof_indices(dof_indices_neighbor);
+          // 找到粗层级邻居对应的面号和子面号
+          auto faceno_subfaceno =
+            cell->neighbor_of_coarser_neighbor(face_no);
+          const unsigned int neighbor_face_no    = faceno_subfaceno.first,
+                             neighbor_subface_no = faceno_subfaceno.second;
+          Assert(neighbor->neighbor_child_on_subface(
+                   neighbor_face_no, neighbor_subface_no) == cell,
+                 ExcInternalError());
+
+          // 本单元完整面积分
+          fe_v_face.reinit(cell, face_no);
+          // 粗层级邻居子面积分
+          fe_v_subface_neighbor.reinit(
+            neighbor, neighbor_face_no, neighbor_subface_no);
+
+          // 组装面项
+          assemble_face_term(face_no,
+                             fe_v_face,
+                             fe_v_subface_neighbor,
+                             dof_indices,
+                             dof_indices_neighbor,
+                             false,
+                             numbers::invalid_unsigned_int,
+                             cell->face(face_no)->diameter());
+        }
+      }
+    } // end for face
+  } // end for cell
+}
 
   template <int dim>
   void ConservationLaw<dim>::assemble_cell_term(
@@ -820,7 +847,7 @@ ConservationLaw<dim>::ConservationLaw(const char *input_filename)
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTcxMDE4NzIsMTY3MTc4NTY5MywtMT
-gwODg0MzUxMiwtMTg3NTY0NTU2OCw4MDY3MjA1OTIsOTQ2NDM5
-NzQzXX0=
+eyJoaXN0b3J5IjpbNTc0MzQxNjA2LC0xNjE3MTAxODcyLDE2Nz
+E3ODU2OTMsLTE4MDg4NDM1MTIsLTE4NzU2NDU1NjgsODA2NzIw
+NTkyLDk0NjQzOTc0M119
 -->
