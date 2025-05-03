@@ -96,10 +96,10 @@ ConservationLaw<dim>::ConservationLaw(const char *input_filename)
   Parameters::AllParameters<dim>::declare_parameters(prm);        // 注册（声明）所有参数项，以便 parse_input 时能识别 
 
   prm.parse_input(input_filename);                                // 从指定的 input 文件中读取参数 
-  parameters.parse_parameters(prm);                               // ⑩ 将读取到的参数值填充到成员变量 parameters 中
+  parameters.parse_parameters(prm);                               // 将读取到的参数值填充到成员变量 parameters 中
 
   verbose_cout.set_condition(                                     
-    parameters.output == Parameters::Solver::verbose);           // ⑪ 如果用户在输入文件中指定了 verbose 模式，则启用详细输出
+    parameters.output == Parameters::Solver::verbose);           // 如果用户在输入文件中指定了 verbose 模式，则启用详细输出
 }
 
   template <int dim>
@@ -820,6 +820,7 @@ ConservationLaw<dim>::ConservationLaw(const char *input_filename)
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3MTc4NTY5MywtMTgwODg0MzUxMiwtMT
-g3NTY0NTU2OCw4MDY3MjA1OTIsOTQ2NDM5NzQzXX0=
+eyJoaXN0b3J5IjpbLTE2MTcxMDE4NzIsMTY3MTc4NTY5MywtMT
+gwODg0MzUxMiwtMTg3NTY0NTU2OCw4MDY3MjA1OTIsOTQ2NDM5
+NzQzXX0=
 -->
