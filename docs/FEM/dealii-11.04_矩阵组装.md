@@ -267,136 +267,169 @@ void ConservationLaw<dim>::assemble_system()
   } // end for cell
 }
 
-  template <int dim>
-  void ConservationLaw<dim>::assemble_cell_term(
-    const FEValues<dim>                        &fe_v,
-    const std::vector<types::global_dof_index> &dof_indices)
+template <int dim>
+void ConservationLaw<dim>::assemble_cell_term(
+  const FEValues<dim>                        &fe_v,
+  const std::vector<types::global_dof_index> &dof_indices)
+{
+  // --- 1. 准备工作：获取自由度数和积分点数 ---
+  const unsigned int dofs_per_cell = fe_v.dofs_per_cell;       // 本单元自由度数量
+  const unsigned int n_q_points    = fe_v.n_quadrature_points; // 本单元积分点数量
+
+  // --- 2. 定义在每个积分点存储的物理量（自动微分/标量） ---
+  // W, grad_W 使用 Sacado::Fad 以自动得到局部残差对自由度的导数（雅可比）
+  Table<2, Sacado::Fad::DFad<double>> W(n_q_points,
+                                        EulerEquations<dim>::n_components);
+  Table<2, double>                     W_old(n_q_points,
+                                              EulerEquations<dim>::n_components);
+  Table<3, Sacado::Fad::DFad<double>> grad_W(n_q_points,
+                                             EulerEquations<dim>::n_components,
+                                             dim);
+  Table<3, double> grad_W_old(n_q_points,
+                              EulerEquations<dim>::n_components,
+                              dim);
+
+  // 用于存放当前残差 R_i 关于本单元所有自由度的导数 ∂R_i/∂U_k
+  std::vector<double> residual_derivatives(dofs_per_cell);
+
+  // --- 3. 将当前解值装入自动微分变量 independent_local_dof_values ---
+  std::vector<Sacado::Fad::DFad<double>> independent_local_dof_values(dofs_per_cell);
+  for (unsigned int i = 0; i < dofs_per_cell; ++i)
+    independent_local_dof_values[i] = current_solution(dof_indices[i]);
+  // 为 Fad 变量指定哪个分量是独立变量 (0..dofs_per_cell-1)
+  for (unsigned int i = 0; i < dofs_per_cell; ++i)
+    independent_local_dof_values[i].diff(i, dofs_per_cell);
+
+  // --- 4. 初始化 W, W_old, grad_W, grad_W_old 为零 ---
+  for (unsigned int q = 0; q < n_q_points; ++q)
+    for (unsigned int c = 0; c < EulerEquations<dim>::n_components; ++c)
+    {
+      W[q][c]     = 0;
+      W_old[q][c] = 0;
+      for (unsigned int d = 0; d < dim; ++d)
+      {
+        grad_W[q][c][d]     = 0;
+        grad_W_old[q][c][d] = 0;
+      }
+    }
+
+  // --- 5. 在积分点处重构数值解 W 和其梯度 grad_W ---
+  // 弱形式重构： 
+  //   W(q)      = Σ_i φ_i(q) · U_i,
+  //   ∇W(q)_d  = Σ_i ∂φ_i/∂x_d (q) · U_i.
+  for (unsigned int q = 0; q < n_q_points; ++q)
+    for (unsigned int i = 0; i < dofs_per_cell; ++i)
+    {
+      // 找到自由度 i 对应的方程分量 c
+      const unsigned int c =
+        fe_v.get_fe().system_to_component_index(i).first;
+
+      // W 和 W_old:
+      W[q][c]     += independent_local_dof_values[i]
+                       * fe_v.shape_value_component(i, q, c);
+      W_old[q][c] += old_solution(dof_indices[i])
+                       * fe_v.shape_value_component(i, q, c);
+
+      // grad_W 和 grad_W_old:
+      for (unsigned int d = 0; d < dim; ++d)
+      {
+        grad_W[q][c][d]     += independent_local_dof_values[i]
+                                 * fe_v.shape_grad_component(i, q, c)[d];
+        grad_W_old[q][c][d] += old_solution(dof_indices[i])
+                                 * fe_v.shape_grad_component(i, q, c)[d];
+      }
+    }
+
+  // --- 6. 计算物理通量 flux 和源项 forcing（当前与旧时刻） ---
+  // 对于欧拉方程：∂W/∂t + ∇·F(W) = S(W)
+  std::vector<ndarray<Sacado::Fad::DFad<double>,
+                      EulerEquations<dim>::n_components, dim>>
+    flux(n_q_points);
+  std::vector<ndarray<double, EulerEquations<dim>::n_components, dim>>
+    flux_old(n_q_points);
+  std::vector<std::array<Sacado::Fad::DFad<double>, EulerEquations<dim>::n_components>>
+    forcing(n_q_points);
+  std::vector<std::array<double, EulerEquations<dim>::n_components>>
+    forcing_old(n_q_points);
+
+  for (unsigned int q = 0; q < n_q_points; ++q)
   {
-    const unsigned int dofs_per_cell = fe_v.dofs_per_cell;
-    const unsigned int n_q_points    = fe_v.n_quadrature_points;
-
-    Table<2, Sacado::Fad::DFad<double>> W(n_q_points,
-                                          EulerEquations<dim>::n_components);
-
-    Table<2, double> W_old(n_q_points, EulerEquations<dim>::n_components);
-
-    Table<3, Sacado::Fad::DFad<double>> grad_W(
-      n_q_points, EulerEquations<dim>::n_components, dim);
-
-    Table<3, double> grad_W_old(n_q_points,
-                                EulerEquations<dim>::n_components,
-                                dim);
-
-    std::vector<double> residual_derivatives(dofs_per_cell);
-
-    std::vector<Sacado::Fad::DFad<double>> independent_local_dof_values(
-      dofs_per_cell);
-    for (unsigned int i = 0; i < dofs_per_cell; ++i)
-      independent_local_dof_values[i] = current_solution(dof_indices[i]);
-
-    for (unsigned int i = 0; i < dofs_per_cell; ++i)
-      independent_local_dof_values[i].diff(i, dofs_per_cell);
-
-    for (unsigned int q = 0; q < n_q_points; ++q)
-      for (unsigned int c = 0; c < EulerEquations<dim>::n_components; ++c)
-        {
-          W[q][c]     = 0;
-          W_old[q][c] = 0;
-          for (unsigned int d = 0; d < dim; ++d)
-            {
-              grad_W[q][c][d]     = 0;
-              grad_W_old[q][c][d] = 0;
-            }
-        }
-
-    for (unsigned int q = 0; q < n_q_points; ++q)
-      for (unsigned int i = 0; i < dofs_per_cell; ++i)
-        {
-          const unsigned int c =
-            fe_v.get_fe().system_to_component_index(i).first;
-
-          W[q][c] += independent_local_dof_values[i] *
-                     fe_v.shape_value_component(i, q, c);
-          W_old[q][c] +=
-            old_solution(dof_indices[i]) * fe_v.shape_value_component(i, q, c);
-
-          for (unsigned int d = 0; d < dim; ++d)
-            {
-              grad_W[q][c][d] += independent_local_dof_values[i] *
-                                 fe_v.shape_grad_component(i, q, c)[d];
-              grad_W_old[q][c][d] += old_solution(dof_indices[i]) *
-                                     fe_v.shape_grad_component(i, q, c)[d];
-            }
-        }
-
-    std::vector<ndarray<Sacado::Fad::DFad<double>,
-                        EulerEquations<dim>::n_components,
-                        dim>>
-      flux(n_q_points);
-
-    std::vector<ndarray<double, EulerEquations<dim>::n_components, dim>>
-      flux_old(n_q_points);
-
-    std::vector<
-      std::array<Sacado::Fad::DFad<double>, EulerEquations<dim>::n_components>>
-      forcing(n_q_points);
-
-    std::vector<std::array<double, EulerEquations<dim>::n_components>>
-      forcing_old(n_q_points);
-
-    for (unsigned int q = 0; q < n_q_points; ++q)
-      {
-        EulerEquations<dim>::compute_flux_matrix(W_old[q], flux_old[q]);
-        EulerEquations<dim>::compute_forcing_vector(W_old[q], forcing_old[q]);
-        EulerEquations<dim>::compute_flux_matrix(W[q], flux[q]);
-        EulerEquations<dim>::compute_forcing_vector(W[q], forcing[q]);
-      }
-
-    for (unsigned int i = 0; i < fe_v.dofs_per_cell; ++i)
-      {
-        Sacado::Fad::DFad<double> R_i = 0;
-
-        const unsigned int component_i =
-          fe_v.get_fe().system_to_component_index(i).first;
-
-        for (unsigned int point = 0; point < fe_v.n_quadrature_points; ++point)
-          {
-            if (parameters.is_stationary == false)
-              R_i += 1.0 / parameters.time_step *
-                     (W[point][component_i] - W_old[point][component_i]) *
-                     fe_v.shape_value_component(i, point, component_i) *
-                     fe_v.JxW(point);
-
-            for (unsigned int d = 0; d < dim; ++d)
-              R_i -=
-                (parameters.theta * flux[point][component_i][d] +
-                 (1.0 - parameters.theta) * flux_old[point][component_i][d]) *
-                fe_v.shape_grad_component(i, point, component_i)[d] *
-                fe_v.JxW(point);
-
-            for (unsigned int d = 0; d < dim; ++d)
-              R_i +=
-                1.0 *
-                std::pow(fe_v.get_cell()->diameter(),
-                         parameters.diffusion_power) *
-                (parameters.theta * grad_W[point][component_i][d] +
-                 (1.0 - parameters.theta) * grad_W_old[point][component_i][d]) *
-                fe_v.shape_grad_component(i, point, component_i)[d] *
-                fe_v.JxW(point);
-
-            R_i -=
-              (parameters.theta * forcing[point][component_i] +
-               (1.0 - parameters.theta) * forcing_old[point][component_i]) *
-              fe_v.shape_value_component(i, point, component_i) *
-              fe_v.JxW(point);
-          }
-
-        for (unsigned int k = 0; k < dofs_per_cell; ++k)
-          residual_derivatives[k] = R_i.fastAccessDx(k);
-        system_matrix.add(dof_indices[i], dof_indices, residual_derivatives);
-        right_hand_side(dof_indices[i]) -= R_i.val();
-      }
+    // 计算 F(W_old), S(W_old)
+    EulerEquations<dim>::compute_flux_matrix  (W_old[q], flux_old[q]);
+    EulerEquations<dim>::compute_forcing_vector(W_old[q], forcing_old[q]);
+    // 计算 F(W),    S(W)
+    EulerEquations<dim>::compute_flux_matrix  (W[q],     flux[q]);
+    EulerEquations<dim>::compute_forcing_vector(W[q],     forcing[q]);
   }
+
+  // --- 7. 在本单元上对每个局部试函数 φ_i 计算残差 R_i 并组装到全局矩阵/向量 ---
+  //
+  // R_i = ∫_Ωe (1/Δt)(W - W_old) φ_i dV
+  //     − ∫_Ωe ∇φ_i · [θ F(W) + (1−θ) F(W_old)] dV
+  //     + ∫_Ωe h^p (θ ∇W + (1−θ)∇W_old) · ∇φ_i dV
+  //     − ∫_Ωe [θ S(W) + (1−θ)S(W_old)] φ_i dV
+  //
+  // 其中 h = cell->diameter(), p = parameters.diffusion_power
+  for (unsigned int i = 0; i < dofs_per_cell; ++i)
+  {
+    // 使用 Fad<double> 累加得到 R_i（包含其对各 U_k 的偏导信息）
+    Sacado::Fad::DFad<double> R_i = 0;
+    const unsigned int component_i =
+      fe_v.get_fe().system_to_component_index(i).first;
+
+    for (unsigned int q = 0; q < n_q_points; ++q)
+    {
+      const double JxW = fe_v.JxW(q);
+      const double h_p = std::pow(fe_v.get_cell()->diameter(),
+                                  parameters.diffusion_power);
+
+      // ——— 时间项 ———
+      if (!parameters.is_stationary)
+        R_i += (1.0 / parameters.time_step)
+               * (  W[q][component_i]
+                  - W_old[q][component_i] )
+               * fe_v.shape_value_component(i, q, component_i)
+               * JxW;
+
+      // ——— 对流通量项 ———
+      for (unsigned int d = 0; d < dim; ++d)
+        R_i -= ( parameters.theta *     flux[q][component_i][d]
+                + (1.0 - parameters.theta) * flux_old[q][component_i][d] )
+               * fe_v.shape_grad_component(i, q, component_i)[d]
+               * JxW; 
+        // 对应弱形式中的: −∫ ∇φ_i · F_θ dV
+
+      // ——— 扩散稳定化项 ———
+      for (unsigned int d = 0; d < dim; ++d)
+        R_i += h_p
+               * ( parameters.theta *     grad_W[q][component_i][d]
+                 + (1.0 - parameters.theta) * grad_W_old[q][component_i][d] )
+               * fe_v.shape_grad_component(i, q, component_i)[d]
+               * JxW;
+        // 对应: +∫ h^p (θ ∇W + (1−θ) ∇W_old) · ∇φ_i dV
+
+      // ——— 源项 ———
+      R_i -= ( parameters.theta *     forcing[q][component_i]
+              + (1.0 - parameters.theta) * forcing_old[q][component_i] )
+             * fe_v.shape_value_component(i, q, component_i)
+             * JxW;
+        // 对应: −∫ φ_i S_θ dV
+    }
+
+    // 提取 R_i 关于每个独立自由度的偏导数 ∂R_i/∂U_k
+    for (unsigned int k = 0; k < dofs_per_cell; ++k)
+      residual_derivatives[k] = R_i.fastAccessDx(k);
+
+    // 将雅可比行 residual_derivatives 加入全局稀疏矩阵
+    system_matrix.add(dof_indices[i],
+                      dof_indices,
+                      residual_derivatives);
+
+    // 并将残差值 R_i.val() 积分到右端向量
+    right_hand_side(dof_indices[i]) -= R_i.val();
+  }
+}
+
 
   template <int dim>
   void ConservationLaw<dim>::assemble_face_term(
@@ -847,7 +880,7 @@ void ConservationLaw<dim>::assemble_system()
   }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc0MzQxNjA2LC0xNjE3MTAxODcyLDE2Nz
-E3ODU2OTMsLTE4MDg4NDM1MTIsLTE4NzU2NDU1NjgsODA2NzIw
-NTkyLDk0NjQzOTc0M119
+eyJoaXN0b3J5IjpbLTE5ODQ5OTcwMzIsNTc0MzQxNjA2LC0xNj
+E3MTAxODcyLDE2NzE3ODU2OTMsLTE4MDg4NDM1MTIsLTE4NzU2
+NDU1NjgsODA2NzIwNTkyLDk0NjQzOTc0M119
 -->
