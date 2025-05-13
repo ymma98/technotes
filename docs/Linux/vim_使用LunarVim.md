@@ -451,7 +451,7 @@ query(highlights) is concatenated from the following files:
 ~/.config/nvim/executable/
 ```
 
-可以解决吞字符的问题。虽然还是报一些错：
+不用系统自带的 nvim 可以解决吞字符的问题。虽然还是报一些错：
 
 ```bash
 An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-treesitter/locals.lua:286: attempt to call method 'parent' (a nil value)"
@@ -475,10 +475,10 @@ An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-tree
 
 没排查出来问题的原因，只是试出来初步的解决方法；折腾了几个小时才勉强带错运行。只能看gentoo在哪一次更新中能顺便解决这个问题了。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyNTEwMzUzOCwxMTg4ODQxODIzLC0zMj
-Q2MjIxMDIsLTE1MjA3MTg5OTAsLTY1OTMwMjczNiw0MzM5OTE5
-MjUsLTIwNDIyOTgyMzMsNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLT
-U2NTgwMjUwMSwtODE4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4
-NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOT
-I4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
+eyJoaXN0b3J5IjpbLTE4MTEyNjY5ODcsMTE4ODg0MTgyMywtMz
+I0NjIyMTAyLC0xNTIwNzE4OTkwLC02NTkzMDI3MzYsNDMzOTkx
+OTI1LC0yMDQyMjk4MjMzLDc1OTc3ODA4MSwxNzM4NzU1MjM2LC
+01NjU4MDI1MDEsLTgxODY1LDY2NjQyNDczNyw4OTM4NTIzNjcs
+ODQyMzI0MjE5LDUzMzA5OTM4NywxOTgxMjY4MjkzLDI1NDY3Mz
+kyOCw3NTE1MjQxMzUsNTM1NzM2MTM2LDYxOTg1NDc0MV19
 -->
