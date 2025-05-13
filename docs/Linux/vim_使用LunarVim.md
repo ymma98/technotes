@@ -380,7 +380,7 @@ Configured servers list:
 
 ### gentoo 更新后lvim吞字符
 
-gentoo 服务器更新后，发现文本对齐后的第一个字符都不显示（如下图），我的 wsl (ubuntu) 和另一台 arch 系统（
+gentoo 服务器更新后，发现文本对齐后的第一个字符都不显示（如下图），我的 wsl (ubuntu) 和另一台 arch 系统的电脑都没这个问题。
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250513/image.lvy86vkcl.webp){width=400px}
 
@@ -443,16 +443,16 @@ query(highlights) is concatenated from the following files:
 ^
 ```
 
-查找各方论坛无果，无非是围绕 treesitter 解决问题，
+查找各方论坛无果，无非是围绕 treesitter 解决问题，但即使是直接禁用 `:TSDisable` 都没有用。显然是
 
 ```bash
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDYwNjQzNzA3LC0xNTIwNzE4OTkwLC02NT
-kzMDI3MzYsNDMzOTkxOTI1LC0yMDQyMjk4MjMzLDc1OTc3ODA4
-MSwxNzM4NzU1MjM2LC01NjU4MDI1MDEsLTgxODY1LDY2NjQyND
-czNyw4OTM4NTIzNjcsODQyMzI0MjE5LDUzMzA5OTM4NywxOTgx
-MjY4MjkzLDI1NDY3MzkyOCw3NTE1MjQxMzUsNTM1NzM2MTM2LD
-YxOTg1NDc0MV19
+eyJoaXN0b3J5IjpbLTMyNDYyMjEwMiwtMTUyMDcxODk5MCwtNj
+U5MzAyNzM2LDQzMzk5MTkyNSwtMjA0MjI5ODIzMyw3NTk3Nzgw
+ODEsMTczODc1NTIzNiwtNTY1ODAyNTAxLC04MTg2NSw2NjY0Mj
+Q3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMwOTkzODcsMTk4
+MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LDUzNTczNjEzNi
+w2MTk4NTQ3NDFdfQ==
 -->
