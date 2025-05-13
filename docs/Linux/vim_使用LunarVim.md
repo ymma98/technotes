@@ -473,12 +473,12 @@ An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-tree
 --})
 ```
 
-没排查出来问题的原因，只是试出来初步的解决方法；折腾了几个小时才勉强带错运行。gentoo 更新下
+没排查出来问题的原因，只是试出来初步的解决方法；折腾了几个小时才勉强带错运行。只能看gentoo在哪一次更新中能顺便解决这个问题了。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjYwODc1ODM2LDExODg4NDE4MjMsLTMyND
-YyMjEwMiwtMTUyMDcxODk5MCwtNjU5MzAyNzM2LDQzMzk5MTky
-NSwtMjA0MjI5ODIzMyw3NTk3NzgwODEsMTczODc1NTIzNiwtNT
-Y1ODAyNTAxLC04MTg2NSw2NjY0MjQ3MzcsODkzODUyMzY3LDg0
-MjMyNDIxOSw1MzMwOTkzODcsMTk4MTI2ODI5MywyNTQ2NzM5Mj
-gsNzUxNTI0MTM1LDUzNTczNjEzNiw2MTk4NTQ3NDFdfQ==
+eyJoaXN0b3J5IjpbLTIyNTEwMzUzOCwxMTg4ODQxODIzLC0zMj
+Q2MjIxMDIsLTE1MjA3MTg5OTAsLTY1OTMwMjczNiw0MzM5OTE5
+MjUsLTIwNDIyOTgyMzMsNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLT
+U2NTgwMjUwMSwtODE4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4
+NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOT
+I4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
 -->
