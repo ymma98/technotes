@@ -456,11 +456,27 @@ query(highlights) is concatenated from the following files:
 ```bash
 An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-treesitter/locals.lua:286: attempt to call method 'parent' (a nil value)"
 ```
+
+以及需要把配置中的自动保存折叠信息全注释掉lvim 才能勉强工作（否则移动一下光标就会自动折叠所有代码）
+
+```bash
+-- 自动保存折叠信息
+--vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+--    pattern = { "*.*" },
+--    desc = "save view (folds), when closing file",
+--    command = "mkview",
+--})
+--vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+--    pattern = { "*.*" },
+--    desc = "load view (folds), when opening file",
+--    command = "silent! loadview"
+--})
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4NjQ1NjY5LC0zMjQ2MjIxMDIsLTE1Mj
-A3MTg5OTAsLTY1OTMwMjczNiw0MzM5OTE5MjUsLTIwNDIyOTgy
-MzMsNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLTU2NTgwMjUwMSwtOD
-E4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMz
-MDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOTI4LDc1MTUyNDEzNS
-w1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
+eyJoaXN0b3J5IjpbLTIzMDA5MTk5OSwtMzI0NjIyMTAyLC0xNT
+IwNzE4OTkwLC02NTkzMDI3MzYsNDMzOTkxOTI1LC0yMDQyMjk4
+MjMzLDc1OTc3ODA4MSwxNzM4NzU1MjM2LC01NjU4MDI1MDEsLT
+gxODY1LDY2NjQyNDczNyw4OTM4NTIzNjcsODQyMzI0MjE5LDUz
+MzA5OTM4NywxOTgxMjY4MjkzLDI1NDY3MzkyOCw3NTE1MjQxMz
+UsNTM1NzM2MTM2LDYxOTg1NDc0MV19
 -->
