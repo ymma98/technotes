@@ -472,8 +472,10 @@ An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-tree
 --    command = "silent! loadview"
 --})
 ```
+
+没排查出来问题的原因，只是试出来初步的解决方法；
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzMDA5MTk5OSwtMzI0NjIyMTAyLC0xNT
+eyJoaXN0b3J5IjpbMTE4ODg0MTgyMywtMzI0NjIyMTAyLC0xNT
 IwNzE4OTkwLC02NTkzMDI3MzYsNDMzOTkxOTI1LC0yMDQyMjk4
 MjMzLDc1OTc3ODA4MSwxNzM4NzU1MjM2LC01NjU4MDI1MDEsLT
 gxODY1LDY2NjQyNDczNyw4OTM4NTIzNjcsODQyMzI0MjE5LDUz
