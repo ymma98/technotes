@@ -380,7 +380,7 @@ Configured servers list:
 
 ### gentoo 更新后lvim吞字符
 
-gentoo 服务器更新后，发现文本对齐后的第一个字符都不显示，如下：
+gentoo 服务器更新后，发现文本对齐后的第一个字符都不显示（如下图），我的 wsl (ubuntu) 和另一台 arch 系统（
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250513/image.lvy86vkcl.webp){width=400px}
 
@@ -393,19 +393,66 @@ An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-tree
 ```
 
 ```bash
-:checkhealth nvim-treesitter I got: ============================================================================== nvim-treesitter: require("nvim-treesitter.health").check() Installation ~ - WARNING `tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar, not required for :TSInstall) - OK `node` found v20.14.0 (only needed for :TSInstallFromGrammar) - OK `git` executable found. - OK `cc` executable found. Selected from { vim.NIL, "cc", "gcc", "clang", "cl", "zig" } Version: cc (Gentoo 13.3.1_p20241220 p2) 13.3.1 20241220 - OK Neovim was compiled with tree-sitter runtime ABI version 15 (required >=13). Parsers must be compatible with runtime ABI. OS Info: { machine = "x86_64", release = "6.1.12-gentoo-x86_64", sysname = "Linux", version = "#1 SMP PREEMPT_DYNAMIC Mon Nov 20 14:00:50 UTC 2023" } ~ Parser/Features H L F I J - c ✓ ✓ ✓ ✓ ✓ - comment ✓ . . . . - lua ✓ ✓ ✓ ✓ ✓ - markdown ✓ . ✓ ✓ ✓ - markdown_inline ✓ . . . ✓ - python ✓ ✓ ✓ ✓ ✓ - query x ✓ ✓ ✓ ✓ - regex ✓ . . . . - vim ✓ ✓ ✓ . ✓ - vimdoc ✓ . . . ✓ Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[j]ections +) multiple parsers found, only one will be used x) errors found in the query, try to run :TSUpdate {lang} ~ The following errors have been detected: ~ - ERROR query(highlights): /usr/share/nvim/runtime/lua/vim/treesitter/query.lua:373: Query error at 14:2. Invalid node type "missing_node": (missing_node ^ query(highlights) is concatenated from the following files: | [ERROR]:"/usr/share/nvim/runtime/queries/query/highlights.scm", failed to load: /usr/share/nvim/runtime/lua/vim/treesitter/query.lua:373: Query error at 14:2. Invalid node type "missing_node": (missing_node ^
+:checkhealth nvim-treesitter 
+
+得到:
+
+==============================================================================
+nvim-treesitter: require("nvim-treesitter.health").check()
+
+Installation ~
+- WARNING `tree-sitter` executable not found (parser generator, only needed for :TSInstallFromGrammar, not required for :TSInstall)
+- OK `node` found v20.14.0 (only needed for :TSInstallFromGrammar)
+- OK `git` executable found.
+- OK `cc` executable found. Selected from { vim.NIL, "cc", "gcc", "clang", "cl", "zig" }
+Version: cc (Gentoo 13.3.1_p20241220 p2) 13.3.1 20241220
+- OK Neovim was compiled with tree-sitter runtime ABI version 15 (required >=13). Parsers must be compatible with runtime ABI.
+
+OS Info:
+{
+machine = "x86_64",
+release = "6.1.12-gentoo-x86_64",
+sysname = "Linux",
+version = "#1 SMP PREEMPT_DYNAMIC Mon Nov 20 14:00:50 UTC 2023"
+} ~
+
+Parser/Features H L F I J
+- c ✓ ✓ ✓ ✓ ✓
+- comment ✓ . . . .
+- lua ✓ ✓ ✓ ✓ ✓
+- markdown ✓ . ✓ ✓ ✓
+- markdown_inline ✓ . . . ✓
+- python ✓ ✓ ✓ ✓ ✓
+- query x ✓ ✓ ✓ ✓
+- regex ✓ . . . .
+- vim ✓ ✓ ✓ . ✓
+- vimdoc ✓ . . . ✓
+
+Legend: H[ighlight], L[ocals], F[olds], I[ndents], In[j]ections
++) multiple parsers found, only one will be used
+x) errors found in the query, try to run :TSUpdate {lang} ~
+
+The following errors have been detected: ~
+- ERROR query(highlights): /usr/share/nvim/runtime/lua/vim/treesitter/query.lua:373: Query error at 14:2. Invalid node type "missing_node":
+(missing_node
+^
+
+query(highlights) is concatenated from the following files:
+| [ERROR]:"/usr/share/nvim/runtime/queries/query/highlights.scm", failed to load: /usr/share/nvim/runtime/lua/vim/treesitter/query.lua:373: Query error at 14:2. Invalid node type "missing_node":
+(missing_node
+^
 ```
 
-查找各方论坛无果，无非是
+查找各方论坛无果，无非是围绕 treesitter 解决问题，
 
 ```bash
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MTA1OTkzNDMsLTE1MjA3MTg5OTAsLT
-Y1OTMwMjczNiw0MzM5OTE5MjUsLTIwNDIyOTgyMzMsNzU5Nzc4
-MDgxLDE3Mzg3NTUyMzYsLTU2NTgwMjUwMSwtODE4NjUsNjY2ND
-I0NzM3LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5
-ODEyNjgyOTMsMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMz
-YsNjE5ODU0NzQxXX0=
+eyJoaXN0b3J5IjpbNDYwNjQzNzA3LC0xNTIwNzE4OTkwLC02NT
+kzMDI3MzYsNDMzOTkxOTI1LC0yMDQyMjk4MjMzLDc1OTc3ODA4
+MSwxNzM4NzU1MjM2LC01NjU4MDI1MDEsLTgxODY1LDY2NjQyND
+czNyw4OTM4NTIzNjcsODQyMzI0MjE5LDUzMzA5OTM4NywxOTgx
+MjY4MjkzLDI1NDY3MzkyOCw3NTE1MjQxMzUsNTM1NzM2MTM2LD
+YxOTg1NDc0MV19
 -->
