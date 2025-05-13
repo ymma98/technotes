@@ -443,16 +443,18 @@ query(highlights) is concatenated from the following files:
 ^
 ```
 
-查找各方论坛无果，无非是围绕 treesitter 解决问题，但即使是直接禁用 `:TSDisable` 都没有用。显然是
+查找各方论坛无果，一方面是围绕 treesitter 解决问题，但即使是直接禁用 `:TSDisable` 都没有用。还有很多其它无效的尝试，令人抓狂。
+
+最后，试出来的解决方法是，自己下载 nvim 的 appimage, 然后把 appimage 的路径添加到
 
 ```bash
-
+~/.config/nvim/executable/
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyNDYyMjEwMiwtMTUyMDcxODk5MCwtNj
-U5MzAyNzM2LDQzMzk5MTkyNSwtMjA0MjI5ODIzMyw3NTk3Nzgw
-ODEsMTczODc1NTIzNiwtNTY1ODAyNTAxLC04MTg2NSw2NjY0Mj
-Q3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMwOTkzODcsMTk4
-MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LDUzNTczNjEzNi
-w2MTk4NTQ3NDFdfQ==
+eyJoaXN0b3J5IjpbMzQ2MjM4MDY5LC0zMjQ2MjIxMDIsLTE1Mj
+A3MTg5OTAsLTY1OTMwMjczNiw0MzM5OTE5MjUsLTIwNDIyOTgy
+MzMsNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLTU2NTgwMjUwMSwtOD
+E4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMz
+MDk5Mzg3LDE5ODEyNjgyOTMsMjU0NjczOTI4LDc1MTUyNDEzNS
+w1MzU3MzYxMzYsNjE5ODU0NzQxXX0=
 -->
