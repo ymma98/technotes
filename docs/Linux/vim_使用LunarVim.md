@@ -382,9 +382,11 @@ Configured servers list:
 
 gentoo 服务器更新后，发现文本对齐后的第一个字符都不显示，如下：
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250513/image.lvy86vkcl.webp){width=400px}
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0MjcxODM4OSwtMTUyMDcxODk5MCwtNj
+eyJoaXN0b3J5IjpbMTg0ODE4OTUyMSwtMTUyMDcxODk5MCwtNj
 U5MzAyNzM2LDQzMzk5MTkyNSwtMjA0MjI5ODIzMyw3NTk3Nzgw
 ODEsMTczODc1NTIzNiwtNTY1ODAyNTAxLC04MTg2NSw2NjY0Mj
 Q3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMwOTkzODcsMTk4
