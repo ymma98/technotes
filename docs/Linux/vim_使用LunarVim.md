@@ -445,13 +445,19 @@ query(highlights) is concatenated from the following files:
 
 查找各方论坛无果，一方面是围绕 treesitter 解决问题，但即使是直接禁用 `:TSDisable` 都没有用。还有很多其它无效的尝试，令人抓狂。
 
-最后，试出来的解决方法是，自己下载 nvim 的 appimage, 然后把 appimage 的路径添加到
+最后，试出来的解决方法是，自己下载 nvim 的 appimage, 然后把 appimage 的路径添加到 `$PATH` 中，
 
 ```bash
 ~/.config/nvim/executable/
 ```
+
+可以解决吞字符的问题。虽然还是报一些错：
+
+```bash
+An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-treesitter/locals.lua:286: attempt to call method 'parent' (a nil value)"
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ2MjM4MDY5LC0zMjQ2MjIxMDIsLTE1Mj
+eyJoaXN0b3J5IjpbMjA4NjQ1NjY5LC0zMjQ2MjIxMDIsLTE1Mj
 A3MTg5OTAsLTY1OTMwMjczNiw0MzM5OTE5MjUsLTIwNDIyOTgy
 MzMsNzU5Nzc4MDgxLDE3Mzg3NTUyMzYsLTU2NTgwMjUwMSwtOD
 E4NjUsNjY2NDI0NzM3LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMz
