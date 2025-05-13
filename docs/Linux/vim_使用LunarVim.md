@@ -376,11 +376,18 @@ Configured servers list:
 ```
 
 然后, 尝试运行: `:LvimCacheReset`
+
+
+### gentoo 更新后lvim吞字符
+
+gentoo 服务器更新后，发现文本对齐后的第一个字符都不显示，如下：
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjA3MTg5OTAsLTY1OTMwMjczNiw0Mz
-M5OTE5MjUsLTIwNDIyOTgyMzMsNzU5Nzc4MDgxLDE3Mzg3NTUy
-MzYsLTU2NTgwMjUwMSwtODE4NjUsNjY2NDI0NzM3LDg5Mzg1Mj
-M2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEyNjgyOTMsMjU0
-NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzYsNjE5ODU0NzQxXX
-0=
+eyJoaXN0b3J5IjpbMTY0MjcxODM4OSwtMTUyMDcxODk5MCwtNj
+U5MzAyNzM2LDQzMzk5MTkyNSwtMjA0MjI5ODIzMyw3NTk3Nzgw
+ODEsMTczODc1NTIzNiwtNTY1ODAyNTAxLC04MTg2NSw2NjY0Mj
+Q3MzcsODkzODUyMzY3LDg0MjMyNDIxOSw1MzMwOTkzODcsMTk4
+MTI2ODI5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LDUzNTczNjEzNi
+w2MTk4NTQ3NDFdfQ==
 -->
