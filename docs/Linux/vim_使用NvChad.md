@@ -7,8 +7,8 @@
 	* 查看 key mapping: `NvCheatsheet` 或 `Telescope keymaps` 
 	* `<C>` -> `Ctrl`, `<leader>` -> `space`, `<A>` -> `Alt`, `S` -> `Shift`
 
-
+## `.config/nvim/lua/aut`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTE0MDE1OTksLTE3MzUzMzE0NywxMj
-U3MTM5ODI2LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
+eyJoaXN0b3J5IjpbMTU4NDg4OTkxMiwtMTczNTMzMTQ3LDEyNT
+cxMzk4MjYsLTQ3NzMzNDY2OSw0NzY5NDE1MzBdfQ==
 -->
