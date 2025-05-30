@@ -1,5 +1,10 @@
 # 使用 LunarVim
 
+> lunarvim 的主要作者已经不更新了。这个项目基本寄了
+
+______
+
+
 之前配置 vim 的方案是 nvim + vim-plug, 但使用一段时间之后发现了更简便的做法: 直接使用 [LunarVim](https://www.lunarvim.org/) !
 
 LunarVim 的好处是开箱即用, 而且定义插件和快捷键都很方便, 很适合在个人电脑上使用。
@@ -475,10 +480,11 @@ An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-tree
 
 没排查出来问题的原因，只是试出来初步的解决方法；折腾了几个小时才勉强带错运行。只能看gentoo在哪一次更新中能顺便解决这个问题了。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTEyNjY5ODcsMTE4ODg0MTgyMywtMz
-I0NjIyMTAyLC0xNTIwNzE4OTkwLC02NTkzMDI3MzYsNDMzOTkx
-OTI1LC0yMDQyMjk4MjMzLDc1OTc3ODA4MSwxNzM4NzU1MjM2LC
-01NjU4MDI1MDEsLTgxODY1LDY2NjQyNDczNyw4OTM4NTIzNjcs
-ODQyMzI0MjE5LDUzMzA5OTM4NywxOTgxMjY4MjkzLDI1NDY3Mz
-kyOCw3NTE1MjQxMzUsNTM1NzM2MTM2LDYxOTg1NDc0MV19
+eyJoaXN0b3J5IjpbLTk5NTY5MjY4OCwtMTgxMTI2Njk4NywxMT
+g4ODQxODIzLC0zMjQ2MjIxMDIsLTE1MjA3MTg5OTAsLTY1OTMw
+MjczNiw0MzM5OTE5MjUsLTIwNDIyOTgyMzMsNzU5Nzc4MDgxLD
+E3Mzg3NTUyMzYsLTU2NTgwMjUwMSwtODE4NjUsNjY2NDI0NzM3
+LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEyNj
+gyOTMsMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzZdfQ==
+
 -->
