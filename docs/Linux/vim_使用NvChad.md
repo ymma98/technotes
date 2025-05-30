@@ -6,7 +6,9 @@
 * Mapping
 	* 查看 key mapping: `NvCheatsheet` 或 `Telescope keymaps` 
 	* `<C>` -> `Ctrl`, `<leader>` -> `space`, `<A>` -> `Alt`, `S` -> `Shift`
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MzUzMzE0NywxMjU3MTM5ODI2LC00Nz
-czMzQ2NjksNDc2OTQxNTMwXX0=
+eyJoaXN0b3J5IjpbLTEyOTE0MDE1OTksLTE3MzUzMzE0NywxMj
+U3MTM5ODI2LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
 -->
