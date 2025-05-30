@@ -5,8 +5,8 @@
 * NvChad 使用 Lazy 管理, 典型例子是 [`lazy_doc`](https://lazy.folke.io/spec/examples)
 * Mapping
 	* 查看 key mapping: `NvCheatsheet` 或 `Telescope keymaps` 
-	* `<C>`: 
+	* `<C>` -> `Ctrl`, `<leader>` -> `space`, `<A>` -> `Alt`, `S` -> `Shift`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTkxNTU3MjYsMTI1NzEzOTgyNiwtND
-c3MzM0NjY5LDQ3Njk0MTUzMF19
+eyJoaXN0b3J5IjpbLTE3MzUzMzE0NywxMjU3MTM5ODI2LC00Nz
+czMzQ2NjksNDc2OTQxNTMwXX0=
 -->
