@@ -1,6 +1,6 @@
 # 使用 LunarVim
 
-> lunarvim 的主要作者已经不更新了。这个项目基本寄了
+> lunarvim 的主要作者已经不更新了。这个项目基本寄了。下文是之前写的, 权且留作纪念
 
 ______
 
@@ -480,11 +480,10 @@ An internal error has occured: false ".../lazy/opt/nvim-treesitter/lua/nvim-tree
 
 没排查出来问题的原因，只是试出来初步的解决方法；折腾了几个小时才勉强带错运行。只能看gentoo在哪一次更新中能顺便解决这个问题了。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NTY5MjY4OCwtMTgxMTI2Njk4NywxMT
-g4ODQxODIzLC0zMjQ2MjIxMDIsLTE1MjA3MTg5OTAsLTY1OTMw
-MjczNiw0MzM5OTE5MjUsLTIwNDIyOTgyMzMsNzU5Nzc4MDgxLD
-E3Mzg3NTUyMzYsLTU2NTgwMjUwMSwtODE4NjUsNjY2NDI0NzM3
-LDg5Mzg1MjM2Nyw4NDIzMjQyMTksNTMzMDk5Mzg3LDE5ODEyNj
-gyOTMsMjU0NjczOTI4LDc1MTUyNDEzNSw1MzU3MzYxMzZdfQ==
-
+eyJoaXN0b3J5IjpbOTExMzY5NzI5LC0xODExMjY2OTg3LDExOD
+g4NDE4MjMsLTMyNDYyMjEwMiwtMTUyMDcxODk5MCwtNjU5MzAy
+NzM2LDQzMzk5MTkyNSwtMjA0MjI5ODIzMyw3NTk3NzgwODEsMT
+czODc1NTIzNiwtNTY1ODAyNTAxLC04MTg2NSw2NjY0MjQ3Mzcs
+ODkzODUyMzY3LDg0MjMyNDIxOSw1MzMwOTkzODcsMTk4MTI2OD
+I5MywyNTQ2NzM5MjgsNzUxNTI0MTM1LDUzNTczNjEzNl19
 -->
