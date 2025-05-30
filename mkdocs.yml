@@ -31,6 +31,7 @@ nav:
       - tmux速查: Linux/tmux速查.md
       - terminal_快捷键以及配置: Linux/terminal_快捷键以及配置.md
       - bashrc: Linux/bashrc.md
+      - vim_使用NvChad: Linux/vim_使用NvChad.md
       - vim_使用nvim: Linux/vim_使用nvim.md
       - vim_使用LunarVim: Linux/vim_使用LunarVim.md
       - bash命令备忘: Linux/bash命令备忘.md
