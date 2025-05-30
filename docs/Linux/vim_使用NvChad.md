@@ -147,7 +147,7 @@ opt.relativenumber = false
 opt.colorcolumn    = "80"
 
 -- clipboard
-opt.clipboard = "unnamedplus":
+opt.clipboard = "unnamedplus"
 ```
 
 ## `~/.config/nvim/lua/plugins/init.lua`
@@ -327,6 +327,7 @@ return {
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4NjY2ODAxNiwtMTczNTMzMTQ3LDEyNT
-cxMzk4MjYsLTQ3NzMzNDY2OSw0NzY5NDE1MzBdfQ==
+eyJoaXN0b3J5IjpbMTE4NTYwMDIwMiwxMDg2NjY4MDE2LC0xNz
+M1MzMxNDcsMTI1NzEzOTgyNiwtNDc3MzM0NjY5LDQ3Njk0MTUz
+MF19
 -->
