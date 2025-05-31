@@ -326,8 +326,19 @@ return {
   }
 }
 ```
+
+## `~/.config/nvim/lua/configs/lspconfig.lua`
+
+```lua
+require("nvchad.configs.lspconfig").defaults()
+
+local servers = { "html", "cssls", "clangd", "jedi-language-server", "fortls" }
+vim.lsp.enable(servers)
+
+-- read :h vim.lsp.config for changing options of lsp servers 
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NTYwMDIwMiwxMDg2NjY4MDE2LC0xNz
-M1MzMxNDcsMTI1NzEzOTgyNiwtNDc3MzM0NjY5LDQ3Njk0MTUz
-MF19
+eyJoaXN0b3J5IjpbNjg5MTYxMzM5LDExODU2MDAyMDIsMTA4Nj
+Y2ODAxNiwtMTczNTMzMTQ3LDEyNTcxMzk4MjYsLTQ3NzMzNDY2
+OSw0NzY5NDE1MzBdfQ==
 -->
