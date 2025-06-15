@@ -53,6 +53,7 @@ alias scancelid="scancel \$(cat id | grep -Eo '[0-9]*')"
 alias findid="for file in \$(find ./ -name id);do echo -n \${file}; echo -n '   ';cat \${file};done"
 alias pc="python inpynim.py c &>/dev/null &"
 alias cl1="ls |grep -vE 'gs|new|00000|org'|xargs rm"
+alias cl200='for f in dump.[0-9][0-9][0-9][0-9][0-9]; do echo "$f" | grep -Eq '\''gs|new|org|00000|99999|99998'\'' && continue; n=${f#dump.}; ((10#$n % 200 == 0)) || rm "$f"; done'
 
 PS1='\u@\h:\w \$ '
 alias shortps1='PS1="\u@\h:\W \$ "'
@@ -270,7 +271,7 @@ config.keys = {
 return config
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA2OTI0NTAyLC03ODgwNzI0MTgsOTIxOT
-IwMTAsMjA0NzU1OTEwLDk5NDY0NjQ1NiwtNjgwNTEzOTgxLC0x
-MDgxODY1MzkzLDY1MjM2OTc5NSwtMTU3Nzk0MTMyNF19
+eyJoaXN0b3J5IjpbLTE5Mzc2NDQwODUsLTc4ODA3MjQxOCw5Mj
+E5MjAxMCwyMDQ3NTU5MTAsOTk0NjQ2NDU2LC02ODA1MTM5ODEs
+LTEwODE4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
 -->
