@@ -1,5 +1,7 @@
 # spack速查
 
+比较好的[教程](https://ashki23.github.io/spack.html)。
+
 ```bash
 # 安装软件包
 spack install <package>            # 安装指定的软件包
@@ -66,5 +68,6 @@ spack find -p hdf5@1.14.5
 spack find -p hdf5
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5Mjc4MzM2NCwtMTUwMDc4MjQzN119
+eyJoaXN0b3J5IjpbNzg0MTkxMTI4LC0yOTI3ODMzNjQsLTE1MD
+A3ODI0MzddfQ==
 -->
