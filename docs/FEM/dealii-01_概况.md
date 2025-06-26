@@ -124,6 +124,11 @@ $ make test
 
 最佳安装 dealii 的方法是通过 [`candi`](https://github.com/dealii/candi), 根据脚本中的指令一步步做即可, 并且自带 hdf5, petsc 等常用的库
 
+```bash
+module load gcc, openmpi, boost
+./candi.sh -p "/home/ymma/lvdata/libs/dealii/candiinstall/" -j8 --platform=./deal.II-toolchain/platforms/supported/linux_cluster.platform
+```
+
 
 ### 安装包含 hdf5 的 dealii (deprecated)
 
@@ -174,11 +179,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTU2MTgyNzQsMjY4OTkxOTQyLC0xNz
-UwMDAwOTgxLDE3NTcyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0
-NDE2Miw1MTQyMDQyODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC
-03NjkyMzEwMTgsODg4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAx
-MTYzMDMsLTE4NjM1ODQ4MjEsMjUwOTc2ODA0LDY1MjQwMzUzOC
-wxODA1Njg3MzY4LDU5OTc4MTQ0OCwxMjM0MTM0MzA5LC0yOTAz
-NTI2NzhdfQ==
+eyJoaXN0b3J5IjpbLTY2NjI3MzE2MSwtMTUxNTYxODI3NCwyNj
+g5OTE5NDIsLTE3NTAwMDA5ODEsMTc1NzIxNjUwNSwtMTc5MDU3
+OTI1MSwtNTkzODQ0MTYyLDUxNDIwNDI4MCwzNjAwNjc0NzcsLT
+ExNTcxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1
+ODMwNTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MD
+QsNjUyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQx
+MzQzMDldfQ==
 -->
