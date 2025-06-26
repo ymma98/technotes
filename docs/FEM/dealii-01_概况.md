@@ -127,6 +127,9 @@ $ make test
 ```bash
 module load gcc, openmpi, boost
 ./candi.sh -p "/home/ymma/lvdata/libs/dealii/candiinstall/" -j8 --platform=./deal.II-toolchain/platforms/supported/linux_cluster.platform
+
+export MPI_HOME=$(spack location -i openmpi)
+export CPATH=$MPI_HOME/include:$CPATH
 ```
 
 
@@ -179,11 +182,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NjI3MzE2MSwtMTUxNTYxODI3NCwyNj
-g5OTE5NDIsLTE3NTAwMDA5ODEsMTc1NzIxNjUwNSwtMTc5MDU3
-OTI1MSwtNTkzODQ0MTYyLDUxNDIwNDI4MCwzNjAwNjc0NzcsLT
-ExNTcxMTUzMjUsLTc2OTIzMTAxOCw4ODg3MDA1MDIsLTE4Mzk1
-ODMwNTMsMTg1MDExNjMwMywtMTg2MzU4NDgyMSwyNTA5NzY4MD
-QsNjUyNDAzNTM4LDE4MDU2ODczNjgsNTk5NzgxNDQ4LDEyMzQx
-MzQzMDldfQ==
+eyJoaXN0b3J5IjpbLTUyMjcyNDQ4MCwtNjY2MjczMTYxLC0xNT
+E1NjE4Mjc0LDI2ODk5MTk0MiwtMTc1MDAwMDk4MSwxNzU3MjE2
+NTA1LC0xNzkwNTc5MjUxLC01OTM4NDQxNjIsNTE0MjA0MjgwLD
+M2MDA2NzQ3NywtMTE1NzExNTMyNSwtNzY5MjMxMDE4LDg4ODcw
+MDUwMiwtMTgzOTU4MzA1MywxODUwMTE2MzAzLC0xODYzNTg0OD
+IxLDI1MDk3NjgwNCw2NTI0MDM1MzgsMTgwNTY4NzM2OCw1OTk3
+ODE0NDhdfQ==
 -->
