@@ -130,6 +130,8 @@ module load gcc, openmpi, boost
 
 export MPI_HOME=$(spack location -i openmpi)
 export CPATH=$MPI_HOME/include:$CPATH
+export CC=mpicc
+export CXX=mpicxx
 ```
 
 
@@ -182,7 +184,7 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMjcyNDQ4MCwtNjY2MjczMTYxLC0xNT
+eyJoaXN0b3J5IjpbMTQ1MDg0MjAzMCwtNjY2MjczMTYxLC0xNT
 E1NjE4Mjc0LDI2ODk5MTk0MiwtMTc1MDAwMDk4MSwxNzU3MjE2
 NTA1LC0xNzkwNTc5MjUxLC01OTM4NDQxNjIsNTE0MjA0MjgwLD
 M2MDA2NzQ3NywtMTE1NzExNTMyNSwtNzY5MjMxMDE4LDg4ODcw
