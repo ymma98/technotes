@@ -125,7 +125,9 @@ $ make test
 最佳安装 dealii 的方法是通过 [`candi`](https://github.com/dealii/candi), 根据脚本中的指令一步步做即可, 并且自带 hdf5, petsc 等常用的库
 
 ```bash
-spack install gcc@12.4.0❯ spack find gcc
+spack install gcc@12.4.0
+spack find gcc
+spack compiler find  /lvdata/lvymma/libs/spack/opt/spack/linux-gentoo2-skylake_avx512/gcc-14.2.1/gcc-12.4.0-awngivve2xp4cclgk64r62s3eod3he3z/bin
 spack install openmpi@5.0.0 %gcc@12.4.0
 
 ./candi.sh -p "/home/ymma/lvdata/libs/dealii/candiinstall/" -j8 --platform=./deal.II-toolchain/platforms/supported/linux_cluster.platform
@@ -190,7 +192,7 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5ODYxMTY3NiwxNzg2Mzg1NDMxLC0yMj
+eyJoaXN0b3J5IjpbLTY0MDQzNjM5NSwxNzg2Mzg1NDMxLC0yMj
 MxNjY3MjksMTQ1MDg0MjAzMCwtNjY2MjczMTYxLC0xNTE1NjE4
 Mjc0LDI2ODk5MTk0MiwtMTc1MDAwMDk4MSwxNzU3MjE2NTA1LC
 0xNzkwNTc5MjUxLC01OTM4NDQxNjIsNTE0MjA0MjgwLDM2MDA2
