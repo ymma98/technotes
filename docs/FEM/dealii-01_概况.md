@@ -128,7 +128,7 @@ $ make test
 spack install gcc@12.4.0
 spack find gcc
 spack compiler find  /lvdata/lvymma/libs/spack/opt/spack/linux-gentoo2-skylake_avx512/gcc-14.2.1/gcc-12.4.0-awngivve2xp4cclgk64r62s3eod3he3z/bin
-spack install openmpi@5.0.0 %gcc@12.4.0
+ spack install -j48 openmpi@4.1.2 %gcc@12.4.0
 
 ./candi.sh -p "/home/ymma/lvdata/libs/dealii/candiinstall/" -j8 --platform=./deal.II-toolchain/platforms/supported/linux_cluster.platform
 
@@ -192,11 +192,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0MDQzNjM5NSwxNzg2Mzg1NDMxLC0yMj
-MxNjY3MjksMTQ1MDg0MjAzMCwtNjY2MjczMTYxLC0xNTE1NjE4
-Mjc0LDI2ODk5MTk0MiwtMTc1MDAwMDk4MSwxNzU3MjE2NTA1LC
-0xNzkwNTc5MjUxLC01OTM4NDQxNjIsNTE0MjA0MjgwLDM2MDA2
-NzQ3NywtMTE1NzExNTMyNSwtNzY5MjMxMDE4LDg4ODcwMDUwMi
-wtMTgzOTU4MzA1MywxODUwMTE2MzAzLC0xODYzNTg0ODIxLDI1
-MDk3NjgwNF19
+eyJoaXN0b3J5IjpbLTYzMTU1MDQwMCwtNjQwNDM2Mzk1LDE3OD
+YzODU0MzEsLTIyMzE2NjcyOSwxNDUwODQyMDMwLC02NjYyNzMx
+NjEsLTE1MTU2MTgyNzQsMjY4OTkxOTQyLC0xNzUwMDAwOTgxLD
+E3NTcyMTY1MDUsLTE3OTA1NzkyNTEsLTU5Mzg0NDE2Miw1MTQy
+MDQyODAsMzYwMDY3NDc3LC0xMTU3MTE1MzI1LC03NjkyMzEwMT
+gsODg4NzAwNTAyLC0xODM5NTgzMDUzLDE4NTAxMTYzMDMsLTE4
+NjM1ODQ4MjFdfQ==
 -->
