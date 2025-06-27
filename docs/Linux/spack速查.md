@@ -67,7 +67,14 @@ spack find --loaded
 spack find -p hdf5@1.14.5
 spack find -p hdf5
 ```
+
+
+* 更改 tmp 路径
+
+```bash
+spack config add "config:build_stage:/home/ymma/lvdata/libs/spack/tmp"
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg0MTkxMTI4LC0yOTI3ODMzNjQsLTE1MD
-A3ODI0MzddfQ==
+eyJoaXN0b3J5IjpbLTYyMzM2MDAyNSw3ODQxOTExMjgsLTI5Mj
+c4MzM2NCwtMTUwMDc4MjQzN119
 -->
