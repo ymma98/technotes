@@ -73,8 +73,8 @@ spack find -p hdf5
 
 ```bash
 spack config add "config:build_stage:/home/ymma/lvdata/libs/spack/tmp"
-```
+```	
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyMzM2MDAyNSw3ODQxOTExMjgsLTI5Mj
-c4MzM2NCwtMTUwMDc4MjQzN119
+eyJoaXN0b3J5IjpbNjQxNjE5OTgzLC02MjMzNjAwMjUsNzg0MT
+kxMTI4LC0yOTI3ODMzNjQsLTE1MDA3ODI0MzddfQ==
 -->
