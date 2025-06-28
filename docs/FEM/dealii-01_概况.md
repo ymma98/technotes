@@ -131,12 +131,22 @@ spack compiler find  /lvdata/lvymma/libs/spack/opt/spack/linux-gentoo2-skylake_a
 spack install -j48 openmpi@4.1.2 %gcc@12.4.0
 spack install -j48 boost@1.80.0 %gcc@12.4.0
 
-./candi.sh -p "/home/ymma/lvdata/libs/dealii/candiinstall/" -j8 --platform=./deal.II-toolchain/platforms/supported/linux_cluster.platform
+export MPI_DIR=$(spack location -i openmpi)
+export MPI_BIN=$MPI_DIR/bin
+export MPI_INCLUDE=$MPI_DIR/include
+export MPI_LIB=$MPI_DIR/lib
 
-export MPI_HOME=$(spack location -i openmpi)
-export CPATH=$MPI_HOME/include:$CPATH
+export PATH=$MPI_BIN:$PATH
+export LD_LIBRARY_PATH=$MPI_LIB:$LD_LIBRARY_PATH
+export CPATH=$MPI_INCLUDE:$CPATH
+export LIBRARY_PATH=$MPI_LIB:$LIBRARY_PATH
+
 export CC=mpicc
 export CXX=mpicxx
+
+./candi.sh -p "/home/ymma/lvdata/libs/dealii/candiinstall/" -j8 --platform=./deal.II-toolchain/platforms/supported/linux_cluster.platform
+
+
 export CFLAGS="-fPIC"
 export CXXFLAGS="-fPIC"
 export FCFLAGS="-fPIC"
@@ -193,11 +203,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDM1MTcxNTEsLTYzMTU1MDQwMCwtNj
-QwNDM2Mzk1LDE3ODYzODU0MzEsLTIyMzE2NjcyOSwxNDUwODQy
-MDMwLC02NjYyNzMxNjEsLTE1MTU2MTgyNzQsMjY4OTkxOTQyLC
-0xNzUwMDAwOTgxLDE3NTcyMTY1MDUsLTE3OTA1NzkyNTEsLTU5
-Mzg0NDE2Miw1MTQyMDQyODAsMzYwMDY3NDc3LC0xMTU3MTE1Mz
-I1LC03NjkyMzEwMTgsODg4NzAwNTAyLC0xODM5NTgzMDUzLDE4
-NTAxMTYzMDNdfQ==
+eyJoaXN0b3J5IjpbLTEzNjg1MjAxNjUsLTIwNDM1MTcxNTEsLT
+YzMTU1MDQwMCwtNjQwNDM2Mzk1LDE3ODYzODU0MzEsLTIyMzE2
+NjcyOSwxNDUwODQyMDMwLC02NjYyNzMxNjEsLTE1MTU2MTgyNz
+QsMjY4OTkxOTQyLC0xNzUwMDAwOTgxLDE3NTcyMTY1MDUsLTE3
+OTA1NzkyNTEsLTU5Mzg0NDE2Miw1MTQyMDQyODAsMzYwMDY3ND
+c3LC0xMTU3MTE1MzI1LC03NjkyMzEwMTgsODg4NzAwNTAyLC0x
+ODM5NTgzMDUzXX0=
 -->
