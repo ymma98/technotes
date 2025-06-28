@@ -149,11 +149,9 @@ export CXX=mpicxx
 
 ./candi.sh -p "/home/ymma/lvdata/libs/dealii/candiinstall/" -j8 --platform=./deal.II-toolchain/platforms/supported/linux_cluster.platform
 
+使用时:
 
-export CFLAGS="-fPIC"
-export CXXFLAGS="-fPIC"
-export FCFLAGS="-fPIC"
-export FFLAGS="-fPIC"
+spack install assimp %gcc@12.4.0
 ```
 
 
@@ -206,11 +204,11 @@ cmake -B build \
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxMTY0MDQ5NiwtMTM2ODUyMDE2NSwtMj
-A0MzUxNzE1MSwtNjMxNTUwNDAwLC02NDA0MzYzOTUsMTc4NjM4
-NTQzMSwtMjIzMTY2NzI5LDE0NTA4NDIwMzAsLTY2NjI3MzE2MS
-wtMTUxNTYxODI3NCwyNjg5OTE5NDIsLTE3NTAwMDA5ODEsMTc1
-NzIxNjUwNSwtMTc5MDU3OTI1MSwtNTkzODQ0MTYyLDUxNDIwND
-I4MCwzNjAwNjc0NzcsLTExNTcxMTUzMjUsLTc2OTIzMTAxOCw4
-ODg3MDA1MDJdfQ==
+eyJoaXN0b3J5IjpbLTEwMDIwODkyOTUsMTIxMTY0MDQ5NiwtMT
+M2ODUyMDE2NSwtMjA0MzUxNzE1MSwtNjMxNTUwNDAwLC02NDA0
+MzYzOTUsMTc4NjM4NTQzMSwtMjIzMTY2NzI5LDE0NTA4NDIwMz
+AsLTY2NjI3MzE2MSwtMTUxNTYxODI3NCwyNjg5OTE5NDIsLTE3
+NTAwMDA5ODEsMTc1NzIxNjUwNSwtMTc5MDU3OTI1MSwtNTkzOD
+Q0MTYyLDUxNDIwNDI4MCwzNjAwNjc0NzcsLTExNTcxMTUzMjUs
+LTc2OTIzMTAxOF19
 -->
