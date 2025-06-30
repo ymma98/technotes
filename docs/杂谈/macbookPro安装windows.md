@@ -25,9 +25,14 @@
 	cd $env:USERPROFILE\Downloads
 	.\brigadier.exe --model MacBookPro14,2
 	```
-	* 进入刚安装好的 ``
+	* 进入刚安装好的 BootCamp-xxxx\BootCamp 文件夹, 执行
+	```bash
+	.\Setup.exe
+	```
+
+* 最后, 重启, 并开机后在任务管理器中禁用 BootCamp, 否则每次开机都会弹窗报错，但实际上驱动已经可以用了。
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk5OTc5MDA0XX0=
+eyJoaXN0b3J5IjpbLTU3MTA2MDcxMF19
 -->
