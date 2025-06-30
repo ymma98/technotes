@@ -6,7 +6,9 @@
 
 需要: 拓展坞，外接的键盘，鼠标和无线网卡。
 
-* 关机，在拓展坞上插入启动盘 (我的启动盘是用 )
+* 关机，在拓展坞上插入启动盘 (我的启动盘是用 ventoy 制作的)
+* 开机, 按住 `alt` 键不松手 (对应 mac `Option` )
+* 一路格式化，正常安装
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2NDA2MjAzOF19
+eyJoaXN0b3J5IjpbLTIwMDQ3MzgyNDddfQ==
 -->
