@@ -16,9 +16,9 @@
 	* 在 powershell 中执行:
 	
 	```bash
-	Invoke-WebRequest `
-  -Uri "https://github.com/timsutton/brigadier/releases/latest/download/brigadier.exe" `
-  -OutFile "$env:USERPROFILE\Downloads\brigadier.exe"
+	   Invoke-WebRequest `
+        -Uri "https://github.com/timsutton/brigadier/releases/latest/download/brigadier.exe" `
+      -OutFile "$env:USERPROFILE\Downloads\brigadier.exe"
 	```
 
 	* 之后安装 7-zip. 访问 www.7-zip.org/, 下载win11安装程序并安装。
@@ -39,5 +39,6 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTUxOTAzNzIsLTY2NDcyMjA0Nl19
+eyJoaXN0b3J5IjpbMTAwNTE1OTc5MiwtMTE1NTE5MDM3MiwtNj
+Y0NzIyMDQ2XX0=
 -->
