@@ -14,6 +14,7 @@
 
 * 安装硬件驱动
 	* 在 powershell 中执行:
+	*
 	```bash
 	Invoke-WebRequest `
   -Uri "https://github.com/timsutton/brigadier/releases/latest/download/brigadier.exe" `
@@ -34,5 +35,5 @@
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NDcyMjA0Nl19
+eyJoaXN0b3J5IjpbLTcwODQxMjk4MiwtNjY0NzIyMDQ2XX0=
 -->
