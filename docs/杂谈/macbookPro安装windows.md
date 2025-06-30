@@ -15,19 +15,19 @@
 * 安装硬件驱动
 	* 在 powershell 中执行:
 	```bash
-	```
-
-	```bash
-Invoke-WebRequest `
+	Invoke-WebRequest `
   -Uri "https://github.com/timsutton/brigadier/releases/latest/download/brigadier.exe" `
   -OutFile "$env:USERPROFILE\Downloads\brigadier.exe"
 	```
-* 然后
+	* 之后安装 7-zip. 访问 www.7-zip.org/, 下载win11安装程序并安装。
+	* 然后
+	```bash
+	cd $env:USERPROFILE\Downloads
+	.\brigadier.exe --model MacBookPro14,2
+	```
+	* 进入刚安装好的 ``
 
-```bash
-cd $env:USERPROFILE\Downloads
-```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3MTcwMjY1M119
+eyJoaXN0b3J5IjpbNjk5OTc5MDA0XX0=
 -->
