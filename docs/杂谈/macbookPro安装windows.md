@@ -10,16 +10,24 @@
 * 开机, 按住 `alt` 键不松手 (对应 mac `Option` )
 * 一路格式化，正常安装
 * 装好win11 后, 进入 settings 查看设备型号, 我这里是 MacBookPro14,2
+
+
 * 安装硬件驱动
 	* 在 powershell 中执行:
-	* 
-```bash
+	```bash
+	```
+
+	```bash
 Invoke-WebRequest `
   -Uri "https://github.com/timsutton/brigadier/releases/latest/download/brigadier.exe" `
   -OutFile "$env:USERPROFILE\Downloads\brigadier.exe"
+	```
+* 然后
+
+```bash
+cd $env:USERPROFILE\Downloads
 ```
 
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODk1MDkwMDk4XX0=
+eyJoaXN0b3J5IjpbMTE3MTcwMjY1M119
 -->
