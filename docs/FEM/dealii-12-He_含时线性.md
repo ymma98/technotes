@@ -17,6 +17,8 @@ $$
 
 where $f(x, y, t)$ and $c(x, y, t)$ are given functions.
 
+To get the weak form,
+
 $$
 \Rightarrow \ u_t v - \nabla \cdot (c \nabla u) v = f v \quad \text{in} \ \Omega
 $$
@@ -25,12 +27,11 @@ $$
 \Rightarrow \int_{\Omega} u_t v \, dx \, dy - \int_{\Omega} \nabla \cdot (c \nabla u) v \, dx \, dy = \int_{\Omega} f v \, dx \, dy
 $$
 
-$u(x, y, t)$ is called a trial function and $v(x, y)$ is called a test function.
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2MjgwNDUyNSwxNzM3MjEwNzQxLC02NT
-kyOTc4MjldfQ==
+eyJoaXN0b3J5IjpbNzM3Mzg2MDc3LDE3MzcyMTA3NDEsLTY1OT
+I5NzgyOV19
 -->
