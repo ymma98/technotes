@@ -56,6 +56,35 @@ $$
 u_h(x, y, t) = \sum_{j=1}^{N_b} u_j(t) \varphi_j(x, y)
 $$
 
+Define the stiffness matrix
+
+$$
+A(t) = [a_{ij}]_{i,j=1}^{N_b} = \left[ \int_{\Omega} c \nabla \varphi_j \cdot \nabla \varphi_i \, dx \, dy \right]_{i,j=1}^{N_b}.
+$$
+
+Define the mass matrix
+
+$$
+M = [m_{ij}]_{i,j=1}^{N_b} = \left[ \int_{\Omega} \varphi_j \varphi_i \, dx \, dy \right]_{i,j=1}^{N_b}.
+$$
+
+Define the load vector
+
+$$
+\vec{b}(t) = [b_i]_{i=1}^{N_b} = \left[ \int_{\Omega} f \varphi_i \, dx \, dy \right]_{i=1}^{N_b}.
+$$
+
+Define the unknown vector
+
+$$
+\vec{X}(t) = [u_j(t)]_{j=1}^{N_b}.
+$$
+
+Then we obtain the system
+
+$$
+M \vec{X}'(t) + A(t) \vec{X}(t) = \vec{b}(t).
+$$
 
 
 
@@ -63,7 +92,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MzE3MzYyMiwxNDQ4MDg0ODkwLC0xOD
+eyJoaXN0b3J5IjpbLTQ0MDQyNzY0NywxNDQ4MDg0ODkwLC0xOD
 IyMTg2NzI2LC03OTU0MTUwMzksMTg1NzgxMzU1LDE3MzcyMTA3
 NDEsLTY1OTI5NzgyOV19
 -->
