@@ -1,5 +1,7 @@
 # dealii-12-He_含时线性
 
+## 弱格式
+
 对应 Chapter 4: Finite Elements for 2D second order parabolic and hyperbolic equation. 
 
 
@@ -87,12 +89,25 @@ M \vec{X}'(t) + A(t) \vec{X}(t) = \vec{b}(t).
 $$
 
 
+## 时间离散
+
+General $\theta$-scheme:
+
+$$
+\frac{y_{j+1} - y_j}{h} = \theta f(t_{j+1}, y_{j+1}) + (1 - \theta) f(t_j, y_j);
+$$
+
+- $\theta = 0$: forward Euler scheme;
+- $\theta = 1$: backward Euler scheme;
+- $\theta = \frac{1}{2}$: Crank-Nicolson scheme.
+
+
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0MDQyNzY0NywxNDQ4MDg0ODkwLC0xOD
-IyMTg2NzI2LC03OTU0MTUwMzksMTg1NzgxMzU1LDE3MzcyMTA3
-NDEsLTY1OTI5NzgyOV19
+eyJoaXN0b3J5IjpbLTEzNDU4Mjg0NTgsLTQ0MDQyNzY0NywxND
+Q4MDg0ODkwLC0xODIyMTg2NzI2LC03OTU0MTUwMzksMTg1Nzgx
+MzU1LDE3MzcyMTA3NDEsLTY1OTI5NzgyOV19
 -->
