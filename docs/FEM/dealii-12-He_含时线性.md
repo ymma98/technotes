@@ -32,10 +32,19 @@ $$
 $$
 
 
+Let $a(u, v) = \int_{\Omega} c \nabla u \cdot \nabla v \, dx \, dy$ and $(f, v) = \int_{\Omega} f v \, dx \, dy$.
+
+**Weak formulation**: find $u \in H^1(0, T; H^1(\Omega))$ such that
+
+$$
+(u_t, v) + a(u, v) = (f, v)
+$$
+
+for any $v \in H^1_0(\Omega)$ (Dirichlet BC here).
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NzgxMzU1LDE3MzcyMTA3NDEsLTY1OT
-I5NzgyOV19
+eyJoaXN0b3J5IjpbLTc5NTQxNTAzOSwxODU3ODEzNTUsMTczNz
+IxMDc0MSwtNjU5Mjk3ODI5XX0=
 -->
