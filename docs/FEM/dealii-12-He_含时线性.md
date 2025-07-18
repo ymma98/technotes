@@ -52,10 +52,15 @@ $$
 \Leftrightarrow \int_{\Omega} u_{ht} v_h \, dx \, dy + \int_{\Omega} c \nabla u_h \cdot \nabla v_h \, dx \, dy = \int_{\Omega} f v_h \, dx \, dy
 $$
 
+$$
+u_h(x, y, t) = \sum_{j=1}^{N_b} u_j(t) \varphi_j(x, y)
+$$
+
+
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4MTQ0OTk3MiwtNzk1NDE1MDM5LDE4NT
-c4MTM1NSwxNzM3MjEwNzQxLC02NTkyOTc4MjldfQ==
+eyJoaXN0b3J5IjpbLTE4MjIxODY3MjYsLTc5NTQxNTAzOSwxOD
+U3ODEzNTUsMTczNzIxMDc0MSwtNjU5Mjk3ODI5XX0=
 -->
