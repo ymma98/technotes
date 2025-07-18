@@ -42,6 +42,8 @@ $$
 
 for any $v \in H^1_0(\Omega)$ (Dirichlet BC here).
 
+Discretization: 
+
 $$
 (u_{ht}, v_h) + a(u_h, v_h) = (f, v_h)
 $$
@@ -54,6 +56,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxMzcwMzI1MCwtNzk1NDE1MDM5LDE4NT
+eyJoaXN0b3J5IjpbLTM4MTQ0OTk3MiwtNzk1NDE1MDM5LDE4NT
 c4MTM1NSwxNzM3MjEwNzQxLC02NTkyOTc4MjldfQ==
 -->
