@@ -107,10 +107,28 @@ $$
 
 
 
+$$
+\Rightarrow \left[ \frac{M}{\Delta t} + \theta A(t_{m+1}) \right] \vec{X}^{m+1} = \theta \vec{b}(t_{m+1}) + (1 - \theta) \vec{b}(t_m) + \frac{M}{\Delta t} \vec{X}^m - (1 - \theta) A(t_m) \vec{X}^m
+$$
+
+
+$$
+\tilde{A}^{m+1} \vec{X}^{m+1} = \tilde{b}^{m+1}, \quad m = 0, \dots, M_m - 1,
+$$
+
+where
+
+$$
+\tilde{A}^{m+1} = \frac{M}{\Delta t} + \theta A(t_{m+1}),
+$$
+
+$$
+\tilde{b}^{m+1} = \theta \vec{b}(t_{m+1}) + (1 - \theta) \vec{b}(t_m) + \left[ \frac{M}{\Delta t}  - (1 - \theta) A(t_m) \right] \vec{X}^m.
+$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODMxNDgzNjkwLC00NDA0Mjc2NDcsMTQ0OD
-A4NDg5MCwtMTgyMjE4NjcyNiwtNzk1NDE1MDM5LDE4NTc4MTM1
-NSwxNzM3MjEwNzQxLC02NTkyOTc4MjldfQ==
+eyJoaXN0b3J5IjpbMTIzNDU4Nzc4Nyw4MzE0ODM2OTAsLTQ0MD
+QyNzY0NywxNDQ4MDg0ODkwLC0xODIyMTg2NzI2LC03OTU0MTUw
+MzksMTg1NzgxMzU1LDE3MzcyMTA3NDEsLTY1OTI5NzgyOV19
 -->
