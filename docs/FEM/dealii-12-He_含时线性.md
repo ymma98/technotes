@@ -34,7 +34,7 @@ $$
 
 Let $a(u, v) = \int_{\Omega} c \nabla u \cdot \nabla v \, dx \, dy$ and $(f, v) = \int_{\Omega} f v \, dx \, dy$.
 
-**Weak formulation**: find $u \in H^1(0, T; H^1(\Omega))$ such that
+Weak formulation: find $u \in H^1(0, T; H^1(\Omega))$ such that
 
 $$
 (u_t, v) + a(u, v) = (f, v)
@@ -42,9 +42,18 @@ $$
 
 for any $v \in H^1_0(\Omega)$ (Dirichlet BC here).
 
+$$
+(u_{ht}, v_h) + a(u_h, v_h) = (f, v_h)
+$$
+
+$$
+\Leftrightarrow \int_{\Omega} u_{ht} v_h \, dx \, dy + \int_{\Omega} c \nabla u_h \cdot \nabla v_h \, dx \, dy = \int_{\Omega} f v_h \, dx \, dy
+$$
+
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5NTQxNTAzOSwxODU3ODEzNTUsMTczNz
-IxMDc0MSwtNjU5Mjk3ODI5XX0=
+eyJoaXN0b3J5IjpbLTUxMzcwMzI1MCwtNzk1NDE1MDM5LDE4NT
+c4MTM1NSwxNzM3MjEwNzQxLC02NTkyOTc4MjldfQ==
 -->
