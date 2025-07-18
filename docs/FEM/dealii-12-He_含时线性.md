@@ -17,7 +17,7 @@ $$
 
 where $f(x, y, t)$ and $c(x, y, t)$ are given functions.
 
-To get the weak form,
+**To get the weak form**,
 
 $$
 \Rightarrow \ u_t v - \nabla \cdot (c \nabla u) v = f v \quad \text{in} \ \Omega
@@ -61,6 +61,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjIxODY3MjYsLTc5NTQxNTAzOSwxOD
-U3ODEzNTUsMTczNzIxMDc0MSwtNjU5Mjk3ODI5XX0=
+eyJoaXN0b3J5IjpbMTQ0ODA4NDg5MCwtMTgyMjE4NjcyNiwtNz
+k1NDE1MDM5LDE4NTc4MTM1NSwxNzM3MjEwNzQxLC02NTkyOTc4
+MjldfQ==
 -->
