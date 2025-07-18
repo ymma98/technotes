@@ -27,11 +27,15 @@ $$
 \Rightarrow \int_{\Omega} u_t v \, dx \, dy - \int_{\Omega} \nabla \cdot (c \nabla u) v \, dx \, dy = \int_{\Omega} f v \, dx \, dy
 $$
 
+$$
+\int_{\Omega} u_t v \, dx \, dy + \int_{\Omega} c \nabla u \cdot \nabla v \, dx \, dy - \int_{\partial \Omega} (c \nabla u \cdot \hat{n}) v \, ds = \int_{\Omega} f v \, dx \, dy.
+$$
+
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzM3Mzg2MDc3LDE3MzcyMTA3NDEsLTY1OT
+eyJoaXN0b3J5IjpbMTg1NzgxMzU1LDE3MzcyMTA3NDEsLTY1OT
 I5NzgyOV19
 -->
