@@ -126,9 +126,41 @@ $$
 \tilde{b}^{m+1} = \theta \vec{b}(t_{m+1}) + (1 - \theta) \vec{b}(t_m) + \left[ \frac{M}{\Delta t}  - (1 - \theta) A(t_m) \right] \vec{X}^m.
 $$
 
+## 具体的问题
+
+**Example 1**: Use the finite element method to solve the following equation for $u(x, y, t)$ on the domain $\Omega = [0, 2] \times [0, 1]$:
+
+$$
+u_t - \nabla \cdot (2 \nabla u) = -3 e^{x + y + t}, \quad \text{on} \ \Omega \times [0, 1],
+$$
+
+$$
+u(x, y, 0) = e^{x + y}, \quad \text{on} \ \partial \Omega,
+$$
+
+$$
+u = e^{y + t} \quad \text{on} \ x = 0,
+$$
+
+$$
+u = e^{2 + y + t} \quad \text{on} \ x = 2,
+$$
+
+$$
+u = e^{x + t} \quad \text{on} \ y = 0,
+$$
+
+$$
+u = e^{x + 1 + t} \quad \text{on} \ y = 1.
+$$
+
+The analytic solution of this problem is $u = e^{x + y + t}$, which can be used to compute the error of the numerical solution.
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIzNDU4Nzc4Nyw4MzE0ODM2OTAsLTQ0MD
-QyNzY0NywxNDQ4MDg0ODkwLC0xODIyMTg2NzI2LC03OTU0MTUw
-MzksMTg1NzgxMzU1LDE3MzcyMTA3NDEsLTY1OTI5NzgyOV19
+eyJoaXN0b3J5IjpbLTY0MTU4NDkyNiwxMjM0NTg3Nzg3LDgzMT
+Q4MzY5MCwtNDQwNDI3NjQ3LDE0NDgwODQ4OTAsLTE4MjIxODY3
+MjYsLTc5NTQxNTAzOSwxODU3ODEzNTUsMTczNzIxMDc0MSwtNj
+U5Mjk3ODI5XX0=
 -->
