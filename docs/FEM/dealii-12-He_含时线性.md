@@ -128,7 +128,7 @@ $$
 
 ## 具体的问题
 
-**Example 1**: Use the finite element method to solve the following equation for $u(x, y, t)$ on the domain $\Omega = [0, 2] \times [0, 1]$:
+ $\Omega = [0, 2] \times [0, 1]$:
 
 $$
 u_t - \nabla \cdot (2 \nabla u) = -3 e^{x + y + t}, \quad \text{on} \ \Omega \times [0, 1],
@@ -154,13 +154,13 @@ $$
 u = e^{x + 1 + t} \quad \text{on} \ y = 1.
 $$
 
-The analytic solution of this problem is $u = e^{x + y + t}$, which can be used to compute the error of the numerical solution.
+The analytic solution of this problem is $u = e^{x + y + t}$.
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY0MTU4NDkyNiwxMjM0NTg3Nzg3LDgzMT
-Q4MzY5MCwtNDQwNDI3NjQ3LDE0NDgwODQ4OTAsLTE4MjIxODY3
-MjYsLTc5NTQxNTAzOSwxODU3ODEzNTUsMTczNzIxMDc0MSwtNj
-U5Mjk3ODI5XX0=
+eyJoaXN0b3J5IjpbLTEzMTMwNzUxMjQsMTIzNDU4Nzc4Nyw4Mz
+E0ODM2OTAsLTQ0MDQyNzY0NywxNDQ4MDg0ODkwLC0xODIyMTg2
+NzI2LC03OTU0MTUwMzksMTg1NzgxMzU1LDE3MzcyMTA3NDEsLT
+Y1OTI5NzgyOV19
 -->
