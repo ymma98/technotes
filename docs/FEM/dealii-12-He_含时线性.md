@@ -101,13 +101,16 @@ $$
 - $\theta = 1$: backward Euler scheme;
 - $\theta = \frac{1}{2}$: Crank-Nicolson scheme.
 
+$$
+\frac{M \vec{X}^{m+1} - \vec{X}^m}{\Delta t} + \theta A(t_{m+1}) \vec{X}^{m+1} + (1 - \theta) A(t_m) \vec{X}^m = \theta \vec{b}(t_{m+1}) + (1 - \theta) \vec{b}(t_m), \quad m = 0, \dots, M_m - 1.
+$$
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDU4Mjg0NTgsLTQ0MDQyNzY0NywxND
-Q4MDg0ODkwLC0xODIyMTg2NzI2LC03OTU0MTUwMzksMTg1Nzgx
-MzU1LDE3MzcyMTA3NDEsLTY1OTI5NzgyOV19
+eyJoaXN0b3J5IjpbODMxNDgzNjkwLC00NDA0Mjc2NDcsMTQ0OD
+A4NDg5MCwtMTgyMjE4NjcyNiwtNzk1NDE1MDM5LDE4NTc4MTM1
+NSwxNzM3MjEwNzQxLC02NTkyOTc4MjldfQ==
 -->
