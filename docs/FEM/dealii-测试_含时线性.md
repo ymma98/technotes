@@ -697,13 +697,16 @@ int main(int argc, char **argv){
 
 ## 补充: 记录一个之前没弄懂的地方: 边界条件
 
-1. `constraints.distribute_local_to_global`
+1. `constraints.distribute_local_to_global()` 和 `constraints.condense()` 二选一。当使用 `constraints.condense()` 时，需要使用 `matrix.add(...)` 或者 `vector.add(...)` 
+
+2. `constraints.condense(A, b)` 的过程中发生了什么? 
+* 对于 Dirichlet BC, $u_i =$
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwNjg3MDk2MiwtMzU5MzAyNDk3LDE5MD
+eyJoaXN0b3J5IjpbLTg5OTQ4ODY1OCwtMzU5MzAyNDk3LDE5MD
 c0MjY5MDYsMTg2MDEyOTE2OF19
 -->
