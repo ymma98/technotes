@@ -682,6 +682,12 @@ int main(int argc, char **argv){
 ```
 
 
+以上程序的输出结果:
+
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwNzQyNjkwNiwxODYwMTI5MTY4XX0=
+eyJoaXN0b3J5IjpbOTIyODE1NzI5LDE5MDc0MjY5MDYsMTg2MD
+EyOTE2OF19
 -->
