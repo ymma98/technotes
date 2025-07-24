@@ -735,13 +735,14 @@ $$
 
 这个新的系统大小不变，但等效于求解只包含 $U_1$ 和 $U_3$ 的 2×2 子系统，同时已保证 $U_2=5$。
 
-3. `constraints.distribute()` 用于处理悬挂节点 (hanging node), 比如细网格和粗网格相邻, 细网格在粗网格边上的点就是悬挂节点，需要通过粗网格的点进行插值得到，这些点通过 `distribute()` 函数得到。
+3. `constraints.distribute()` 用于处理悬挂节点 (hanging node), 比如细网格和粗网格相邻, 细网格在粗网格边上的点就是悬挂节点，需要通过粗网格的点进行插值得到，这些点通过 `distribute()` 函数得到。`distribute` 处理一切根据仿射变换待定的节点 (比如周期性边界条件 $u_L=u_R$) 和被强行约束的节点
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODIwMTI2ODAsNzcwOTY3NjUsLTM1OT
-MwMjQ5NywxOTA3NDI2OTA2LDE4NjAxMjkxNjhdfQ==
+eyJoaXN0b3J5IjpbMTIzMDk0ODU3OSwtMjA4MjAxMjY4MCw3Nz
+A5Njc2NSwtMzU5MzAyNDk3LDE5MDc0MjY5MDYsMTg2MDEyOTE2
+OF19
 -->
