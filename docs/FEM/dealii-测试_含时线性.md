@@ -682,6 +682,7 @@ int main(int argc, char **argv){
 ```
 
 
+
 以上程序的输出结果:
 
 
@@ -694,11 +695,15 @@ int main(int argc, char **argv){
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250724/image.6f0zd0gcl6.webp){width=400px}
 
 
+## 补充: 记录一个之前没弄懂的地方: 边界条件
+
+1. `constraints.distribute_local_to_global`
+
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1OTMwMjQ5NywxOTA3NDI2OTA2LDE4Nj
-AxMjkxNjhdfQ==
+eyJoaXN0b3J5IjpbLTMwNjg3MDk2MiwtMzU5MzAyNDk3LDE5MD
+c0MjY5MDYsMTg2MDEyOTE2OF19
 -->
