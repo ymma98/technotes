@@ -735,13 +735,13 @@ $$
 
 这个新的系统大小不变，但等效于求解只包含 $U_1$ 和 $U_3$ 的 2×2 子系统，同时已保证 $U_2=5$。
 
-3. 
+3. `constraints.distribute()` 用于处理挂点 ()
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzcwOTY3NjUsLTM1OTMwMjQ5NywxOTA3ND
-I2OTA2LDE4NjAxMjkxNjhdfQ==
+eyJoaXN0b3J5IjpbLTEzNDAyNzY5NzEsNzcwOTY3NjUsLTM1OT
+MwMjQ5NywxOTA3NDI2OTA2LDE4NjAxMjkxNjhdfQ==
 -->
