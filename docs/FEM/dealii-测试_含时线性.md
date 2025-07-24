@@ -735,13 +735,13 @@ $$
 
 这个新的系统大小不变，但等效于求解只包含 $U_1$ 和 $U_3$ 的 2×2 子系统，同时已保证 $U_2=5$。
 
-3. `constraints.distribute()` 用于处理悬挂节点 (hanging node), 比如细网格和粗网格相邻, 细网格
+3. `constraints.distribute()` 用于处理悬挂节点 (hanging node), 比如细网格和粗网格相邻, 细网格在粗网格边上的点就是悬挂节点，需要通过粗网格的点进行插值得到，这些点通过 `distribute()` 函数得到。
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1NzA0OTE3Niw3NzA5Njc2NSwtMzU5Mz
-AyNDk3LDE5MDc0MjY5MDYsMTg2MDEyOTE2OF19
+eyJoaXN0b3J5IjpbLTIwODIwMTI2ODAsNzcwOTY3NjUsLTM1OT
+MwMjQ5NywxOTA3NDI2OTA2LDE4NjAxMjkxNjhdfQ==
 -->
