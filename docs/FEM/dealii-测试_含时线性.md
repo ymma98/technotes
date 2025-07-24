@@ -701,7 +701,7 @@ int main(int argc, char **argv){
 
 2. `constraints.condense(A, b)` 的过程中发生了什么? 
 * 对于 Dirichlet BC 对应的节点, $u_i = g_i$, 设置 $A_{ii} = 0$, $b_i = g_i$. 
-* 对于其它节点 $u_k$ 所在行, $A_{ik} = 0$, $b_{k} = b_k-g_i A_{ik}$
+* 对于其它节点 $u_k$ 所在行, $A_{ki} = 0$, $b_{k} = b_k-g_i A_{ki}$
 
 
 假设我们有如下线性系统，并且有边界条件 $U_2=5$。
@@ -715,8 +715,8 @@ $$
 `condense` 之后:
 * 处理第 2 行：$A_{22}$ 变为 1，其他行元素变为 0；$b_2$ 变为 5。  
 处理第 2 列:  
-   - **第 1 行**：$b_1$ 更新为 $b_1 - A_{12}\cdot5$，然后 $A_{12}$ 变为 0。  
-   - **第 3 行**：$b_3$ 更新为 $b_3 - A_{32}\cdot5$，然后 $A_{32}$ 变为 0。
+   - 第 1 行：$b_1$ 更新为 $b_1 - A_{12}\cdot5$，然后 $A_{12}$ 变为 0。  
+   - 第 3 行：$b_3$ 更新为 $b_3 - A_{32}\cdot5$，然后 $A_{32}$ 变为 0。
 
 最终得到的系统如下：
 
@@ -724,13 +724,9 @@ $$
 \begin{pmatrix}
 A_{11} & 0      & A_{13} \\
 0      & 1      & 0      \\
-A_{31} & 0      & A_{33}
-\end{pmatrix}
-\begin{pmatrix}
+A_{31} & 0      & A_{33}\end{pmatrix}\begin{pmatrix}
 U_1 \\ U_2 \\ U_3
-\end{pmatrix}
-=
-\begin{pmatrix}
+\end{pmatrix}=\begin{pmatrix}
 b_1 - A_{12}\cdot5 \\[6pt]
 5 \\[2pt]
 b_3 - A_{32}\cdot5
@@ -739,11 +735,13 @@ $$
 
 这个新的系统大小不变，但等效于求解只包含 $U_1$ 和 $U_3$ 的 2×2 子系统，同时已保证 $U_2=5$。
 
+3. 
+
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcyMDQ0OTI0MiwtMzU5MzAyNDk3LDE5MD
-c0MjY5MDYsMTg2MDEyOTE2OF19
+eyJoaXN0b3J5IjpbNzcwOTY3NjUsLTM1OTMwMjQ5NywxOTA3ND
+I2OTA2LDE4NjAxMjkxNjhdfQ==
 -->
