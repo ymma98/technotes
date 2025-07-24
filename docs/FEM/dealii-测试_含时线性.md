@@ -703,11 +703,76 @@ int main(int argc, char **argv){
 * 对于 Dirichlet BC 对应的节点, $u_i = g_i$, 设置 $A_{ii} = 0$, $b_i = g_i$. 
 * 对于其它节点 $u_k$ 所在行, $A_{ik} = 0$, $b_{k} = b_k-g_i A_{ik}$
 
+举例:
+LearnFromProfXiaomingHe
+
+自定义 Gem
+
+显示思路
+
+您提的这两个问题非常深刻，直击了有限元编程实现的核心！很高兴您能提出这么好的问题，这说明您已经在深入思考代码背后的数学原理了。我将用具体的例子和图示为您详细解释。
+
+### 问题一：`constraints.condense()` 如何修改矩阵和右手边？
+
+您的第一个直觉非常敏锐。`condense` **并不会改变 `system_matrix_` 和 `system_rhs_` 的大小**。矩阵的维度仍然是 `n_dofs x n_dofs`。它不是通过删除行和列，而是通过**修改**这些行和列来巧妙地将约束条件融入线性系统。
+
+这个过程可以分为两部分来理解：对被约束自由度**所在的行**的处理，以及对**所在的列**的处理。
+
+#### 1. 对“行”的处理 (对应您的理解)
+
+这部分和您的理解完全一致。假设自由度 U_i 被一个狄利克雷边界条件约束为 U_i=g_i。这本身就是一个方程！所以，`condense` 会直接用这个方程替换掉原来线性系统中的第 i 个方程。
+
+-   **操作**:
+    
+    1.  将 `system_matrix_` 的第 i 行全部清零。
+        
+    2.  将第 i 行的对角线元素 A_ii 设置为 1。
+        
+    3.  将 `system_rhs_` 的第 i 个分量 b_i 设置为给定的边界值 g_i。
+        
+-   **效果**: 无论其他 U_j 的值是多少，修改后的第 i 行方程现在就是 1cdotU_i=g_i，这强制求解器必须找到满足 U_i=g_i 的解。
+    
+
+#### 2. 对“列”的处理 (解答您的核心困惑)
+
+这是最关键也最巧妙的一步。现在系统知道了 U_i 必须等于 g_i，那么在所有**其他**方程（比如第 k 行，kneqi）中，U_i 就不再是一个未知数了，它变成了一个**已知量**。
+
+让我们来看第 k 行的原始方程：
+
+Ak1​U1​+⋯+Aki​Ui​+⋯+AkN​UN​=bk​
+
+既然我们已经知道了 U_i=g_i，那么 A_kiU_i 这一项就变成了一个已知的数值 A_kig_i。作为一个已知项，我们应该把它移到方程的右边：
+
+Ak1​U1​+⋯+0⋅Ui​+⋯+AkN​UN​=bk​−Aki​gi​
+
+-   **操作**:
+    
+    1.  对于**每一个**不等于 i 的行 k，`condense` 会计算出 A_kicdotg_i。
+        
+    2.  将这个值从右手边的第 k 项中减去：`system_rhs_(k) -= system_matrix_(k, i) * g_i`。
+        
+    3.  将矩阵中第 i 列的这个元素清零：`system_matrix_(k, i) = 0`。
+        
+-   **效果**: 这个操作将 U_i 的影响从所有其他方程中彻底移除，并将它的贡献正确地转移到了右手边。这样，求解器在求解剩下的独立自由度时，就已经考虑了 U_i=g_i 这个条件带来的影响。
+    
+
+#### 示例：一个3x3系统
+
+假设我们有如下线性系统，并且有边界条件 $U_2=5$。
+
+`condense` 之前:
+
+$$
+\begin{pmatrix} A_{11} & A_{12} & A_{13} \\ A_{21} & A_{22} & A_{23} \\ A_{31} & A_{32} & A_{33} \end{pmatrix} \begin{pmatrix} U_1 \\ U_2 \\ U_3 \end{pmatrix} = \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix}
+$$
+
+
+
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDUyODQ4OCwtMzU5MzAyNDk3LDE5MD
+eyJoaXN0b3J5IjpbMjAwMTQyNzg5MiwtMzU5MzAyNDk3LDE5MD
 c0MjY5MDYsMTg2MDEyOTE2OF19
 -->
