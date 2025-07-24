@@ -700,13 +700,14 @@ int main(int argc, char **argv){
 1. `constraints.distribute_local_to_global()` 和 `constraints.condense()` 二选一。当使用 `constraints.condense()` 时，需要使用 `matrix.add(...)` 或者 `vector.add(...)` 
 
 2. `constraints.condense(A, b)` 的过程中发生了什么? 
-* 对于 Dirichlet BC, $u_i =$
+* 对于 Dirichlet BC 对应的节点, $u_i = g_i$, 设置 $A_{ii} = 0$, $b_i = g_i$. 
+* 对于其它节点 $u_k$ 所在行, $A_{ik} = 0$, $b_{k} = b_k-g_i A_{ik}$
 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5OTQ4ODY1OCwtMzU5MzAyNDk3LDE5MD
+eyJoaXN0b3J5IjpbLTEwMDUyODQ4OCwtMzU5MzAyNDk3LDE5MD
 c0MjY5MDYsMTg2MDEyOTE2OF19
 -->
