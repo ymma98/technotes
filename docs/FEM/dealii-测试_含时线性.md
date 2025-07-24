@@ -684,10 +684,10 @@ int main(int argc, char **argv){
 
 以上程序的输出结果:
 
-
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250724/image.6f0zd0gcl6.webp)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTIyODE1NzI5LDE5MDc0MjY5MDYsMTg2MD
-EyOTE2OF19
+eyJoaXN0b3J5IjpbLTE3NzE5OTA1MTEsMTkwNzQyNjkwNiwxOD
+YwMTI5MTY4XX0=
 -->
