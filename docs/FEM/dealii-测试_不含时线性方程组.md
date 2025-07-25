@@ -48,12 +48,11 @@ $$
 将 $\vec{u}$ 乘以对应的 test function $\vec{v}$, 
 
 $$
-\int_{\Omega} \bigl(\nabla \cdot \sigma(\vec{u})\bigr)\cdot \vec{v} dV
-\;=\;
+-\int_{\Omega} \bigl(\nabla \cdot \sigma(\vec{u})\bigr)\cdot \vec{v} dV=
 \int_{\Omega} \vec{f}\cdot \vec{v} dV
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMT
-M2MjIwMDk4N119
+eyJoaXN0b3J5IjpbNjExNTExODI4LC0xMjU5NDk5MDY3LC05Nj
+k2NjAwNjMsLTEzNjIyMDA5ODddfQ==
 -->
