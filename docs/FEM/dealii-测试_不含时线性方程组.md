@@ -45,6 +45,9 @@ $$
 \end{pmatrix}.
 $$
 
+将 $\vec{u}$ 乘以对应的 test function $\vec{v}$, 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbMTk3MjE1NTM4NiwtOTY5NjYwMDYzLC0xMz
+YyMjAwOTg3XX0=
 -->
