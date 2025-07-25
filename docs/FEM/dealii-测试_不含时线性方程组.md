@@ -53,14 +53,12 @@ $$
 $$
 
 $$
-\int_{\Omega} \bigl(\nabla \cdot \sigma(u)\bigr)\cdot v \;dx_{1}\,dx_{2}
-\;=\;
-\int_{\partial\Omega}\bigl(\sigma(u)\,n\bigr)\cdot v \;ds
-\;-\;
-\int_{\Omega}\sigma(u)\!:\!\nabla v \;dx_{1}\,dx_{2}
+\int_{\Omega} \bigl(\nabla \cdot \sigma(\vec{u})\bigr)\cdot \vec{v} \;dV=
+\int_{\partial\Omega}\bigl(\sigma(\vec{u}) \vec{n}\bigr)\cdot \vec{v} dS-
+\int_{\Omega}\sigma(\vec{u}):\nabla v dV
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk2MjU3MTkxLDYxMTUxMTgyOCwtMTI1OT
-Q5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNT
+k0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
 -->
