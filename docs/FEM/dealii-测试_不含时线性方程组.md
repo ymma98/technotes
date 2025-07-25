@@ -52,7 +52,15 @@ $$
 \int_{\Omega} \vec{f}\cdot \vec{v} dV
 $$
 
+$$
+\int_{\Omega} \bigl(\nabla \cdot \sigma(u)\bigr)\cdot v \;dx_{1}\,dx_{2}
+\;=\;
+\int_{\partial\Omega}\bigl(\sigma(u)\,n\bigr)\cdot v \;ds
+\;-\;
+\int_{\Omega}\sigma(u)\!:\!\nabla v \;dx_{1}\,dx_{2}
+$$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjExNTExODI4LC0xMjU5NDk5MDY3LC05Nj
-k2NjAwNjMsLTEzNjIyMDA5ODddfQ==
+eyJoaXN0b3J5IjpbOTk2MjU3MTkxLDYxMTUxMTgyOCwtMTI1OT
+Q5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
 -->
