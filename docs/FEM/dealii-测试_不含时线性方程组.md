@@ -67,10 +67,25 @@ $$
 \int_{\Omega}\sigma\bigl(\mathbf{u}\bigr)\colon\nabla\mathbf{v}\,dV-\;\int_{\partial\Omega}\bigl(\sigma(\mathbf{u})\,\mathbf{n}\bigr)\cdot\mathbf{v}\,ds=\;\int_{\Omega}\mathbf{f}\cdot\mathbf{v}\,dV
 $$
 
+$$
+A : B \;=\;
+\begin{pmatrix}
+a_{11} & a_{12} \\
+a_{21} & a_{22}
+\end{pmatrix}
+:
+\begin{pmatrix}
+b_{11} & b_{12} \\
+b_{21} & b_{22}
+\end{pmatrix}
+\;=\;
+a_{11}b_{11} + a_{12}b_{12} + a_{21}b_{21} + a_{22}b_{22}\,.
+$$
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMT
-UxMTgyOCwtMTI1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAw
-OTg3XX0=
+eyJoaXN0b3J5IjpbLTc1NTIwMzA0MiwxODYwODQ3NzA2LC01Mz
+Y2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5MDY3LC05Njk2NjAw
+NjMsLTEzNjIyMDA5ODddfQ==
 -->
