@@ -27,6 +27,21 @@ $$
 $$
 \sigma_{ij}(u) = \lambda\,(\nabla\!\cdot u)\delta_{ij} + \mu (\partial_i u_j + \partial_j u_i)
 $$
+
+$$
+\sigma(u)=
+\begin{pmatrix}
+\lambda\bigl(\frac{\partial u_1}{\partial x_1} + \partial_{x_2}u_2\bigr) + 2\mu\,\partial_{x_1}u_1
+&
+\mu\bigl(\partial_{x_2}u_1 + \partial_{x_1}u_2\bigr)
+\\[1ex]
+\mu\bigl(\partial_{x_2}u_1 + \partial_{x_1}u_2\bigr)
+&
+\lambda\bigl(\partial_{x_1}u_1 + \partial_{x_2}u_2\bigr) + 2\mu\,\partial_{x_2}u_2
+\end{pmatrix}.
+$$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzI0ODkzMzE3LC0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbLTE5MjQ2NzAzNDksLTEzNjIyMDA5ODddfQ
+==
 -->
