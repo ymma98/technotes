@@ -5,7 +5,7 @@
 原始方程:
 
 $$
--\operatorname{div}\bigl(C\,\varepsilon(u)\bigr) = f
+-\operatorname{div}\bigl(C\,\varepsilon(\vec{u})\bigr) = f
 $$
 
 其中 $C$ 是四阶矩阵, 上式可以写为
@@ -19,21 +19,21 @@ c_{ijkl} = \lambda\,\delta_{ij}\,\delta_{kl} \;+\; \mu\bigl(\delta_{ik}\,\delta_
 $$
 
 $$
-\varepsilon(u)_{kl} = \frac{1}{2}\bigl(\partial_k u_l + \partial_l u_k\bigr).
+\varepsilon(\vec{u})_{kl} = \frac{1}{2}\bigl(\partial_k u_l + \partial_l u_k\bigr).
 $$
 
 经过简单的推导, $c_{ijkl}\,\varepsilon_{kl}$ 可以写为 $\sigma_{ij}$,
 
 $$
--\nabla\!\cdot\sigma(u) = f
+-\nabla\!\cdot\sigma(\vec{u}) = f
 $$
 
 $$
-\sigma_{ij}(u) = \lambda\,(\nabla\!\cdot u)\delta_{ij} + \mu (\partial_i u_j + \partial_j u_i)
+\sigma_{ij}(u) = \lambda\,(\nabla\!\cdot \vec{u})\delta_{ij} + \mu (\partial_i u_j + \partial_j u_i)
 $$
 
 $$
-\sigma(u)=
+\sigma(\vec{u})=
 \begin{pmatrix}
 \lambda\bigl(\frac{\partial u_1}{\partial x_1} + \frac{\partial u_2}{\partial x_2}\bigr) + 2\mu\,\frac{\partial u_1}{\partial x_1}
 &
@@ -47,7 +47,13 @@ $$
 
 将 $\vec{u}$ 乘以对应的 test function $\vec{v}$, 
 
+$$
+\int_{\Omega} \bigl(\nabla \cdot \sigma(\vec{u})\bigr)\cdot v \,dx_{1}\,dx_{2}
+\;=\;
+\int_{\Omega} f\cdot v \,dx_{1}\,dx_{2}\,.
+$$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3MjE1NTM4NiwtOTY5NjYwMDYzLC0xMz
+eyJoaXN0b3J5IjpbLTIxNzU5ODQ1NSwtOTY5NjYwMDYzLC0xMz
 YyMjAwOTg3XX0=
 -->
