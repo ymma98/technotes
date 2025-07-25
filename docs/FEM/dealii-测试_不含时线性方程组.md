@@ -2,9 +2,15 @@
 
 ## 弱格式
 
+原始方程:
+
 $$
-- \text{div}(\mathbf{C} \, \varepsilon(\mathbf{u})) = \mathbf{f}
-- $$
+-\operatorname{div}\bigl(C\,\varepsilon(u)\bigr) = f
+$$
+
+其中 $C$ 是四阶矩阵, 上式可以写为
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NjExMjYxMywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbMTg1MDIyMzkyLC0xMzYyMjAwOTg3XX0=
 -->
