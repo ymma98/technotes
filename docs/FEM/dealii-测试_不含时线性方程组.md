@@ -25,6 +25,10 @@ $$
 经过简单的推导, $c_{ijkl}\,\varepsilon_{kl}$ 可以写为 $\sigma_{ij}$,
 
 $$
+-\nabla\!\cdot\sigma(u) = f
+$$
+
+$$
 \sigma_{ij}(u) = \lambda\,(\nabla\!\cdot u)\delta_{ij} + \mu (\partial_i u_j + \partial_j u_i)
 $$
 
@@ -42,5 +46,5 @@ $$
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NzAzMTc3NywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
 -->
