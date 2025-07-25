@@ -23,6 +23,10 @@ $$
 $$
 
 经过简单的推导, $c_{ijkl}\,\varepsilon_{kl}$ 可以写为 $\sigma_{ij}$,
+
+$$
+\sigma_{ij}(u) = \lambda\,(\nabla\!\cdot u)\delta_{ij} + \mu (\partial_i u_j + \partial_j u_i)
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE5MzkxMDE0LC0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbMzI0ODkzMzE3LC0xMzYyMjAwOTg3XX0=
 -->
