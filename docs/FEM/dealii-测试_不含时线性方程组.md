@@ -31,17 +31,16 @@ $$
 $$
 \sigma(u)=
 \begin{pmatrix}
-\lambda\bigl(\frac{\partial u_1}{\partial x_1} + \partial_{x_2}u_2\bigr) + 2\mu\,\partial_{x_1}u_1
+\lambda\bigl(\frac{\partial u_1}{\partial x_1} + \frac{\partial u_2}{\partial x_2}\bigr) + 2\mu\,\frac{\partial u_1}{\partial x_1}
 &
-\mu\bigl(\partial_{x_2}u_1 + \partial_{x_1}u_2\bigr)
+\mu\bigl(\frac{\partial u_1}{\partial x_2} + \frac{\partial u_2}{\partial x_1} \bigr)
 \\[1ex]
-\mu\bigl(\partial_{x_2}u_1 + \partial_{x_1}u_2\bigr)
+\mu\bigl(\frac{\partial u_1}{\partial x_2} + \frac{\partial u_2}{\partial x_1}\bigr)
 &
-\lambda\bigl(\partial_{x_1}u_1 + \partial_{x_2}u_2\bigr) + 2\mu\,\partial_{x_2}u_2
+\lambda\bigl(\frac{\partial u_1}{\partial x_1} + \frac{\partial u_2}{\partial x_2}\bigr) + 2\mu\,\frac{\partial u_2}{\partial x_2}
 \end{pmatrix}.
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjQ2NzAzNDksLTEzNjIyMDA5ODddfQ
-==
+eyJoaXN0b3J5IjpbLTI2NzAzMTc3NywtMTM2MjIwMDk4N119
 -->
