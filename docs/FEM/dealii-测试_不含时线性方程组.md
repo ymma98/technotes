@@ -84,15 +84,14 @@ $$
 
 
 $$
-\nabla \mathbf{v}
-=
+\nabla \mathbf{v}=
 \begin{pmatrix}
-\frac{\partial v_{1}}{\partial x_{1}} & \frac{\partial v_{1}}{\partial x_{2}} \\[6pt]
+\frac{\partial v_{1}}{\partial x_{1}} & \frac{\partial v_{1}}{\partial x_{2}} \\
 \frac{\partial v_{2}}{\partial x_{1}} & \frac{\partial v_{2}}{\partial x_{2}}
 \end{pmatrix}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4MTQyNzEzLDE4NjA4NDc3MDYsLTUzNj
-YwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2
-MywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbLTUzNDQ0NDc0MywxODYwODQ3NzA2LC01Mz
+Y2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5MDY3LC05Njk2NjAw
+NjMsLTEzNjIyMDA5ODddfQ==
 -->
