@@ -83,9 +83,16 @@ a_{11}b_{11} + a_{12}b_{12} + a_{21}b_{21} + a_{22}b_{22}\,.
 $$
 
 
-
+$$
+\nabla \mathbf{v}
+=
+\begin{pmatrix}
+\frac{\partial v_{1}}{\partial x_{1}} & \frac{\partial v_{1}}{\partial x_{2}} \\[6pt]
+\frac{\partial v_{2}}{\partial x_{1}} & \frac{\partial v_{2}}{\partial x_{2}}
+\end{pmatrix}
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1NTIwMzA0MiwxODYwODQ3NzA2LC01Mz
-Y2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5MDY3LC05Njk2NjAw
-NjMsLTEzNjIyMDA5ODddfQ==
+eyJoaXN0b3J5IjpbMTg4MTQyNzEzLDE4NjA4NDc3MDYsLTUzNj
+YwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2
+MywtMTM2MjIwMDk4N119
 -->
