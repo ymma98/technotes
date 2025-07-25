@@ -52,13 +52,25 @@ $$
 \int_{\Omega} \vec{f}\cdot \vec{v} dV
 $$
 
+代入公式: 
+
 $$
 \int_{\Omega} \bigl(\nabla \cdot \sigma(\vec{u})\bigr)\cdot \vec{v} \;dV=
 \int_{\partial\Omega}\bigl(\sigma(\vec{u}) \vec{n}\bigr)\cdot \vec{v} dS-
 \int_{\Omega}\sigma(\vec{u}):\nabla v dV
 $$
 
+其中$\vec{n} = (n_1,n_2)^t$ 垂直于 $\partial \Omega$, 有:
+
+
+$$
+\int_{\Omega}\sigma\bigl(\mathbf{u}\bigr)\colon\nabla\mathbf{v}\,dV-\;\int_{\partial\Omega}\bigl(\sigma(\mathbf{u})\,\mathbf{n}\bigr)\cdot\mathbf{v}\,ds=\;\int_{\Omega}\mathbf{f}\cdot\mathbf{v}\,dV
+$$
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNT
-k0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMT
+UxMTgyOCwtMTI1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAw
+OTg3XX0=
 -->
