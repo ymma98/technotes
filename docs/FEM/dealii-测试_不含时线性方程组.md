@@ -94,10 +94,10 @@ $$
 然后将弱格式表示为分量的形式 (这里只考虑 Dirichlet BC, 扔掉边界项), 
 
 $$
-\sigma\bigl(\mathbf{u}\bigr)\colon\nabla\mathbf{v}=\sigma_{kl}\nabla\vec{v}_{kl} = [\lambda \text]
+\sigma\bigl(\mathbf{u}\bigr)\colon\nabla\mathbf{v}=\sigma_{kl}\nabla\vec{v}_{kl} = [\lambda \text{div}(\vec{u})\delta_{kl}+\mu (\partial_k u_l + \partial_l u_k)]\partial_l v_k = 
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NDcwMjY3MCwtNTM0NDQ0NzQzLDE4Nj
-A4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkw
-NjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbLTE1NjI5OTQ3NTksLTUzNDQ0NDc0MywxOD
+YwODQ3NzA2LC01MzY2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5
+MDY3LC05Njk2NjAwNjMsLTEzNjIyMDA5ODddfQ==
 -->
