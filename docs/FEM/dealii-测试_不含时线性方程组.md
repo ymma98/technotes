@@ -126,15 +126,15 @@ $$
 $$
 a(\mathbf{u}, \mathbf{v})=
 U_j\sum_{k,l}
-\bigl(\lambda\,\partial_l (\vec{\Phi}_j)_l,\;\partial_k v_k\bigr)_{\!\Omega}
+\bigl(\lambda\,\partial_l (\vec{\Phi}_j)_l,\;\partial_k (\vec{\Phi}_i)_k\bigr)_{\!\Omega}
++\sum_{k,l}
+\bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_k (\vec{\Phi}_i)_l\bigr)_{\!\Omega}
 \;+\;\sum_{k,l}
-\bigl(\mu\,\partial_k u_l,\;\partial_k v_l\bigr)_{\!\Omega}
-\;+\;\sum_{k,l}
-\bigl(\mu\,\partial_k u_l,\;\partial_l v_k\bigr)_{\!\Omega}.
+\bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_l (\vec{\Phi}_i)_k\bigr)_{\!\Omega}.
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDg2ODcyMDUsLTEwNDYyOTM5NjQsLT
-UzNDQ0NDc0MywxODYwODQ3NzA2LC01MzY2MDMyMDEsNjExNTEx
-ODI4LC0xMjU5NDk5MDY3LC05Njk2NjAwNjMsLTEzNjIyMDA5OD
-ddfQ==
+eyJoaXN0b3J5IjpbODQ1MDg4NjgxLC0xMDQ2MjkzOTY0LC01Mz
+Q0NDQ3NDMsMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgy
+OCwtMTI1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX
+0=
 -->
