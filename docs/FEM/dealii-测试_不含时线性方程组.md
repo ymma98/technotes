@@ -117,10 +117,11 @@ $$
 
 $$
 \vec{\Phi}_i = \phi_i \hat{e}_{comp(i)} \\
-\vec{u}_h = 
+\vec{u} = U_j \vec{\Phi}_j \\
+\vec{v}_i = \vec{\Phi}_i
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxNzMwNTY4MSwtNTM0NDQ0NzQzLDE4Nj
-A4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkw
-NjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbLTEwNDYyOTM5NjQsLTUzNDQ0NDc0MywxOD
+YwODQ3NzA2LC01MzY2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5
+MDY3LC05Njk2NjAwNjMsLTEzNjIyMDA5ODddfQ==
 -->
