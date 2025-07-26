@@ -132,9 +132,15 @@ U_j\sum_{k,l}
 \;+\;\sum_{k,l}
 \bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_l (\vec{\Phi}_i)_k\bigr)_{\!\Omega}.
 $$
+
+因为第 $i$ 个基函数 $\vec{\Phi}_i$ 只有一个分量非0, 因此
+
+$$
+(\vec{\Phi}_i)_l = \phi_i \delta
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQ1MDg4NjgxLC0xMDQ2MjkzOTY0LC01Mz
-Q0NDQ3NDMsMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgy
-OCwtMTI1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX
-0=
+eyJoaXN0b3J5IjpbLTQ1OTM5MjU5MSwtMTA0NjI5Mzk2NCwtNT
+M0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4
+MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N1
+19
 -->
