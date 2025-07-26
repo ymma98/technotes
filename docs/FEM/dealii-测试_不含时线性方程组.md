@@ -91,9 +91,13 @@ $$
 \end{pmatrix}
 $$
 
-然后将弱格式zha
+然后将弱格式表示为分量的形式 (这里只考虑 Dirichlet BC, 扔掉边界项), 
+
+$$
+\sigma\bigl(\mathbf{u}\bigr)\colon\nabla\mathbf{v}=\sigma_{kl}\nabla\vec{v}_{kl} = [\lambda \text]
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzE0MTgwNzA2LC01MzQ0NDQ3NDMsMTg2MD
-g0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMTI1OTQ5OTA2
-NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbLTc0NDcwMjY3MCwtNTM0NDQ0NzQzLDE4Nj
+A4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkw
+NjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
 -->
