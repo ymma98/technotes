@@ -142,20 +142,24 @@ $$
 
 $$
 a(\mathbf{u}, \mathbf{v})=
-U_j\sum_{k,l}
-\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)_{\Omega}
+U_j
+\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)
 +U_j \sum_{k,l}
 \bigl(\mu \partial_k \phi_j \delta_{l,comp(j)},\partial_k \phi_i \delta_{l, comp(i)}\bigr)_{\Omega} + U_j \sum_{k,l}
 \bigl(\mu \partial_k \phi_j \delta_{l,comp(j)},\partial_l \phi_i \delta_{k,comp(i)}\bigr)_{\Omega} \\
-= U_j\sum_{k,l}
-\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)_{\Omega}
+= U_j
+\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)
 +U_j \delta_{comp(i),comp(j)}(\partial_k\phi_j, \partial_k \phi_i)+
 U_j(\mu\partial_{comp(i)}\phi_j,\partial_{comp(j)}\phi_i)
 $$
 
+$$
+
+$$
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzMDQxODE1OCw2NjE2NjMyNjcsMTc5OD
+eyJoaXN0b3J5IjpbLTI0NDE1NDI0Miw2NjE2NjMyNjcsMTc5OD
 Y5MDkyMCwyMDc3NTkyNDE4LC0xMDQ2MjkzOTY0LC01MzQ0NDQ3
 NDMsMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMT
 I1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
