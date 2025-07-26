@@ -150,12 +150,12 @@ U_j\sum_{k,l}
 = U_j\sum_{k,l}
 \bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)_{\Omega}
 +U_j \delta_{comp(i),comp(j)}(\partial_k\phi_j, \partial_k \phi_i)+
-U_j(\mu\partial_{com})
+U_j(\mu\partial_{comp(i)}\phi_j,\partial_{comp(j)}\phi_i)
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5MzY2NjcyMyw2NjE2NjMyNjcsMTc5OD
+eyJoaXN0b3J5IjpbMTMzMDQxODE1OCw2NjE2NjMyNjcsMTc5OD
 Y5MDkyMCwyMDc3NTkyNDE4LC0xMDQ2MjkzOTY0LC01MzQ0NDQ3
 NDMsMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMT
 I1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
