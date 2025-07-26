@@ -127,9 +127,8 @@ $$
 a(\mathbf{u}, \mathbf{v})=
 U_j\sum_{k,l}
 \bigl(\lambda\,\partial_l (\vec{\Phi}_j)_l,\;\partial_k (\vec{\Phi}_i)_k\bigr)_{\!\Omega}
-+\sum_{k,l}
-\bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_k (\vec{\Phi}_i)_l\bigr)_{\!\Omega}
-\;+\;\sum_{k,l}
++U_j \sum_{k,l}
+\bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_k (\vec{\Phi}_i)_l\bigr)_{\!\Omega} + U_j \sum_{k,l}
 \bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_l (\vec{\Phi}_i)_k\bigr)_{\!\Omega}.
 $$
 
@@ -138,8 +137,21 @@ $$
 $$
 (\vec{\Phi}_i)_l = \phi_i \delta_{l,comp(i)}
 $$
+
+于是
+
+$$
+a(\mathbf{u}, \mathbf{v})=
+U_j\sum_{k,l}
+\bigl(\lambda\,\partial_l (\vec{\Phi}_j)_l,\;\partial_k (\vec{\Phi}_i)_k\bigr)_{\!\Omega}
++U_j \sum_{k,l}
+\bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_k (\vec{\Phi}_i)_l\bigr)_{\!\Omega} + U_j \sum_{k,l}
+\bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_l (\vec{\Phi}_i)_k\bigr)_{\!\Omega}.
+$$
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzODA0MzQwNywtMTA0NjI5Mzk2NCwtNT
+eyJoaXN0b3J5IjpbMjA3NzU5MjQxOCwtMTA0NjI5Mzk2NCwtNT
 M0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4
 MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N1
 19
