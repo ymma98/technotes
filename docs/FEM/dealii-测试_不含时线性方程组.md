@@ -90,8 +90,10 @@ $$
 \frac{\partial v_{2}}{\partial x_{1}} & \frac{\partial v_{2}}{\partial x_{2}}
 \end{pmatrix}
 $$
+
+然后将弱格式zha
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNDQ0NDc0MywxODYwODQ3NzA2LC01Mz
-Y2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5MDY3LC05Njk2NjAw
-NjMsLTEzNjIyMDA5ODddfQ==
+eyJoaXN0b3J5IjpbNzE0MTgwNzA2LC01MzQ0NDQ3NDMsMTg2MD
+g0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMTI1OTQ5OTA2
+NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
 -->
