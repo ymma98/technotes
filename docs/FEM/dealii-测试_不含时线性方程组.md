@@ -120,8 +120,21 @@ $$
 \vec{u} = U_j \vec{\Phi}_j \\
 \vec{v}_i = \vec{\Phi}_i
 $$
+
+所以 
+
+$$
+a(\mathbf{u}, \mathbf{v})=
+\sum_{k,l}
+\bigl(\lambda\,\partial_l u_l,\;\partial_k v_k\bigr)_{\!\Omega}
+\;+\;\sum_{k,l}
+\bigl(\mu\,\partial_k u_l,\;\partial_k v_l\bigr)_{\!\Omega}
+\;+\;\sum_{k,l}
+\bigl(\mu\,\partial_k u_l,\;\partial_l v_k\bigr)_{\!\Omega}.
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDYyOTM5NjQsLTUzNDQ0NDc0MywxOD
-YwODQ3NzA2LC01MzY2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5
-MDY3LC05Njk2NjAwNjMsLTEzNjIyMDA5ODddfQ==
+eyJoaXN0b3J5IjpbMTYxNjE4MDUwMSwtMTA0NjI5Mzk2NCwtNT
+M0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4
+MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N1
+19
 -->
