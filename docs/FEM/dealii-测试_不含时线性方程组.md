@@ -143,7 +143,7 @@ $$
 $$
 a(\mathbf{u}, \mathbf{v})=
 U_j\sum_{k,l}
-\bigl(\lambda\,\partial_l (\vec{\Phi}_j)_l,\;\partial_k (\vec{\Phi}_i)_k\bigr)_{\!\Omega}
+\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_com\bigr)_{\!\Omega}
 +U_j \sum_{k,l}
 \bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_k (\vec{\Phi}_i)_l\bigr)_{\!\Omega} + U_j \sum_{k,l}
 \bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_l (\vec{\Phi}_i)_k\bigr)_{\!\Omega}.
@@ -151,8 +151,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NzU5MjQxOCwtMTA0NjI5Mzk2NCwtNT
-M0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4
-MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N1
-19
+eyJoaXN0b3J5IjpbLTEzNzM0NTcwMzUsMjA3NzU5MjQxOCwtMT
+A0NjI5Mzk2NCwtNTM0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYw
+MzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2My
+wtMTM2MjIwMDk4N119
 -->
