@@ -113,9 +113,14 @@ $$
 \vec{\Phi}_i = \phi_{\text{base(i)}} \hat{e}_{comp(i)}
 $$
 
-其中 $i = 1,...,N$, 一共有 $N$ 个基函数。`base(u)`
+其中 $i = 1,...,N$, 一共有 $N$ 个基函数。`base(i)` 有很复杂的表示方法, 我们完全不用关心, 由 dealii 自动处理. 于是:
+
+$$
+\vec{\Phi}_i = \phi_i \hat{e}_{comp(i)} \\
+\vec{u}_h = 
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNDgxMTc1MywtNTM0NDQ0NzQzLDE4Nj
+eyJoaXN0b3J5IjpbMTkxNzMwNTY4MSwtNTM0NDQ0NzQzLDE4Nj
 A4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkw
 NjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
 -->
