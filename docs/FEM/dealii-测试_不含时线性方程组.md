@@ -147,13 +147,15 @@ U_j\sum_{k,l}
 +U_j \sum_{k,l}
 \bigl(\mu \partial_k \phi_j \delta_{l,comp(j)},\partial_k \phi_i \delta_{l, comp(i)}\bigr)_{\Omega} + U_j \sum_{k,l}
 \bigl(\mu \partial_k \phi_j \delta_{l,comp(j)},\partial_l \phi_i \delta_{k,comp(i)}\bigr)_{\Omega} \\
-= d
+= U_j\sum_{k,l}
+\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)_{\Omega}
++U_j \delta_{comp(i),comp(j)}
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjYxNjYzMjY3LDE3OTg2OTA5MjAsMjA3Nz
-U5MjQxOCwtMTA0NjI5Mzk2NCwtNTM0NDQ0NzQzLDE4NjA4NDc3
-MDYsLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLT
-k2OTY2MDA2MywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbMTA4NTEzMDE5MCw2NjE2NjMyNjcsMTc5OD
+Y5MDkyMCwyMDc3NTkyNDE4LC0xMDQ2MjkzOTY0LC01MzQ0NDQ3
+NDMsMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMT
+I1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
 -->
