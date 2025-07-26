@@ -106,8 +106,16 @@ a(\mathbf{u}, \mathbf{v})=
 \;+\;\sum_{k,l}
 \bigl(\mu\,\partial_k u_l,\;\partial_l v_k\bigr)_{\!\Omega}.
 $$
+
+对于基函数, 有
+
+$$
+\vec{\Phi}_i = \phi_{\text{base(i)}} \hat{e}_{comp(i)}
+$$
+
+其中 $i = 1,...,N$, 一共有 $N$ 个基函数。`base(u)`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjAzOTA2NCwtNTM0NDQ0NzQzLDE4Nj
+eyJoaXN0b3J5IjpbMTAwNDgxMTc1MywtNTM0NDQ0NzQzLDE4Nj
 A4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkw
 NjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
 -->
