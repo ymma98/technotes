@@ -143,16 +143,16 @@ $$
 $$
 a(\mathbf{u}, \mathbf{v})=
 U_j\sum_{k,l}
-\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_com\bigr)_{\!\Omega}
+\bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)_{\Omega}
 +U_j \sum_{k,l}
-\bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_k (\vec{\Phi}_i)_l\bigr)_{\!\Omega} + U_j \sum_{k,l}
+\bigl(\mu \partial_k \phi_j \delta_{l,comp(j)},\partial_k (\vec{\Phi}_i)_l\bigr)_{\!\Omega} + U_j \sum_{k,l}
 \bigl(\mu\,\partial_k (\vec{\Phi}_j)_l,\partial_l (\vec{\Phi}_i)_k\bigr)_{\!\Omega}.
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNzM0NTcwMzUsMjA3NzU5MjQxOCwtMT
-A0NjI5Mzk2NCwtNTM0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYw
-MzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2My
-wtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbNDg3MDkzODg5LDIwNzc1OTI0MTgsLTEwND
+YyOTM5NjQsLTUzNDQ0NDc0MywxODYwODQ3NzA2LC01MzY2MDMy
+MDEsNjExNTExODI4LC0xMjU5NDk5MDY3LC05Njk2NjAwNjMsLT
+EzNjIyMDA5ODddfQ==
 -->
