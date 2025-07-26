@@ -154,13 +154,14 @@ U_j(\mu\partial_{comp(i)}\phi_j,\partial_{comp(j)}\phi_i)
 $$
 
 $$
-
+\vec{f}\cdot\vec{v} = f_k v_k = f_k \phi_i \delta_{k,comp(i)} = f_{comp(i)}\phi_i
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0NDE1NDI0Miw2NjE2NjMyNjcsMTc5OD
-Y5MDkyMCwyMDc3NTkyNDE4LC0xMDQ2MjkzOTY0LC01MzQ0NDQ3
-NDMsMTg2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMT
-I1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbLTE0MDg3MDY5NiwtMjQ0MTU0MjQyLDY2MT
+Y2MzI2NywxNzk4NjkwOTIwLDIwNzc1OTI0MTgsLTEwNDYyOTM5
+NjQsLTUzNDQ0NDc0MywxODYwODQ3NzA2LC01MzY2MDMyMDEsNj
+ExNTExODI4LC0xMjU5NDk5MDY3LC05Njk2NjAwNjMsLTEzNjIy
+MDA5ODddfQ==
 -->
