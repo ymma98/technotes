@@ -136,10 +136,10 @@ $$
 因为第 $i$ 个基函数 $\vec{\Phi}_i$ 只有一个分量非0, 因此
 
 $$
-(\vec{\Phi}_i)_l = \phi_i \delta
+(\vec{\Phi}_i)_l = \phi_i \delta_{l,comp(i)}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ1OTM5MjU5MSwtMTA0NjI5Mzk2NCwtNT
+eyJoaXN0b3J5IjpbLTkzODA0MzQwNywtMTA0NjI5Mzk2NCwtNT
 M0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4
 MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N1
 19
