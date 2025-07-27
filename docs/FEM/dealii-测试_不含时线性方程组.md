@@ -107,7 +107,7 @@ a(\mathbf{u}, \mathbf{v})=
 \bigl(\mu\,\partial_k u_l,\;\partial_l v_k\bigr)_{\!\Omega}.
 $$
 
-对于基函数, 有
+**对于基函数, 有**
 
 $$
 \vec{\Phi}_i = \phi_{\text{base(i)}} \hat{e}_{comp(i)}
@@ -159,9 +159,9 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1OTk2NDkzNywtMTQwODcwNjk2LC0yND
-QxNTQyNDIsNjYxNjYzMjY3LDE3OTg2OTA5MjAsMjA3NzU5MjQx
-OCwtMTA0NjI5Mzk2NCwtNTM0NDQ0NzQzLDE4NjA4NDc3MDYsLT
-UzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLTk2OTY2
-MDA2MywtMTM2MjIwMDk4N119
+eyJoaXN0b3J5IjpbMTcyNTg3OTM2OSwxODU5OTY0OTM3LC0xND
+A4NzA2OTYsLTI0NDE1NDI0Miw2NjE2NjMyNjcsMTc5ODY5MDky
+MCwyMDc3NTkyNDE4LC0xMDQ2MjkzOTY0LC01MzQ0NDQ3NDMsMT
+g2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMTI1OTQ5
+OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
 -->
