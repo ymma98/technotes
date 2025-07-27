@@ -160,6 +160,10 @@ $$
 
 ## 测试算例
 
+
+<!--
+
+
 $$
 f_x(x, y) =
 \begin{cases}
@@ -172,11 +176,13 @@ $$
 $$
 f_y(x, y) = \begin{cases} 1.0 & \text{if } x^2 + y^2 < 0.2^2 \\ 0.0 & \text{otherwise} \end{cases}
 $$
+
+-->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzA4ODI5ODc1LC05OTU5MTMyMjMsMTg1OT
-k2NDkzNywtMTQwODcwNjk2LC0yNDQxNTQyNDIsNjYxNjYzMjY3
-LDE3OTg2OTA5MjAsMjA3NzU5MjQxOCwtMTA0NjI5Mzk2NCwtNT
-M0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4
-MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N1
-19
+eyJoaXN0b3J5IjpbLTE5NTAxNTgwNTQsMzA4ODI5ODc1LC05OT
+U5MTMyMjMsMTg1OTk2NDkzNywtMTQwODcwNjk2LC0yNDQxNTQy
+NDIsNjYxNjYzMjY3LDE3OTg2OTA5MjAsMjA3NzU5MjQxOCwtMT
+A0NjI5Mzk2NCwtNTM0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYw
+MzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2My
+wtMTM2MjIwMDk4N119
 -->
