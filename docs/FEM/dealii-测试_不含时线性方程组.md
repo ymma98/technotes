@@ -162,6 +162,14 @@ $$
 
 ## 测试算例
 
+$\Omega = [0, 1] \times [0, 1]$: 
+
+$$ -\nabla \cdot \sigma(\mathbf{u}) = \mathbf{f} \quad \text{on } \Omega, \\ u_1 = 0, u_2 = 0 \quad \text{on } \partial\Omega,$$ 
+
+$$ \begin{align*} f_1 &= -(\lambda + 2\mu)(-\pi^2 \sin(\pi x) \sin(\pi y)) - (\lambda + \mu)((2x - 1)(2y - 1)) - \mu(-\pi^2 \sin(\pi x) \sin(\pi y)), \\ f_2 &= -(\lambda + 2\mu)(2x(x - 1)) - (\lambda + \mu)(\pi^2 \cos(\pi x) \cos(\pi y)) - \mu(2y(y - 1)). \end{align*} $$ 
+
+Here $\lambda = 1$ and $\mu = 2$.
+
 
 <!--
 
@@ -181,10 +189,10 @@ $$
 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAwNDQ1NDE0NywzMDg4Mjk4NzUsLTk5NT
-kxMzIyMywxODU5OTY0OTM3LC0xNDA4NzA2OTYsLTI0NDE1NDI0
-Miw2NjE2NjMyNjcsMTc5ODY5MDkyMCwyMDc3NTkyNDE4LC0xMD
-Q2MjkzOTY0LC01MzQ0NDQ3NDMsMTg2MDg0NzcwNiwtNTM2NjAz
-MjAxLDYxMTUxMTgyOCwtMTI1OTQ5OTA2NywtOTY5NjYwMDYzLC
-0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbLTgzODI4OTQzMSwyMDA0NDU0MTQ3LDMwOD
+gyOTg3NSwtOTk1OTEzMjIzLDE4NTk5NjQ5MzcsLTE0MDg3MDY5
+NiwtMjQ0MTU0MjQyLDY2MTY2MzI2NywxNzk4NjkwOTIwLDIwNz
+c1OTI0MTgsLTEwNDYyOTM5NjQsLTUzNDQ0NDc0MywxODYwODQ3
+NzA2LC01MzY2MDMyMDEsNjExNTExODI4LC0xMjU5NDk5MDY3LC
+05Njk2NjAwNjMsLTEzNjIyMDA5ODddfQ==
 -->
