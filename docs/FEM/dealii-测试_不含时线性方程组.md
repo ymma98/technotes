@@ -149,7 +149,7 @@ U_j
 \bigl(\mu \partial_k \phi_j \delta_{l,comp(j)},\partial_l \phi_i \delta_{k,comp(i)}\bigr)_{\Omega} \\
 = U_j
 \bigl(\lambda\,\partial_{comp(j)} \phi_j,\;\partial_{comp(i)} \phi_{i}\bigr)
-+U_j \delta_{comp(i),comp(j)}(\partial_k\phi_j, \partial_k \phi_i)+
++U_j \mu \delta_{comp(i),comp(j)}(\partial_k\phi_j, \partial_k \phi_i)+
 U_j(\mu\partial_{comp(i)}\phi_j,\partial_{comp(j)}\phi_i)
 $$
 
@@ -173,9 +173,10 @@ $$
 f_y(x, y) = \begin{cases} 1.0 & \text{if } x^2 + y^2 < 0.2^2 \\ 0.0 & \text{otherwise} \end{cases}
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NTkxMzIyMywxODU5OTY0OTM3LC0xND
-A4NzA2OTYsLTI0NDE1NDI0Miw2NjE2NjMyNjcsMTc5ODY5MDky
-MCwyMDc3NTkyNDE4LC0xMDQ2MjkzOTY0LC01MzQ0NDQ3NDMsMT
-g2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMTI1OTQ5
-OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbMzA4ODI5ODc1LC05OTU5MTMyMjMsMTg1OT
+k2NDkzNywtMTQwODcwNjk2LC0yNDQxNTQyNDIsNjYxNjYzMjY3
+LDE3OTg2OTA5MjAsMjA3NzU5MjQxOCwtMTA0NjI5Mzk2NCwtNT
+M0NDQ0NzQzLDE4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4
+MjgsLTEyNTk0OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N1
+19
 -->
