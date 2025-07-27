@@ -45,7 +45,7 @@ $$
 \end{pmatrix}.
 $$
 
-将 $\vec{u}$ 乘以对应的 test function $\vec{v}$, 
+将 $\vec{u}$ 乘以对应的 **test function $\vec{v}$,**
 
 $$
 -\int_{\Omega} \bigl(\nabla \cdot \sigma(\vec{u})\bigr)\cdot \vec{v} dV=
@@ -158,10 +158,20 @@ $$
 $$
 
 
+## 测试算例
+
+$$
+f_x(x, y) =
+\begin{cases}
+1.0 & \text{if } (x-0.5)^2 + y^2 < 0.2^2 \\
+& \quad \lor \ (x+0.5)^2 + y^2 < 0.2^2 \\
+0.0 & \text{otherwise}
+\end{cases}
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyNTg3OTM2OSwxODU5OTY0OTM3LC0xND
-A4NzA2OTYsLTI0NDE1NDI0Miw2NjE2NjMyNjcsMTc5ODY5MDky
-MCwyMDc3NTkyNDE4LC0xMDQ2MjkzOTY0LC01MzQ0NDQ3NDMsMT
-g2MDg0NzcwNiwtNTM2NjAzMjAxLDYxMTUxMTgyOCwtMTI1OTQ5
-OTA2NywtOTY5NjYwMDYzLC0xMzYyMjAwOTg3XX0=
+eyJoaXN0b3J5IjpbLTE1MjY2OTY0MzMsMTg1OTk2NDkzNywtMT
+QwODcwNjk2LC0yNDQxNTQyNDIsNjYxNjYzMjY3LDE3OTg2OTA5
+MjAsMjA3NzU5MjQxOCwtMTA0NjI5Mzk2NCwtNTM0NDQ0NzQzLD
+E4NjA4NDc3MDYsLTUzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0
+OTkwNjcsLTk2OTY2MDA2MywtMTM2MjIwMDk4N119
 -->
