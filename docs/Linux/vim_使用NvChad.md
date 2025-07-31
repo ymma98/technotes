@@ -33,12 +33,24 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 local M = {}
 
 M.base46 = {
-	theme = "jellybeans",
+    theme = "jellybeans",
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+    -- hl_override = {
+    --  Comment = { italic = true },
+    --  ["@comment"] = { italic = true },
+    -- },
+
+    hl_override = {
+    -- 为 nvim -d diff 模式提供清晰对比
+    DiffAdd    = { bg = "#2f5d2f" },
+    DiffDelete = { bg = "#5d2d2d" },
+    DiffChange = { bg = "#2b3b5b" },
+    DiffText   = { bg = "#395380", fg = "#ffffff", bold = true },
+
+    -- 您也可以在这里添加其他自定义高亮，比如让注释变成斜体
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+    },
 }
 
 -- M.nvdash = { load_on_startup = true }
@@ -47,6 +59,7 @@ M.base46 = {
 --          lazyload = false
 --      }
 --}
+
 
 return M
 ```
@@ -338,7 +351,7 @@ vim.lsp.enable(servers)
 -- read :h vim.lsp.config for changing options of lsp servers 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg5MTYxMzM5LDExODU2MDAyMDIsMTA4Nj
-Y2ODAxNiwtMTczNTMzMTQ3LDEyNTcxMzk4MjYsLTQ3NzMzNDY2
-OSw0NzY5NDE1MzBdfQ==
+eyJoaXN0b3J5IjpbMjQ2ODg3OTAwLDY4OTE2MTMzOSwxMTg1Nj
+AwMjAyLDEwODY2NjgwMTYsLTE3MzUzMzE0NywxMjU3MTM5ODI2
+LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
 -->
