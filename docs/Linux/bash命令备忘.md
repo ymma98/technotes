@@ -44,7 +44,16 @@ $ sed -i 's/tol=1.0e-8/tol=1.0e-7/g' */input.in
 -i 的意思是直接更改文件, g 是 global
 ```
 
-* 统一重命名, 在名字中间插入zi'fu'c
+* 统一重命名, 在名字中间插入字符串
+
+```bash
+$ for i in $(ls);do echo mv "$i" "${i%.hdf5}.high.hdf5";done
+mv dump.00500.hdf5 dump.00500.high.hdf5
+mv dump.01500.hdf5 dump.01500.high.hdf5
+mv dump.02800.hdf5 dump.02800.high.hdf5
+mv dump.03200.hdf5 dump.03200.high.hdf5
+mv dump.03800.hdf5 dump.03800.high.hdf5
+```
 
 
 * 命令行拷贝路径到系统剪贴板
@@ -94,7 +103,7 @@ wait
 echo "All tasks finished."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NzQwODMzMTcsLTEzOTgwMDQ2MjAsMT
-cxNzY0OTA0MiwxNjM5NjY2NjM5LDc1ODA1MjAxMyw0MDI0MDMx
-NjAsLTE5NzMwMjI4NDBdfQ==
+eyJoaXN0b3J5IjpbMTQ0OTk1NjU0NSwtMTM5ODAwNDYyMCwxNz
+E3NjQ5MDQyLDE2Mzk2NjY2MzksNzU4MDUyMDEzLDQwMjQwMzE2
+MCwtMTk3MzAyMjg0MF19
 -->
