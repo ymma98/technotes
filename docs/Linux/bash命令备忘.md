@@ -44,6 +44,8 @@ $ sed -i 's/tol=1.0e-8/tol=1.0e-7/g' */input.in
 -i 的意思是直接更改文件, g 是 global
 ```
 
+* 统一重命名, 在名字中间插入zi'fu'c
+
 
 * 命令行拷贝路径到系统剪贴板
 
@@ -92,7 +94,7 @@ wait
 echo "All tasks finished."
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzOTgwMDQ2MjAsMTcxNzY0OTA0MiwxNj
-M5NjY2NjM5LDc1ODA1MjAxMyw0MDI0MDMxNjAsLTE5NzMwMjI4
-NDBdfQ==
+eyJoaXN0b3J5IjpbLTE1NzQwODMzMTcsLTEzOTgwMDQ2MjAsMT
+cxNzY0OTA0MiwxNjM5NjY2NjM5LDc1ODA1MjAxMyw0MDI0MDMx
+NjAsLTE5NzMwMjI4NDBdfQ==
 -->
