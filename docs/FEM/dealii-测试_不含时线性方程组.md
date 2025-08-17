@@ -7,7 +7,7 @@
 原始方程:
 
 $$
--\operatorname{div}\bigl(C\,\varepsilon(\vec{u})\bigr) = f
+-\operatorname{div}\bigl(C\,\varepsilon(\vec{u})\bigr) = \vec{f}
 $$
 
 其中 $C$ 是四阶矩阵, 上式可以写为
@@ -27,7 +27,7 @@ $$
 经过简单的推导, $c_{ijkl}\,\varepsilon_{kl}$ 可以写为 $\sigma_{ij}$,
 
 $$
--\nabla\!\cdot\sigma(\vec{u}) = f
+-\nabla\!\cdot\sigma(\vec{u}) = \vec{f}
 $$
 
 $$
@@ -574,11 +574,11 @@ int main(){
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250727/image.1zikc6ts7e.webp){width=400px}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUwMDkwMzA5MywxNzIzNzg3MDYsLTE0Mj
-gyMzU0MjEsMjAwNDQ1NDE0NywzMDg4Mjk4NzUsLTk5NTkxMzIy
-MywxODU5OTY0OTM3LC0xNDA4NzA2OTYsLTI0NDE1NDI0Miw2Nj
-E2NjMyNjcsMTc5ODY5MDkyMCwyMDc3NTkyNDE4LC0xMDQ2Mjkz
-OTY0LC01MzQ0NDQ3NDMsMTg2MDg0NzcwNiwtNTM2NjAzMjAxLD
-YxMTUxMTgyOCwtMTI1OTQ5OTA2NywtOTY5NjYwMDYzLC0xMzYy
-MjAwOTg3XX0=
+eyJoaXN0b3J5IjpbNzk3NTY5ODgzLC01MDA5MDMwOTMsMTcyMz
+c4NzA2LC0xNDI4MjM1NDIxLDIwMDQ0NTQxNDcsMzA4ODI5ODc1
+LC05OTU5MTMyMjMsMTg1OTk2NDkzNywtMTQwODcwNjk2LC0yND
+QxNTQyNDIsNjYxNjYzMjY3LDE3OTg2OTA5MjAsMjA3NzU5MjQx
+OCwtMTA0NjI5Mzk2NCwtNTM0NDQ0NzQzLDE4NjA4NDc3MDYsLT
+UzNjYwMzIwMSw2MTE1MTE4MjgsLTEyNTk0OTkwNjcsLTk2OTY2
+MDA2M119
 -->
