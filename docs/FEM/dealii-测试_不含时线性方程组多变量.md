@@ -8,6 +8,13 @@
 原始方程:
 
 $$
+-2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p = \mathbf{f}, \\
+-\mathrm{div}\,\mathbf{u} = 0,
+$$
+
+测试函数为 $\vec{\phi} = (\vec{v},q)^T$
+
+$$
 \begin{pmatrix}
 -2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p \\
 -\mathrm{div}\,\mathbf{u}\end{pmatrix} =
@@ -18,6 +25,6 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxOTM0ODc2LC0xMzUwNTk3MjM2LC0xOD
-ExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbMTQ4MjU5MjUyMCwtMTM1MDU5NzIzNiwtMT
+gxMTI3MDM4NV19
 -->
