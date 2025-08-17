@@ -12,19 +12,13 @@ $$
 -\mathrm{div}\,\mathbf{u} = 0,
 $$
 
-测试函数为 $\vec{\phi} = (\vec{v},q)^T$
+测试函数为 $\vec{\phi} = (\vec{v},q)^T$, 即, 对第一个式子点积 $\vec{v}$, 对第二个式子乘以 $q$, 得到:
 
 $$
-\begin{pmatrix}
--2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p \\
--\mathrm{div}\,\mathbf{u}\end{pmatrix} =
-\begin{pmatrix}
-\mathbf{f} \\
-0\end{pmatrix}
-$$
 
+$$ 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MjU5MjUyMCwtMTM1MDU5NzIzNiwtMT
-gxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbLTE1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLT
+E4MTEyNzAzODVdfQ==
 -->
