@@ -7,8 +7,17 @@
 
 原始方程:
 
+$$
+\begin{pmatrix}
+-2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p \\
+-\mathrm{div}\,\mathbf{u}\end{pmatrix} =
+\begin{pmatrix}
+\mathbf{f} \\
+0\end{pmatrix}
+$$
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ
-==
+eyJoaXN0b3J5IjpbLTMxOTM0ODc2LC0xMzUwNTk3MjM2LC0xOD
+ExMjcwMzg1XX0=
 -->
