@@ -19,11 +19,16 @@ $$
 = (\mathbf{v}, \mathbf{f})_\Omega,
 $$
 
+对 $\nabla p$ 项应用分部积分，
 
+$$
+(\mathbf{v}, -2 \, \mathrm{div}\,\varepsilon(\mathbf{u}))_\Omega - (\mathrm{div}\,\mathbf{v}, p)_\Omega + (\mathbf{n}\cdot\mathbf{v}, p)_{\partial\Omega} - (q, \mathrm{div}\,\mathbf{u})_\Omega
+= (\mathbf{v}, \mathbf{f})_\Omega.
+$$
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NDQ2MzM0LDc4NDQxMzMzMiwtMTUzNj
-c2OTI0NiwtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNT
+M2NzY5MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
 -->
