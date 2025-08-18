@@ -52,10 +52,27 @@ $$
 
 我们可以把边界项化为更有意义的形式 (用应力张量表达 F/m^2)
 
+$$ -(\mathbf{n} \otimes \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_{\Gamma_N} + (\mathbf{n} \cdot \mathbf{v}, p)_{\Gamma_N} = \sum_{i,j=1}^{d} - (n_i v_j, 2 \, \varepsilon(\mathbf{u})_{ij})_{\Gamma_N} + \sum_{i,j=1}^{d} (n_i v_j, p)_{\Gamma_N}
+$$
+
+$$= \sum_{i,j=1}^{d} - (n_i v_j, 2 \, \varepsilon(\mathbf{u})_{ij})_{\Gamma_N}+ \sum_{i,j=1}^{d} (n_i v_j, p \, \delta_{ij})_{\Gamma_N}
+$$
+
+$$
+= \sum_{i,j=1}^{d} (n_i v_j, p \, \delta_{ij} - 2 \, \varepsilon(\mathbf{u})_{ij})_{\Gamma_N}
+$$
+
+$$
+= (\mathbf{n} \otimes \mathbf{v}, p \, \mathbf{I} - 2 \, \varepsilon(\mathbf{u}))_{\Gamma_N}
+$$
+
+$$
+= (\mathbf{v}, \mathbf{n} \cdot [p \mathbf{I} - 2 \, \varepsilon(\mathbf{u})])_{\Gamma_N}.
+$$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTc1MDE0MywyMTQ1OTM1Mjg5LDE4Nj
-YwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3
-MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0Ni
-wtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbLTE0MTg1NDU0MDEsMjE0NTkzNTI4OSwxOD
+Y2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3
+NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyND
+YsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
 -->
