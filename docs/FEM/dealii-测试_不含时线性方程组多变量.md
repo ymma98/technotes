@@ -48,12 +48,12 @@ $$
 = (\mathbf{v}, \mathbf{f})_\Omega,
 $$
 
-如果观察除了边界项之外的项，可以发现 $\vec{v}$ 和 $\vec{u}$ 可以互换, $q$ 和 $p$ 可以互换, 最后得到的矩阵一定是对称的 (只有 test function 和 trial function 是函数, 只要函数的形式是对称的, 那么矩阵一定是对称的). 
+如果观察除了边界项之外的项，可以发现 $\vec{v}$ 和 $\vec{u}$ 可以互换, $q$ 和 $p$ 可以互换, 最后得到的矩阵一定是对称的 (只有 test function 和 trial function 是函数, 其它都只带来常数项，只要函数的形式是对称的, 那么矩阵一定是对称的). 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2NjA3MzkxNywtMTg1ODM2MjM3OCwyMD
-cyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEz
-MzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMz
-g1XX0=
+eyJoaXN0b3J5IjpbMjE0NTkzNTI4OSwxODY2MDczOTE3LC0xOD
+U4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3NzE2MCwtMjEyOTkz
+NjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1OTcyMz
+YsLTE4MTEyNzAzODVdfQ==
 -->
