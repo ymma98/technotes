@@ -77,9 +77,16 @@ $$
 \quad \text{on } \Gamma_N.
 $$
 
+最终的弱格式表示为:
+
+$$
+(\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathrm{div}\,\mathbf{v}, p)_\Omega - (q, \mathrm{div}\,\mathbf{u})_\Omega = (\mathbf{v}, \mathbf{f})_\Omega - (\mathbf{v}, \mathbf{g}_N)_{\Gamma_N}.
+$$
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDU5MDIyNDYsMjE0NTkzNTI4OSwxOD
-Y2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3
-NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyND
-YsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
+eyJoaXN0b3J5IjpbMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4Nj
+YwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3
+MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0Ni
+wtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
 -->
