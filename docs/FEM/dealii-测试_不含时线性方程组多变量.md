@@ -48,11 +48,11 @@ $$
 = (\mathbf{v}, \mathbf{f})_\Omega,
 $$
 
-
+如果观察除了边界项之外的项，可以发现 $\vec{v}$ 和 $\vec{u}$ 可以互换, $q$ 和 $p$ 可以互换, 最后得到的矩阵一定是对称的 (只有 test ). 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyMTQzMDY4MiwtMTg1ODM2MjM3OCwyMD
+eyJoaXN0b3J5IjpbLTc0NzI2NDM2OSwtMTg1ODM2MjM3OCwyMD
 cyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEz
 MzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMz
 g1XX0=
