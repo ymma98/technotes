@@ -51,8 +51,10 @@ $$
 如果观察除了边界项之外的项，可以发现 $\vec{v}$ 和 $\vec{u}$ 可以互换, $q$ 和 $p$ 可以互换, 最后得到的矩阵一定是对称的 (只有 test function 和 trial function 是函数, 其它都只带来常数项，只要函数的形式是对称的, 那么矩阵一定是对称的). 
 
 我们可以把边界项化为更有意义的形式 (用应力张量表达 F/m^2)
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MTc1MDA1MywyMTQ1OTM1Mjg5LDE4Nj
+eyJoaXN0b3J5IjpbLTEzMTc1MDE0MywyMTQ1OTM1Mjg5LDE4Nj
 YwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3
 MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0Ni
 wtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
