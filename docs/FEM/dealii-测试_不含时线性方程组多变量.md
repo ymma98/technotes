@@ -12,7 +12,7 @@ $$
 -\mathrm{div}\,\mathbf{u} = 0,
 $$
 
-其中 $\epsilon(\mathbf{u})$
+其中 $\epsilon(\mathbf{u}) = \frac{1}{2}(\nabla \mathbf{u} + \nabla \mathbf{u}^T)$, $\epsilon_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$
 
 测试函数为 $\vec{\phi} = (\vec{v},q)^T$, 即, 对第一个式子点积 $\vec{v}$, 对第二个式子乘以 $q$, **然后相加**，得到:
 
@@ -50,7 +50,7 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NDk5MjcwNiwyMDcyMzYzMjQ5LC03ND
-E0NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5
-MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNz
+QxNDc3MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2
+OTI0NiwtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
 -->
