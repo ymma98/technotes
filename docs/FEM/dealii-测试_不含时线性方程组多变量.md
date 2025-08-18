@@ -83,12 +83,14 @@ $$
 (\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathrm{div}\,\mathbf{v}, p)_\Omega - (q, \mathrm{div}\,\mathbf{u})_\Omega = (\mathbf{v}, \mathbf{f})_\Omega - (\mathbf{v}, \mathbf{g}_N)_{\Gamma_N}.
 $$
 
-在 Dirichlet BC 下, $\mathbf{v} = 0$. 对于 Neumann BC, 需要约束 $\mathbf{g_N}$, zhu
+在 Dirichlet BC 下, $\mathbf{v} = 0$. 对于 Neumann BC, 需要约束 $\mathbf{g_N}$, 注意因为原始方程中只有 $\nabla p$, 因此必须在边界某处指定 $p$ 为 Dirichlet BC. 
+
+还有一种特殊的边界条件: partial boundary onditions 或者滑移边界条件 (slip boundary condition), 相当于 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTQ4OTg2MDEsMTcwODM4MTExMywyMT
-Q1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2
-MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMi
-wtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbNzI5MTgyMjA3LDE3MDgzODExMTMsMjE0NT
+kzNTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMy
+NDksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLT
+E1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
 
 -->
