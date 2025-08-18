@@ -41,7 +41,7 @@ $$
 = (\mathbf{v}, \mathbf{f})_\Omega,
 $$
 
-这里应用一个结论，一个张量总可以分为对称部分+反对称部分，$\mathbf{A}=\mathbf{A}_{sym}+\mathbf{A}_{skew}$, $\mathbf{A}_{sym} = \frac{1}{2} (\mathbf{A} + \mathbf{A}^T)$, $\mathbf{A}_{skew} = \frac{1}{2} (\mathbf{A} - \mathbf{A}^T)$
+这里应用一个结论，一个张量总可以分为对称部分+反对称部分，$\mathbf{A}=\mathbf{A}_{sym}+\mathbf{A}_{skew}$, $\mathbf{A}_{sym} = \frac{1}{2} (\mathbf{A} + \mathbf{A}^T)$, $\mathbf{A}_{skew} = \frac{1}{2} (\mathbf{A} - \mathbf{A}^T)$, 一个任意张量双点积一个对称张量，等于这个张量的对称部分双点积这个对称张量，于是弱格式进一步hua'wei
 
 $$
 (\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathbf{n} \otimes \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_{\partial\Omega} - (\mathrm{div}\,\mathbf{v}, p)_\Omega + (\mathbf{n}\cdot\mathbf{v}, p)_{\partial\Omega} - (q, \mathrm{div}\,\mathbf{u})_\Omega
@@ -50,8 +50,8 @@ $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5NDg1NTU5NSwtMTg1ODM2MjM3OCwyMD
-cyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEz
-MzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMz
-g1XX0=
+eyJoaXN0b3J5IjpbMTUzMTMyNDU4LC0xODU4MzYyMzc4LDIwNz
+IzNjMyNDksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMz
+MzIsLTE1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEyNzAzOD
+VdfQ==
 -->
