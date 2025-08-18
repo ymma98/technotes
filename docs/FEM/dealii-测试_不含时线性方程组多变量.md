@@ -32,9 +32,10 @@ $$
 (\nabla\cdot\epsilon)\cdot \vec{v} = (\partial_j\epsilon_{ij}) v_i = \partial_j(\epsilon_{ij} v_i) - \epsilon_{ij} \partial_j v_i  = \nabla \cdot (\vec{v}\cdot \epsilon^T) - \epsilon :\vec{v} = \nabla \cdot (\vec{v}\cdot \epsilon) - \epsilon :\vec{v}
 $$
 
+因为 $(\vec{v}\cdot \epsilon)\cdot \vec{n} = v_j \epsilon_{ij} n_i = n_i v_j \epsilon_{ij} = \vec{n}$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDI5OTU5NTYzLC03NDE0NzcxNjAsLTIxMj
-k5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3
-MjM2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbLTExNzIyODExMzksLTc0MTQ3NzE2MCwtMj
+EyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1
+OTcyMzYsLTE4MTEyNzAzODVdfQ==
 -->
