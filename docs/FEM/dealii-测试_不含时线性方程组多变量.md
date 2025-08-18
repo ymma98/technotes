@@ -26,15 +26,15 @@ $$
 = (\mathbf{v}, \mathbf{f})_\Omega.
 $$
 
-之后对第一项应用分部积分
+之后对第一项应用分部积分 ($\epsilon^T = \epsilon$)
 
 $$
-(\nabla\cdot\epsilon)\cdot \vec{v} = (\partial_j\epsilon_{ij}) v_i = \partial_j(\epsilon_{ij} v_i) - \epsilon_{ij} \partial_j v_i 
+(\nabla\cdot\epsilon)\cdot \vec{v} = (\partial_j\epsilon_{ij}) v_i = \partial_j(\epsilon_{ij} v_i) - \epsilon_{ij} \partial_j v_i  = \nabla \cdot (\vec{v}\cdot \epsilon^T) - \epsilon :\vec{v} = \nabla \cdot (\vec{v}\cdot \epsilon) - \epsilon :\vec{v}
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NjE4NDgxNjEsLTc0MTQ3NzE2MCwtMj
-EyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1
-OTcyMzYsLTE4MTEyNzAzODVdfQ==
+eyJoaXN0b3J5IjpbNDI5OTU5NTYzLC03NDE0NzcxNjAsLTIxMj
+k5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3
+MjM2LC0xODExMjcwMzg1XX0=
 -->
