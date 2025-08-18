@@ -26,9 +26,11 @@ $$
 = (\mathbf{v}, \mathbf{f})_\Omega.
 $$
 
+之后对第一项应用
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNT
-M2NzY5MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3OD
+Q0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEy
+NzAzODVdfQ==
 -->
