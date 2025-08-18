@@ -12,6 +12,8 @@ $$
 -\mathrm{div}\,\mathbf{u} = 0,
 $$
 
+其中 $\epsilon(\mathbf{u})$
+
 测试函数为 $\vec{\phi} = (\vec{v},q)^T$, 即, 对第一个式子点积 $\vec{v}$, 对第二个式子乘以 $q$, **然后相加**，得到:
 
 $$
@@ -35,13 +37,20 @@ $$
 因为 $(\vec{v}\cdot \epsilon)\cdot \vec{n} = v_j \epsilon_{ij} n_i = n_i v_j \epsilon_{ij} = \vec{n}\otimes \vec{v} : \epsilon$, 所以弱格式化为:
 
 $$
+(\nabla \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathbf{n} \otimes \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_{\partial\Omega} - (\mathrm{div}\,\mathbf{v}, p)_\Omega + (\mathbf{n}\cdot\mathbf{v}, p)_{\partial\Omega} - (q, \mathrm{div}\,\mathbf{u})_\Omega
+= (\mathbf{v}, \mathbf{f})_\Omega,
+$$
+
+
+
+$$
 (\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathbf{n} \otimes \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_{\partial\Omega} - (\mathrm{div}\,\mathbf{v}, p)_\Omega + (\mathbf{n}\cdot\mathbf{v}, p)_{\partial\Omega} - (q, \mathrm{div}\,\mathbf{u})_\Omega
 = (\mathbf{v}, \mathbf{f})_\Omega,
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMT
-I5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5
-NzIzNiwtMTgxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbMTg4NDk5MjcwNiwyMDcyMzYzMjQ5LC03ND
+E0NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5
+MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
 -->
