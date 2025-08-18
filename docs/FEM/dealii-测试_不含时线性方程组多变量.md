@@ -29,12 +29,12 @@ $$
 之后对第一项应用分部积分
 
 $$
-(\nabla\cdot\epsilon)\cdot \vec{v} = \
+(\nabla\cdot\epsilon)\cdot \vec{v} = \partial_j\epsilon_{ij} v_i = 
 $$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk0MDI5Nzg3LC03NDE0NzcxNjAsLTIxMj
-k5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3
-MjM2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbLTE4NzIyMDUyODYsLTc0MTQ3NzE2MCwtMj
+EyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1
+OTcyMzYsLTE4MTEyNzAzODVdfQ==
 -->
