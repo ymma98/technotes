@@ -52,7 +52,7 @@ $$
 
 我们可以把边界项化为更有意义的形式 (用应力张量表达 F/m^2)
 
-$$ -(\mathbf{n} \otimes \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_{\Gamma_N} + (\mathbf{n} \cdot \mathbf{v}, p)_{\Gamma_N} = \sum_{i,j=1}^{d} - (n_i v_j, 2 \, \varepsilon(\mathbf{u})_{ij})_{\Gamma_N} + \sum_{i,j=1}^{d} (n_i v_j, p)_{\Gamma_N}
+$$ -(\mathbf{n} \otimes \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_{\Gamma_N} + (\mathbf{n} \cdot \mathbf{v}, p)_{\Gamma_N} = \sum_{i,j=1}^{d} - (n_i v_j, 2 \, \varepsilon(\mathbf{u})_{ij})_{\Gamma_N} + \sum_{i}^{d} (n_i v_i, p)_{\Gamma_N}
 $$
 
 $$= \sum_{i,j=1}^{d} - (n_i v_j, 2 \, \varepsilon(\mathbf{u})_{ij})_{\Gamma_N}+ \sum_{i,j=1}^{d} (n_i v_j, p \, \delta_{ij})_{\Gamma_N}
@@ -70,8 +70,15 @@ $$
 = (\mathbf{v}, \mathbf{n} \cdot [p \mathbf{I} - 2 \, \varepsilon(\mathbf{u})])_{\Gamma_N}.
 $$
 
+ 于是 
+$$
+\mathbf{n} \cdot \bigl[p \mathbf{I} - 2 \, \varepsilon(\mathbf{u})\bigr] 
+= \mathbf{g}_N 
+\quad \text{on } \Gamma_N.
+$$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTg1NDU0MDEsMjE0NTkzNTI4OSwxOD
+eyJoaXN0b3J5IjpbLTIxMDU5MDIyNDYsMjE0NTkzNTI4OSwxOD
 Y2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3
 NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyND
 YsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
