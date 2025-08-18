@@ -85,12 +85,12 @@ $$
 
 在 Dirichlet BC 下, $\mathbf{v} = 0$. 对于 Neumann BC, 需要约束 $\mathbf{g_N}$, 注意因为原始方程中只有 $\nabla p$, 因此必须在边界某处指定 $p$ 为 Dirichlet BC. 
 
-还有一种特殊的边界条件: partial boundary onditions 或者滑移边界条件 (slip boundary condition), 相当于 Dirichlet BC+Neumann BC, 只约束特定方向的 $\vec{u}$. 如果像一条水管那样，需要约束 $\vec{u}_t  = \vec{u} - \vec{u}\cdot\vec{n} =$
+还有一种特殊的边界条件: partial boundary onditions 或者滑移边界条件 (slip boundary condition), 相当于 Dirichlet BC+Neumann BC, 只约束特定方向的 $\vec{u}$. 如果像一条水管那样，需要约束 $\vec{u}_t  = \vec{u} - \vec{n}(\vec{u}\cdot\vec{n}) = (\mathbf{I} - \vec{n} \otimes \vec{n}) \vec{u}$ ($\vec{a} \otimes \vec{b} \cdot \vec{c} = \vec{a} (\vec{)$)
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1MzE2MDAyNSwxNzA4MzgxMTEzLDIxND
-U5MzUyODksMTg2NjA3MzkxNywtMTg1ODM2MjM3OCwyMDcyMzYz
-MjQ5LC03NDE0NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC
-0xNTM2NzY5MjQ2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbNjk4MjUyNzQxLDE3MDgzODExMTMsMjE0NT
+kzNTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMy
+NDksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLT
+E1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
 
 -->
