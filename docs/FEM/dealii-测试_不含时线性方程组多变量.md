@@ -32,10 +32,16 @@ $$
 (\nabla\cdot\epsilon)\cdot \vec{v} = (\partial_j\epsilon_{ij}) v_i = \partial_j(\epsilon_{ij} v_i) - \epsilon_{ij} \partial_j v_i  = \nabla \cdot (\vec{v}\cdot \epsilon^T) - \epsilon :\vec{v} = \nabla \cdot (\vec{v}\cdot \epsilon) - \epsilon :\vec{v}
 $$
 
-因为 $(\vec{v}\cdot \epsilon)\cdot \vec{n} = v_j \epsilon_{ij} n_i = n_i v_j \epsilon_{ij} = \vec{n}$
+因为 $(\vec{v}\cdot \epsilon)\cdot \vec{n} = v_j \epsilon_{ij} n_i = n_i v_j \epsilon_{ij} = \vec{n}\otimes \vec{v} : \epsilon$, 所以弱格式化为:
+
+$$
+(\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathbf{n} \otimes \mathbf{v}, 2 \, \varepsilon(\mathbf{u}))_{\partial\Omega} - (\mathrm{div}\,\mathbf{v}, p)_\Omega + (\mathbf{n}\cdot\mathbf{v}, p)_{\partial\Omega} - (q, \mathrm{div}\,\mathbf{u})_\Omega
+= (\mathbf{v}, \mathbf{f})_\Omega,
+$$
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNzIyODExMzksLTc0MTQ3NzE2MCwtMj
-EyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1
-OTcyMzYsLTE4MTEyNzAzODVdfQ==
+eyJoaXN0b3J5IjpbMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMT
+I5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5
+NzIzNiwtMTgxMTI3MDM4NV19
 -->
