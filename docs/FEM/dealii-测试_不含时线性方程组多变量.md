@@ -26,11 +26,15 @@ $$
 = (\mathbf{v}, \mathbf{f})_\Omega.
 $$
 
-之后对第一项应用
+之后对第一项应用分部积分
+
+$$
+(\nabla\cdot\epsilon)\cdot \vec{v} = \
+$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3OD
-Q0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEy
-NzAzODVdfQ==
+eyJoaXN0b3J5IjpbNzk0MDI5Nzg3LC03NDE0NzcxNjAsLTIxMj
+k5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3
+MjM2LC0xODExMjcwMzg1XX0=
 -->
