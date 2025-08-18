@@ -77,7 +77,7 @@ $$
 \quad \text{on } \Gamma_N.
 $$
 
-最终的弱格式表示为:
+$\mathbf{g}_N$ 是作用在表面上的力， $\vec{n}$ 无量纲 $\int \nabla \cdot\mathbf{T}$. 最终的弱格式表示为:
 
 $$
 (\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathrm{div}\,\mathbf{v}, p)_\Omega - (q, \mathrm{div}\,\mathbf{u})_\Omega = (\mathbf{v}, \mathbf{f})_\Omega - (\mathbf{v}, \mathbf{g}_N)_{\Gamma_N}.
@@ -87,10 +87,18 @@ $$
 
 还有一种特殊的边界条件: partial boundary onditions 或者滑移边界条件 (slip boundary condition), 相当于 Dirichlet BC+Neumann BC, 只约束特定方向的 $\vec{u}$. 如果像一条水管那样，需要约束 $\vec{u}_t  = \vec{u} - \vec{n}(\vec{u}\cdot\vec{n}) = (\mathbf{I} - \vec{n} \otimes \vec{n}) \cdot \vec{u}$  (注:  $\vec{a} \otimes \vec{b} \cdot \vec{c} = \vec{a} (\vec{b} \cdot \vec{c})$)
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NT
-kzNTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMy
-NDksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLT
-E1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
+此时有:
 
+$$
+\mathbf{u}_t = 0, \\
+\mathbf{n} \cdot \bigl(\mathbf{n} \cdot [p\mathbf{I} - 2 \, \varepsilon(\mathbf{u})]\bigr) = 0.
+$$
+
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTgwNzA2ODMzNiwzMDEwMDYyNjksMTcwOD
+M4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgzNjIz
+NzgsMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2MjQzLD
+c4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwtMTgx
+MTI3MDM4NV19
 -->
