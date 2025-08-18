@@ -77,7 +77,7 @@ $$
 \quad \text{on } \Gamma_N.
 $$
 
-$\mathbf{g}_N$ 是作用在表面上的力， $\vec{n}$ 无量纲 $\int \nabla \cdot\mathbf{T}$. 最终的弱格式表示为:
+$\mathbf{g}_N$ 是作用在表面上的力 (N/m^2)， $\vec{n}$ 无量纲 $\int \nabla \cdot \mathbf{T} dV = \int \mathbf{T}\cdot \vec{n} dS$. 最终的弱格式表示为:
 
 $$
 (\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathrm{div}\,\mathbf{v}, p)_\Omega - (q, \mathrm{div}\,\mathbf{u})_\Omega = (\mathbf{v}, \mathbf{f})_\Omega - (\mathbf{v}, \mathbf{g}_N)_{\Gamma_N}.
@@ -94,9 +94,18 @@ $$
 \mathbf{n} \cdot \bigl(\mathbf{n} \cdot [p\mathbf{I} - 2 \, \varepsilon(\mathbf{u})]\bigr) = 0.
 $$
 
+对应的，类似于湖水的情况，有法向速度为0， 
+
+$$
+\mathbf{n} \cdot \mathbf{u} = 0, \\
+( \mathbf{I} - \mathbf{n} \otimes \mathbf{n} ) 
+\bigl( \mathbf{n} \cdot [p\mathbf{I} - 2 \, \varepsilon(\mathbf{u})] \bigr) = 0.
+$$
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNzA2ODMzNiwzMDEwMDYyNjksMTcwOD
+eyJoaXN0b3J5IjpbLTk5NTMwODEwMSwzMDEwMDYyNjksMTcwOD
 M4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgzNjIz
 NzgsMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2MjQzLD
 c4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwtMTgx
