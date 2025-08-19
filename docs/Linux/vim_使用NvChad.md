@@ -177,13 +177,13 @@ return {
   -- { import = "nvchad.blink.lazyspec" },
 
   -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
+  --    "nvim-treesitter/nvim-treesitter",
+  --    opts = {
+  --        ensure_installed = {
+  --            "vim", "lua", "vimdoc",
   --      "html", "css"
-  -- 		},
-  -- 	},
+  --        },
+  --    },
   -- },
     --
 
@@ -225,6 +225,24 @@ return {
       require("copilot").setup({})
     end,
   },
+  -- Codeium (formerly Windsurf) AI completions
+  {
+    "Exafunction/codeium.nvim",
+    cmd = { "Codeium" },             -- define the :Codeium commands
+    event = "InsertEnter",           -- load on first insert
+    build = ":Codeium Auth",         -- run once to kick off auth flow
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({
+        -- any overrides, e.g.:
+        enable_cmp_source = true,
+        virtual_text = { enabled = false },
+      })
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -238,6 +256,7 @@ return {
     },
     opts = {
       sources = {
+        { name = "codeium", group_index = 2 },
         { name = "nvim_lsp", group_index = 2 },
         { name = "copilot",  group_index = 2 },
         { name = "luasnip",  group_index = 2 },
@@ -247,59 +266,59 @@ return {
       },
     },
   },
-  {
-      "yetone/avante.nvim",
-      event = "VeryLazy",
-      lazy = false,
-      version = false, -- set this if you want to always pull the latest change
-      opts = {
-          provider = "deepseek",
-          vendors = {
-              deepseek = {
-                  __inherited_from = "openai",
-                  endpoint = "https://api.deepseek.com/v1",
-                  model = "deepseek-coder",
-              },
-          },
-      },
-      -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-      build = "make",
-      -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
-      dependencies = {
-          "nvim-treesitter/nvim-treesitter",
-          "stevearc/dressing.nvim",
-          "nvim-lua/plenary.nvim",
-          "MunifTanjim/nui.nvim",
-          --- The below dependencies are optional,
-          "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-          "zbirenbaum/copilot.lua",      -- for providers='copilot'
-          {
-              -- support for image pasting
-              "HakonHarnes/img-clip.nvim",
-              event = "VeryLazy",
-              opts = {
-                  -- recommended settings
-                  default = {
-                      embed_image_as_base64 = false,
-                      prompt_for_file_name = false,
-                      drag_and_drop = {
-                          insert_mode = true,
-                      },
-                      -- required for Windows users
-                      use_absolute_path = true,
-                  },
-              },
-          },
-          {
-              -- Make sure to set this up properly if you have lazy=true
-              'MeanderingProgrammer/render-markdown.nvim',
-              opts = {
-                  file_types = { "markdown", "Avante" },
-              },
-              ft = { "markdown", "Avante" },
-          },
-      },
-  },
+  -- {
+  --     "yetone/avante.nvim",
+  --     event = "VeryLazy",
+  --     lazy = false,
+  --     version = false, -- set this if you want to always pull the latest change
+  --     opts = {
+  --         provider = "deepseek",
+  --         vendors = {
+  --             deepseek = {
+  --                 __inherited_from = "openai",
+  --                 endpoint = "https://api.deepseek.com/v1",
+  --                 model = "deepseek-coder",
+  --             },
+  --         },
+  --     },
+  --     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  --     build = "make",
+  --     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+  --     dependencies = {
+  --         "nvim-treesitter/nvim-treesitter",
+  --         "stevearc/dressing.nvim",
+  --         "nvim-lua/plenary.nvim",
+  --         "MunifTanjim/nui.nvim",
+  --         --- The below dependencies are optional,
+  --         "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+  --         "zbirenbaum/copilot.lua",      -- for providers='copilot'
+  --         {
+  --             -- support for image pasting
+  --             "HakonHarnes/img-clip.nvim",
+  --             event = "VeryLazy",
+  --             opts = {
+  --                 -- recommended settings
+  --                 default = {
+  --                     embed_image_as_base64 = false,
+  --                     prompt_for_file_name = false,
+  --                     drag_and_drop = {
+  --                         insert_mode = true,
+  --                     },
+  --                     -- required for Windows users
+  --                     use_absolute_path = true,
+  --                 },
+  --             },
+  --         },
+  --         {
+  --             -- Make sure to set this up properly if you have lazy=true
+  --             'MeanderingProgrammer/render-markdown.nvim',
+  --             opts = {
+  --                 file_types = { "markdown", "Avante" },
+  --             },
+  --             ft = { "markdown", "Avante" },
+  --         },
+  --     },
+  -- },
   {
     "nvim-lualine/lualine.nvim",
     lazy=false,
@@ -327,7 +346,20 @@ return {
         },
       }
     end,
-  }
+  },
+  {
+      "echasnovski/mini.sessions",
+      lazy = false, -- 建议设为 false，使其尽早加载
+      config = function()
+        require("mini.sessions").setup({
+          -- 你可以在这里添加更多配置
+          -- 例如，自动保存和自动恢复会话
+          autoread = true, -- 启动时自动恢复上次的会话
+          autowrite = true, -- 退出时自动保存会话
+        })
+      end,
+    },
+
 }
 ```
 
@@ -342,7 +374,7 @@ vim.lsp.enable(servers)
 -- read :h vim.lsp.config for changing options of lsp servers 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxNjQxMjksMjQ2ODg3OTAwLDY4OTE2MT
-MzOSwxMTg1NjAwMjAyLDEwODY2NjgwMTYsLTE3MzUzMzE0Nywx
-MjU3MTM5ODI2LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
+eyJoaXN0b3J5IjpbLTIwMDQ0OTkyODksMjQ2ODg3OTAwLDY4OT
+E2MTMzOSwxMTg1NjAwMjAyLDEwODY2NjgwMTYsLTE3MzUzMzE0
+NywxMjU3MTM5ODI2LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
 -->
