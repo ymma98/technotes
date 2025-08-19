@@ -7,22 +7,11 @@
 	* 查看 key mapping: `NvCheatsheet` 或 `Telescope keymaps` 
 	* `<C>` -> `Ctrl`, `<leader>` -> `space`, `<A>` -> `Alt`, `S` -> `Shift`
 
-``
+</details>
+
 ## `~/.config/nvim/lua/autocmds.lua`
 
-```lua
-require "nvchad.autocmds"
 
-vim.api.nvim_create_autocmd("BufWinLeave", {
-  pattern = "*.*",
-  command = "mkview",
-})
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  pattern = "*.*",
-  command = "silent! loadview",
-})
-```
-``
 
 ## `~/.config/nvim/lua/chadrc.lua`
 
@@ -353,7 +342,7 @@ vim.lsp.enable(servers)
 -- read :h vim.lsp.config for changing options of lsp servers 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDAwMzQ3NjAsMjQ2ODg3OTAwLDY4OT
-E2MTMzOSwxMTg1NjAwMjAyLDEwODY2NjgwMTYsLTE3MzUzMzE0
-NywxMjU3MTM5ODI2LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
+eyJoaXN0b3J5IjpbLTMxNjQxMjksMjQ2ODg3OTAwLDY4OTE2MT
+MzOSwxMTg1NjAwMjAyLDEwODY2NjgwMTYsLTE3MzUzMzE0Nywx
+MjU3MTM5ODI2LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
 -->
