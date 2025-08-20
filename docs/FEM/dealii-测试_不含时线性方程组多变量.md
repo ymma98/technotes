@@ -137,7 +137,7 @@ F \\
 \end{pmatrix}
 $$
 
-如果 $\mathbf{u}= \sum\limits_{j}^{N_u} U_j \bm{\phi}_j$, $p=\sum\limits_{j}^{N_p} P_j \varphi_j$,  $\mathbf{v}=\bm{\phi}_i$ 则 
+如果 $\mathbf{u}= \sum\limits_{j}^{N_u} U_j \bm{\phi}_j$, $p=\sum\limits_{j}^{N_p} P_j \varphi_j$,  $\mathbf{v}=\bm{\phi}_i$, $q = \varphi_i$  则 
 
 $$
 U = \{U_j\}_{j=1}^{N_u}
@@ -162,13 +162,13 @@ $$
 
 
 $$
-B_i
+B_{ij} = \int \varphi_i \nabla \cdot \bm{\phi}_j dV
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAwMDcxODUxLDE0ODU0Njc4NjYsLTE2OT
-A3Njk1ODQsMTY1MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEw
-MSwzMDEwMDYyNjksMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4Nj
-YwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3
-MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0Ni
-wtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMT
+Y5MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4
+MTAxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMT
+g2NjA3MzkxNywtMTg1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0
+NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5Mj
+Q2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
 -->
