@@ -120,7 +120,7 @@ $$\epsilon(\mathbf{u}) = \frac{1}{2}(\nabla \mathbf{u} + \nabla \mathbf{u}^T)$$
 $$\epsilon_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$$
 
 
-可以化为如下矩阵形式:
+其中测试函数是 可以化为如下矩阵形式:
 
 $$
 \begin{pmatrix}
@@ -160,13 +160,13 @@ F = \int \bm{v_i} \cdot \bm{f} dV
 $$
 
 $$
-G = \int \bm{v}_i \cdot \gm{} dS
+G = - \int \bm{v}_i \cdot \bm{g}_N dS
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzEzODIwMzEsMTQ4NTQ2Nzg2NiwtMT
-Y5MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4
-MTAxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMT
-g2NjA3MzkxNywtMTg1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0
-NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5Mj
-Q2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbLTcxNDk4NTU1NiwxNDg1NDY3ODY2LC0xNj
+kwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgx
+MDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NTkzNTI4OSwxOD
+Y2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3
+NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyND
+YsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
 -->
