@@ -119,10 +119,16 @@ $$\epsilon(\mathbf{u}) = \frac{1}{2}(\nabla \mathbf{u} + \nabla \mathbf{u}^T)$$
 
 $$\epsilon_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$$
 
+
+可以化为如下矩阵形式:
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NT
-MwODEwMSwzMDEwMDYyNjksMTcwODM4MTExMywyMTQ1OTM1Mjg5
-LDE4NjYwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNz
-QxNDc3MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2
-OTI0NiwtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbLTE2OTA3Njk1ODQsMTY1MjE0OTkwOCwzMT
+A5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNjksMTcwODM4MTEx
+MywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgzNjIzNzgsMj
+A3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2MjQzLDc4NDQx
+MzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwtMTgxMTI3MD
+M4NV19
 -->
