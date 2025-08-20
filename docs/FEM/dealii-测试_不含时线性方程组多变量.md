@@ -120,7 +120,7 @@ $$\epsilon(\mathbf{u}) = \frac{1}{2}(\nabla \mathbf{u} + \nabla \mathbf{u}^T)$$
 $$\epsilon_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$$
 
 
-其中测试函数是 $\vec{\phi} = (\vec{v},q)^T$. 可以化为如下矩阵形式:
+其中测试函数是 $\vec{\phi} = (\vec{v},q)^T$. 可以化为如下矩阵形式 (分别取 test function 为 $\vec{\phi} = (\vec{v},0)^T$ 和 $\vec{\phi} = (0,q)^T$ 得到两行方程):
 
 $$
 \begin{pmatrix}
@@ -165,10 +165,11 @@ $$
 B_{ij} = \int \varphi_i \nabla \cdot \bm{\phi}_j dV
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMT
-Y5MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4
-MTAxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMT
-g2NjA3MzkxNywtMTg1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0
-NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5Mj
-Q2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxND
+g1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0
+ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMj
+E0NTkzNTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIz
+NjMyNDksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMz
+IsLTE1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVd
+fQ==
 -->
