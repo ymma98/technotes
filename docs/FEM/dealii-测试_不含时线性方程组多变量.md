@@ -152,14 +152,21 @@ A_{ij} = 2 \int \epsilon(\bm{\phi_i}):\epsilon(\bm{\phi_j}) dV
 $$
 
 $$
-B_{ij} = -\int \nabla \cdot \bm{\phi_i} \varphi_j dV
+B^T_{ij} = -\int \nabla \cdot \bm{\phi_i} \varphi_j dV
 $$
 
+$$
+F = \int \bm{v_i} \cdot \bm{f} dV
+$$
+
+$$
+G = \int \bm{v}_i \cdot \gm{} dS
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NCwxNj
-UyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2
-OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMT
-g1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5
-MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3Mj
-M2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbLTEwMzEzODIwMzEsMTQ4NTQ2Nzg2NiwtMT
+Y5MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4
+MTAxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMT
+g2NjA3MzkxNywtMTg1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0
+NzcxNjAsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5Mj
+Q2LC0xMzUwNTk3MjM2LC0xODExMjcwMzg1XX0=
 -->
