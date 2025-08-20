@@ -104,11 +104,23 @@ $$
 
 ## 离散化
 
-对于方程:
+对于弱格式:
 
+$$
+(\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathrm{div}\,\mathbf{v}, p)_\Omega - (q, \mathrm{div}\,\mathbf{u})_\Omega = (\mathbf{v}, \mathbf{f})_\Omega - (\mathbf{v}, \mathbf{g}_N)_{\Gamma_N}.
+$$
+
+$$
+\mathbf{g}_N  = \mathbf{n} \cdot \bigl[p \mathbf{I} - 2 \, \varepsilon(\mathbf{u})\bigr] 
+\quad \text{on } \Gamma_N.
+$$
+
+$$\epsilon(\mathbf{u}) = \frac{1}{2}(\nabla \mathbf{u} + \nabla \mathbf{u}^T)$$
+
+$$\epsilon_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2NjY4NDAwOCwzMTA5MDQ4MjEsLTk5NT
+eyJoaXN0b3J5IjpbMTY1MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NT
 MwODEwMSwzMDEwMDYyNjksMTcwODM4MTExMywyMTQ1OTM1Mjg5
 LDE4NjYwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNz
 QxNDc3MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2
