@@ -137,7 +137,7 @@ G
 \end{pmatrix}
 $$
 
-如果 $\mathbf{u}= \sum\limits_{j}^{N_u} U_j \bm{\phi}_j$, $p=\sum\limits_{j}^{N_p} P_j \varphi_j$, 则 
+如果 $\mathbf{u}= \sum\limits_{j}^{N_u} U_j \bm{\phi}_j$, $p=\sum\limits_{j}^{N_p} P_j \varphi_j$,  $\mathbf{v}=\bm{\phi}_i$ 则 
 
 $$
 U = \{U_j\}_{j=1}^{N_u}
@@ -148,11 +148,11 @@ P = \{P_j\}_{j=1}^{N_p}
 $$
 
 $$
-A_{ij} = 
+A_{ij} = \int  dV
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTg0OTM2MDMsLTE2OTA3Njk1ODQsMT
+eyJoaXN0b3J5IjpbLTExMjIzNDAzNDMsLTE2OTA3Njk1ODQsMT
 Y1MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYy
 NjksMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLT
 E4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5
