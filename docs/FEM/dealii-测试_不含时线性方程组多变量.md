@@ -139,11 +139,23 @@ $$
 
 如果 $\mathbf{u}= \sum\limits_{j}^{N_u} U_j \bm{\phi}_j$, $p=\sum\limits_{j}^{N_p} P_j \varphi_j$, 则 
 
+$$
+U = \{U_j\}_{j=1}^{N_u}
+$$
+
+$$
+P = \{P_j\}_{j=1}^{N_p}
+$$
+
+$$
+A_{ij} = 
+$$
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0MzQxMDYzMiwtMTY5MDc2OTU4NCwxNj
-UyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2
-OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMT
-g1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5
-MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3Mj
-M2LC0xODExMjcwMzg1XX0=
+eyJoaXN0b3J5IjpbLTE2NTg0OTM2MDMsLTE2OTA3Njk1ODQsMT
+Y1MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYy
+NjksMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLT
+E4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5
+OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5Nz
+IzNiwtMTgxMTI3MDM4NV19
 -->
