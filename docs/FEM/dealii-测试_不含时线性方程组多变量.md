@@ -120,7 +120,7 @@ $$\epsilon(\mathbf{u}) = \frac{1}{2}(\nabla \mathbf{u} + \nabla \mathbf{u}^T)$$
 $$\epsilon_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$$
 
 
-其中测试函数是 可以化为如下矩阵形式:
+其中测试函数是 $\vec{\phi} = (\vec{v},q)^T$. 可以化为如下矩阵形式:
 
 $$
 \begin{pmatrix}
@@ -162,8 +162,12 @@ $$
 $$
 G = - \int \bm{v}_i \cdot \bm{g}_N dS
 $$
+
+$$
+
+$$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxNDk4NTU1NiwxNDg1NDY3ODY2LC0xNj
+eyJoaXN0b3J5IjpbLTUzMTAwODM1NiwxNDg1NDY3ODY2LC0xNj
 kwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgx
 MDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NTkzNTI4OSwxOD
 Y2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3
