@@ -122,13 +122,28 @@ $$\epsilon_{ij} = \frac{1}{2}(\partial_j u_i + \partial_i u_j)$$
 
 可以化为如下矩阵形式:
 
+$$
+\begin{pmatrix}
+A & B^T \\
+B & 0
+\end{pmatrix}
+\begin{pmatrix}
+U \\
+P
+\end{pmatrix}=
+\begin{pmatrix}
+F \\
+G
+\end{pmatrix}
+$$
 
+如果 $\mathbf{u}=U_j$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTA3Njk1ODQsMTY1MjE0OTkwOCwzMT
-A5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNjksMTcwODM4MTEx
-MywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgzNjIzNzgsMj
-A3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2MjQzLDc4NDQx
-MzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwtMTgxMTI3MD
-M4NV19
+eyJoaXN0b3J5IjpbLTUwMzE2ODg4NiwtMTY5MDc2OTU4NCwxNj
+UyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2
+OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMT
+g1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5
+MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3Mj
+M2LC0xODExMjcwMzg1XX0=
 -->
