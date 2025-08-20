@@ -133,7 +133,7 @@ P
 \end{pmatrix}=
 \begin{pmatrix}
 F \\
-G
+0
 \end{pmatrix}
 $$
 
@@ -156,21 +156,19 @@ B^T_{ij} = -\int \nabla \cdot \bm{\phi_i} \varphi_j dV
 $$
 
 $$
-F = \int \bm{v_i} \cdot \bm{f} dV
+F = \int \bm{v_i} \cdot \bm{f} dV - \int \bm{v}_i \cdot \bm{g}_N dS
 $$
 
-$$
-G = - \int \bm{v}_i \cdot \bm{g}_N dS
-$$
+
 
 $$
-
+B_i
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzMTAwODM1NiwxNDg1NDY3ODY2LC0xNj
-kwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgx
-MDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NTkzNTI4OSwxOD
-Y2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3
-NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyND
-YsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVdfQ==
+eyJoaXN0b3J5IjpbMzAwMDcxODUxLDE0ODU0Njc4NjYsLTE2OT
+A3Njk1ODQsMTY1MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEw
+MSwzMDEwMDYyNjksMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4Nj
+YwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3
+MTYwLC0yMTI5OTM2MjQzLDc4NDQxMzMzMiwtMTUzNjc2OTI0Ni
+wtMTM1MDU5NzIzNiwtMTgxMTI3MDM4NV19
 -->
