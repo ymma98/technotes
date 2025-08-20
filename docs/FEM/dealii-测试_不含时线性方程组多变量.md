@@ -98,16 +98,16 @@ $$
 
 $$
 \mathbf{n} \cdot \mathbf{u} = 0, \\
-( \mathbf{I} - \mathbf{n} \otimes \mathbf{n} ) 
+( \mathbf{I} - \mathbf{n} \otimes \mathbf{n} ) \cdot
 \bigl( \mathbf{n} \cdot [p\mathbf{I} - 2 \, \varepsilon(\mathbf{u})] \bigr) = 0.
 $$
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk5NTMwODEwMSwzMDEwMDYyNjksMTcwOD
-M4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgzNjIz
-NzgsMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2MjQzLD
-c4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwtMTgx
-MTI3MDM4NV19
+eyJoaXN0b3J5IjpbMzEwOTA0ODIxLC05OTUzMDgxMDEsMzAxMD
+A2MjY5LDE3MDgzODExMTMsMjE0NTkzNTI4OSwxODY2MDczOTE3
+LC0xODU4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3NzE2MCwtMj
+EyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1
+OTcyMzYsLTE4MTEyNzAzODVdfQ==
 -->
