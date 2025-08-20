@@ -148,11 +148,15 @@ P = \{P_j\}_{j=1}^{N_p}
 $$
 
 $$
-A_{ij} = 2 \int \epsilon(\bm{\phi_i}):\epsilon(\bm{}) dV
+A_{ij} = 2 \int \epsilon(\bm{\phi_i}):\epsilon(\bm{\phi_j}) dV
+$$
+
+$$
+B_{ij} = -\int \nabla \cdot \bm{\phi_i} \varphi_j dV
 $$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3Njk2OTkwNCwtMTY5MDc2OTU4NCwxNj
+eyJoaXN0b3J5IjpbMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NCwxNj
 UyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2
 OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMT
 g1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5
