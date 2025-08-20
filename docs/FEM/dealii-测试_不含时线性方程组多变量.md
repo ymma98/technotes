@@ -137,13 +137,13 @@ G
 \end{pmatrix}
 $$
 
-如果 $\mathbf{u}= \sum_{j}^{N_u} U_j \bm{\phi}_j$
+如果 $\mathbf{u}= \sum\limits_{j}^{N_u} U_j \bm{\phi}_j$, $p=\sum\limits_{j}^{N_p} P_j \varphi_j$, 则 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU5NDg0NzU3LC0xNjkwNzY5NTg0LDE2NT
-IxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5
-LDE3MDgzODExMTMsMjE0NTkzNTI4OSwxODY2MDczOTE3LC0xOD
-U4MzYyMzc4LDIwNzIzNjMyNDksLTc0MTQ3NzE2MCwtMjEyOTkz
-NjI0Myw3ODQ0MTMzMzIsLTE1MzY3NjkyNDYsLTEzNTA1OTcyMz
-YsLTE4MTEyNzAzODVdfQ==
+eyJoaXN0b3J5IjpbLTM0MzQxMDYzMiwtMTY5MDc2OTU4NCwxNj
+UyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2
+OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMT
+g1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5
+MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0xMzUwNTk3Mj
+M2LC0xODExMjcwMzg1XX0=
 -->
