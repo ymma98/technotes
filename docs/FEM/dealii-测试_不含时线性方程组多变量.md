@@ -193,10 +193,11 @@ p = -(2 - \pi \sin(\pi x)) \cos(2\pi y),
 $$
 
 
+$$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4ODE1NTEzMiwtMzY2MzY1MDM0LDE1Nz
+eyJoaXN0b3J5IjpbLTkzNjUxMjIzNSwtMzY2MzY1MDM0LDE1Nz
 IyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2
 OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLD
 MwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3
