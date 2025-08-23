@@ -83,7 +83,9 @@ $$
 (\varepsilon(\mathbf{v}), 2 \, \varepsilon(\mathbf{u}))_\Omega - (\mathrm{div}\,\mathbf{v}, p)_\Omega - (q, \mathrm{div}\,\mathbf{u})_\Omega = (\mathbf{v}, \mathbf{f})_\Omega - (\mathbf{v}, \mathbf{g}_N)_{\Gamma_N}.
 $$
 
-在 Dirichlet BC 下, $\mathbf{v} = 0$. 对于 Neumann BC, 需要约束 $\mathbf{g_N}$, 注意因为原始方程中只有 $\nabla p$, 因此必须在边界某处指定 $p$ 为 Dirichlet BC. 
+在 Dirichlet BC 下, $\mathbf{v} = 0$. 对于 Neumann BC, 需要约束 $\mathbf{g_N}$, 注意因为原始方程中只有 $\nabla p$, 因此必须在边界某处指定 $p$ 为 Dirichlet BC, 但是不用在整个边界上指定一个 $p$ 的边界条件.
+
+只有在推导该物理量所对应的弱格式中，出现一个与该物理量的 test function 相乘的边界积分项时, 我们才需要指定这个物理量的边界条件。
 
 还有一种特殊的边界条件: partial boundary onditions 或者滑移边界条件 (slip boundary condition), 相当于 Dirichlet BC+Neumann BC, 只约束特定方向的 $\vec{u}$. 如果像一条水管那样，需要约束 $\vec{u}_t  = \vec{u} - \vec{n}(\vec{u}\cdot\vec{n}) = (\mathbf{I} - \vec{n} \otimes \vec{n}) \cdot \vec{u}$  (注:  $\vec{a} \otimes \vec{b} \cdot \vec{c} = \vec{a} (\vec{b} \cdot \vec{c})$)
 
@@ -197,11 +199,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzNjUxMjIzNSwtMzY2MzY1MDM0LDE1Nz
-IyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2
-OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLD
-MwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3
-MzkxNywtMTg1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNj
-AsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0x
-MzUwNTk3MjM2XX0=
+eyJoaXN0b3J5IjpbMTc3NDQ3NjY4MCwtOTM2NTEyMjM1LC0zNj
+YzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3
+ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC
+05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NTkz
+NTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyND
+ksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1
+MzY3NjkyNDZdfQ==
 -->
