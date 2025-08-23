@@ -172,7 +172,6 @@ $$
 
 这里使用如下测试形式:
 
-- Here
 
 $$
 f_1 = -2\nu x^2 - 2\nu y^2 - \nu e^{-y} + \pi^2 \cos(\pi x) \cos(2\pi y),
@@ -182,7 +181,7 @@ $$
 f_2 = 4\nu x y - \nu \pi^3 \sin(\pi x) + 2\pi (2 - \pi \sin(\pi x)) \sin(2\pi y).
 $$
 
-- The analytic solution of this problem is
+解析解:
 
 $$
 u_1 = x^2 y^2 + e^{-y}, \qquad
@@ -193,50 +192,11 @@ $$
 p = -(2 - \pi \sin(\pi x)) \cos(2\pi y),
 $$
 
-which can be used to compute the errors between the numerical solution and the analytic solution.  
-We can also verify $f_1$ and $f_2$ above by plugging the analytic solutions into the Stokes equation.
-
-
-
-$$\Omega = [0,1] \times [-0.25,0]$$:
-
-$$
-u_1 = e^{-y} \quad \text{on } x=0,
-$$
-
-$$
-u_1 = y^2 + e^{-y} \quad \text{on } x=1,
-$$
-
-$$
-u_1 = \tfrac{1}{16}x^2 + e^{0.25} \quad \text{on } y=-0.25,
-$$
-
-$$
-u_1 = 1 \quad \text{on } y=0,
-$$
-
-$$
-u_2 = 2 \quad \text{on } x=0,
-$$
-
-$$
-u_2 = -\tfrac{2}{3}y^3 + 2 \quad \text{on } x=1,
-$$
-
-$$
-u_2 = \tfrac{1}{96}x + 2 - \pi \sin(\pi x) \quad \text{on } y=-0.25,
-$$
-
-$$
-u_2 = 2 - \pi \sin(\pi x) \quad \text{on } y=0.
-$$
-
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExMjk2MjE0MCwtMzY2MzY1MDM0LDE1Nz
+eyJoaXN0b3J5IjpbMTM4ODE1NTEzMiwtMzY2MzY1MDM0LDE1Nz
 IyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2
 OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLD
 MwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3
