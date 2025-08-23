@@ -166,12 +166,62 @@ $$
 $$
 B_{ij} = \int \varphi_i \nabla \cdot \bm{\phi}_j dV
 $$
+
+
+## test case
+
+这里使用如下测试形式:
+
+**Example 1:** Use the finite element method to solve the following
+equation on the domain 
+\(\Omega = [0,1] \times [-0.25,0]\):
+
+\[
+-\nabla \cdot \mathbb{T}(\mathbf{u}, p) = \mathbf{f} \quad \text{on } \Omega,
+\]
+
+\[
+\nabla \cdot \mathbf{u} = 0 \quad \text{in } \Omega,
+\]
+
+\[
+u_1 = e^{-y} \quad \text{on } x=0,
+\]
+
+\[
+u_1 = y^2 + e^{-y} \quad \text{on } x=1,
+\]
+
+\[
+u_1 = \tfrac{1}{16}x^2 + e^{0.25} \quad \text{on } y=-0.25,
+\]
+
+\[
+u_1 = 1 \quad \text{on } y=0,
+\]
+
+\[
+u_2 = 2 \quad \text{on } x=0,
+\]
+
+\[
+u_2 = -\tfrac{2}{3}y^3 + 2 \quad \text{on } x=1,
+\]
+
+\[
+u_2 = \tfrac{1}{96}x + 2 - \pi \sin(\pi x) \quad \text{on } y=-0.25,
+\]
+
+\[
+u_2 = 2 - \pi \sin(\pi x) \quad \text{on } y=0.
+\]
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC0xNj
-E2OTg1MTU0LDE0ODU0Njc4NjYsLTE2OTA3Njk1ODQsMTY1MjE0
-OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNjksMT
-cwODM4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgz
-NjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2Mj
-QzLDc4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwt
-MTgxMTI3MDM4NV19
+eyJoaXN0b3J5IjpbLTk1OTM5MzUzOSwtMzY2MzY1MDM0LDE1Nz
+IyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2
+OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLD
+MwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3
+MzkxNywtMTg1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNj
+AsLTIxMjk5MzYyNDMsNzg0NDEzMzMyLC0xNTM2NzY5MjQ2LC0x
+MzUwNTk3MjM2XX0=
 -->
