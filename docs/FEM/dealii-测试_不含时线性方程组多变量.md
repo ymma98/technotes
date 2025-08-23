@@ -94,6 +94,8 @@ $$
 \mathbf{n} \cdot \bigl(\mathbf{n} \cdot [p\mathbf{I} - 2 \, \varepsilon(\mathbf{u})]\bigr) = 0.
 $$
 
+因为速度只有法向分量， 根据第二个方程, 可知此时并不贡献任何边界项。
+
 对应的，类似于湖水的情况，有法向速度为0， 
 
 $$
@@ -165,11 +167,11 @@ $$
 B_{ij} = \int \varphi_i \nabla \cdot \bm{\phi}_j dV
 $$
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxND
-g1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0
-ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMj
-E0NTkzNTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIz
-NjMyNDksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMz
-IsLTE1MzY3NjkyNDYsLTEzNTA1OTcyMzYsLTE4MTEyNzAzODVd
-fQ==
+eyJoaXN0b3J5IjpbLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC0xNj
+E2OTg1MTU0LDE0ODU0Njc4NjYsLTE2OTA3Njk1ODQsMTY1MjE0
+OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNjksMT
+cwODM4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgz
+NjIzNzgsMjA3MjM2MzI0OSwtNzQxNDc3MTYwLC0yMTI5OTM2Mj
+QzLDc4NDQxMzMzMiwtMTUzNjc2OTI0NiwtMTM1MDU5NzIzNiwt
+MTgxMTI3MDM4NV19
 -->
