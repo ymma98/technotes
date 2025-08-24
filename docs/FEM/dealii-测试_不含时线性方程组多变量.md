@@ -176,7 +176,7 @@ $$
 
 
 $$
-f_1 = -2\nu x^2 - 2\nu y^2 - \nu e^{-y} + \pi^2 \cos(\pi x) \cos(2\pi y),
+f_1 = -2\nu x^2 - 2\nu y^2 - \nu e^{-y} + \pi \cos(\pi x) \cos(2\pi y),
 $$
 
 $$
@@ -199,11 +199,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNj
-YzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3
-ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC
-05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NTkz
-NTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIzNjMyND
-ksLTc0MTQ3NzE2MCwtMjEyOTkzNjI0Myw3ODQ0MTMzMzIsLTE1
-MzY3NjkyNDZdfQ==
+eyJoaXN0b3J5IjpbNzQwNjQzMTE2LDEzMDkyNjk5NTIsLTkzNj
+UxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2MTY5ODUx
+NTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NCwxNjUyMTQ5OTA4LD
+MxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2OSwxNzA4Mzgx
+MTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMTg1ODM2MjM3OC
+wyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5MzYyNDMsNzg0
+NDEzMzMyXX0=
 -->
