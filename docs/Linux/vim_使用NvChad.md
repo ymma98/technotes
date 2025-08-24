@@ -246,6 +246,8 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-nvim-lua",
       {
       -- Make sure to run :Lazy load copilot-cmp followed by :Copilot auth once
         "zbirenbaum/copilot-cmp",
@@ -256,13 +258,13 @@ return {
     },
     opts = {
       sources = {
-        { name = "codeium", group_index = 2 },
         { name = "nvim_lsp", group_index = 2 },
+        { name = "path",     group_index = 2 },
+        { name = "codeium", group_index = 2 },
         { name = "copilot",  group_index = 2 },
         { name = "luasnip",  group_index = 2 },
         { name = "buffer",   group_index = 2 },
         { name = "nvim_lua", group_index = 2 },
-        { name = "path",     group_index = 2 },
       },
     },
   },
@@ -374,7 +376,8 @@ vim.lsp.enable(servers)
 -- read :h vim.lsp.config for changing options of lsp servers 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDQ0OTkyODksMjQ2ODg3OTAwLDY4OT
-E2MTMzOSwxMTg1NjAwMjAyLDEwODY2NjgwMTYsLTE3MzUzMzE0
-NywxMjU3MTM5ODI2LC00NzczMzQ2NjksNDc2OTQxNTMwXX0=
+eyJoaXN0b3J5IjpbMTEwNzgyNjgyMywtMjAwNDQ5OTI4OSwyND
+Y4ODc5MDAsNjg5MTYxMzM5LDExODU2MDAyMDIsMTA4NjY2ODAx
+NiwtMTczNTMzMTQ3LDEyNTcxMzk4MjYsLTQ3NzMzNDY2OSw0Nz
+Y5NDE1MzBdfQ==
 -->
