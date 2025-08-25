@@ -169,7 +169,12 @@ $$
 B_{ij} = -\int \varphi_i \nabla \cdot \bm{\phi}_j dV
 $$
 
-误差计算:
+当 PDE 离散后出现**对角零块**, 表明这是一个鞍点问题, 确保数值稳定的方法之一是降低对角零块对应的变量的基函数阶数。
+
+$A_{ij}$ 对应于 主变量与自身test function的耦合
+
+
+## 误差计算
 
 - $L^\infty$ norm error:
 
@@ -277,11 +282,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMTI4OTM2NjQsLTE5ODU5MjAyODQsOT
-AwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0MzExNiwxMzA5MjY5
-OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC
-0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLTE2OTA3Njk1ODQsMTY1
-MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNj
-ksMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4
-NTgzNjIzNzhdfQ==
+eyJoaXN0b3J5IjpbLTQzOTM2NTIwNywtMTAxMjg5MzY2NCwtMT
+k4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQz
+MTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LD
+E1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5
+MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MT
+AxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2
+NjA3MzkxN119
 -->
