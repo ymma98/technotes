@@ -313,7 +313,12 @@ LinearSteadyStokesSolver<dim>::LinearSteadyStokesSolver(const unsigned int pd, d
 
 ### 设置解析解和 RHS
 
-这里需要注意 `AnalyticalSolution` 和 `RightHandSide` 分别继承自  `public dealii::Function<dim>` 和 `public dealii::TensorFunction<1, dim>`. 
+这里需要注意 `AnalyticalSolution` 和 `RightHandSide` 分别继承自  `public dealii::Function<dim>` 和 `public dealii::TensorFunction<1, dim>`.  这类 class 的套路都是类似的, 需要实现:
+
+* ` virtual double value(const dealii::Point<dim> &p,const unsigned int component = 0) const override`
+* `virtual dealii::Tensor<1, dim> gradient(const dealii::Point<dim> &p,const unsigned int component = 0) const override`
+* `virtual void vector_value(const dealii::Point<dim> &p,dealii::Vector<double> &values) const override`
+                    
 
 ```cpp
 template <int dim>
@@ -522,7 +527,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyMzgzMDg0MCw5NjIwOTM4MjAsMTA1OD
+eyJoaXN0b3J5IjpbMTU4MjYwNjU3MSw5NjIwOTM4MjAsMTA1OD
 g3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOTg1OTIw
 Mjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMxMTYsMT
 MwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMTU3MjI2
