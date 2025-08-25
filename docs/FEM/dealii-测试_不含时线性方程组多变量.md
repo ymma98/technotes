@@ -313,7 +313,90 @@ LinearSteadyStokesSolver<dim>::LinearSteadyStokesSolver(const unsigned int pd, d
 
 ### 设置解析解和 RHS
 
+```cpp
 
+template <int dim>
+class AnalyticalSolution : public dealii::Function<dim> {
+public:
+  AnalyticalSolution()
+    : dealii::Function<dim>(dim + 1) {}
+
+  virtual double value(const dealii::Point<dim> &p,
+                       const unsigned int component = 0) const override{
+    Assert(component < this->n_components,
+           dealii::ExcIndexRange(component, 0, this->n_components));
+
+    const double x = p[0];
+    const double y = p[1];
+
+    switch (component)
+      {
+        case 0: // Velocity u_1
+          return (x * x * y * y + std::exp(-y));
+        case 1: // Velocity u_2
+          return (-2.0 / 3.0 * x * y * y * y + 2.0 -
+                  dealii::numbers::PI * std::sin(dealii::numbers::PI * x));
+        case 2: // Pressure p
+          return (-(2.0 - dealii::numbers::PI * std::sin(dealii::numbers::PI * x)) *
+                  std::cos(2.0 * dealii::numbers::PI * y));
+        default:
+          return 0;
+      }
+  }
+
+    virtual dealii::Tensor<1, dim> gradient(const dealii::Point<dim> &p,
+                                  const unsigned int component = 0) const override
+  {
+    Assert(component < this->n_components,
+           dealii::ExcIndexRange(component, 0, this->n_components));
+
+    const double x = p[0];
+    const double y = p[1];
+    
+    dealii::Tensor<1, dim> return_gradient;
+
+    switch (component)
+      {
+        case 0: // Gradient of u_1 = [du_1/dx, du_1/dy]
+          {
+            return_gradient[0] = 2.0 * x * y * y;
+            return_gradient[1] = 2.0 * x * x * y - std::exp(-y);
+            break;
+          }
+        case 1: // Gradient of u_2 = [du_2/dx, du_2/dy]
+          {
+            return_gradient[0] = -2.0 / 3.0 * y * y * y -
+                                 dealii::numbers::PI * dealii::numbers::PI *
+                                   std::cos(dealii::numbers::PI * x);
+            return_gradient[1] = -2.0 * x * y * y;
+            break;
+          }
+        case 2: // Gradient of p = [dp/dx, dp/dy]
+          {
+            return_gradient[0] = dealii::numbers::PI * dealii::numbers::PI *
+                                 std::cos(dealii::numbers::PI * x) *
+                                 std::cos(2.0 * dealii::numbers::PI * y);
+            return_gradient[1] = 2.0 * dealii::numbers::PI *
+                                 (2.0 - dealii::numbers::PI *
+                                   std::sin(dealii::numbers::PI * x)) *
+                                 std::sin(2.0 * dealii::numbers::PI * y);
+            break;
+          }
+      }
+    return return_gradient;
+  }
+
+  virtual void vector_value(const dealii::Point<dim> &p,
+          dealii::Vector<double> &values) const override{
+      Assert(values.size() == dim+1,
+              dealii::ExcDimensionMismatch(values.size(),dim));
+      for (unsigned int i=0; i < this->n_components; i++){
+        values(i) = value(p,i);
+      }
+  }
+};
+
+```
 
 
 ## 测试结果
@@ -325,7 +408,7 @@ LinearSteadyStokesSolver<dim>::LinearSteadyStokesSolver(const unsigned int pd, d
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0OTk4NDY2MywtMTAxMjg5MzY2NCwtMT
+eyJoaXN0b3J5IjpbMTcxOTQ5MzU0NywtMTAxMjg5MzY2NCwtMT
 k4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQz
 MTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LD
 E1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5
