@@ -314,15 +314,16 @@ LinearSteadyStokesSolver<dim>::LinearSteadyStokesSolver(const unsigned int pd, d
 ### 设置解析解和 RHS
 
 ```cpp
-
 template <int dim>
 class AnalyticalSolution : public dealii::Function<dim> {
 public:
+  // 问题是 dim 维度的, this->n_components=dim +１
   AnalyticalSolution()
     : dealii::Function<dim>(dim + 1) {}
 
   virtual double value(const dealii::Point<dim> &p,
                        const unsigned int component = 0) const override{
+    // exception: component 的值超出了 [0, n_components) 这个有效范围
     Assert(component < this->n_components,
            dealii::ExcIndexRange(component, 0, this->n_components));
 
@@ -332,18 +333,18 @@ public:
     switch (component)
       {
         case 0: // Velocity u_1
-          return (x * x * y * y + std::exp(-y));
+          return ...
         case 1: // Velocity u_2
-          return (-2.0 / 3.0 * x * y * y * y + 2.0 -
-                  dealii::numbers::PI * std::sin(dealii::numbers::PI * x));
+         return ...
         case 2: // Pressure p
-          return (-(2.0 - dealii::numbers::PI * std::sin(dealii::numbers::PI * x)) *
-                  std::cos(2.0 * dealii::numbers::PI * y));
+          return ...
         default:
           return 0;
       }
   }
 
+    // Tensor<rank, dim>, rank=0->scalar, rank=1->vector
+    // 计算单个分量的梯度
     virtual dealii::Tensor<1, dim> gradient(const dealii::Point<dim> &p,
                                   const unsigned int component = 0) const override
   {
@@ -389,12 +390,13 @@ public:
   virtual void vector_value(const dealii::Point<dim> &p,
           dealii::Vector<double> &values) const override{
       Assert(values.size() == dim+1,
-              dealii::ExcDimensionMismatch(values.size(),dim));
+              dealii::ExcDimensionMismatch(values.size(),dim+1));
       for (unsigned int i=0; i < this->n_components; i++){
         values(i) = value(p,i);
       }
   }
 };
+
 
 ```
 
@@ -408,11 +410,11 @@ public:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcxOTQ5MzU0NywtMTAxMjg5MzY2NCwtMT
-k4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQz
-MTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LD
-E1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5
-MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MT
-AxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2
-NjA3MzkxN119
+eyJoaXN0b3J5IjpbMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMD
+EyODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3
+NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC
+0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1
+NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0OD
+IxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0
+NTkzNTI4OV19
 -->
