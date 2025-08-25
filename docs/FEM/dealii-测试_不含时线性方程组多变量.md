@@ -171,6 +171,47 @@ $$
 
 误差计算:
 
+- $L^\infty$ norm error:
+
+$$
+\|\mathbf{u} - \mathbf{u}_h\|_\infty 
+= \max \left( \|u_1 - u_{1h}\|_\infty, \; \|u_2 - u_{2h}\|_\infty \right),
+$$
+
+$$
+\|u_1 - u_{1h}\|_\infty = \sup_\Omega |u_1 - u_{1h}|,
+$$
+
+$$
+\|u_2 - u_{2h}\|_\infty = \sup_\Omega |u_2 - u_{2h}|,
+$$
+
+$$
+\|p - p_h\|_\infty = \sup_\Omega |p - p_h| \, .
+$$
+
+- $L^2$ norm error:
+
+$$
+\|\mathbf{u} - \mathbf{u}_h\|_0
+= \sqrt{ \|u_1 - u_{1h}\|_0^2 + \|u_2 - u_{2h}\|_0^2 },
+$$
+
+$$
+\|u_1 - u_{1h}\|_0
+= \left( \int_\Omega (u_1 - u_{1h})^2 \, dxdy \right)^{1/2},
+$$
+
+$$
+\|u_2 - u_{2h}\|_0
+= \left( \int_\Omega (u_2 - u_{2h})^2 \, dxdy \right)^{1/2},
+$$
+
+$$
+\|p - p_h\|_0
+= \left( \int_\Omega (p - p_h)^2 \, dxdy \right)^{1/2}.
+$$
+
 
 
 ## test case
@@ -212,7 +253,7 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODMwMDQ0NDU5LDkwMDc1NTIxNSwtMTQ4NT
+eyJoaXN0b3J5IjpbOTgxNTg3ODIyLDkwMDc1NTIxNSwtMTQ4NT
 Q3NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1
 LC0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxND
 g1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0
