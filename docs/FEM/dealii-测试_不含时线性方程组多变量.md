@@ -436,6 +436,9 @@ public:
 
 ### setup system
 
+需要注意的是:
+* 需要分别指定 $\vec{u}$ 和 $p$ 的 Dirichlet BC, 这一步是通过 `dealii::FEValuesExtractors::Vector` 实现的
+
 ```cpp
 template <int dim>
 void LinearSteadyStokesSolver<dim>::setup_system()
@@ -527,7 +530,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU4MjYwNjU3MSw5NjIwOTM4MjAsMTA1OD
+eyJoaXN0b3J5IjpbMTM1MTU1NDQ1OCw5NjIwOTM4MjAsMTA1OD
 g3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOTg1OTIw
 Mjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMxMTYsMT
 MwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMTU3MjI2
