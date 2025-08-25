@@ -212,6 +212,26 @@ $$
 = \left( \int_\Omega (p - p_h)^2 \, dxdy \right)^{1/2}.
 $$
 
+- $H^1$ semi-norm error:
+
+$$
+|\mathbf{u} - \mathbf{u}_h|_1
+= \sqrt{ |u_1 - u_{1h}|_1^2 + |u_2 - u_{2h}|_1^2 },
+$$
+
+$$
+|u_1 - u_{1h}|_1= \left( \int_\Omega \left( \frac{\partial (u_1 - u_{1h})}{\partial x} \right)^2 + \left( \frac{\partial (u_1 - u_{1h})}{\partial y} \right)^2 dxdy \right)^{1/2},
+$$
+
+$$
+|u_2 - u_{2h}|_1 = \left( \int_\Omega \left( \frac{\partial (u_2 - u_{2h})}{\partial x} \right)^2 + \left( \frac{\partial (u_2 - u_{2h})}{\partial y} \right)^2 dxdy \right)^{1/2},
+$$
+
+$$
+|p - p_h|_1 = \left( \int_\Omega \left( \frac{\partial (p - p_h)}{\partial x} \right)^2 + \left( \frac{\partial (p - p_h)}{\partial y} \right)^2 dxdy \right)^{1/2}.
+$$
+
+
 
 
 ## test case
@@ -253,11 +273,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTgxNTg3ODIyLDkwMDc1NTIxNSwtMTQ4NT
-Q3NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1
-LC0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxND
-g1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0
-ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMj
-E0NTkzNTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIz
-NjMyNDldfQ==
+eyJoaXN0b3J5IjpbLTE5ODU5MjAyODQsOTAwNzU1MjE1LC0xND
+g1NDc3ODI5LDc0MDY0MzExNiwxMzA5MjY5OTUyLC05MzY1MTIy
+MzUsLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC0xNjE2OTg1MTU0LD
+E0ODU0Njc4NjYsLTE2OTA3Njk1ODQsMTY1MjE0OTkwOCwzMTA5
+MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNjksMTcwODM4MTExMy
+wyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4NTgzNjIzNzgsMjA3
+MjM2MzI0OV19
 -->
