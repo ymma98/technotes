@@ -406,15 +406,8 @@ public:
  
     dealii::Tensor<1, dim> f_val;
 
-    f_val[0] = -nu * (2 * x * x + 2 * y * y + std::exp(-y)) + dealii::numbers::PI *
-           dealii::numbers::PI * std::cos(dealii::numbers::PI * x) * std::cos(2 * dealii::numbers::PI * y);
-
-    f_val[1] = 4.0 * nu * x * y -
-               nu * std::pow(dealii::numbers::PI, 3.0) *
-                 std::sin(dealii::numbers::PI * x) +
-               2.0 * dealii::numbers::PI *
-                 (2.0 - dealii::numbers::PI * std::sin(dealii::numbers::PI * x)) *
-                 std::sin(2.0 * dealii::numbers::PI * y);
+    f_val[0] =...;
+    f_val[1] = ...;
 
     return f_val;
   }
@@ -431,8 +424,6 @@ public:
       }
   }
 };
-
-
 ```
 
 
@@ -445,7 +436,7 @@ public:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyNzIyODU1LDEwNTg4NzI2NjIsMTcxOT
+eyJoaXN0b3J5IjpbOTYyMDkzODIwLDEwNTg4NzI2NjIsMTcxOT
 Q5MzU0NywtMTAxMjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3NTUy
 MTUsLTE0ODU0Nzc4MjksNzQwNjQzMTE2LDEzMDkyNjk5NTIsLT
 kzNjUxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2MTY5
