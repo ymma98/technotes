@@ -267,9 +267,53 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 ## 代码实现重点
 
+
+### 代码框架
+
 对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定网格密度, `polynomial degree`, 初始化 `dof_handler(triangulation)`, 以及初始化 `fe(dealii::FE_Q<dim>(pd_ + 1) ^ dim, dealii::FE_Q<dim>(pd_))`. 
 
-有限元的框架: `setup_system()` (生成网格, 设置边界条件 ), `assemble_system()` (矩阵组装), `solve()`, `output_results()`, `compute_errors()`
+有限元的框架: `setup_system()` (生成网格, 设置边界条件 `constraints`), `assemble_system()` (矩阵组装), `solve()`, `output_results()`, `compute_errors()`
+
+```cpp
+template<int dim>
+class LinearSteadyStokesSolver{
+    public:
+        LinearSteadyStokesSolver(const unsigned int pd, double h);
+        void run();
+        void compute_errors() const;
+
+    private:
+        void setup_system();
+        void assemble_system();
+        void solve();
+        void output_results() const;
+
+        const unsigned int pd_;
+        const double h_;
+
+        dealii::Triangulation<dim> triangulation;
+        dealii::DoFHandler<dim> dof_handler;
+        dealii::FESystem<dim> fe;
+
+        dealii::AffineConstraints<double> constraints;
+        dealii::SparsityPattern sparsity_pattern;
+        dealii::SparseMatrix<double> system_matrix;
+
+        dealii::Vector<double> solution;
+        dealii::Vector<double> system_rhs;
+};
+
+template <int dim>
+LinearSteadyStokesSolver<dim>::LinearSteadyStokesSolver(const unsigned int pd, double h)
+  : pd_(pd), h_(h)
+  , dof_handler(triangulation)
+  , fe(dealii::FE_Q<dim>(pd_ + 1) ^ dim, dealii::FE_Q<dim>(pd_))
+{}
+```
+
+### 设置解析解和 RHS
+
+
 
 
 ## 测试结果
@@ -281,11 +325,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTg3MDc0OTU4LC0xMDEyODkzNjY0LC0xOT
-g1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMx
-MTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMT
-U3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkw
-NzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgxMD
-EsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NTkzNTI4OSwxODY2
-MDczOTE3XX0=
+eyJoaXN0b3J5IjpbMTY0OTk4NDY2MywtMTAxMjg5MzY2NCwtMT
+k4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQz
+MTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LD
+E1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5
+MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MT
+AxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2
+NjA3MzkxN119
 -->
