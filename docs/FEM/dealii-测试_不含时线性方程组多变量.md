@@ -313,6 +313,8 @@ LinearSteadyStokesSolver<dim>::LinearSteadyStokesSolver(const unsigned int pd, d
 
 ### 设置解析解和 RHS
 
+这里需要注意 `AnalyticalSolution` 和 `RightHandSide` 分别继承自  `public dealii::Function<dim>` 和 
+
 ```cpp
 template <int dim>
 class AnalyticalSolution : public dealii::Function<dim> {
@@ -427,6 +429,90 @@ public:
 ```
 
 
+### setup system
+
+```cpp
+template <int dim>
+void LinearSteadyStokesSolver<dim>::setup_system()
+{
+  const dealii::Point<2> p1(0., -0.25);
+  const dealii::Point<2> p2(1.0, 0.);
+
+  unsigned int               mx     = 1.0 / h_;
+  unsigned int               my     = 0.25 / h_;
+  const std::vector<unsigned int> ncells = {mx, my};
+  dealii::GridGenerator::subdivided_hyper_rectangle(triangulation,
+                                                    ncells,
+                                                    p1,
+                                                    p2);
+
+  dof_handler.distribute_dofs(fe);
+
+  
+  // Step 1: Initialize constraints and apply all boundary conditions
+  // using the default, interleaved DoF numbering.
+  constraints.clear();
+  dealii::DoFTools::make_hanging_node_constraints(dof_handler, constraints);
+
+  // Apply velocity Dirichlet BCs
+  // 定义名为 velocities 的提取器 (extractor) 对象
+  // 告诉 FEValues 如何从一个包含多个变量的FESystem 中，只提取特定的vector
+  // 0 代表该 vector 的分量是 0~dim-1, 从 0 开始
+  const dealii::FEValuesExtractors::Vector velocities(0);
+  dealii::VectorTools::interpolate_boundary_values(dof_handler,
+                                                   0,
+                                                   AnalyticalSolution<dim>(),
+                                                   constraints,
+                                                   fe.component_mask(velocities));
+
+  // Apply pressure pin
+  const dealii::FEValuesExtractors::Scalar pressure(dim);
+  const dealii::ComponentMask pressure_mask = fe.component_mask(pressure);
+  const dealii::IndexSet pressure_dofs =
+    dealii::DoFTools::extract_dofs(dof_handler, pressure_mask);
+  const dealii::types::global_dof_index first_pressure_dof =
+    *pressure_dofs.begin();
+  // add_line 表示添加一个新的约束
+  // 所有对自由度 i 的约束都形如: x_i = sum_{j!=i} (a_j * x_j) + b
+  // 其中 b 对应于非齐次项, j 代表别的自由度
+  constraints.add_line(first_pressure_dof);
+  // 1. 创建一个标准的单元格到真实空间的映射 (MappingQ1)
+  const dealii::MappingQ1<dim> mapping;
+  // 2. 创建一个向量来存储所有自由度的坐标
+  std::vector<dealii::Point<dim>> dof_locations(dof_handler.n_dofs());
+  
+  // 3. 使用 DoFTools 中的核心函数来计算并填充这个坐标向量
+  dealii::DoFTools::map_dofs_to_support_points(mapping,
+                                              dof_handler,
+                                              dof_locations);
+  // 4. 从向量中通过索引获取我们需要的特定自由度的坐标
+  const dealii::Point<dim> p_dof_location = dof_locations[first_pressure_dof];
+  // 5. 计算在该点的精确压力值
+  const double p_value_at_node =
+    AnalyticalSolution<dim>().value(p_dof_location, dim);
+  // 6. 将约束的不均匀项设置为计算出的精确值
+  constraints.set_inhomogeneity(first_pressure_dof, p_value_at_node);
+  
+  constraints.close();
+
+  std::cout << "   Number of DoFs: " << dof_handler.n_dofs() << std::endl;
+  
+  dealii::DynamicSparsityPattern dsp(dof_handler.n_dofs(),
+                                     dof_handler.n_dofs());
+  dealii::DoFTools::make_sparsity_pattern(dof_handler,
+                                          dsp,
+                                          constraints,
+                                          /*keep_constrained_dofs = */ false);
+  sparsity_pattern.copy_from(dsp);
+
+  system_matrix.reinit(sparsity_pattern);
+  solution.reinit(dof_handler.n_dofs());
+  system_rhs.reinit(dof_handler.n_dofs());
+}
+
+```
+
+
 ## 测试结果
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250825/image.4ub9n8eota.webp){width=400px}
@@ -436,11 +522,11 @@ public:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTYyMDkzODIwLDEwNTg4NzI2NjIsMTcxOT
-Q5MzU0NywtMTAxMjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3NTUy
-MTUsLTE0ODU0Nzc4MjksNzQwNjQzMTE2LDEzMDkyNjk5NTIsLT
-kzNjUxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2MTY5
-ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NCwxNjUyMTQ5OT
-A4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2OSwxNzA4
-MzgxMTEzXX0=
+eyJoaXN0b3J5IjpbMTE5ODM4NDU2OSw5NjIwOTM4MjAsMTA1OD
+g3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOTg1OTIw
+Mjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMxMTYsMT
+MwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMTU3MjI2
+OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkwNzY5NT
+g0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgxMDEsMzAx
+MDA2MjY5XX0=
 -->
