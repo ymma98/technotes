@@ -171,7 +171,6 @@ $$
 
 当 PDE 离散后出现**对角零块**, 表明这是一个鞍点问题, 确保数值稳定的方法之一是降低对角零块对应的变量的基函数阶数。
 
-$A_{ij}$ 对应于 主变量与自身test function的耦合
 
 
 ## 误差计算
@@ -268,9 +267,9 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 ## 代码实现重点
 
-对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定网格密度, `polynomial degree`, 初始化 `dof_handler(triangulation)`, 以及初始化 `fe(dealii::FE_Q<dim>(pd_ + 1) ^ dim, dealii::FE_Q<dim>(pd_))`. 这里因为
+对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定网格密度, `polynomial degree`, 初始化 `dof_handler(triangulation)`, 以及初始化 `fe(dealii::FE_Q<dim>(pd_ + 1) ^ dim, dealii::FE_Q<dim>(pd_))`. 
 
-先定义有限元的框架: `setup_system()` (生成网格, ), `assemble_system()` (矩阵组装), `solve()`, `output_results()`, `compute_errors()`
+有限元的框架: `setup_system()` (生成网格, 设置边界条件 ), `assemble_system()` (矩阵组装), `solve()`, `output_results()`, `compute_errors()`
 
 
 ## 测试结果
@@ -282,11 +281,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzOTM2NTIwNywtMTAxMjg5MzY2NCwtMT
-k4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQz
-MTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LD
-E1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5
-MDc2OTU4NCwxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MT
-AxLDMwMTAwNjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2
-NjA3MzkxN119
+eyJoaXN0b3J5IjpbNTg3MDc0OTU4LC0xMDEyODkzNjY0LC0xOT
+g1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMx
+MTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMT
+U3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkw
+NzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgxMD
+EsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0NTkzNTI4OSwxODY2
+MDczOTE3XX0=
 -->
