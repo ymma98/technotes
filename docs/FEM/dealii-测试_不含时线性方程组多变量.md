@@ -360,27 +360,20 @@ public:
       {
         case 0: // Gradient of u_1 = [du_1/dx, du_1/dy]
           {
-            return_gradient[0] = 2.0 * x * y * y;
-            return_gradient[1] = 2.0 * x * x * y - std::exp(-y);
+            return_gradient[0] = ...
+            return_gradient[1] = ...
             break;
           }
         case 1: // Gradient of u_2 = [du_2/dx, du_2/dy]
           {
-            return_gradient[0] = -2.0 / 3.0 * y * y * y -
-                                 dealii::numbers::PI * dealii::numbers::PI *
-                                   std::cos(dealii::numbers::PI * x);
-            return_gradient[1] = -2.0 * x * y * y;
+            return_gradient[0] = ...
+            return_gradient[1] = ...
             break;
           }
         case 2: // Gradient of p = [dp/dx, dp/dy]
           {
-            return_gradient[0] = dealii::numbers::PI * dealii::numbers::PI *
-                                 std::cos(dealii::numbers::PI * x) *
-                                 std::cos(2.0 * dealii::numbers::PI * y);
-            return_gradient[1] = 2.0 * dealii::numbers::PI *
-                                 (2.0 - dealii::numbers::PI *
-                                   std::sin(dealii::numbers::PI * x)) *
-                                 std::sin(2.0 * dealii::numbers::PI * y);
+            return_gradient[0] = ...
+            return_gradient[1] = ...
             break;
           }
       }
@@ -410,11 +403,11 @@ public:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMD
-EyODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3
-NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC
-0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1
-NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0OD
-IxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMjE0
-NTkzNTI4OV19
+eyJoaXN0b3J5IjpbLTE0NjcyMTIxOTMsMTA1ODg3MjY2MiwxNz
+E5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1
+NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1Mi
+wtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYx
+Njk4NTE1NCwxNDg1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxND
+k5MDgsMzEwOTA0ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3
+MDgzODExMTNdfQ==
 -->
