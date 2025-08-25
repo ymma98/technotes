@@ -391,6 +391,48 @@ public:
 };
 
 
+template <int dim>
+class RightHandSide : public dealii::TensorFunction<1, dim>
+{
+public:
+  RightHandSide()
+    : dealii::TensorFunction<1, dim>() {}
+
+  virtual dealii::Tensor<1, dim> value(const dealii::Point<dim> &p) const override
+  {
+    Assert(dim == 2, dealii::StandardExceptions::ExcNotImplemented());
+    const double x = p[0];
+    const double y = p[1];
+ 
+    dealii::Tensor<1, dim> f_val;
+
+    f_val[0] = -nu * (2 * x * x + 2 * y * y + std::exp(-y)) + dealii::numbers::PI *
+           dealii::numbers::PI * std::cos(dealii::numbers::PI * x) * std::cos(2 * dealii::numbers::PI * y);
+
+    f_val[1] = 4.0 * nu * x * y -
+               nu * std::pow(dealii::numbers::PI, 3.0) *
+                 std::sin(dealii::numbers::PI * x) +
+               2.0 * dealii::numbers::PI *
+                 (2.0 - dealii::numbers::PI * std::sin(dealii::numbers::PI * x)) *
+                 std::sin(2.0 * dealii::numbers::PI * y);
+
+    return f_val;
+  }
+
+  virtual void value_list(const std::vector<dealii::Point<dim>> &points,
+                          std::vector<dealii::Tensor<1, dim>>   &values) const override
+  {
+    Assert(points.size() == values.size(),
+           dealii::ExcDimensionMismatch(points.size(), values.size()));
+
+    for (unsigned int i = 0; i < points.size(); ++i)
+      {
+        values[i] = value(points[i]);
+      }
+  }
+};
+
+
 ```
 
 
@@ -403,11 +445,11 @@ public:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjcyMTIxOTMsMTA1ODg3MjY2MiwxNz
-E5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1
-NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1Mi
-wtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYx
-Njk4NTE1NCwxNDg1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxND
-k5MDgsMzEwOTA0ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3
-MDgzODExMTNdfQ==
+eyJoaXN0b3J5IjpbMTAyNzIyODU1LDEwNTg4NzI2NjIsMTcxOT
+Q5MzU0NywtMTAxMjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3NTUy
+MTUsLTE0ODU0Nzc4MjksNzQwNjQzMTE2LDEzMDkyNjk5NTIsLT
+kzNjUxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2MTY5
+ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NCwxNjUyMTQ5OT
+A4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2OSwxNzA4
+MzgxMTEzXX0=
 -->
