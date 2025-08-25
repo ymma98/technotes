@@ -166,7 +166,7 @@ $$
 
 
 $$
-B_{ij} = \int \varphi_i \nabla \cdot \bm{\phi}_j dV
+B_{ij} = -\int \varphi_i \nabla \cdot \bm{\phi}_j dV
 $$
 
 
@@ -199,11 +199,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQwNjQzMTE2LDEzMDkyNjk5NTIsLTkzNj
-UxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2MTY5ODUx
-NTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NCwxNjUyMTQ5OTA4LD
-MxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2OSwxNzA4Mzgx
-MTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMTg1ODM2MjM3OC
-wyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIxMjk5MzYyNDMsNzg0
-NDEzMzMyXX0=
+eyJoaXN0b3J5IjpbLTE0ODU0Nzc4MjksNzQwNjQzMTE2LDEzMD
+kyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5
+NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NC
+wxNjUyMTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAw
+NjI2OSwxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNy
+wtMTg1ODM2MjM3OCwyMDcyMzYzMjQ5LC03NDE0NzcxNjAsLTIx
+Mjk5MzYyNDNdfQ==
 -->
