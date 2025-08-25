@@ -263,7 +263,7 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 ## 代码实现重点
 
-对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定网格密度, `polynomial degree`, 初始化 `dof`
+对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定网格密度, `polynomial degree`, 初始化 `dof_handler(triangulation)`, 以及初始化 `fe(dealii::FE_Q<dim>(pd_ + 1) ^ dim, dealii::FE_Q<dim>(pd_))`. 这里因为
 
 先定义有限元的框架: `setup_system()` (生成网格, ), `assemble_system()` (矩阵组装), `solve()`, `output_results()`, `compute_errors()`
 
@@ -277,11 +277,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY2ODg0ODUzLC0xOTg1OTIwMjg0LDkwMD
-c1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1
-MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMT
-YxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIx
-NDk5MDgsMzEwOTA0ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5LD
-E3MDgzODExMTMsMjE0NTkzNTI4OSwxODY2MDczOTE3LC0xODU4
-MzYyMzc4XX0=
+eyJoaXN0b3J5IjpbLTEwMTI4OTM2NjQsLTE5ODU5MjAyODQsOT
+AwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0MzExNiwxMzA5MjY5
+OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC
+0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLTE2OTA3Njk1ODQsMTY1
+MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNj
+ksMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4
+NTgzNjIzNzhdfQ==
 -->
