@@ -263,7 +263,9 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 ## 代码实现重点
 
-对于多变量系统, 一开始还是和之前一样的, 先定义有限元的框架: `setup_system()` (生成网格, ), `assemble_system()` (矩阵组装), `solve()`
+对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定wan
+
+先定义有限元的框架: `setup_system()` (生成网格, ), `assemble_system()` (矩阵组装), `solve()`, `output_results()`, `compute_errors()`
 
 
 ## 测试结果
@@ -275,11 +277,11 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjA1NDA1NDgsLTE5ODU5MjAyODQsOT
-AwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0MzExNiwxMzA5MjY5
-OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC
-0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLTE2OTA3Njk1ODQsMTY1
-MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMwODEwMSwzMDEwMDYyNj
-ksMTcwODM4MTExMywyMTQ1OTM1Mjg5LDE4NjYwNzM5MTcsLTE4
-NTgzNjIzNzhdfQ==
+eyJoaXN0b3J5IjpbLTQzMTM0Nzc3MSwtMTk4NTkyMDI4NCw5MD
+A3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQzMTE2LDEzMDkyNjk5
+NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLT
+E2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2OTU4NCwxNjUy
+MTQ5OTA4LDMxMDkwNDgyMSwtOTk1MzA4MTAxLDMwMTAwNjI2OS
+wxNzA4MzgxMTEzLDIxNDU5MzUyODksMTg2NjA3MzkxNywtMTg1
+ODM2MjM3OF19
 -->
