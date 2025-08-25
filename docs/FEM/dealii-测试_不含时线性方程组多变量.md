@@ -438,6 +438,7 @@ public:
 
 需要注意的是:
 * 需要分别指定 $\vec{u}$ 和 $p$ 的 Dirichlet BC, 这一步是通过 `dealii::FEValuesExtractors::Vector` 实现的
+* 单独为空间中一个点的 $p$ 设置 Dirichlet BC 还是比较麻烦的, 可以参考代码注释
 
 ```cpp
 template <int dim>
@@ -517,8 +518,10 @@ void LinearSteadyStokesSolver<dim>::setup_system()
   solution.reinit(dof_handler.n_dofs());
   system_rhs.reinit(dof_handler.n_dofs());
 }
-
 ```
+
+
+### 矩阵组装 
 
 
 ## 测试结果
@@ -530,11 +533,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1MTU1NDQ1OCw5NjIwOTM4MjAsMTA1OD
-g3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOTg1OTIw
-Mjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMxMTYsMT
-MwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMTU3MjI2
-OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkwNzY5NT
-g0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05OTUzMDgxMDEsMzAx
-MDA2MjY5XX0=
+eyJoaXN0b3J5IjpbLTE4MTczMTc5NzYsMTM1MTU1NDQ1OCw5Nj
+IwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkz
+NjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOS
+w3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYz
+NjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3OD
+Y2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0ODIxLC05
+OTUzMDgxMDFdfQ==
 -->
