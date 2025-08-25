@@ -169,6 +169,9 @@ $$
 B_{ij} = -\int \varphi_i \nabla \cdot \bm{\phi}_j dV
 $$
 
+误差计算:
+
+
 
 ## test case
 
@@ -198,12 +201,22 @@ $$
 $$\Omega = [0,1] \times [-0.25,0]$$
 
 
+
+
+## 测试结果
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250825/image.4ub9n8eota.webp){width=400px}
+
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250825/image.26ltcvn158.webp){width=400px}
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTAwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MD
-Y0MzExNiwxMzA5MjY5OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAz
-NCwxNTcyMjY5OTYyLC0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLT
-E2OTA3Njk1ODQsMTY1MjE0OTkwOCwzMTA5MDQ4MjEsLTk5NTMw
-ODEwMSwzMDEwMDYyNjksMTcwODM4MTExMywyMTQ1OTM1Mjg5LD
-E4NjYwNzM5MTcsLTE4NTgzNjIzNzgsMjA3MjM2MzI0OSwtNzQx
-NDc3MTYwXX0=
+eyJoaXN0b3J5IjpbODMwMDQ0NDU5LDkwMDc1NTIxNSwtMTQ4NT
+Q3NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1
+LC0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxND
+g1NDY3ODY2LC0xNjkwNzY5NTg0LDE2NTIxNDk5MDgsMzEwOTA0
+ODIxLC05OTUzMDgxMDEsMzAxMDA2MjY5LDE3MDgzODExMTMsMj
+E0NTkzNTI4OSwxODY2MDczOTE3LC0xODU4MzYyMzc4LDIwNzIz
+NjMyNDldfQ==
 -->
