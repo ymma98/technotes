@@ -270,7 +270,7 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 
 ### 代码框架
 
-对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定网格密度, `polynomial degree`, 初始化 `dof_handler(triangulation)`, 以及初始化 `fe(dealii::FE_Q<dim>(pd_ + 1) ^ dim, dealii::FE_Q<dim>(pd_))`.  `fe` 用于记录自由度, 可以根据变量的多少 (比如这里是 $\vec{u}$, $p$) yi
+对于多变量系统, 一开始还是和之前一样的, 定义一个 solver class `LinearSteadyStokesSolver`, 并再构造函数中设定网格密度, `polynomial degree`, 初始化 `dof_handler(triangulation)`, 以及初始化 `fe(dealii::FE_Q<dim>(pd_ + 1) ^ dim, dealii::FE_Q<dim>(pd_))`.  `fe` 用于记录自由度, 可以根据变量的多少 (比如这里是 $\vec{u}$, $p$) 一直传参数进去, 这里第一个参数对应 $u$, 有 `dim` 个自由度, 第二个参数对应 $p$, 有1个自由度
 
 有限元的框架: `setup_system()` (生成网格, 设置边界条件 `constraints`), `assemble_system()` (矩阵组装), `solve()`, `output_results()`, `compute_errors()`
 
@@ -535,7 +535,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjY1MzM3MDgsMTUyOTE2MiwtMTgxNz
+eyJoaXN0b3J5IjpbLTIwODY0ODAyMzEsMTUyOTE2MiwtMTgxNz
 MxNzk3NiwxMzUxNTU0NDU4LDk2MjA5MzgyMCwxMDU4ODcyNjYy
 LDE3MTk0OTM1NDcsLTEwMTI4OTM2NjQsLTE5ODU5MjAyODQsOT
 AwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0MzExNiwxMzA5MjY5
