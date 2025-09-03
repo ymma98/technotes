@@ -293,7 +293,10 @@ $$
 \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \lim_{\epsilon\rightarrow 0}\frac{d}{d\epsilon} F(\mathbf{u} + \delta \mathbf{u})
 $$
 
-所以对于
+对于该问题而言, 有: 
+$$
+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot  \right]
+$$
 
 
 ## 代码实现重点
@@ -566,7 +569,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzg0NTI3Njc5LC0yMDg2NDgwMjMxLDE1Mj
+eyJoaXN0b3J5IjpbMTUyNTUzMzk4LC0yMDg2NDgwMjMxLDE1Mj
 kxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OCw5NjIwOTM4MjAs
 MTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOT
 g1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMx
