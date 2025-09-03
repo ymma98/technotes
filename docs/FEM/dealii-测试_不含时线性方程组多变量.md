@@ -265,6 +265,18 @@ $$
 
 $$\Omega = [0,1] \times [-0.25,0]$$
 
+
+## 如果是非线性怎么办呢?
+
+牛顿法!
+
+比如，
+
+$$
+-2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p = \mathbf{f}, \\
+-\mathrm{div}\,\mathbf{u} = 0,
+$$
+
 ## 代码实现重点
 
 
@@ -535,11 +547,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODY0ODAyMzEsMTUyOTE2MiwtMTgxNz
-MxNzk3NiwxMzUxNTU0NDU4LDk2MjA5MzgyMCwxMDU4ODcyNjYy
-LDE3MTk0OTM1NDcsLTEwMTI4OTM2NjQsLTE5ODU5MjAyODQsOT
-AwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0MzExNiwxMzA5MjY5
-OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC
-0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLTE2OTA3Njk1ODQsMTY1
-MjE0OTkwOF19
+eyJoaXN0b3J5IjpbLTE0MjQwNjMzODQsLTIwODY0ODAyMzEsMT
+UyOTE2MiwtMTgxNzMxNzk3NiwxMzUxNTU0NDU4LDk2MjA5Mzgy
+MCwxMDU4ODcyNjYyLDE3MTk0OTM1NDcsLTEwMTI4OTM2NjQsLT
+E5ODU5MjAyODQsOTAwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0
+MzExNiwxMzA5MjY5OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAzNC
+wxNTcyMjY5OTYyLC0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLTE2
+OTA3Njk1ODRdfQ==
 -->
