@@ -289,6 +289,12 @@ F(\mathbf{u}^{l}) = F(\mathbf{u}^{l-1})+\frac{\partial F}{\partial \mathbf{u}} \
 $$
 其中 $\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u}$ 是 Frechet 导数:
 
+$$
+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \lim_{\epsilon\rightarrow 0}\frac{d}{d\epsilon} F(\mathbf{u} + \delta \mathbf{u})
+$$
+
+所以对于
+
 
 ## 代码实现重点
 
@@ -560,11 +566,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgwMjk4NCwtMjA4NjQ4MDIzMSwxNTI5MT
-YyLC0xODE3MzE3OTc2LDEzNTE1NTQ0NTgsOTYyMDkzODIwLDEw
-NTg4NzI2NjIsMTcxOTQ5MzU0NywtMTAxMjg5MzY2NCwtMTk4NT
-kyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQzMTE2
-LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LDE1Nz
-IyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5MDc2
-OTU4NF19
+eyJoaXN0b3J5IjpbNzg0NTI3Njc5LC0yMDg2NDgwMjMxLDE1Mj
+kxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OCw5NjIwOTM4MjAs
+MTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOT
+g1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMx
+MTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMT
+U3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkw
+NzY5NTg0XX0=
 -->
