@@ -154,8 +154,19 @@ This is in fact a symmetric and positive definite problem.
 我比较能接受这样的牛顿法:
 
 非线性项 
+
 $$
-R(u) = 
+R(u) = A \frac{\nabla u}{\sqrt{1 + |\nabla u|^2}} 
+$$
+
+定义 $\mathbf{w} = \nabla u$，于是
+
+$$
+R = A \frac{\mathbf{w}}{\sqrt{1 + \mathbf{w}^2}} 
+$$
+
+$$
+R(\mathbf{w}^{l+1}) = R(\mathbf{w}^l) + \frac{\partial R}{\partial \mathbf{w}}
 $$
 
 
@@ -679,10 +690,11 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEyNDk0MzY4LDQ5Njk5OTc0OCw1MTA5MT
-k3OTYsLTU2MDkxMzA5NywtMjE0MzQxNzU2MywyMDc2NTkxNjE2
-LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLTIwOTM3ODQxMTQsMT
-k0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3OTEwOTI3LDEwOTY5
-NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOTc5OSwxMzc5MDMwMj
-Q3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
+eyJoaXN0b3J5IjpbLTE2NTM4ODU5MjksMjEyNDk0MzY4LDQ5Nj
+k5OTc0OCw1MTA5MTk3OTYsLTU2MDkxMzA5NywtMjE0MzQxNzU2
+MywyMDc2NTkxNjE2LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLT
+IwOTM3ODQxMTQsMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3
+OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOT
+c5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFd
+fQ==
 -->
