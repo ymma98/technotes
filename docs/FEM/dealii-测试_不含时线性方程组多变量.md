@@ -295,8 +295,10 @@ $$
 
 对于该问题而言, 有: 
 $$
-\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot \nabla (\mathbf{u}^l + \epsilon \delta \mathbf{u}) \right]
+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot \nabla (\mathbf{u}^l + \epsilon \delta \mathbf{u}) \cdot \mathbf{v} \right]
 $$
+
+
 
 
 ## 代码实现重点
@@ -569,11 +571,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NDEzOTAyNCwtMjA4NjQ4MDIzMSwxNT
-I5MTYyLC0xODE3MzE3OTc2LDEzNTE1NTQ0NTgsOTYyMDkzODIw
-LDEwNTg4NzI2NjIsMTcxOTQ5MzU0NywtMTAxMjg5MzY2NCwtMT
-k4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQz
-MTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LD
-E1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5
-MDc2OTU4NF19
+eyJoaXN0b3J5IjpbLTIxNDA3NzQ4MzAsLTIwODY0ODAyMzEsMT
+UyOTE2MiwtMTgxNzMxNzk3NiwxMzUxNTU0NDU4LDk2MjA5Mzgy
+MCwxMDU4ODcyNjYyLDE3MTk0OTM1NDcsLTEwMTI4OTM2NjQsLT
+E5ODU5MjAyODQsOTAwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0
+MzExNiwxMzA5MjY5OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAzNC
+wxNTcyMjY5OTYyLC0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLTE2
+OTA3Njk1ODRdfQ==
 -->
