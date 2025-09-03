@@ -305,6 +305,9 @@ $$
 
 因此, 
 
+$$
+\int (\mathbf{u}^{l+1}\cdot \nabla \mathbf{u}^{l}) \cdot \mathbf{v} dV = 
+$$
 
 
 
@@ -578,7 +581,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODMzNTA2MDU5LC0yMTQwNzc0ODMwLC0yMD
+eyJoaXN0b3J5IjpbNzU1MjA1NTMwLC0yMTQwNzc0ODMwLC0yMD
 g2NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1
 OCw5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMD
 EyODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3
