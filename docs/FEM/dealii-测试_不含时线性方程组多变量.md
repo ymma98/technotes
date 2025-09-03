@@ -293,15 +293,17 @@ $$
 \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \lim_{\epsilon\rightarrow 0}\frac{d}{d\epsilon} F(\mathbf{u} + \delta \mathbf{u})
 $$
 
-对于该问题而言, 有: 
+对于该问题而言, 有 (为了打字方便, 以下省略积分符号): 
 $$
 \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot \nabla (\mathbf{u}^l + \epsilon \delta \mathbf{u}) \cdot \mathbf{v} \right] \\
 =\mathbf{u}^l \cdot \nabla \delta \mathbf{u} \cdot \mathbf{v} + \delta \mathbf{u}\cdot \nabla \mathbf{u}^l \cdot \mathbf{v}
 $$
 其中 $\delta \mathbf{u} = \mathbf{u}^{l+1} - \mathbf{u}^l$. 所以
 $$
-\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \mathbf{u}^l\cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v} +  
+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \mathbf{u}^l\cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v} + \mathbf{u}^{l+1} \cdot \nabla \mathbf{u}^l \cdot \mathbf{v} - 2 \mathbf{u}^l \cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v}   
 $$
+
+因此, 
 
 
 
@@ -576,7 +578,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2NzEyMzkxLC0yMTQwNzc0ODMwLC0yMD
+eyJoaXN0b3J5IjpbODMzNTA2MDU5LC0yMTQwNzc0ODMwLC0yMD
 g2NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1
 OCw5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMD
 EyODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3
