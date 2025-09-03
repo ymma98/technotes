@@ -176,9 +176,10 @@ $$
 所以
 
 $$
-R(\mathbf{w}^{l+1}) = A \frac{\mathbf{w}^{l+1}}{\sqrt{1+\mathbf{w}^2}} - A \frac{\mathbf{w}^l \cdot \mathbf{w}^l \cdot \mathbf{w}^{l+1}}{(1+(\mathbf{w}^l)^2)^{3/2} - }
+R(\mathbf{w}^{l+1}) = A \frac{\mathbf{w}^{l+1}}{\sqrt{1+\mathbf{w}^2}} - A \frac{\mathbf{w}^l \cdot \mathbf{w}^l \cdot \mathbf{w}^{l+1}}{(1+(\mathbf{w}^l)^2)^{3/2}} - A \frac{\mathbf{w}^l \cdot \mathbf{w}^l \cdot \mathbf{w}^{l}}{(1+(\mathbf{w}^l)^2)^{3/2}}
 $$
 
+于是上式转换为了一个线性方程组。
 
 
 
@@ -702,11 +703,11 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2NTMyMDEzMSwyMTI0OTQzNjgsNDk2OT
-k5NzQ4LDUxMDkxOTc5NiwtNTYwOTEzMDk3LC0yMTQzNDE3NTYz
-LDIwNzY1OTE2MTYsLTE1MDQ3NzA1MjUsLTgxNzEzODU0NywtMj
-A5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2NDQ0MTAwLDEyOTc5
-MTA5MjcsMTA5Njk1NDc2OCwyMDcwMTkzMjA4LC0xNzI2ODM5Nz
-k5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
-
+eyJoaXN0b3J5IjpbLTIxMTc4NzQxOTQsMjEyNDk0MzY4LDQ5Nj
+k5OTc0OCw1MTA5MTk3OTYsLTU2MDkxMzA5NywtMjE0MzQxNzU2
+MywyMDc2NTkxNjE2LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLT
+IwOTM3ODQxMTQsMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3
+OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOT
+c5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFd
+fQ==
 -->
