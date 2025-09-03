@@ -166,7 +166,11 @@ R = A \frac{\mathbf{w}}{\sqrt{1 + \mathbf{w}^2}}
 $$
 
 $$
-R(\mathbf{w}^{l+1}) = R(\mathbf{w}^l) + \frac{\partial R}{\partial \mathbf{w}}
+R(\mathbf{w}^{l+1}) = R(\mathbf{w}^l) + \frac{\partial R}{\partial \mathbf{w}} \delta \mathbf{w}
+$$
+
+$$
+\frac{\partial R}{\partial \mathbf{w}} \delta \mathbf{w}=\lim_{\epsilon \rightarrow 0}\frac{d R (\mathbf{w} + \epsilon \delta \mathbf{w})}{d\epsilon}
 $$
 
 
@@ -690,11 +694,11 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTM4ODU5MjksMjEyNDk0MzY4LDQ5Nj
-k5OTc0OCw1MTA5MTk3OTYsLTU2MDkxMzA5NywtMjE0MzQxNzU2
-MywyMDc2NTkxNjE2LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLT
-IwOTM3ODQxMTQsMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3
-OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOT
-c5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFd
-fQ==
+eyJoaXN0b3J5IjpbMzY2MjYyNjg3LDIxMjQ5NDM2OCw0OTY5OT
+k3NDgsNTEwOTE5Nzk2LC01NjA5MTMwOTcsLTIxNDM0MTc1NjMs
+MjA3NjU5MTYxNiwtMTUwNDc3MDUyNSwtODE3MTM4NTQ3LC0yMD
+kzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0NDQxMDAsMTI5Nzkx
+MDkyNywxMDk2OTU0NzY4LDIwNzAxOTMyMDgsLTE3MjY4Mzk3OT
+ksMTM3OTAzMDI0NywtMTM5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
+
 -->
