@@ -282,7 +282,11 @@ $$
 \int (\mathbf{u}\cdot \nabla \mathbf{u}) \cdot \mathbf{v} dV
 $$
 
-对于牛顿迭代, 如果已知 $\mathbf{u}^{l-1}$, 那么 $F(\mathbf{u}^{l})$ 
+对于牛顿迭代, 如果已知 $\mathbf{u}^{l-1}$, 那么 $F(\mathbf{u}^{l})$ 可以用 $\mathbf{u}^{l-1}$ 处的值估算:
+
+$$
+F(\mathbf{u}^{l}) = F(\mathbf{u}^{l-1})+F^\prime
+$$
 
 
 ## 代码实现重点
@@ -555,11 +559,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTQ1ODYyODcsLTIwODY0ODAyMzEsMT
-UyOTE2MiwtMTgxNzMxNzk3NiwxMzUxNTU0NDU4LDk2MjA5Mzgy
-MCwxMDU4ODcyNjYyLDE3MTk0OTM1NDcsLTEwMTI4OTM2NjQsLT
-E5ODU5MjAyODQsOTAwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0
-MzExNiwxMzA5MjY5OTUyLC05MzY1MTIyMzUsLTM2NjM2NTAzNC
-wxNTcyMjY5OTYyLC0xNjE2OTg1MTU0LDE0ODU0Njc4NjYsLTE2
-OTA3Njk1ODRdfQ==
+eyJoaXN0b3J5IjpbNDYxMTY1NzkwLC0yMDg2NDgwMjMxLDE1Mj
+kxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OCw5NjIwOTM4MjAs
+MTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOT
+g1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMx
+MTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMT
+U3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkw
+NzY5NTg0XX0=
 -->
