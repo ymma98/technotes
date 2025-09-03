@@ -317,7 +317,7 @@ $$
 F(\mathbf{u}^{l+1}) = F(\mathbf{u}^l) + \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = F(\mathbf{u}^l) +\frac{dF(\mathbf{u}^l + \epsilon\delta \mathbf{u})}{d\epsilon} = F(\mathbf{u}^l) + F(\delta \mathbf{u}) = F(\mathbf{u}^{l+1})
 $$
 
-
+说明对于线性项, $F(\mathbf{u}^{l+1})$ 不是 $\mathbf{u}^l$ 的函数, 不用迭代。
 
 
 
@@ -1338,7 +1338,7 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyMDc2NDAxNiwtMTUxNTEyMjYxNywtMT
+eyJoaXN0b3J5IjpbMTQ1NzAyMTU5NywtMTUxNTEyMjYxNywtMT
 k0NTk4MDA0MywxMTkxMzg5ODg4LC0yMTQwNzc0ODMwLC0yMDg2
 NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OC
 w5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEy
