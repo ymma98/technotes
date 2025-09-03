@@ -309,7 +309,7 @@ $$
 \int (\mathbf{u}^{l+1}\cdot \nabla \mathbf{u}^{l+1}) \cdot \mathbf{v} dV = \int \mathbf{u}^l\cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v} dV + \int \mathbf{u}^{l+1} \cdot \nabla \mathbf{u}^l \cdot \mathbf{v} dV - \int \mathbf{u}^{l} \cdot \nabla \mathbf{u}^l  dV
 $$
 
-每次迭代 $A^l X^l = b^l$, 直到 $|X^{l+1} - X^{l}| < \epsilon$
+每次迭代 $A^{l+1} X^{l+1} = b^{l+1}$, 直到 $|X^{l+1} - X^{l}| < \epsilon$
 
 
 
@@ -1330,11 +1330,11 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDU5ODAwNDMsMTE5MTM4OTg4OCwtMj
-E0MDc3NDgzMCwtMjA4NjQ4MDIzMSwxNTI5MTYyLC0xODE3MzE3
-OTc2LDEzNTE1NTQ0NTgsOTYyMDkzODIwLDEwNTg4NzI2NjIsMT
-cxOTQ5MzU0NywtMTAxMjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3
-NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQzMTE2LDEzMDkyNjk5NT
-IsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2
-MTY5ODUxNTRdfQ==
+eyJoaXN0b3J5IjpbLTE1MTUxMjI2MTcsLTE5NDU5ODAwNDMsMT
+E5MTM4OTg4OCwtMjE0MDc3NDgzMCwtMjA4NjQ4MDIzMSwxNTI5
+MTYyLC0xODE3MzE3OTc2LDEzNTE1NTQ0NTgsOTYyMDkzODIwLD
+EwNTg4NzI2NjIsMTcxOTQ5MzU0NywtMTAxMjg5MzY2NCwtMTk4
+NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQzMT
+E2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LDE1
+NzIyNjk5NjJdfQ==
 -->
