@@ -306,7 +306,7 @@ $$
 因此, 
 
 $$
-\int (\mathbf{u}^{l+1}\cdot \nabla \mathbf{u}^{l+1}) \cdot \mathbf{v} dV = 
+\int (\mathbf{u}^{l+1}\cdot \nabla \mathbf{u}^{l+1}) \cdot \mathbf{v} dV = \int \mathbf{u}^l\cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v} dV + \int \mathbf{u}^{l+1} \cdot \nabla \mathbf{u}^l \cdot \mathbf{v} dV - \int \mathbf{u}^{l} \cdot \nabla \mathbf{u}^l  dV
 $$
 
 
@@ -581,11 +581,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5MTM4OTg4OCwtMjE0MDc3NDgzMCwtMj
-A4NjQ4MDIzMSwxNTI5MTYyLC0xODE3MzE3OTc2LDEzNTE1NTQ0
-NTgsOTYyMDkzODIwLDEwNTg4NzI2NjIsMTcxOTQ5MzU0NywtMT
-AxMjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0
-Nzc4MjksNzQwNjQzMTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNS
-wtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4
-NTQ2Nzg2Nl19
+eyJoaXN0b3J5IjpbNDE2NzY5MTg1LDExOTEzODk4ODgsLTIxND
+A3NzQ4MzAsLTIwODY0ODAyMzEsMTUyOTE2MiwtMTgxNzMxNzk3
+NiwxMzUxNTU0NDU4LDk2MjA5MzgyMCwxMDU4ODcyNjYyLDE3MT
+k0OTM1NDcsLTEwMTI4OTM2NjQsLTE5ODU5MjAyODQsOTAwNzU1
+MjE1LC0xNDg1NDc3ODI5LDc0MDY0MzExNiwxMzA5MjY5OTUyLC
+05MzY1MTIyMzUsLTM2NjM2NTAzNCwxNTcyMjY5OTYyLC0xNjE2
+OTg1MTU0XX0=
 -->
