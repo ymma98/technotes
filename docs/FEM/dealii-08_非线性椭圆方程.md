@@ -170,8 +170,16 @@ R(\mathbf{w}^{l+1}) = R(\mathbf{w}^l) + \frac{\partial R}{\partial \mathbf{w}} \
 $$
 
 $$
-\frac{\partial R}{\partial \mathbf{w}} \delta \mathbf{w}=\lim_{\epsilon \rightarrow 0}\frac{d R (\mathbf{w} + \epsilon \delta \mathbf{w})}{d\epsilon}
+\frac{\partial R}{\partial \mathbf{w}} \delta \mathbf{w}=\lim_{\epsilon \rightarrow 0}\frac{d R (\mathbf{w} + \epsilon \delta \mathbf{w})}{d\epsilon} = A \frac{\delta \mathbf{w}  \sqrt{1+\mathbf{w}^2} -\mathbf{w} \cdot \mathbf{w}\cdot \delta \mathbf{w} (1+\mathbf{w}^2)^{-1/2}}{1+\mathbf{w}^2}
 $$
+
+所以
+
+$$
+R(\mathbf{w})
+$$
+
+
 
 
 ## 弱格式
@@ -694,7 +702,7 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY2MjYyNjg3LDIxMjQ5NDM2OCw0OTY5OT
+eyJoaXN0b3J5IjpbLTY2ODM1NTcwLDIxMjQ5NDM2OCw0OTY5OT
 k3NDgsNTEwOTE5Nzk2LC01NjA5MTMwOTcsLTIxNDM0MTc1NjMs
 MjA3NjU5MTYxNiwtMTUwNDc3MDUyNSwtODE3MTM4NTQ3LC0yMD
 kzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0NDQxMDAsMTI5Nzkx
