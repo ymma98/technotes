@@ -176,7 +176,7 @@ $$
 所以
 
 $$
-R(\mathbf{w}^{l+1}) = A \frac{\mathbf{w}^{l+1}}{\sqrt{1+\mathbf{w}^2}} - A \frac{\mathbf{w}\cdot \mathbf{w} \cdot }{}
+R(\mathbf{w}^{l+1}) = A \frac{\mathbf{w}^{l+1}}{\sqrt{1+\mathbf{w}^2}} - A \frac{\mathbf{w}^l \cdot \mathbf{w}^l \cdot \mathbf{w}^{l+1}}{(1+(\mathbf{w}^l)^2)^{3/2} - }
 $$
 
 
@@ -702,7 +702,7 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NjY5MjM4OCwyMTI0OTQzNjgsNDk2OT
+eyJoaXN0b3J5IjpbMTg2NTMyMDEzMSwyMTI0OTQzNjgsNDk2OT
 k5NzQ4LDUxMDkxOTc5NiwtNTYwOTEzMDk3LC0yMTQzNDE3NTYz
 LDIwNzY1OTE2MTYsLTE1MDQ3NzA1MjUsLTgxNzEzODU0NywtMj
 A5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2NDQ0MTAwLDEyOTc5
