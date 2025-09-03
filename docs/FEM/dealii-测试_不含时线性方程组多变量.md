@@ -311,7 +311,11 @@ $$
 
 每次迭代 $A^{l+1} X^{l+1} = b^{l+1}$, 直到 $|X^{l+1} - X^{l}| < \epsilon$
 
-如果 
+如果 $F(\mathbf{u})$ 是线性项, 那么 $F(k\mathbf{u})=kF(\mathbf{u})$, $F(\mathbf{u}+\mathbf{B})=F(\mathbf{u})+F(\mathbf{B})$,
+
+$$
+F(\mathbf{u}^{l+1}) = F*()
+$$
 
 
 
@@ -1332,11 +1336,11 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0Njc2MTA4NSwtMTUxNTEyMjYxNywtMT
-k0NTk4MDA0MywxMTkxMzg5ODg4LC0yMTQwNzc0ODMwLC0yMDg2
-NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OC
-w5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEy
-ODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3Nz
-gyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0z
-NjYzNjUwMzRdfQ==
+eyJoaXN0b3J5IjpbLTEyNDIzMTE0MDksLTE1MTUxMjI2MTcsLT
+E5NDU5ODAwNDMsMTE5MTM4OTg4OCwtMjE0MDc3NDgzMCwtMjA4
+NjQ4MDIzMSwxNTI5MTYyLC0xODE3MzE3OTc2LDEzNTE1NTQ0NT
+gsOTYyMDkzODIwLDEwNTg4NzI2NjIsMTcxOTQ5MzU0NywtMTAx
+Mjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nz
+c4MjksNzQwNjQzMTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwt
+MzY2MzY1MDM0XX0=
 -->
