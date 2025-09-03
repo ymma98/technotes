@@ -276,11 +276,14 @@ $$
 \mathbf{u}\cdot \nabla \mathbf{u}-2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p = \mathbf{f}, \\
 -\mathrm{div}\,\mathbf{u} = 0,
 $$
-其中 $\mathbf{u}\cdot \nabla \mathbf{u}$ 是非线性项, 对应弱格式中多了一项:
+其中 $\mathbf{u}\cdot \nabla \mathbf{u}$ 是非线性项, 对应弱格式中多了一项非线性项 $F(\mathbf{u})$:
 
 $$
-\int 
+\int (\mathbf{u}\cdot \nabla \mathbf{u}) \cdot \mathbf{v} dV
 $$
+
+对于牛顿迭代, 如果已知 $\mathbf{u}^{l-1}$, 那么 $F(\mathbf{u}^{l})$ 
+
 
 ## 代码实现重点
 
@@ -552,7 +555,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNzAxNDg2MDUsLTIwODY0ODAyMzEsMT
+eyJoaXN0b3J5IjpbLTExOTQ1ODYyODcsLTIwODY0ODAyMzEsMT
 UyOTE2MiwtMTgxNzMxNzk3NiwxMzUxNTU0NDU4LDk2MjA5Mzgy
 MCwxMDU4ODcyNjYyLDE3MTk0OTM1NDcsLTEwMTI4OTM2NjQsLT
 E5ODU5MjAyODQsOTAwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0
