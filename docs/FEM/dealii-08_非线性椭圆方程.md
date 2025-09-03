@@ -170,13 +170,13 @@ R(\mathbf{w}^{l+1}) = R(\mathbf{w}^l) + \frac{\partial R}{\partial \mathbf{w}} \
 $$
 
 $$
-\frac{\partial R}{\partial \mathbf{w}} \delta \mathbf{w}=\lim_{\epsilon \rightarrow 0}\frac{d R (\mathbf{w} + \epsilon \delta \mathbf{w})}{d\epsilon} = A \frac{\delta \mathbf{w}  \sqrt{1+\mathbf{w}^2} -\mathbf{w} \cdot \mathbf{w}\cdot \delta \mathbf{w} (1+\mathbf{w}^2)^{-1/2}}{1+\mathbf{w}^2}
+\frac{\partial R}{\partial \mathbf{w}} \delta \mathbf{w}=\lim_{\epsilon \rightarrow 0}\frac{d R (\mathbf{w}^l + \epsilon \delta \mathbf{w})}{d\epsilon} = A \frac{\delta \mathbf{w}  \sqrt{1+\mathbf{w}^2} -\mathbf{w} \cdot \mathbf{w}\cdot \delta \mathbf{w} (1+\mathbf{w}^2)^{-1/2}}{1+\mathbf{w}^2}
 $$
 
 所以
 
 $$
-R(\mathbf{w})
+R(\mathbf{w}^{l+1}) = A \frac{\mathbf{w}^{l+1}}{\sqrt{1+\mathbf{w}^2}} - A \frac{\mathbf{w}\cdot \mathbf{w} \cdot }{}
 $$
 
 
@@ -702,11 +702,11 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2ODM1NTcwLDIxMjQ5NDM2OCw0OTY5OT
-k3NDgsNTEwOTE5Nzk2LC01NjA5MTMwOTcsLTIxNDM0MTc1NjMs
-MjA3NjU5MTYxNiwtMTUwNDc3MDUyNSwtODE3MTM4NTQ3LC0yMD
-kzNzg0MTE0LDE5NDU3MTE1MDcsLTEwMDY0NDQxMDAsMTI5Nzkx
-MDkyNywxMDk2OTU0NzY4LDIwNzAxOTMyMDgsLTE3MjY4Mzk3OT
-ksMTM3OTAzMDI0NywtMTM5MTA0NTIwNywxOTQ1NDQ0MjgxXX0=
+eyJoaXN0b3J5IjpbLTI2NjY5MjM4OCwyMTI0OTQzNjgsNDk2OT
+k5NzQ4LDUxMDkxOTc5NiwtNTYwOTEzMDk3LC0yMTQzNDE3NTYz
+LDIwNzY1OTE2MTYsLTE1MDQ3NzA1MjUsLTgxNzEzODU0NywtMj
+A5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2NDQ0MTAwLDEyOTc5
+MTA5MjcsMTA5Njk1NDc2OCwyMDcwMTkzMjA4LC0xNzI2ODM5Nz
+k5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcsMTk0NTQ0NDI4MV19
 
 -->
