@@ -276,6 +276,7 @@ $$
 \mathbf{u}\cdot \nabla \mathbf{u}-2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p = \mathbf{f}, \\
 -\mathrm{div}\,\mathbf{u} = 0,
 $$
+
 其中 $\mathbf{u}\cdot \nabla \mathbf{u}$ 是非线性项, 对应弱格式中多了一项非线性项 $F(\mathbf{u})$:
 
 $$
@@ -287,6 +288,7 @@ $$
 $$
 F(\mathbf{u}^{l+1}) = F(\mathbf{u}^{l})+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u}
 $$
+
 其中 $\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u}$ 是 Frechet 导数:
 
 $$
@@ -294,11 +296,14 @@ $$
 $$
 
 对于该问题而言, 有 (为了打字方便, 以下省略积分符号): 
+
 $$
 \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot \nabla (\mathbf{u}^l + \epsilon \delta \mathbf{u}) \cdot \mathbf{v} \right] \\
 =\mathbf{u}^l \cdot \nabla \delta \mathbf{u} \cdot \mathbf{v} + \delta \mathbf{u}\cdot \nabla \mathbf{u}^l \cdot \mathbf{v}
 $$
+
 其中 $\delta \mathbf{u} = \mathbf{u}^{l+1} - \mathbf{u}^l$. 所以
+
 $$
 \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \mathbf{u}^l\cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v} + \mathbf{u}^{l+1} \cdot \nabla \mathbf{u}^l \cdot \mathbf{v} - 2 \mathbf{u}^l \cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v}   
 $$
@@ -1338,11 +1343,11 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1NzAyMTU5NywtMTUxNTEyMjYxNywtMT
-k0NTk4MDA0MywxMTkxMzg5ODg4LC0yMTQwNzc0ODMwLC0yMDg2
-NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OC
-w5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEy
-ODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3Nz
-gyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0z
-NjYzNjUwMzRdfQ==
+eyJoaXN0b3J5IjpbODM3MTA5MjU5LC0xNTE1MTIyNjE3LC0xOT
+Q1OTgwMDQzLDExOTEzODk4ODgsLTIxNDA3NzQ4MzAsLTIwODY0
+ODAyMzEsMTUyOTE2MiwtMTgxNzMxNzk3NiwxMzUxNTU0NDU4LD
+k2MjA5MzgyMCwxMDU4ODcyNjYyLDE3MTk0OTM1NDcsLTEwMTI4
+OTM2NjQsLTE5ODU5MjAyODQsOTAwNzU1MjE1LC0xNDg1NDc3OD
+I5LDc0MDY0MzExNiwxMzA5MjY5OTUyLC05MzY1MTIyMzUsLTM2
+NjM2NTAzNF19
 -->
