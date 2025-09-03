@@ -138,7 +138,7 @@ $$
 
 
 $$
- R.H.S = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u = 0 -\nabla\cdot \left[ A \left(- \frac{\nabla u \cdot  \nabla\delta u_k}{1+|\nabla u|^{3/2}}\nabla u  + \frac{\nabla \delta u_k}{\sqrt{1+|\nabla u|^2}} \right)  \right]
+ R.H.S = \frac{\partial R}{\partial u_k} \delta u_k+\frac{\partial R}{\partial \nabla u_k} \nabla \delta u = 0 -\nabla\cdot \left[ A \left(- \frac{\nabla u \cdot  \nabla\delta u_k}{(1+|\nabla u|)^{3/2}}\nabla u  + \frac{\nabla \delta u_k}{\sqrt{1+|\nabla u|^2}} \right)  \right]
 $$
 
 
@@ -703,11 +703,11 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTc4NzQxOTQsMjEyNDk0MzY4LDQ5Nj
-k5OTc0OCw1MTA5MTk3OTYsLTU2MDkxMzA5NywtMjE0MzQxNzU2
-MywyMDc2NTkxNjE2LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLT
-IwOTM3ODQxMTQsMTk0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3
-OTEwOTI3LDEwOTY5NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOT
-c5OSwxMzc5MDMwMjQ3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFd
-fQ==
+eyJoaXN0b3J5IjpbMTMzMDA5OTk4OSwtMjExNzg3NDE5NCwyMT
+I0OTQzNjgsNDk2OTk5NzQ4LDUxMDkxOTc5NiwtNTYwOTEzMDk3
+LC0yMTQzNDE3NTYzLDIwNzY1OTE2MTYsLTE1MDQ3NzA1MjUsLT
+gxNzEzODU0NywtMjA5Mzc4NDExNCwxOTQ1NzExNTA3LC0xMDA2
+NDQ0MTAwLDEyOTc5MTA5MjcsMTA5Njk1NDc2OCwyMDcwMTkzMj
+A4LC0xNzI2ODM5Nzk5LDEzNzkwMzAyNDcsLTEzOTEwNDUyMDcs
+MTk0NTQ0NDI4MV19
 -->
