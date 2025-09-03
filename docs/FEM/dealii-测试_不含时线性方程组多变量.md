@@ -314,7 +314,7 @@ $$
 如果 $F(\mathbf{u})$ 是线性项, 那么 $F(k\mathbf{u})=kF(\mathbf{u})$, $F(\mathbf{u}+\mathbf{B})=F(\mathbf{u})+F(\mathbf{B})$,
 
 $$
-F(\mathbf{u}^{l+1}) = F*()
+F(\mathbf{u}^{l+1}) = F(\mathbf{u}^l) + \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = F(\mathbf{u}^l) +\frac{dF(\mathbf{u}^l + \epsilon\delta \mathbf{u})}{d\epsilon} = F(\mathbf{u}^l) + 
 $$
 
 
@@ -1336,11 +1336,11 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDIzMTE0MDksLTE1MTUxMjI2MTcsLT
-E5NDU5ODAwNDMsMTE5MTM4OTg4OCwtMjE0MDc3NDgzMCwtMjA4
-NjQ4MDIzMSwxNTI5MTYyLC0xODE3MzE3OTc2LDEzNTE1NTQ0NT
-gsOTYyMDkzODIwLDEwNTg4NzI2NjIsMTcxOTQ5MzU0NywtMTAx
-Mjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nz
-c4MjksNzQwNjQzMTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwt
-MzY2MzY1MDM0XX0=
+eyJoaXN0b3J5IjpbMTk5MTY2NjY2OSwtMTUxNTEyMjYxNywtMT
+k0NTk4MDA0MywxMTkxMzg5ODg4LC0yMTQwNzc0ODMwLC0yMDg2
+NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OC
+w5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEy
+ODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3Nz
+gyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0z
+NjYzNjUwMzRdfQ==
 -->
