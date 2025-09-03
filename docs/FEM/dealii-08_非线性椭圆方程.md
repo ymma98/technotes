@@ -148,6 +148,17 @@ $$- \nabla \cdot \left( \frac{A}{\sqrt{1 + |\nabla u_k|^2}} \nabla \delta u_k \r
 
 This is in fact a symmetric and positive definite problem.
 
+
+### 等价牛顿法
+
+我比较能接受这样的牛顿法:
+
+非线性项 
+$$
+R(u) = 
+$$
+
+
 ## 弱格式
 
 假设 test function 是 $\varphi$:
@@ -668,10 +679,10 @@ int main()
 ```
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk2OTk5NzQ4LDUxMDkxOTc5NiwtNTYwOT
-EzMDk3LC0yMTQzNDE3NTYzLDIwNzY1OTE2MTYsLTE1MDQ3NzA1
-MjUsLTgxNzEzODU0NywtMjA5Mzc4NDExNCwxOTQ1NzExNTA3LC
-0xMDA2NDQ0MTAwLDEyOTc5MTA5MjcsMTA5Njk1NDc2OCwyMDcw
-MTkzMjA4LC0xNzI2ODM5Nzk5LDEzNzkwMzAyNDcsLTEzOTEwND
-UyMDcsMTk0NTQ0NDI4MV19
+eyJoaXN0b3J5IjpbMjEyNDk0MzY4LDQ5Njk5OTc0OCw1MTA5MT
+k3OTYsLTU2MDkxMzA5NywtMjE0MzQxNzU2MywyMDc2NTkxNjE2
+LC0xNTA0NzcwNTI1LC04MTcxMzg1NDcsLTIwOTM3ODQxMTQsMT
+k0NTcxMTUwNywtMTAwNjQ0NDEwMCwxMjk3OTEwOTI3LDEwOTY5
+NTQ3NjgsMjA3MDE5MzIwOCwtMTcyNjgzOTc5OSwxMzc5MDMwMj
+Q3LC0xMzkxMDQ1MjA3LDE5NDU0NDQyODFdfQ==
 -->
