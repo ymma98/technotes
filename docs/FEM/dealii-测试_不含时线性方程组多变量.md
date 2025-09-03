@@ -298,7 +298,10 @@ $$
 \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot \nabla (\mathbf{u}^l + \epsilon \delta \mathbf{u}) \cdot \mathbf{v} \right] \\
 =\mathbf{u}^l \cdot \nabla \delta \mathbf{u} \cdot \mathbf{v} + \delta \mathbf{u}\cdot \nabla \mathbf{u}^l \cdot \mathbf{v}
 $$
-其中 $\mathbf{u}$
+其中 $\delta \mathbf{u} = \mathbf{u}^{l+1} - \mathbf{u}^l$. 所以
+$$
+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \mathbf{u}^l\cdot \nabla \mathbf{u}^{l+1} \cdot \mathbf{v} +  
+$$
 
 
 
@@ -573,11 +576,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxNTgwMTU2NiwtMjE0MDc3NDgzMCwtMj
-A4NjQ4MDIzMSwxNTI5MTYyLC0xODE3MzE3OTc2LDEzNTE1NTQ0
-NTgsOTYyMDkzODIwLDEwNTg4NzI2NjIsMTcxOTQ5MzU0NywtMT
-AxMjg5MzY2NCwtMTk4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0
-Nzc4MjksNzQwNjQzMTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNS
-wtMzY2MzY1MDM0LDE1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4
-NTQ2Nzg2Nl19
+eyJoaXN0b3J5IjpbLTU2NzEyMzkxLC0yMTQwNzc0ODMwLC0yMD
+g2NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1
+OCw5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMD
+EyODkzNjY0LC0xOTg1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3
+NzgyOSw3NDA2NDMxMTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC
+0zNjYzNjUwMzQsMTU3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1
+NDY3ODY2XX0=
 -->
