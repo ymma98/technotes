@@ -273,8 +273,13 @@ $$\Omega = [0,1] \times [-0.25,0]$$
 比如，
 
 $$
--2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p = \mathbf{f}, \\
+\mathbf{u}\cdot \nabla \mathbf{u}-2 \, \mathrm{div}\,\varepsilon(\mathbf{u}) + \nabla p = \mathbf{f}, \\
 -\mathrm{div}\,\mathbf{u} = 0,
+$$
+其中 $\mathbf{u}\cdot \nabla \mathbf{u}$ 是非线性项, 对应弱格式中多了一项:
+
+$$
+\int 
 $$
 
 ## 代码实现重点
@@ -547,7 +552,7 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjQwNjMzODQsLTIwODY0ODAyMzEsMT
+eyJoaXN0b3J5IjpbLTEzNzAxNDg2MDUsLTIwODY0ODAyMzEsMT
 UyOTE2MiwtMTgxNzMxNzk3NiwxMzUxNTU0NDU4LDk2MjA5Mzgy
 MCwxMDU4ODcyNjYyLDE3MTk0OTM1NDcsLTEwMTI4OTM2NjQsLT
 E5ODU5MjAyODQsOTAwNzU1MjE1LC0xNDg1NDc3ODI5LDc0MDY0
