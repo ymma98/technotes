@@ -282,10 +282,10 @@ $$
 \int (\mathbf{u}\cdot \nabla \mathbf{u}) \cdot \mathbf{v} dV
 $$
 
-对于牛顿迭代, 如果已知 $\mathbf{u}^{l-1}$, 那么 $F(\mathbf{u}^{l})$ 可以用 $\mathbf{u}^{l-1}$ 处的值估算:
+对于牛顿迭代, 如果已知 $\mathbf{u}^{l}$, 那么 $F(\mathbf{u}^{l+1})$ 可以用 $\mathbf{u}^{l}$ 处的值估算:
 
 $$
-F(\mathbf{u}^{l}) = F(\mathbf{u}^{l-1})+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u}
+F(\mathbf{u}^{l+1}) = F(\mathbf{u}^{l})+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u}
 $$
 其中 $\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u}$ 是 Frechet 导数:
 
@@ -295,7 +295,7 @@ $$
 
 对于该问题而言, 有: 
 $$
-\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot  \right]
+\frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = \frac{d}{d\epsilon} \left[ (\mathbf{u}^l +\epsilon \delta \mathbf{u})\cdot \nabla (\mathbf{u}^l + \epsilon \delta \mathbf{u}) \right]
 $$
 
 
@@ -569,11 +569,11 @@ void LinearSteadyStokesSolver<dim>::setup_system()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyNTUzMzk4LC0yMDg2NDgwMjMxLDE1Mj
-kxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OCw5NjIwOTM4MjAs
-MTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEyODkzNjY0LC0xOT
-g1OTIwMjg0LDkwMDc1NTIxNSwtMTQ4NTQ3NzgyOSw3NDA2NDMx
-MTYsMTMwOTI2OTk1MiwtOTM2NTEyMjM1LC0zNjYzNjUwMzQsMT
-U3MjI2OTk2MiwtMTYxNjk4NTE1NCwxNDg1NDY3ODY2LC0xNjkw
-NzY5NTg0XX0=
+eyJoaXN0b3J5IjpbLTU4NDEzOTAyNCwtMjA4NjQ4MDIzMSwxNT
+I5MTYyLC0xODE3MzE3OTc2LDEzNTE1NTQ0NTgsOTYyMDkzODIw
+LDEwNTg4NzI2NjIsMTcxOTQ5MzU0NywtMTAxMjg5MzY2NCwtMT
+k4NTkyMDI4NCw5MDA3NTUyMTUsLTE0ODU0Nzc4MjksNzQwNjQz
+MTE2LDEzMDkyNjk5NTIsLTkzNjUxMjIzNSwtMzY2MzY1MDM0LD
+E1NzIyNjk5NjIsLTE2MTY5ODUxNTQsMTQ4NTQ2Nzg2NiwtMTY5
+MDc2OTU4NF19
 -->
