@@ -314,8 +314,10 @@ $$
 如果 $F(\mathbf{u})$ 是线性项, 那么 $F(k\mathbf{u})=kF(\mathbf{u})$, $F(\mathbf{u}+\mathbf{B})=F(\mathbf{u})+F(\mathbf{B})$,
 
 $$
-F(\mathbf{u}^{l+1}) = F(\mathbf{u}^l) + \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = F(\mathbf{u}^l) +\frac{dF(\mathbf{u}^l + \epsilon\delta \mathbf{u})}{d\epsilon} = F(\mathbf{u}^l) + 
+F(\mathbf{u}^{l+1}) = F(\mathbf{u}^l) + \frac{\partial F}{\partial \mathbf{u}} \delta \mathbf{u} = F(\mathbf{u}^l) +\frac{dF(\mathbf{u}^l + \epsilon\delta \mathbf{u})}{d\epsilon} = F(\mathbf{u}^l) + F(\delta \mathbf{u}) = F(\mathbf{u}^{l+1})
 $$
+
+
 
 
 
@@ -1336,7 +1338,7 @@ int main()
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5MTY2NjY2OSwtMTUxNTEyMjYxNywtMT
+eyJoaXN0b3J5IjpbMTcyMDc2NDAxNiwtMTUxNTEyMjYxNywtMT
 k0NTk4MDA0MywxMTkxMzg5ODg4LC0yMTQwNzc0ODMwLC0yMDg2
 NDgwMjMxLDE1MjkxNjIsLTE4MTczMTc5NzYsMTM1MTU1NDQ1OC
 w5NjIwOTM4MjAsMTA1ODg3MjY2MiwxNzE5NDkzNTQ3LC0xMDEy
