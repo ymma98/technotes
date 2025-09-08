@@ -32,20 +32,42 @@ $$
     \end{aligned}
 $$
 
-该 stream function 和极向磁通 $\psi_p$ 的关系是:
+对于电流项, 因为可以验算:
+$$
+    \mu_0 \vec{J} = \nabla \times \vec{B} = \mu_0 J_\theta \hat{e}_\theta + \nabla \times B_\theta \hat{e}_\theta
+$$
+
+其中:
 
 $$
+    \nabla \times B_\theta \hat{e}_\theta = \frac{1}{r} \nabla  \left( rB_\theta \right) \times \hat{e}_\theta
+$$
+
+所以:
+
+$$
+    \mu_0 \vec{J} = \mu_0 J_\theta \hat{e}_\theta + \frac{1}{r} \nabla  \left( rB_\theta \right) \times \hat{e}_\theta
+$$
+
+如果定义$\Delta^*$:
+
+$$
+    \Delta^* \psi = r^2 \nabla \cdot \left( \frac{\nabla \psi}{r^2} \right) = r \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial \psi}{\partial r} \right) + \frac{\partial^2 \psi}{\partial z^2 }
+$$
+
+可以验证 (OVA):
+\begin{equation*}
+    \mu_0 J_\theta \hat{e}_\theta = \nabla \times \vec{B}_p
+\end{equation*}
+
+\begin{equation}
     \begin{aligned}
-    \psi_p &= \int_{r_o}^{r} \vec{B}_p \cdot dA  \\
-      &= \int_{r_o}^{r} B_z (r, z=0) 2\pi r dr \\
-      &= \int_{r_o}^{r} \frac{1}{r} \frac{\partial \psi}{\partial r} 2\pi r dr \\
-      &= 2\pi \psi(r,z=0)
+    \mu_0 J_\theta &= \left( \nabla \times \vec{B}_p \right)_\theta = -\frac{1}{r} \Delta^* \psi
     \end{aligned}
-$$
-
+\end{equation}
 
 ## 弱格式
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxNzYzNDQ0Niw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbOTkxOTgxMTI1LDU5NDQ3NjExMF19
 -->
