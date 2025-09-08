@@ -217,7 +217,9 @@ $$
 
 如果 $\Delta = 1+\frac{32}{K} < 0$ 即 $K<-32$, 无平衡解。如果 $k=-32$ 则有唯一解, 如果 $K>-32$ 则有两支解。
 
-![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250908/image.3rbkw6dkpa.webp)
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250908/image.3rbkw6dkpa.webp){width=400px}
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzI2Mzg2LDU5NDQ3NjExMF19
+eyJoaXN0b3J5IjpbMTkzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ==
 -->
