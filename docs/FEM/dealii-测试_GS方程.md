@@ -67,10 +67,14 @@ $$
     \end{aligned}
 $$
 
-ding'yi
+定义 $F = rB_\theta$, 有 $\nabla P = \vec{J} \times \vec{B}$, 所以:
+
+$$
+      P^{\prime}  \nabla \Psi = (J_\theta \hat{e}_\theta + \frac{1}{\mu_0 r} F^\prime \nabla \Psi \times \hat{e}_\theta) \times ( B_\theta \hat{e}_\theta + \frac{1}{r} \nabla \Psi \times \hat{e}_\theta)
+$$
 
 ## 弱格式
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1MTU5MzY3Nyw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbMTk0MDM4NzQ3Miw1OTQ0NzYxMTBdfQ==
 -->
