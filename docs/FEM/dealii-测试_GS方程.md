@@ -151,6 +151,65 @@ $$
 $$
 
 其中 $n_r$ 和 $n_z$ 是垂直于表面的单位向量, 对于矩形网格, $r=r_w=r_{max}$ 面/线, $n_r=1$, $r=0$ 处 $n_r=-1$. $z=z_{max}$ 处 $n_z=1$, $z=z_{min}$处$n_z=-1$. test function $v$ 在固定边界条件处取 0, 在 Neumann BC 上可以取任意值。
+
+
+## GS 方程存在分叉解
+
+有分叉解的原因是, $p(\psi)$ 虽然形式上是线性的, 却是分段线性的, 而且分段的条件依赖于未知的 separatrix ($\psi=0$) 的形状, 此时一般的 PDE 理论不再适用。分段线性的形式使得方程变得非线性, 也叫自由边界问题 (边界位置并未事先给定，而是随待求解函数确定)
+
+对于 1D 的 GS 方程, 有 $\partial_z=0$, 假设 $p(\psi)=CH(\psi)$, $H$ 是 Heviside 函数($H=1$ for $\psi<0$, $H=0$ for $\psi>0$), GS 方程变为:
+
+$$
+    r \frac{d}{dr} \left( \frac{1}{r} \frac{d\psi}{dr} \right) = -\mu_0 C r^2 H(\psi).
+$$
+
+在 $0<r<r_s$区域, 有
+
+$$
+    \psi = - \frac{1}{8}\mu_0 C r^4 + c_1 r^2 + c_2
+$$
+
+在 $r>r_s$ 区域, 有:
+
+$$
+    \psi = c_3 r^2 + c_4
+$$
+
+应用边界条件, $r\to0$, $\psi=0$ 得到 $c_2=0$. 在边界处, 有 $\psi=\psi_w$, 且在 $r=r_s$处, 有 $\psi=0$, 得到:
+
+$$
+    \begin{cases}
+        c_1 = \frac{1}{8} \mu_0 C r_s^2 \\
+        c_3 = \frac{\psi_w}{r_w^2 - r_s^2} \\
+        c_4 = -c_3 r_s^2 =  - \frac{\psi_w}{r_w^2 - r_s^2} r_s^2
+    \end{cases}
+$$
+
+因为 $r=r_s$ 处没有面电流 ($B_z$ 无跳变), 所以 $r=r_s$ 处 $\partial_r\psi$ 连续,
+\begin{equation*}
+\begin{aligned}
+    -\frac{1}{2} \mu_0 C r_s^3 + 2c_1r_s &= 2c_3r_s \\
+    c_3 &= -\frac{1}{4}\mu_0 C r_s^2 + c_1 = -\frac{1}{8} \mu_0 C r_s^2
+\end{aligned}
+\end{equation*}
+
+因为 $c_3>0$, 所以 $C<0$.根据 $c_3$, 有
+\begin{equation*}
+\begin{aligned}
+    -\frac{1}{8} \mu_0 C r_s^2 &= \frac{\psi_w}{r_w^2 - r_s^2} \\
+    x_s^2 (1-x_s^2) = -\frac{8\psi_w}{\mu_0 C r_w^4}
+\end{aligned}
+\end{equation*}
+
+如果定义 $K=\frac{\mu_0Cr_w^4}{\psi_w} < 0$, 有
+\begin{equation*}
+    y^2-y-\frac{8}{K} = 0
+\end{equation*}
+其中
+\begin{equation*}
+    y = x_s^2 = \frac{1 \pm \sqrt{1 + \frac{32}{K}}}{2}
+\end{equation*}
+如果 $\Delta = 1+\frac{32}{K} < 0$ 即 $K<-32$, 无平衡解。如果 $k=-32$ 则有唯一解, 如果 $K>-32$ 则有两支解。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzMTA0NTY1Miw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbMTExNDUwOTg4NSw1OTQ0NzYxMTBdfQ==
 -->
