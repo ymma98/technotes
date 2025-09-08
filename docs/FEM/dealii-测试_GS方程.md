@@ -112,11 +112,10 @@ $$
 
 FRC 下 Grad-Shafranov 方程为:
 
-\begin{align}
-\Delta^* \psi 
-&\equiv r \frac{\partial}{\partial r}
-   \Bigl(\frac{1}{r}\,\frac{\partial \psi}{\partial r}\Bigr)
-   + \frac{\partial^2 \psi}{\partial z^2}
+$$
+\begin{aligned}
+\Delta^* \psi &\equiv r \frac{\partial}{\partial r}
+   \Bigl(\frac{1}{r}\,\frac{\partial \psi}{\partial r}\Bigr)+ \frac{\partial^2 \psi}{\partial z^2}
    = -\mu_0\,r^2\,p'(\psi),\\
 J_\theta
 &= r\,p'(\psi),\\
@@ -124,7 +123,10 @@ B_z
 &= \frac{1}{r}\,\frac{\partial\psi}{\partial r}, 
 \qquad
 B_r = -\frac{1}{r}\,\frac{\partial\psi}{\partial z}.
-\end{align}
+\end{aligned}
+$$
+
+其中 $\psi = \int_0^r B_z r dr$, $B_w>0$ 对应 $\psi=0$ 为 separatrix, $\psi<0$ 为闭合磁力线区域, $\psi>0$ 为开放磁力线区域.  $p(\psi) = Cp_0(\psi)$,  $C$ 是一个常数, 是为了避免出现分叉解而设置的。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUwNTI0NjIsNTk0NDc2MTEwXX0=
+eyJoaXN0b3J5IjpbMjA3NDk1NDM3NSw1OTQ0NzYxMTBdfQ==
 -->
