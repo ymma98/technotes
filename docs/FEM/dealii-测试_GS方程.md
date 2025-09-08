@@ -225,30 +225,34 @@ $$
 考虑矩形计算区域, 矩形区域由 $r = r_{max}=r_w$, $z=z_{max}$, $r=0$, $z=z_{min}$ 四条线决定。边界条件是:
 
 
-    \item $r=0$ 处, $\psi=0$
-    \item $r=r_w$ 处, $\psi=\psi_w$
-    \item $z=z_{max}$ 和 $z=z_{min}$ 处，$\frac{\partial \psi}{\partial z}=0$ 或 $\psi=\psi_{w2}$
-\end{itemize}
+* $r=0$ 处, $\psi=0$
+* $r=r_w$ 处, $\psi=\psi_w$
+* $z=z_{max}$ 和 $z=z_{min}$ 处，$\frac{\partial \psi}{\partial z}=0$ 或 $\psi=\psi_{w2}$
+
 
 对于 GS solver, 一开始给定任意 $p_0(\psi)$ 剖面, 一般是这样的形式:
-\begin{equation}
+
+$$
     \begin{cases}
     p_0(\psi) = \cdots \quad \text{where} \quad \psi<0 \\
     p_0(\psi) = p_{open} \quad \text{where} \quad \psi \geq 0
     \end{cases}
-\end{equation}
+$$
 
 $\cdots$ 代表任意表达式, 一般是一次函数，二次函数, 三次函数等。
 
 
 
 求解步骤:
-\begin{itemize}
-    \item 设置计算区域的大小。计算区域总是用柱坐标系 $(r,\theta,z)$ 描述, 这里仅考虑环向对称的情况, 因此计算区域总是用 $(r,z)$ 描述。我们总是默认计算区域是关于 $z=0$ 对称的, 因此默认 $z_{max}=|z_{min}|$. 我们需要指定: $z_{max}$, $z_{min}$, $r_w=r_{max}$, $r_{min}$. 其中默认 $z_{min}=-z_{max}$, $r_{min}=0$
-    \item 指定压强剖面 $p_0(\psi)$, 以及 $p_{open}$, 默认 $C=1$。指定 separatrix 包围的面积 $S$. 求解 GS 方程右边函数 $-\mu_0 r^2 C \frac{dp_0}{d\psi}$
-    \item 给定 $r=r_w$ 处的固定边界条件 $\psi_w$; 给定 $r=r_{min}$处的边界条件 $\psi_{r0}$ (默认 $r_{min}$ 处 $\psi_{r0}=0$); 给定 $z=z_{min}$ 和 $z=z_{max}$ 区域的边界条件, 要么是固定边界条件 $\psi=\psi_{zend}$, 要么是Neumman 边界条件 $\frac{\partial\psi}{\partial z} = 0$
-    \item 生成初始网格。网格总是矩形、均匀网格
-    \item 给定或读取初始的 initial guess $\psi_0$, 这部分可以直接设置, 也可以直接读取外部文件, 其中外部文件满足 .csv 格式, 里面存储的是 $r,z,\psi_0$
+
+
+* 设置计算区域的大小。计算区域总是用柱坐标系 $(r,\theta,z)$ 描述, 这里仅考虑环向对称的情况, 因此计算区域总是用 $(r,z)$ 描述。我们总是默认计算区域是关于 $z=0$ 对称的, 因此默认 $z_{max}=|z_{min}|$. 我们需要指定: $z_{max}$, $z_{min}$, $r_w=r_{max}$, $r_{min}$. 其中默认 $z_{min}=-z_{max}$, $r_{min}=0$
+
+
+* 指定压强剖面 $p_0(\psi)$, 以及 $p_{open}$, 默认 $C=1$。指定 separatrix 包围的面积 $S$. 求解 GS 方程右边函数 $-\mu_0 r^2 C \frac{dp_0}{d\psi}$
+* 给定 $r=r_w$ 处的固定边界条件 $\psi_w$; 给定 $r=r_{min}$处的边界条件 $\psi_{r0}$ (默认 $r_{min}$ 处 $\psi_{r0}=0$); 给定 $z=z_{min}$ 和 $z=z_{max}$ 区域的边界条件, 要么是固定边界条件 $\psi=\psi_{zend}$, 要么是Neumman 边界条件 $\frac{\partial\psi}{\partial z} = 0$
+* 生成初始网格。网格总是矩形、均匀网格
+* 给定或读取初始的 initial guess $\psi_0$, 这部分可以直接设置, 也可以直接读取外部文件, 其中外部文件满足 .csv 格式, 里面存储的是 $r,z,\psi_0$
     \item 开始迭代 GS 方程, 使用 modified Picard 迭代方法, $M \psi_{n+1}=(1-w) M \psi_{n}+w Q^{n}$, 其中 $Q$ 是矩阵组装后得到的 $Ax=b$ 的 $b$, 其中包含了非线性效应。反复迭代, 直到 $d=max|\psi_{n+1}-\psi_n|<\epsilon$
     \item 判断, 是否需要限定 $S$?
         \begin{itemize}
@@ -1505,7 +1509,7 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzQ5NTU2MDcsLTE0OTY0NzgyNDksLT
-c0MTkzMzgzNywtMTM4MDM0NjI2NywxOTMzNjY3OTgzLDU5NDQ3
-NjExMF19
+eyJoaXN0b3J5IjpbMjA3MDIzMzQ2MywtMTQ5NjQ3ODI0OSwtNz
+QxOTMzODM3LC0xMzgwMzQ2MjY3LDE5MzM2Njc5ODMsNTk0NDc2
+MTEwXX0=
 -->
