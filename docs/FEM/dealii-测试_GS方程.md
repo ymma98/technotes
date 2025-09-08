@@ -186,30 +186,38 @@ $$
 $$
 
 因为 $r=r_s$ 处没有面电流 ($B_z$ 无跳变), 所以 $r=r_s$ 处 $\partial_r\psi$ 连续,
-\begin{equation*}
+
+$$
 \begin{aligned}
     -\frac{1}{2} \mu_0 C r_s^3 + 2c_1r_s &= 2c_3r_s \\
     c_3 &= -\frac{1}{4}\mu_0 C r_s^2 + c_1 = -\frac{1}{8} \mu_0 C r_s^2
 \end{aligned}
-\end{equation*}
+$$
 
 因为 $c_3>0$, 所以 $C<0$.根据 $c_3$, 有
-\begin{equation*}
+
+$$
 \begin{aligned}
     -\frac{1}{8} \mu_0 C r_s^2 &= \frac{\psi_w}{r_w^2 - r_s^2} \\
     x_s^2 (1-x_s^2) = -\frac{8\psi_w}{\mu_0 C r_w^4}
 \end{aligned}
-\end{equation*}
+$$
 
 如果定义 $K=\frac{\mu_0Cr_w^4}{\psi_w} < 0$, 有
-\begin{equation*}
+
+$$
     y^2-y-\frac{8}{K} = 0
-\end{equation*}
+$$
+
 其中
-\begin{equation*}
+
+$$
     y = x_s^2 = \frac{1 \pm \sqrt{1 + \frac{32}{K}}}{2}
-\end{equation*}
+$$
+
 如果 $\Delta = 1+\frac{32}{K} < 0$ 即 $K<-32$, 无平衡解。如果 $k=-32$ 则有唯一解, 如果 $K>-32$ 则有两支解。
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250908/image.3rbkw6dkpa.webp)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExNDUwOTg4NSw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbLTE2MzI2Mzg2LDU5NDQ3NjExMF19
 -->
