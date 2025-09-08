@@ -645,9 +645,825 @@ void Parameters::parse_parameters(dealii::ParameterHandler &prm)
 } // namespace gsfrc
 ```
 
+* `solver.cpp`
+
+```cpp
+#include <deal.II/base/quadrature_lib.h>
+#include <deal.II/base/function.h>
+#include <deal.II/base/parameter_handler.h>
+#include <deal.II/base/function_parser.h>
+#include <deal.II/base/function_lib.h>
+#include <deal.II/base/utilities.h>
+#include <deal.II/base/conditional_ostream.h>
+#include <deal.II/base/tensor.h>
+#include <deal.II/dofs/dof_tools.h>
+
+#include <deal.II/lac/vector.h>
+#include <deal.II/lac/dynamic_sparsity_pattern.h>
+
+#include <deal.II/grid/tria.h>
+#include <deal.II/grid/grid_generator.h>
+#include <deal.II/grid/grid_out.h>
+#include <deal.II/grid/grid_refinement.h>
+#include <deal.II/grid/grid_in.h>
+
+#include <deal.II/dofs/dof_handler.h>
+#include <deal.II/dofs/dof_tools.h>
+
+#include <deal.II/fe/fe_values.h>
+#include <deal.II/fe/fe_system.h>
+#include <deal.II/fe/mapping_q1.h>
+#include <deal.II/fe/fe_q.h>
+
+#include <deal.II/numerics/data_out.h>
+#include <deal.II/numerics/vector_tools.h>
+#include <deal.II/numerics/solution_transfer.h>
+
+#include <deal.II/lac/trilinos_sparse_matrix.h>
+#include <deal.II/lac/trilinos_precondition.h>
+#include <deal.II/lac/trilinos_solver.h>
 
 
+#include <iomanip>
+#include <iostream>
+#include <algorithm>
+#include <sstream>
+#include <string>
+
+#include <omp.h>
+
+
+#include "../include/solver.hpp"
+#include "../include/parameters.hpp"
+
+namespace gsfrc{
+    namespace {
+        constexpr double mu0 = 4.0 * dealii::numbers::PI * 1e-7; 
+    }
+
+    GSSolver::GSSolver(dealii::Triangulation<2> &tria,
+                     const unsigned int poly_degree,
+                     const unsigned int max_iter_num,
+                     const double tol,
+                     const double gscenter,
+                     const double psi_wall,
+                     const bool neumann_zmax,
+                     const bool neumann_zmin,
+                     const double psi_zmax,
+                     const double psi_zmin,
+                     const double p_open,
+                     const std::string &pres_expr,
+                     const std::map<std::string, double> &pres_constants,
+                     const double S)
+        : tria_(tria),
+        pd_(poly_degree),
+        maxitnum_(max_iter_num),
+        tol_(tol),
+        omg_(gscenter),
+        psi_wall_(psi_wall),
+        neumann_zmax_(neumann_zmax),
+        neumann_zmin_(neumann_zmin),
+        psi_zmax_(psi_zmax),
+        psi_zmin_(psi_zmin),
+        p_open_(p_open),
+        fe_(pd_),
+        dof_handler_(tria_),
+        S_(S),
+        area_(S)
+    {
+        presparser_.initialize("psi",pres_expr, pres_constants);
+        // distribute dofs
+        dof_handler_.distribute_dofs(fe_);
+        
+        // initialize system matrix and vectors
+        psi_vec_.reinit(dof_handler_.n_dofs());
+        tmp_vec_.reinit(dof_handler_.n_dofs());
+        system_rhs_.reinit(dof_handler_.n_dofs());
+
+        Cold_ = 1.0;
+        Cnew_ = 1.0;
+
+        initial_guess_read_ = false;
+    }
+
+
+    class InitialGuess : public dealii::Function<2> {
+        public:
+            InitialGuess();
+            virtual double value(const dealii::Point<2> &p,
+            unsigned int component = 0) const override;
+    };
+
+
+    InitialGuess::InitialGuess() : dealii::Function<2>(1) {}
+
+    double InitialGuess::value(const dealii::Point<2> &p,
+            unsigned int /*component*/) const {
+        double R0 = 0.15, B0 = -0.1, E = 6.0;
+        // double R0 = 0.1, B0 = -0.1, E = 1.0;
+        double psi0 = B0 * R0 * R0 / 4.0;
+        double r = p[0], z=p[1];
+        double psi = psi0 / (R0 * R0 * R0 * R0) *
+            ((r * r - R0 * R0) * (r * r - R0 * R0) +
+            z * z / (E * E) * r * r);
+        double psir0 = psi0 / (R0 * R0 * R0 * R0) *
+            ((R0 * R0) * (R0 * R0)); // psi at (0,0)
+        psi = -1. * psi - (-1.0 * psir0);
+        return psi;
+    }
+
+
+    class LambdaFunction : public dealii::Function<2> {
+        public:
+            LambdaFunction(const std::function<double(const dealii::Point<2>&)> &func)
+                : dealii::Function<2>(1), lambda_func(func) {}
+    
+            virtual double value(const dealii::Point<2> &p,
+                    unsigned int component = 0) const override {
+                return lambda_func(p);
+            }
+    
+        private:
+            std::function<double(const dealii::Point<2>&)> lambda_func;
+    };
+
+    double GSSolver::solovevpsi(double r, double z, double R0, double B0, double E){
+        // psi = psi0 / R0^4 ((r^2 - R0^2)^2 + z^2/E^2 * r^2)
+        // psi0 = B0 R0^2 / 4 where B0=Bz(0,0)
+        // p' = -2*(1+4*E^2)*psi0 / (mu0 * E^2 * R0^4)
+        double psi0 = B0 * R0 * R0 / 4.0;
+        double psi = psi0 / (R0 * R0 * R0 * R0) *
+            ((r * r - R0 * R0) * (r * r - R0 * R0) +
+            z * z / (E * E) * r * r);
+        return psi;
+    }
+    double GSSolver::solovevpp(double R0, double B0, double E){
+        // double mu0 = 4.0 * dealii::numbers::PI * 1e-7;
+        double psi0 = B0 * R0 * R0 / 4.0;
+        // here, pp is the mu0 * p^prime
+        double pp = -2.0 * (1.0 + 4.0 * E * E) * psi0 /
+            (E * E * R0 * R0 * R0 * R0);
+        return pp;
+    }
+
+    class ParabolicZBC : public dealii::Function<2> {
+    public:
+        ParabolicZBC(double psi_wall, double r_wall)
+            : dealii::Function<2>(1), psi_wall_(psi_wall), r_wall_(r_wall) {}
+    
+        virtual double value(const dealii::Point<2> &p,
+                            unsigned int component = 0) const override
+        {
+            const double r = p[0];
+            return psi_wall_ / (r_wall_ * r_wall_) * (r * r);
+        }
+    
+    private:
+        double psi_wall_, r_wall_;
+    };
+
+
+
+    void GSSolver::apply_boundary_conditions(std::string bctype){
+        /*
+         bctype = 'normal', r=0 and r=rw: Dirichlet, z=zmin and z=zmax: Neumann
+         bctype = 'test_solovev', all Dirichlet BC
+        */
+        constraints_.clear();
+        // 在自适应网格细化（AMR）或不规则网格下，某些单元细化而邻居没细化，
+        // 会产生“挂点”（hanging node）
+        // 这些点的自由度不能独立，需要通过线性关系（约束）和相邻单元的节点
+        // 绑定，否则会出现解不连续
+        dealii::DoFTools::make_hanging_node_constraints(dof_handler_,
+            constraints_);
+        ParabolicZBC parabolic_bc(psi_wall_, 0.3);
+        const unsigned int id_rmin=0, id_zmin=1, id_rmax=2, id_zmax=3;
+        if (bctype == "normal" or bctype=="normalS") {
+            dealii::Functions::ConstantFunction<2> zerofunc(0.0);
+            dealii::VectorTools::interpolate_boundary_values(
+            dof_handler_, id_rmin, zerofunc, constraints_);
+            dealii::Functions::ConstantFunction<2> psiwfunc(psi_wall_);
+            dealii::VectorTools::interpolate_boundary_values(
+            dof_handler_, id_rmax, psiwfunc, constraints_);
+            if (!neumann_zmin_) {
+            dealii::Functions::ConstantFunction<2> psizminfunc(psi_zmin_);
+            dealii::VectorTools::interpolate_boundary_values(
+            dof_handler_, id_zmin, psizminfunc, constraints_);
+            }
+            // else {
+            //      dealii::VectorTools::interpolate_boundary_values(
+            //         dof_handler_, id_zmin, parabolic_bc, constraints_);
+            // }
+            if (!neumann_zmax_) {
+            dealii::Functions::ConstantFunction<2> psizmaxfunc(psi_zmax_);
+            dealii::VectorTools::interpolate_boundary_values(
+            dof_handler_, id_zmax, psizmaxfunc, constraints_);
+            }
+            // else {
+            //      dealii::VectorTools::interpolate_boundary_values(
+            //         dof_handler_, id_zmax, parabolic_bc, constraints_);
+            // }
+
+        }
+        else if (bctype == "test_solovev") {
+            // psi = psi0 / R0^4 ((r^2 - R0^2)^2 + z^2/E^2 * r^2)
+            // psi0 = B0 R0^2 / 4 where B0=Bz(0,0)
+            // p' = -2*(1+4*E^2)*psi0 / (mu0 * E^2 * R0^4)
+            double R0 = 0.1, B0 = -0.1;
+            double E = 1.0;
+            auto psi_exact = [R0,B0,E](const dealii::Point<2> &p) -> double {
+                const double r = p[0];
+                const double z = p[1];
+                return solovevpsi(r, z, R0, B0, E);
+            };
+            LambdaFunction psi_exact_func(psi_exact);
+            for (const unsigned int id:{id_rmin, id_zmin, id_rmax, id_zmax}) {
+                dealii::VectorTools::interpolate_boundary_values(
+                dof_handler_, id, psi_exact_func, constraints_);
+            }
+        }
+        else {
+            throw dealii::ExcMessage("Unknown boundary condition type: " + bctype);
+        }
+        constraints_.close();
+    }
+
+
+
+
+    double GSSolver::pressure_val(double psi, std::string type) {
+        if (type == "normal"){
+            if (psi > 0.0)
+                return p_open_;
+            return presparser_.value(dealii::Point<1>(psi));
+        }
+        else if (type == "normalS"){
+            if (psi > 0.0)
+                return p_open_ * Cnew_;
+            // psi < 0, use the parser
+            return presparser_.value(dealii::Point<1>(psi)) * Cnew_;
+        }
+        else if (type == "test_solovev"){
+            double R0 = 0.1, B0 = -0.1, E=1.0;
+            double pp = solovevpp(R0, B0, E);
+            return pp * psi;
+        }
+        else{
+            throw dealii::ExcMessage("Unknown pressure type: " + type);
+        }
+
+    }
+
+    double GSSolver::dpdpsi(double psi, std::string type) {
+        double h = 1.e-8 * std::max(1.0, std::fabs(psi));
+        double p1 = pressure_val(psi + h, type);
+        double p2 = pressure_val(psi - h, type);
+        double pp = (p1 - p2) / (2. * h);
+
+        if (std::abs(pp) > 30.0)
+            pp = 0.;
+
+        if (type == "normal" || type == "normalS"){
+            // dealii::Point<1> psi_point(psi);
+            // double pp_inside = presparser_.gradient(psi_point)[0];
+            // // transition region
+            // double delta_psi = 0.1 * std::abs(psi_wall_);
+            // double H_smooth = 0.5 * (1.0 - std::tanh(psi/delta_psi));
+            // return pp_inside * H_smooth * Cnew_;
+
+            return pp;
+        }
+        else if (type == "test_solovev"){
+            double R0 = 0.1, B0 = -0.1, E = 1.0;
+            return solovevpp(R0, B0, E);
+            // return pp;
+        }
+        else {
+            throw dealii::ExcMessage("Unknown pressure type: " + type);
+        }
+    }
+
+
+
+    void GSSolver::assemble_system(std::string type){
+        system_matrix_ = 0.0;
+        system_rhs_ = 0.0;
+
+        dealii::QGauss<2> quadrature(pd_ + 2);
+        dealii::FEValues<2> fe_values(fe_, quadrature,
+                                      dealii::update_values |
+                                      dealii::update_gradients |
+                                      dealii::update_quadrature_points |
+                                      dealii::update_JxW_values);
+
+        // psi at quadrature point
+        std::vector<double> psi_q(quadrature.size());
+        std::vector<dealii::types::global_dof_index> local_dofs(fe_.n_dofs_per_cell());
+        // \int \frac{1}{r} (\frac{\partial \psi}{\partial r}\frac{\partial v}{\partial r}
+        // + \frac{\partial \psi}{\partial z} \frac{\partial v}{\partial z}) drdz 
+        // = \int v \frac{1}{r} \frac{\partial \psi}{\partial r} n_r dz
+        // + \int v \frac{1}{r} \frac{\partial \psi}{\partial z} n_z dr
+        // +\mu_0 \int rp^\prime v drdz
+        for (const auto & cell : dof_handler_.active_cell_iterators()){
+            fe_values.reinit(cell);
+            cell->get_dof_indices(local_dofs);
+
+            // get psi on quadrature points
+            fe_values.get_function_values(psi_vec_, psi_q);
+
+            // local per-cell matrix and vector
+            dealii::FullMatrix<double> cell_mat(fe_.n_dofs_per_cell(),
+                                fe_.n_dofs_per_cell());
+            dealii::Vector<double> cell_rhs(fe_.n_dofs_per_cell());
+
+            cell_mat = 0.0;
+            cell_rhs = 0.0;
+
+            for (unsigned int q=0; q < quadrature.size(); q++) {
+                const double r = fe_values.quadrature_point(q)[0];
+                double pp = dpdpsi(psi_q[q], type); // p^\prime
+
+                // double eps = psi_wall_ * 1.e-1;
+                // double w = 0.5 * (1.0 - std::tanh(psi_q[q]/eps));
+                // if (r>=0.15) pp *= w;
+
+                for (unsigned int i=0; i < fe_.n_dofs_per_cell(); i++){
+                    // dphi(i)/dr(xq), dphi(i)/dz(xq)
+                    const dealii::Tensor<1,2> grad_i = fe_values.shape_grad(i,q);
+
+                    for (unsigned int j=0; j < fe_.n_dofs_per_cell(); j++){
+                        // dphi(j)/dr(xq), dphi(j)/dz(xq)
+                        const dealii::Tensor<1,2> grad_j = fe_values.shape_grad(j,q);
+                        if (std::abs(r) > 1.e-7)
+                            cell_mat(i,j)+=(grad_i * grad_j) * fe_values.JxW(q) / r;
+                        else
+                            cell_mat(i,j) += 0.;
+                    }
+
+                    const double v_i = fe_values.shape_value(i, q); // test function
+                    cell_rhs(i) += r * pp * v_i * fe_values.JxW(q);
+                }
+
+            }
+            // apply cell matrix to global matrix with BC considered
+            constraints_.distribute_local_to_global(cell_mat, cell_rhs,
+                                                local_dofs, system_matrix_,
+                                                system_rhs_);
+        } 
+
+    }
+
+
+    double GSSolver::calc_separatrix_area() const {
+        // calculate the area of the separatrix, i.e., the area where psi=0
+        dealii::QGauss<2> quadrature(pd_ + 2);
+        dealii::FEValues<2> fe_values(fe_, quadrature,
+                                      dealii::update_values |
+                                      dealii::update_JxW_values);
+        std::vector<double> psi_q(quadrature.size());
+        double area = 0.0;
+        for (const auto & cell : dof_handler_.active_cell_iterators()){
+            fe_values.reinit(cell);
+            std::vector<double> psi_q(quadrature.size());
+            fe_values.get_function_values(psi_vec_, psi_q);
+            for (unsigned int q=0; q < quadrature.size(); q++) {
+                if (psi_q[q] < 0.0)
+                    area += fe_values.JxW(q);
+            }
+        }
+        return area;
+    }
+
+    void GSSolver::solve(std::string type) {
+        assemble_system(type);
+        dealii::SolverControl solver_control(2000, 1.e-12);
+        dealii::TrilinosWrappers::SolverGMRES linear_solver(solver_control);
+        // dealii::TrilinosWrappers::SolverCG linear_solver(solver_control);
+
+        dealii::TrilinosWrappers::PreconditionILU preconditioner;
+        preconditioner.clear();
+        preconditioner.initialize(system_matrix_,1.2);
+
+
+        tmp_vec_ = 0.0;
+        linear_solver.solve(system_matrix_, tmp_vec_,
+                         system_rhs_, preconditioner);
+        // linear_solver.solve(system_matrix_, tmp_vec_, system_rhs_,
+        //                 dealii::TrilinosWrappers::PreconditionIdentity());
+
+
+        dealii::Vector<double> A_times_b(dof_handler_.n_dofs());
+        system_matrix_.vmult(A_times_b, tmp_vec_);
+        A_times_b.sadd(-1.0, system_rhs_);
+        std::cout << "\n----------debuging........-------------"<<
+            "Ax-b l2norm = " << A_times_b.l2_norm() << std::endl;
+
+        constraints_.distribute(tmp_vec_);
+
+
+    }
+
+
+
+    void GSSolver::picardit(std::string type){
+        apply_boundary_conditions(type);
+        // mark the constraint locations
+        dealii::DynamicSparsityPattern dsp(dof_handler_.n_dofs(),
+            dof_handler_.n_dofs());
+        dealii::DoFTools::make_sparsity_pattern(dof_handler_, dsp,
+                constraints_, /*keep_constrained_dofs=*/false);
+        system_matrix_.reinit(dsp);
+        std::vector<dealii::Point<2>> support_points(dof_handler_.n_dofs());
+        dealii::MappingQ1<2> mapping;
+        dealii::DoFTools::map_dofs_to_support_points(mapping, 
+                dof_handler_, support_points);
+        dealii::Vector<double> diff = tmp_vec_;
+
+        if (!initial_guess_read_){
+            std::cout << "No initial guess provided, using Solovev." << std::endl;
+            InitialGuess solovev;
+            dealii::VectorTools::interpolate(dof_handler_, solovev, psi_vec_);
+        }
+
+        for (unsigned int it=0; it<maxitnum_; it++){
+            solve(type);
+            // psi_{new} - psi_{old}
+            diff = tmp_vec_;
+            diff -= psi_vec_;
+            // max_i |diff_i|, infinity-norm of the correction \delta psi(diff)
+            const double max_corr = diff.linfty_norm();
+            unsigned int max_corr_dof = dealii::numbers::invalid_unsigned_int;
+            for (unsigned int i=0; i<diff.size();i++){
+                if (std::abs(std::abs(diff(i)) - max_corr) < 1.e-10){
+                    max_corr_dof = i;
+                    break;
+                }
+            }
+            const dealii::Point<2> max_corr_pt = support_points[max_corr_dof];
+            const double r_max_corr = max_corr_pt[0];
+            const double z_max_corr = max_corr_pt[1];
+
+            // psi_{n+1} = (1-omg_) * psi_{old} + omg_ * psi_{new}
+            // psi_vec_.sadd(1.0-omg_, omg_, tmp_vec_);
+            psi_vec_ *= (1.0 - omg_);
+            psi_vec_.add(omg_, tmp_vec_);
+
+            area_ = calc_separatrix_area();
+
+
+            if (type == "normalS"){
+                // double cmax=1.2, cmin=0.8;
+                double cmax=5.0, cmin=0.2;
+                double tmparea_ = area_;
+                if (tmparea_ < S_ * 0.1) tmparea_ = S_ * 0.1;
+
+                double alpha_ = omg_ * 0.5;
+                if (std::abs((area_-S_)/S_)>0.01){
+                    Cnew_ =  (1.0 - alpha_) * Cold_ + alpha_ * Cold_ * S_ / tmparea_;
+
+                    Cnew_ = std::max(cmin, std::min(Cnew_, cmax));
+                    
+                    Cold_ = Cnew_;
+                }
+            }
+
+            // if (type == "normalS") {
+            //     double error = S_ - area_;
+            //     double rel_error = error / S_;
+            //     double abs_rel_error = std::min(1.0, std::abs(rel_error));
+            //     double kp = 0.2;
+            //     double ki = 5.e-3;
+            //     double kd = 0.2;
+            //     double cmin = 0.1, cmax = 10.;
+            //     static double integral_sum = 0.;
+            //     static double last_error = 0.0;
+
+            //     integral_sum += rel_error;
+            //     integral_sum = std::max(std::min(integral_sum,0.05),-0.05);
+            //     double error_derivative = error - last_error;
+            //     double deltaC = kp*rel_error + ki*integral_sum + 
+            //                     kd * error_derivative;
+            //     Cnew_ = Cold_ + deltaC;
+            //     Cnew_ = Cold_ * (1.0 - omg_) + omg_ * Cnew_;
+            //     Cnew_ = std::max(cmin, std::min(Cnew_, cmax));
+            //     Cold_ = Cnew_;
+            //     last_error = error;
+            // }
+
+
+
+            std::cout << "----------------------------------------------------"
+                <<std::endl;
+            // std::cout << "  Picard " << std::setw(5) << it + 1
+            //     << "   max|newpsi-oldpsi| = " << max_corr << std::endl;
+
+            std::cout << "  Picard " << std::setw(5) << it + 1
+                  << "   max|newpsi-oldpsi| = " << max_corr
+                  << "  at (r,z)=(" << r_max_corr << ", " << z_max_corr << ")\n";
+            std::cout << "   tmp_vec_ at (r_max_corr, z_max_corr) is" << 
+                tmp_vec_(max_corr_dof) << std::endl;
+            std::cout << "   psi_vec_ at (r_max_corr, z_max_corr) is" << 
+                psi_vec_(max_corr_dof) << std::endl;
+
+
+            // double residual_norm_current = calculate_residual_norm(type, psi_vec_);
+            // std::cout << "   max residual l2(Ax-b) = " 
+            //     << residual_norm_current << std::endl;
+
+            double minpsi = *std::min_element(psi_vec_.begin(), psi_vec_.end());
+            double maxpsi = *std::max_element(psi_vec_.begin(), psi_vec_.end());
+            std::cout << "          max/min psi = " << maxpsi << ",   "
+                << minpsi << std::endl;
+            std::cout << " separatrix S = " << area_ << "  ,target S = "
+                << S_ << "   ,C = " << Cnew_ << std::endl;
+
+            if (max_corr < tol_){
+                std::cout << " Converged in " << it + 1 << "Picard steps.\n";
+                return;
+            }
+        }
+
+        std::cout << 
+        "Picard iteration did not converge within maxitnum_ iterations."
+        << std::endl;
+
+        std::ofstream diffout_debug("diff_psi_debug.csv");
+        std::cout<<"---------------diff_psi_debug 01 ---------"<<std::endl;
+        diffout_debug << "r,z,diffpsi\n";
+        for (unsigned int i = 0; i < diff.size(); ++i)
+            diffout_debug << std::setprecision(17) << support_points[i][0]
+                << ',' << support_points[i][1] << ','
+            << diff(i) << '\n';
+        std::cout<<"---------------diff_psi_debug 01 ---------"<<std::endl;
+
+    }
+
+    
+    double GSSolver::step_norm(const dealii::Vector<double> a,
+                               const dealii::Vector<double> b) const {
+        // calculate the step norm ||a-b||_2
+        dealii::Vector<double> diff = a;
+        diff -= b;
+        return diff.l2_norm();
+    }
+
+
+    double GSSolver::calculate_residual_norm(std::string type, 
+            const dealii::Vector<double> &vec){
+        dealii::Vector<double> old_psi_vec = psi_vec_;
+        psi_vec_ = vec;
+    
+        assemble_system(type);
+    
+        // 恢复主解向量
+        psi_vec_ = old_psi_vec;
+    
+        // 2. 计算 A*vec 
+        dealii::Vector<double> A_times_vec(dof_handler_.n_dofs());
+        system_matrix_.vmult(A_times_vec, vec);
+    
+        // 3. 计算残差向量 r = A*vec - b(vec)
+        //    为了不修改 system_rhs_, 我们使用 A_times_vec 来存储结果
+        A_times_vec.sadd(-1.0, system_rhs_);
+    
+        return A_times_vec.l2_norm();
+    }
+
+
+
+    void GSSolver::adeptivePicardit(std::string type){
+        apply_boundary_conditions(type);
+        // mark the constraint locations
+        dealii::DynamicSparsityPattern dsp(dof_handler_.n_dofs(),
+            dof_handler_.n_dofs());
+        dealii::DoFTools::make_sparsity_pattern(dof_handler_, dsp,
+                constraints_, /*keep_constrained_dofs=*/false);
+        system_matrix_.reinit(dsp);
+
+        if (!initial_guess_read_){
+            std::cout << "No initial guess provided, using Solovev." << std::endl;
+            InitialGuess solovev;
+            dealii::VectorTools::interpolate(dof_handler_, solovev, psi_vec_);
+            constraints_.distribute(psi_vec_);
+        }
+
+        // adaptive Picard iteration
+        double omega = omg_;
+        const double min_omega = 1.e-3;
+        dealii::Vector<double> psi_current = psi_vec_;
+        dealii::Vector<double> psi_last_accepted = psi_current;
+        dealii::Vector<double> psi_trial(dof_handler_.n_dofs());
+        
+        // initial residual
+        double residual_norm_current = calculate_residual_norm(type, psi_current);
+
+
+        for (unsigned int it=0; it<maxitnum_; it++){
+            psi_vec_ = psi_current;
+            bool step_accepted = false;
+            solve(type);
+            double current_omega = omega;
+            while (current_omega > min_omega){
+                // try: psi_trial=(1-omega)*psi_current+omega*psi_next_unrelaxed
+                psi_trial = psi_current;
+                psi_trial.sadd(1.0-current_omega, current_omega, tmp_vec_);
+
+                double residual_norm_trial = 
+                    calculate_residual_norm(type, psi_trial);
+
+
+                // accept
+                if (residual_norm_trial < residual_norm_current){
+                    psi_last_accepted = psi_current;
+                    psi_current = psi_trial;
+                    residual_norm_current = residual_norm_trial;
+                    step_accepted = true;
+                    omega = std::min(omg_, current_omega * 1.5);
+                    break;
+                }
+                else{
+                    current_omega *=0.5;
+                }
+            }
+
+            if (!step_accepted){
+                std::cout <<"\nConvergence failed. omega < min_omega." << std::endl;
+                psi_vec_ = psi_current;
+                return;
+            }
+
+
+            // update norm
+            dealii::Vector<double> diff = psi_current;
+            diff -= psi_last_accepted;
+            double max_corr_norm = diff.linfty_norm();
+
+            area_ = calc_separatrix_area();
+            if (type == "normalS"){
+                // double cmax=1.2, cmin=0.8;
+                double cmax=2.0, cmin=0.5;
+                double tmparea_ = area_;
+                if (tmparea_ < S_ * 0.1) tmparea_ = S_ * 0.1;
+
+                double alpha_ = omega * 0.5;
+                if (std::abs((area_-S_)/S_)>0.01){
+                    Cnew_ =  (1.0 - alpha_) * Cold_ + alpha_ * Cold_ * S_ / tmparea_;
+
+                    Cnew_ = std::max(cmin, std::min(Cnew_, cmax));
+                    
+                    Cold_ = Cnew_;
+                }
+            }
+            
+            
+            std::cout << "----------------------------------------------------"
+                <<std::endl;
+            std::cout << "  Picard " << std::setw(5) << it + 1
+                << "   max|newpsi-oldpsi| = " << max_corr_norm <<
+                "  ,max residual l2(Ax-b) = " << residual_norm_current << std::endl;
+
+            double minpsi = *std::min_element(psi_vec_.begin(), psi_vec_.end());
+            double maxpsi = *std::max_element(psi_vec_.begin(), psi_vec_.end());
+            std::cout << "          max/min psi = " << maxpsi << ",   "
+                << minpsi << std::endl;
+            std::cout << " separatrix S = " << area_ << "  ,target S = "
+                << S_ << "   ,C = " << Cnew_ << "  , omega = " << omega << std::endl;
+            if (max_corr_norm < tol_){
+                std::cout << " Converged in " << it + 1 << "Picard steps.\n";
+                return;
+            }
+        }
+
+        std::cout << 
+        "Picard iteration did not converge within maxitnum_ iterations."
+        << std::endl;
+    }
+
+
+    void GSSolver::writedata(std::string filename, std::string type) const {
+        if (type == "vtk"){
+            dealii::DataOut<2> data_out;
+            data_out.attach_dof_handler(dof_handler_);
+            data_out.add_data_vector(psi_vec_,"psi");
+            data_out.build_patches();
+
+            std::ofstream out(filename + ".vtk");
+            data_out.write_vtk(out);
+        }
+        else if (type == "csv") {
+            std::ofstream out(filename + ".csv");
+            out << "r,z,psi\n";
+            std::vector<dealii::Point<2>> support_points(dof_handler_.n_dofs());
+            dealii::MappingQ1<2>          mapping;
+            dealii::DoFTools::map_dofs_to_support_points(mapping, dof_handler_,
+                                           support_points);
+
+            for (unsigned int i = 0; i < psi_vec_.size(); ++i)
+                out << std::setprecision(17) << support_points[i][0]
+                    << ',' << support_points[i][1] << ','
+                << psi_vec_(i) << '\n';
+        }
+        else {
+            throw dealii::ExcMessage("Unknown output type: " + type);
+        }
+    }
+
+    void GSSolver::load_initial_guess_csv(const std::string &filename){
+        auto csvtomapdata = read_initial_guess_csv(filename);
+
+        dealii::MappingQ1<2> mapping;
+        std::vector<dealii::Point<2>> support_points(dof_handler_.n_dofs());
+        dealii::DoFTools::map_dofs_to_support_points(mapping, dof_handler_,
+                                       support_points);
+
+        for (unsigned int i = 0; i < support_points.size(); ++i) {
+            std::ostringstream key;
+            key << std::setprecision(17)<<support_points[i][0] << ','
+                << support_points[i][1];
+            auto it = csvtomapdata.find(key.str());
+            if (it != csvtomapdata.end()) {
+                psi_vec_(i) = it->second; // set initial guess
+            } else {
+                throw dealii::ExcMessage("Support point "+key.str()+
+                                 " is missing in "+filename);
+            }
+        }
+        initial_guess_read_ = true;
+        std::cout << "Initial guess loaded from " << filename << std::endl;
+    }
+        
+}
+```
+
+
+```cpp
+#include <deal.II/base/parameter_handler.h>
+#include <deal.II/base/mpi.h>
+#include "../../include/mesh.hpp"
+#include "../../include/parameters.hpp"
+#include "../../include/solver.hpp"
+#include "../../external/CLI11.hpp"
+
+using namespace dealii;
+using namespace gsfrc;
+
+int main(int argc, char **argv)
+{
+    dealii::Utilities::MPI::MPI_InitFinalize mpi_init(argc, argv, 1);
+  /* ---------------- read default parameter file -------------- */
+
+    CLI::App app{"GSSolver"};
+    std::string init_csv;
+    app.add_option("-i,--init", init_csv,
+            "Initial guess for the solver (CSV file)");
+    CLI11_PARSE(app, argc, argv);
+
+    dealii::ParameterHandler prm;
+    gsfrc::Parameters::declare_parameters(prm);
+    prm.parse_input("./gsfrc.prm");
+
+    gsfrc::Parameters params;
+    params.parse_parameters(prm);
+
+    // mesh
+    dealii::Triangulation<2> tria;
+    gsfrc::create_uniform_rect_mesh(tria,
+                                      params.rmin, params.rmax,
+                                      params.zmin, params.zmax,
+                                      params.mx, params.my);
+    // solver
+    gsfrc::GSSolver gs(tria,
+                       params.poly_degree,
+                       params.max_iter_num,
+                       params.tol,
+                       params.gscenter,
+                       params.psi_wall,
+                       params.neumann_zmax,
+                       params.neumann_zmin,
+                       params.psi_zmax,
+                       params.psi_zmin,
+                       params.p_open,
+                       params.pres_expr, params.constants,
+                       params.S);
+
+    std::string type ="normalS"; //"normalS";
+    // std::string type ="test_solovev"; //"normalS";
+
+    if(!init_csv.empty()){
+        gs.load_initial_guess_csv(init_csv);
+        std::cout << "Initial guess loaded from: " << init_csv << std::endl;
+    }
+
+
+
+    gs.picardit(type);
+    // gs.adeptivePicardit(type);
+    gs.writedata("psi_numerical","csv");    // → psi_numerical.csv
+
+  return 0;
+}
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTk4OTY3NywtMTM4MDM0NjI2NywxOT
+eyJoaXN0b3J5IjpbMjA1MjkxODEzMCwtMTM4MDM0NjI2NywxOT
 MzNjY3OTgzLDU5NDQ3NjExMF19
 -->
