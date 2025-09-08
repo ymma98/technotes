@@ -237,9 +237,219 @@ $$
 * `mesh.hpp`
 
 ```cpp
+#ifndef GS_MESH_HPP
+#define GS_MESH_HPP
 
+#include <deal.II/grid/tria.h>
+#include <deal.II/base/point.h>
+#include <string>
+
+namespace gsfrc
+{
+    // boundary ids: r=0 -> 0, z=zmin -> 1, r=rw -> 2, z=zmax -> 3
+    void create_uniform_rect_mesh(dealii::Triangulation<2> &tria,
+            double rmin=0.0,  double rmax=0.3,
+            double zmin=-2.0, double zmax=2.0,
+            unsigned int mx = 16, unsigned int my = 48);
+
+    void meshplot(const dealii::Triangulation<2> &tria,
+            const std::string& savename = "mesh",
+            bool write_svg = true, bool write_vtk = true);
+} // namespace gsfrc
+
+#endif // !GS_MESH_HPP
+```
+
+
+* `parameter.hpp`
+
+```cpp
+#pragma once
+#include <deal.II/base/parameter_handler.h>
+#include <deal.II/base/function_parser.h>
+#include <deal.II/base/numbers.h>
+#include <iomanip>
+#include <map>
+#include <string>
+
+
+#include <deal.II/base/point.h>
+#include <deal.II/lac/vector.h>
+
+#include <fstream>
+#include <sstream>
+#include <unordered_map>
+
+
+namespace gsfrc
+{
+struct Parameters
+{
+  /* ---------- rectangular mesh ---------- */
+  double rmin = 0.0,  rmax = 0.3;
+  double zmin = -2.0, zmax = 2.0;
+  unsigned int mx = 16, my = 48;
+
+  /* ---------- profile ---------- */
+  std::string pres_expr = "1.0";   ///< expression p(psi)
+  double      p_open    = 0.0;     ///< pressure in open field-line region
+  double      S         = 0.0; ///< target separatrix area
+  std::map<std::string, double> constants={{"pi", dealii::numbers::PI},
+                               {"mu0", 4.0 * dealii::numbers::PI * 1.0e-7}};
+
+  /* ---------- boundary conditions ---------- */
+  double psi_wall   = 0.0; ///< ψ on conducting wall
+  bool   neumann_zmax = false,
+         neumann_zmin = false;
+  double psi_zmax = 0.0, psi_zmin = 0.0;
+
+  /* ---------- nonlinear iteration (solver) ---------- */
+  unsigned int poly_degree  = 2;
+  unsigned int max_iter_num = 1000;
+  double       tol          = 1e-8;
+  double       gscenter     = 0.3;
+
+  /* ---------- I/O ---------- */
+  std::string input_file  = "gsfrc.in";
+  std::string output_file = "gsfrc.out";
+
+  /* ---------- runtime objects (not read) ---------- */
+  dealii::FunctionParser<1> pressure_parser; ///< p(ψ)
+
+  /* ---------- interface ---------- */
+  static void declare_parameters(dealii::ParameterHandler &prm);
+  void        parse_parameters(dealii::ParameterHandler &prm);
+
+};
+
+
+inline std::unordered_map<std::string, double>
+    read_initial_guess_csv(const std::string &filename){
+        std::ifstream infile(filename);
+        if (!infile) {
+            throw std::runtime_error("Can not open file: " + filename);
+        }
+
+        std::unordered_map<std::string, double> data;
+        std::string line;
+        std::getline(infile, line); // skip header
+        while (std::getline(infile, line)) {
+            std::istringstream iss(line);
+            double r,z,psi;
+            char comma;
+            if (!(iss >> r >> comma >> z >> comma >> psi))
+                continue;
+            std::ostringstream key;
+            key << std::setprecision(17) << r << "," << z;
+            data[key.str()] = psi;
+        }
+        return data;
+    }
+
+
+} // namespace gsfrc
+```
+
+
+* `solver.hpp`
+
+```cpp
+#pragma once
+
+#include <deal.II/grid/tria.h>
+#include <deal.II/base/function_parser.h>
+#include <deal.II/lac/vector.h>
+#include <deal.II/lac/affine_constraints.h>
+#include <deal.II/fe/fe_q.h>
+#include <deal.II/fe/fe_values.h>
+#include <deal.II/dofs/dof_handler.h>
+#include <deal.II/dofs/dof_tools.h>
+#include <deal.II/numerics/data_out.h>
+#include <deal.II/numerics/vector_tools.h>
+#include <deal.II/lac/trilinos_sparse_matrix.h>
+
+
+#include <string>
+
+namespace gsfrc
+{
+    class GSSolver {
+        public:
+            GSSolver(dealii::Triangulation<2> &tria,
+                    const unsigned int poly_degree,
+                    const unsigned int max_iter_num,
+                    const double tol,
+                    const double gscenter,
+                    const double psi_wall,
+                    const bool neumann_zmax,
+                    const bool neumann_zmin,
+                    const double psi_zmax,
+                    const double psi_zmin,
+                    const double p_open,
+                    const std::string &pres_expr,
+                    const std::map<std::string, double> &pres_constants,
+                    const double S=1.0);
+
+            void solve(std::string type);
+            void adeptivePicardit(std::string type);
+            void writedata(std::string filename, std::string type) const;
+            void picardit(std::string type);
+            void load_initial_guess_csv(const std::string &filename);
+
+        private:
+            dealii::Triangulation<2> &tria_;
+            const unsigned int pd_;  // poly_degree
+            const unsigned int maxitnum_;
+            const double tol_;
+            const double omg_; // gscenter, Picard relaxation number
+            const double psi_wall_;
+            const bool neumann_zmax_;
+            const bool neumann_zmin_;
+            const double psi_zmax_;
+            const double psi_zmin_;
+            const double p_open_;
+            dealii::FunctionParser<1> presparser_;
+
+            // FE
+            dealii::FE_Q<2> fe_;
+            dealii::DoFHandler<2> dof_handler_;
+            dealii::AffineConstraints<double> constraints_;
+
+            const double S_;  // target area
+            double area_; // area during iteration
+            double Cold_;
+            double Cnew_;
+
+            bool initial_guess_read_;
+
+
+            // matrix solver
+            dealii::TrilinosWrappers::SparseMatrix system_matrix_;
+            dealii::Vector<double>                 system_rhs_;
+            dealii::Vector<double>                 psi_vec_;   // current iterate
+            dealii::Vector<double>                 tmp_vec_; // x in Ax=b
+
+            void assemble_system(std::string type);
+            void apply_boundary_conditions(std::string bctype = "normal");
+            double pressure_val(double psi, std::string type="normal");
+            double dpdpsi(double psi, std::string type="normal");
+
+            static double solovevpsi(double r, double z,
+                    double R0, double B0, double E);
+            static double solovevpp(double R0, double B0, double E);
+            double calc_separatrix_area() const;
+
+
+            double step_norm(const dealii::Vector<double> a,
+                               const dealii::Vector<double> b) const;
+            double calculate_residual_norm(std::string type, 
+                const dealii::Vector<double> &vec);
+
+
+    };
+} // namespace gsfrc
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2MzA3MTYzLC0xMzgwMzQ2MjY3LDE5Mz
-M2Njc5ODMsNTk0NDc2MTEwXX0=
+eyJoaXN0b3J5IjpbLTEyMDIzNTA2NzksLTEzODAzNDYyNjcsMT
+kzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ==
 -->
