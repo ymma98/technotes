@@ -127,6 +127,30 @@ B_r = -\frac{1}{r}\,\frac{\partial\psi}{\partial z}.
 $$
 
 其中 $\psi = \int_0^r B_z r dr$, $B_w>0$ 对应 $\psi=0$ 为 separatrix, $\psi<0$ 为闭合磁力线区域, $\psi>0$ 为开放磁力线区域.  $p(\psi) = Cp_0(\psi)$,  $C$ 是一个常数, 是为了避免出现分叉解而设置的。
+
+对于 GS 方程, 进行弱格式推导, 假设测试函数是标量函数 $v$,
+
+
+
+GS 方程也可以写为 (已知 $\Delta^*\psi = r^2 \nabla \cdot (\frac{\nabla \psi}{r^2})$):
+
+$$
+    \nabla\cdot (\frac{1}{r^2} \nabla \psi) = -\mu_0 p^\prime
+$$
+
+考虑 test function $v$:
+
+\begin{equation*}
+    \begin{aligned}
+    \int  \nabla\cdot (\frac{1}{r^2} \nabla \psi) v dV &= -\mu_0 \int  p^\prime v dV \\
+    \int \nabla \cdot (v\frac{1}{r^2} \nabla \psi) dV - \int \frac{1}{r^2} \nabla \psi \cdot \nabla v dV &= -\mu_0 \int p^\prime v dV \\
+    \int v\frac{1}{r^2} \nabla \psi \cdot\vec{n} dS - 2\pi\int \frac{1}{r} (\frac{\partial \psi}{\partial r}\frac{\partial v}{\partial r} + \frac{\partial \psi}{\partial z} \frac{\partial v}{\partial z}) drdz &= -\mu_0 2\pi \int rp^\prime v drdz \\
+    \int v \frac{1}{r} \frac{\partial \psi}{\partial r} n_r dz + \int v \frac{1}{r} \frac{\partial \psi}{\partial z} n_z dr - \int \frac{1}{r} (\frac{\partial \psi}{\partial r}\frac{\partial v}{\partial r} + \frac{\partial \psi}{\partial z} \frac{\partial v}{\partial z}) drdz &= -\mu_0 \int rp^\prime v drdz \\
+       \int \frac{1}{r} (\frac{\partial \psi}{\partial r}\frac{\partial v}{\partial r} + \frac{\partial \psi}{\partial z} \frac{\partial v}{\partial z}) drdz &= \int v \frac{1}{r} \frac{\partial \psi}{\partial r} n_r dz + \int v \frac{1}{r} \frac{\partial \psi}{\partial z} n_z dr +\mu_0 \int rp^\prime v drdz
+    \end{aligned}
+\end{equation*}
+
+其中 $n_r$ 和 $n_z$ 是垂直于表面的单位向量, 对于矩形网格, $r=r_w=r_{max}$ 面/线, $n_r=1$, $r=0$ 处 $n_r=-1$. $z=z_{max}$ 处 $n_z=1$, $z=z_{min}$处$n_z=-1$. test function $v$ 在固定边界条件处取 0, 在 Neumann BC 上可以取任意值。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NDk1NDM3NSw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbMTE3MTcwNTQzNiw1OTQ0NzYxMTBdfQ==
 -->
