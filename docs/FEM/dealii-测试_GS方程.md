@@ -140,7 +140,7 @@ $$
 
 考虑 test function $v$:
 
-\begin{equation*}
+$$
     \begin{aligned}
     \int  \nabla\cdot (\frac{1}{r^2} \nabla \psi) v dV &= -\mu_0 \int  p^\prime v dV \\
     \int \nabla \cdot (v\frac{1}{r^2} \nabla \psi) dV - \int \frac{1}{r^2} \nabla \psi \cdot \nabla v dV &= -\mu_0 \int p^\prime v dV \\
@@ -148,9 +148,9 @@ $$
     \int v \frac{1}{r} \frac{\partial \psi}{\partial r} n_r dz + \int v \frac{1}{r} \frac{\partial \psi}{\partial z} n_z dr - \int \frac{1}{r} (\frac{\partial \psi}{\partial r}\frac{\partial v}{\partial r} + \frac{\partial \psi}{\partial z} \frac{\partial v}{\partial z}) drdz &= -\mu_0 \int rp^\prime v drdz \\
        \int \frac{1}{r} (\frac{\partial \psi}{\partial r}\frac{\partial v}{\partial r} + \frac{\partial \psi}{\partial z} \frac{\partial v}{\partial z}) drdz &= \int v \frac{1}{r} \frac{\partial \psi}{\partial r} n_r dz + \int v \frac{1}{r} \frac{\partial \psi}{\partial z} n_z dr +\mu_0 \int rp^\prime v drdz
     \end{aligned}
-\end{equation*}
+$$
 
 其中 $n_r$ 和 $n_z$ 是垂直于表面的单位向量, 对于矩形网格, $r=r_w=r_{max}$ 面/线, $n_r=1$, $r=0$ 处 $n_r=-1$. $z=z_{max}$ 处 $n_z=1$, $z=z_{min}$处$n_z=-1$. test function $v$ 在固定边界条件处取 0, 在 Neumann BC 上可以取任意值。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3MTcwNTQzNiw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbLTMzMTA0NTY1Miw1OTQ0NzYxMTBdfQ==
 -->
