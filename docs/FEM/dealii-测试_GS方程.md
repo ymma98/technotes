@@ -55,19 +55,22 @@ $$
     \Delta^* \psi = r^2 \nabla \cdot \left( \frac{\nabla \psi}{r^2} \right) = r \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial \psi}{\partial r} \right) + \frac{\partial^2 \psi}{\partial z^2 }
 $$
 
-可以验证 (OVA):
-\begin{equation*}
-    \mu_0 J_\theta \hat{e}_\theta = \nabla \times \vec{B}_p
-\end{equation*}
+可以验证:
 
-\begin{equation}
+$$
+    \mu_0 J_\theta \hat{e}_\theta = \nabla \times \vec{B}_p
+$$
+
+$$
     \begin{aligned}
     \mu_0 J_\theta &= \left( \nabla \times \vec{B}_p \right)_\theta = -\frac{1}{r} \Delta^* \psi
     \end{aligned}
-\end{equation}
+$$
+
+ding'yi
 
 ## 弱格式
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTkxOTgxMTI1LDU5NDQ3NjExMF19
+eyJoaXN0b3J5IjpbMTM1MTU5MzY3Nyw1OTQ0NzYxMTBdfQ==
 -->
