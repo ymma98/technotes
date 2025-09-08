@@ -220,6 +220,10 @@ $$
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250908/image.3rbkw6dkpa.webp){width=400px}
 
 
+## 数值方法
+
+
+
 ## 程序实现
 
 
@@ -1395,7 +1399,7 @@ namespace gsfrc{
 }
 ```
 
-
+* `test_solver.cpp`
 ```cpp
 #include <deal.II/base/parameter_handler.h>
 #include <deal.II/base/mpi.h>
@@ -1464,6 +1468,6 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA1MjkxODEzMCwtMTM4MDM0NjI2NywxOT
+eyJoaXN0b3J5IjpbLTc0MTkzMzgzNywtMTM4MDM0NjI2NywxOT
 MzNjY3OTgzLDU5NDQ3NjExMF19
 -->
