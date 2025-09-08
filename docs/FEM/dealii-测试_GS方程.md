@@ -224,7 +224,7 @@ $$
 
 考虑矩形计算区域, 矩形区域由 $r = r_{max}=r_w$, $z=z_{max}$, $r=0$, $z=z_{min}$ 四条线决定。边界条件是:
 
-\begin{itemize}
+
     \item $r=0$ 处, $\psi=0$
     \item $r=r_w$ 处, $\psi=\psi_w$
     \item $z=z_{max}$ 和 $z=z_{min}$ 处，$\frac{\partial \psi}{\partial z}=0$ 或 $\psi=\psi_{w2}$
@@ -1505,6 +1505,7 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTY0NzgyNDksLTc0MTkzMzgzNywtMT
-M4MDM0NjI2NywxOTMzNjY3OTgzLDU5NDQ3NjExMF19
+eyJoaXN0b3J5IjpbLTIwNzQ5NTU2MDcsLTE0OTY0NzgyNDksLT
+c0MTkzMzgzNywtMTM4MDM0NjI2NywxOTMzNjY3OTgzLDU5NDQ3
+NjExMF19
 -->
