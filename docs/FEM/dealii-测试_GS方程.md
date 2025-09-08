@@ -84,8 +84,47 @@ $$
     \end{aligned}
 $$
 
+所以:
+$$
+    P^\prime  = -\frac{1}{\mu_0 r^2} \Delta^* \Psi - \frac{1}{\mu_0 r^2} F F^\prime 
+$$
+
+即
+$$
+    \begin{aligned}
+    & \Delta^* \Psi = -\mu_0 r^2 P^\prime - FF^\prime \\
+    & \Delta^* =  r \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial }{\partial r} \right) + \frac{\partial^2 }{\partial z^2 }
+    \end{aligned}
+$$
+
+对于 FRC 来说:
+
+$$
+    \begin{aligned}
+    & \Delta^* \Psi = -\mu_0 r^2 P^\prime, \quad F = 0 \\
+    & \Delta^* \Psi = -\mu_0 r J_\theta \\
+    & J_\theta = r P^\prime
+    \end{aligned}
+$$
+
 ## 弱格式
 
+
+FRC 下 Grad-Shafranov 方程为:
+
+\begin{align}
+\Delta^* \psi 
+&\equiv r \frac{\partial}{\partial r}
+   \Bigl(\frac{1}{r}\,\frac{\partial \psi}{\partial r}\Bigr)
+   + \frac{\partial^2 \psi}{\partial z^2}
+   = -\mu_0\,r^2\,p'(\psi),\\
+J_\theta
+&= r\,p'(\psi),\\
+B_z
+&= \frac{1}{r}\,\frac{\partial\psi}{\partial r}, 
+\qquad
+B_r = -\frac{1}{r}\,\frac{\partial\psi}{\partial z}.
+\end{align}
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4Njk4NDI2LDU5NDQ3NjExMF19
+eyJoaXN0b3J5IjpbNTUwNTI0NjIsNTk0NDc2MTEwXX0=
 -->
