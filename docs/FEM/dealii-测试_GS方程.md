@@ -449,7 +449,205 @@ namespace gsfrc
     };
 } // namespace gsfrc
 ```
+
+* mesh.cpp
+
+```cpp
+#include <cmath>
+#include <deal.II/grid/grid_generator.h>
+#include <deal.II/grid/grid_out.h>
+#include <deal.II/base/exceptions.h>
+#include <deal.II/base/point.h>
+#include <fstream>
+#include <string>
+#include <cmath>
+#include <vector>
+
+#include "mesh.hpp"
+
+namespace gsfrc
+{
+    void create_uniform_rect_mesh(dealii::Triangulation<2> &tria,
+                                  double rmin, double rmax,
+                                  double zmin, double zmax,
+                                  unsigned int mx, unsigned int my){
+        AssertThrow(rmin < rmax && zmin < zmax,
+                dealii::ExcMessage("invalid rmin/rmax/zmin/zmax"));
+        const dealii::Point<2> p1(rmin, zmin);
+        const dealii::Point<2> p2(rmax, zmax);
+        const std::vector<unsigned int> ncells = {mx, my};
+        
+        dealii::GridGenerator::subdivided_hyper_rectangle(tria, ncells, p1, p2);
+
+        // label the boundaries, 
+        // boundary ids: r=0 -> 0, z=zmin -> 1, r=rw -> 2, z=zmax -> 3
+        for (const auto &cell : tria.active_cell_iterators()) {
+            for (const auto f : cell->face_indices()) {
+                if (cell->face(f)->at_boundary()){
+                    const dealii::Point<2> c = cell->face(f)->center();
+                    const double r = c[0];
+                    const double z = c[1];
+                    double tol = 1.e-6;
+                    if (std::fabs(r - rmin) < tol)
+                        cell->face(f)->set_boundary_id(0);
+                    else if (std::fabs(z - zmin) < tol)
+                        cell->face(f)->set_boundary_id(1);
+                    else if (std::fabs(r - rmax) < tol)
+                        cell->face(f)->set_boundary_id(2);
+                    else if (std::fabs(z - zmax) < tol)
+                        cell->face(f)->set_boundary_id(3);
+        else
+                        throw dealii::ExcMessage("invalid boundary face");
+                }
+            }
+        }
+    }
+
+    void meshplot(const dealii::Triangulation<2> &tria,
+                 const std::string& savename,
+                 bool write_svg, bool write_vtk) {
+        dealii::GridOut grid_out;
+        if (write_svg) {
+            std::ofstream svgfile(savename + ".svg");
+            grid_out.write_svg(tria, svgfile);
+        }
+        if (write_vtk) {
+            std::ofstream vtkfile(savename + ".vtk");
+            grid_out.write_vtk(tria, vtkfile);
+        }
+    }
+}
+```
+
+
+* `parameter.cpp`
+
+
+```cpp
+#include "parameters.hpp"
+#include <deal.II/base/numbers.h>
+#include <map>
+
+namespace gsfrc {
+
+void Parameters::declare_parameters(dealii::ParameterHandler &prm)
+{
+  // Rectangular mesh
+  prm.enter_subsection("mesh");
+  {
+    prm.declare_entry("rmin", "0.0", dealii::Patterns::Double(), "Left radial boundary");
+    prm.declare_entry("rmax", "0.3", dealii::Patterns::Double(), "Right radial boundary");
+    prm.declare_entry("zmin", "-2.0", dealii::Patterns::Double(), "Lower axial boundary");
+    prm.declare_entry("zmax", "2.0", dealii::Patterns::Double(), "Upper axial boundary");
+    prm.declare_entry("mx", "16", dealii::Patterns::Integer(), "mesh number in r-dir");
+    prm.declare_entry("my", "16", dealii::Patterns::Integer(), "mesh number in z-dir");
+  }
+  prm.leave_subsection();
+
+  // Pressure profile
+  prm.enter_subsection("profile");
+  {
+    prm.declare_entry("pres_expr", "1.0", dealii::Patterns::Anything(), "muParser expression in variable psi");
+    prm.declare_entry("p_open", "0.0", dealii::Patterns::Double(), "Pressure in open field-line region");
+    prm.declare_entry("S", "0.0", dealii::Patterns::Double(), "Target separatrix area");
+  }
+  prm.leave_subsection();
+
+  // Boundary conditions
+  prm.enter_subsection("boundary");
+  {
+    prm.declare_entry("psi_wall", "0.0", dealii::Patterns::Double(), "Psi on conducting wall");
+    prm.declare_entry("neumann_zmax", "true", dealii::Patterns::Bool(), "Neumann BC at zmax");
+    prm.declare_entry("neumann_zmin", "true", dealii::Patterns::Bool(), "Neumann BC at zmin");
+    prm.declare_entry("psi_zmax", "0.0", dealii::Patterns::Double(), "Dirichlet BC value at zmax (if not Neumann)");
+    prm.declare_entry("psi_zmin", "0.0", dealii::Patterns::Double(), "Dirichlet BC value at zmin (if not Neumann)");
+  }
+  prm.leave_subsection();
+
+  // Nonlinear iteration
+  prm.enter_subsection("solver");
+  {
+    prm.declare_entry("poly_degree", "2", dealii::Patterns::Integer(), "polynomial degree");
+    prm.declare_entry("max_iter_num", "1000", dealii::Patterns::Integer(), "Maximum number of iterations");
+    prm.declare_entry("tol", "1e-8", dealii::Patterns::Double(), "Convergence tolerance");
+    prm.declare_entry("gscenter", "0.3", dealii::Patterns::Double(), "Picard iteration relexation number");
+  }
+  prm.leave_subsection();
+
+  // I/O
+  prm.enter_subsection("io");
+  {
+    prm.declare_entry("input_file", "gsfrc.in", dealii::Patterns::Anything(), "Input file name");
+    prm.declare_entry("output_file", "gsfrc.out", dealii::Patterns::Anything(), "Output file name");
+  }
+  prm.leave_subsection();
+}
+
+void Parameters::parse_parameters(dealii::ParameterHandler &prm)
+{
+  // Rectangular mesh
+  prm.enter_subsection("mesh");
+  {
+    rmin = prm.get_double("rmin");
+    rmax = prm.get_double("rmax");
+    zmin = prm.get_double("zmin");
+    zmax = prm.get_double("zmax");
+    mx   = prm.get_integer("mx");
+    my   = prm.get_integer("my");
+  }
+  prm.leave_subsection();
+
+  // Pressure profile
+  prm.enter_subsection("profile");
+  {
+    // constexpr double mu0 = 4.0 * dealii::numbers::PI * 1e-7;
+    pres_expr = prm.get("pres_expr");
+    p_open    = prm.get_double("p_open");
+    S         = prm.get_double("S");
+    // std::map<std::string, double> constants={{"pi", dealii::numbers::PI},
+    //                                          {"mu0", mu0}};
+    // If the expression does not use any named constants,
+    // as in "4.5*psi^2 + 3*psi + 2", then an empty map (constants) is fine.
+    pressure_parser.initialize("psi", pres_expr, constants);
+  }
+  prm.leave_subsection();
+
+  // Boundary conditions
+  prm.enter_subsection("boundary");
+  {
+    psi_wall     = prm.get_double("psi_wall");
+    neumann_zmax = prm.get_bool("neumann_zmax");
+    neumann_zmin = prm.get_bool("neumann_zmin");
+    psi_zmax     = prm.get_double("psi_zmax");
+    psi_zmin     = prm.get_double("psi_zmin");
+  }
+  prm.leave_subsection();
+
+  // Nonlinear iteration
+  prm.enter_subsection("solver");
+  {
+    poly_degree  = prm.get_integer("poly_degree");
+    max_iter_num = prm.get_integer("max_iter_num");
+    tol          = prm.get_double("tol");
+    gscenter     = prm.get_double("gscenter");
+  }
+  prm.leave_subsection();
+
+  // I/O
+  prm.enter_subsection("io");
+  {
+    input_file  = prm.get("input_file");
+    output_file = prm.get("output_file");
+  }
+  prm.leave_subsection();
+}
+
+} // namespace gsfrc
+```
+
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDIzNTA2NzksLTEzODAzNDYyNjcsMT
-kzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbLTE0MTk4OTY3NywtMTM4MDM0NjI2NywxOT
+MzNjY3OTgzLDU5NDQ3NjExMF19
 -->
