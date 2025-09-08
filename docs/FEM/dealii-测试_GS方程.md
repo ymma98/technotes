@@ -73,8 +73,19 @@ $$
       P^{\prime}  \nabla \Psi = (J_\theta \hat{e}_\theta + \frac{1}{\mu_0 r} F^\prime \nabla \Psi \times \hat{e}_\theta) \times ( B_\theta \hat{e}_\theta + \frac{1}{r} \nabla \Psi \times \hat{e}_\theta)
 $$
 
+因为 $\hat{e}_i = h_i \vec{e}^i$, 所以 $\hat{e}_\theta = r \nabla \theta$, 所以:
+
+$$
+    \begin{aligned}
+      P^{\prime}  \nabla \Psi &= (-\frac{1}{\mu_0} \Delta^* \Psi \nabla \theta + \frac{1}{\mu_0} F^\prime \nabla \Psi \times \nabla \theta) \times ( F \nabla \theta + \nabla \Psi \times \nabla \theta) \\
+      &= -\frac{1}{\mu_0} (\Delta^* \Psi \nabla \theta) \times F \nabla \theta -\frac{1}{\mu_0} (\Delta^* \Psi \nabla \theta) \times (\nabla \Psi \times \nabla \theta) + \\
+      &\frac{1}{\mu_0} (F^\prime \nabla \Psi \times \nabla \theta) \times  F \nabla \theta + \frac{1}{\mu_0} (F^\prime \nabla \Psi \times \nabla \theta) \times (\nabla \Psi \times \nabla \theta) \\
+      &= -\frac{1}{\mu_0 r^2} \Delta^* \Psi \nabla \Psi - \frac{1}{\mu_0 r^2} F F^\prime \nabla \Psi
+    \end{aligned}
+$$
+
 ## 弱格式
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0MDM4NzQ3Miw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbMTA4Njk4NDI2LDU5NDQ3NjExMF19
 -->
