@@ -19,6 +19,7 @@ $$
 $$
 
 令 stream function 为 $\psi = rA_\theta$, 得到:
+
 $$
     \vec{B}_p = B_r \hat{e}_r + B_z \hat{e}_z = \frac{1}{r} \nabla \psi \times \hat{e}_\theta
 $$
@@ -33,6 +34,7 @@ $$
 $$
 
 对于电流项, 因为可以验算:
+
 $$
     \mu_0 \vec{J} = \nabla \times \vec{B} = \mu_0 J_\theta \hat{e}_\theta + \nabla \times B_\theta \hat{e}_\theta
 $$
@@ -85,11 +87,13 @@ $$
 $$
 
 所以:
+
 $$
     P^\prime  = -\frac{1}{\mu_0 r^2} \Delta^* \Psi - \frac{1}{\mu_0 r^2} F F^\prime 
 $$
 
 即
+
 $$
     \begin{aligned}
     & \Delta^* \Psi = -\mu_0 r^2 P^\prime - FF^\prime \\
@@ -373,9 +377,9 @@ $$
 
 ## 其它测试情况
 
-初始设置 $S_{target}=0.4$, $p(\psi)=-1.5\psi$ ($\psi<0$)
+初始设置 $S_{target}=0.4$, $p_0(\psi)=-1.5\psi$ ($\psi<0$)
 
-最后得到 $S_{target}=0.396$, $C=0.889$:
+最后得到 $S_{target}=0.396$, $C=0.889$, 即最后 $p(\psi)=-1.5C\psi$:
 
 ```bash
 ----------debuging........-------------Ax-b l2norm = 7.78608e-13
@@ -1772,9 +1776,9 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjkxNzA2NzkxLDEzNzg4MTYyMTMsMTEwNT
-c0OTU1LC04MTkxNDQyNzUsLTI2NzAxNjM2MSwtODYyNjI0MDM2
-LDE0MTMwODgwNDUsMTM0ODE0NzU4NywtMTQ5NjQ3ODI0OSwtNz
-QxOTMzODM3LC0xMzgwMzQ2MjY3LDE5MzM2Njc5ODMsNTk0NDc2
-MTEwXX0=
+eyJoaXN0b3J5IjpbMTU5Mzg1ODQwNSwxMzc4ODE2MjEzLDExMD
+U3NDk1NSwtODE5MTQ0Mjc1LC0yNjcwMTYzNjEsLTg2MjYyNDAz
+NiwxNDEzMDg4MDQ1LDEzNDgxNDc1ODcsLTE0OTY0NzgyNDksLT
+c0MTkzMzgzNywtMTM4MDM0NjI2NywxOTMzNjY3OTgzLDU5NDQ3
+NjExMF19
 -->
