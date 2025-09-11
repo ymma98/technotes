@@ -371,7 +371,9 @@ $$
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250911/image.67xtfl42pd.webp){width=600px}
 
 
-## 其它情况
+## 其它测试情况
+
+
 
 ```bash
 subsection mesh
@@ -410,6 +412,75 @@ subsection io
 end
 ```
 
+`test_solver.cpp`
+
+```cpp
+#include <deal.II/base/parameter_handler.h>
+#include <deal.II/base/mpi.h>
+#include "../../include/mesh.hpp"
+#include "../../include/parameters.hpp"
+#include "../../include/solver.hpp"
+#include "../../external/CLI11.hpp"
+
+using namespace dealii;
+using namespace gsfrc;
+
+int main(int argc, char **argv)
+{
+    dealii::Utilities::MPI::MPI_InitFinalize mpi_init(argc, argv, 1);
+  /* ---------------- read default parameter file -------------- */
+
+    CLI::App app{"GSSolver"};
+    std::string init_csv;
+    app.add_option("-i,--init", init_csv,
+            "Initial guess for the solver (CSV file)");
+    CLI11_PARSE(app, argc, argv);
+
+    dealii::ParameterHandler prm;
+    gsfrc::Parameters::declare_parameters(prm);
+    prm.parse_input("./gsfrc.prm");
+
+    gsfrc::Parameters params;
+    params.parse_parameters(prm);
+
+    // mesh
+    dealii::Triangulation<2> tria;
+    gsfrc::create_uniform_rect_mesh(tria,
+                                      params.rmin, params.rmax,
+                                      params.zmin, params.zmax,
+                                      params.mx, params.my);
+    // solver
+    gsfrc::GSSolver gs(tria,
+                       params.poly_degree,
+                       params.max_iter_num,
+                       params.tol,
+                       params.gscenter,
+                       params.psi_wall,
+                       params.neumann_zmax,
+                       params.neumann_zmin,
+                       params.psi_zmax,
+                       params.psi_zmin,
+                       params.p_open,
+                       params.pres_expr, params.constants,
+                       params.S);
+
+    std::string type ="normalS"; //"normalS";
+    // std::string type ="test_solovev"; //"normalS";
+
+    if(!init_csv.empty()){
+        gs.load_initial_guess_csv(init_csv);
+        std::cout << "Initial guess loaded from: " << init_csv << std::endl;
+    }
+
+
+
+    gs.picardit(type);
+    // gs.adeptivePicardit(type);
+    gs.writedata("psi_numerical","csv");    // → psi_numerical.csv
+
+  return 0;
+}
+```
 
 
 
@@ -1662,7 +1733,7 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU2MTI5NjM0MCwtMjY3MDE2MzYxLC04Nj
+eyJoaXN0b3J5IjpbLTgxOTE0NDI3NSwtMjY3MDE2MzYxLC04Nj
 I2MjQwMzYsMTQxMzA4ODA0NSwxMzQ4MTQ3NTg3LC0xNDk2NDc4
 MjQ5LC03NDE5MzM4MzcsLTEzODAzNDYyNjcsMTkzMzY2Nzk4My
 w1OTQ0NzYxMTBdfQ==
