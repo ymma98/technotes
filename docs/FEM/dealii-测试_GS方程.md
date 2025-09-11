@@ -374,7 +374,7 @@ $$
 ## 其它测试情况
 
 初始设置 $S_{target}=0.4$, $p(\psi)=-1.5\psi$ ($\psi<0$)
-$$
+$
 
 ```bash
 subsection mesh
@@ -1734,8 +1734,8 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEwNTc0OTU1LC04MTkxNDQyNzUsLTI2Nz
-AxNjM2MSwtODYyNjI0MDM2LDE0MTMwODgwNDUsMTM0ODE0NzU4
-NywtMTQ5NjQ3ODI0OSwtNzQxOTMzODM3LC0xMzgwMzQ2MjY3LD
-E5MzM2Njc5ODMsNTk0NDc2MTEwXX0=
+eyJoaXN0b3J5IjpbMTM3ODgxNjIxMywxMTA1NzQ5NTUsLTgxOT
+E0NDI3NSwtMjY3MDE2MzYxLC04NjI2MjQwMzYsMTQxMzA4ODA0
+NSwxMzQ4MTQ3NTg3LC0xNDk2NDc4MjQ5LC03NDE5MzM4MzcsLT
+EzODAzNDYyNjcsMTkzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ==
 -->
