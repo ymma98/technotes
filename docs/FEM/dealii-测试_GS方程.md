@@ -1,4 +1,4 @@
-# dealii-测试_含时线性
+# dealii-测试_GSeq
 
 ## GS 方程
 
@@ -1621,7 +1621,7 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxMzA4ODA0NSwxMzQ4MTQ3NTg3LC0xND
-k2NDc4MjQ5LC03NDE5MzM4MzcsLTEzODAzNDYyNjcsMTkzMzY2
-Nzk4Myw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbNTkwMjY4NDU2LDE0MTMwODgwNDUsMTM0OD
+E0NzU4NywtMTQ5NjQ3ODI0OSwtNzQxOTMzODM3LC0xMzgwMzQ2
+MjY3LDE5MzM2Njc5ODMsNTk0NDc2MTEwXX0=
 -->
