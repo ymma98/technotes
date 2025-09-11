@@ -374,7 +374,45 @@ $$
 ## 其它测试情况
 
 初始设置 $S_{target}=0.4$, $p(\psi)=-1.5\psi$ ($\psi<0$)
-$
+
+最后得到 $S_{target}=0.396$, $C=0.889$:
+
+```bash
+----------debuging........-------------Ax-b l2norm = 7.78608e-13
+----------------------------------------------------
+  Picard   314   max|newpsi-oldpsi| = 6.24444e-08  at (r,z)=(0.243333, -0.36)
+   tmp_vec_ at (r_max_corr, z_max_corr) is-2.29712e-06
+   psi_vec_ at (r_max_corr, z_max_corr) is-2.28463e-06
+          max/min psi = 0.0003,   -0.000148795
+ separatrix S = 0.396128  ,target S = 0.4   ,C = 0.889103
+
+----------debuging........-------------Ax-b l2norm = 7.78608e-13
+----------------------------------------------------
+  Picard   315   max|newpsi-oldpsi| = 1.24888e-08  at (r,z)=(0.243333, -0.36)
+   tmp_vec_ at (r_max_corr, z_max_corr) is-2.29712e-06
+   psi_vec_ at (r_max_corr, z_max_corr) is-2.29462e-06
+          max/min psi = 0.0003,   -0.000148795
+ separatrix S = 0.396128  ,target S = 0.4   ,C = 0.889103
+
+----------debuging........-------------Ax-b l2norm = 7.78607e-13
+----------------------------------------------------
+  Picard   316   max|newpsi-oldpsi| = 2.49776e-09  at (r,z)=(0.243333, -0.36)
+   tmp_vec_ at (r_max_corr, z_max_corr) is-2.29712e-06
+   psi_vec_ at (r_max_corr, z_max_corr) is-2.29662e-06
+          max/min psi = 0.0003,   -0.000148795
+ separatrix S = 0.396128  ,target S = 0.4   ,C = 0.889103
+
+----------debuging........-------------Ax-b l2norm = 7.78609e-13
+----------------------------------------------------
+  Picard   317   max|newpsi-oldpsi| = 4.99545e-10  at (r,z)=(0.243333, -0.42)
+   tmp_vec_ at (r_max_corr, z_max_corr) is2.30139e-06
+   psi_vec_ at (r_max_corr, z_max_corr) is2.30147e-06
+          max/min psi = 0.0003,   -0.000148795
+ separatrix S = 0.396128  ,target S = 0.4   ,C = 0.889103
+ Converged in 317Picard steps.
+```
+
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250911/image.ich40vaex.webp){width=400}
 
 ```bash
 subsection mesh
@@ -1734,8 +1772,9 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3ODgxNjIxMywxMTA1NzQ5NTUsLTgxOT
-E0NDI3NSwtMjY3MDE2MzYxLC04NjI2MjQwMzYsMTQxMzA4ODA0
-NSwxMzQ4MTQ3NTg3LC0xNDk2NDc4MjQ5LC03NDE5MzM4MzcsLT
-EzODAzNDYyNjcsMTkzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbMjkxNzA2NzkxLDEzNzg4MTYyMTMsMTEwNT
+c0OTU1LC04MTkxNDQyNzUsLTI2NzAxNjM2MSwtODYyNjI0MDM2
+LDE0MTMwODgwNDUsMTM0ODE0NzU4NywtMTQ5NjQ3ODI0OSwtNz
+QxOTMzODM3LC0xMzgwMzQ2MjY3LDE5MzM2Njc5ODMsNTk0NDc2
+MTEwXX0=
 -->
