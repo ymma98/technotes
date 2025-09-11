@@ -365,7 +365,7 @@ $$
 
 该 FRC 模型也适用于磁镜，只需进一步令 $R_0^2<0$。 
 
-这里令 $R_0=0.1$
+这里令 $R_0=0.1$, $B_0=-0.1$, $E=1$, 得到 (蓝色虚线为数值结果, 红色实线为jie'xi): 
 
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250911/image.67xtfl42pd.webp){width=600px}
@@ -1623,8 +1623,8 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwMTAwMDI0NywtMjY3MDE2MzYxLC04Nj
-I2MjQwMzYsMTQxMzA4ODA0NSwxMzQ4MTQ3NTg3LC0xNDk2NDc4
-MjQ5LC03NDE5MzM4MzcsLTEzODAzNDYyNjcsMTkzMzY2Nzk4My
-w1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbOTg1NTQyNjY0LC0yNjcwMTYzNjEsLTg2Mj
+YyNDAzNiwxNDEzMDg4MDQ1LDEzNDgxNDc1ODcsLTE0OTY0Nzgy
+NDksLTc0MTkzMzgzNywtMTM4MDM0NjI2NywxOTMzNjY3OTgzLD
+U5NDQ3NjExMF19
 -->
