@@ -219,6 +219,7 @@ $$
 
 ![输入图片说明](./figs/image.3rbkw6dkpa.webp){width=400px}
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250911/image.5xazmf9j2b.webp){width=400px}
 
 ## 数值方法
 
@@ -1621,7 +1622,7 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTkwMjY4NDU2LDE0MTMwODgwNDUsMTM0OD
-E0NzU4NywtMTQ5NjQ3ODI0OSwtNzQxOTMzODM3LC0xMzgwMzQ2
-MjY3LDE5MzM2Njc5ODMsNTk0NDc2MTEwXX0=
+eyJoaXN0b3J5IjpbLTM0Mjc0NjcyNSwxNDEzMDg4MDQ1LDEzND
+gxNDc1ODcsLTE0OTY0NzgyNDksLTc0MTkzMzgzNywtMTM4MDM0
+NjI2NywxOTMzNjY3OTgzLDU5NDQ3NjExMF19
 -->
