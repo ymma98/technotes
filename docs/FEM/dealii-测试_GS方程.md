@@ -365,8 +365,10 @@ $$
 
 该 FRC 模型也适用于磁镜，只需进一步令 $R_0^2<0$。 
 
+这里令 $R_0=0.1$
 
 
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250911/image.67xtfl42pd.webp){width=600px}
 
 
 
@@ -1621,8 +1623,8 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NzAxNjM2MSwtODYyNjI0MDM2LDE0MT
-MwODgwNDUsMTM0ODE0NzU4NywtMTQ5NjQ3ODI0OSwtNzQxOTMz
-ODM3LC0xMzgwMzQ2MjY3LDE5MzM2Njc5ODMsNTk0NDc2MTEwXX
-0=
+eyJoaXN0b3J5IjpbMTMwMTAwMDI0NywtMjY3MDE2MzYxLC04Nj
+I2MjQwMzYsMTQxMzA4ODA0NSwxMzQ4MTQ3NTg3LC0xNDk2NDc4
+MjQ5LC03NDE5MzM4MzcsLTEzODAzNDYyNjcsMTkzMzY2Nzk4My
+w1OTQ0NzYxMTBdfQ==
 -->
