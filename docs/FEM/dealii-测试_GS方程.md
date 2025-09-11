@@ -250,13 +250,13 @@ $\cdots$ 代表任意表达式, 一般是一次函数，二次函数, 三次函�
 
 * 指定压强剖面 $p_0(\psi)$, 以及 $p_{open}$, 默认 $C=1$。指定 separatrix 包围的面积 $S$. 求解 GS 方程右边函数 $-\mu_0 r^2 C \frac{dp_0}{d\psi}$
 
-* 给定 $r=r_w$ 处的固定边界条件 $\psi_w$; 给定 $r=r_{min}$处的边界条件 $\psi_{r0}$ (默认 $r_{min}$ 处 $\psi_{r0}=0$); 给定 $z=z_{min}$ 和 $z=z_{max}$ 区域的边界条件, 要么是固定边界条件 $\psi=\psi_{zend}$, 要么是Neumman 边界条件 $\frac{\partial\psi}{\partial z} = 0$
+* 给定 $r=r_w$ 处的固定边界条件 $\psi_w$; 给定 $r=r_{min}$处的边界条件 $\psi_{r0}$ (默认 $r_{min}$ 处 $\psi_{r0}=0$); 给定 $z=z_{min}$ 和 $z=z_{max}$ 区域的边界条件, 要么是固定边界条件 $\psi=\psi_{zend}(r)$, 要么是Neumman 边界条件 $\frac{\partial\psi}{\partial z} = 0$
 
 * 生成初始网格。网格总是矩形、均匀网格
 
 * 给定或读取初始的 initial guess $\psi_0$, 这部分可以直接设置, 也可以直接读取外部文件, 其中外部文件满足 .csv 格式, 里面存储的是 $r,z,\psi_0$
 
-* m 开始迭代 GS 方程, 使用 modified Picard 迭代方法, $\psi_{n+1}=(1-w) \psi_{n}+w\psi^{n+1}$, 其中 $Q$ 是矩阵组装后得到的 $Ax=b$ 的 $b$, 反复迭代, 直到 $d=max|\psi_{n+1}-\psi_n|<\epsilon$
+* 开始迭代 GS 方程, 使用 Picard 迭代方法, $\psi_{n+1}=(1-w) \psi_{n}+w\psi^{n+1}$, 其中 $Q$ 是矩阵组装后得到的 $Ax=b$ 的 $b$, 反复迭代, 直到 $d=max|\psi_{n+1}-\psi_n|<\epsilon$
 
 * 判断, 是否需要限定 $S$?
 	 * 如果不需要限定 $S$, 则迭代过程中恒有 $C=1$. 之后迭代求解 GS 方程
@@ -1621,7 +1621,8 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg2MjYyNDAzNiwxNDEzMDg4MDQ1LDEzND
-gxNDc1ODcsLTE0OTY0NzgyNDksLTc0MTkzMzgzNywtMTM4MDM0
-NjI2NywxOTMzNjY3OTgzLDU5NDQ3NjExMF19
+eyJoaXN0b3J5IjpbLTI2NzAxNjM2MSwtODYyNjI0MDM2LDE0MT
+MwODgwNDUsMTM0ODE0NzU4NywtMTQ5NjQ3ODI0OSwtNzQxOTMz
+ODM3LC0xMzgwMzQ2MjY3LDE5MzM2Njc5ODMsNTk0NDc2MTEwXX
+0=
 -->
