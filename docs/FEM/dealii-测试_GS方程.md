@@ -365,11 +365,50 @@ $$
 
 该 FRC 模型也适用于磁镜，只需进一步令 $R_0^2<0$。 
 
-这里令 $R_0=0.1$, $B_0=-0.1$, $E=1$, 得到 (蓝色虚线为数值结果, 红色实线为jie'xi): 
+这里令 $R_0=0.1$, $B_0=-0.1$, $E=1$, 得到 (蓝色虚线为数值结果, 红色实线为解析解): 
 
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250911/image.67xtfl42pd.webp){width=600px}
 
+
+## 其它情况
+
+```bash
+subsection mesh
+  set rmin = 0.
+  set rmax = 0.3
+  set zmin = -2.
+  set zmax = 2.
+  set mx   = 90
+  set my   = 200
+end
+
+subsection profile
+  set pres_expr = 1.5 * (-1.0 * psi)
+  set p_open = 0.
+  set S = 0.4
+end
+
+subsection boundary
+  set psi_wall =  3.e-4 #1e-3
+  set neumann_zmax = true
+  set neumann_zmin = true
+  set psi_zmax = 0.0
+  set psi_zmin = 0.0
+end
+
+subsection solver
+  set poly_degree = 1
+  set max_iter_num = 1500
+  set tol = 1.e-9
+  set gscenter=0.8
+end
+
+subsection io
+  set input_file = gsfrc.in
+  set output_file = gsfrc.out
+end
+```
 
 
 
@@ -1623,8 +1662,8 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg1NTQyNjY0LC0yNjcwMTYzNjEsLTg2Mj
-YyNDAzNiwxNDEzMDg4MDQ1LDEzNDgxNDc1ODcsLTE0OTY0Nzgy
-NDksLTc0MTkzMzgzNywtMTM4MDM0NjI2NywxOTMzNjY3OTgzLD
-U5NDQ3NjExMF19
+eyJoaXN0b3J5IjpbLTU2MTI5NjM0MCwtMjY3MDE2MzYxLC04Nj
+I2MjQwMzYsMTQxMzA4ODA0NSwxMzQ4MTQ3NTg3LC0xNDk2NDc4
+MjQ5LC03NDE5MzM4MzcsLTEzODAzNDYyNjcsMTkzMzY2Nzk4My
+w1OTQ0NzYxMTBdfQ==
 -->
