@@ -78,6 +78,7 @@ nav:
     - dealii-测试_含时线性: FEM/dealii-测试_含时线性.md
     - dealii-测试_不含时线性方程组: FEM/dealii-测试_不含时线性方程组.md
     - dealii-测试_不含时线性多变量方程组: FEM/dealii-测试_不含时线性方程组多变量.md
+    - dealii-测试_GS方程: FEM/dealii-测试_GS方程.md
     - paraview使用: FEM/paraview使用.md
   - python:
       - pdb: python/pdb.md
