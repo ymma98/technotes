@@ -217,7 +217,6 @@ $$
 
 如果 $\Delta = 1+\frac{32}{K} < 0$ 即 $K<-32$, 无平衡解。如果 $k=-32$ 则有唯一解, 如果 $K>-32$ 则有两支解。
 
-![输入图片说明](./figs/image.3rbkw6dkpa.webp){width=400px}
 
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20250911/image.5xazmf9j2b.webp){width=400px}
 
@@ -257,7 +256,7 @@ $\cdots$ 代表任意表达式, 一般是一次函数，二次函数, 三次函�
 
 * 给定或读取初始的 initial guess $\psi_0$, 这部分可以直接设置, 也可以直接读取外部文件, 其中外部文件满足 .csv 格式, 里面存储的是 $r,z,\psi_0$
 
-* m 开始迭代 GS 方程, 使用 modified Picard 迭代方法, $M \psi_{n+1}=(1-w) M \psi_{n}+w Q^{n}$, 其中 $Q$ 是矩阵组装后得到的 $Ax=b$ 的 $b$, 其中包含了非线性效应。反复迭代, 直到 $d=max|\psi_{n+1}-\psi_n|<\epsilon$
+* m 开始迭代 GS 方程, 使用 modified Picard 迭代方法, $\psi_{n+1}=(1-w) \psi_{n}+w\psi^{n+1}$, 其中 $Q$ 是矩阵组装后得到的 $Ax=b$ 的 $b$, 反复迭代, 直到 $d=max|\psi_{n+1}-\psi_n|<\epsilon$
 
 * 判断, 是否需要限定 $S$?
 	 * 如果不需要限定 $S$, 则迭代过程中恒有 $C=1$. 之后迭代求解 GS 方程
@@ -1622,7 +1621,7 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM0Mjc0NjcyNSwxNDEzMDg4MDQ1LDEzND
+eyJoaXN0b3J5IjpbLTg2MjYyNDAzNiwxNDEzMDg4MDQ1LDEzND
 gxNDc1ODcsLTE0OTY0NzgyNDksLTc0MTkzMzgzNywtMTM4MDM0
 NjI2NywxOTMzNjY3OTgzLDU5NDQ3NjExMF19
 -->
