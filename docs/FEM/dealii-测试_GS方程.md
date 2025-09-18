@@ -287,9 +287,7 @@ $$
  \left.-\tau R_0^2\left[r^2 \ln \left(\frac{r^2}{R_0^2}\right)-\left(r^2-R_0^2\right)-\frac{\left(r^2-R_0^2\right)^2}{2 R_0^2}\right]\right\},
 $$
 
-$$
 
-$$
 
 其中 $R_0$ 是 $r_o$, 并且有 $\psi(R_0,0)=0$。$R_x$ 是 X 点半径, $\tau$是三角度 triangularity, $E$ 是拉长比。
 
@@ -304,12 +302,14 @@ $$
 
 
 在 $X$ 点处，有 $B_z(R_x,Z_x)=0$，由此得到
+
 $$
 Z_x \;=\; E \,\sqrt{\tau R_0^2 \ln\!\Bigl(\frac{R_x^2}{R_0^2}\Bigr)\;+\;(2+\tau)\bigl(R_0^2 - R_x^2\bigr)}.
 $$
 
 
 环向磁场为
+
 $$
 B_\phi \;=\; \frac{B_0 R_0}{r}.
 $$
@@ -318,6 +318,7 @@ $$
 
 
 在磁轴附近（$z\to0,\ r\to R_0$），有
+
 $$
 \psi = 4\,\psi_0\,\epsilon^2,\quad
 \epsilon \equiv \frac{r - R_0}{R_0} \ll 1,\quad
@@ -337,6 +338,7 @@ $$
 
 
 由此得到
+
 $$
 \psi_0 = \frac{B_0\,R_0^2}{8\,q_0}.
 $$
@@ -1785,9 +1787,9 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MDY0NTY3LDEzNzg4MTYyMTMsMTEwNT
-c0OTU1LC04MTkxNDQyNzUsLTI2NzAxNjM2MSwtODYyNjI0MDM2
-LDE0MTMwODgwNDUsMTM0ODE0NzU4NywtMTQ5NjQ3ODI0OSwtNz
-QxOTMzODM3LC0xMzgwMzQ2MjY3LDE5MzM2Njc5ODMsNTk0NDc2
-MTEwXX0=
+eyJoaXN0b3J5IjpbOTYxOTYzODIzLDEyODA2NDU2NywxMzc4OD
+E2MjEzLDExMDU3NDk1NSwtODE5MTQ0Mjc1LC0yNjcwMTYzNjEs
+LTg2MjYyNDAzNiwxNDEzMDg4MDQ1LDEzNDgxNDc1ODcsLTE0OT
+Y0NzgyNDksLTc0MTkzMzgzNywtMTM4MDM0NjI2NywxOTMzNjY3
+OTgzLDU5NDQ3NjExMF19
 -->
