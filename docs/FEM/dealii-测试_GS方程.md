@@ -331,7 +331,7 @@ $$
 因此在 $O$ 点附近的极向磁场和安全因子为
 
 
-$$
+$$ 
 B_p = 8\,\frac{\psi_0}{R_0^2}\,\epsilon,\qquad
 q_0 = \frac{r\,B_0}{R_0\,B_p} = \frac{B_0\,R_0^2}{8\,\psi_0},
 $$
@@ -1787,9 +1787,9 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTYxOTYzODIzLDEyODA2NDU2NywxMzc4OD
-E2MjEzLDExMDU3NDk1NSwtODE5MTQ0Mjc1LC0yNjcwMTYzNjEs
-LTg2MjYyNDAzNiwxNDEzMDg4MDQ1LDEzNDgxNDc1ODcsLTE0OT
-Y0NzgyNDksLTc0MTkzMzgzNywtMTM4MDM0NjI2NywxOTMzNjY3
-OTgzLDU5NDQ3NjExMF19
+eyJoaXN0b3J5IjpbNjI5MzEwNDg1LDk2MTk2MzgyMywxMjgwNj
+Q1NjcsMTM3ODgxNjIxMywxMTA1NzQ5NTUsLTgxOTE0NDI3NSwt
+MjY3MDE2MzYxLC04NjI2MjQwMzYsMTQxMzA4ODA0NSwxMzQ4MT
+Q3NTg3LC0xNDk2NDc4MjQ5LC03NDE5MzM4MzcsLTEzODAzNDYy
+NjcsMTkzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ==
 -->
