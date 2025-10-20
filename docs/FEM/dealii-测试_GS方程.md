@@ -161,7 +161,7 @@ $$
 
 有分叉解的原因是, $p(\psi)$ 虽然形式上是线性的, 却是分段线性的, 而且分段的条件依赖于未知的 separatrix ($\psi=0$) 的形状, 此时一般的 PDE 理论不再适用。分段线性的形式使得方程变得非线性, 也叫自由边界问题 (边界位置并未事先给定，而是随待求解函数确定)
 
-对于 1D 的 GS 方程, 有 $\partial_z=0$, 假设 $p(\psi)=CH(\psi)$, $H$ 是 Heviside 函数($H=1$ for $\psi<0$, $H=0$ for $\psi>0$), GS 方程变为:
+对于 1D 的 GS 方程, 有 $\partial_z=0$, 假设 $p^\prime(\psi)=CH(\psi)$, $H$ 是 Heviside 函数($H=1$ for $\psi<0$, $H=0$ for $\psi>0$), GS 方程变为:
 
 $$
     r \frac{d}{dr} \left( \frac{1}{r} \frac{d\psi}{dr} \right) = -\mu_0 C r^2 H(\psi).
@@ -1787,9 +1787,10 @@ int main(int argc, char **argv)
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjI5MzEwNDg1LDk2MTk2MzgyMywxMjgwNj
-Q1NjcsMTM3ODgxNjIxMywxMTA1NzQ5NTUsLTgxOTE0NDI3NSwt
-MjY3MDE2MzYxLC04NjI2MjQwMzYsMTQxMzA4ODA0NSwxMzQ4MT
-Q3NTg3LC0xNDk2NDc4MjQ5LC03NDE5MzM4MzcsLTEzODAzNDYy
-NjcsMTkzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ==
+eyJoaXN0b3J5IjpbLTE3OTkxNzIzOTYsNjI5MzEwNDg1LDk2MT
+k2MzgyMywxMjgwNjQ1NjcsMTM3ODgxNjIxMywxMTA1NzQ5NTUs
+LTgxOTE0NDI3NSwtMjY3MDE2MzYxLC04NjI2MjQwMzYsMTQxMz
+A4ODA0NSwxMzQ4MTQ3NTg3LC0xNDk2NDc4MjQ5LC03NDE5MzM4
+MzcsLTEzODAzNDYyNjcsMTkzMzY2Nzk4Myw1OTQ0NzYxMTBdfQ
+==
 -->
