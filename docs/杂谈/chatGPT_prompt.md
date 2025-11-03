@@ -62,6 +62,7 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 
 任务：生成一份详细的文献分析报告
 
+请严格按照以下结构执行：
 
 ```
 
@@ -71,7 +72,7 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNzkwNDM2MDAsMTU1Nzg5NTU3OSwxOT
+eyJoaXN0b3J5IjpbLTE2MTQ5NTI1NjQsMTU1Nzg5NTU3OSwxOT
 E1NzU1NDg2LC0yMDQ1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAw
 NDc1NDgsLTEzOTk5NDIzMjldfQ==
 -->
