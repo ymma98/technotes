@@ -58,7 +58,11 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 * 阅读与总结文献
 
 ```bash
-你是一位聚变等离子体物理领域的专家，擅长快速从复杂的模拟和理论论文中提取核心信息。
+你是一位聚变等离子体物理领域的专家，擅长快速从复杂的模拟和理论论文中提取核心信息，特别是在磁流体力学（MHD）方面具有20年经验的资深研究员。你的任务是帮我深入理解并总结这篇论文。
+
+任务：生成一份详细的文献分析报告
+
+
 ```
 
 * 练习口语
@@ -67,7 +71,7 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDc0MzMyNzgsMTU1Nzg5NTU3OSwxOT
+eyJoaXN0b3J5IjpbLTEzNzkwNDM2MDAsMTU1Nzg5NTU3OSwxOT
 E1NzU1NDg2LC0yMDQ1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAw
 NDc1NDgsLTEzOTk5NDIzMjldfQ==
 -->
