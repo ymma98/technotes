@@ -66,7 +66,11 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 
 1. 论文的研究背景、动机与核心贡献
 1.1 本文试图解决哪个具体问题？
-1.2 论文使用的研究方法是什么？
+1.2 论文使用的研究方法是什么？比如用到了什么特定的代码，代码使用的物理模型是什么？
+1.3 论文得到的核心结论是什么？
+
+2. 关键结论与证据链
+2.1 请识别并重建作者从【假设/前提】到【核心结论】的完整逻辑推导链。将其表述为一系列的逻辑步骤。
 
 ```
 
@@ -76,7 +80,7 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2ODQ1MTQzNiwxNTU3ODk1NTc5LDE5MT
-U3NTU0ODYsLTIwNDU1NDQ2NiwtMTM4MzA0MjgxNiwtMTc4MDA0
-NzU0OCwtMTM5OTk0MjMyOV19
+eyJoaXN0b3J5IjpbNjA3NzU2NTAzLDE1NTc4OTU1NzksMTkxNT
+c1NTQ4NiwtMjA0NTU0NDY2LC0xMzgzMDQyODE2LC0xNzgwMDQ3
+NTQ4LC0xMzk5OTQyMzI5XX0=
 -->
