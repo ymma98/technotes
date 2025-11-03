@@ -74,7 +74,8 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 对于每一个逻辑步骤，必须：
 a. 清晰阐述该步骤的【子结论】。 
 b. 列出用于支撑该结论或子结论的【所有关键方程式、表达式或图表】。 
-c. 立即在该方程式下方，以列表形式【详细解释】公式中的每一个变量、符号和算子（例如，$B$ 代表磁场强度，$T_e$ 代表电子温度，$\gamma$ 代表不稳定性增长率）。 4. 指明该主张对应的【关键支撑图表】（例如，"见图3a"、"见表1"）。
+c. 立即在所有对应方程下方，以列表形式【详细解释】公式中的每一个变量、符号和算子（例如，$B$ 代表磁场强度，$T_e$ 代表电子温度，$\gamma$ 代表不稳定性增长率）
+d. 指明该结论对应的【关键支撑图表】（例如，"见图3a"、"见表1"）。并详细解释图表的内容，并一句话概括图表传达的信息
 
 ```
 
@@ -84,7 +85,7 @@ c. 立即在该方程式下方，以列表形式【详细解释】公式中的�
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MDcxOTY0NywxNTU3ODk1NTc5LDE5MT
-U3NTU0ODYsLTIwNDU1NDQ2NiwtMTM4MzA0MjgxNiwtMTc4MDA0
-NzU0OCwtMTM5OTk0MjMyOV19
+eyJoaXN0b3J5IjpbLTE1NTI2MTM3MjIsMTU1Nzg5NTU3OSwxOT
+E1NzU1NDg2LC0yMDQ1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAw
+NDc1NDgsLTEzOTk5NDIzMjldfQ==
 -->
