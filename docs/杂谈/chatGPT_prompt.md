@@ -84,6 +84,10 @@ a. 它显示了什么？比如x轴是什么，y轴是什么，不同的曲线/�
 b. 它论证了什么？这张图在作者的逻辑链中扮演什么角色？它被用来证明哪个具体的论点？
 
 2.3 关键术语表
+列出并解释论文中特有的、或非MHD专业人士不易理解的关键术语
+
+2.4 局限性与展望
+总结结论的适用范围在哪里？哪些被忽略的物理效应（例如，动理学效应、非线性耦合）可能会改变这个结论？下一步的研究重点是什么？
 ```
 
 * 练习口语
@@ -92,7 +96,7 @@ b. 它论证了什么？这张图在作者的逻辑链中扮演什么角色？�
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDU0MTM3MzgsMTU1Nzg5NTU3OSwxOT
+eyJoaXN0b3J5IjpbLTExNjE2MDk4MTAsMTU1Nzg5NTU3OSwxOT
 E1NzU1NDg2LC0yMDQ1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAw
 NDc1NDgsLTEzOTk5NDIzMjldfQ==
 -->
