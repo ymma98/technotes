@@ -55,13 +55,19 @@ You are an expert in fusion plasma physics and academic scientific writing. Your
 想象你是等离子体物理领域的专家，把以下英文内容翻译为准确的中文，同时保留 latex 格式方便我直接复制粘贴。有一些专有名词翻译时需要注意: translation -> 传输, separatrix -> 分界面, external field -> 外部磁场, translation-trapping -> 传输-捕获, collision-merging -> 碰撞-融合, elongation -> 拉长比, spheromak -> 球马克, divertor -> 偏滤器
 ```
 
+* 阅读与总结文献
+
+```bash
+你是一位聚变等离子体物理领域的专家，擅长快速从复杂的模拟和理论论文中提取核心信息。
+```
+
 * 练习口语
 
 ```bash
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1Nzg5NTU3OSwxOTE1NzU1NDg2LC0yMD
-Q1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAwNDc1NDgsLTEzOTk5
-NDIzMjldfQ==
+eyJoaXN0b3J5IjpbLTExNDc0MzMyNzgsMTU1Nzg5NTU3OSwxOT
+E1NzU1NDg2LC0yMDQ1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAw
+NDc1NDgsLTEzOTk5NDIzMjldfQ==
 -->
