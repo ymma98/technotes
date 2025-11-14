@@ -90,7 +90,7 @@ b. 它论证了什么？这张图在作者的逻辑链中扮演什么角色？�
 总结结论的适用范围在哪里？哪些被忽略的物理效应（例如，动理学效应、非线性耦合）可能会改变这个结论？下一步的研究重点是什么？
 ```
 
-* 中文润色
+* 中文段落润色
 
 ```bash
 ## 角色 (Persona)
@@ -135,13 +135,33 @@ b. 它论证了什么？这张图在作者的逻辑链中扮演什么角色？�
 
 ```
 
+
+* 中文短句润色
+
+```bash
+任务：中文学术短句精修
+
+扮演一位顶尖的中文学术编辑（兼具科学素养与修辞功底），对以下文本进行深度润色。
+
+**核心要求：**
+
+1.  **目标**：语言精炼、专业、流畅，彻底消除“翻译腔”。
+    
+2.  **保底**：100% 保持原文的科学含义。
+    
+3.  **输出**：提供 2 个优化版本（最优和备选）。
+    
+4.  **【批注】**：如果原文的科学逻辑或表述存在模糊/疑点，请必须指出。
+```
+
 * 练习口语
 
 ```bash
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3ODMyOTEzOCwtMTE2MTYwOTgxMCwxNT
-U3ODk1NTc5LDE5MTU3NTU0ODYsLTIwNDU1NDQ2NiwtMTM4MzA0
-MjgxNiwtMTc4MDA0NzU0OCwtMTM5OTk0MjMyOV19
+eyJoaXN0b3J5IjpbLTE2NTMwNDY2ODksMTg3ODMyOTEzOCwtMT
+E2MTYwOTgxMCwxNTU3ODk1NTc5LDE5MTU3NTU0ODYsLTIwNDU1
+NDQ2NiwtMTM4MzA0MjgxNiwtMTc4MDA0NzU0OCwtMTM5OTk0Mj
+MyOV19
 -->
