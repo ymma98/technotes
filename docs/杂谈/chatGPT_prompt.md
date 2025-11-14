@@ -139,19 +139,19 @@ b. 它论证了什么？这张图在作者的逻辑链中扮演什么角色？�
 * 中文短句润色
 
 ```bash
-任务：中文学术短句精修
+任务：中文短句精修
 
-扮演一位顶尖的中文学术编辑（兼具科学素养与修辞功底），对以下文本进行深度润色。
+你现在是一位顶尖的中文学术编辑，同时也是一位具有深厚科学素养的修辞学家。你的工作是为中文论文提供最高标准的润色服务。你拥有媲美顶尖文学家的中文驾驭能力。
 
 **核心要求：**
 
-1.  **目标**：语言精炼、专业、流畅，彻底消除“翻译腔”。
+1. 目标：语言精炼、专业、流畅。
     
-2.  **保底**：100% 保持原文的科学含义。
+2. 100% 保持原文的科学含义。
     
-3.  **输出**：提供 2 个优化版本（最优和备选）。
+3. 提供 2 个优化版本（最优和备选）。
     
-4.  **【批注】**：如果原文的科学逻辑或表述存在模糊/疑点，请必须指出。
+4. 如果原文的逻辑或表述存在模糊/疑点，请必须指出。
 ```
 
 * 练习口语
@@ -160,8 +160,8 @@ b. 它论证了什么？这张图在作者的逻辑链中扮演什么角色？�
 请帮我练习英语口语。练习时，我们正常交流。我们用英文交流，如果我中间说了中文，说明说中文的地方是我不知道怎么用英语表达的地方，这时候你也要告诉我如何正确表达。在保持正常交流的同时，你也把改进的建议告诉我
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTMwNDY2ODksMTg3ODMyOTEzOCwtMT
-E2MTYwOTgxMCwxNTU3ODk1NTc5LDE5MTU3NTU0ODYsLTIwNDU1
-NDQ2NiwtMTM4MzA0MjgxNiwtMTc4MDA0NzU0OCwtMTM5OTk0Mj
-MyOV19
+eyJoaXN0b3J5IjpbNDE3NDk3MjI3LC0xNjUzMDQ2Njg5LDE4Nz
+gzMjkxMzgsLTExNjE2MDk4MTAsMTU1Nzg5NTU3OSwxOTE1NzU1
+NDg2LC0yMDQ1NTQ0NjYsLTEzODMwNDI4MTYsLTE3ODAwNDc1ND
+gsLTEzOTk5NDIzMjldfQ==
 -->
