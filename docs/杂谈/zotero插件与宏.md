@@ -12,8 +12,10 @@
 
 ## zotero 参考文献制表符过宽
 
-比如这里，xuya
+比如这里，[99] 后的 tab 间距明显小于 [100] 后的tab间距，这是悬挂缩进导致的。
 ![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20251204/image.2obz1svbd8.webp)
+
+解决方法：选中所有参考文献->段落->悬挂缩进设置为0.4英寸
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0OTk5OTY3NCwtODA0NjA2NDcyXX0=
+eyJoaXN0b3J5IjpbNTA1MTU4MzAzLC04MDQ2MDY0NzJdfQ==
 -->
