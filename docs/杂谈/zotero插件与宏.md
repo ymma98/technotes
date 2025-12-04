@@ -8,6 +8,11 @@
 ## zotero参考文献格式
 
 参考[这里](https://zotero-chinese.com/styles/)搜索下载所需的样式。
+
+
+## zotero 参考文献制表符过宽
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNDYwNjQ3Ml19
+eyJoaXN0b3J5IjpbMTM0MzgwMTQ4MSwtODA0NjA2NDcyXX0=
 -->
