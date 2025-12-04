@@ -12,7 +12,8 @@
 
 ## zotero 参考文献制表符过宽
 
-
+比如这里，xuya
+![输入图片说明](https://github.com/ymma98/picx-images-hosting/raw/master/20251204/image.2obz1svbd8.webp)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0MzgwMTQ4MSwtODA0NjA2NDcyXX0=
+eyJoaXN0b3J5IjpbMjA0OTk5OTY3NCwtODA0NjA2NDcyXX0=
 -->
