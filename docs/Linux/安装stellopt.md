@@ -68,7 +68,8 @@ sudo vim /etc/docker/daemon.json
 ```bash
 sudo systemctl daemon-reload 
 sudo systemctl restart docker
-
+# 检查是否成功设置 proxy
+docker info | grep Registry -A 5
 ```
 
 之后应该可以正常运行
@@ -118,6 +119,8 @@ docker run --rm \
   stellopt:latest \
   /home/STELLOPT/bin/xstelloptv2 "$@"
 ```
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU2MDYzMTIxNSwtMjA0ODc5OTI0XX0=
+eyJoaXN0b3J5IjpbLTIwMTk5ODA3NDEsLTIwNDg3OTkyNF19
 -->
