@@ -69,7 +69,31 @@ docker run hello-world
 
 ## 建立docker运行脚本
 
-在 `~/bin/` 路径下，添加 `ve`
+在 `~/bin/` 路径下，添加 `vmec` 和 `stellopt` 脚本, 并添加可执行权限。之后每次直接运行 `vmec test` 之类的就可以了，`test`是`input.xxxx` 的后缀
+
+```bash
+#!/bin/bash
+
+# 检查是否有输入参数
+if [ -z "$1" ]; then
+    echo "Usage: vmec <input_file_suffix>"
+    echo "Example: vmec test (for input.test)"
+    exit 1
+fi
+
+# 运行 Docker 容器
+# --rm: 运行完自动删除容器，不占用空间
+# -v "$PWD":/test/: 把当前宿主机的目录挂载到容器内的 /test
+# -w /test: 容器启动后自动进入 /test 目录
+docker run --rm \
+  -v "$PWD":/test/ \
+  -w /test \
+  stellopt:latest \
+  /home/STELLOPT/bin/xvmec2000 "$@"
+```
+
+```bash
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDM5MjU0MTksLTIwNDg3OTkyNF19
+eyJoaXN0b3J5IjpbODI3ODc5MTgsLTIwNDg3OTkyNF19
 -->
