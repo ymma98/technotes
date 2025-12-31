@@ -40,6 +40,15 @@ docker run --rm \
 ```bash
 ../vmec input.test0527
 ```
+
+
+## 如果安装过程中遇到 docker 网络问题
+
+如果安装过程中遇到docker网络问题，需要配置docker镜像
+
+```bash
+sudo vim /etc/
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDg3OTkyNF19
+eyJoaXN0b3J5IjpbOTk1MTg3MTAsLTIwNDg3OTkyNF19
 -->
