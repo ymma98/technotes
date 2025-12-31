@@ -53,6 +53,23 @@ sudo vim /etc/docker/daemon.json
 ```bash
 
 ```
+
+修改好后，运行
+
+```bash
+sudo systemctl daemon-reload 
+sudo systemctl restart docker
+```
+
+之后应该可以正常运行
+
+```bash
+docker run hello-world
+```
+
+## 建立docker运行脚本
+
+在 `~/bin/` 路径下，添加 `ve`
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxMzg2NDcyMywtMjA0ODc5OTI0XX0=
+eyJoaXN0b3J5IjpbLTE5MDM5MjU0MTksLTIwNDg3OTkyNF19
 -->
