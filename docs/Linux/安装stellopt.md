@@ -47,8 +47,12 @@ docker run --rm \
 如果安装过程中遇到docker网络问题，需要配置docker镜像
 
 ```bash
-sudo vim /etc/
+sudo vim /etc/docker/daemon.json
+```
+
+```bash
+
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk1MTg3MTAsLTIwNDg3OTkyNF19
+eyJoaXN0b3J5IjpbLTMxMzg2NDcyMywtMjA0ODc5OTI0XX0=
 -->
