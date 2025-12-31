@@ -51,7 +51,16 @@ sudo vim /etc/docker/daemon.json
 ```
 
 ```bash
-
+{
+  "iptables": false,
+  "registry-mirrors": [
+    "https://dockerpull.com",
+    "https://dockerproxy.cn",
+    "https://docker.m.daocloud.io",
+    "https://docker.1panel.live",
+    "https://hub.rat.dev"
+  ]
+}
 ```
 
 修改好后，运行
@@ -59,6 +68,7 @@ sudo vim /etc/docker/daemon.json
 ```bash
 sudo systemctl daemon-reload 
 sudo systemctl restart docker
+
 ```
 
 之后应该可以正常运行
@@ -92,8 +102,22 @@ docker run --rm \
   /home/STELLOPT/bin/xvmec2000 "$@"
 ```
 
-```bash
+`stellopt`:
 
+```bash
+#!/bin/bash
+if [ -z "$1" ]; then
+    echo "Usage: stellopt <input_file_suffix>"
+    exit 1
+fi
+
+# 注意：这里调用的是 xstelloptv2
+docker run --rm \
+  -v "$PWD":/test/ \
+  -w /test \
+  stellopt:latest \
+  /home/STELLOPT/bin/xstelloptv2 "$@"
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODI3ODc5MTgsLTIwNDg3OTkyNF19
+eyJoaXN0b3J5IjpbMTU2MDYzMTIxNSwtMjA0ODc5OTI0XX0=
 -->
