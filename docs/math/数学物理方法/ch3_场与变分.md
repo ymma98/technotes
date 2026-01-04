@@ -13,8 +13,8 @@ $$
 
 通过该函数的最小化（$\delta \mathcal{L} = 0$），我们可以得到控制(governing) $\varphi$（作为 $x$ 的函数）的偏微分方程以及许多其他东西。 这个获得 $\varphi$ 的过程称为**变分法**。变分法能够以简洁的方式表达涵盖各种现象的一般原理。
 
-
+### bianfe
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODA5OTk2M119
+eyJoaXN0b3J5IjpbLTM3OTE3MDQ4NV19
 -->
