@@ -6,19 +6,21 @@
 导数是  $\frac{\partial \varphi_r}{\partial x_s} = \varphi_{rs}$, 那么需要最小化的积分为：
 
 $$
-\mathcal{L}=
+\mathfrak{L}=
 \int_{a_1}^{b_1} \cdots \int_{a_m}^{b_m} L\!\left(
 \varphi, \frac{\partial \varphi}{\partial x}, x \right) \, dx_1 \cdots dx_m
 $$
 
-通过该函数的最小化（$\delta \mathcal{L} = 0$），我们可以得到控制(governing) $\varphi$（作为 $x$ 的函数）的偏微分方程以及许多其他东西。 这个获得 $\varphi$ 的过程称为**变分法**。变分法能够以简洁的方式表达涵盖各种现象的一般原理。
+通过该函数的最小化（$\delta \mathfrak{L} = 0$），我们可以得到控制(governing) $\varphi$（作为 $x$ 的函数）的偏微分方程以及许多其他东西。 这个获得 $\varphi$ 的过程称为**变分法**。变分法能够以简洁的方式表达涵盖各种现象的一般原理。
 
 ### 变分积分(variational integral)与欧拉方程(Euler equation)
 
-待最小化（或最大化）积分的被积函数 $L$ 将被称为系统的 Lagrange density（拉格朗日密度）。它是系统基本参数的函数的函数。
+待最小化（或最大化）积分的被积函数 $L$ 将被称为系统的 Lagrange density（拉格朗日密度）。它是系统基本参数的函数的函数。对于函数 $\varphi_r$，假设改变由项 $\epsilon \eta_r$ 表示，其中 $\eta_r$ 是参数的任意函数，$\epsilon$ 是一个与参数无关的小量。通常使用简写符号 $\delta \varphi_r$ 来代替 $\epsilon \eta_r$，其中 $\delta \varphi$ 被视为函数 $\varphi$ 的任意微小“变分（variation）。$\varphi$ 的这种修正也会导致梯度分量 $\varphi_{rs}$ 的变化。
 
+利用 $L$ 的泰勒级数展开，我们可以证明，由 $\varphi$ 的微小变化引起的积分 $\mathfrak{L}$ 的一阶变化可以写为：
 
+$$\delta \mathfrak{L} = \int_{a_1}^{b_1} \dots \int_{a_m}^{b_m} \sum_{r=1}^{n} \epsilon_r \left[ \frac{\partial L}{\partial \varphi_r} \eta_r + \sum_{s=1}^{m} \frac{\partial L}{\partial \varphi_{rs}} \frac{\partial \eta_r}{\partial x_s} \right] dx_1 \dots dx_m$$
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjkyNTIxMjJdfQ==
+eyJoaXN0b3J5IjpbMTcwMTE2NDBdfQ==
 -->
