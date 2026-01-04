@@ -21,6 +21,24 @@ $$
 
 $$\delta \mathfrak{L} = \int_{a_1}^{b_1} \dots \int_{a_m}^{b_m} \sum_{r=1}^{n} \epsilon_r \left[ \frac{\partial L}{\partial \varphi_r} \eta_r + \sum_{s=1}^{m} \frac{\partial L}{\partial \varphi_{rs}} \frac{\partial \eta_r}{\partial x_s} \right] dx_1 \dots dx_m$$
 
+我们假设参数的选择使得积分限都是常数，并且所有 $\eta$ 在这些极限处趋于零。
+
+项 $(\partial L / \partial \varphi_{rs}) (\partial \eta_r / \partial x_s)$ 可以对 $x_s$ 进行分部积分（integrated by parts），得到：
+
+$$\left[ \frac{\partial L}{\partial \varphi_{rs}} \eta_r \right]_{a_s}^{b_s} - \int_{a_s}^{b_s} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial \varphi_{rs}} \right) \eta_r dx_s$$
+
+第一项为零，因为 $\eta_r = 0$ 在 $a_s$ 和 $b_s$ 处。因此，$\mathfrak{L}$ 的一阶变分是：
+
+$$\delta \mathfrak{L} = \int_{a_1}^{b_1} \dots \int_{a_m}^{b_m} \sum_{r=1}^{n} \epsilon_r \left[ \frac{\partial L}{\partial \varphi_r} - \sum_{s=1}^{m} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial \varphi_{rs}} \right) \right] \eta_r dx_1 \dots dx_m \quad (3.1.2)$$
+
+（得出 Euler-Lagrange 方程）
+
+为了使 $\mathfrak{L}$ 取极值（最大值或最小值），必须选择 $\varphi$ 的函数形式，使得 $\delta \mathfrak{L}$ 积分中每个 $\epsilon_r$ 的系数为零。这导致了一组描述 $\varphi$ 期望行为的方程：
+
+$$\sum_{s=1}^{m} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial \varphi_{rs}} \right) = \frac{\partial L}{\partial \varphi_r}; \quad r = 1, \dots, n \quad (3.1.3)$$
+
+这些用于确定 $\varphi$ 最佳函数形式的方程被称为 **Euler equations（欧拉方程）**。
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcwMTE2NDBdfQ==
+eyJoaXN0b3J5IjpbMTI2NDgwNjYzMF19
 -->
