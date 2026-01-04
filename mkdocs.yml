@@ -50,6 +50,8 @@ nav:
     - GaussianSI单位制转换: math/GaussianSI单位制转换.md
     - MMA正确对包含下标的符号求导: math/MMA正确对包含下标的符号求导.md
     - 琐碎的Mathematica使用: math/琐碎的Mathematica使用.md
+    - 数学物理方法:
+      - 场与变分: math/数学物理方法/ch3_场与变分.md
   - FEM:
     - 科学计算准则与协议: FEM/科学计算准则与协议.md
     - 有限元空间: FEM/有限元空间.md
