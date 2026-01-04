@@ -13,8 +13,12 @@ $$
 
 通过该函数的最小化（$\delta \mathcal{L} = 0$），我们可以得到控制(governing) $\varphi$（作为 $x$ 的函数）的偏微分方程以及许多其他东西。 这个获得 $\varphi$ 的过程称为**变分法**。变分法能够以简洁的方式表达涵盖各种现象的一般原理。
 
-### bianfe
+### 变分积分(variational integral)与欧拉方程(Euler equation)
+
+待最小化（或最大化）积分的被积函数 $L$ 将被称为系统的 Lagrange density（拉格朗日密度）。它是系统基本参数的函数的函数。
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3OTE3MDQ4NV19
+eyJoaXN0b3J5IjpbLTE1NjkyNTIxMjJdfQ==
 -->
