@@ -15,7 +15,15 @@ $$
 
 ### 变分积分(variational integral)与欧拉方程(Euler equation)
 
-待最小化（或最大化）积分的被积函数 $L$ 将被称为系统的 Lagrange density（拉格朗日密度）。它是系统基本参数的函数的函数。对于函数 $\varphi_r$，假设改变由项 $\epsilon \eta_r$ 表示，其中 $\eta_r$ 是参数的任意函数，$\epsilon$ 是一个与参数无关的小量。通常使用简写符号 $\delta \varphi_r$ 来代替 $\epsilon \eta_r$，其中 $\delta \varphi$ 被视为函数 $\varphi$ 的任意微小“变分（variation）。$\varphi$ 的这种修正也会导致梯度分量 $\varphi_{rs}$ 的变化。
+待最小化（或最大化）积分的被积函数 $L$ 将被称为系统的 Lagrange density（拉格朗日密度）。它是系统基本参数的函数的函数。对于函数 $\varphi_r$，假设改变由项 $\epsilon \eta_r$ 表示，其中 $\eta_r$ 是参数的任意函数，$\epsilon$ 是一个与参数无关的小量。通常使用简写符号 $\delta \varphi_r$ 来代替 $\epsilon \eta_r$，其中 $\delta \varphi$ 被视为函数 $\varphi$ 的任意微小“变分（variation）。$\varphi$ 的这种修正也会导致梯度分量 $\varphi_{rs}$ 的变化。场值的变化：$\tilde{\varphi}_r = \varphi_r + \epsilon_r \eta_r(x)$, 梯度的变化：$\tilde{\varphi}_{rs} = \varphi_{rs} + \epsilon_r \frac{\partial \eta_r}{\partial x_s}$
+
+回顾最基础的二元泰勒展开：
+
+$$f(y + \Delta y, z + \Delta z) \approx f(y, z) + \frac{\partial f}{\partial y}\Delta y + \frac{\partial f}{\partial z}\Delta z$$
+
+现在把 $L$ 看作是 $\varphi$ 和 $\varphi_{rs}$ 的函数：
+
+$$L(\dots, \varphi_r + \epsilon \eta_r, \varphi_{rs} + \epsilon \frac{\partial \eta_r}{\partial x_s}, \dots) \approx L(\dots) + \underbrace{\frac{\partial L}{\partial \varphi_r} (\epsilon \eta_r)}_{\text{场值贡献}} + \underbrace{\sum_s \frac{\partial L}{\partial \varphi_{rs}} \left(\epsilon \frac{\partial \eta_r}{\partial x_s}\right)}_{\text{梯度贡献}}$$
 
 利用 $L$ 的泰勒级数展开，我们可以证明，由 $\varphi$ 的微小变化引起的积分 $\mathfrak{L}$ 的一阶变化可以写为：
 
@@ -40,5 +48,5 @@ $$\sum_{s=1}^{m} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial
 这些用于确定 $\varphi$ 最佳函数形式的方程被称为 **Euler equations（欧拉方程）**。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2NDgwNjYzMF19
+eyJoaXN0b3J5IjpbLTU4NzkzMDEwM119
 -->
