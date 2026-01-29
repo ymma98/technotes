@@ -47,6 +47,9 @@ $$\sum_{s=1}^{m} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial
 
 这些用于确定 $\varphi$ 最佳函数形式的方程被称为 **Euler equations（欧拉方程）**。
 
+如果系统有限制条件，比如yue
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4MzA5NjA3NSwtNTg3OTMwMTAzXX0=
+eyJoaXN0b3J5IjpbMTYxMDgxMDM1NiwxMjgzMDk2MDc1LC01OD
+c5MzAxMDNdfQ==
 -->
