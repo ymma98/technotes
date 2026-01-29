@@ -47,9 +47,39 @@ $$\sum_{s=1}^{m} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial
 
 这些用于确定 $\varphi$ 最佳函数形式的方程被称为 **Euler equations（欧拉方程）**。
 
-如果系统有限制条件，比如yue
+如果系统求极值时（求解 $\delta \mathfrak{L} = 0$）有限制条件，比如约束条件为：
+
+$$K_t = \int \dots \int G_t \left( \varphi, \frac{\partial \varphi}{\partial x}, x \right) dx_1 \dots dx_m = C_t$$
+
+当我们对系统进行变分 $\varphi \to \varphi + \epsilon \eta$ 时，不仅 $\mathfrak{L}$ 会变，约束积分 $K_t$ 也会变。为了满足约束，$K_t$ 的变分必须为 0。
+
+$$\delta K_t = 0$$
+
+对 $G_t$ 进行和上面 $L$ 完全一样的变分和分部积分操作，会得到：
+
+$$\delta K_t = \int \dots \int \sum_{r} \eta_r \left[ \frac{\partial G_t}{\partial \varphi_r} - \sum_{s} \frac{\partial}{\partial x_s} \left( \frac{\partial G_t}{\partial \varphi_{rs}} \right) \right] dx \dots = 0$$
+
+这等价于极值化一个新的泛函 $\mathfrak{L}'$：
+
+$$\mathfrak{L}' = \mathfrak{L} + \sum_{t=1}^k \lambda_t K_t$$
+
+其中 $\lambda_t$ 是待定的常数乘数。
+
+将 $\mathfrak{L}$ 和 $K_t$ 的积分表达式代入：
+
+$$\mathfrak{L}' = \int \dots \int \left( L + \sum_{t=1}^k \lambda_t G_t \right) dx_1 \dots dx_m$$
+
+于是：
+
+$$L'(\varphi, \varphi_x, x) = L + \sum_{t=1}^k \lambda_t G_t \quad $$
+
+那么，有 $m$ 个新的欧拉方程 (Euler equations)，
+
+$$\sum_{s=1}^n \frac{\partial}{\partial x_s} \left( \frac{\partial L'}{\partial \varphi_{rs}} \right) = \frac{\partial L'}{\partial \varphi_r} $$
+
+加上 $k$ 个方程 (3.1.7) 一起用于确定 $\varphi$'s 以及 $\lambda$'s 的值。在这种情况下，拉格朗日乘数法无疑是更容易的方法。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxMDgxMDM1NiwxMjgzMDk2MDc1LC01OD
+eyJoaXN0b3J5IjpbLTYwMTMxNDkwMSwxMjgzMDk2MDc1LC01OD
 c5MzAxMDNdfQ==
 -->
