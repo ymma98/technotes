@@ -15,7 +15,7 @@ $$
 
 ### 变分积分(variational integral)与欧拉方程(Euler equation)
 
-待最小化（或最大化）积分的被积函数 $L$ 将被称为系统的 Lagrange density（拉格朗日密度）。它是系统基本参数的函数的函数。对于函数 $\varphi_r$，假设改变由项 $\epsilon \eta_r$ 表示，其中 $\eta_r$ 是参数的任意函数，$\epsilon$ 是一个与参数无关的小量。通常使用简写符号 $\delta \varphi_r$ 来代替 $\epsilon \eta_r$，其中 $\delta \varphi$ 被视为函数 $\varphi$ 的任意微小“变分（variation）。$\varphi$ 的这种修正也会导致梯度分量 $\varphi_{rs}$ 的变化。场值的变化：$\tilde{\varphi}_r = \varphi_r + \epsilon_r \eta_r(x)$, 梯度的变化：$\tilde{\varphi}_{rs} = \varphi_{rs} + \epsilon_r \frac{\partial \eta_r}{\partial x_s}$
+待最小化（或最大化）积分的被积函数 $L$ 将被称为系统的 Lagrange density（拉格朗日密度）。它是系统基本参数的函数的函数。对于函数 $\varphi_r$，假设改变由项 $\epsilon \eta_r$ 表示，其中 $\eta_r$ 是参数的任意函数，$\epsilon$ 是一个与参数无关的小量。通常使用简写符号 $\delta \varphi_r$ 来代替 $\epsilon \eta_r$，其中 $\delta \varphi$ 被视为函数 $\varphi$ 的任意微小变分（variation）。$\varphi$ 的这种修正也会导致梯度分量 $\varphi_{rs}$ 的变化。场值的变化：$\tilde{\varphi}_r = \varphi_r + \epsilon_r \eta_r(x)$, 梯度的变化：$\tilde{\varphi}_{rs} = \varphi_{rs} + \epsilon_r \frac{\partial \eta_r}{\partial x_s}$
 
 回顾最基础的二元泰勒展开：
 
@@ -35,7 +35,7 @@ $$\delta \mathfrak{L} = \int_{a_1}^{b_1} \dots \int_{a_m}^{b_m} \sum_{r=1}^{n} \
 
 $$\left[ \frac{\partial L}{\partial \varphi_{rs}} \eta_r \right]_{a_s}^{b_s} - \int_{a_s}^{b_s} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial \varphi_{rs}} \right) \eta_r dx_s$$
 
-第一项为零，因为 $\eta_r = 0$ 在 $a_s$ 和 $b_s$ 处。因此，$\mathfrak{L}$ 的一阶变分是：
+第一项为零，因为在 $a_s$ 和 $b_s$ 处 $\eta_r = 0$ 。因此，$\mathfrak{L}$ 的一阶变分是：
 
 $$\delta \mathfrak{L} = \int_{a_1}^{b_1} \dots \int_{a_m}^{b_m} \sum_{r=1}^{n} \epsilon_r \left[ \frac{\partial L}{\partial \varphi_r} - \sum_{s=1}^{m} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial \varphi_{rs}} \right) \right] \eta_r dx_1 \dots dx_m \quad (3.1.2)$$
 
@@ -48,5 +48,5 @@ $$\sum_{s=1}^{m} \frac{\partial}{\partial x_s} \left( \frac{\partial L}{\partial
 这些用于确定 $\varphi$ 最佳函数形式的方程被称为 **Euler equations（欧拉方程）**。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4NzkzMDEwM119
+eyJoaXN0b3J5IjpbMTI4MzA5NjA3NSwtNTg3OTMwMTAzXX0=
 -->
