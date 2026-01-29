@@ -77,9 +77,12 @@ $$L'(\varphi, \varphi_x, x) = L + \sum_{t=1}^k \lambda_t G_t \quad $$
 
 $$\sum_{s=1}^n \frac{\partial}{\partial x_s} \left( \frac{\partial L'}{\partial \varphi_{rs}} \right) = \frac{\partial L'}{\partial \varphi_r} $$
 
-加上 $k$ 个方程 (3.1.7) 一起用于确定 $\varphi$'s 以及 $\lambda$'s 的值。在这种情况下，拉格朗日乘数法无疑是更容易的方法。
+
+
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMTMxNDkwMSwxMjgzMDk2MDc1LC01OD
+eyJoaXN0b3J5IjpbLTcwNDcwMjA5OCwxMjgzMDk2MDc1LC01OD
 c5MzAxMDNdfQ==
 -->
