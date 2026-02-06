@@ -2,7 +2,7 @@
 
 ## 变分法
 
-
+d
 
 $$\alpha\beta\gamma\chi=\frac{a}{b+1}$$
 
@@ -90,6 +90,6 @@ $$\frac{\partial L'}{\partial \varphi_r} = \underbrace{\frac{\partial L}{\partia
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwMTUyMTExMiwxMjgzMDk2MDc1LC01OD
-c5MzAxMDNdfQ==
+eyJoaXN0b3J5IjpbLTE2ODI4MTYxNjIsMTI4MzA5NjA3NSwtNT
+g3OTMwMTAzXX0=
 -->
