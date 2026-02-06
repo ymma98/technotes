@@ -2,7 +2,7 @@
 
 ## 变分法
 
-______
+
 
 对于被积函数 $L$，它是系统若干**独立变量**（coordinate、field amplitudes）以及这些变量对积分参数（速度或场梯度等）的导数的函数。如果变量是$\varphi_1,\ldots,\varphi_n$， 参数是 $x_1,\ldots,x_m$，
 导数是  $\frac{\partial \varphi_r}{\partial x_s} = \varphi_{rs}$, 那么需要最小化的积分为：
@@ -87,6 +87,6 @@ $$\frac{\partial L'}{\partial \varphi_r} = \underbrace{\frac{\partial L}{\partia
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM3NDc4NjAwNywxMjgzMDk2MDc1LC01OD
+eyJoaXN0b3J5IjpbLTQxMzQ1NDQwOSwxMjgzMDk2MDc1LC01OD
 c5MzAxMDNdfQ==
 -->
