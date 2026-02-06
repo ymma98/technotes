@@ -77,12 +77,14 @@ $$L'(\varphi, \varphi_x, x) = L + \sum_{t=1}^k \lambda_t G_t \quad $$
 
 $$\sum_{s=1}^n \frac{\partial}{\partial x_s} \left( \frac{\partial L'}{\partial \varphi_{rs}} \right) = \frac{\partial L'}{\partial \varphi_r} $$
 
+其中
 
+$$\frac{\partial L'}{\partial \varphi_r} = \underbrace{\frac{\partial L}{\partial \varphi_r}}_{\text{物理源项}} + \underbrace{\sum_{t=1}^k \lambda_t \frac{\partial G_t}{\partial \varphi_r}}_{\text{约束产生的广义力}}$$
 
-
+$$\frac{\partial L'}{\partial \varphi_r} = \underbrace{\frac{\partial L}{\partial \varphi_r}}_{\text{物理源项}} + \underbrace{\sum_{t=1}^k \lambda_t \frac{\partial G_t}{\partial \varphi_r}}_{\text{约束产生的广义力}}$$
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcwNDcwMjA5OCwxMjgzMDk2MDc1LC01OD
-c5MzAxMDNdfQ==
+eyJoaXN0b3J5IjpbLTEwMDk0NzkzMzMsMTI4MzA5NjA3NSwtNT
+g3OTMwMTAzXX0=
 -->
