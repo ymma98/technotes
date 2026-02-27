@@ -2,9 +2,7 @@
 
 ## 变分法
 
-d
 
-$$\alpha\beta\gamma\chi=\frac{a}{b+1}$$
 
 
 对于被积函数 $L$，它是系统若干**独立变量**（coordinate、field amplitudes）以及这些变量对积分参数（速度或场梯度等）的导数的函数。如果变量是$\varphi_1,\ldots,\varphi_n$， 参数是 $x_1,\ldots,x_m$，
@@ -90,6 +88,6 @@ $$\frac{\partial L'}{\partial \varphi_r} = \underbrace{\frac{\partial L}{\partia
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODI4MTYxNjIsMTI4MzA5NjA3NSwtNT
-g3OTMwMTAzXX0=
+eyJoaXN0b3J5IjpbNzU5MjA4MzU3LDEyODMwOTYwNzUsLTU4Nz
+kzMDEwM119
 -->
