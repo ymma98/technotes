@@ -41,6 +41,30 @@ alias winmode="git config oh-my-zsh.hide-dirty 1"
 alias wslmode="git config oh-my-zsh.hide-dirty 0"
 
 
+#### clash代理
+# 输入 `proxy_on`：立即开启代理并自动获取最新 IP。
+# 输入 `proxy_off`：断开代理，恢复直连。
+# 输入 `proxy_status`：查看当前代理是否真的挂载成功。
+function proxy_on() {
+    export hostip=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
+    export http_proxy="http://${hostip}:7890"
+    export https_proxy="http://${hostip}:7890"
+    export all_proxy="socks5://${hostip}:7890" # 建议加上 socks5 协议
+    echo -e "已开启代理 | 宿主机IP: ${hostip}"
+}
+function proxy_off() {
+    unset http_proxy
+    unset https_proxy
+    unset all_proxy
+    echo -e "已关闭代理"
+}
+function proxy_status() {
+    echo "http_proxy: $http_proxy"
+    echo "https_proxy: $https_proxy"
+    echo "all_proxy: $all_proxy"
+}
+
+
 ##################################  190
 alias squeue="squeue -o'%.7i %.9P %.8j %.8u %.2t %.10M %.6D %C'"
 alias sinfoall="sinfo -o '%n %e %m %a %c %C'"
@@ -271,7 +295,8 @@ config.keys = {
 return config
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mzc2NDQwODUsLTc4ODA3MjQxOCw5Mj
-E5MjAxMCwyMDQ3NTU5MTAsOTk0NjQ2NDU2LC02ODA1MTM5ODEs
-LTEwODE4NjUzOTMsNjUyMzY5Nzk1LC0xNTc3OTQxMzI0XX0=
+eyJoaXN0b3J5IjpbLTEzODI3OTk5NzgsLTE5Mzc2NDQwODUsLT
+c4ODA3MjQxOCw5MjE5MjAxMCwyMDQ3NTU5MTAsOTk0NjQ2NDU2
+LC02ODA1MTM5ODEsLTEwODE4NjUzOTMsNjUyMzY5Nzk1LC0xNT
+c3OTQxMzI0XX0=
 -->
