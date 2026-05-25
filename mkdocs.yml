@@ -44,6 +44,7 @@ nav:
       - 集群_mpirun报错: Linux/集群_mpirun报错.md
       - terminal_显示中文: Linux/linux_terminal显示中文.md
       - 安装stellopt: Linux/安装stellopt.md
+      - windows服务器安装wsl: Linux/windows服务器安装wsl.md
   - math:
     - Mathematica速查: math/MathematicaCheatsheet.md
     - 任意正交曲线坐标系矢量计算: math/任意正交曲线坐标系矢量计算.md
